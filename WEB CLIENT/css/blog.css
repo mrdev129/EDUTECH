@@ -1,0 +1,488 @@
+/* ----------------------------------------------------------------
+   1. VARIABLES & RESET
+------------------------------------------------------------------- */
+:root {
+    --navy: #1a3a5f;
+    --navy-transparent: rgba(26, 58, 95, 0.95);
+    /* Defined for scrolled state */
+    --orange: #FF6600;
+    --white: #ffffff;
+    --light-bg: #f8f9fa;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--white);
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ----------------------------------------------------------------
+   2. HEADER & NAVIGATION (Unified Style)
+------------------------------------------------------------------- */
+.main-header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+    padding: 15px 5%; /* Adjusted padding for a slimmer, home-page look */
+    transition: all 0.5s ease;
+    background: var(--navy); 
+}
+
+.main-header.scrolled {
+    background: var(--navy-transparent);
+    padding: 10px 5%; /* Thinner on scroll */
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid var(--orange);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px; /* Standardized height */
+    transition: 0.3s;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+.nav-links > li {
+    position: relative;
+    margin: 0 12px; /* Slightly tighter spacing */
+}
+
+.nav-links li a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+    font-size: 0.95rem; /* Reduced from 1rem to match Home page exactly */
+}
+
+/* Hover Effect */
+/* --- Updated Hover Effect for Main Navigation --- */
+.nav-links li a:hover {
+    color: var(--orange);
+    font-weight: 700;       /* Makes the text bold */
+    font-size: 1.05rem;     /* Slightly increases the size from 0.95rem */
+}
+
+/* --- Updated Hover Effect for Dropdown Options --- */
+.dropdown-menu li a:hover {
+    color: var(--orange);
+    font-weight: 700;       /* Makes dropdown text bold on hover */
+    padding-left: 25px;     /* Optional: Adds a slight shift for better UI */
+}
+
+/* --- Dropdown Menus (Slide-up Animation) --- */
+.dropdown-menu,
+.nested-menu {
+    display: block; 
+    position: absolute;
+    top: 110%; /* Closer starting point for smoother transition */
+    left: 0;
+    background: var(--navy);
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    border-top: 3px solid var(--orange);
+    padding: 10px 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.dropdown:hover > .dropdown-menu,
+.nested-dropdown:hover > .nested-menu {
+    top: 100%;
+    opacity: 1;
+    visibility: visible;
+}
+
+.nested-menu {
+    left: 100%;
+    top: 0 !important;
+    margin-left: 2px;
+}
+
+.dropdown-menu li a {
+    padding: 10px 20px;
+    display: block;
+    font-size: 0.9rem; /* Smaller font for dropdowns */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* --- Inquiry Button (Fixing the "Orange Box" look) --- */
+.inquiry-btn {
+   
+    padding: 8px 20px !important; /* Slightly smaller padding for better proportions */
+    /* border-radius: 4px; Subtle rounding instead of a sharp box */
+    color: var(--white) !important;
+    font-weight: 600 !important;
+    font-size: 0.9rem !important;
+    display: inline-block;
+    transition: 0.3s ease;
+    /* border: 1px solid var(--orange); */
+}
+
+.inquiry-btn:hover {
+    background: transparent !important; /* Ghost button effect on hover */
+    color: var(--orange) !important;
+    transform: translateY(-2px);
+}
+
+/* Admin Icon Circle */
+.admin-icon img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--orange);
+    object-fit: cover;
+    transition: 0.3s ease;
+}
+
+.admin-icon img:hover {
+    transform: rotate(5deg) scale(1.1); /* Added a subtle rotate to match premium feel */
+}
+
+/* ----------------------------------------------------------------
+   3. BLOG LAYOUT & CONTENT
+------------------------------------------------------------------- */
+.blog-wrapper {
+    padding-top: 140px;
+    /* Offset to prevent header from hiding content */
+    padding-bottom: 80px;
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+}
+
+.blog-body h2 {
+    color: var(--navy);
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+}
+
+.blog-body p {
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.content-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.content-gallery img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* ----------------------------------------------------------------
+   4. SIDEBAR WIDGETS (Master Card Styling)
+------------------------------------------------------------------- */
+.sidebar-widget {
+    background: var(--light-bg);
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+}
+
+.category-card-wrapper,
+.recent-posts-card-wrapper {
+    background: var(--white);
+    border: 2px solid var(--navy);
+    box-shadow: 12px 12px 30px rgba(255, 102, 0, 0.12),
+        -12px -12px 30px rgba(26, 58, 95, 0.08);
+    transition: 0.4s ease;
+}
+
+.category-card-wrapper:hover,
+.recent-posts-card-wrapper:hover {
+    transform: translateY(-5px);
+    box-shadow: 15px 15px 40px rgba(255, 102, 0, 0.18),
+        -15px -15px 40px rgba(26, 58, 95, 0.12);
+}
+
+.widget-title {
+    color: var(--navy);
+    font-size: 1.4rem;
+    margin-bottom: 25px;
+    position: relative;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--orange);
+    display: inline-block;
+}
+
+/* Search Box */
+.search-box {
+    display: flex;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.search-box input {
+    flex: 1;
+    border: none;
+    padding: 12px;
+    outline: none;
+}
+
+.search-box button {
+    background: var(--orange);
+    color: white;
+    border: none;
+    padding: 0 20px;
+    cursor: pointer;
+}
+
+/* Categories */
+.category-list {
+    list-style: none;
+}
+
+.category-list li a {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    text-decoration: none;
+    color: #444;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(26, 58, 95, 0.1);
+    transition: 0.3s;
+}
+
+.category-list li a:hover {
+    color: var(--orange);
+    padding-left: 10px;
+}
+
+/* Recent Posts */
+.recent-item {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    align-items: center;
+}
+
+.recent-img-container {
+    width: 75px;
+    height: 75px;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.recent-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.recent-item:hover .recent-img-container {
+    border-color: var(--orange);
+    padding: 2px;
+}
+
+.recent-text a {
+    color: var(--navy);
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+.recent-item:hover .recent-text a {
+    color: var(--orange);
+}
+
+/* ----------------------------------------------------------------
+   5. NEXT POST CARD (The Call-to-Action)
+------------------------------------------------------------------- */
+.next-post-card {
+    margin-top: 50px;
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 12px 12px 30px rgba(255, 102, 0, 0.12), -12px -12px 30px rgba(26, 58, 95, 0.08);
+    transition: 0.3s;
+    border: 2px solid var(--orange);
+}
+
+.next-post-content {
+    display: flex;
+    align-items: center;
+}
+
+.next-post-image {
+    flex: 1;
+    position: relative;
+    height: 250px;
+}
+
+.next-post-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.category-tag {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: var(--orange);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.75rem;
+}
+
+.next-post-text {
+    flex: 1.5;
+    padding: 30px;
+}
+
+.sub-label {
+    color: var(--orange);
+    font-weight: 700;
+    font-size: 0.8rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.next-post-text h4 {
+    color: var(--navy);
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.read-more-link {
+    color: var(--navy);
+    text-decoration: none;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.read-more-link:hover {
+    color: var(--orange);
+    gap: 15px;
+}
+
+/* ----------------------------------------------------------------
+   6. COMPACT FOOTER
+------------------------------------------------------------------- */
+.compact-footer {
+    background: var(--navy);
+    color: var(--white);
+    padding: 20px 5%;
+    border-top: 3px solid var(--orange);
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.footer-contact,
+.footer-social {
+    display: flex;
+    gap: 20px;
+    flex: 1;
+}
+
+.footer-contact p {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.footer-contact i {
+    color: var(--orange);
+    margin-right: 5px;
+}
+
+.footer-copyright {
+    flex: 1;
+    text-align: center;
+    opacity: 0.8;
+    font-size: 0.85rem;
+}
+
+.footer-social {
+    justify-content: flex-end;
+}
+
+.footer-social a {
+    color: var(--white);
+    font-size: 1.1rem;
+    transition: 0.3s;
+}
+
+.footer-social a:hover {
+    color: var(--orange);
+    transform: translateY(-3px);
+}
+
+/* ----------------------------------------------------------------
+   7. RESPONSIVE
+------------------------------------------------------------------- */
+@media (max-width: 992px) {
+    .blog-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .next-post-content {
+        flex-direction: column;
+    }
+
+    .next-post-image {
+        width: 100%;
+        height: 200px;
+    }
+}

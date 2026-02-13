@@ -1,0 +1,672 @@
+/* ----------------------------------------------------------------
+   1. VARIABLES & CORE RESET
+------------------------------------------------------------------- */
+:root {
+    --navy: #1a3a5f;
+    --navy-transparent: rgba(26, 58, 95, 0.95);
+    --orange: #FF6600;
+    --white: #ffffff;
+    --gray-bg: #f9f9f9;
+    --text-color: #333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--white);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* ----------------------------------------------------------------
+   2. HEADER & NAVIGATION
+------------------------------------------------------------------- */
+.main-header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+    padding: 20px 5%;
+    transition: all 0.5s ease;
+    background: var(--navy);
+    /* Solid at start as requested */
+}
+
+/* Scrolled State: Changes to Transparent Navy */
+.main-header.scrolled {
+    background: var(--navy-transparent);
+    padding: 12px 5%;
+    backdrop-filter: blur(10px);
+    /* Modern blur effect */
+    border-bottom: 2px solid var(--orange);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 55px;
+    transition: 0.3s;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+.nav-links>li {
+    position: relative;
+    margin: 0 15px;
+}
+
+.nav-links li a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+/* Hover Effect: Font increase and Bold */
+.nav-links li a:hover {
+    color: var(--orange);
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* Dropdown Menus */
+.dropdown-menu,
+.nested-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--navy);
+    min-width: 220px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    border-top: 3px solid var(--orange);
+}
+
+.dropdown:hover>.dropdown-menu {
+    display: block;
+}
+
+.nested-dropdown {
+    position: relative;
+}
+
+.nested-dropdown:hover>.nested-menu {
+    display: block;
+    left: 100%;
+    top: 0;
+}
+
+.dropdown-menu li a {
+    padding: 12px 20px;
+    display: block;
+    font-size: 0.95rem;
+}
+
+/* Admin Icon Circle */
+.admin-icon img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 2px solid var(--orange);
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.admin-icon img:hover {
+    transform: scale(1.1);
+}
+
+
+/* ----------------------------------------------------------------
+   3. BREADCRUMB AREA
+------------------------------------------------------------------- */
+.breadcrumb-area {
+    padding: 160px 0 100px;
+    /* Space for fixed header */
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../images/breadcrumb-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    color: white;
+}
+
+.breadcrumb-area h1 {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.breadcrumb-area span {
+    color: var(--orange);
+}
+
+/* ----------------------------------------------------------------
+   4. WELCOME SECTION (About UI - Updated)
+------------------------------------------------------------------- */
+.welcome-section {
+    padding: 100px 10%;
+    text-align: center;
+    /* Centers the heading */
+}
+
+/* Heading styled like the Introduction Heading */
+.welcome-heading {
+    font-size: 2.5rem;
+    color: var(--navy);
+    margin-bottom: 60px;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 2px;
+    position: relative;
+    display: inline-block;
+}
+
+.welcome-heading::after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 4px;
+    background-color: var(--orange);
+    bottom: -15px;
+    left: 25%;
+}
+
+.welcome-grid {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+    text-align: left;
+    /* Keeps the content body left-aligned */
+    margin-top: 20px;
+}
+
+.welcome-img-box {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcome-logo-img {
+    max-width: 100%;
+    height: auto;
+    /* Optional: Add a subtle shadow or border if the logo is on a white background */
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
+    transition: transform 0.3s ease;
+}
+
+.welcome-logo-img:hover {
+    transform: scale(1.05);
+}
+
+.welcome-text {
+    flex: 1.2;
+}
+
+.welcome-text h2 {
+    font-size: 2.2rem;
+    color: var(--navy);
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.welcome-text p {
+    font-size: 1.1rem;
+    color: #444;
+    margin-bottom: 25px;
+}
+
+.welcome-text strong {
+    color: var(--navy);
+}
+
+.check-list {
+    list-style: none;
+}
+
+.check-list li {
+    margin-bottom: 15px;
+    font-weight: 600;
+    font-size: 1.05rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-color);
+}
+
+.check-list i {
+    color: var(--orange);
+    font-size: 1.2rem;
+}
+
+/* Responsive adjustment */
+@media (max-width: 992px) {
+    .welcome-grid {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .check-list li {
+        justify-content: center;
+    }
+}
+
+/* ----------------------------------------------------------------
+   5. TEAM SECTION (Dual Border & Mixed Shadow UI)
+------------------------------------------------------------------- */
+.team-section {
+    padding: 100px 10%;
+    background: var(--gray-bg);
+    text-align: center;
+}
+
+/* Heading styled like Introduction */
+.team-heading {
+    font-size: 2.5rem;
+    color: var(--navy);
+    margin-bottom: 60px;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 2px;
+    position: relative;
+    display: inline-block;
+}
+
+.team-heading::after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 4px;
+    background-color: var(--orange);
+    bottom: -15px;
+    left: 25%;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    margin-top: 20px;
+}
+
+.team-card {
+    background: var(--white);
+    padding: 40px 20px;
+    border-radius: 25px;
+    /* --- UPDATED: Mixed Navy & Orange Shadow --- */
+    box-shadow: 10px 10px 30px rgba(255, 102, 0, 0.12),
+        -10px -10px 30px rgba(26, 58, 95, 0.08);
+    transition: all 0.4s ease-in-out;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    /* Softens the edge */
+}
+
+.team-card:hover {
+    transform: translateY(-12px);
+    /* Intensified Mixed Shadow on Hover */
+    box-shadow: 15px 15px 40px rgba(255, 102, 0, 0.2),
+        -15px -15px 40px rgba(26, 58, 95, 0.15);
+}
+
+/* Dual Color Circular Border Logic */
+.img-container {
+    width: 170px;
+    height: 170px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    padding: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: conic-gradient(var(--navy) 0deg 180deg,
+            var(--orange) 180deg 360deg);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.team-card img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    background: var(--white);
+    border: 4px solid var(--white);
+}
+
+.team-card h4 {
+    color: var(--navy);
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+}
+
+.team-card p {
+    color: var(--orange);
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.team-socials {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.team-socials a {
+    width: 40px;
+    height: 40px;
+    background: var(--gray-bg);
+    color: var(--navy);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+.team-socials a:hover {
+    background: var(--navy);
+    color: var(--white);
+    transform: rotate(360deg);
+}
+
+/* ----------------------------------------------------------------
+   6. TESTIMONIAL SECTION (Full Intro Style)
+------------------------------------------------------------------- */
+.testimonial-section {
+    padding: 100px 10%;
+    background: var(--white);
+}
+
+/* Heading: Identical to Introduction Section */
+.intro-heading {
+    font-size: 2.5rem;
+    color: var(--navy);
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 2px;
+    position: relative;
+    display: block; /* Block ensures it spans the width for centering */
+    text-align: center;
+}
+
+.intro-heading::after {
+    content: '';
+    position: absolute;
+    width: 80px; /* Exact width from Intro section */
+    height: 4px;
+    background-color: var(--orange);
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%); /* Perfect centering */
+}
+
+.testimonial-flex {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    margin-top: 30px;
+}
+
+.testimonial-intro {
+    flex: 1;
+    text-align: left;
+}
+
+.testimonial-intro p {
+    color: #444;
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+.testimonial-card {
+    background: var(--white);
+    padding: 50px;
+    border-radius: 25px;
+    /* Mixed Shadow: Bottom-Right Orange | Top-Left Navy */
+    box-shadow: 15px 15px 40px rgba(255, 102, 0, 0.12), 
+                -15px -15px 40px rgba(26, 58, 95, 0.08);
+    flex: 1.5;
+    position: relative;
+    border-left: 10px solid var(--orange);
+    transition: all 0.4s ease-in-out;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 20px 20px 50px rgba(255, 102, 0, 0.18), 
+                -20px -20px 50px rgba(26, 58, 95, 0.12);
+}
+
+/* Dual Color Radius (Same as Team Section) */
+.img-container-testimonial {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    padding: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: conic-gradient(
+        var(--navy) 0deg 180deg, 
+        var(--orange) 180deg 360deg
+    );
+    flex-shrink: 0;
+}
+
+.img-container-testimonial img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    background: var(--white);
+    border: 3px solid var(--white);
+}
+
+.student-details h5 { color: var(--navy); font-size: 1.3rem; margin-bottom: 3px; }
+.student-details p { color: var(--orange); font-weight: 700; text-transform: uppercase; font-size: 0.85rem; }
+.comment { font-style: italic; color: #444; font-size: 1.1rem; line-height: 1.8; margin-top: 10px; }
+.quote-icon { color: rgba(255, 102, 0, 0.1); font-size: 4rem; position: absolute; right: 30px; top: 30px; }
+
+/* Responsive fix */
+@media (max-width: 992px) {
+    .testimonial-flex { flex-direction: column; text-align: center; }
+    .testimonial-card { border-left: none; border-top: 10px solid var(--orange); }
+}
+
+/* ----------------------------------------------------------------
+   9. PARTNER COLLEGE HIGHLIGHTS STYLES
+------------------------------------------------------------------- */
+.partners-section {
+    padding: 80px 10%;
+    background-color: var(--gray);
+    text-align: center;
+}
+
+.partner-heading {
+    font-size: 2.5rem;
+    color: var(--navy);
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 2px;
+    position: relative;
+    display: inline-block;
+}
+
+.partner-heading::after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 4px;
+    background-color: var(--orange);
+    bottom: -10px;
+    left: 25%;
+}
+
+.partner-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.college-card {
+    background: var(--white);
+    border-radius: 15px;
+    overflow: hidden; /* Clips image to border radius */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transition: all 0.4s ease;
+    cursor: pointer;
+    text-align: left;
+}
+
+.college-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(26, 58, 95, 0.2);
+}
+
+.college-img {
+    height: 200px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.college-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.college-card:hover .college-img img {
+    transform: scale(1.1);
+}
+
+.college-info {
+    padding: 25px;
+}
+
+.college-info h4 {
+    color: var(--navy);
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+.college-info p {
+    color: #777;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.college-info p i {
+    color: var(--orange);
+    margin-right: 5px;
+}
+
+.visit-link {
+    color: var(--orange);
+    font-weight: bold;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.college-card:hover .visit-link {
+    text-decoration: underline;
+}
+
+
+
+/* ----------------------------------------------------------------
+   5. COMPACT FOOTER (Header Style)
+------------------------------------------------------------------- */
+.compact-footer {
+    background: var(--navy);
+    color: var(--white);
+    padding: 15px 5%; /* Same padding as the header */
+    border-top: 3px solid var(--orange); /* Matching the header's bottom border */
+    width: 100%;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between; /* Pushes contact left, social right, copyright center */
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.footer-contact, .footer-social {
+    display: flex;
+    gap: 20px;
+    flex: 1; /* Allows equal spacing for alignment */
+}
+
+.footer-contact p {
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+}
+
+.footer-contact i {
+    color: var(--orange);
+}
+
+.footer-copyright {
+    flex: 1;
+    text-align: center;
+}
+
+.footer-copyright p {
+    font-size: 0.85rem;
+    margin: 0;
+    opacity: 0.8;
+}
+
+.footer-social {
+    justify-content: flex-end; /* Align icons to the right */
+}
+
+.footer-social a {
+    color: var(--white);
+    font-size: 1.1rem;
+    transition: 0.3s ease;
+}
+
+.footer-social a:hover {
+    color: var(--orange);
+    transform: translateY(-3px);
+}
+
+/* Responsive fix for Mobile */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    .footer-social {
+        justify-content: center;
+    }
+}
