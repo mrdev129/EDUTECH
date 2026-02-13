@@ -1,3 +1,1 @@
 # EDUTECH
-hiiii
-satya
