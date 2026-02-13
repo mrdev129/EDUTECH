@@ -1,0 +1,428 @@
+/* ----------------------------------------------------------------
+   1. VARIABLES & GLOBAL RESET
+------------------------------------------------------------------- */
+:root {
+    --navy: #0a192f; /* Darker Navy to match the image precisely */
+    --navy-light: #112240;
+    --orange: #FF6600;
+    --white: #ffffff;
+    --text-muted: #8892b0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* ----------------------------------------------------------------
+   2. LOADING UI (THEME MATCHED)
+------------------------------------------------------------------- */
+/* --- Pre-loader Background --- */
+#loader-wrapper {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: #0a192f; /* Dark Navy from your image */
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease;
+}
+
+/* --- Circle & Logo Placement --- */
+.progress-circle {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+}
+
+.inner-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px; /* Adjust size to fit inside circle */
+}
+
+.inner-logo img {
+    width: 100%;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
+}
+
+/* --- SVG Progress Styling --- */
+.progress-circle svg {
+    width: 200px;
+    height: 200px;
+    transform: rotate(-90deg);
+}
+
+.progress-circle circle {
+    fill: none;
+    stroke-width: 6;
+    stroke-linecap: round;
+    cx: 100;
+    cy: 100;
+    r: 70;
+}
+
+/* The faint blue track */
+.progress-circle circle:first-child {
+    stroke: rgba(30, 58, 95, 0.5);
+}
+
+/* The Glowing Orange Bar */
+#progress-bar {
+    stroke: #FF6600;
+    stroke-dasharray: 440;
+    stroke-dashoffset: 440;
+    filter: drop-shadow(0 0 10px #FF6600); /* Neon glow effect */
+    transition: stroke-dashoffset 0.1s linear;
+}
+
+/* --- Stats Below the Circle --- */
+.loader-stats {
+    text-align: center;
+}
+
+.loader-stats h2 {
+    font-size: 3rem;
+    color: #ffffff;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.loading-text {
+    letter-spacing: 3px;
+    font-weight: 600;
+    color: #FF6600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+}
+
+/* ----------------------------------------------------------------
+   3. INQUIRY FORM (STRUCTURED GRID)
+------------------------------------------------------------------- */
+.inquiry-wrapper {
+    padding: 160px 0 100px;
+    background: #f8f9fa;
+    min-height: 100vh;
+}
+
+.form-card {
+    background: var(--white);
+    max-width: 950px;
+    margin: 0 auto;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+}
+
+.form-header {
+    background: #1a3a5f; /* Using your Brand Navy */
+    color: var(--white);
+    padding: 40px;
+    text-align: center;
+    border-bottom: 4px solid var(--orange);
+}
+
+.form-header h2 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+
+.styled-form {
+    padding: 50px;
+}
+
+.form-fields {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Equal 2-column layout */
+    gap: 25px;
+}
+
+.form-fields li {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-fields li.full-width {
+    grid-column: span 2;
+}
+
+.form-fields label {
+    font-weight: 700;
+    color: #1a3a5f;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.form-fields input, 
+.form-fields select, 
+.form-fields textarea {
+    padding: 14px 18px;
+    border: 2px solid #e1e8ee;
+    border-radius: 8px;
+    outline: none;
+    font-size: 1rem;
+    background: #fdfdfd;
+    transition: all 0.3s ease;
+}
+
+.form-fields input:focus, 
+.form-fields select:focus, 
+.form-fields textarea:focus {
+    border-color: var(--orange);
+    background: #fff;
+    box-shadow: 0 0 10px rgba(255, 102, 0, 0.1);
+}
+
+/* Submit Button styling */
+.submit-btn {
+    background: var(--orange);
+    color: var(--white);
+    padding: 18px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    transition: 0.4s;
+}
+
+.submit-btn:hover {
+    background: #1a3a5f;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 102, 0, 0.2);
+}
+
+/* ----------------------------------------------------------------
+   4. COMPACT FOOTER
+------------------------------------------------------------------- */
+.compact-footer {
+    background: #1a3a5f;
+    color: var(--white);
+    padding: 30px 5%;
+    border-top: 4px solid var(--orange);
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-contact p {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.footer-social a {
+    color: var(--white);
+    margin-left: 20px;
+    font-size: 1.2rem;
+    transition: 0.3s;
+}
+
+.footer-social a:hover {
+    color: var(--orange);
+}
+
+/* ----------------------------------------------------------------
+   5. RESPONSIVE
+------------------------------------------------------------------- */
+@media (max-width: 768px) {
+    .form-fields {
+        grid-template-columns: 1fr; /* Single column on mobile */
+    }
+    .form-fields li.full-width {
+        grid-column: span 1;
+    }
+}
+
+/* ----------------------------------------------------------------
+   2. HEADER & NAVIGATION
+------------------------------------------------------------------- */
+.main-header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+    padding: 20px 5%;
+    transition: all 0.5s ease;
+    background: var(--navy); /* Solid at start as requested */
+}
+
+/* Scrolled State: Changes to Transparent Navy */
+.main-header.scrolled {
+    background: var(--navy-transparent);
+    padding: 12px 5%;
+    backdrop-filter: blur(10px); /* Modern blur effect */
+    border-bottom: 2px solid var(--orange);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 55px;
+    transition: 0.3s;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+.nav-links > li {
+    position: relative;
+    margin: 0 15px;
+}
+
+.nav-links li a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+/* Hover Effect: Font increase and Bold */
+.nav-links li a:hover {
+    color: var(--orange);
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* Dropdown Menus */
+.dropdown-menu, .nested-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--navy);
+    min-width: 220px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    border-top: 3px solid var(--orange);
+}
+
+.dropdown:hover > .dropdown-menu {
+    display: block;
+}
+
+.nested-dropdown {
+    position: relative;
+}
+
+.nested-dropdown:hover > .nested-menu {
+    display: block;
+    left: 100%;
+    top: 0;
+}
+
+.dropdown-menu li a {
+    padding: 12px 20px;
+    display: block;
+    font-size: 0.95rem;
+}
+
+/* Admin Icon Circle */
+.admin-icon img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 2px solid var(--orange);
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.admin-icon img:hover {
+    transform: scale(1.1);
+}
+
+
+/* ----------------------------------------------------------------
+   5. COMPACT FOOTER (Header Style)
+------------------------------------------------------------------- */
+.compact-footer {
+    background: var(--navy);
+    color: var(--white);
+    padding: 15px 5%; /* Same padding as the header */
+    border-top: 3px solid var(--orange); /* Matching the header's bottom border */
+    width: 100%;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between; /* Pushes contact left, social right, copyright center */
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.footer-contact, .footer-social {
+    display: flex;
+    gap: 20px;
+    flex: 1; /* Allows equal spacing for alignment */
+}
+
+.footer-contact p {
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+}
+
+.footer-contact i {
+    color: var(--orange);
+}
+
+.footer-copyright {
+    flex: 1;
+    text-align: center;
+}
+
+.footer-copyright p {
+    font-size: 0.85rem;
+    margin: 0;
+    opacity: 0.8;
+}
+
+.footer-social {
+    justify-content: flex-end; /* Align icons to the right */
+}
+
+.footer-social a {
+    color: var(--white);
+    font-size: 1.1rem;
+    transition: 0.3s ease;
+}
+
+.footer-social a:hover {
+    color: var(--orange);
+    transform: translateY(-3px);
+}
+
+/* Responsive fix for Mobile */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    .footer-social {
+        justify-content: center;
+    }
+}
