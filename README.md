@@ -101,10 +101,7 @@ This project is developed as:
 
 ## 👨‍💻 Developer
 
-Developed by: **[Your Name Here]**
-
-B.Tech Final Year Student  
-Full Stack Developer (Learning Phase)
+Developed by: **Team DRS**
 
 ---
 
