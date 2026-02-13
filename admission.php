@@ -1,3 +1,76 @@
+<?php
+include 'config/db.php';
+
+$success = "";
+$error = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    // Sanitize Inputs
+    $full_name = trim($_POST['full_name']);
+    $mobile = trim($_POST['mobile_number']); // form field name same rahega
+    $email = trim($_POST['email']);
+    $last_qualification = trim($_POST['last_qualification']);
+    $preferred_course = trim($_POST['preferred_course']);
+    $preferred_city = trim($_POST['preferred_city']);
+    $budget_range = trim($_POST['budget_range']);
+    $hostel_required = trim($_POST['hostel_required']);
+    $message = trim($_POST['message']);
+
+    // Basic Validation
+    if (
+        empty($full_name) || empty($mobile) || empty($email) ||
+        empty($last_qualification) || empty($preferred_course) ||
+        empty($preferred_city) || empty($budget_range) ||
+        empty($hostel_required)
+    ) {
+        $error = "All required fields must be filled!";
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $error = "Invalid Email Format!";
+    } else {
+
+        // Prepare Statement
+        $stmt = $conn->prepare("INSERT INTO students 
+            (full_name, mobile, email, last_qualification, preferred_course, preferred_city, budget_range, hostel_required, message) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+        $stmt->bind_param(
+            "sssssssss",
+            $full_name,
+            $mobile,
+            $email,
+            $last_qualification,
+            $preferred_course,
+            $preferred_city,
+            $budget_range,
+            $hostel_required,
+            $message
+        );
+
+        if ($stmt->execute()) {
+            $success = "Application submitted successfully!";
+        } else {
+            $error = "Error: " . $stmt->error;
+        }
+
+        $stmt->close();
+    }
+}
+?>
+
+<?php if($success): ?>
+    <div class="alert alert-success text-center">
+        <?= $success ?>
+    </div>
+<?php endif; ?>
+
+<?php if($error): ?>
+    <div class="alert alert-danger text-center">
+        <?= $error ?>
+    </div>
+<?php endif; ?>
+
+
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -237,25 +310,29 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="full_name">Full Name</label>
+                                        <label for="full_name">Full Name <span class="text-danger">*</span></label>
                                         <input type="text" id="full_name" name="full_name" class="form-control" placeholder="Enter your full name" required>
+                                        <span class="error-message" id="full_name_error"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="mobile_number">Mobile Number</label>
-                                        <input type="tel" id="mobile_number" name="mobile_number" class="form-control" placeholder="Enter your mobile number" required>
+                                        <label for="mobile_number">Mobile Number <span class="text-danger">*</span></label>
+                                        <input type="tel" id="mobile_number" name="mobile_number" class="form-control" placeholder="Enter your mobile number" pattern="[0-9]{10,15}" required>
+                                        <small class="form-text text-muted">Enter 10-15 digit mobile number</small>
+                                        <span class="error-message" id="mobile_number_error"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
+                                        <label for="email">Email <span class="text-danger">*</span></label>
+                                        <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+                                        <span class="error-message" id="email_error"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="last_qualification">Last Qualification</label>
+                                        <label for="last_qualification">Last Qualification <span class="text-danger">*</span></label>
                                         <select id="last_qualification" name="last_qualification" class="form-control" required>
                                             <option value="">Select Qualification</option>
                                             <option value="10th">10th</option>
@@ -265,11 +342,12 @@
                                             <option value="Master">Master</option>
                                             <option value="Other">Other</option>
                                         </select>
+                                        <span class="error-message" id="last_qualification_error"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="preferred_course">Preferred Course</label>
+                                        <label for="preferred_course">Preferred Course <span class="text-danger">*</span></label>
                                         <select id="preferred_course" name="preferred_course" class="form-control" required>
                                             <option value="">Select Course</option>
                                             <option value="Engineering">Engineering</option>
@@ -279,11 +357,12 @@
                                             <option value="Science">Science</option>
                                             <option value="Other">Other</option>
                                         </select>
+                                        <span class="error-message" id="preferred_course_error"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="preferred_city">Preferred City</label>
+                                        <label for="preferred_city">Preferred City <span class="text-danger">*</span></label>
                                         <select id="preferred_city" name="preferred_city" class="form-control" required>
                                             <option value="">Select City</option>
                                             <option value="Delhi">Delhi</option>
@@ -293,11 +372,12 @@
                                             <option value="Kolkata">Kolkata</option>
                                             <option value="Other">Other</option>
                                         </select>
+                                        <span class="error-message" id="preferred_city_error"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="budget_range">Budget Range</label>
+                                        <label for="budget_range">Budget Range <span class="text-danger">*</span></label>
                                         <select id="budget_range" name="budget_range" class="form-control" required>
                                             <option value="">Select Budget</option>
                                             <option value="Under 1 Lakh">Under 1 Lakh</option>
@@ -305,19 +385,21 @@
                                             <option value="5-10 Lakh">5-10 Lakh</option>
                                             <option value="Above 10 Lakh">Above 10 Lakh</option>
                                         </select>
+                                        <span class="error-message" id="budget_range_error"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Hostel Required</label>
+                                        <label>Hostel Required <span class="text-danger">*</span></label>
                                         <div class="radio-group">
                                             <label class="radio-label">
                                                 <input type="radio" name="hostel_required" value="Yes" required> Yes
                                             </label>
                                             <label class="radio-label">
-                                                <input type="radio" name="hostel_required" value="No" required> No
+                                                <input type="radio" name="hostel_required" value="No"> No
                                             </label>
                                         </div>
+                                        <span class="error-message" id="hostel_required_error"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -540,6 +622,132 @@
 
     <!-- Activation JS -->
     <script src="assets/js/main.js"></script>
+
+    <!-- Custom Form Validation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('form');
+            
+            // Function to show error
+            function showError(fieldId, message) {
+                const errorSpan = document.getElementById(fieldId + '_error');
+                if (errorSpan) {
+                    errorSpan.textContent = message;
+                    errorSpan.style.color = '#dc3545';
+                    errorSpan.style.fontSize = '12px';
+                    errorSpan.style.display = 'block';
+                }
+            }
+            
+            // Function to clear error
+            function clearError(fieldId) {
+                const errorSpan = document.getElementById(fieldId + '_error');
+                if (errorSpan) {
+                    errorSpan.textContent = '';
+                }
+            }
+            
+            // Add real-time validation on input
+            const requiredFields = form.querySelectorAll('[required]');
+            requiredFields.forEach(function(field) {
+                field.addEventListener('blur', function() {
+                    validateField(this);
+                });
+                
+                field.addEventListener('input', function() {
+                    if (this.value.trim() !== '') {
+                        clearError(this.id);
+                    }
+                });
+            });
+            
+            // Validate individual field
+            function validateField(field) {
+                const fieldId = field.id;
+                const value = field.value.trim();
+                
+                // Check if empty
+                if (value === '') {
+                    showError(fieldId, 'This field is required');
+                    return false;
+                }
+                
+                // Email validation
+                if (field.type === 'email') {
+                    const emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i;
+                    if (!emailPattern.test(value)) {
+                        showError(fieldId, 'Please enter a valid email address');
+                        return false;
+                    }
+                }
+                
+                // Mobile number validation
+                if (field.id === 'mobile_number') {
+                    const mobilePattern = /^[0-9]{10,15}$/;
+                    if (!mobilePattern.test(value)) {
+                        showError(fieldId, 'Please enter a valid mobile number (10-15 digits)');
+                        return false;
+                    }
+                }
+                
+                // Full name validation
+                if (field.id === 'full_name') {
+                    if (value.length < 2) {
+                        showError(fieldId, 'Name must be at least 2 characters');
+                        return false;
+                    }
+                }
+                
+                clearError(fieldId);
+                return true;
+            }
+            
+            // Validate radio buttons
+            function validateRadioGroup(name) {
+                const radios = document.getElementsByName(name);
+                let isChecked = false;
+                for (let radio of radios) {
+                    if (radio.checked) {
+                        isChecked = true;
+                        break;
+                    }
+                }
+                if (!isChecked) {
+                    showError(name + '_error', 'Please select an option');
+                    return false;
+                } else {
+                    clearError(name + '_error');
+                    return true;
+                }
+            }
+            
+            // Form submission validation
+            form.addEventListener('submit', function(e) {
+                let isValid = true;
+                const fields = ['full_name', 'mobile_number', 'email', 'last_qualification', 
+                               'preferred_course', 'preferred_city', 'budget_range'];
+                
+                // Validate all required fields
+                fields.forEach(function(fieldId) {
+                    const field = document.getElementById(fieldId);
+                    if (!validateField(field)) {
+                        isValid = false;
+                    }
+                });
+                
+                // Validate radio buttons
+                if (!validateRadioGroup('hostel_required')) {
+                    isValid = false;
+                }
+                
+                if (!isValid) {
+                    e.preventDefault();
+                    // Show general error message
+                    alert('Please fill in all required fields correctly.');
+                }
+            });
+        });
+    </script>
 
 </body>
 
