@@ -364,7 +364,7 @@
                         </div>
                     </div>
                     <div class="action-side">
-                        <a href="#" class="enquiry-top-btn">ENQUIRE NOW <i class="ri-arrow-right-line"></i></a>
+                        <a href="admission.php" class="enquiry-top-btn">ENQUIRE NOW <i class="ri-arrow-right-line"></i></a>
                     </div>
                 </div>
             </div>
@@ -467,7 +467,7 @@
                         <!-- <li><a href="#faculty">FACULTY</a></li> -->
                     </ul>
                     <div class="nav-action">
-                        <a href="#enquire-section" class="navy-enquire-btn">ENQUIRE NOW</a>
+                        <a href="admission.php" class="navy-enquire-btn">ENQUIRE NOW</a>
                     </div>
                 </div>
             </div>
