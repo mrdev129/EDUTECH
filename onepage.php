@@ -388,7 +388,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6">
                         <div class="hero-content-left text-white">
-                            <span class="ug-tag fw-bold">UG PROGRAM</span>
+                            <!-- <span class="ug-tag fw-bold">UG PROGRAM</span> -->
                             <h1 class="expanding-text">
                                 Your Future, <br>
                                 Our <span class="typing-text" data-words='["Guidance", "Expertise", "Support", "Solution"]'></span>
