@@ -457,13 +457,13 @@
             <div class="container">
                 <div class="nav-flex-wrapper">
                     <ul class="program-menu">
-                        <!-- <li><a href="#overview">HOME</a></li> -->
-                        <li><a href="#highlights">ABOUT US</a></li>
-                        <li><a href="#curriculum">COURSE</a></li>
-                        <li><a href="#degree">BLOGS</a></li>
-                        <li><a href="#eligibility">TEAM MEMBERS</a></li>
-                        <li><a href="#fees">COLLABORATIONS</a></li>
-                        <li><a href="#careers">GALLERY</a></li>
+                        <li><a href="#home">HOME</a></li>
+                        <li><a href="#about">ABOUT US</a></li>
+                        <li><a href="#course">COURSE</a></li>
+                        <li><a href="#blogs">BLOGS</a></li>
+                        <li><a href="#team">TEAM MEMBERS</a></li>
+                        <li><a href="#collab">COLLABORATIONS</a></li>
+                        <li><a href="#gallery">GALLERY</a></li>
                         <!-- <li><a href="#faculty">FACULTY</a></li> -->
                     </ul>
                     <div class="nav-action">
