@@ -2,7 +2,9 @@
 include('../config/db.php');
 
 // Fetch students from database
-$query = "SELECT * FROM students ORDER BY id ASC";
+// $query = "SELECT * FROM students ORDER BY id ASC";
+// Update the query in student-list.php
+$query = "SELECT * FROM students WHERE status != 'Suspended' OR status IS NULL ORDER BY id ASC";
 $result = $conn->query($query);
 
 if (!$result) {
@@ -56,6 +58,25 @@ if (!$result) {
       /* Orange */
       color: white !important;
       border: 1px solid #ff9f29 !important;
+    }
+
+    /* Ensures the search input and button are the exact same height */
+    .h-40-px {
+        height: 40px !important;
+    }
+
+    /* Adjusts the search icon position inside the 40px input */
+    .navbar-search .icon {
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 20px;
+        color: #94a3b8;
+    }
+
+    /* Keeps the elements grouped together even on smaller screens */
+    .dataTable-wrapper .d-flex {
+        display: flex !important;
+        flex-direction: row !important;
     }
   </style>
 </head>
@@ -244,36 +265,36 @@ if (!$result) {
             <span>Dashboard </span>
           </a>
           <ul class="sidebar-submenu">
-            <li>
-              <a href="index.php">
-                <i class="ri-circle-fill circle-icon w-auto"></i>
-                School
-              </a>
-            </li>
+            <!-- <li>
+            <a href="index.php">
+              <i class="ri-circle-fill circle-icon w-auto"></i>
+              School
+            </a>
+          </li> -->
             <li>
               <a href="index-2.php">
                 <i class="ri-circle-fill circle-icon w-auto"></i>
                 Student
               </a>
             </li>
-            <li>
-              <a href="index-3.php">
-                <i class="ri-circle-fill circle-icon w-auto"></i>
-                Teacher
-              </a>
-            </li>
-            <li>
-              <a href="index-4.php">
-                <i class="ri-circle-fill circle-icon w-auto"></i>
-                Parent
-              </a>
-            </li>
-            <li>
-              <a href="index-5.php">
-                <i class="ri-circle-fill circle-icon w-auto"></i>
-                LMS
-              </a>
-            </li>
+            <!-- <li>
+            <a href="index-3.php">
+              <i class="ri-circle-fill circle-icon w-auto"></i>
+              Teacher
+            </a>
+          </li>
+          <li>
+            <a href="index-4.php">
+              <i class="ri-circle-fill circle-icon w-auto"></i>
+              Parent
+            </a>
+          </li> -->
+            <!-- <li>
+            <a href="index-5.php">
+              <i class="ri-circle-fill circle-icon w-auto"></i>
+              LMS 
+            </a>
+          </li> -->
           </ul>
         </li>
         <li class="dropdown">
@@ -300,18 +321,18 @@ if (!$result) {
                 Suspend Student
               </a>
             </li>
-            <li>
-              <a href="student-category.php">
-                <i class="ri-circle-fill circle-icon w-auto"></i>
-                Student Categories
-              </a>
-            </li>
-            <li>
-              <a href="edit-student.php">
-                <i class="ri-circle-fill circle-icon w-auto"></i>
-                Edit Student
-              </a>
-            </li>
+            <!-- <li>
+            <a href="student-category.php">
+              <i class="ri-circle-fill circle-icon w-auto"></i>
+              Student Categories
+            </a>
+          </li> -->
+            <!-- <li>
+            <a href="edit-student.php">
+              <i class="ri-circle-fill circle-icon w-auto"></i>
+              Edit Student
+            </a>
+          </li> -->
             <li>
               <a href="student-details.php">
                 <i class="ri-circle-fill circle-icon w-auto"></i>
@@ -320,7 +341,7 @@ if (!$result) {
             </li>
           </ul>
         </li>
-        <li class="dropdown">
+        <!-- <li class="dropdown">
           <a href="javascript:void(0)">
             <i class="ri-user-follow-line"></i>
             <span>Teachers</span>
@@ -357,8 +378,8 @@ if (!$result) {
               </a>
             </li>
           </ul>
-        </li>
-        <li class="dropdown">
+        </li> -->
+        <!-- <li class="dropdown">
           <a href="javascript:void(0)">
             <i class="ri-account-circle-line"></i>
             <span>Guardian</span>
@@ -389,8 +410,8 @@ if (!$result) {
               </a>
             </li>
           </ul>
-        </li>
-        <li class="dropdown">
+        </li> -->
+        <!-- <li class="dropdown">
           <a href="javascript:void(0)">
             <i class="ri-list-view"></i>
             <span>Classes</span>
@@ -421,8 +442,8 @@ if (!$result) {
               </a>
             </li>
           </ul>
-        </li>
-        <li class="dropdown">
+        </li> -->
+        <!-- <li class="dropdown">
           <a href="javascript:void(0)">
             <i class="ri-file-edit-line"></i>
             <span>Examinations</span>
@@ -726,7 +747,7 @@ if (!$result) {
               </a>
             </li>
           </ul>
-        </li>
+        </li> -->
       </ul>
     </div>
   </aside>
@@ -980,9 +1001,11 @@ if (!$result) {
       <div class="mt-24">
         <div class="card h-100">
           <div class="card-body p-0 dataTable-wrapper">
-            <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24 px-24 pt-24">
+
+            <div class="d-flex align-items-center justify-content-start gap-16 px-24 py-20 border-bottom border-neutral-200">
+
               <div class="dropdown">
-                <button class="btn btn-outline-neutral-600 dropdown-toggle d-flex align-items-center gap-2" type="button" data-bs-toggle="dropdown">
+                <button class="btn btn-outline-neutral-600 dropdown-toggle d-flex align-items-center gap-2 h-40-px" type="button" data-bs-toggle="dropdown">
                   <i class="ri-download-2-line"></i> Export
                 </button>
                 <ul class="dropdown-menu">
@@ -991,10 +1014,11 @@ if (!$result) {
                 </ul>
               </div>
 
-              <div class="navbar-search" style="max-width: 350px; width: 100%;">
-                <input type="text" id="customSearch" class="bg-base h-40-px radius-8" placeholder="Search students...">
-                <iconify-icon icon="ion:search-outline" class="icon"></iconify-icon>
+              <div class="navbar-search m-0" style="max-width: 300px; width: 100%;">
+                <input type="text" id="customSearch" class="bg-neutral-50 border border-neutral-200 h-40-px radius-8 px-12 w-100" placeholder="Search students..." style="outline: none;">
+                <iconify-icon icon="ion:search-outline" class="icon" style="right: 12px; left: auto;"></iconify-icon>
               </div>
+
             </div>
             <div class="p-0">
               <table class="table bordered-table mb-0 data-table" id="dataTable">
@@ -1129,23 +1153,17 @@ if (!$result) {
 
   <!-- Modal Delete Event start -->
   <div class="modal fade" id="exampleModalDelete" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-sm modal-dialog modal-dialog-centered max-w-340-px">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
       <div class="modal-content radius-16 bg-base">
         <div class="modal-body pt-32 px-36 pb-24 text-center">
-          <span class="mb-16 fs-1 line-height-1 text-danger">
-            <iconify-icon icon="fluent:delete-24-regular" class="menu-icon"></iconify-icon>
+          <span class="mb-16 fs-1 text-danger">
+            <iconify-icon icon="fluent:delete-24-regular"></iconify-icon>
           </span>
-          <h6 class="text-lg fw-semibold text-primary-light mb-0">Are your sure you want to Suspend this teacher
-          </h6>
+          <h6 class="text-lg fw-semibold text-primary-light mb-0">Suspend Student?</h6>
+          <p class="text-sm text-secondary-light">Are you sure you want to suspend <?= htmlspecialchars($student['full_name']) ?>?</p>
           <div class="d-flex align-items-center justify-content-center gap-3 mt-24">
-            <button type="reset"
-              class="flex-grow-1 border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-24 py-11 radius-8" data-bs-dismiss="modal">
-              Cancel
-            </button>
-            <button type="button"
-              class="flex-grow-1 btn btn-primary-600 border border-primary-600 text-md px-16 py-12 radius-8">
-              Yes, Suspend
-            </button>
+            <button type="button" class="btn btn-secondary px-24 py-11 radius-8" data-bs-dismiss="modal">Cancel</button>
+            <a href="suspend-student-logic.php?id=<?= $student['id'] ?>" class="btn btn-danger px-16 py-12 radius-8">Yes, Suspend</a>
           </div>
         </div>
       </div>
@@ -1292,6 +1310,11 @@ $('#exportExcel').on('click', function(e) {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
 
 </body>
 
