@@ -60,7 +60,7 @@
     <style>
         :root {
             --edutech-navy: #002147;
-            --edutech-yellow: #FFC107;
+            --edutech-yellow: #FFA500;
             --edutech-orange: #F26F20;
         }
 
@@ -989,124 +989,155 @@
         <!--======== Project Ends ========-->
 
         <!--======== Why Choose 2 Start ========-->
-        <section class="rs-why-choose-2 pb-85">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6">
-                        <div class="why-choose-2__content">
-                            <div class="rs-section-title black">
-                                <div class="top-sub-heading">
-                                    <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
-                                    <span>Why Choose Us</span>
-                                    <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
-                                </div>
-                                <h2 class="title split-in-fade">35+ Years of delivering custom It solutions services.</h2>
-                                <p>Bring to the table win-win survival strategies to ensure proactive domination At the end of
-                                    the day.</p>
-                            </div>
-                            <div class="skill-bars">
-                                <div class="rs-progress-skill why-choose-two__progress">
-                                    <h4 class="rs-progress__title">Business Strategy</h4>
-                                    <div class="rs-progress__bar">
-                                        <div class="rs-progress__inner rs-count-bar counted" data-percent="80%">
-                                            <p class="rs-progress__number count-text">80%</p>
-                                        </div>
-                                    </div>
-                                </div><!-- /.rs-progress -->
-                                <div class="rs-progress-skill why-choose-two__progress">
-                                    <h4 class="rs-progress__title">Cyber Security</h4>
-                                    <div class="rs-progress__bar">
-                                        <div class="rs-progress__inner rs-count-bar counted" data-percent="75%">
-                                            <p class="rs-progress__number count-text">75%</p>
-                                        </div>
-                                    </div>
-                                </div><!-- /.rs-progress -->
-                                <div class="rs-progress-skill why-choose-two__progress">
-                                    <h4 class="rs-progress__title">Softwar Development</h4>
-                                    <div class="rs-progress__bar">
-                                        <div class="rs-progress__inner rs-count-bar counted" data-percent="95%">
-                                            <p class="rs-progress__number count-text">95%</p>
-                                        </div>
-                                    </div>
-                                </div><!-- /.rs-progress -->
-                            </div>
+<section class="rs-why-choose-2 pb-85">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="why-choose-2__content">
+                    <div class="rs-section-title black">
+                        <div class="top-sub-heading">
+                            <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
+                            <span>Why Choose Us</span>
+                            <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
                         </div>
+                        <h2 class="title split-in-fade">
+                            Trusted Admission Guidance for a Brighter Academic Future
+                        </h2>
+                        <p>
+                            We help students make confident career decisions by providing personalized counseling, 
+                            trusted college partnerships, and complete admission support from start to finish.
+                        </p>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="rs-why-choose-2__thumb wow fadeInRight" data-wow-duration="1.5s" data-wow-delay="0.4s">
-                            <div class="rs-thumb-1">
-                                <img src="assets/images/why-choose/chose-right-left.jpg" alt="">
+
+                    <div class="skill-bars">
+
+                        <div class="rs-progress-skill why-choose-two__progress">
+                            <h4 class="rs-progress__title">Student Counseling & Career Guidance</h4>
+                            <div class="rs-progress__bar">
+                                <div class="rs-progress__inner rs-count-bar counted" data-percent="95%">
+                                    <p class="rs-progress__number count-text">95%</p>
+                                </div>
                             </div>
-                            <div class="rs-thumb-2">
-                                <img src="assets/images/why-choose/chose-right-right.jpg" alt="">
-                                <img src="assets/images/why-choose/chose-right-bottom.png" alt="">
+                        </div><!-- /.rs-progress -->
+
+                        <div class="rs-progress-skill why-choose-two__progress">
+                            <h4 class="rs-progress__title">College Tie-ups & Admission Support</h4>
+                            <div class="rs-progress__bar">
+                                <div class="rs-progress__inner rs-count-bar counted" data-percent="90%">
+                                    <p class="rs-progress__number count-text">90%</p>
+                                </div>
                             </div>
-                        </div>
+                        </div><!-- /.rs-progress -->
+
+                        <div class="rs-progress-skill why-choose-two__progress">
+                            <h4 class="rs-progress__title">Transparent Fee & Budget Planning</h4>
+                            <div class="rs-progress__bar">
+                                <div class="rs-progress__inner rs-count-bar counted" data-percent="92%">
+                                    <p class="rs-progress__number count-text">92%</p>
+                                </div>
+                            </div>
+                        </div><!-- /.rs-progress -->
+
                     </div>
                 </div>
             </div>
-        </section>
-        <!--======== Why Choose 2 Ends ========-->
+
+            <div class="col-lg-6">
+                <div class="rs-why-choose-2__thumb wow fadeInRight" data-wow-duration="1.5s" data-wow-delay="0.4s">
+                    <div class="rs-thumb-1">
+                        <img src="assets/images/why-choose/chose-right-left.jpg" alt="">
+                    </div>
+                    <div class="rs-thumb-2">
+                        <img src="assets/images/why-choose/chose-right-right.jpg" alt="">
+                        <img src="assets/images/why-choose/chose-right-bottom.png" alt="">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!--======== Why Choose 2 Ends ========-->
+
 
         <!--======== Counter 2 Start ========-->
-        <section class="rs-counter-2 pb-125">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="rs-counter-2__title">
-                            <h5 class="title">Glimpse of our work and presence</h5>
-                        </div>
-                    </div>
+<section class="rs-counter-2 pb-125">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="rs-counter-2__title">
+                    <h5 class="title">Our Student Success Journey</h5>
                 </div>
-                <div class="row">
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="rs-counter-2__item">
-                            <div class="rs-counter-2__icon">
-                                <img src="assets/images/counter/counter-icon-1.svg" alt="">
-                            </div>
-                            <div class="rs-counter-2__content">
-                                <h4 class="title"><span class="rs-count odometer" data-count="4560">00</span> +</h4>
-                                <span>Apps Developed</span>
-                            </div>
-                        </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <!-- BTech -->
+            <div class="col-lg-3 col-sm-6">
+                <div class="rs-counter-2__item">
+                    <div class="rs-counter-2__icon">
+                        <img src="assets/images/counter/counter-icon-1.svg" alt="">
                     </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="rs-counter-2__item item-2">
-                            <div class="rs-counter-2__icon">
-                                <img src="assets/images/counter/counter-icon-2.svg" alt="">
-                            </div>
-                            <div class="rs-counter-2__content">
-                                <h4 class="title"><span class="rs-count odometer" data-count="3600">00</span> +</h4>
-                                <span>Website Design</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="rs-counter-2__item item-3">
-                            <div class="rs-counter-2__icon">
-                                <img src="assets/images/counter/counter-icon-3.svg" alt="">
-                            </div>
-                            <div class="rs-counter-2__content">
-                                <h4 class="title"><span class="rs-count odometer" data-count="2750">00</span> +</h4>
-                                <span>Happy Clients</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="rs-counter-2__item item-4">
-                            <div class="rs-counter-2__icon">
-                                <img src="assets/images/counter/counter-icon-4.svg" alt="">
-                            </div>
-                            <div class="rs-counter-2__content">
-                                <h4 class="title"><span class="rs-count odometer" data-count="1200">00</span> +</h4>
-                                <span>Data Science</span>
-                            </div>
-                        </div>
+                    <div class="rs-counter-2__content">
+                        <h4 class="title">
+                            <span class="rs-count odometer" data-count="850">00</span> +
+                        </h4>
+                        <span>BTech Admissions</span>
                     </div>
                 </div>
             </div>
-        </section>
-        <!--======== Counter 2 Ends ========-->
+
+            <!-- MBA -->
+            <div class="col-lg-3 col-sm-6">
+                <div class="rs-counter-2__item item-2">
+                    <div class="rs-counter-2__icon">
+                        <img src="assets/images/counter/counter-icon-2.svg" alt="">
+                    </div>
+                    <div class="rs-counter-2__content">
+                        <h4 class="title">
+                            <span class="rs-count odometer" data-count="520">00</span> +
+                        </h4>
+                        <span>MBA Admissions</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MCA -->
+            <div class="col-lg-3 col-sm-6">
+                <div class="rs-counter-2__item item-3">
+                    <div class="rs-counter-2__icon">
+                        <img src="assets/images/counter/counter-icon-3.svg" alt="">
+                    </div>
+                    <div class="rs-counter-2__content">
+                        <h4 class="title">
+                            <span class="rs-count odometer" data-count="430">00</span> +
+                        </h4>
+                        <span>MCA Admissions</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Diploma -->
+            <div class="col-lg-3 col-sm-6">
+                <div class="rs-counter-2__item item-4">
+                    <div class="rs-counter-2__icon">
+                        <img src="assets/images/counter/counter-icon-4.svg" alt="">
+                    </div>
+                    <div class="rs-counter-2__content">
+                        <h4 class="title">
+                            <span class="rs-count odometer" data-count="670">00</span> +
+                        </h4>
+                        <span>Diploma Admissions</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!--======== Counter 2 Ends ========-->
+
 
         <!--======== Newsletter 2 Start ========-->
         <section class="rs-newsletter-2 pt-95 pb-110">
@@ -1135,7 +1166,7 @@
         <!--======== Newsletter 2 Ends ========-->
 
         <!--======== Pricing Start ========-->
-        <section class="rs-pricing pt-110 pb-120">
+        <!-- <section class="rs-pricing pt-110 pb-120">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
@@ -1212,327 +1243,378 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
         <!--======== Pricing Ends ========-->
 
         <!--======== Faq Start ========-->
-        <div class="rs-faq pb-120">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6">
-                        <div class="rs-faq__thumb wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay="0.4s">
-                            <img src="assets/images/faq/faq-left-img.png" alt="faq">
-                            <div class="rs-shape">
-                                <img src="assets/images/faq/couple-ball-layer.svg" alt="faq">
+<div class="rs-faq pb-120">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="rs-faq__thumb wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay="0.4s">
+                    <img src="assets/images/faq/faq-left-img.png" alt="faq">
+                    <div class="rs-shape">
+                        <img src="assets/images/faq/couple-ball-layer.svg" alt="faq">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="rs-faq__content">
+                    <div class="rs-section-title black">
+                        <div class="top-sub-heading">
+                            <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
+                            <span>FAQ</span>
+                            <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
+                        </div>
+                        <h2 class="title split-in-fade">Frequently Asked Questions</h2>
+                    </div>
+
+                    <div class="rs-faq__wrapper">
+
+                        <!-- FAQ 1 -->
+                        <div class="accordion active">
+                            <div class="accordion_tab active">
+                                01 How can I apply for college admission through your platform?
+                                <div class="accordion_arrow">
+                                    <i class="ri-add-fill"></i>
+                                </div>
                             </div>
+                            <div class="accordion_content">
+                                <div class="accordion_item">
+                                    <p>
+                                        You can fill out the inquiry form on our website with your academic details, preferred course, and city. 
+                                        Our admission experts will contact you, guide you with suitable colleges, and assist you throughout the complete admission process.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 2 -->
+                        <div class="accordion">
+                            <div class="accordion_tab">
+                                02 Do you charge any registration or consultation fees?
+                                <div class="accordion_arrow">
+                                    <i class="ri-add-fill"></i>
+                                </div>
+                            </div>
+                            <div class="accordion_content">
+                                <div class="accordion_item">
+                                    <p>
+                                        Our basic counseling and guidance services are completely free. In some cases, specific premium services 
+                                        may involve minimal charges, which will always be communicated transparently before proceeding.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 3 -->
+                        <div class="accordion">
+                            <div class="accordion_tab">
+                                03 What documents are required for admission?
+                                <div class="accordion_arrow">
+                                    <i class="ri-add-fill"></i>
+                                </div>
+                            </div>
+                            <div class="accordion_content">
+                                <div class="accordion_item">
+                                    <p>
+                                        Generally, you will need your academic mark sheets, ID proof, passport-size photographs, 
+                                        and transfer/migration certificates. Our team will provide a complete checklist based on your selected course and college.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 4 -->
+                        <div class="accordion">
+                            <div class="accordion_tab">
+                                04 Can you help with hostel and accommodation facilities?
+                                <div class="accordion_arrow">
+                                    <i class="ri-add-fill"></i>
+                                </div>
+                            </div>
+                            <div class="accordion_content">
+                                <div class="accordion_item">
+                                    <p>
+                                        Yes, we assist students in finding suitable hostel and accommodation options based on their 
+                                        budget and preferred city. We ensure safe and comfortable living arrangements near the college campus.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 5 -->
+                        <div class="accordion">
+                            <div class="accordion_tab">
+                                05 How long does the admission process take?
+                                <div class="accordion_arrow">
+                                    <i class="ri-add-fill"></i>
+                                </div>
+                            </div>
+                            <div class="accordion_content">
+                                <div class="accordion_item">
+                                    <p>
+                                        The duration depends on the college and course selection. Typically, the process may take 
+                                        7 to 21 working days after document submission. Our team ensures fast-track processing wherever possible.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="rs-faq__link">
+                        <a class="main-btn" href="contact.html">
+                            Any Questions? <i class="ri-arrow-right-fill"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--======== Faq Ends ========-->
+
+
+        <!--======== Testimonial 2 Start ========-->
+<section class="rs-testimonial-2 pt-110 pb-120">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="rs-testimonial-2__left-content">
+                    <div class="rs-section-title black">
+                        <div class="top-sub-heading">
+                            <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
+                            <span>Student Testimonials </span>
+                            <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
+                        </div>
+                        <h2 class="title split-in-fade">What our admitted students say about us?</h2>
+                        <div class="rs-thumb">
+                            <img src="assets/images/testimonial/testimonial-left-img.jpg" alt="">
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="rs-faq__content">
-                            <div class="rs-section-title black">
-                                <div class="top-sub-heading">
-                                    <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
-                                    <span>FAQ</span>
-                                    <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
-                                </div>
-                                <h2 class="title split-in-fade">Frequently asked questions</h2>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="rs-testimonial-2__slider-box">
+                    <div class="rs-carousel owl-carousel" data-loop="true" data-items="1" data-margin="0" data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000" data-smart-speed="800" data-dots="true" data-nav="false" data-nav-speed="false" data-center-mode="false" data-mobile-device="1" data-mobile-device-nav="false" data-mobile-device-dots="true" data-ipad-device="1" data-ipad-device-nav="false" data-ipad-device-dots="true" data-ipad-device2="1" data-ipad-device-nav2="false" data-ipad-device-dots2="true" data-md-device="1" data-lg-device="1" data-md-device-nav="false" data-md-device-dots="true" data-doteach="true">
+
+                        <!-- Testimonial 1 -->
+                        <div class="rs-testimonial-2__items">
+                            <div class="testimonial-content">
+                                <img src="assets/images/testimonial/quote_orange.svg" alt="">
+                                <p>I was confused about selecting the right college for B.Tech, but the team guided me properly and helped me secure admission without any hassle.</p>
                             </div>
-                            <div class="rs-faq__wrapper">
-                                <div class="accordion active">
-                                    <div class="accordion_tab active">
-                                        01 How to use Techzen?
-                                        <div class="accordion_arrow">
-                                            <i class="ri-add-fill"></i>
-                                        </div>
-                                    </div>
-                                    <div class="accordion_content">
-                                        <div class="accordion_item">
-                                            <p>The rapid pace of technological progress has revolutionized every aspect of our
-                                                lives, leading to increased efficiency, connectivity, and access to information.
-                                            </p>
-                                        </div>
-                                    </div>
+                            <div class="testimonial-author">
+                                <div class="author-thumb">
+                                    <img src="assets/images/testimonial/testi1.jpg" alt="">
                                 </div>
-                                <div class="accordion">
-                                    <div class="accordion_tab">
-                                        02 How to soft launch your business?
-                                        <div class="accordion_arrow">
-                                            <i class="ri-add-fill"></i>
-                                        </div>
-                                    </div>
-                                    <div class="accordion_content">
-                                        <div class="accordion_item">
-                                            <p>Podcasting operational change management inside of workflows to establish a
-                                                framework. Taking seamless key performance indicators offline to maximise the
-                                                long tail.</p>
-                                        </div>
-                                    </div>
+                                <div class="author-content">
+                                    <h5 class="title">Rahul Sharma</h5>
+                                    <span>B.Tech Computer Science, Delhi Technical University</span>
+                                    <img src="assets/images/testimonial/testimonial-brsnd-2.png" alt="">
                                 </div>
-                                <div class="accordion">
-                                    <div class="accordion_tab">
-                                        03 How to turn visitors into contributors?
-                                        <div class="accordion_arrow">
-                                            <i class="ri-add-fill"></i>
-                                        </div>
-                                    </div>
-                                    <div class="accordion_content">
-                                        <div class="accordion_item">
-                                            <p>Technology is at the forefront of innovation and progress, enabling us to tackle
-                                                some of the world’s biggest challenges and improve the quality of life for
-                                                people around the globe.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="rs-faq__link">
-                                <a class="main-btn" href="contact.html">Any Questions? <i class="ri-arrow-right-fill"></i></a>
                             </div>
                         </div>
+
+                        <!-- Testimonial 2 -->
+                        <div class="rs-testimonial-2__items">
+                            <div class="testimonial-content">
+                                <img src="assets/images/testimonial/quote_orange.svg" alt="">
+                                <p>The counseling support was excellent. I got admission in MBA Marketing at my preferred college smoothly and quickly.</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-thumb">
+                                    <img src="assets/images/testimonial/testi2.jpg" alt="">
+                                </div>
+                                <div class="author-content">
+                                    <h5 class="title">Priya Verma</h5>
+                                    <span>MBA (Marketing), Pune Institute of Business Management</span>
+                                    <img src="assets/images/testimonial/testimonial-brsnd-2.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial 3 -->
+                        <div class="rs-testimonial-2__items">
+                            <div class="testimonial-content">
+                                <img src="assets/images/testimonial/quote_orange.svg" alt="">
+                                <p>From application to final confirmation, everything was handled professionally. I highly recommend their admission support services.</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-thumb">
+                                    <img src="assets/images/testimonial/testi3.jpg" alt="">
+                                </div>
+                                <div class="author-content">
+                                    <h5 class="title">Amit Kumar</h5>
+                                    <span>BCA, Chandigarh Group of Colleges</span>
+                                    <img src="assets/images/testimonial/testimonial-brsnd-2.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial 4 -->
+                        <div class="rs-testimonial-2__items">
+                            <div class="testimonial-content">
+                                <img src="assets/images/testimonial/quote_orange.svg" alt="">
+                                <p>I also needed hostel support, and they arranged everything within my budget. The process was smooth and stress-free.</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-thumb">
+                                    <img src="assets/images/testimonial/testi4.jpg" alt="">
+                                </div>
+                                <div class="author-content">
+                                    <h5 class="title">Sneha Patel</h5>
+                                    <span>B.Sc Nursing, Apollo College of Nursing</span>
+                                    <img src="assets/images/testimonial/testimonial-brsnd-2.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial 5 -->
+                        <div class="rs-testimonial-2__items">
+                            <div class="testimonial-content">
+                                <img src="assets/images/testimonial/quote_orange.svg" alt="">
+                                <p>The team compared multiple colleges for me and helped me make the best decision based on my budget and preferences.</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-thumb">
+                                    <img src="assets/images/testimonial/testi5.jpg" alt="">
+                                </div>
+                                <div class="author-content">
+                                    <h5 class="title">Vikram Singh</h5>
+                                    <span>Diploma Mechanical Engineering, Government Polytechnic Jaipur</span>
+                                    <img src="assets/images/testimonial/testimonial-brsnd-2.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
-        <!--======== Faq Ends ========-->
+    </div>
+</section>
+<!--======== Testimonial 2 Ends ========-->
 
-        <!--======== Testimonial 2 Start ========-->
-        <section class="rs-testimonial-2 pt-110 pb-120">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6">
-                        <div class="rs-testimonial-2__left-content">
-                            <div class="rs-section-title black">
-                                <div class="top-sub-heading">
-                                    <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
-                                    <span>Testimonials </span>
-                                    <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
-                                </div>
-                                <h2 class="title split-in-fade">What happy clients says about us?</h2>
-                                <div class="rs-thumb">
-                                    <img src="assets/images/testimonial/testimonial-left-img.jpg" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="rs-testimonial-2__slider-box">
-                            <div class="rs-carousel owl-carousel" data-loop="true" data-items="1" data-margin="0" data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000" data-smart-speed="800" data-dots="true" data-nav="false" data-nav-speed="false" data-center-mode="false" data-mobile-device="1" data-mobile-device-nav="false" data-mobile-device-dots="true" data-ipad-device="1" data-ipad-device-nav="false" data-ipad-device-dots="true" data-ipad-device2="1" data-ipad-device-nav2="false" data-ipad-device-dots2="true" data-md-device="1" data-lg-device="1" data-md-device-nav="false" data-md-device-dots="true" data-doteach="true">
-                                <div class="rs-testimonial-2__items">
-                                    <div class="testimonial-content">
-                                        <img src="assets/images/testimonial/quote_orange.svg" alt="">
-                                        <p>Taking seamless key performance indicators offline to maximise the long tail. Keeping your eye on the ball while performing a deep dive on the start-up mentality. Podcasting operational change management inside of workflows to establish a framework.</p>
-                                    </div>
-                                    <div class="testimonial-author">
-                                        <div class="author-thumb">
-                                            <img src="assets/images/testimonial/testi1.jpg" alt="">
-                                        </div>
-                                        <div class="author-content">
-                                            <h5 class="title">Martins Ana</h5>
-                                            <span>CEO, Bribbble LLC</span>
-                                            <img src="assets/images/testimonial/testimonial-brsnd-2.png" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="rs-testimonial-2__items">
-                                    <div class="testimonial-content">
-                                        <img src="assets/images/testimonial/quote_orange.svg" alt="">
-                                        <p>Keeping your eye on the ball while performing a deep dive on the start-up mentality. Taking seamless key performance indicators offline to maximise the long tail.  Podcasting operational change management inside of workflows to establish a framework.</p>
-                                    </div>
-                                    <div class="testimonial-author">
-                                        <div class="author-thumb">
-                                            <img src="assets/images/testimonial/testi2.jpg" alt="">
-                                        </div>
-                                        <div class="author-content">
-                                            <h5 class="title">Robards Lynda</h5>
-                                            <span>Company SEO, Google</span>
-                                            <img src="assets/images/testimonial/testimonial-brsnd-2.png" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="rs-testimonial-2__items">
-                                    <div class="testimonial-content">
-                                        <img src="assets/images/testimonial/quote_orange.svg" alt="">
-                                        <p>Operational  podcasting change management inside of workflows to establish a framework . Keeping your eye on the ball while performing a deep dive on the start-up mentality. Taking seamless key performance indicators offline to maximize the long tail.</p>
-                                    </div>
-                                    <div class="testimonial-author">
-                                        <div class="author-thumb">
-                                            <img src="assets/images/testimonial/testi3.jpg" alt="">
-                                        </div>
-                                        <div class="author-content">
-                                            <h5 class="title">Taylor Matthew</h5>
-                                            <span>SEO & Founder, Facebook</span>
-                                            <img src="assets/images/testimonial/testimonial-brsnd-2.png" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="rs-testimonial-2__items">
-                                    <div class="testimonial-content">
-                                        <img src="assets/images/testimonial/quote_orange.svg" alt="">
-                                        <p>Podcasting operational change management inside of workflows to establish a framework. Taking seamless key performance indicators offline to maximise the long tail. Keeping your eye on the ball while performing a deep dive on the start-up mentality.</p>
-                                    </div>
-                                    <div class="testimonial-author">
-                                        <div class="author-thumb">
-                                            <img src="assets/images/testimonial/testi4.jpg" alt="">
-                                        </div>
-                                        <div class="author-content">
-                                            <h5 class="title">Ribeiro Nicolas</h5>
-                                            <span>HR, Envato</span>
-                                            <img src="assets/images/testimonial/testimonial-brsnd-2.png" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="rs-testimonial-2__items">
-                                    <div class="testimonial-content">
-                                        <img src="assets/images/testimonial/quote_orange.svg" alt="">
-                                        <p>Operational   establish to Podcasting change management inside of workflows a framework. Taking seamless key performance indicators offline to maximise the long tail. Keeping your eye on the ball while performing a deep dive on the start-up mentality.</p>
-                                    </div>
-                                    <div class="testimonial-author">
-                                        <div class="author-thumb">
-                                            <img src="assets/images/testimonial/testi5.jpg" alt="">
-                                        </div>
-                                        <div class="author-content">
-                                            <h5 class="title">Howard Esther</h5>
-                                            <span>CEO, Bribbble LLC</span>
-                                            <img src="assets/images/testimonial/testimonial-brsnd-2.png" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--======== Testimonial 2 Ends ========-->
 
         <!--======== Blog 2 Start ========-->
-        <section id="rs-blog" class="rs-blog-2 pt-120">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="rs-section-title black">
-                            <div class="top-sub-heading">
-                                <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
-                                <span>News & Article</span>
-                                <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
-                            </div>
-                            <h2 class="title split-in-fade">Read our latest insights</h2>
-                        </div>
+<section id="rs-blog" class="rs-blog-2 pt-120">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="rs-section-title black">
+                    <div class="top-sub-heading">
+                        <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
+                        <span>Insights & Updates</span>
+                        <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="rs-carousel owl-carousel nav-style1" data-loop="true" data-items="3" data-margin="20" data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000" data-smart-speed="800" data-dots="true" data-nav="false" data-nav-speed="false" data-center-mode="false" data-mobile-device="1" data-mobile-device-nav="false" data-mobile-device-dots="true" data-ipad-device="2" data-ipad-device-nav="false" data-ipad-device-dots="true" data-ipad-device2="2" data-ipad-device-nav2="false" data-ipad-device-dots2="true" data-md-device="2" data-lg-device="3" data-md-device-nav="false" data-md-device-dots="true" data-doteach="false">
-                            <div class="rs-blog-2__item">
-                                <div class="rs-thumb">
-                                    <img src="assets/images/blog/blog-6.jpg" alt="">
-                                </div>
-                                <div class="rs-content">
-                                    <div class="rs-category">
-                                        <a href="#">Software</a>
-                                    </div>
-                                    <h3 class="title"><a href="blog-single.html">10 reliable sources to learn about it solution</a></h3>
-                                    <p>Podcasting operational change management inside of workflows to establish a...</p>
-                                    <div class="rs-blog-footer">
-                                        <span>
-                                            <svg width="14" height="14" viewbox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M2.97 8.83317L0 11.1665V0.833171C0 0.65636 0.0702379 0.48679 0.195262 0.361766C0.320286 0.236742 0.489856 0.166504 0.666667 0.166504H10.6667C10.8435 0.166504 11.013 0.236742 11.1381 0.361766C11.2631 0.48679 11.3333 0.65636 11.3333 0.833171V8.83317H2.97ZM2.50867 7.49984H10V1.49984H1.33333V8.42317L2.50867 7.49984ZM4.66667 10.1665H11.4913L12.6667 11.0898V4.1665H13.3333C13.5101 4.1665 13.6797 4.23674 13.8047 4.36177C13.9298 4.48679 14 4.65636 14 4.83317V13.8332L11.03 11.4998H5.33333C5.15652 11.4998 4.98695 11.4296 4.86193 11.3046C4.7369 11.1796 4.66667 11.01 4.66667 10.8332V10.1665Z" fill="#F26F20"></path>
-                                            </svg>
-                                            2 Comments
-                                        </span>
-                                        <a href="blog-single.html">Read More <i class="ri-arrow-right-fill"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="rs-blog-2__item">
-                                <div class="rs-thumb">
-                                    <img src="assets/images/blog/blog-8.png" alt="">
-                                </div>
-                                <div class="rs-content">
-                                    <div class="rs-category">
-                                        <a href="#">Design</a>
-                                    </div>
-                                    <h3 class="title"><a href="blog-single.html">10 reliable sources to learn about it solution</a></h3>
-                                    <p>Podcasting operational change management inside of workflows to establish a...</p>
-                                    <div class="rs-blog-footer">
-                                        <span>
-                                            <svg width="14" height="14" viewbox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M2.97 8.83317L0 11.1665V0.833171C0 0.65636 0.0702379 0.48679 0.195262 0.361766C0.320286 0.236742 0.489856 0.166504 0.666667 0.166504H10.6667C10.8435 0.166504 11.013 0.236742 11.1381 0.361766C11.2631 0.48679 11.3333 0.65636 11.3333 0.833171V8.83317H2.97ZM2.50867 7.49984H10V1.49984H1.33333V8.42317L2.50867 7.49984ZM4.66667 10.1665H11.4913L12.6667 11.0898V4.1665H13.3333C13.5101 4.1665 13.6797 4.23674 13.8047 4.36177C13.9298 4.48679 14 4.65636 14 4.83317V13.8332L11.03 11.4998H5.33333C5.15652 11.4998 4.98695 11.4296 4.86193 11.3046C4.7369 11.1796 4.66667 11.01 4.66667 10.8332V10.1665Z" fill="#F26F20"></path>
-                                            </svg>
-                                            2 Comments
-                                        </span>
-                                        <a href="blog-single.html">Read More <i class="ri-arrow-right-fill"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="rs-blog-2__item">
-                                <div class="rs-thumb">
-                                    <img src="assets/images/blog/blog-5.jpg" alt="">
-                                </div>
-                                <div class="rs-content">
-                                    <div class="rs-category">
-                                        <a href="#">Development</a>
-                                    </div>
-                                    <h3 class="title"><a href="blog-single.html">10 reliable sources to learn about it solution</a></h3>
-                                    <p>Podcasting operational change management inside of workflows to establish a...</p>
-                                    <div class="rs-blog-footer">
-                                        <span>
-                                            <svg width="14" height="14" viewbox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M2.97 8.83317L0 11.1665V0.833171C0 0.65636 0.0702379 0.48679 0.195262 0.361766C0.320286 0.236742 0.489856 0.166504 0.666667 0.166504H10.6667C10.8435 0.166504 11.013 0.236742 11.1381 0.361766C11.2631 0.48679 11.3333 0.65636 11.3333 0.833171V8.83317H2.97ZM2.50867 7.49984H10V1.49984H1.33333V8.42317L2.50867 7.49984ZM4.66667 10.1665H11.4913L12.6667 11.0898V4.1665H13.3333C13.5101 4.1665 13.6797 4.23674 13.8047 4.36177C13.9298 4.48679 14 4.65636 14 4.83317V13.8332L11.03 11.4998H5.33333C5.15652 11.4998 4.98695 11.4296 4.86193 11.3046C4.7369 11.1796 4.66667 11.01 4.66667 10.8332V10.1665Z" fill="#F26F20"></path>
-                                            </svg>
-                                            2 Comments
-                                        </span>
-                                        <a href="blog-single.html">Read More <i class="ri-arrow-right-fill"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="rs-blog-2__item">
-                                <div class="rs-thumb">
-                                    <img src="assets/images/blog/blog-4.jpg" alt="">
-                                </div>
-                                <div class="rs-content">
-                                    <div class="rs-category">
-                                        <a href="#">Ui/UX</a>
-                                    </div>
-                                    <h3 class="title"><a href="blog-single.html">10 reliable sources to learn about it solution</a></h3>
-                                    <p>Podcasting operational change management inside of workflows to establish a...</p>
-                                    <div class="rs-blog-footer">
-                                        <span>
-                                            <svg width="14" height="14" viewbox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M2.97 8.83317L0 11.1665V0.833171C0 0.65636 0.0702379 0.48679 0.195262 0.361766C0.320286 0.236742 0.489856 0.166504 0.666667 0.166504H10.6667C10.8435 0.166504 11.013 0.236742 11.1381 0.361766C11.2631 0.48679 11.3333 0.65636 11.3333 0.833171V8.83317H2.97ZM2.50867 7.49984H10V1.49984H1.33333V8.42317L2.50867 7.49984ZM4.66667 10.1665H11.4913L12.6667 11.0898V4.1665H13.3333C13.5101 4.1665 13.6797 4.23674 13.8047 4.36177C13.9298 4.48679 14 4.65636 14 4.83317V13.8332L11.03 11.4998H5.33333C5.15652 11.4998 4.98695 11.4296 4.86193 11.3046C4.7369 11.1796 4.66667 11.01 4.66667 10.8332V10.1665Z" fill="#F26F20"></path>
-                                            </svg>
-                                            2 Comments
-                                        </span>
-                                        <a href="blog-single.html">Read More <i class="ri-arrow-right-fill"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="rs-blog-2__item">
-                                <div class="rs-thumb">
-                                    <img src="assets/images/blog/blog-7.jpg" alt="">
-                                </div>
-                                <div class="rs-content">
-                                    <div class="rs-category">
-                                        <a href="#">design</a>
-                                    </div>
-                                    <h3 class="title"><a href="blog-single.html">10 reliable sources to learn about it solution</a></h3>
-                                    <p>Podcasting operational change management inside of workflows to establish a...</p>
-                                    <div class="rs-blog-footer">
-                                        <span>
-                                            <svg width="14" height="14" viewbox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M2.97 8.83317L0 11.1665V0.833171C0 0.65636 0.0702379 0.48679 0.195262 0.361766C0.320286 0.236742 0.489856 0.166504 0.666667 0.166504H10.6667C10.8435 0.166504 11.013 0.236742 11.1381 0.361766C11.2631 0.48679 11.3333 0.65636 11.3333 0.833171V8.83317H2.97ZM2.50867 7.49984H10V1.49984H1.33333V8.42317L2.50867 7.49984ZM4.66667 10.1665H11.4913L12.6667 11.0898V4.1665H13.3333C13.5101 4.1665 13.6797 4.23674 13.8047 4.36177C13.9298 4.48679 14 4.65636 14 4.83317V13.8332L11.03 11.4998H5.33333C5.15652 11.4998 4.98695 11.4296 4.86193 11.3046C4.7369 11.1796 4.66667 11.01 4.66667 10.8332V10.1665Z" fill="#F79C53"></path>
-                                            </svg>
-                                            2 Comments
-                                        </span>
-                                        <a href="blog-single.html">Read More <i class="ri-arrow-right-fill"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <h2 class="title split-in-fade">Latest Admission News & Guidance</h2>
                 </div>
             </div>
-        </section>
-        <!--======== Blog 2 Ends ========-->
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="rs-carousel owl-carousel nav-style1" data-loop="true" data-items="3" data-margin="20" data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000" data-smart-speed="800" data-dots="true" data-nav="false" data-nav-speed="false" data-center-mode="false" data-mobile-device="1" data-mobile-device-nav="false" data-mobile-device-dots="true" data-ipad-device="2" data-ipad-device-nav="false" data-ipad-device-dots="true" data-ipad-device2="2" data-ipad-device-nav2="false" data-ipad-device-dots2="true" data-md-device="2" data-lg-device="3" data-md-device-nav="false" data-md-device-dots="true" data-doteach="false">
+
+                    <!-- Blog 1 -->
+                    <div class="rs-blog-2__item">
+                        <div class="rs-thumb">
+                            <img src="assets/images/blog/blog-6.jpg" alt="">
+                        </div>
+                        <div class="rs-content">
+                            <div class="rs-category">
+                                <a href="#">Admission Guide</a>
+                            </div>
+                            <h3 class="title"><a href="blog-single.html">Step-by-Step College Admission Process for 2025</a></h3>
+                            <p>Learn the complete admission process including documentation, eligibility criteria, and important deadlines for top colleges.</p>
+                            <div class="rs-blog-footer">
+                                <span>Updated Guidance</span>
+                                <a href="blog-single.html">Read More <i class="ri-arrow-right-fill"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blog 2 -->
+                    <div class="rs-blog-2__item">
+                        <div class="rs-thumb">
+                            <img src="assets/images/blog/blog-8.png" alt="">
+                        </div>
+                        <div class="rs-content">
+                            <div class="rs-category">
+                                <a href="#">Career Counseling</a>
+                            </div>
+                            <h3 class="title"><a href="blog-single.html">How to Choose the Right Course After 12th?</a></h3>
+                            <p>Confused about course selection? Explore the best career options based on your interests, eligibility, and future opportunities.</p>
+                            <div class="rs-blog-footer">
+                                <span>Expert Advice</span>
+                                <a href="blog-single.html">Read More <i class="ri-arrow-right-fill"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blog 3 -->
+                    <div class="rs-blog-2__item">
+                        <div class="rs-thumb">
+                            <img src="assets/images/blog/blog-5.jpg" alt="">
+                        </div>
+                        <div class="rs-content">
+                            <div class="rs-category">
+                                <a href="#">Top Colleges</a>
+                            </div>
+                            <h3 class="title"><a href="blog-single.html">Top Engineering & Management Colleges in India</a></h3>
+                            <p>Discover the best colleges offering B.Tech, MBA, BCA, Nursing and other professional courses across major cities.</p>
+                            <div class="rs-blog-footer">
+                                <span>College Updates</span>
+                                <a href="blog-single.html">Read More <i class="ri-arrow-right-fill"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blog 4 -->
+                    <div class="rs-blog-2__item">
+                        <div class="rs-thumb">
+                            <img src="assets/images/blog/blog-4.jpg" alt="">
+                        </div>
+                        <div class="rs-content">
+                            <div class="rs-category">
+                                <a href="#">Scholarships</a>
+                            </div>
+                            <h3 class="title"><a href="blog-single.html">Scholarship Opportunities for Students in 2025</a></h3>
+                            <p>Check out the latest scholarship programs and financial aid options available for eligible students.</p>
+                            <div class="rs-blog-footer">
+                                <span>Financial Support</span>
+                                <a href="blog-single.html">Read More <i class="ri-arrow-right-fill"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blog 5 -->
+                    <div class="rs-blog-2__item">
+                        <div class="rs-thumb">
+                            <img src="assets/images/blog/blog-7.jpg" alt="">
+                        </div>
+                        <div class="rs-content">
+                            <div class="rs-category">
+                                <a href="#">Hostel & Facilities</a>
+                            </div>
+                            <h3 class="title"><a href="blog-single.html">How to Find Safe & Affordable Student Accommodation</a></h3>
+                            <p>Everything you need to know about hostel facilities, rental options, and budget planning for students.</p>
+                            <div class="rs-blog-footer">
+                                <span>Student Support</span>
+                                <a href="blog-single.html">Read More <i class="ri-arrow-right-fill"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--======== Blog 2 Ends ========-->
+
 
         <!--======== Footer 2 Start ========-->
         <footer id="rs-contact" class="rs-footer rs-footer-2">
