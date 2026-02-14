@@ -1,12 +1,4 @@
 <?php
-// A. Include PHPMailer files at the very top
-require 'PHPMailer/Exception.php';
-require 'PHPMailer/PHPMailer.php';
-require 'PHPMailer/SMTP.php';
-
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
 include 'config/db.php';
 
 $success = "";
@@ -15,23 +7,24 @@ $error = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Sanitize Inputs
-    $full_name          = trim($_POST['full_name']);
-    $mobile             = trim($_POST['mobile_number']);
-    $email              = trim($_POST['email']);
+    $full_name = trim($_POST['full_name']);
+    $mobile = trim($_POST['mobile_number']); // form field name same rahega
+    $email = trim($_POST['email']);
     $last_qualification = trim($_POST['last_qualification']);
-    $preferred_course   = trim($_POST['preferred_course']);
-    $preferred_city     = trim($_POST['preferred_city']);
-    $budget_range       = trim($_POST['budget_range']);
-    $hostel_required    = trim($_POST['hostel_required']);
-    $message            = trim($_POST['message']);
+    $preferred_course = trim($_POST['preferred_course']);
+    $preferred_city = trim($_POST['preferred_city']);
+    $budget_range = trim($_POST['budget_range']);
+    $hostel_required = trim($_POST['hostel_required']);
+    $message = trim($_POST['message']);
 
     // Basic Validation
-    if (empty($full_name) || empty($mobile) || empty($email) || 
-        empty($last_qualification) || empty($preferred_course) || 
-        empty($preferred_city) || empty($budget_range) || empty($hostel_required)) {
-        
+    if (
+        empty($full_name) || empty($mobile) || empty($email) ||
+        empty($last_qualification) || empty($preferred_course) ||
+        empty($preferred_city) || empty($budget_range) ||
+        empty($hostel_required)
+    ) {
         $error = "All required fields must be filled!";
-        
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $error = "Invalid Email Format!";
     } else {
@@ -41,51 +34,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             (full_name, mobile, email, last_qualification, preferred_course, preferred_city, budget_range, hostel_required, message) 
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-        $stmt->bind_param("sssssssss", $full_name, $mobile, $email, $last_qualification, $preferred_course, $preferred_city, $budget_range, $hostel_required, $message);
+        $stmt->bind_param(
+            "sssssssss",
+            $full_name,
+            $mobile,
+            $email,
+            $last_qualification,
+            $preferred_course,
+            $preferred_city,
+            $budget_range,
+            $hostel_required,
+            $message
+        );
 
         if ($stmt->execute()) {
-            
-            // B. START THE MAILING PROCESS
-            $mail = new PHPMailer(true);
-
-            try {
-                // Server settings
-                $mail->isSMTP();                                            
-                $mail->Host       = 'smtp.gmail.com';                     
-                $mail->SMTPAuth   = true;                                   
-                $mail->Username   = 'codemadofficial@gmail.com';    // Your personal Gmail
-                $mail->Password   = 'scob hgqk gzuf ukup';      // Your 16-char App Password
-                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         
-                $mail->Port       = 587;                                    
-
-                // Recipients
-                $mail->setFrom('codemadofficial@gmail.com', 'EduTech System');
-                $mail->addAddress('festronixcodemadone@gmail.com'); // Admin email
-
-                // Content
-                $mail->isHTML(true);                                  
-                $mail->Subject = "New Application: $full_name";
-                
-                // Professional Email Body
-                $mail->Body = "
-                <div style='font-family: Arial; padding: 20px; border: 1px solid #eee;'>
-                    <h2 style='color: #1a3a5f;'>New Inquiry Received</h2>
-                    <p><strong>Name:</strong> $full_name</p>
-                    <p><strong>Mobile:</strong> $mobile</p>
-                    <p><strong>Email:</strong> $email</p>
-                    <p><strong>Qualification:</strong> $last_qualification</p>
-                    <p><strong>Course:</strong> $preferred_course</p>
-                    <p><strong>Budget:</strong> $budget_range</p>
-                    <p><strong>Message:</strong> $message</p>
-                </div>";
-
-                $mail->send();
-                $success = "Application submitted and email sent successfully!";
-            } catch (Exception $e) {
-                // Database was successful, but email failed
-                $success = "Application saved, but notification failed. Error: {$mail->ErrorInfo}";
-            }
-
+            $success = "Application submitted successfully!";
         } else {
             $error = "Error: " . $stmt->error;
         }
@@ -96,11 +59,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <?php if($success): ?>
-    <div class="alert alert-success text-center"><?= $success ?></div>
+    <div class="alert alert-success text-center">
+        <?= $success ?>
+    </div>
 <?php endif; ?>
 
 <?php if($error): ?>
-    <div class="alert alert-danger text-center"><?= $error ?></div>
+    <div class="alert alert-danger text-center">
+        <?= $error ?>
+    </div>
 <?php endif; ?>
 
 
