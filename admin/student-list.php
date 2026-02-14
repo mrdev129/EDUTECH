@@ -27,7 +27,7 @@ if (!$result) {
   <meta name="robots" content="INDEX,FOLLOW">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Title -->
-  <title>Edudash - School, College & LMS Admin Dashboard Template | Bootstrap 5</title>
+  <title>EDUTECH | ADMISSION EXPERT</title>
   <link rel="icon" type="image/png" href="assets/images/favicon.png" sizes="16x16">
   <!-- remix icon font css  -->
   <link rel="stylesheet" href="assets/css/remixicon.css">
@@ -1145,7 +1145,7 @@ if (!$result) {
 
     <footer class="d-footer">
       <div class="">
-        <p class="mb-0 text-center"> &copy; <span class="current-year"></span> Made With ❤️ by Wowtheme7.</p>
+        <p class="mb-0 text-center"> &copy; <span class="current-year"></span> Made With Team DRS.</p>
       </div>
     </footer>
   </main>
