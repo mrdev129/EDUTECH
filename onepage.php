@@ -1625,7 +1625,7 @@
                                 </div>
                                 <div class="content">
                                     <span>Contact Us</span>
-                                    <a href="tel:+004555012065">(+004) 555 - 012 - 065</a>
+                                    <a href="tel:+004555012065">+91 9999999999</a>
                                 </div>
                             </div>
                         </div>
@@ -1636,7 +1636,7 @@
                                 </div>
                                 <div class="content">
                                     <span>Email Us</span>
-                                    <a href="mailto:info@yourname.com">info@yourname.com</a>
+                                    <a href="mailto:edutech@gmail.com">edutech@gmail.com</a>
                                 </div>
                             </div>
                         </div>
@@ -1647,7 +1647,7 @@
                                 </div>
                                 <div class="content">
                                     <span>Address</span>
-                                    <h4 class="title"> 2972 Westheimer 96 Rd. </h4>
+                                    <h4 class="title"> Bhubaneswar, Odisha, 752054 </h4>
                                 </div>
                             </div>
                         </div>
@@ -1660,7 +1660,7 @@
                         <div class="col-lg-3">
                             <div class="rs-footer__about-box">
                                 <a href="index-2.html"><img src="assets/images/about/logo.jpeg" alt=""></a>
-                                <p> Proactively envisioned multimedia based expertise and cross-media growth strategies seamlessly.</p>
+                                <p> To empower students by providing expert guidance and transparent insights into the complex world of higher education.</p>
                                 <div class="rs-footer__social">
                                     <ul>
                                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -1677,11 +1677,11 @@
                                     <h4 class="title">Our Services</h4>
                                 </div>
                                 <ul>
-                                    <li><a href="service-details-2.html"><i class="ri-arrow-right-fill"></i> IT Management</a></li>
-                                    <li><a href="service-details-2.html"><i class="ri-arrow-right-fill"></i> IT Solutions</a></li>
-                                    <li><a href="service-details-2.html"><i class="ri-arrow-right-fill"></i> Machine Learning</a></li>
-                                    <li><a href="service-details-2.html"><i class="ri-arrow-right-fill"></i> Product Design</a></li>
-                                    <li><a href="service-details-2.html"><i class="ri-arrow-right-fill"></i> SEO Optimization</a></li>
+                                    <li><a href="service-details-2.php"><i class="ri-arrow-right-fill"></i> B.Tech</a></li>
+                                    <li><a href="service-details-2.php"><i class="ri-arrow-right-fill"></i> MBA</a></li>
+                                    <li><a href="service-details-2.php"><i class="ri-arrow-right-fill"></i> MCA</a></li>
+                                    <li><a href="service-details-2.php"><i class="ri-arrow-right-fill"></i> Diploma</a></li>
+                                    <li><a href="service-details-2.php"><i class="ri-arrow-right-fill"></i> Other Courses</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -1691,18 +1691,18 @@
                                     <h4 class="title">Information</h4>
                                 </div>
                                 <ul>
-                                    <li><a href="about.html"><i class="ri-arrow-right-fill"></i> About Techzen</a></li>
+                                    <li><a href="about.html"><i class="ri-arrow-right-fill"></i> About</a></li>
                                     <li><a href="team.html"><i class="ri-arrow-right-fill"></i> Our Team</a></li>
-                                    <li><a href="pricing.html"><i class="ri-arrow-right-fill"></i> Pricing Plan</a></li>
-                                    <li><a href="project.html"><i class="ri-arrow-right-fill"></i> Our Projects</a></li>
-                                    <li><a href="appointment.html"><i class="ri-arrow-right-fill"></i> Appointment</a></li>
+                                    <li><a href="pricing.html"><i class="ri-arrow-right-fill"></i>Collaboration</a></li>
+                                    <li><a href="project.html"><i class="ri-arrow-right-fill"></i> Blogs</a></li>
+                                    <li><a href="appointment.html"><i class="ri-arrow-right-fill"></i> Gallery</a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="rs-footer__newsletter">
                                 <div class="rs-footer-title">
-                                    <h4 class="title">Newsletter</h4>
+                                    <h4 class="title">Subscription</h4>
                                 </div>
                                 <p>Register now to get latest updates on promotions & coupons.</p>
                                 <form action="#">
@@ -1723,7 +1723,7 @@
                     <div class="row align-items-center">
                         <div class="col-lg-5">
                             <div class="rs-footer__copyright-text">
-                                <p>© 2024 Techzen. Designed By <a target="_blank" href="https://rstheme.com/">RSTheme.</a></p>
+                                <p>© 2026 EDUTECH. Designed By <a target="_blank" href="https://rstheme.com/">Team DRS.</a></p>
                             </div>
                         </div>
                         <div class="col-lg-7">
