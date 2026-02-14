@@ -43,6 +43,18 @@ if (!$result) {
   <link rel="stylesheet" href="assets/css/lib/calendar.css">
   <!-- main css -->
   <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .paging_simple_numbers .paginate_button.current {
+        background: #001f3f !important; /* Navy Blue */
+        color: white !important;
+        border: 1px solid #001f3f !important;
+    }
+    .paging_simple_numbers .paginate_button:hover {
+        background: #ff9f29 !important; /* Orange */
+        color: white !important;
+        border: 1px solid #ff9f29 !important;
+    }
+</style>
 </head>
 
 <body>
@@ -1136,7 +1148,7 @@ if (!$result) {
   <!-- main js -->
   <script src="assets/js/app.js"></script>
 
-<script>
+<!-- <script>
     let table = new DataTable('#dataTable');
 
     // ✅ Data Table start
@@ -1156,6 +1168,35 @@ if (!$result) {
         });
     });
     // ✅ Data Table end
+</script> -->
+
+<script>
+    $(document).ready(function() {
+        // ✅ Single initialization for Edutech Student List
+        const tableInstance = new DataTable('#dataTable', {
+            pageLength: 12, // Limits display to 12 students per page
+            lengthMenu: [12, 24, 48, 100], // Allows you to toggle views
+            ordering: true,
+            info: true,
+            paging: true, // Enables the 1, 2, 3 pagination buttons
+            language: {
+                paginate: {
+                    next: '<i class="ri-arrow-right-s-line"></i>',
+                    previous: '<i class="ri-arrow-left-s-line"></i>'
+                }
+            }
+        });
+
+        // Link the existing template search bar to the table logic
+        $('.dt-search .dt-input').on('keyup', function () {
+            tableInstance.search(this.value).draw();
+        });
+
+        // Link the existing template row-count dropdown
+        $('.dt-length .dt-input').on('change', function () {
+            tableInstance.page.len($(this).val()).draw();
+        });
+    });
 </script>
 
 </body>
