@@ -201,36 +201,36 @@ $result = $conn->query($query);
             <span>Dashboard </span>
           </a>
           <ul class="sidebar-submenu">
-            <li>
-              <a href="index.php">
-                <i class="ri-circle-fill circle-icon w-auto"></i>
-                School
-              </a>
-            </li>
+            <!-- <li>
+            <a href="index.php">
+              <i class="ri-circle-fill circle-icon w-auto"></i>
+              School
+            </a>
+          </li> -->
             <li>
               <a href="index-2.php">
                 <i class="ri-circle-fill circle-icon w-auto"></i>
                 Student
               </a>
             </li>
-            <li>
-              <a href="index-3.php">
-                <i class="ri-circle-fill circle-icon w-auto"></i>
-                Teacher
-              </a>
-            </li>
-            <li>
-              <a href="index-4.php">
-                <i class="ri-circle-fill circle-icon w-auto"></i>
-                Parent
-              </a>
-            </li>
-            <li>
-              <a href="index-5.php">
-                <i class="ri-circle-fill circle-icon w-auto"></i>
-                LMS
-              </a>
-            </li>
+            <!-- <li>
+            <a href="index-3.php">
+              <i class="ri-circle-fill circle-icon w-auto"></i>
+              Teacher
+            </a>
+          </li>
+          <li>
+            <a href="index-4.php">
+              <i class="ri-circle-fill circle-icon w-auto"></i>
+              Parent
+            </a>
+          </li> -->
+            <!-- <li>
+            <a href="index-5.php">
+              <i class="ri-circle-fill circle-icon w-auto"></i>
+              LMS 
+            </a>
+          </li> -->
           </ul>
         </li>
         <li class="dropdown">
@@ -257,18 +257,18 @@ $result = $conn->query($query);
                 Suspend Student
               </a>
             </li>
-            <li>
-              <a href="student-category.php">
-                <i class="ri-circle-fill circle-icon w-auto"></i>
-                Student Categories
-              </a>
-            </li>
-            <li>
-              <a href="edit-student.php">
-                <i class="ri-circle-fill circle-icon w-auto"></i>
-                Edit Student
-              </a>
-            </li>
+            <!-- <li>
+            <a href="student-category.php">
+              <i class="ri-circle-fill circle-icon w-auto"></i>
+              Student Categories
+            </a>
+          </li> -->
+            <!-- <li>
+            <a href="edit-student.php">
+              <i class="ri-circle-fill circle-icon w-auto"></i>
+              Edit Student
+            </a>
+          </li> -->
             <li>
               <a href="student-details.php">
                 <i class="ri-circle-fill circle-icon w-auto"></i>
@@ -277,7 +277,7 @@ $result = $conn->query($query);
             </li>
           </ul>
         </li>
-        <li class="dropdown">
+        <!-- <li class="dropdown">
           <a href="javascript:void(0)">
             <i class="ri-user-follow-line"></i>
             <span>Teachers</span>
@@ -314,8 +314,8 @@ $result = $conn->query($query);
               </a>
             </li>
           </ul>
-        </li>
-        <li class="dropdown">
+        </li> -->
+        <!-- <li class="dropdown">
           <a href="javascript:void(0)">
             <i class="ri-account-circle-line"></i>
             <span>Guardian</span>
@@ -346,8 +346,8 @@ $result = $conn->query($query);
               </a>
             </li>
           </ul>
-        </li>
-        <li class="dropdown">
+        </li> -->
+        <!-- <li class="dropdown">
           <a href="javascript:void(0)">
             <i class="ri-list-view"></i>
             <span>Classes</span>
@@ -378,8 +378,8 @@ $result = $conn->query($query);
               </a>
             </li>
           </ul>
-        </li>
-        <li class="dropdown">
+        </li> -->
+        <!-- <li class="dropdown">
           <a href="javascript:void(0)">
             <i class="ri-file-edit-line"></i>
             <span>Examinations</span>
@@ -683,7 +683,7 @@ $result = $conn->query($query);
               </a>
             </li>
           </ul>
-        </li>
+        </li> -->
       </ul>
     </div>
   </aside>

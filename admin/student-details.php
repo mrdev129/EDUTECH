@@ -246,498 +246,498 @@ if ($student) {
         </div>
         <!-- User Info end -->
         <div class="sidebar-menu-area">
-            <ul class="sidebar-menu" id="sidebar-menu">
-                <li class="dropdown">
-                    <a href="javascript:void(0)">
-                        <i class="ri-home-4-line"></i>
-                        <span>Dashboard </span>
-                    </a>
-                    <ul class="sidebar-submenu">
-                        <li>
-                            <a href="index.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                School
-                            </a>
-                        </li>
-                        <li>
-                            <a href="index-2.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Student
-                            </a>
-                        </li>
-                        <li>
-                            <a href="index-3.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Teacher
-                            </a>
-                        </li>
-                        <li>
-                            <a href="index-4.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Parent
-                            </a>
-                        </li>
-                        <li>
-                            <a href="index-5.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                LMS
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="javascript:void(0)">
-                        <i class="ri-graduation-cap-line"></i>
-                        <span>Students</span>
-                    </a>
-                    <ul class="sidebar-submenu">
-                        <li>
-                            <a href="add-new-student.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Add New Student
-                            </a>
-                        </li>
-                        <li>
-                            <a href="student-list.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Student List
-                            </a>
-                        </li>
-                        <li>
-                            <a href="suspended-student.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Suspend Student
-                            </a>
-                        </li>
-                        <li>
-                            <a href="student-category.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Student Categories
-                            </a>
-                        </li>
-                        <li>
-                            <a href="edit-student.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Edit Student
-                            </a>
-                        </li>
-                        <li>
-                            <a href="student-details.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Student Details
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="javascript:void(0)">
-                        <i class="ri-user-follow-line"></i>
-                        <span>Teachers</span>
-                    </a>
-                    <ul class="sidebar-submenu">
-                        <li>
-                            <a href="add-new-teacher.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Add New Teacher
-                            </a>
-                        </li>
-                        <li>
-                            <a href="teacher-list.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Teacher List
-                            </a>
-                        </li>
-                        <li>
-                            <a href="edit-teacher.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Edit Teacher
-                            </a>
-                        </li>
-                        <li>
-                            <a href="teacher-details.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Teacher Details
-                            </a>
-                        </li>
-                        <li>
-                            <a href="teacher-timetable.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Teacher Timetable
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="javascript:void(0)">
-                        <i class="ri-account-circle-line"></i>
-                        <span>Guardian</span>
-                    </a>
-                    <ul class="sidebar-submenu">
-                        <li>
-                            <a href="add-new-guardian.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Add New Guardians
-                            </a>
-                        </li>
-                        <li>
-                            <a href="guardian-list.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Guardians List
-                            </a>
-                        </li>
-                        <li>
-                            <a href="edit-guardian.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Edit Guardian
-                            </a>
-                        </li>
-                        <li>
-                            <a href="guardian-details.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Guardian Details
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="javascript:void(0)">
-                        <i class="ri-list-view"></i>
-                        <span>Classes</span>
-                    </a>
-                    <ul class="sidebar-submenu">
-                        <li>
-                            <a href="section-list.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Section
-                            </a>
-                        </li>
-                        <li>
-                            <a href="subject-list.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Subjects
-                            </a>
-                        </li>
-                        <li>
-                            <a href="class-list.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Class List
-                            </a>
-                        </li>
-                        <li>
-                            <a href="class-room-list.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Class Room
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="javascript:void(0)">
-                        <i class="ri-file-edit-line"></i>
-                        <span>Examinations</span>
-                    </a>
-                    <ul class="sidebar-submenu">
-                        <li>
-                            <a href="exam.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Exam
-                            </a>
-                        </li>
-                        <li>
-                            <a href="exam-schedule.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Exam Schedule
-                            </a>
-                        </li>
-                        <li>
-                            <a href="exam-result.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Exam Result
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="javascript:void(0)">
-                        <i class="ri-money-dollar-circle-line"></i>
-                        <span>Fees Collection</span>
-                    </a>
-                    <ul class="sidebar-submenu">
-                        <li>
-                            <a href="fees-collect.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Fees Collect
-                            </a>
-                        </li>
-                        <li>
-                            <a href="fees-type.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Fees Type
-                            </a>
-                        </li>
-                        <li>
-                            <a href="fees-group.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Fees Group
-                            </a>
-                        </li>
-                        <li>
-                            <a href="fees-discount.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Fees Discount
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="javascript:void(0)">
-                        <i class="ri-calendar-check-line"></i>
-                        <span>Attendance</span>
-                    </a>
-                    <ul class="sidebar-submenu">
-                        <li>
-                            <a href="student-attendance.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Student Attendance
-                            </a>
-                        </li>
-                        <li>
-                            <a href="teacher-attendance.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Teacher Attendance
-                            </a>
-                        </li>
-                        <li>
-                            <a href="employee-attendance.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Employee Attendance
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="javascript:void(0)">
-                        <i class="ri-time-line"></i>
-                        <span>Leaves</span>
-                    </a>
-                    <ul class="sidebar-submenu">
-                        <li>
-                            <a href="leave-types.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Leave Types
-                            </a>
-                        </li>
-                        <li>
-                            <a href="leave-request.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Leave Request
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="certificate.php">
-                        <i class="ri-home-4-line"></i>
-                        <span>Certificate </span>
-                    </a>
-                </li>
-                <li class="dropdown">
-                    <a href="javascript:void(0)">
-                        <i class="ri-book-2-line"></i>
-                        <span>Library</span>
-                    </a>
-                    <ul class="sidebar-submenu">
-                        <li>
-                            <a href="books-list.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Books List
-                            </a>
-                        </li>
-                        <li>
-                            <a href="members-list.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Members List
-                            </a>
-                        </li>
-                        <li>
-                            <a href="member-details.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Members Details
-                            </a>
-                        </li>
-                        <li>
-                            <a href="issue-return.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Issue Return
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="javascript:void(0)">
-                        <i class="ri-money-dollar-circle-line"></i>
-                        <span>Accounts</span>
-                    </a>
-                    <ul class="sidebar-submenu">
-                        <li>
-                            <a href="income-head.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Income Head
-                            </a>
-                        </li>
-                        <li>
-                            <a href="income-list.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Income List
-                            </a>
-                        </li>
-                        <li>
-                            <a href="expense-head.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Expense Head
-                            </a>
-                        </li>
-                        <li>
-                            <a href="expense-list.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Expense List
-                            </a>
-                        </li>
-                        <li>
-                            <a href="transaction.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Transaction
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="javascript:void(0)">
-                        <i class="ri-user-settings-line"></i>
-                        <span>HRM</span>
-                    </a>
-                    <ul class="sidebar-submenu">
-                        <li>
-                            <a href="employee-list.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Employee List
-                            </a>
-                        </li>
-                        <li>
-                            <a href="employee-details.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Employee Details
-                            </a>
-                        </li>
-                        <li>
-                            <a href="add-new-employee.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Add New Employee
-                            </a>
-                        </li>
-                        <li>
-                            <a href="payroll.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Payroll
-                            </a>
-                        </li>
-                        <li>
-                            <a href="designation.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Designation
-                            </a>
-                        <li>
-                            <a href="department.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Department
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="notice-board.php">
-                        <i class="ri-booklet-line"></i>
-                        <span>Notice Board </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="event.php">
-                        <i class="ri-calendar-event-line"></i>
-                        <span>Event </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="message.php">
-                        <i class="ri-message-2-line"></i>
-                        <span>Message </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="subscription-plan.php">
-                        <i class="ri-price-tag-3-line"></i>
-                        <span>Subscription Plan </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="role-access.php">
-                        <i class="ri-macbook-line"></i>
-                        <span>Role & Access</span>
-                    </a>
-                </li>
-                <li class="dropdown">
-                    <a href="javascript:void(0)">
-                        <i class="ri-shield-check-line"></i>
-                        <span>Authentication</span>
-                    </a>
-                    <ul class="sidebar-submenu">
-                        <li>
-                            <a href="login.php"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Login</a>
-                        </li>
-                        <li>
-                            <a href="register.php"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Register</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="assign-role-plan.php">
-                        <i class="ri-user-follow-line"></i>
-                        <span>Assign Role</span>
-                    </a>
-                </li>
-                <li class="dropdown">
-                    <a href="javascript:void(0)">
-                        <i class="ri-user-settings-line"></i>
-                        <span>Settings</span>
-                    </a>
-                    <ul class="sidebar-submenu">
-                        <li>
-                            <a href="general.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                General
-                            </a>
-                        </li>
-                        <li>
-                            <a href="notification.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Notification
-                            </a>
-                        </li>
-                        <li>
-                            <a href="currencies.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Currencies
-                            </a>
-                        </li>
-                        <li>
-                            <a href="languages.php">
-                                <i class="ri-circle-fill circle-icon w-auto"></i>
-                                Languages
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
+      <ul class="sidebar-menu" id="sidebar-menu">
+        <li class="dropdown">
+          <a href="javascript:void(0)">
+            <i class="ri-home-4-line"></i>
+            <span>Dashboard </span>
+          </a>
+          <ul class="sidebar-submenu">
+            <!-- <li>
+            <a href="index.php">
+              <i class="ri-circle-fill circle-icon w-auto"></i>
+              School
+            </a>
+          </li> -->
+            <li>
+              <a href="index-2.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Student
+              </a>
+            </li>
+            <!-- <li>
+            <a href="index-3.php">
+              <i class="ri-circle-fill circle-icon w-auto"></i>
+              Teacher
+            </a>
+          </li>
+          <li>
+            <a href="index-4.php">
+              <i class="ri-circle-fill circle-icon w-auto"></i>
+              Parent
+            </a>
+          </li> -->
+            <!-- <li>
+            <a href="index-5.php">
+              <i class="ri-circle-fill circle-icon w-auto"></i>
+              LMS 
+            </a>
+          </li> -->
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="javascript:void(0)">
+            <i class="ri-graduation-cap-line"></i>
+            <span>Students</span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li>
+              <a href="add-new-student.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Add New Student
+              </a>
+            </li>
+            <li>
+              <a href="student-list.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Student List
+              </a>
+            </li>
+            <li>
+              <a href="suspended-student.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Suspend Student
+              </a>
+            </li>
+            <!-- <li>
+            <a href="student-category.php">
+              <i class="ri-circle-fill circle-icon w-auto"></i>
+              Student Categories
+            </a>
+          </li> -->
+            <!-- <li>
+            <a href="edit-student.php">
+              <i class="ri-circle-fill circle-icon w-auto"></i>
+              Edit Student
+            </a>
+          </li> -->
+            <li>
+              <a href="student-details.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Student Details
+              </a>
+            </li>
+          </ul>
+        </li>
+        <!-- <li class="dropdown">
+          <a href="javascript:void(0)">
+            <i class="ri-user-follow-line"></i>
+            <span>Teachers</span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li>
+              <a href="add-new-teacher.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Add New Teacher
+              </a>
+            </li>
+            <li>
+              <a href="teacher-list.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Teacher List
+              </a>
+            </li>
+            <li>
+              <a href="edit-teacher.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Edit Teacher
+              </a>
+            </li>
+            <li>
+              <a href="teacher-details.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Teacher Details
+              </a>
+            </li>
+            <li>
+              <a href="teacher-timetable.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Teacher Timetable
+              </a>
+            </li>
+          </ul>
+        </li> -->
+        <!-- <li class="dropdown">
+          <a href="javascript:void(0)">
+            <i class="ri-account-circle-line"></i>
+            <span>Guardian</span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li>
+              <a href="add-new-guardian.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Add New Guardians
+              </a>
+            </li>
+            <li>
+              <a href="guardian-list.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Guardians List
+              </a>
+            </li>
+            <li>
+              <a href="edit-guardian.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Edit Guardian
+              </a>
+            </li>
+            <li>
+              <a href="guardian-details.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Guardian Details
+              </a>
+            </li>
+          </ul>
+        </li> -->
+        <!-- <li class="dropdown">
+          <a href="javascript:void(0)">
+            <i class="ri-list-view"></i>
+            <span>Classes</span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li>
+              <a href="section-list.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Section
+              </a>
+            </li>
+            <li>
+              <a href="subject-list.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Subjects
+              </a>
+            </li>
+            <li>
+              <a href="class-list.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Class List
+              </a>
+            </li>
+            <li>
+              <a href="class-room-list.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Class Room
+              </a>
+            </li>
+          </ul>
+        </li> -->
+        <!-- <li class="dropdown">
+          <a href="javascript:void(0)">
+            <i class="ri-file-edit-line"></i>
+            <span>Examinations</span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li>
+              <a href="exam.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Exam
+              </a>
+            </li>
+            <li>
+              <a href="exam-schedule.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Exam Schedule
+              </a>
+            </li>
+            <li>
+              <a href="exam-result.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Exam Result
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="javascript:void(0)">
+            <i class="ri-money-dollar-circle-line"></i>
+            <span>Fees Collection</span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li>
+              <a href="fees-collect.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Fees Collect
+              </a>
+            </li>
+            <li>
+              <a href="fees-type.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Fees Type
+              </a>
+            </li>
+            <li>
+              <a href="fees-group.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Fees Group
+              </a>
+            </li>
+            <li>
+              <a href="fees-discount.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Fees Discount
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="javascript:void(0)">
+            <i class="ri-calendar-check-line"></i>
+            <span>Attendance</span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li>
+              <a href="student-attendance.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Student Attendance
+              </a>
+            </li>
+            <li>
+              <a href="teacher-attendance.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Teacher Attendance
+              </a>
+            </li>
+            <li>
+              <a href="employee-attendance.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Employee Attendance
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="javascript:void(0)">
+            <i class="ri-time-line"></i>
+            <span>Leaves</span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li>
+              <a href="leave-types.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Leave Types
+              </a>
+            </li>
+            <li>
+              <a href="leave-request.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Leave Request
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="certificate.php">
+            <i class="ri-home-4-line"></i>
+            <span>Certificate </span>
+          </a>
+        </li>
+        <li class="dropdown">
+          <a href="javascript:void(0)">
+            <i class="ri-book-2-line"></i>
+            <span>Library</span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li>
+              <a href="books-list.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Books List
+              </a>
+            </li>
+            <li>
+              <a href="members-list.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Members List
+              </a>
+            </li>
+            <li>
+              <a href="member-details.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Members Details
+              </a>
+            </li>
+            <li>
+              <a href="issue-return.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Issue Return
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="javascript:void(0)">
+            <i class="ri-money-dollar-circle-line"></i>
+            <span>Accounts</span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li>
+              <a href="income-head.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Income Head
+              </a>
+            </li>
+            <li>
+              <a href="income-list.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Income List
+              </a>
+            </li>
+            <li>
+              <a href="expense-head.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Expense Head
+              </a>
+            </li>
+            <li>
+              <a href="expense-list.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Expense List
+              </a>
+            </li>
+            <li>
+              <a href="transaction.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Transaction
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="javascript:void(0)">
+            <i class="ri-user-settings-line"></i>
+            <span>HRM</span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li>
+              <a href="employee-list.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Employee List
+              </a>
+            </li>
+            <li>
+              <a href="employee-details.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Employee Details
+              </a>
+            </li>
+            <li>
+              <a href="add-new-employee.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Add New Employee
+              </a>
+            </li>
+            <li>
+              <a href="payroll.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Payroll
+              </a>
+            </li>
+            <li>
+              <a href="designation.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Designation
+              </a>
+            <li>
+              <a href="department.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Department
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="notice-board.php">
+            <i class="ri-booklet-line"></i>
+            <span>Notice Board </span>
+          </a>
+        </li>
+        <li>
+          <a href="event.php">
+            <i class="ri-calendar-event-line"></i>
+            <span>Event </span>
+          </a>
+        </li>
+        <li>
+          <a href="message.php">
+            <i class="ri-message-2-line"></i>
+            <span>Message </span>
+          </a>
+        </li>
+        <li>
+          <a href="subscription-plan.php">
+            <i class="ri-price-tag-3-line"></i>
+            <span>Subscription Plan </span>
+          </a>
+        </li>
+        <li>
+          <a href="role-access.php">
+            <i class="ri-macbook-line"></i>
+            <span>Role & Access</span>
+          </a>
+        </li>
+        <li class="dropdown">
+          <a href="javascript:void(0)">
+            <i class="ri-shield-check-line"></i>
+            <span>Authentication</span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li>
+              <a href="login.php"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Login</a>
+            </li>
+            <li>
+              <a href="register.php"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Register</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="assign-role-plan.php">
+            <i class="ri-user-follow-line"></i>
+            <span>Assign Role</span>
+          </a>
+        </li>
+        <li class="dropdown">
+          <a href="javascript:void(0)">
+            <i class="ri-user-settings-line"></i>
+            <span>Settings</span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li>
+              <a href="general.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                General
+              </a>
+            </li>
+            <li>
+              <a href="notification.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Notification
+              </a>
+            </li>
+            <li>
+              <a href="currencies.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Currencies
+              </a>
+            </li>
+            <li>
+              <a href="languages.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Languages
+              </a>
+            </li>
+          </ul>
+        </li> -->
+      </ul>
+    </div>
     </aside>
 
     <main class="dashboard-main">
