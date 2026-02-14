@@ -364,7 +364,7 @@
                         </div>
                     </div>
                     <div class="action-side">
-                        <a href="#" class="enquiry-top-btn">ENQUIRE NOW <i class="ri-arrow-right-line"></i></a>
+                        <a href="admission.php" class="enquiry-top-btn">ENQUIRE NOW <i class="ri-arrow-right-line"></i></a>
                     </div>
                 </div>
             </div>
@@ -388,7 +388,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6">
                         <div class="hero-content-left text-white">
-                            <span class="ug-tag fw-bold">UG PROGRAM</span>
+                            <!-- <span class="ug-tag fw-bold">UG PROGRAM</span> -->
                             <h1 class="expanding-text">
                                 Your Future, <br>
                                 Our <span class="typing-text" data-words='["Guidance", "Expertise", "Support", "Solution"]'></span>
@@ -467,7 +467,7 @@
                         <!-- <li><a href="#faculty">FACULTY</a></li> -->
                     </ul>
                     <div class="nav-action">
-                        <a href="#enquire-section" class="navy-enquire-btn">ENQUIRE NOW</a>
+                        <a href="admission.php" class="navy-enquire-btn">ENQUIRE NOW</a>
                     </div>
                 </div>
             </div>
@@ -636,7 +636,7 @@
                                 <span>Our Feachered Services</span>
                                 <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
                             </div>
-                            <h2 class="title split-in-fade">We run all kinds of IT services</h2>
+                            <h2 class="title split-in-fade">We provide best choice for you Technical carrier</h2>
                         </div>
                     </div>
                 </div>
@@ -644,14 +644,14 @@
                     <div class="col-lg-4 col-sm-6">
                         <div class="rs-featured-2__item">
                             <div class="rs-thumb">
-                                <img src="assets/images/featured/featured-thumb-1.png" alt="">
+                                <img src="assets/images/featured/BTech-clg.jpeg" alt="">
                             </div>
                             <div class="rs-content">
                                 <div class="rs-icon">
-                                    <img src="assets/images/featured/features-icon-1.png" alt="">
+                                    <img src="assets/images/featured/BTech-clg.jpeg" alt="">
                                 </div>
-                                <h4 class="title"><a href="service-details.html">IT Solutions</a></h4>
-                                <p>Bring to the table win-win survival strategies to ensure proactive domination.</p>
+                                <h4 class="title"><a href="service-details.html">B.Tech</a></h4>
+                                <p>Make a carrier in B.Tech.</p>
                                 <a class="rs-link" href="service-details.html">Read More <i class="ri-arrow-right-fill"></i></a>
                             </div>
                         </div>
@@ -659,14 +659,14 @@
                     <div class="col-lg-4 col-sm-6">
                         <div class="rs-featured-2__item">
                             <div class="rs-thumb">
-                                <img src="assets/images/featured/featured-thumb-2.png" alt="">
+                                <img src="assets/images/featured/MBA-clg.png" alt="">
                             </div>
                             <div class="rs-content">
                                 <div class="rs-icon">
-                                    <img src="assets/images/featured/features-icon-2.png" alt="">
+                                    <img src="assets/images/featured/MBA-clg.png" alt="">
                                 </div>
-                                <h4 class="title"><a href="service-details.html">Cyber Security</a></h4>
-                                <p>Bring to the table win-win survival strategies to ensure proactive domination.</p>
+                                <h4 class="title"><a href="service-details.html">MBA</a></h4>
+                                <p>Make a carrier in MBA.</p>
                                 <a class="rs-link" href="service-details.html">Read More <i class="ri-arrow-right-fill"></i></a>
                             </div>
                         </div>
@@ -674,14 +674,14 @@
                     <div class="col-lg-4 col-sm-6">
                         <div class="rs-featured-2__item last-item">
                             <div class="rs-thumb">
-                                <img src="assets/images/featured/featured-thumb-3.png" alt="">
+                                <img src="assets/images/featured/MCA-clg.jpg" alt="">
                             </div>
                             <div class="rs-content">
                                 <div class="rs-icon">
-                                    <img src="assets/images/featured/features-icon-3.png" alt="">
+                                    <img src="assets/images/featured/MCA-clg.jpg" alt="">
                                 </div>
-                                <h4 class="title"><a href="service-details.html">Cloud Services</a></h4>
-                                <p>Bring to the table win-win survival strategies to ensure proactive domination.</p>
+                                <h4 class="title"><a href="service-details.html">MCA</a></h4>
+                                <p>Make a carrier in MCA.</p>
                                 <a class="rs-link" href="service-details.html">Read More <i class="ri-arrow-right-fill"></i></a>
                             </div>
                         </div>
@@ -704,14 +704,14 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6">
                         <div class="rs-about-2__thumb">
-                            <img src="assets/images/about/about-img.png" alt="">
-                            <div class="rs-shape">
+                            <img src="assets/images/about/logo.jpeg" alt="">
+                            <!-- <div class="rs-shape">
                                 <img class=" gsap-move left-100 start-91" src="assets/images/about/about-shape.png" alt="">
-                            </div>
-                            <div class="rs-counter-content">
+                            </div> -->
+                            <!-- <div class="rs-counter-content">
                                 <h3 class="title"><span class="rs-count">30</span>+</h3>
                                 <span>Years of Experience</span>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -744,8 +744,7 @@
                                     <div class="skltbs-panel-group">
                                         <!-- panel -->
                                         <div class="skltbs-panel">
-                                            <p>Capitalize on low hanging fruit to identify a ballpark value added activity to
-                                                beta test.</p>
+                                            <p>To empower students by providing expert guidance and transparent insights into the complex world of higher education. We strive to simplify the admission process, ensuring every student finds the right path to their dream career.</p>
                                             <ul>
                                                 <li><i class="ri-share-forward-fill"></i>Document the short and long term goals.</li>
                                                 <li><i class="ri-share-forward-fill"></i>Your product vision</li>
@@ -759,8 +758,7 @@
                                             </div>
                                         </div>
                                         <div class="skltbs-panel">
-                                            <p>Capitalize on low hanging fruit to identify a ballpark value added activity to
-                                                beta test.</p>
+                                            <p>To become the most trusted global partner in education consultancy, recognized for our commitment to student success. We envision a future where every learner has equal access to quality information and premium academic opportunities.</p>
                                             <ul>
                                                 <li><i class="ri-share-forward-fill"></i>Document the short and long term goals.</li>
                                                 <li><i class="ri-share-forward-fill"></i>Your product vision</li>
@@ -774,8 +772,7 @@
                                             </div>
                                         </div>
                                         <div class="skltbs-panel">
-                                            <p>Capitalize on low hanging fruit to identify a ballpark value added activity to
-                                                beta test.</p>
+                                            <p>We operate with unwavering integrity and a student-first mindset to build lasting trust with families and institutions. Innovation and excellence drive our services, allowing us to provide the most up-to-date and effective admission strategies.</p>
                                             <ul>
                                                 <li><i class="ri-share-forward-fill"></i>Document the short and long term goals.</li>
                                                 <li><i class="ri-share-forward-fill"></i>Your product vision</li>
@@ -1628,7 +1625,7 @@
                                 </div>
                                 <div class="content">
                                     <span>Contact Us</span>
-                                    <a href="tel:+004555012065">(+004) 555 - 012 - 065</a>
+                                    <a href="tel:+004555012065">+91 9999999999</a>
                                 </div>
                             </div>
                         </div>
@@ -1639,7 +1636,7 @@
                                 </div>
                                 <div class="content">
                                     <span>Email Us</span>
-                                    <a href="mailto:info@yourname.com">info@yourname.com</a>
+                                    <a href="mailto:edutech@gmail.com">edutech@gmail.com</a>
                                 </div>
                             </div>
                         </div>
@@ -1650,7 +1647,7 @@
                                 </div>
                                 <div class="content">
                                     <span>Address</span>
-                                    <h4 class="title"> 2972 Westheimer 96 Rd. </h4>
+                                    <h4 class="title"> Bhubaneswar, Odisha, 752054 </h4>
                                 </div>
                             </div>
                         </div>
@@ -1662,8 +1659,8 @@
                     <div class="row">
                         <div class="col-lg-3">
                             <div class="rs-footer__about-box">
-                                <a href="index-2.html"><img src="assets/images/techzen_logo_home_2.png" alt=""></a>
-                                <p> Proactively envisioned multimedia based expertise and cross-media growth strategies seamlessly.</p>
+                                <a href="index-2.html"><img src="assets/images/about/logo.jpeg" alt=""></a>
+                                <p> To empower students by providing expert guidance and transparent insights into the complex world of higher education.</p>
                                 <div class="rs-footer__social">
                                     <ul>
                                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -1680,11 +1677,11 @@
                                     <h4 class="title">Our Services</h4>
                                 </div>
                                 <ul>
-                                    <li><a href="service-details-2.html"><i class="ri-arrow-right-fill"></i> IT Management</a></li>
-                                    <li><a href="service-details-2.html"><i class="ri-arrow-right-fill"></i> IT Solutions</a></li>
-                                    <li><a href="service-details-2.html"><i class="ri-arrow-right-fill"></i> Machine Learning</a></li>
-                                    <li><a href="service-details-2.html"><i class="ri-arrow-right-fill"></i> Product Design</a></li>
-                                    <li><a href="service-details-2.html"><i class="ri-arrow-right-fill"></i> SEO Optimization</a></li>
+                                    <li><a href="service-details-2.php"><i class="ri-arrow-right-fill"></i> B.Tech</a></li>
+                                    <li><a href="service-details-2.php"><i class="ri-arrow-right-fill"></i> MBA</a></li>
+                                    <li><a href="service-details-2.php"><i class="ri-arrow-right-fill"></i> MCA</a></li>
+                                    <li><a href="service-details-2.php"><i class="ri-arrow-right-fill"></i> Diploma</a></li>
+                                    <li><a href="service-details-2.php"><i class="ri-arrow-right-fill"></i> Other Courses</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -1694,18 +1691,18 @@
                                     <h4 class="title">Information</h4>
                                 </div>
                                 <ul>
-                                    <li><a href="about.html"><i class="ri-arrow-right-fill"></i> About Techzen</a></li>
+                                    <li><a href="about.html"><i class="ri-arrow-right-fill"></i> About</a></li>
                                     <li><a href="team.html"><i class="ri-arrow-right-fill"></i> Our Team</a></li>
-                                    <li><a href="pricing.html"><i class="ri-arrow-right-fill"></i> Pricing Plan</a></li>
-                                    <li><a href="project.html"><i class="ri-arrow-right-fill"></i> Our Projects</a></li>
-                                    <li><a href="appointment.html"><i class="ri-arrow-right-fill"></i> Appointment</a></li>
+                                    <li><a href="pricing.html"><i class="ri-arrow-right-fill"></i>Collaboration</a></li>
+                                    <li><a href="project.html"><i class="ri-arrow-right-fill"></i> Blogs</a></li>
+                                    <li><a href="appointment.html"><i class="ri-arrow-right-fill"></i> Gallery</a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="rs-footer__newsletter">
                                 <div class="rs-footer-title">
-                                    <h4 class="title">Newsletter</h4>
+                                    <h4 class="title">Subscription</h4>
                                 </div>
                                 <p>Register now to get latest updates on promotions & coupons.</p>
                                 <form action="#">
@@ -1726,7 +1723,7 @@
                     <div class="row align-items-center">
                         <div class="col-lg-5">
                             <div class="rs-footer__copyright-text">
-                                <p>© 2024 Techzen. Designed By <a target="_blank" href="https://rstheme.com/">RSTheme.</a></p>
+                                <p>© 2026 EDUTECH. Designed By <a target="_blank" href="https://rstheme.com/">Team DRS.</a></p>
                             </div>
                         </div>
                         <div class="col-lg-7">
