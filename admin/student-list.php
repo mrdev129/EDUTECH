@@ -1212,12 +1212,88 @@ if (!$result) {
       });
 
       // ✅ Handle Export Buttons
-      $('#exportPDF').on('click', function(e) {
-        e.preventDefault();
-        window.print(); // Temporary simple PDF fix
-      });
+      // ✅ Export Current Page Data Only
+function getCurrentPageData() {
+    const rows = [];
+    const headers = [];
+
+    // Get table headers (exclude Action column)
+    $('#dataTable thead th').each(function(index) {
+        if(index !== 9) { // Action column index
+            headers.push($(this).text().trim());
+        }
+    });
+
+    // Get visible rows only (current page)
+    $('#dataTable tbody tr:visible').each(function() {
+        const rowData = [];
+        $(this).find('td').each(function(index) {
+            if(index !== 9) { // Skip Action column
+                rowData.push($(this).text().trim());
+            }
+        });
+        rows.push(rowData);
+    });
+
+    return { headers, rows };
+}
+
+// ✅ PDF Export
+$('#exportPDF').on('click', function(e) {
+    e.preventDefault();
+
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF('landscape');
+
+    const tableData = getCurrentPageData();
+
+    const now = new Date();
+    const filename = "Student_List_" +
+        now.toLocaleDateString().replace(/\//g, '-') + "_" +
+        now.getHours() + "-" +
+        now.getMinutes() + "-" +
+        now.getSeconds();
+
+    doc.autoTable({
+        head: [tableData.headers],
+        body: tableData.rows,
+        styles: { fontSize: 8 }
+    });
+
+    doc.save(filename + ".pdf");
+});
+
+// ✅ Excel Export
+$('#exportExcel').on('click', function(e) {
+    e.preventDefault();
+
+    const tableData = getCurrentPageData();
+
+    const worksheet = XLSX.utils.aoa_to_sheet([
+        tableData.headers,
+        ...tableData.rows
+    ]);
+
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Students");
+
+    const now = new Date();
+    const filename = "Student_List_" +
+        now.toLocaleDateString().replace(/\//g, '-') + "_" +
+        now.getHours() + "-" +
+        now.getMinutes() + "-" +
+        now.getSeconds();
+
+    XLSX.writeFile(workbook, filename + ".xlsx");
+});
+
     });
   </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
 
 </body>
 
