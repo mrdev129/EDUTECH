@@ -805,7 +805,7 @@
                     <div class="col-lg-12">
                         <div class="rs-brand__top-title">
                             <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="">
-                            <span>More than 5K+ Brands with work Techzen</span>
+                            <span>Our College Partners</span>
                             <img src="assets/images/heart-pulse-rate-orange.svg" alt="">
                         </div>
                     </div>
@@ -816,49 +816,49 @@
                             <div class="rs-carousel owl-carousel nav-style1" data-loop="true" data-items="5" data-margin="0" data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="3000" data-smart-speed="500" data-dots="false" data-nav="false" data-nav-speed="false" data-center-mode="false" data-mobile-device="2" data-mobile-device-nav="false" data-mobile-device-dots="false" data-ipad-device="4" data-ipad-device-nav="false" data-ipad-device-dots="false" data-ipad-device2="3" data-ipad-device-nav2="false" data-ipad-device-dots2="false" data-md-device="4" data-lg-device="5" data-md-device-nav="false" data-md-device-dots="false" data-doteach="false">
                                 <div class="rs-brand-slider-item">
                                     <a href="#">
-                                        <img src="assets/images/brand/partner1.png" alt="">
+                                        <img src="assets\images\brand\image-Photoroom (1).png" alt="">
                                         <img class="item-2" src="assets/images/brand/partner-white-1.png" alt="">
                                     </a>
                                 </div>
                                 <div class="rs-brand-slider-item">
                                     <a href="#">
-                                        <img src="assets/images/brand/partner2.png" alt="">
+                                        <img src="assets\images\brand\image-Photoroom.png" alt="">
                                         <img class="item-2" src="assets/images/brand/partner-white-2.png" alt="">
                                     </a>
                                 </div>
                                 <div class="rs-brand-slider-item">
                                     <a href="#">
-                                        <img src="assets/images/brand/partner3.png" alt="">
+                                        <img src="assets\images\brand\images-Photoroom (1).png" alt="">
                                         <img class="item-2" src="assets/images/brand/partner-white-3.png" alt="">
                                     </a>
                                 </div>
                                 <div class="rs-brand-slider-item">
                                     <a href="#">
-                                        <img src="assets/images/brand/partner4.png" alt="">
+                                        <img src="assets\images\brand\logo-896x1024-Photoroom.png" alt="">
                                         <img class="item-2" src="assets/images/brand/partner-white-4.png" alt="">
                                     </a>
                                 </div>
                                 <div class="rs-brand-slider-item">
                                     <a href="#">
-                                        <img src="assets/images/brand/partner5.png" alt="">
+                                        <img src="assets\images\brand\university-college-school-badge-logo-free-vector-Photoroom.png" alt="">
                                         <img class="item-2" src="assets/images/brand/partner-white-5.png" alt="">
                                     </a>
                                 </div>
                                 <div class="rs-brand-slider-item">
                                     <a href="#">
-                                        <img src="assets/images/brand/partner6.png" alt="">
+                                        <img src="assets\images\brand\University-Logo-backup-Photoroom.png" alt="">
                                         <img class="item-2" src="assets/images/brand/partner-white-6.png" alt="">
                                     </a>
                                 </div>
                                 <div class="rs-brand-slider-item">
                                     <a href="#">
-                                        <img src="assets/images/brand/partner7.png" alt="">
+                                        <img src="assets\images\brand\images-Photoroom (2).png" alt="">
                                         <img class="item-2" src="assets/images/brand/partner-white-7.png" alt="">
                                     </a>
                                 </div>
                                 <div class="rs-brand-slider-item">
                                     <a href="#">
-                                        <img src="assets/images/brand/partner8.png" alt="">
+                                        <img src="assets\images\brand\images-Photoroomxx.png" alt="">
                                         <img class="item-2" src="assets/images/brand/partner-white-8.png" alt="">
                                     </a>
                                 </div>
@@ -883,15 +883,15 @@
                         <div class="rs-section-title black">
                             <div class="top-sub-heading">
                                 <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
-                                <span>Our Projects</span>
+                                <span>Our Team Members</span>
                                 <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
                             </div>
-                            <h2 class="title split-in-fade">See we have solution done IT projects</h2>
+                            <h2 class="title split-in-fade">See our Team Members</h2>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="rs-project__btn">
-                            <a class="main-btn" href="project.html">View All Services <i class="ri-arrow-right-fill"></i></a>
+                            <a class="main-btn" href="project.html">View All Team Members <i class="ri-arrow-right-fill"></i></a>
                         </div>
                     </div>
                 </div>
@@ -907,9 +907,9 @@
                                             <li><a href="#">Design</a></li>
                                             <li><a href="#">Strategy</a></li>
                                         </ul>
-                                        <h3 class="title"><a href="project-details.html">Analys & Backup Blockchain</a></h3>
+                                        <h3 class="title"><a href="project-details.html">Sibani</a></h3>
                                         <div class="rs-link">
-                                            <a href="project-details.html">View Details <i class="ri-arrow-right-fill"></i></a>
+                                           <a href="project-details.html"><img src="assets\images\Socialmedia.png"style="width:40%; height:auto;" alt=""> <i class="ri-arrow-right-fill"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -923,9 +923,9 @@
                                             <li><a href="#">Design</a></li>
                                             <li><a href="#">Strategy</a></li>
                                         </ul>
-                                        <h3 class="title"><a href="project-details.html">Analys & Backup Blockchain</a></h3>
+                                        <h3 class="title"><a href="project-details.html">Satya</a></h3>
                                         <div class="rs-link">
-                                            <a href="project-details.html">View Details <i class="ri-arrow-right-fill"></i></a>
+                                        <a href="project-details.html"><img src="assets\images\Socialmedia.png"style="width:40%; height:auto;" alt=""> <i class="ri-arrow-right-fill"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -939,9 +939,9 @@
                                             <li><a href="#">Design</a></li>
                                             <li><a href="#">Strategy</a></li>
                                         </ul>
-                                        <h3 class="title"><a href="project-details.html">Analys & Backup Blockchain</a></h3>
+                                        <h3 class="title"><a href="project-details.html">Dev</a></h3>
                                         <div class="rs-link">
-                                            <a href="project-details.html">View Details <i class="ri-arrow-right-fill"></i></a>
+                                            <a href="project-details.html"><img src="assets\images\Socialmedia.png"style="width:40%; height:auto;" alt=""> <i class="ri-arrow-right-fill"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -955,9 +955,9 @@
                                             <li><a href="#">Design</a></li>
                                             <li><a href="#">Strategy</a></li>
                                         </ul>
-                                        <h3 class="title"><a href="project-details.html">Analys & Backup Blockchain</a></h3>
+                                        <h3 class="title"><a href="project-details.html">Hari</a></h3>
                                         <div class="rs-link">
-                                            <a href="project-details.html">View Details <i class="ri-arrow-right-fill"></i></a>
+                                            <a href="project-details.html"><img src="assets\images\Socialmedia.png"style="width:40%; height:auto;" alt=""> <i class="ri-arrow-right-fill"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -971,9 +971,9 @@
                                             <li><a href="#">Design</a></li>
                                             <li><a href="#">Strategy</a></li>
                                         </ul>
-                                        <h3 class="title"><a href="project-details.html">Analys & Backup Blockchain</a></h3>
+                                        <h3 class="title"><a href="project-details.html">Ram</a></h3>
                                         <div class="rs-link">
-                                            <a href="project-details.html">View Details <i class="ri-arrow-right-fill"></i></a>
+                                           <a href="project-details.html"><img src="assets\images\Socialmedia.png"style="width:40%; height:auto;" alt=""> <i class="ri-arrow-right-fill"></i></a>
                                         </div>
                                     </div>
                                 </div>
