@@ -1230,7 +1230,6 @@ if (!$result) {
       });
 
       // ✅ Handle Export Buttons
-     // ✅ Export Current Page Data Only
 function getCurrentPageData() {
     const rows = [];
     const headers = [];
