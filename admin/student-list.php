@@ -980,7 +980,22 @@ if (!$result) {
       <div class="mt-24">
         <div class="card h-100">
           <div class="card-body p-0 dataTable-wrapper">
+            <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24 px-24 pt-24">
+              <div class="dropdown">
+                <button class="btn btn-outline-neutral-600 dropdown-toggle d-flex align-items-center gap-2" type="button" data-bs-toggle="dropdown">
+                  <i class="ri-download-2-line"></i> Export
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#" id="exportPDF">PDF</a></li>
+                  <li><a class="dropdown-item" href="#" id="exportExcel">Excel</a></li>
+                </ul>
+              </div>
 
+              <div class="navbar-search" style="max-width: 350px; width: 100%;">
+                <input type="text" id="customSearch" class="bg-base h-40-px radius-8" placeholder="Search students...">
+                <iconify-icon icon="ion:search-outline" class="icon"></iconify-icon>
+              </div>
+            </div>
             <div class="p-0">
               <table class="table bordered-table mb-0 data-table" id="dataTable">
 
@@ -1179,13 +1194,10 @@ if (!$result) {
 
   <script>
     $(document).ready(function() {
-      // ✅ Single initialization for Edutech Student List
+      // ✅ Initialize table with 12-row pagination
       const tableInstance = new DataTable('#dataTable', {
-        pageLength: 12, // Limits display to 12 students per page
-        lengthMenu: [12, 24, 48, 100], // Allows you to toggle views
-        ordering: true,
-        info: true,
-        paging: true, // Enables the 1, 2, 3 pagination buttons
+        pageLength: 12,
+        dom: 'rtp', // ✅ This line erases the default search/length bars
         language: {
           paginate: {
             next: '<i class="ri-arrow-right-s-line"></i>',
@@ -1194,14 +1206,15 @@ if (!$result) {
         }
       });
 
-      // Link the existing template search bar to the table logic
-      $('.dt-search .dt-input').on('keyup', function() {
+      // ✅ Connect your new Custom Search line to the table
+      $('#customSearch').on('keyup', function() {
         tableInstance.search(this.value).draw();
       });
 
-      // Link the existing template row-count dropdown
-      $('.dt-length .dt-input').on('change', function() {
-        tableInstance.page.len($(this).val()).draw();
+      // ✅ Handle Export Buttons
+      $('#exportPDF').on('click', function(e) {
+        e.preventDefault();
+        window.print(); // Temporary simple PDF fix
       });
     });
   </script>
