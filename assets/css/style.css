@@ -17035,6 +17035,332 @@ html.menu-is-open .menu-canvas-layer {
   margin-right: 15px;
 }
 
+   :root {
+            --edutech-navy: #002147;
+            --edutech-yellow: #FFA500;
+            --edutech-orange: #F26F20;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Offset for the sticky menu so it doesn't cover section titles */
+        section {
+            scroll-margin-top: 80px;
+        }
+
+        /* 1. Header Styling - Separated with Bends */
+        .edutech-main-header {
+            background: var(--edutech-navy);
+            padding: 15px 0;
+            margin: 10px 15px 0 15px;
+            border-radius: 15px;
+            /* Bent corners */
+            z-index: 100;
+            position: relative;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-side {
+            display: flex;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo-side img {
+            height: 50px;
+            margin-right: 15px;
+        }
+
+        .brand-name {
+            display: block;
+            font-size: 24px;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .brand-tagline {
+            font-size: 11px;
+            letter-spacing: 2px;
+        }
+
+        .enquiry-top-btn {
+            background: var(--edutech-yellow);
+            color: var(--edutech-navy);
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        /* 2. Announcement Bar - Separated with Bends */
+        .static-announcement {
+            background: var(--edutech-yellow);
+            text-align: center;
+            padding: 10px 0;
+            margin: 10px 15px 0 15px;
+            /* Margin top creates the gap */
+            border-radius: 15px;
+            /* Bent corners */
+            font-weight: 700;
+            color: var(--edutech-navy);
+            position: relative;
+            z-index: 90;
+        }
+
+        /* 3. Hero Section - Separated with Bends */
+        .split-hero {
+            min-height: 85vh;
+            padding: 60px 0;
+            position: relative;
+            border-radius: 25px;
+            /* Bent corners */
+            margin: 15px;
+            /* Gap from all sides */
+            overflow: hidden;
+        }
+
+        /* Slider Background Layering */
+        .hero-bg-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        /* Ensure each slider item has a full height */
+        /* Ensure the main slider container is clean */
+        .hero-bg-slider.owl-carousel {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        /* Each item carries its own blue filter */
+        .hero-bg-slider .item {
+            height: 100vh;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: block;
+        }
+
+        /* This is the blue 'glass' over the photo */
+        .hero-bg-slider .item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0, 33, 71, 0.8), rgba(0, 33, 71, 0.4));
+            z-index: 1;
+        }
+
+        .z-index-2 {
+            position: relative;
+            z-index: 10 !important;
+        }
+
+        /* Animated Text */
+        .expanding-text {
+            font-size: 60px;
+            line-height: 1.1;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .expanding-text span {
+            color: var(--edutech-yellow);
+        }
+
+        .typing-text::after {
+            content: "|";
+            animation: blink 0.7s infinite;
+            color: var(--edutech-yellow);
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* Compact Form Bends */
+        .compact-form {
+            max-width: 500px;
+            margin-left: auto;
+            background: #ffffff;
+            border-radius: 20px;
+            /* Bends for form corner */
+            padding: 30px !important;
+        }
+
+        .hero-submit-btn {
+            background: var(--edutech-orange);
+            color: white;
+            padding: 14px;
+            border-radius: 8px;
+            font-weight: 800;
+            border: none;
+        }
+
+        /* 4. Sliding Message Bar - Lowest and Separate */
+        .sliding-info-bar {
+            background: var(--edutech-navy);
+            color: white;
+            padding: 12px 0;
+            margin: 10px 15px;
+            /* Gap created by margin */
+            border-radius: 15px;
+            /* Bent corners */
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Footer Navigation Styling */
+        .service-slider-bottom .owl-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            width: 100%;
+        }
+
+        .service-slider-bottom .owl-nav button {
+            background: none !important;
+            color: var(--edutech-navy) !important;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* Program Navigation Card */
+        .program-nav-bar {
+            background: #ffffff;
+            margin: 10px 15px;
+            padding: 15px 0;
+            border-radius: 15px;
+            /* Matches the 'bent' corner style */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 10px;
+            /* Optional: keeps it visible on scroll */
+            z-index: 1000;
+        }
+
+        .nav-flex-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .program-menu {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .program-menu li a {
+            text-decoration: none;
+            color: #003366;
+            /* Deep blue/Navy */
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            transition: 0.3s;
+        }
+
+        .program-menu li a:hover {
+            color: var(--edutech-orange);
+        }
+
+        /* Navy Enquire Button */
+        .navy-enquire-btn {
+            background: var(--edutech-navy);
+            color: #ffffff !important;
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 800;
+            text-decoration: none;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .navy-enquire-btn:hover {
+            background: var(--edutech-orange);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive adjustment for small screens */
+        @media (max-width: 991px) {
+            .program-menu {
+                display: none;
+                /* Hide full menu on mobile or use a toggle */
+            }
+        }
+
+        /* ===== NAV BAR ALIGNMENT FIX ===== */
+
+.program-nav-bar .nav-flex-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* keep button on right */
+}
+
+/* Center the menu */
+.program-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 28px; /* control space between menu items */
+    list-style: none;
+    margin: 0 auto; /* this centers the menu */
+    padding: 0;
+}
+
+/* Remove extra spacing */
+.program-menu li {
+    margin: 0;
+}
+
+/* Menu link styling (optional small refinement) */
+.program-menu li a {
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: 0.3s ease;
+}
+
+/* Keep Enquire button on right */
+.nav-action {
+    margin-left: auto;
+}
+
+
 /* MODAL BASE */
 .enquire-modal {
     position: fixed;
