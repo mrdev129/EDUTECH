@@ -1,4 +1,124 @@
-﻿<!doctype html>
+﻿<?php
+session_start();
+require_once 'config/db.php';
+
+/* ===============================
+   FLASH MESSAGE HANDLING
+================================= */
+$success = $_SESSION['success'] ?? '';
+$error   = $_SESSION['error'] ?? '';
+
+unset($_SESSION['success']);
+unset($_SESSION['error']);
+
+/* ===============================
+   INPUT SANITIZATION FUNCTION
+================================= */
+function clean_input($data) {
+    return htmlspecialchars(trim($data), ENT_QUOTES, 'UTF-8');
+}
+
+/* ===============================
+   FORM SUBMISSION HANDLER
+================================= */
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+    // Collect & sanitize inputs
+    $full_name          = clean_input($_POST['full_name'] ?? '');
+    $mobile             = clean_input($_POST['mobile_number'] ?? '');
+    $email              = clean_input($_POST['email'] ?? '');
+    $last_qualification = clean_input($_POST['last_qualification'] ?? '');
+    $preferred_course   = clean_input($_POST['preferred_course'] ?? '');
+    $preferred_city     = clean_input($_POST['preferred_city'] ?? '');
+    $budget_range       = clean_input($_POST['budget_range'] ?? '');
+    $hostel_required    = clean_input($_POST['hostel_required'] ?? '');
+    $message            = clean_input($_POST['message'] ?? '');
+
+    /* ===============================
+       VALIDATION
+    ================================= */
+
+    if (
+        empty($full_name) || empty($mobile) || empty($email) ||
+        empty($last_qualification) || empty($preferred_course) ||
+        empty($preferred_city) || empty($budget_range) ||
+        empty($hostel_required)
+    ) {
+        $_SESSION['error'] = "All required fields must be filled.";
+    }
+    elseif (!preg_match("/^[a-zA-Z ]+$/", $full_name)) {
+        $_SESSION['error'] = "Full name should contain only letters.";
+    }
+    elseif (!preg_match("/^[0-9]{10}$/", $mobile)) {
+        $_SESSION['error'] = "Mobile number must be exactly 10 digits.";
+    }
+    elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $_SESSION['error'] = "Invalid email format.";
+    }
+    else {
+
+        /* ===============================
+           DUPLICATE MOBILE CHECK
+        ================================= */
+        $check = $conn->prepare("SELECT id FROM students WHERE mobile = ?");
+        $check->bind_param("s", $mobile);
+        $check->execute();
+        $check->store_result();
+
+        if ($check->num_rows > 0) {
+
+            $_SESSION['error'] = "This mobile number is already registered.";
+
+        } else {
+
+            /* ===============================
+               INSERT DATA SECURELY
+            ================================= */
+            $stmt = $conn->prepare("INSERT INTO students 
+                (full_name, mobile, email, last_qualification, preferred_course, preferred_city, budget_range, hostel_required, message)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+            if ($stmt) {
+
+                $stmt->bind_param(
+                    "sssssssss",
+                    $full_name,
+                    $mobile,
+                    $email,
+                    $last_qualification,
+                    $preferred_course,
+                    $preferred_city,
+                    $budget_range,
+                    $hostel_required,
+                    $message
+                );
+
+                if ($stmt->execute()) {
+                    $_SESSION['success'] = "Application submitted successfully!";
+                } else {
+                    $_SESSION['error'] = "Something went wrong. Please try again.";
+                }
+
+                $stmt->close();
+            } else {
+                $_SESSION['error'] = "Database error. Please contact admin.";
+            }
+        }
+
+        $check->close();
+    }
+
+    /* ===============================
+       POST-REDIRECT-GET
+    ================================= */
+    header("Location: " . basename($_SERVER['PHP_SELF']) . "#hero");
+exit();
+
+}
+?>
+
+
+<!doctype html>
 <html class="no-js" lang="en">
 
 <head>
@@ -364,7 +484,10 @@
                         </div>
                     </div>
                     <div class="action-side">
-                        <a href="admission.php" class="enquiry-top-btn">ENQUIRE NOW <i class="ri-arrow-right-line"></i></a>
+                        <a href="javascript:void(0);" id="openEnquire" class="main-btn">
+    ENQUIRE NOW
+</a>
+
                     </div>
                 </div>
             </div>
@@ -399,9 +522,9 @@
                     </div>
 
                     <div class="col-lg-5 offset-lg-1">
-                        <div class="hero-form-box compact-form shadow-lg">
+                        <div id="heroFormBox" class="hero-form-box compact-form shadow-lg">
                             <h3 class="form-title text-center text-dark fw-bold mb-4">Enquire Now</h3>
-                            <form action="admission.php" method="POST">
+                            <form action="" method="POST">
                                 <div class="row g-2">
                                     <div class="col-md-6 mb-2">
                                         <input type="text" name="full_name" class="form-control" placeholder="Full Name *" required>
@@ -437,8 +560,43 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col-md-6 mb-2">
+    <select name="preferred_city" class="form-select" required>
+        <option value="">Preferred City *</option>
+        <option value="Bhubaneswar">Bhubaneswar</option>
+        <option value="Delhi">Delhi</option>
+        <option value="Mumbai">Mumbai</option>
+    </select>
+</div>
+
+<div class="col-md-6 mb-2">
+    <select name="budget_range" class="form-select" required>
+        <option value="">Budget Range *</option>
+        <option value="1-3 Lakh">1-3 Lakh</option>
+        <option value="3-5 Lakh">3-5 Lakh</option>
+        <option value="5+ Lakh">5+ Lakh</option>
+    </select>
+</div>
+
+<div class="col-md-12 mb-2">
+    <textarea name="message" class="form-control" placeholder="Message (Optional)"></textarea>
+</div>
+
                                 </div>
                                 <button type="submit" class="hero-submit-btn w-100 mt-3">Submit Application</button>
+                               <?php if(!empty($success)): ?>
+    <div class="alert alert-success text-center">
+        <?= $success ?>
+    </div>
+<?php endif; ?>
+
+<?php if(!empty($error)): ?>
+    <div class="alert alert-danger text-center">
+        <?= $error ?>
+    </div>
+<?php endif; ?>
+
+
                             </form>
                         </div>
                     </div>
@@ -1877,6 +2035,139 @@
                 }
             });
         </script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+    const openBtn = document.getElementById("openEnquire");
+    const modal = document.getElementById("enquireModal");
+    const modalContent = document.querySelector(".enquire-modal-content");
+    const closeBtn = document.querySelector(".enquire-close");
+
+    // OPEN MODAL
+    if(openBtn){
+        openBtn.addEventListener("click", function(e) {
+            e.preventDefault();
+            modal.style.display = "flex";
+        });
+    }
+
+    // CLOSE USING CROSS BUTTON
+    if(closeBtn){
+        closeBtn.addEventListener("click", function() {
+            modal.style.display = "none";
+        });
+    }
+
+    // CLOSE WHEN CLICKING OUTSIDE FORM
+    modal.addEventListener("click", function(e) {
+        if (!modalContent.contains(e.target)) {
+            modal.style.display = "none";
+        }
+    });
+
+});
+</script>
+
+
+
+
+<!-- ENQUIRE MODAL -->
+<div id="enquireModal" class="enquire-modal">
+    <div class="enquire-overlay"></div>
+
+    <div class="enquire-modal-content">
+        <button type="button" class="enquire-close">&times;</button>
+
+        <!-- COPY SAME HERO FORM HERE -->
+        <div class="hero-form-box compact-form shadow-lg">
+            <h3 class="form-title text-center text-dark fw-bold mb-4">Enquire Now</h3>
+
+            <?php if (!empty($success)): ?>
+                <div class="alert alert-success text-center"><?= $success ?></div>
+            <?php endif; ?>
+
+            <?php if (!empty($error)): ?>
+                <div class="alert alert-danger text-center"><?= $error ?></div>
+            <?php endif; ?>
+
+            <form method="POST" action="">
+                <!-- COPY YOUR FULL FORM FIELDS HERE EXACTLY SAME -->
+                 <div class="row g-2">
+                                    <div class="col-md-6 mb-2">
+                                        <input type="text" name="full_name" class="form-control" placeholder="Full Name *" required>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <input type="tel" name="mobile_number" class="form-control" placeholder="Mobile *" required>
+                                    </div>
+                                    <div class="col-md-12 mb-2">
+                                        <input type="email" name="email" class="form-control" placeholder="Email Id *" required>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <select name="last_qualification" class="form-select" required>
+                                            <option value="">Qualification *</option>
+                                            <option value="12th">12th</option>
+                                            <option value="Graduate">Graduate</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <select name="preferred_course" class="form-select" required>
+                                            <option value="">Course *</option>
+                                            <option value="B.Tech">B.Tech</option>
+                                            <option value="MBA">MBA</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-12 mb-2">
+                                        <div class="hostel-toggle d-flex align-items-center justify-content-between p-2 rounded bg-light border">
+                                            <span class="small fw-bold text-dark">Hostel Required?</span>
+                                            <div class="btn-group btn-group-sm">
+                                                <input type="radio" class="btn-check" name="hostel_required" id="h1" value="Yes" checked>
+                                                <label class="btn btn-outline-primary" for="h1">Yes</label>
+                                                <input type="radio" class="btn-check" name="hostel_required" id="h2" value="No">
+                                                <label class="btn btn-outline-primary" for="h2">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+    <select name="preferred_city" class="form-select" required>
+        <option value="">Preferred City *</option>
+        <option value="Bhubaneswar">Bhubaneswar</option>
+        <option value="Delhi">Delhi</option>
+        <option value="Mumbai">Mumbai</option>
+    </select>
+</div>
+
+<div class="col-md-6 mb-2">
+    <select name="budget_range" class="form-select" required>
+        <option value="">Budget Range *</option>
+        <option value="1-3 Lakh">1-3 Lakh</option>
+        <option value="3-5 Lakh">3-5 Lakh</option>
+        <option value="5+ Lakh">5+ Lakh</option>
+    </select>
+</div>
+
+<div class="col-md-12 mb-2">
+    <textarea name="message" class="form-control" placeholder="Message (Optional)"></textarea>
+</div>
+
+                                </div>
+                                <button type="submit" class="hero-submit-btn w-100 mt-3">Submit Application</button>
+                               <?php if(!empty($success)): ?>
+    <div class="alert alert-success text-center">
+        <?= $success ?>
+    </div>
+<?php endif; ?>
+
+<?php if(!empty($error)): ?>
+    <div class="alert alert-danger text-center">
+        <?= $error ?>
+    </div>
+<?php endif; ?>
+            </form>
+        </div>
+
+    </div>
+</div>
+
 </body>
 
 </html>
