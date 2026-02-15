@@ -424,7 +424,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="rs-carousel owl-carousel service-slider-bottom" data-loop="true" data-items="5"
+                        <div class="rs-carousel owl-carousel service-slider-bottom" data-loop="false" data-items="5"
                             data-margin="30" data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000"
                             data-smart-speed="800" data-dots="false" data-nav="true" data-nav-speed="false"
                             data-center-mode="false" data-mobile-device="1" data-mobile-device-nav="true"
@@ -432,6 +432,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                             data-ipad-device-dots="false" data-ipad-device2="2" data-ipad-device-nav2="true"
                             data-ipad-device-dots2="false" data-md-device="4" data-lg-device="5"
                             data-md-device-nav="true" data-md-device-dots="false">
+                           
 
                             <div class="rs-service-2__item">
                                 <div class="rs-service-2__icon">
@@ -1879,6 +1880,41 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             });
         </script>
+
+        <script>
+$(document).ready(function () {
+    var owl = $('.service-slider-bottom');
+
+    function updateNavButtons(event) {
+        // Delay ensures Owl has updated the DOM after the swipe/click
+        setTimeout(function() {
+            var items = event.item.count;     // Total items
+            var itemIndex = event.item.index; // Current index
+            var pageSize = event.page.size;   // Items visible
+
+            // Handle Left Button (Prev)
+            if (itemIndex <= 0) {
+                owl.find('.owl-prev').fadeOut(200);
+            } else {
+                owl.find('.owl-prev').fadeIn(200);
+            }
+
+            // Handle Right Button (Next)
+            if (itemIndex + pageSize >= items) {
+                owl.find('.owl-next').fadeOut(200);
+            } else {
+                owl.find('.owl-next').fadeIn(200);
+            }
+        }, 100);
+    }
+
+    // Initialize logic
+    owl.on('initialized.owl.carousel', updateNavButtons);
+    
+    // This event catches both clicks and touch-swipes
+    owl.on('translated.owl.carousel', updateNavButtons);
+});
+</script>
 
 
 
