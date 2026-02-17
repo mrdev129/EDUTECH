@@ -92,7 +92,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if ($check->num_rows > 0) {
 
             $_SESSION['error'] = "This mobile number is already registered.";
-
         } else {
 
             /* ===============================
@@ -137,7 +136,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     ================================= */
     header("Location: " . basename($_SERVER['PHP_SELF']) . "#hero");
     exit();
-
 }
 ?>
 
@@ -231,7 +229,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         <div class="static-announcement">
             <div class="container">
-                <p>Jan'26 Admissions Closing Soon! Avail Up to 25% Scholarship on 1st Semester*.</p>
+                <p class="sliding-text">Jan'26 Admissions Closing Soon! Avail Up to 25% Scholarship on 1st Semester*.</p>
             </div>
         </div>
 
@@ -445,6 +443,145 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </div>
     </section> -->
         <!--======== Banner 2 Ends ========-->
+
+       <section class="dashboard-info-section py-5">
+    <div class="container">
+        <div class="row g-4">
+            
+            <div class="col-lg-8 col-md-12">
+                <div class="info-card h-100 notice-board-card shadow-sm">
+                    <div class="card-header-custom d-flex justify-content-between align-items-center mb-4">
+                        <h3 class="m-0 fw-bold">Notice Board</h3>
+                        <a href="all-notices.php" class="view-all-text">View All</a>
+                    </div>
+                    
+                    <div class="notice-list">
+                        <?php 
+                        // Array for Admin Panel Integration: 
+                        // Replace this array later with a SQL fetch loop.
+                        $notices = [
+                            ['d' => '17', 'm' => 'Feb', 'y' => '2026', 'title' => 'Information for candidates of B.Tech Admission Expert counseling 2026', 'pdf_size' => '22.15 KB'],
+                            ['d' => '16', 'm' => 'Feb', 'y' => '2026', 'title' => 'Tentative vacancies for EDUTECH Admission Experts list for session Jan 2026', 'pdf_size' => '431.81 KB'],
+                            ['d' => '13', 'm' => 'Feb', 'y' => '2026', 'title' => 'New partnership with Top Management Colleges in Bhubaneswar', 'pdf_size' => '62.66 KB'],
+                            ['d' => '13', 'm' => 'Feb', 'y' => '2026', 'title' => 'Important Notice: Scholarship results regarding 1st semester admissions', 'pdf_size' => '178.75 KB'],
+                            ['d' => '09', 'm' => 'Feb', 'y' => '2026', 'title' => 'Hostel orientation and allocation for Graduate candidates', 'pdf_size' => '131.61 KB']
+                        ];
+                        foreach($notices as $n): ?>
+                        <div class="notice-row d-flex align-items-center mb-4 border-bottom pb-3">
+                            <div class="date-badge-box text-center me-3">
+                                <span class="badge-now">Now</span>
+                                <div class="date-inner">
+                                    <span class="day"><?php echo $n['d']; ?></span>
+                                    <span class="mon"><?php echo $n['m']; ?></span>
+                                    <span class="year"><?php echo $n['y']; ?></span>
+                                </div>
+                            </div>
+                            
+                            <div class="notice-content flex-grow-1">
+                                <p class="notice-title m-0"><?php echo $n['title']; ?></p>
+                            </div>
+                            
+                            <div class="notice-actions d-flex align-items-center gap-2 ms-auto">
+                                <span class="small text-muted d-none d-sm-inline">(<?php echo $n['pdf_size']; ?>)</span>
+                                <a href="#" class="icon-btn pdf-btn" title="Download PDF">
+                                    <i class="fa fa-file-pdf-o"></i>
+                                </a>
+                                <a href="#" class="icon-btn view-btn" title="View Details">
+                                    <i class="fa fa-eye"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
+
+                    <nav class="mt-4">
+                        <ul class="custom-pagination d-flex justify-content-center align-items-center list-unstyled gap-2">
+                            <li><a href="#" class="page-arrow"><i class="fa fa-chevron-left"></i></a></li>
+                            <li><a href="#" class="page-num active">1</a></li>
+                            <li><a href="#" class="page-num">2</a></li>
+                            <li><a href="#" class="page-num">3</a></li>
+                            <li><span class="page-dots">...</span></li>
+                            <li><a href="#" class="page-num">53</a></li>
+                            <li><a href="#" class="page-arrow"><i class="fa fa-chevron-right"></i></a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-12">
+                <div class="side-wrapper h-100 d-flex flex-column gap-4">
+                    
+                    <div class="quick-links-section">
+                        <h4 class="fw-bold mb-3">Quick Links</h4>
+                        <div class="row g-3">
+                            <div class="col-6">
+                                <a href="#" class="quick-link-item">
+                                    <i class="fa fa-pencil text-danger"></i>
+                                    <span>Apply</span>
+                                </a>
+                            </div>
+                            <div class="col-6">
+                                <a href="#" class="quick-link-item">
+                                    <i class="fa fa-id-card text-primary"></i>
+                                    <span>Admit Card</span>
+                                </a>
+                            </div>
+                            <div class="col-6">
+                                <a href="#" class="quick-link-item">
+                                    <i class="fa fa-key text-warning"></i>
+                                    <span>Answer Key</span>
+                                </a>
+                            </div>
+                            <div class="col-6">
+                                <a href="#" class="quick-link-item">
+                                    <i class="fa fa-chart-line text-success"></i>
+                                    <span>Result</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-card calendar-card shadow-sm">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h5 class="m-0 fw-bold">Admission Calendar</h5>
+                            <div class="cal-nav small text-muted">
+                                <i class="fa fa-chevron-left pointer"></i>
+                                <span class="mx-2 fw-bold text-dark">Feb, 2026</span>
+                                <i class="fa fa-chevron-right pointer"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="calendar-timeline border-left-line">
+                            <?php 
+                            $events = [
+                                ['d' => '16', 'm' => 'MAR', 'title' => 'B.Tech Entrance Examination, 2026'],
+                                ['d' => '16', 'm' => 'MAR', 'title' => 'SSA / UDC Grade Limited Competitive Exam'],
+                                ['d' => '31', 'm' => 'MAR', 'title' => 'Selection Posts Examination Registration']
+                            ];
+                            foreach($events as $e): ?>
+                            <div class="calendar-item d-flex align-items-center mb-4">
+                                <div class="cal-date-badge text-center">
+                                    <span class="cal-d"><?php echo $e['d']; ?></span>
+                                    <span class="cal-m"><?php echo $e['m']; ?></span>
+                                </div>
+                                <div class="cal-content ps-3 flex-grow-1 border-bottom pb-2">
+                                    <p class="small fw-bold mb-0 text-navy"><?php echo $e['title']; ?></p>
+                                </div>
+                            </div>
+                            <?php endforeach; ?>
+                        </div>
+                        
+                        <div class="text-center mt-3">
+                            <a href="full-calendar.php" class="view-all-text text-danger">View All</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
 
         <!--======== Service 2 Start ========-->
         <div class="rs-service-2 pt-90 pb-120">
@@ -1826,7 +1963,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <script src="assets/js/main.js"></script>
 
         <script>
-            $(window).on('load', function () {
+            $(window).on('load', function() {
                 // 1. Initialize Background Slider (Sliding Left to Right)
                 var bgSlider = $('.hero-bg-slider');
 
@@ -1847,7 +1984,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     });
 
                     // Force a refresh after a short delay to calculate widths correctly
-                    setTimeout(function () {
+                    setTimeout(function() {
                         bgSlider.trigger('refresh.owl.carousel');
                     }, 200);
                 }
@@ -1887,7 +2024,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             });
         </script>
         <script>
-            document.addEventListener("DOMContentLoaded", function () {
+            document.addEventListener("DOMContentLoaded", function() {
 
                 const modal = document.getElementById("enquireModal");
                 const modalContent = document.querySelector(".enquire-modal-content");
@@ -1899,9 +2036,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     document.getElementById("openEnquireNav")
                 ];
 
-                openButtons.forEach(function (btn) {
+                openButtons.forEach(function(btn) {
                     if (btn) {
-                        btn.addEventListener("click", function (e) {
+                        btn.addEventListener("click", function(e) {
                             e.preventDefault();
                             modal.style.display = "flex";
                         });
@@ -1910,13 +2047,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                 // Close using cross
                 if (closeBtn) {
-                    closeBtn.addEventListener("click", function () {
+                    closeBtn.addEventListener("click", function() {
                         modal.style.display = "none";
                     });
                 }
 
                 // Close when clicking outside form
-                modal.addEventListener("click", function (e) {
+                modal.addEventListener("click", function(e) {
                     if (!modalContent.contains(e.target)) {
                         modal.style.display = "none";
                     }
@@ -2032,6 +2169,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </div>
         </div>
 
+        <div class="floating-contact">
+    <a href="https://wa.me/919999999999" target="_blank" class="contact-icon-box" title="Contact Us">
+        <i class="fa fa-whatsapp"></i> </a>
+</div>
 </body>
 
 </html>

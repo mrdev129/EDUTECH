@@ -20025,32 +20025,65 @@ section {
   position: relative;
 }
 
+/* 1. Corner Alignment */
 .header-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between; /* Pushes logo to left and button to right */
+    align-items: center;
+    padding: 0 30px; /* Provides slight breathing room from the very edge */
 }
 
+/* 3. Glowing & Popping Enquiry Button */
+.header-announcement-wrapper .action-side .main-btn {
+    background: var(--edutech-yellow);
+    color: var(--edutech-navy);
+    font-weight: 800;
+    border: none;
+    position: relative;
+    z-index: 1;
+    animation: glow-pop 2s infinite ease-in-out; /* Continuous effect */
+    box-shadow: 0 0 0 0 rgba(255, 165, 0, 0.7); /* Base glow color */
+}
+
+/* --- ANIMATION KEYFRAMES --- */
+@keyframes glow-pop {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(242, 111, 32, 0.7);
+    }
+    50% {
+        transform: scale(1.1); /* The "Pop-up" effect */
+        /* The "Glow" effect spreading outward */
+        box-shadow: 0 0 20px 10px rgba(242, 111, 32, 0); 
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(242, 111, 32, 0);
+    }
+}
+
+/* 2. Logo Side Alignment */
 .logo-side {
-  display: flex;
-  align-items: center;
-  color: white;
-  text-decoration: none;
+    display: flex;
+    align-items: center;
 }
 
 .logo-side img {
-  height: 50px;
-  margin-right: 15px;
+    height: 50px;
+    margin-right: 15px;
 }
 
-.brand-name {
-  display: block;
-  font-size: 24px;
-  font-weight: 800;
-  line-height: 1;
+/* ADD THIS BLOCK RIGHT HERE */
+.logo-text .brand-name {
+    color: #ffffff !important;
+    font-family: inherit !important;
+    font-size: inherit !important;
+    display: block;
 }
 
 .brand-tagline {
+  color: #ffffff !important;
+    font-family: inherit !important;
   font-size: 11px;
   letter-spacing: 2px;
 }
@@ -20070,25 +20103,53 @@ section {
   text-align: center;
   padding: 10px 0;
   margin: 10px 15px 0 15px;
-  /* Margin top creates the gap */
   border-radius: 15px;
-  /* Bent corners */
   font-weight: 700;
   color: var(--edutech-navy);
   position: relative;
   z-index: 90;
+  /* Ensure the bar handles the sliding content without growth */
+  overflow: hidden; 
+}
+
+/* Force container to 100% width so text travels corner-to-corner */
+.static-announcement .container {
+    max-width: 100% !important;
+    width: 100% !important;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 0; /* Remove padding for true edge-to-edge sliding */
+}
+
+/* Define the sliding movement (To the Left) */
+.sliding-text {
+    display: inline-block;
+    padding-left: 100%; /* Initial push to start from far right */
+    animation: slide-left 15s linear infinite;
+}
+
+/* Animation to move text from Right to Left */
+@keyframes slide-left {
+    0% {
+        transform: translateX(0%); /* Starts at the right edge due to padding-left */
+    }
+    100% {
+        transform: translateX(-100%); /* Moves completely off-screen to the left */
+    }
 }
 
 /* 3. Hero Section - Separated with Bends */
+/* 1. Balanced Hero Container */
 .split-hero {
-  min-height: 85vh;
-  padding: 60px 0;
-  position: relative;
-  border-radius: 25px;
-  /* Bent corners */
-  margin: 15px;
-  /* Gap from all sides */
-  overflow: hidden;
+    height: 560px; /* The "Middle Ground" height */
+    min-height: 560px;
+    padding: 0; 
+    position: relative;
+    border-radius: 30px; /* Bent sides as requested */
+    margin: 12px 15px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
 }
 
 /* Slider Background Layering */
@@ -20115,13 +20176,12 @@ section {
 }
 
 /* Each item carries its own blue filter */
+/* 2. Synchronized Slider Height */
 .hero-bg-slider .item {
-  height: 100vh;
-  width: 100%;
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  display: block;
+    height: 560px; /* Must match container */
+    width: 100%;
+    background-size: cover;
+    background-position: center;
 }
 
 /* This is the blue 'glass' over the photo */
@@ -20172,15 +20232,61 @@ section {
 }
 
 /* Compact Form Bends */
-.compact-form {
+/* .compact-form {
   max-width: 500px;
   margin-left: auto;
   background: #ffffff;
-  border-radius: 20px;
+  border-radius: 20px; */
   /* Bends for form corner */
-  padding: 30px !important;
+  /* padding: 30px !important;
+} */
+
+
+/* 3. Adjusted Form Density */
+.hero-form-box.compact-form {
+    max-width: 440px; 
+    margin-left: auto;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 18px 22px !important; /* Balanced padding */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
 }
 
+/* Row spacing for your exact form fields */
+.hero-form-box.compact-form .mb-2 {
+    margin-bottom: 7px !important; /* Slightly more room than ultra-compact */
+}
+
+/* Field heights */
+.hero-form-box.compact-form .form-control,
+.hero-form-box.compact-form .form-select {
+    height: 38px; 
+    padding: 4px 12px;
+    font-size: 14px;
+}
+
+/* Hostel Toggle specific spacing */
+.hero-form-box.compact-form .hostel-toggle {
+    padding: 4px 10px !important;
+    margin-bottom: 7px;
+}
+
+/* Message field height */
+.hero-form-box.compact-form textarea.form-control {
+    height: 55px; 
+}
+
+/* Title and Button spacing */
+.hero-form-box.compact-form .form-title {
+    font-size: 20px;
+    margin-bottom: 12px !important;
+}
+
+.hero-submit-btn {
+    padding: 11px;
+    margin-top: 8px !important;
+    font-weight: 700;
+}
 .hero-submit-btn {
   background: var(--edutech-orange);
   color: white;
@@ -20242,23 +20348,26 @@ section {
 .program-menu {
   list-style: none;
   display: flex;
-  gap: 25px;
+  gap: 40px !important;
   margin: 0;
   padding: 0;
 }
 
+/* --- Program Navigation Menu Updates --- */
 .program-menu li a {
-  text-decoration: none;
-  color: #003366;
-  /* Deep blue/Navy */
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  transition: 0.3s;
+    color: #003366; /* Your theme Navy */
+    font-size: 14px;
+    font-weight: 700 !important; /* Forces bold text */
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition for zoom and color */
 }
 
 .program-menu li a:hover {
-  color: var(--edutech-orange);
+    color: #F26F20; /* Your theme Orange */
+    transform: scale(1.15); /* The "Zoom In" effect */
+    font-weight: 900 !important; /* Extra bold on hover */
 }
 
 /* Navy Enquire Button */
@@ -20401,4 +20510,298 @@ section {
     transform: scale(1);
     opacity: 1;
   }
+}
+
+
+/* ==========================================================================
+   DASHBOARD SECTION STYLES (NOTICE BOARD, QUICK LINKS, CALENDAR)
+   ========================================================================== */
+
+/* General Card Styling with Bold, Visible Borders */
+.info-card {
+    background: #ffffff;
+    border: 2px solid #DEDEDE !important; /* Bold Border as requested */
+    border-radius: 15px;
+    padding: 30px;
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.view-all-text {
+    color: #8b2d2d; /* Reddish brown matching your screenshot */
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.view-all-text:hover {
+    color: #F26F20; /* Theme Orange on hover */
+}
+
+/* Notice Board Date Badge Styles */
+.date-badge-box {
+    min-width: 65px;
+}
+
+.badge-now {
+    background: #8b2d2d;
+    color: #ffffff;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: -10px;
+    position: relative;
+    z-index: 2;
+}
+
+.date-inner {
+    border: 2px solid #8b2d2d;
+    border-radius: 8px;
+    padding: 12px 5px 5px;
+    background: #ffffff;
+}
+
+.date-inner .day { 
+    display: block; 
+    font-weight: 800; 
+    font-size: 18px; 
+    line-height: 1; 
+    color: #333333; 
+}
+
+.date-inner .mon { 
+    display: block; 
+    font-weight: 700; 
+    font-size: 11px; 
+    text-transform: uppercase; 
+    color: #8b2d2d; 
+}
+
+.date-inner .year { 
+    display: block; 
+    font-size: 10px; 
+    color: #666666; 
+}
+
+.notice-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: #333333;
+    line-height: 1.4;
+}
+
+/* Quick Links Button Styling */
+.quick-link-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border: 2px solid #EAEAEA; /* Bold, visible border */
+    border-radius: 12px;
+    text-decoration: none;
+    color: #333333;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    background: #ffffff;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+.quick-link-item:hover {
+    border-color: #F26F20; /* Brand Orange */
+    transform: translateY(-3px);
+    color: #002147; /* Brand Navy */
+}
+
+/* Pagination Styling (1 2 3 and arrows) */
+.custom-pagination .page-num, 
+.custom-pagination .page-arrow {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #EAEAEA;
+    border-radius: 50%;
+    color: #444444;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.custom-pagination .page-num.active {
+    background: #8b2d2d;
+    color: #ffffff;
+    border-color: #8b2d2d;
+}
+
+.custom-pagination .page-num:hover:not(.active),
+.custom-pagination .page-arrow:hover {
+    background: #f8f8f8;
+    border-color: #8b2d2d;
+    color: #8b2d2d;
+}
+
+.page-dots {
+    color: #999999;
+    font-weight: bold;
+    padding: 0 5px;
+}
+
+/* Timeline / Calendar Card Styling */
+.calendar-item {
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.cal-date {
+    background: #8b2d2d;
+    color: #ffffff;
+    padding: 8px;
+    border-radius: 8px;
+    min-width: 55px;
+    z-index: 2;
+}
+
+.cal-d { 
+    display: block; 
+    font-size: 22px; 
+    font-weight: 800; 
+    line-height: 1; 
+}
+
+.cal-m { 
+    display: block; 
+    font-size: 11px; 
+    font-weight: 700;
+}
+
+.cal-info {
+    border-bottom: 1px solid #eeeeee;
+}
+
+/* Vertical line for the calendar timeline */
+.border-left-timeline {
+    position: relative;
+    padding-left: 10px;
+}
+
+.border-left-timeline::before {
+    content: '';
+    position: absolute;
+    left: 27px; /* Centers line behind the date box */
+    top: 0;
+    bottom: 50px;
+    width: 2px;
+    background: #8b2d2d;
+    opacity: 0.3;
+    z-index: 1;
+}
+
+/* Responsive Fixes */
+@media (max-width: 991px) {
+    .side-container {
+        margin-top: 30px;
+    }
+}
+
+
+/* Responsive Base for Icons */
+.responsive-icon {
+    font-size: 1.2rem; /* Scales with root font size */
+    padding: 10px;
+    border: 1px solid #DEDEDE;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+}
+
+/* Hover Effect to match your theme */
+.responsive-icon:hover {
+    color: #F26F20; /* Your theme orange */
+    border-color: #F26F20;
+    background-color: rgba(242, 111, 32, 0.05);
+}
+
+/* Quick Link Icons specifically */
+.link-icon {
+    font-size: 1.1rem;
+    margin-right: 10px;
+}
+
+/* Media Queries for different devices */
+@media (max-width: 768px) {
+    .responsive-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .link-text {
+        font-size: 14px; /* Adjust text size for tablets */
+    }
+}
+
+@media (max-width: 576px) {
+    .notice-actions {
+        margin-left: 10px;
+    }
+    
+    .responsive-icon {
+        width: 30px;
+        height: 30px;
+        font-size: 0.9rem;
+    }
+}
+
+
+/* --- Floating Contact Icon Styles --- */
+.floating-contact {
+    position: fixed;
+    bottom: 80px;
+    right: 15px;
+    z-index: 9999; /* Ensures it stays above everything */
+}
+
+.contact-icon-box {
+    width: 60px;
+    height: 60px;
+    background-color: #F26F20; /* Your brand Orange */
+    color: #ffffff !important;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Hover Effect: Zoom in and Bold */
+.contact-icon-box:hover {
+    transform: scale(1.2); /* Zoom effect similar to your navigation */
+    background-color: #002147; /* Changes to your Navy Blue on hover */
+    color: #ffffff;
+}
+
+/* Optional: Continuous subtle pulse to grab attention */
+.floating-contact {
+    animation: contact-pulse 2s infinite;
+}
+
+@keyframes contact-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(242, 111, 32, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(242, 111, 32, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(242, 111, 32, 0);
+    }
 }
