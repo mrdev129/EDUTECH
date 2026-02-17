@@ -20015,78 +20015,89 @@ section {
 }
 
 /* 1. Header Styling - Separated with Bends */
+/* --- MINIMIZED NAVY HEADER --- */
 .edutech-main-header {
-  background: var(--edutech-navy);
-  padding: 15px 0;
-  margin: 10px 15px 0 15px;
-  border-radius: 15px;
-  /* Bent corners */
-  z-index: 100;
-  position: relative;
+    background: #002147 !important; /* Brand Navy */
+    padding: 6px 0; /* Reduced height: from 15px down to 6px */
+    margin: 8px 15px 0 15px; /* Slight margin for the bent-corner look */
+    border-radius: 12px;
+    z-index: 100;
+    position: relative;
 }
 
-/* 1. Corner Alignment */
+/* Flex layout to push elements to absolute corners */
 .header-container {
     display: flex;
-    justify-content: space-between; /* Pushes logo to left and button to right */
+    justify-content: space-between;
     align-items: center;
-    padding: 0 30px; /* Provides slight breathing room from the very edge */
+    width: 100%;
+    padding: 0 20px;
 }
 
-/* 3. Glowing & Popping Enquiry Button */
-.header-announcement-wrapper .action-side .main-btn {
-    background: var(--edutech-yellow);
-    color: var(--edutech-navy);
-    font-weight: 800;
-    border: none;
-    position: relative;
-    z-index: 1;
-    animation: glow-pop 2s infinite ease-in-out; /* Continuous effect */
-    box-shadow: 0 0 0 0 rgba(255, 165, 0, 0.7); /* Base glow color */
-}
-
-/* --- ANIMATION KEYFRAMES --- */
-@keyframes glow-pop {
-    0% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(242, 111, 32, 0.7);
-    }
-    50% {
-        transform: scale(1.1); /* The "Pop-up" effect */
-        /* The "Glow" effect spreading outward */
-        box-shadow: 0 0 20px 10px rgba(242, 111, 32, 0); 
-    }
-    100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(242, 111, 32, 0);
-    }
-}
-
-/* 2. Logo Side Alignment */
+/* --- LOGO CONTENT ADJUSTMENTS --- */
 .logo-side {
     display: flex;
     align-items: center;
 }
 
 .logo-side img {
-    height: 50px;
-    margin-right: 15px;
+    height: 32px; /* Scaled down from 50px to fit minimized bar */
+    width: auto;
+    margin-right: 10px;
 }
 
-/* ADD THIS BLOCK RIGHT HERE */
 .logo-text .brand-name {
     color: #ffffff !important;
-    font-family: inherit !important;
-    font-size: inherit !important;
+    font-size: 18px; /* Balanced size for minimized height */
+    font-weight: 800;
+    line-height: 1;
     display: block;
 }
 
-.brand-tagline {
+.logo-text .brand-tagline {
+    color: #ffffff !important;
+    font-size: 8px; /* Adjusted tagline for clarity */
+    letter-spacing: 1.2px;
+    line-height: 1;
+}
+
+/* --- OVAL GLOWING ENQUIRE BUTTON --- */
+#openEnquire.main-btn {
+    background: #FFA500; /* Brand Yellow/Orange */
+    color: #002147 !important; /* Navy text for contrast */
+    font-weight: 800;
+    font-size: 11px;
+    padding: 6px 22px; /* Narrower padding to create oval proportion */
+    border-radius: 50px; /* Essential for the Oval shape */
+    border: none;
+    animation: glow-pop 2s infinite ease-in-out;
+    box-shadow: 0 0 0 0 rgba(255, 165, 0, 0.7);
+    display: inline-block;
+    text-decoration: none;
+}
+
+/* Refined animation for the oval button */
+@keyframes glow-pop {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 165, 0, 0.7);
+    }
+    50% {
+        transform: scale(1.05); /* Subtle pop for smaller header */
+        box-shadow: 0 0 15px 10px rgba(255, 165, 0, 0); 
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 165, 0, 0);
+    }
+}
+
+/* .brand-tagline {
   color: #ffffff !important;
     font-family: inherit !important;
   font-size: 11px;
   letter-spacing: 2px;
-}
+} */
 
 .enquiry-top-btn {
   background: var(--edutech-yellow);
@@ -20097,52 +20108,54 @@ section {
   text-decoration: none;
 }
 
-/* 2. Announcement Bar - Separated with Bends */
+/* --- MINIMIZED ANNOUNCEMENT BAR --- */
 .static-announcement {
-  background: var(--edutech-yellow);
-  text-align: center;
-  padding: 10px 0;
-  margin: 10px 15px 0 15px;
-  border-radius: 15px;
-  font-weight: 700;
-  color: var(--edutech-navy);
-  position: relative;
-  z-index: 90;
-  /* Ensure the bar handles the sliding content without growth */
-  overflow: hidden; 
+    background: var(--edutech-yellow);
+    text-align: center;
+    /* Decreased height: Padding reduced from 10px to 4px */
+    padding: 4px 0; 
+    margin: 8px 15px 0 15px; /* Matched top margin to minimized header */
+    border-radius: 12px;
+    font-weight: 700;
+    color: var(--edutech-navy);
+    position: relative;
+    z-index: 90;
+    overflow: hidden; 
 }
 
-/* Force container to 100% width so text travels corner-to-corner */
+/* Force container to 100% width for edge-to-edge sliding */
 .static-announcement .container {
     max-width: 100% !important;
     width: 100% !important;
     overflow: hidden;
     white-space: nowrap;
-    padding: 0; /* Remove padding for true edge-to-edge sliding */
+    padding: 0;
 }
 
-/* Define the sliding movement (To the Left) */
+/* Updated sliding text with smaller font to fit thin bar */
 .sliding-text {
     display: inline-block;
-    padding-left: 100%; /* Initial push to start from far right */
+    padding-left: 100%;
+    font-size: 14px; /* Slightly decreased font size for a sleeker look */
+    line-height: 1;  /* Tight line height for minimized bar */
     animation: slide-left 15s linear infinite;
 }
 
-/* Animation to move text from Right to Left */
+/* Animation remains the same for right-to-left movement */
 @keyframes slide-left {
     0% {
-        transform: translateX(0%); /* Starts at the right edge due to padding-left */
+        transform: translateX(0%);
     }
     100% {
-        transform: translateX(-100%); /* Moves completely off-screen to the left */
+        transform: translateX(-100%);
     }
 }
 
-/* 3. Hero Section - Separated with Bends */
+/* 3. Hero Section - Slightly Reduced Size */
 /* 1. Balanced Hero Container */
 .split-hero {
-    height: 560px; /* The "Middle Ground" height */
-    min-height: 560px;
+    height: 530px; /* Reduced slightly from 560px */
+    min-height: 530px;
     padding: 0; 
     position: relative;
     border-radius: 30px; /* Bent sides as requested */
@@ -20297,17 +20310,27 @@ section {
 }
 
 /* 4. Sliding Message Bar - Lowest and Separate */
+/* 4. Sliding Message Bar - Increased Size */
 .sliding-info-bar {
   background: var(--edutech-navy);
   color: white;
-  padding: 12px 0;
-  margin: 10px 15px;
-  /* Gap created by margin */
-  border-radius: 15px;
-  /* Bent corners */
-  font-weight: 500;
+  /* Increased height: Padding increased from 4px to 12px */
+  padding: 12px 0; 
+  margin: 10px 15px; 
+  border-radius: 12px;
+  font-weight: 600; /* Slightly bolder for better visibility */
+  font-size: 18px; /* Increased from 14px for a larger, clearer look */
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+/* Adjusted marquee for the larger container */
+.sliding-info-bar marquee {
+    display: block;
+    line-height: 1.2;
+    width: 100%;
 }
 
 /* Footer Navigation Styling */
@@ -20339,36 +20362,43 @@ section {
   z-index: 1000;
 }
 
+.program-nav-bar .container {
+    /* Set max-width to match the Dashboard container boundaries */
+    max-width: 1320px !important;
+    padding-right: var(--bs-gutter-x, .75rem);
+    padding-left: var(--bs-gutter-x, .75rem);
+}
+
 .nav-flex-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.program-menu {
+/* .program-menu {
   list-style: none;
   display: flex;
   gap: 40px !important;
   margin: 0;
   padding: 0;
-}
+} */
 
 /* --- Program Navigation Menu Updates --- */
-.program-menu li a {
-    color: #003366; /* Your theme Navy */
+/* .program-menu li a {
+    color: #003366; 
     font-size: 14px;
-    font-weight: 700 !important; /* Forces bold text */
+    font-weight: 700 !important; 
     text-transform: uppercase;
     text-decoration: none;
     display: inline-block;
-    transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition for zoom and color */
-}
+    transition: transform 0.3s ease, color 0.3s ease; 
+} */
 
-.program-menu li a:hover {
-    color: #F26F20; /* Your theme Orange */
-    transform: scale(1.15); /* The "Zoom In" effect */
-    font-weight: 900 !important; /* Extra bold on hover */
-}
+/* .program-menu li a:hover {
+    color: #F26F20; 
+    transform: scale(1.15); 
+    font-weight: 900 !important; 
+} */
 
 /* Navy Enquire Button */
 .navy-enquire-btn {
@@ -20399,41 +20429,53 @@ section {
 /* ===== NAV BAR ALIGNMENT FIX ===== */
 
 .program-nav-bar .nav-flex-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  /* keep button on right */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    /* Aligns HOME button with the Notice Board card left border */
+    padding-left: 12px !important; 
 }
 
-/* Center the menu */
+/* Center the menu but start the list from the left */
 .program-menu {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 28px;
-  /* control space between menu items */
-  list-style: none;
-  margin: 0 auto;
-  /* this centers the menu */
-  padding: 0;
+    display: flex;
+    justify-content: flex-start; 
+    align-items: center;
+    gap: 45px !important; /* Balanced spacing between options */
+    list-style: none;
+    margin: 0; 
+    padding: 0;
+    flex-grow: 1;
 }
 
-/* Remove extra spacing */
-.program-menu li {
-  margin: 0;
-}
-
-/* Menu link styling (optional small refinement) */
 .program-menu li a {
-  text-decoration: none;
-  font-weight: 500;
-  letter-spacing: 1px;
-  transition: 0.3s ease;
+    color: #003366; 
+    font-size: 14px;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    
+    /* ANTI-BLUR FIX: Forces GPU rendering to keep text sharp during scale */
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), color 0.3s ease;
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    transform: translateZ(0); 
+    will-change: transform;
 }
 
-/* Keep Enquire button on right */
+.program-menu li a:hover {
+    color: #F26F20; 
+    /* scale(1.1) is optimized for sharpness; larger scales often cause blur */
+    transform: scale(1.1) translateZ(0); 
+    font-weight: 800 !important;
+}
+
 .nav-action {
-  margin-left: auto;
+    margin-left: auto;
+    /* Aligns the ENQUIRE button with the right border of Quick Links */
+    padding-right: 12px !important;
 }
 
 
