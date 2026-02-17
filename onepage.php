@@ -1,4 +1,11 @@
 ﻿<?php
+include 'config/db.php';
+$aboutQuery = $conn->query("SELECT * FROM about_section WHERE id=1");
+$about = $aboutQuery->fetch_assoc();
+?>
+
+
+<?php
 session_start();
 require_once 'config/db.php';
 
@@ -432,7 +439,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                             data-ipad-device-dots="false" data-ipad-device2="2" data-ipad-device-nav2="true"
                             data-ipad-device-dots2="false" data-md-device="4" data-lg-device="5"
                             data-md-device-nav="true" data-md-device-dots="false">
-                           
+
 
                             <div class="rs-service-2__item">
                                 <div class="rs-service-2__icon">
@@ -570,36 +577,42 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <section id="rs-about" class="rs-about-2 pt-120 pb-30">
             <div class="container">
                 <div class="row align-items-center">
+
+                    <!-- LEFT IMAGE -->
                     <div class="col-lg-6">
                         <div class="rs-about-2__thumb">
-                            <img src="assets/images/about/logo.jpeg" alt="">
-                            <!-- <div class="rs-shape">
-                                <img class=" gsap-move left-100 start-91" src="assets/images/about/about-shape.png" alt="">
-                            </div> -->
-                            <!-- <div class="rs-counter-content">
-                                <h3 class="title"><span class="rs-count">30</span>+</h3>
-                                <span>Years of Experience</span>
-                            </div> -->
+                            <img src="uploads/about/<?php echo $about['main_image']; ?>" alt="About Image">
                         </div>
                     </div>
+
+                    <!-- RIGHT CONTENT -->
                     <div class="col-lg-6">
                         <div class="rs-about-2__main-content">
                             <div class="rs-section-title black">
+
+                                <!-- TOP HEADING -->
                                 <div class="top-sub-heading">
                                     <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
-                                    <span>About Company</span>
+                                    <span><?php echo $about['top_heading']; ?></span>
                                     <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
                                 </div>
-                                <h2 class="title split-in-fade">We believe that every problem has a solution</h2>
-                                <p>Bring to the table win-win survival strategies to ensure proactive domination at the
-                                    end of
-                                    the day, going forward.</p>
+
+                                <!-- MAIN TITLE -->
+                                <h2 class="title split-in-fade">
+                                    <?php echo $about['main_title']; ?>
+                                </h2>
+
+                                <!-- SHORT DESCRIPTION -->
+                                <p>
+                                    <?php echo $about['short_description']; ?>
+                                </p>
+
+                                <!-- TABS -->
                                 <div id="rs-tabs" class="skltbs-theme-light use-drop skltbs-mode-tabs skltbs-init">
-                                    <!-- tabGroup -->
+
+                                    <!-- TAB BUTTONS -->
                                     <ul class="skltbs-tab-group">
-                                        <!-- tabItem -->
                                         <li class="skltbs-tab-item">
-                                            <!-- tab -->
                                             <button class="skltbs-tab">Our Mission</button>
                                         </li>
                                         <li class="skltbs-tab-item">
@@ -609,78 +622,89 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                             <button class="skltbs-tab">Core Value</button>
                                         </li>
                                     </ul>
-                                    <!-- panelGroup -->
+
+                                    <!-- TAB PANELS -->
                                     <div class="skltbs-panel-group">
-                                        <!-- panel -->
+
+                                        <!-- MISSION -->
                                         <div class="skltbs-panel">
-                                            <p>To empower students by providing expert guidance and transparent insights
-                                                into the complex world of higher education. We strive to simplify the
-                                                admission process, ensuring every student finds the right path to their
-                                                dream career.</p>
+                                            <p><?php echo $about['mission_text']; ?></p>
                                             <ul>
-                                                <li><i class="ri-share-forward-fill"></i>Document the short and long
-                                                    term goals.</li>
-                                                <li><i class="ri-share-forward-fill"></i>Your product vision</li>
+                                                <li><i class="ri-share-forward-fill"></i>
+                                                    <?php echo $about['mission_point1']; ?></li>
+                                                <li><i class="ri-share-forward-fill"></i>
+                                                    <?php echo $about['mission_point2']; ?></li>
                                             </ul>
-                                            <a class="main-btn" href="about.html">
+
+                                            <a class="main-btn" href="<?php echo $about['button_link']; ?>">
                                                 Know More About Us
                                                 <i class="ri-arrow-right-fill"></i>
                                             </a>
+
                                             <div class="play-icon">
-                                                <a class="rs-popup-videos"
-                                                    href="https://www.youtube.com/watch?v=5CLmRIHR5Zw"><i
-                                                        class="fa fa-play"></i></a>
+                                                <a class="rs-popup-videos" href="<?php echo $about['video_link']; ?>">
+                                                    <i class="fa fa-play"></i>
+                                                </a>
                                             </div>
                                         </div>
+
+                                        <!-- VISION -->
                                         <div class="skltbs-panel">
-                                            <p>To become the most trusted global partner in education consultancy,
-                                                recognized for our commitment to student success. We envision a future
-                                                where every learner has equal access to quality information and premium
-                                                academic opportunities.</p>
+                                            <p><?php echo $about['vision_text']; ?></p>
                                             <ul>
-                                                <li><i class="ri-share-forward-fill"></i>Document the short and long
-                                                    term goals.</li>
-                                                <li><i class="ri-share-forward-fill"></i>Your product vision</li>
+                                                <li><i class="ri-share-forward-fill"></i>
+                                                    <?php echo $about['vision_point1']; ?></li>
+                                                <li><i class="ri-share-forward-fill"></i>
+                                                    <?php echo $about['vision_point2']; ?></li>
                                             </ul>
-                                            <a class="main-btn" href="about.html">
+
+                                            <a class="main-btn" href="<?php echo $about['button_link']; ?>">
                                                 Know More About Us
                                                 <i class="ri-arrow-right-fill"></i>
                                             </a>
+
                                             <div class="play-icon">
-                                                <a class="rs-popup-videos"
-                                                    href="https://www.youtube.com/watch?v=5CLmRIHR5Zw"><i
-                                                        class="fa fa-play"></i></a>
+                                                <a class="rs-popup-videos" href="<?php echo $about['video_link']; ?>">
+                                                    <i class="fa fa-play"></i>
+                                                </a>
                                             </div>
                                         </div>
+
+                                        <!-- CORE VALUE -->
                                         <div class="skltbs-panel">
-                                            <p>We operate with unwavering integrity and a student-first mindset to build
-                                                lasting trust with families and institutions. Innovation and excellence
-                                                drive our services, allowing us to provide the most up-to-date and
-                                                effective admission strategies.</p>
+                                            <p><?php echo $about['core_text']; ?></p>
                                             <ul>
-                                                <li><i class="ri-share-forward-fill"></i>Document the short and long
-                                                    term goals.</li>
-                                                <li><i class="ri-share-forward-fill"></i>Your product vision</li>
+                                                <li><i class="ri-share-forward-fill"></i>
+                                                    <?php echo $about['core_point1']; ?></li>
+                                                <li><i class="ri-share-forward-fill"></i>
+                                                    <?php echo $about['core_point2']; ?></li>
                                             </ul>
-                                            <a class="main-btn" href="about.html">
+
+                                            <a class="main-btn" href="<?php echo $about['button_link']; ?>">
                                                 Know More About Us
                                                 <i class="ri-arrow-right-fill"></i>
                                             </a>
+
                                             <div class="play-icon">
-                                                <a class="rs-popup-videos"
-                                                    href="https://www.youtube.com/watch?v=5CLmRIHR5Zw"><i
-                                                        class="fa fa-play"></i></a>
+                                                <a class="rs-popup-videos" href="<?php echo $about['video_link']; ?>">
+                                                    <i class="fa fa-play"></i>
+                                                </a>
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
+                                <!-- END TABS -->
+
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
         <!--======== About 2 Ends ========-->
+
 
         <!--======== Brand Start ========-->
         <div class="rs-brand pb-90 pt-85">

@@ -228,6 +228,13 @@
                 Student
               </a>
             </li>
+            <li>
+              <a href="about-section.php">
+                <i class="ti-info-alt"></i>
+                  <span>About Section</span>
+              </a>
+            </li>
+
             <!-- <li>
             <a href="index-3.php">
               <i class="ri-circle-fill circle-icon w-auto"></i>
