@@ -1,164 +1,1305 @@
 <?php
-// optional: if you use session
-// session_start();
+include '../config/db.php';
+
+if (isset($_POST['update_about'])) {
+    // Sanitize all text inputs to match your form names
+    $top_heading = mysqli_real_escape_string($conn, $_POST['top_heading']);
+    $main_title = mysqli_real_escape_string($conn, $_POST['main_title']);
+    // Note: If you don't have a 'short_description' field in your form yet, 
+    // you should add one or map it to an existing textarea.
+    $mission_text = mysqli_real_escape_string($conn, $_POST['mission_text']);
+    $mission_p1 = mysqli_real_escape_string($conn, $_POST['mission_point1']);
+    $mission_p2 = mysqli_real_escape_string($conn, $_POST['mission_point2']);
+    
+    $vision_text = mysqli_real_escape_string($conn, $_POST['vision_text']);
+    $vision_p1 = mysqli_real_escape_string($conn, $_POST['vision_point1']);
+    $vision_p2 = mysqli_real_escape_string($conn, $_POST['vision_point2']);
+    
+    $core_text = mysqli_real_escape_string($conn, $_POST['core_text']);
+    $core_p1 = mysqli_real_escape_string($conn, $_POST['core_point1']);
+    $core_p2 = mysqli_real_escape_string($conn, $_POST['core_point2']);
+    
+    $video_link = mysqli_real_escape_string($conn, $_POST['video_link']);
+    $button_link = mysqli_real_escape_string($conn, $_POST['button_link']);
+
+    // Image Upload Logic
+    $img_query = "";
+    if (!empty($_FILES['main_image']['name'])) {
+        $target_dir = "uploads/about/";
+        $file_name = time() . "_" . basename($_FILES["main_image"]["name"]);
+        if (move_uploaded_file($_FILES["main_image"]["tmp_name"], $target_dir . $file_name)) {
+            $img_query = ", main_image = '$file_name'";
+        }
+    }
+
+    // Comprehensive UPDATE query matching your database columns
+    $sql = "UPDATE about_section SET 
+            top_heading = '$top_heading', 
+            main_title = '$main_title', 
+            mission_text = '$mission_text',
+            mission_point1 = '$mission_p1',
+            mission_point2 = '$mission_p2',
+            vision_text = '$vision_text',
+            vision_point1 = '$vision_p1',
+            vision_point2 = '$vision_p2',
+            core_text = '$core_text',
+            core_point1 = '$core_p1',
+            core_point2 = '$core_p2',
+            video_link = '$video_link',
+            button_link = '$button_link'
+            $img_query 
+            WHERE id = 1";
+
+    if ($conn->query($sql)) {
+        echo "<script>alert('Website Updated Successfully!'); window.location='about-section.php';</script>";
+    } else {
+        echo "Error: " . $conn->error;
+    }
+}
+
+// Reload the data for the form
+$about = $conn->query("SELECT * FROM about_section WHERE id = 1")->fetch_assoc();
 ?>
 
+<!-- meta tags and other links -->
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>About Section - Admin</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en" data-theme="light">
 
-    <!-- Bootstrap CSS (if already included in student page, keep same links) -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/css/style.css" rel="stylesheet">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description"
+    content="Modern Education Admin Dashboard for schools, colleges, universities, and eLearning platforms. Includes student and course management, attendance, exams, payments, analytics, and a fully responsive clean UI—ideal for LMS, coaching centers, and academic admin systems.">
+  <meta name="keywords"
+    content="Education Admin Dashboard, School Admin Panel, College Dashboard, University Dashboard, LMS Dashboard, eLearning Admin Template, Student Management System, Course Management, Education Template, Study Dashboard, Online Learning Dashboard, Academic Admin Panel, Bootstrap Dashboard, React Education Dashboard, Next.js Education Template">
+  <meta name="robots" content="INDEX,FOLLOW">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Title -->
+  <title>EDUTECH | ADMISSION EXPERT</title>
+  <link rel="icon" type="image/png" href="assets/images/favicon.png" sizes="16x16">
+  <!-- remix icon font css  -->
+  <link rel="stylesheet" href="assets/css/remixicon.css">
+  <!-- BootStrap css -->
+  <link rel="stylesheet" href="assets/css/lib/bootstrap.min.css">
+  <!-- Apex Chart css -->
+  <link rel="stylesheet" href="assets/css/lib/apexcharts.css">
+  <!-- Data Table css -->
+  <link rel="stylesheet" href="assets/css/lib/dataTables.min.css">
+  <!-- Date picker css -->
+  <link rel="stylesheet" href="assets/css/lib/flatpickr.min.css">
+  <!-- Calendar css -->
+  <link rel="stylesheet" href="assets/css/lib/full-calendar.css">
+  <!-- calendar -->
+  <link rel="stylesheet" href="assets/css/lib/calendar.css">
+  <!-- main css -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .paging_simple_numbers .paginate_button.current {
+      background: #001f3f !important;
+      /* Navy Blue */
+      color: white !important;
+      border: 1px solid #001f3f !important;
+    }
+
+    .paging_simple_numbers .paginate_button:hover {
+      background: #ff9f29 !important;
+      /* Orange */
+      color: white !important;
+      border: 1px solid #ff9f29 !important;
+    }
+
+    /* Ensures the search input and button are the exact same height */
+    .h-40-px {
+        height: 40px !important;
+    }
+
+    /* Adjusts the search icon position inside the 40px input */
+    .navbar-search .icon {
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 20px;
+        color: #94a3b8;
+    }
+
+    /* Keeps the elements grouped together even on smaller screens */
+    .dataTable-wrapper .d-flex {
+        display: flex !important;
+        flex-direction: row !important;
+    }
+  </style>
 </head>
 
 <body>
 
-<div id="layout-wrapper">
+  <!-- Theme Customization Structure Start -->
+  <div class="body-overlay"></div>
 
-    <!-- ========== LEFT SIDEBAR START ========== -->
-    <div class="vertical-menu">
-
-        <div class="h-100">
-            <div class="user-wid text-center py-4">
-                <h5 class="mt-3 mb-1">Admin Panel</h5>
-            </div>
-
-            <div id="sidebar-menu">
-                <ul class="metismenu list-unstyled">
-
-                    <li>
-                        <a href="dashboard.php">
-                            <span>Dashboard</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="student-list.php">
-                            <span>Students</span>
-                        </a>
-                    </li>
-
-                    <!-- NEW MENU -->
-                    <li class="mm-active">
-                        <a href="about-section.php">
-                            <span>About Section</span>
-                        </a>
-                    </li>
-
-                </ul>
-            </div>
-        </div>
+  <button type="button"
+    class="theme-customization__button w-48-px h-48-px bg-primary-600 text-white rounded-circle d-flex justify-content-center align-items-center position-fixed end-0 bottom-0 mb-40 me-40 text-2xxl bg-hover-primary-700" aria-label="Theme Customization Button">
+    <i class="ri-settings-3-line animate-spin"></i>
+  </button>
+  <div class="theme-customization-sidebar w-100 bg-base h-100vh overflow-y-auto position-fixed end-0 top-0">
+    <div class="d-flex align-items-center gap-3 py-16 px-24 justify-content-between border-bottom">
+      <div>
+        <h6 class="text-sm dark:text-white">Theme Settings</h6>
+        <p class="text-xs mb-0 text-neutral-500 dark:text-neutral-200">Customize and preview instantly</p>
+      </div>
+      <button data-slot="button"
+        class="theme-customization-sidebar__close text-neutral-900 bg-transparent text-hover-primary-600 d-flex text-xl">
+        <i class="ri-close-fill"></i>
+      </button>
     </div>
-    <!-- ========== LEFT SIDEBAR END ========== -->
 
+    <div class="d-flex flex-column gap-48 p-24 overflow-y-auto flex-grow-1">
 
-
-    <!-- ================= MAIN CONTENT ================= -->
-    <div class="main-content">
-
-        <div class="page-content">
-            <div class="container-fluid">
-
-                <!-- Page Title -->
-                <div class="row mb-4">
-                    <div class="col-12">
-                        <h4 class="card-title">Manage About Section</h4>
-                        <p class="text-muted">Update website About page content from here.</p>
-                    </div>
-                </div>
-
-                <!-- About Form Card -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-header bg-light">
-                                <h5 class="mb-0">Edit About Section</h5>
-                            </div>
-
-                            <div class="card-body">
-
-                                <form action="" method="POST" enctype="multipart/form-data">
-
-                                    <!-- Image Upload -->
-                                    <div class="mb-3">
-                                        <label class="form-label">About Image</label>
-                                        <input type="file" name="about_image" class="form-control">
-                                    </div>
-
-                                    <!-- Main Title -->
-                                    <div class="mb-3">
-                                        <label class="form-label">Main Title</label>
-                                        <input type="text" name="main_title" class="form-control"
-                                               placeholder="Enter main heading">
-                                    </div>
-
-                                    <!-- Description -->
-                                    <div class="mb-3">
-                                        <label class="form-label">Short Description</label>
-                                        <textarea name="description" class="form-control" rows="3"
-                                                  placeholder="Enter short description"></textarea>
-                                    </div>
-
-                                    <hr>
-
-                                    <!-- Mission -->
-                                    <div class="mb-3">
-                                        <label class="form-label">Our Mission</label>
-                                        <textarea name="mission" class="form-control" rows="3"></textarea>
-                                    </div>
-
-                                    <!-- Vision -->
-                                    <div class="mb-3">
-                                        <label class="form-label">Our Vision</label>
-                                        <textarea name="vision" class="form-control" rows="3"></textarea>
-                                    </div>
-
-                                    <!-- Core Value -->
-                                    <div class="mb-3">
-                                        <label class="form-label">Core Value</label>
-                                        <textarea name="core_value" class="form-control" rows="3"></textarea>
-                                    </div>
-
-                                    <!-- Video Link -->
-                                    <div class="mb-3">
-                                        <label class="form-label">YouTube Video Link</label>
-                                        <input type="text" name="video_link" class="form-control"
-                                               placeholder="https://youtube.com/...">
-                                    </div>
-
-                                    <div class="text-end">
-                                        <button type="submit" name="save_about" class="btn btn-primary">
-                                            Update About Section
-                                        </button>
-                                    </div>
-
-                                </form>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+      <div class="theme-setting-item">
+        <h6 class="fw-medium text-primary-light text-md mb-3">Theme Mode</h6>
+        <div class="d-grid grid-cols-3 gap-3 dark-light-mode">
+          <button type="button"
+            class="theme-btn theme-setting-item__btn d-flex align-items-center justify-content-center h-64-px rounded-3 text-xl active"
+            data-theme="light" aria-label="light">
+            <i class="ri-sun-line"></i>
+          </button>
+          <button type="button"
+            class="theme-btn theme-setting-item__btn d-flex align-items-center justify-content-center h-64-px rounded-3 text-xl"
+            data-theme="dark" aria-label="dark">
+            <i class="ri-moon-line"></i>
+          </button>
+          <button type="button"
+            class="theme-btn theme-setting-item__btn d-flex align-items-center justify-content-center h-64-px rounded-3 text-xl"
+            data-theme="system" aria-label="system">
+            <i class="ri-computer-line"></i>
+          </button>
         </div>
+      </div>
 
-        <!-- Footer -->
-        <footer class="footer text-center py-3">
-            © <?php echo date('Y'); ?> Admin Panel
-        </footer>
+      <div class="theme-setting-item">
+        <h6 class="fw-medium text-primary-light text-md mb-3">Page Direction</h6>
+        <div class="d-grid grid-cols-2 gap-3">
+          <button type="button"
+            class="theme-setting-item__btn ltr-mode-btn d-flex align-items-center justify-content-center gap-2 h-56-px rounded-3 text-xl" aria-label="LTR">
+            <span><i class="ri-align-item-left-line"></i></span>
+            <span class="h6 text-sm font-medium mb-0">LTR</span>
+          </button>
+
+          <button type="button"
+            class="theme-setting-item__btn rtl-mode-btn d-flex align-items-center justify-content-center gap-2 h-56-px rounded-3 text-xl" aria-label="RTL">
+            <span class="h6 text-sm font-medium mb-0">RTL</span>
+            <span><i class="ri-align-item-right-line"></i></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="theme-setting-item">
+        <h6 class="fw-medium text-primary-light text-md mb-3">Color Schema</h6>
+        <div class="d-grid grid-cols-3 gap-3">
+          <button type="button"
+            class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
+            data-color="base" aria-label="Base">
+            <span class="color-picker-btn__box h-40-px w-100 rounded-3"
+              style="background-color: #25A194;"></span>
+            <span class="fw-medium mt-1" style="color: #25A194;">Base</span>
+          </button>
+          <button type="button"
+            class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
+            data-color="red" aria-label="Red">
+            <span class="color-picker-btn__box h-40-px w-100 rounded-3"
+              style="background-color: #dc2626;"></span>
+            <span class="fw-medium mt-1" style="color: #dc2626;">Red</span>
+          </button>
+          <button type="button"
+            class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
+            data-color="blue" aria-label="Blue">
+            <span class="color-picker-btn__box h-40-px w-100 rounded-3"
+              style="background-color: #2563eb;"></span>
+            <span class="fw-medium mt-1" style="color: #2563eb;">Blue</span>
+          </button>
+          <button type="button"
+            class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
+            data-color="yellow" aria-label="Yellow">
+            <span class="color-picker-btn__box h-40-px w-100 rounded-3"
+              style="background-color: #ff9f29;"></span>
+            <span class="fw-medium mt-1" style="color: #ff9f29;">Yellow</span>
+          </button>
+          <button type="button"
+            class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
+            data-color="cyan" aria-label="Cyan">
+            <span class="color-picker-btn__box h-40-px w-100 rounded-3"
+              style="background-color: #00b8f2;"></span>
+            <span class="fw-medium mt-1" style="color: #00b8f2;">Cyan</span>
+          </button>
+          <button type="button"
+            class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
+            data-color="violet" aria-label="Violet">
+            <span class="color-picker-btn__box h-40-px w-100 rounded-3"
+              style="background-color: #7c3aed;"></span>
+            <span class="fw-medium mt-1" style="color: #7c3aed;">Violet</span>
+          </button>
+        </div>
+      </div>
 
     </div>
-    <!-- ================= END MAIN CONTENT ================= -->
+  </div>
+  <!-- Theme Customization Structure End -->
 
+  <div class="overlay bg-black bg-opacity-50 w-100 h-100 position-fixed z-9 visibility-hidden opacity-0 duration-300">
+  </div>
+  <aside class="sidebar">
+    <button type="button" class="sidebar-close-btn">
+      <iconify-icon icon="radix-icons:cross-2"></iconify-icon>
+    </button>
+    <div class="">
+      <div class="sidebar-logo d-flex align-items-center justify-content-between">
+        <a href="index.php" class="">
+          <img src="assets/images/logo.png" alt="site logo" class="light-logo">
+          <img src="assets/images/logo-light.png" alt="site logo" class="dark-logo">
+          <img src="assets/images/logo-icon.png" alt="site logo" class="logo-icon">
+        </a>
+        <button type="button" class="text-xxl d-xl-flex d-none line-height-1 sidebar-toggle text-neutral-500"
+          aria-label="Collapse Sidebar">
+          <i class="ri-contract-left-line"></i>
+        </button>
+      </div>
+    </div>
+    <!-- User Info start -->
+    <div class="mx-16 py-12">
+      <div class="dropdown profile-dropdown">
+        <button type="button"
+          class="profile-dropdown__button d-flex align-items-center justify-content-between p-10 w-100 overflow-hidden bg-neutral-50 radius-12 "
+          data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+          <span class="d-flex align-items-start gap-10">
+            <img src="assets/images/thumbs/leave-request-img2.png" alt="Thumbnail"
+              class="w-40-px h-40-px rounded-circle object-fit-cover flex-shrink-0">
+            <span class="profile-dropdown__contents">
+              <span class="h6 mb-0 text-md d-block text-primary-light">Jone Copper</span>
+              <span class="text-secondary-light text-sm mb-0 d-block">Admin</span>
+            </span>
+          </span>
+          <span class="profile-dropdown__icon pe-8 text-xl d-flex line-height-1">
+            <i class="ri-arrow-right-s-line"></i>
+          </span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-lg-end border p-12">
+          <li>
+            <a href="student-details.php"
+              class="dropdown-item rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-2 py-6">
+              <i class="ri-user-3-line"></i>
+              My Profile
+            </a>
+          </li>
+          <li>
+            <a href="general.php"
+              class="dropdown-item rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-2 py-6">
+              <i class="ri-settings-3-line"></i>
+              Setting
+            </a>
+          </li>
+          <li>
+            <a href="login.php"
+              class="dropdown-item rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-2 py-6">
+              <i class="ri-shut-down-line"></i>
+              Log Out
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- User Info end -->
+    <div class="sidebar-menu-area">
+      <ul class="sidebar-menu" id="sidebar-menu">
+        <li class="dropdown">
+          <a href="javascript:void(0)">
+            <i class="ri-home-4-line"></i>
+            <span>Dashboard </span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li>
+              <a href="index-2.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Home
+              </a>
+            </li>
+            <!-- <li>
+            <a href="index-3.php">
+              <i class="ri-circle-fill circle-icon w-auto"></i>
+              Teacher
+            </a>
+          </li>
+          <li>
+            <a href="index-4.php">
+              <i class="ri-circle-fill circle-icon w-auto"></i>
+              Parent
+            </a>
+          </li> -->
+            <!-- <li>
+            <a href="index-5.php">
+              <i class="ri-circle-fill circle-icon w-auto"></i>
+              LMS 
+            </a>
+          </li> -->
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="javascript:void(0)">
+            <i class="ri-graduation-cap-line"></i>
+            <span>Students</span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li>
+              <a href="add-new-student.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Add New Student
+              </a>
+            </li>
+            <li>
+              <a href="student-list.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Student List
+              </a>
+            </li>
+            <li>
+              <a href="suspended-student.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Suspend Student
+              </a>
+            </li>
+            <!-- <li>
+            <a href="student-category.php">
+              <i class="ri-circle-fill circle-icon w-auto"></i>
+              Student Categories
+            </a>
+          </li> -->
+            <!-- <li>
+            <a href="edit-student.php">
+              <i class="ri-circle-fill circle-icon w-auto"></i>
+              Edit Student
+            </a>
+          </li> -->
+            <li>
+              <a href="student-details.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Student Details
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="javascript:void(0)">
+            <i class="ri-user-follow-line"></i>
+            <span>About</span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li>
+              <a href="about-section.php">
+                <i class="ti-info-alt"></i>
+                  <span>About update</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <!-- <li class="dropdown">
+          <a href="javascript:void(0)">
+            <i class="ri-user-follow-line"></i>
+            <span>Teachers</span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li>
+              <a href="add-new-teacher.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Add New Teacher
+              </a>
+            </li>
+            <li>
+              <a href="teacher-list.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Teacher List
+              </a>
+            </li>
+            <li>
+              <a href="edit-teacher.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Edit Teacher
+              </a>
+            </li>
+            <li>
+              <a href="teacher-details.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Teacher Details
+              </a>
+            </li>
+            <li>
+              <a href="teacher-timetable.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Teacher Timetable
+              </a>
+            </li>
+          </ul>
+        </li> -->
+        <!-- <li class="dropdown">
+          <a href="javascript:void(0)">
+            <i class="ri-account-circle-line"></i>
+            <span>Guardian</span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li>
+              <a href="add-new-guardian.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Add New Guardians
+              </a>
+            </li>
+            <li>
+              <a href="guardian-list.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Guardians List
+              </a>
+            </li>
+            <li>
+              <a href="edit-guardian.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Edit Guardian
+              </a>
+            </li>
+            <li>
+              <a href="guardian-details.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Guardian Details
+              </a>
+            </li>
+          </ul>
+        </li> -->
+        <!-- <li class="dropdown">
+          <a href="javascript:void(0)">
+            <i class="ri-list-view"></i>
+            <span>Classes</span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li>
+              <a href="section-list.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Section
+              </a>
+            </li>
+            <li>
+              <a href="subject-list.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Subjects
+              </a>
+            </li>
+            <li>
+              <a href="class-list.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Class List
+              </a>
+            </li>
+            <li>
+              <a href="class-room-list.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Class Room
+              </a>
+            </li>
+          </ul>
+        </li> -->
+        <!-- <li class="dropdown">
+          <a href="javascript:void(0)">
+            <i class="ri-file-edit-line"></i>
+            <span>Examinations</span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li>
+              <a href="exam.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Exam
+              </a>
+            </li>
+            <li>
+              <a href="exam-schedule.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Exam Schedule
+              </a>
+            </li>
+            <li>
+              <a href="exam-result.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Exam Result
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="javascript:void(0)">
+            <i class="ri-money-dollar-circle-line"></i>
+            <span>Fees Collection</span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li>
+              <a href="fees-collect.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Fees Collect
+              </a>
+            </li>
+            <li>
+              <a href="fees-type.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Fees Type
+              </a>
+            </li>
+            <li>
+              <a href="fees-group.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Fees Group
+              </a>
+            </li>
+            <li>
+              <a href="fees-discount.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Fees Discount
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="javascript:void(0)">
+            <i class="ri-calendar-check-line"></i>
+            <span>Attendance</span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li>
+              <a href="student-attendance.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Student Attendance
+              </a>
+            </li>
+            <li>
+              <a href="teacher-attendance.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Teacher Attendance
+              </a>
+            </li>
+            <li>
+              <a href="employee-attendance.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Employee Attendance
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="javascript:void(0)">
+            <i class="ri-time-line"></i>
+            <span>Leaves</span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li>
+              <a href="leave-types.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Leave Types
+              </a>
+            </li>
+            <li>
+              <a href="leave-request.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Leave Request
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="certificate.php">
+            <i class="ri-home-4-line"></i>
+            <span>Certificate </span>
+          </a>
+        </li>
+        <li class="dropdown">
+          <a href="javascript:void(0)">
+            <i class="ri-book-2-line"></i>
+            <span>Library</span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li>
+              <a href="books-list.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Books List
+              </a>
+            </li>
+            <li>
+              <a href="members-list.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Members List
+              </a>
+            </li>
+            <li>
+              <a href="member-details.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Members Details
+              </a>
+            </li>
+            <li>
+              <a href="issue-return.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Issue Return
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="javascript:void(0)">
+            <i class="ri-money-dollar-circle-line"></i>
+            <span>Accounts</span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li>
+              <a href="income-head.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Income Head
+              </a>
+            </li>
+            <li>
+              <a href="income-list.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Income List
+              </a>
+            </li>
+            <li>
+              <a href="expense-head.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Expense Head
+              </a>
+            </li>
+            <li>
+              <a href="expense-list.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Expense List
+              </a>
+            </li>
+            <li>
+              <a href="transaction.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Transaction
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="javascript:void(0)">
+            <i class="ri-user-settings-line"></i>
+            <span>HRM</span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li>
+              <a href="employee-list.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Employee List
+              </a>
+            </li>
+            <li>
+              <a href="employee-details.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Employee Details
+              </a>
+            </li>
+            <li>
+              <a href="add-new-employee.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Add New Employee
+              </a>
+            </li>
+            <li>
+              <a href="payroll.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Payroll
+              </a>
+            </li>
+            <li>
+              <a href="designation.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Designation
+              </a>
+            <li>
+              <a href="department.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Department
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="notice-board.php">
+            <i class="ri-booklet-line"></i>
+            <span>Notice Board </span>
+          </a>
+        </li>
+        <li>
+          <a href="event.php">
+            <i class="ri-calendar-event-line"></i>
+            <span>Event </span>
+          </a>
+        </li>
+        <li>
+          <a href="message.php">
+            <i class="ri-message-2-line"></i>
+            <span>Message </span>
+          </a>
+        </li>
+        <li>
+          <a href="subscription-plan.php">
+            <i class="ri-price-tag-3-line"></i>
+            <span>Subscription Plan </span>
+          </a>
+        </li>
+        <li>
+          <a href="role-access.php">
+            <i class="ri-macbook-line"></i>
+            <span>Role & Access</span>
+          </a>
+        </li>
+        <li class="dropdown">
+          <a href="javascript:void(0)">
+            <i class="ri-shield-check-line"></i>
+            <span>Authentication</span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li>
+              <a href="login.php"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Login</a>
+            </li>
+            <li>
+              <a href="register.php"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Register</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="assign-role-plan.php">
+            <i class="ri-user-follow-line"></i>
+            <span>Assign Role</span>
+          </a>
+        </li>
+        <li class="dropdown">
+          <a href="javascript:void(0)">
+            <i class="ri-user-settings-line"></i>
+            <span>Settings</span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li>
+              <a href="general.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                General
+              </a>
+            </li>
+            <li>
+              <a href="notification.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Notification
+              </a>
+            </li>
+            <li>
+              <a href="currencies.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Currencies
+              </a>
+            </li>
+            <li>
+              <a href="languages.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Languages
+              </a>
+            </li>
+          </ul>
+        </li> -->
+      </ul>
+    </div>
+  </aside>
+
+  <main class="dashboard-main">
+    <div class="navbar-header shadow-1">
+      <div class="row align-items-center justify-content-between">
+        <div class="col-auto">
+          <div class="d-flex flex-wrap align-items-center gap-4">
+            <button type="button" class="sidebar-mobile-toggle" aria-label="Sidebar Mobile Toggler Button">
+              <iconify-icon icon="heroicons:bars-3-solid" class="icon"></iconify-icon>
+            </button>
+            <form class="navbar-search">
+              <input type="text" class="bg-transparent" name="search" placeholder="Search">
+              <iconify-icon icon="ion:search-outline" class="icon"></iconify-icon>
+            </form>
+          </div>
+        </div>
+        <div class="col-auto">
+          <div class="d-flex flex-wrap align-items-center gap-3">
+            <button type="button" data-theme-toggle
+              class="w-40-px h-40-px bg-neutral-200 rounded-circle d-flex justify-content-center align-items-center" aria-label="Dark & Light Mode Button"></button>
+            <div class="dropdown d-inline-block">
+              <button
+                class="has-indicator w-40-px h-40-px bg-neutral-200 rounded-circle d-flex justify-content-center align-items-center"
+                type="button" data-bs-toggle="dropdown" aria-label="Language Change Button">
+                <img src="assets/images/flags/flag1.png" alt="image" class="w-24 h-24 object-fit-cover rounded-circle">
+              </button>
+              <div class="dropdown-menu to-top dropdown-menu-sm">
+                <div
+                  class="py-12 px-16 radius-8 bg-primary-50 mb-16 d-flex align-items-center justify-content-between gap-2">
+                  <div>
+                    <h6 class="text-lg text-primary-light fw-semibold mb-0">Choose Your Language</h6>
+                  </div>
+                </div>
+
+                <div class="max-h-400-px overflow-y-auto scroll-sm pe-8">
+                  <div class="form-check style-check d-flex align-items-center justify-content-between mb-16">
+                    <label class="form-check-label line-height-1 fw-medium text-secondary-light" for="english">
+                      <span class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
+                        <img src="assets/images/flags/flag1.png" alt="Image"
+                          class="w-36-px h-36-px bg-success-subtle text-success-main rounded-circle flex-shrink-0">
+                        <span class="text-md fw-semibold mb-0">English</span>
+                      </span>
+                    </label>
+                    <input class="form-check-input" type="radio" name="crypto" id="english">
+                  </div>
+
+                  <div class="form-check style-check d-flex align-items-center justify-content-between mb-16">
+                    <label class="form-check-label line-height-1 fw-medium text-secondary-light" for="japan">
+                      <span class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
+                        <img src="assets/images/flags/flag2.png" alt="Image"
+                          class="w-36-px h-36-px bg-success-subtle text-success-main rounded-circle flex-shrink-0">
+                        <span class="text-md fw-semibold mb-0">Japan</span>
+                      </span>
+                    </label>
+                    <input class="form-check-input" type="radio" name="crypto" id="japan">
+                  </div>
+
+                  <div class="form-check style-check d-flex align-items-center justify-content-between mb-16">
+                    <label class="form-check-label line-height-1 fw-medium text-secondary-light" for="france">
+                      <span class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
+                        <img src="assets/images/flags/flag3.png" alt="Image"
+                          class="w-36-px h-36-px bg-success-subtle text-success-main rounded-circle flex-shrink-0">
+                        <span class="text-md fw-semibold mb-0">France</span>
+                      </span>
+                    </label>
+                    <input class="form-check-input" type="radio" name="crypto" id="france">
+                  </div>
+
+                  <div class="form-check style-check d-flex align-items-center justify-content-between mb-16">
+                    <label class="form-check-label line-height-1 fw-medium text-secondary-light" for="germany">
+                      <span class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
+                        <img src="assets/images/flags/flag4.png" alt="Image"
+                          class="w-36-px h-36-px bg-success-subtle text-success-main rounded-circle flex-shrink-0">
+                        <span class="text-md fw-semibold mb-0">Germany</span>
+                      </span>
+                    </label>
+                    <input class="form-check-input" type="radio" name="crypto" id="germany">
+                  </div>
+
+                  <div class="form-check style-check d-flex align-items-center justify-content-between mb-16">
+                    <label class="form-check-label line-height-1 fw-medium text-secondary-light" for="korea">
+                      <span class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
+                        <img src="assets/images/flags/flag5.png" alt="Image"
+                          class="w-36-px h-36-px bg-success-subtle text-success-main rounded-circle flex-shrink-0">
+                        <span class="text-md fw-semibold mb-0">South Korea</span>
+                      </span>
+                    </label>
+                    <input class="form-check-input" type="radio" name="crypto" id="korea">
+                  </div>
+
+                  <div class="form-check style-check d-flex align-items-center justify-content-between mb-16">
+                    <label class="form-check-label line-height-1 fw-medium text-secondary-light" for="bangladesh">
+                      <span class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
+                        <img src="assets/images/flags/flag6.png" alt="Image"
+                          class="w-36-px h-36-px bg-success-subtle text-success-main rounded-circle flex-shrink-0">
+                        <span class="text-md fw-semibold mb-0">Bangladesh</span>
+                      </span>
+                    </label>
+                    <input class="form-check-input" type="radio" name="crypto" id="bangladesh">
+                  </div>
+
+                  <div class="form-check style-check d-flex align-items-center justify-content-between mb-16">
+                    <label class="form-check-label line-height-1 fw-medium text-secondary-light" for="india">
+                      <span class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
+                        <img src="assets/images/flags/flag7.png" alt="Image"
+                          class="w-36-px h-36-px bg-success-subtle text-success-main rounded-circle flex-shrink-0">
+                        <span class="text-md fw-semibold mb-0">India</span>
+                      </span>
+                    </label>
+                    <input class="form-check-input" type="radio" name="crypto" id="india">
+                  </div>
+                  <div class="form-check style-check d-flex align-items-center justify-content-between">
+                    <label class="form-check-label line-height-1 fw-medium text-secondary-light" for="canada">
+                      <span class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
+                        <img src="assets/images/flags/flag8.png" alt="Image"
+                          class="w-36-px h-36-px bg-success-subtle text-success-main rounded-circle flex-shrink-0">
+                        <span class="text-md fw-semibold mb-0">Canada</span>
+                      </span>
+                    </label>
+                    <input class="form-check-input" type="radio" name="crypto" id="canada">
+                  </div>
+                </div>
+              </div>
+            </div><!-- Language dropdown end -->
+
+            <div class="dropdown">
+              <button
+                class="has-indicator w-40-px h-40-px bg-neutral-200 rounded-circle d-flex justify-content-center align-items-center position-relative"
+                type="button" data-bs-toggle="dropdown" aria-label="Notification Button">
+                <iconify-icon icon="iconoir:bell" class="text-primary-light text-xl"></iconify-icon>
+                <span class="w-8-px h-8-px bg-danger-600 position-absolute end-0 top-0 rounded-circle mt-2 me-2"></span>
+              </button>
+              <div class="dropdown-menu to-top dropdown-menu-lg p-0">
+                <div
+                  class="m-16 py-12 px-16 radius-8 bg-primary-50 mb-16 d-flex align-items-center justify-content-between gap-2">
+                  <div>
+                    <h6 class="text-lg text-primary-light fw-semibold mb-0">Notifications</h6>
+                  </div>
+                  <span
+                    class="text-primary-600 fw-semibold text-lg w-40-px h-40-px rounded-circle bg-base d-flex justify-content-center align-items-center">05</span>
+                </div>
+
+                <div class="max-h-400-px overflow-y-auto scroll-sm pe-4">
+                  <a href="javascript:void(0)"
+                    class="px-24 py-12 d-flex align-items-start gap-3 mb-2 justify-content-between">
+                    <div class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
+                      <span
+                        class="w-44-px h-44-px bg-success-subtle text-success-main rounded-circle d-flex justify-content-center align-items-center flex-shrink-0">
+                        <iconify-icon icon="bitcoin-icons:verify-outline" class="icon text-xxl"></iconify-icon>
+                      </span>
+                      <div>
+                        <h6 class="text-md fw-semibold mb-4">Congratulations</h6>
+                        <p class="mb-0 text-sm text-secondary-light text-w-200-px">Your profile has been Verified. Your
+                          profile has been Verified</p>
+                      </div>
+                    </div>
+                    <span class="text-sm text-secondary-light flex-shrink-0">23 Mins ago</span>
+                  </a>
+
+                  <a href="javascript:void(0)"
+                    class="px-24 py-12 d-flex align-items-start gap-3 mb-2 justify-content-between bg-neutral-50">
+                    <div class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
+                      <span
+                        class="w-44-px h-44-px bg-success-subtle text-success-main rounded-circle d-flex justify-content-center align-items-center flex-shrink-0">
+                        <img src="assets/images/notification/profile-1.png" alt="Image">
+                      </span>
+                      <div>
+                        <h6 class="text-md fw-semibold mb-4">Ronald Richards</h6>
+                        <p class="mb-0 text-sm text-secondary-light text-w-200-px">You can stitch between artboards</p>
+                      </div>
+                    </div>
+                    <span class="text-sm text-secondary-light flex-shrink-0">23 Mins ago</span>
+                  </a>
+
+                  <a href="javascript:void(0)"
+                    class="px-24 py-12 d-flex align-items-start gap-3 mb-2 justify-content-between">
+                    <div class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
+                      <span
+                        class="w-44-px h-44-px bg-info-subtle text-info-main rounded-circle d-flex justify-content-center align-items-center flex-shrink-0">
+                        AM
+                      </span>
+                      <div>
+                        <h6 class="text-md fw-semibold mb-4">Arlene McCoy</h6>
+                        <p class="mb-0 text-sm text-secondary-light text-w-200-px">Invite you to prototyping</p>
+                      </div>
+                    </div>
+                    <span class="text-sm text-secondary-light flex-shrink-0">23 Mins ago</span>
+                  </a>
+
+                  <a href="javascript:void(0)"
+                    class="px-24 py-12 d-flex align-items-start gap-3 mb-2 justify-content-between bg-neutral-50">
+                    <div class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
+                      <span
+                        class="w-44-px h-44-px bg-success-subtle text-success-main rounded-circle d-flex justify-content-center align-items-center flex-shrink-0">
+                        <img src="assets/images/notification/profile-2.png" alt="Image">
+                      </span>
+                      <div>
+                        <h6 class="text-md fw-semibold mb-4">Robiul Hasan</h6>
+                        <p class="mb-0 text-sm text-secondary-light text-w-200-px">Invite you to prototyping</p>
+                      </div>
+                    </div>
+                    <span class="text-sm text-secondary-light flex-shrink-0">23 Mins ago</span>
+                  </a>
+
+                  <a href="javascript:void(0)"
+                    class="px-24 py-12 d-flex align-items-start gap-3 mb-2 justify-content-between">
+                    <div class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
+                      <span
+                        class="w-44-px h-44-px bg-info-subtle text-info-main rounded-circle d-flex justify-content-center align-items-center flex-shrink-0">
+                        DR
+                      </span>
+                      <div>
+                        <h6 class="text-md fw-semibold mb-4">Darlene Robertson</h6>
+                        <p class="mb-0 text-sm text-secondary-light text-w-200-px">Invite you to prototyping</p>
+                      </div>
+                    </div>
+                    <span class="text-sm text-secondary-light flex-shrink-0">23 Mins ago</span>
+                  </a>
+                </div>
+
+                <div class="text-center py-12 px-16">
+                  <a href="javascript:void(0)" class="text-primary-600 fw-semibold text-md hover-underline">See All Notification</a>
+                </div>
+
+              </div>
+            </div><!-- Notification dropdown end -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="dashboard-main-body"> -->
+
+      <!-- Breadcrumb -->
+      <!-- <div class="breadcrumb d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
+        <div>
+          <h1 class="fw-semibold mb-4 h6 text-primary-light">Student List</h1>
+          <div>
+            <a href="index.php" class="text-secondary-light hover-text-primary hover-underline">
+              Dashboard
+            </a>
+            <span class="text-secondary-light"> / Student List</span>
+          </div>
+        </div>
+      </div> -->
+
+     <div class="dashboard-main-body">
+            <div class="breadcrumb d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
+                <div>
+                    <h1 class="fw-semibold mb-4 h6 text-primary-light">About Section</h1>
+                    <div>
+                        <a href="index.php" class="text-secondary-light hover-text-primary">Dashboard</a>
+                        <span class="text-secondary-light"> / Edit About</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card h-100 radius-12">
+                <div class="card-header border-bottom border-neutral-200">
+                    <h5 class="card-title mb-0">Edit Website About Details</h5>
+                </div>
+                <div class="card-body p-24">
+    <form action="" method="POST" enctype="multipart/form-data">
+    <div class="row gy-4">
+        <div class="col-md-6">
+            <label class="form-label">Main Image</label>
+            <input type="file" name="main_image" class="form-control">
+            <img src="uploads/about/<?= $about['main_image'] ?>" width="100" class="mt-2 radius-8">
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Top Heading</label>
+            <input type="text" name="top_heading" class="form-control" value="<?= $about['top_heading'] ?>">
+        </div>
+        
+        <div class="col-12">
+            <label class="form-label">Main Title</label>
+            <input type="text" name="main_title" class="form-control" value="<?= $about['main_title'] ?>">
+        </div>
+
+        <div class="col-md-4">
+            <h6 class="text-primary-600">Mission Section</h6>
+            <textarea name="mission_text" class="form-control mb-2" placeholder="Mission Text"><?= $about['mission_text'] ?></textarea>
+            <input type="text" name="mission_point1" class="form-control mb-2" value="<?= $about['mission_point1'] ?>" placeholder="Point 1">
+            <input type="text" name="mission_point2" class="form-control" value="<?= $about['mission_point2'] ?>" placeholder="Point 2">
+        </div>
+
+        <div class="col-md-4">
+            <h6 class="text-primary-600">Vision Section</h6>
+            <textarea name="vision_text" class="form-control mb-2" placeholder="Vision Text"><?= $about['vision_text'] ?></textarea>
+            <input type="text" name="vision_point1" class="form-control mb-2" value="<?= $about['vision_point1'] ?>" placeholder="Point 1">
+            <input type="text" name="vision_point2" class="form-control" value="<?= $about['vision_point2'] ?>" placeholder="Point 2">
+        </div>
+
+        <div class="col-md-4">
+            <h6 class="text-primary-600">Core Values</h6>
+            <textarea name="core_text" class="form-control mb-2" placeholder="Core Text"><?= $about['core_text'] ?></textarea>
+            <input type="text" name="core_point1" class="form-control mb-2" value="<?= $about['core_point1'] ?>" placeholder="Value 1">
+            <input type="text" name="core_point2" class="form-control" value="<?= $about['core_point2'] ?>" placeholder="Value 2">
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label">Video URL (YouTube)</label>
+            <input type="text" name="video_link" class="form-control" value="<?= $about['video_link'] ?>">
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Button Link</label>
+            <input type="text" name="button_link" class="form-control" value="<?= $about['button_link'] ?>">
+        </div>
+
+        <div class="col-12 mt-4">
+            <button type="submit" name="update_about" class="btn btn-primary-600 px-40">Update Website</button>
+        </div>
+    </div>
+</form>
 </div>
+            </div>
+        </div>
+      
+
+    </div>
+
+    <footer class="d-footer">
+      <div class="">
+        <p class="mb-0 text-center"> &copy; <span class="current-year"></span> Made With Team DRS.</p>
+      </div>
+    </footer>
+  </main>
 
 
-<!-- JS -->
-<script src="assets/js/bootstrap.bundle.min.js"></script>
+  <!-- Modal Delete Event start -->
+  <div class="modal fade" id="exampleModalDelete" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+      <div class="modal-content radius-16 bg-base">
+        <div class="modal-body pt-32 px-36 pb-24 text-center">
+          <span class="mb-16 fs-1 text-danger">
+            <iconify-icon icon="fluent:delete-24-regular"></iconify-icon>
+          </span>
+          <h6 class="text-lg fw-semibold text-primary-light mb-0">Suspend Student?</h6>
+          <p class="text-sm text-secondary-light">Are you sure you want to suspend <?= htmlspecialchars($student['full_name']) ?>?</p>
+          <div class="d-flex align-items-center justify-content-center gap-3 mt-24">
+            <button type="button" class="btn btn-secondary px-24 py-11 radius-8" data-bs-dismiss="modal">Cancel</button>
+            <a href="suspend-student-logic.php?id=<?= $student['id'] ?>" class="btn btn-danger px-16 py-12 radius-8">Yes, Suspend</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal Delete Event end -->
+
+  <!-- jQuery library js -->
+  <script src="assets/js/lib/jquery-3.7.1.min.js"></script>
+  <!-- Bootstrap js -->
+  <script src="assets/js/lib/bootstrap.bundle.min.js"></script>
+  <!-- Apex Chart js -->
+  <script src="assets/js/lib/apexcharts.min.js"></script>
+  <!-- Iconify Font js -->
+  <script src="assets/js/lib/iconify-icon.min.js"></script>
+  <!-- Data Table js -->
+  <script src="assets/js/lib/dataTables.min.js"></script>
+
+  <!-- jQuery UI js -->
+  <script src="assets/js/lib/jquery-ui.min.js"></script>
+
+  <!-- main js -->
+  <script src="assets/js/app.js"></script>
+
+  <!-- <script>
+    let table = new DataTable('#dataTable');
+
+    // ✅ Data Table start
+    $('.data-table').each(function () {
+        const $table = $(this);
+        const tableInstance = new DataTable(this);
+
+        // Handle search input (inside same wrapper)
+        $table.closest('.dataTable-wrapper').find('.dt-search .dt-input').on('keyup', function () {
+            tableInstance.search(this.value).draw();
+        });
+
+        // Handle page length change (inside same wrapper)
+        $table.closest('.dataTable-wrapper').find('.dt-length .dt-input').on('change', function () {
+            const value = $(this).val();
+            tableInstance.page.len(value).draw();
+        });
+    });
+    // ✅ Data Table end
+</script> -->
+
+  <script>
+    $(document).ready(function() {
+      // ✅ Initialize table with 12-row pagination
+      const tableInstance = new DataTable('#dataTable', {
+        pageLength: 12,
+        dom: 'rtp', // ✅ This line erases the default search/length bars
+        language: {
+          paginate: {
+            next: '<i class="ri-arrow-right-s-line"></i>',
+            previous: '<i class="ri-arrow-left-s-line"></i>'
+          }
+        }
+      });
+
+      // ✅ Connect your new Custom Search line to the table
+      $('#customSearch').on('keyup', function() {
+        tableInstance.search(this.value).draw();
+      });
+
+      // ✅ Handle Export Buttons
+function getCurrentPageData() {
+    const rows = [];
+    const headers = [];
+
+    // Get table headers (exclude Action column)
+    $('#dataTable thead th').each(function(index) {
+        if(index !== 9) { // Action column index
+            headers.push($(this).text().trim());
+        }
+    });
+
+    // Get visible rows only (current page)
+    $('#dataTable tbody tr:visible').each(function() {
+        const rowData = [];
+        $(this).find('td').each(function(index) {
+            if(index !== 9) { // Skip Action column
+                rowData.push($(this).text().trim());
+            }
+        });
+        rows.push(rowData);
+    });
+
+    return { headers, rows };
+}
+
+// ✅ PDF Export
+$('#exportPDF').on('click', function(e) {
+    e.preventDefault();
+
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF('landscape');
+
+    const tableData = getCurrentPageData();
+
+    const now = new Date();
+    const filename = "Student_List_" +
+        now.toLocaleDateString().replace(/\//g, '-') + "_" +
+        now.getHours() + "-" +
+        now.getMinutes() + "-" +
+        now.getSeconds();
+
+    doc.autoTable({
+        head: [tableData.headers],
+        body: tableData.rows,
+        styles: { fontSize: 8 }
+    });
+
+    doc.save(filename + ".pdf");
+});
+
+// ✅ Excel Export
+$('#exportExcel').on('click', function(e) {
+    e.preventDefault();
+
+    const tableData = getCurrentPageData();
+
+    const worksheet = XLSX.utils.aoa_to_sheet([
+        tableData.headers,
+        ...tableData.rows
+    ]);
+
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Students");
+
+    const now = new Date();
+    const filename = "Student_List_" +
+        now.toLocaleDateString().replace(/\//g, '-') + "_" +
+        now.getHours() + "-" +
+        now.getMinutes() + "-" +
+        now.getSeconds();
+
+    XLSX.writeFile(workbook, filename + ".xlsx");
+});
+
+    });
+  </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
 
 </body>
+
 </html>

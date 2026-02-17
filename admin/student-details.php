@@ -329,6 +329,20 @@ if ($student) {
             </li>
           </ul>
         </li>
+        <li class="dropdown">
+          <a href="javascript:void(0)">
+            <i class="ri-user-follow-line"></i>
+            <span>About</span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li>
+              <a href="about-section.php">
+                <i class="ti-info-alt"></i>
+                  <span>About update</span>
+              </a>
+            </li>
+          </ul>
+        </li>
         <!-- <li class="dropdown">
           <a href="javascript:void(0)">
             <i class="ri-user-follow-line"></i>
