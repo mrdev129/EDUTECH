@@ -1,13 +1,33 @@
 ﻿<?php
-include 'config/db.php';
-$aboutQuery = $conn->query("SELECT * FROM about_section WHERE id=1");
-$about = $aboutQuery->fetch_assoc();
+// Function to automatically convert standard links to embed links
+function cleanYouTube($url) {
+    if (strpos($url, 'watch?v=') !== false) {
+        return str_replace('watch?v=', 'embed/', explode('&', $url)[0]);
+    }
+    return $url;
+}
 ?>
-
-
 <?php
-session_start();
+// Start session only if it's not already active
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 require_once 'config/db.php';
+
+// Fetch the about data ONCE for the whole page to avoid undefined variable errors
+$aboutQuery = $conn->query("SELECT * FROM about_section WHERE id=1");
+if ($aboutQuery && $aboutQuery->num_rows > 0) {
+    $about = $aboutQuery->fetch_assoc();
+} else {
+    // Fallback array to prevent "Undefined variable" warnings if DB is empty
+    $about = array_fill_keys([
+        'main_image', 'top_heading', 'main_title', 'short_description', 
+        'mission_text', 'mission_point1', 'mission_point2', 'vision_text', 
+        'vision_point1', 'vision_point2', 'core_text', 'core_point1', 
+        'core_point2', 'video_link', 'button_link'
+    ], '');
+}
 
 /* ===============================
    FLASH MESSAGE HANDLING
@@ -718,7 +738,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <!-- LEFT IMAGE -->
                     <div class="col-lg-6">
                         <div class="rs-about-2__thumb">
-                            <img src="uploads/about/<?php echo $about['main_image']; ?>" alt="About Image">
+                            <img src="admin/uploads/about/<?php echo $about['main_image']; ?>" alt="About Image">
                         </div>
                     </div>
 
@@ -823,7 +843,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                             </a>
 
                                             <div class="play-icon">
-                                                <a class="rs-popup-videos" href="<?php echo $about['video_link']; ?>">
+                                                <a class="rs-popup-videos" href="<?php echo cleanYouTube($about['video_link']); ?>">
                                                     <i class="fa fa-play"></i>
                                                 </a>
                                             </div>
