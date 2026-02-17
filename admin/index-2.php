@@ -216,24 +216,13 @@
             <span>Dashboard </span>
           </a>
           <ul class="sidebar-submenu">
-            <!-- <li>
-            <a href="index.php">
-              <i class="ri-circle-fill circle-icon w-auto"></i>
-              School
-            </a>
-          </li> -->
             <li>
               <a href="index-2.php">
                 <i class="ri-circle-fill circle-icon w-auto"></i>
-                Student
+                Home
               </a>
             </li>
-            <li>
-              <a href="about-section.php">
-                <i class="ti-info-alt"></i>
-                  <span>About Section</span>
-              </a>
-            </li>
+            
 
             <!-- <li>
             <a href="index-3.php">
@@ -299,44 +288,20 @@
             </li>
           </ul>
         </li>
-        <!-- <li class="dropdown">
+        <li class="dropdown">
           <a href="javascript:void(0)">
             <i class="ri-user-follow-line"></i>
-            <span>Teachers</span>
+            <span>About</span>
           </a>
           <ul class="sidebar-submenu">
             <li>
-              <a href="add-new-teacher.php">
-                <i class="ri-circle-fill circle-icon w-auto"></i>
-                Add New Teacher
-              </a>
-            </li>
-            <li>
-              <a href="teacher-list.php">
-                <i class="ri-circle-fill circle-icon w-auto"></i>
-                Teacher List
-              </a>
-            </li>
-            <li>
-              <a href="edit-teacher.php">
-                <i class="ri-circle-fill circle-icon w-auto"></i>
-                Edit Teacher
-              </a>
-            </li>
-            <li>
-              <a href="teacher-details.php">
-                <i class="ri-circle-fill circle-icon w-auto"></i>
-                Teacher Details
-              </a>
-            </li>
-            <li>
-              <a href="teacher-timetable.php">
-                <i class="ri-circle-fill circle-icon w-auto"></i>
-                Teacher Timetable
+              <a href="about-section.php">
+                <i class="ti-info-alt"></i>
+                  <span>About update</span>
               </a>
             </li>
           </ul>
-        </li> -->
+        </li>
         <!-- <li class="dropdown">
           <a href="javascript:void(0)">
             <i class="ri-account-circle-line"></i>
