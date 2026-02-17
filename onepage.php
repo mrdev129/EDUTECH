@@ -432,6 +432,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                             data-ipad-device-dots="false" data-ipad-device2="2" data-ipad-device-nav2="true"
                             data-ipad-device-dots2="false" data-md-device="4" data-lg-device="5"
                             data-md-device-nav="true" data-md-device-dots="false">
+                           
 
                             <div class="rs-service-2__item">
                                 <div class="rs-service-2__icon">
@@ -1879,6 +1880,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             });
         </script>
+
 
 
 
