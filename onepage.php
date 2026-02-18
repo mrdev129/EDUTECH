@@ -218,12 +218,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <body class="home-page-2">
 
     <!--======== Header Onepage 2 start ========-->
-    <div class="header-announcement-wrapper">
+    <div id="home" class="header-announcement-wrapper">
         <header class="edutech-main-header">
             <div class="container-fluid">
                 <div class="header-container">
                     <div class="logo-side">
-                        <img src="assets/images/cliet_logo.png" alt="Logo">
+                        <img src="assets/images/client-logo-final.jpeg" alt="Logo">
                         <div class="logo-text">
                             <span class="brand-name">EDUTECH</span>
                             <span class="brand-tagline">ADMISSION EXPERT</span>
@@ -264,8 +264,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                     data-words='["Guidance", "Expertise", "Support", "Solution"]'></span>
                             </h1>
                             <p class="journey-sub fs-4">START YOUR JOURNEY TODAY</p>
-                            <a href="#" class="brochure-btn btn btn-warning rounded-pill px-4">DOWNLOAD BROCHURE <i
-                                    class="ri-arrow-down-line"></i></a>
+                            <!-- <a href="#" class="brochure-btn btn btn-warning rounded-pill px-4">DOWNLOAD BROCHURE <i
+                                    class="ri-arrow-down-line"></i></a> -->
                         </div>
                     </div>
 
@@ -377,8 +377,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         <li><a href="#course">COURSE</a></li>
                         <li><a href="#blogs">BLOGS</a></li>
                         <li><a href="#team">TEAM MEMBERS</a></li>
-                        <li><a href="#collab">COLLABORATIONS</a></li>
                         <li><a href="#gallery">GALLERY</a></li>
+                        <li><a href="#contact">CONTACT US</a></li>
                     </ul>
                     <div class="nav-action">
                         <a href="javascript:void(0);" id="openEnquireNav" class="navy-enquire-btn">
@@ -666,7 +666,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         <!--======== Featured 2 Start ========-->
         <section id="rs-service" class="rs-featured-2 pt-115 pb-120">
-            <div class="container">
+            <div id="course" class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-12">
                         <div class="rs-section-title black">
@@ -743,7 +743,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         <!--======== About 2 Start ========-->
         <section id="rs-about" class="rs-about-2 pt-120 pb-30">
-            <div class="container">
+            <div id ="about" class="container">
                 <div class="row align-items-center">
 
                     <!-- LEFT IMAGE -->
@@ -876,7 +876,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         <!--======== Brand Start ========-->
         <div class="rs-brand pb-90 pt-85">
-            <div class="container">
+            <div id="gallery" class="container">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="rs-brand__top-title">
@@ -956,7 +956,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         <!--======== Project Start ========-->
         <section id="rs-portfolios" class="rs-project">
-            <div class="container">
+            <div id="team" class="container">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="rs-top-line mb-110"></div>
@@ -1245,7 +1245,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         <!--======== Newsletter 2 Start ========-->
         <section class="rs-newsletter-2 pt-95 pb-110">
-            <div class="container">
+            <div id="contact" class="container">
                 <div class="row">
                     <div class="col-lg-2"></div>
                     <div class="col-lg-8">
@@ -1629,7 +1629,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         <!--======== Blog 2 Start ========-->
         <section id="rs-blog" class="rs-blog-2 pt-120">
-            <div class="container">
+            <div id="blogs" class="container">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="rs-section-title black">
