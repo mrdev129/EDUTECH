@@ -223,10 +223,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <div class="container-fluid">
                 <div class="header-container">
                     <div class="logo-side">
-                        <img src="assets/images/client-logo-final.jpeg" alt="Logo">
+                        <div class="logo-circle-wrap">
+                            <img src="assets/images/EDUTECH Admission Experts logo.png" alt="Logo" class="logo-glow">
+                        </div>
+
                         <div class="logo-text">
                             <span class="brand-name">EDUTECH</span>
-                            <span class="brand-tagline">ADMISSION EXPERT</span>
+                            <span class="brand-tagline">ADMISSION EXPERTS</span>
                         </div>
                     </div>
 
@@ -367,7 +370,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </div>
         </section>
 
-        
+
         <div class="program-nav-bar">
             <div class="container">
                 <div class="nav-flex-wrapper">
@@ -743,7 +746,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         <!--======== About 2 Start ========-->
         <section id="rs-about" class="rs-about-2 pt-120 pb-30">
-            <div id ="about" class="container">
+            <div id="about" class="container">
                 <div class="row align-items-center">
 
                     <!-- LEFT IMAGE -->
