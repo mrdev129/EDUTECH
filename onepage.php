@@ -773,10 +773,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                     <?php echo $about['main_title']; ?>
                                 </h2>
 
-                                <!-- SHORT DESCRIPTION -->
-                                <p>
-                                    <?php echo $about['short_description']; ?>
-                                </p>
+                             <br>
 
                                 <!-- TABS -->
                                 <div id="rs-tabs" class="skltbs-theme-light use-drop skltbs-mode-tabs skltbs-init">
