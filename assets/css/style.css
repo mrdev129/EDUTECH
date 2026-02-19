@@ -21627,3 +21627,68 @@ section {
         border-radius: 10px !important;
     }
 }
+/* Isolated Reset for this section only */
+.course-explorer-fixed {
+    padding: 60px 0 !important; /* Controlled vertical padding */
+    margin: 0 !important;
+    background: #fff;
+    border-top: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+/* Draggable Row */
+.category-slider-wrapper {
+    overflow-x: auto;
+    cursor: grab; /* Shows hand cursor */
+    padding: 5px 0 15px 0;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.category-slider-wrapper::-webkit-scrollbar { display: none; }
+.category-slider-wrapper:active { cursor: grabbing; }
+
+.category-track {
+    display: flex;
+    white-space: nowrap;
+    gap: 10px;
+    width: max-content;
+    user-select: none; /* Prevents text selection while dragging */
+}
+
+.category-btn {
+    padding: 8px 22px;
+    background: #f8f9fa;
+    border: 1px solid #eee;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.category-btn.active {
+    background: #ff5e14;
+    color: #fff;
+    border-color: #ff5e14;
+}
+
+/* Branch Cards Compact */
+.branch-card-mini {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    transition: 0.3s;
+    height: 100%;
+}
+
+.branch-card-mini .title {
+    font-size: 15px;
+    margin-bottom: 8px;
+    color: #111;
+}
+
+.branch-panel { display: none; }
+.branch-panel.active { display: block; animation: fadeIn 0.3s ease; }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
