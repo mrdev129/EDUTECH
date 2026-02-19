@@ -12565,7 +12565,7 @@ html.menu-is-open .menu-canvas-layer {
   text-align: center;
 }
 
-@media only screen and (min-width: 768px) and (max-width: 991px) {
+/* @media only screen and (min-width: 768px) and (max-width: 991px) {
   .rs-brand__slider .rs-brand-slider-item a {
     padding: 15px 30px;
   }
@@ -12575,7 +12575,7 @@ html.menu-is-open .menu-canvas-layer {
   .rs-brand__slider .rs-brand-slider-item a {
     padding: 10px 15px;
   }
-}
+} */
 
 @media only screen and (max-width: 575px) {
   .rs-brand__slider .rs-brand-slider-item a {
@@ -12583,17 +12583,26 @@ html.menu-is-open .menu-canvas-layer {
   }
 }
 
-.rs-brand__slider .rs-brand-slider-item a img {
-  width: 175px;
-  transition: all linear 0.3s;
+/* --- 1. STABILIZED CONTAINER (Desktop Only) --- */
+.rs-brand__slider .rs-brand-slider-item a {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 120px !important; /* Fixed height stops the container from moving */
+    padding: 0 !important;    /* Removing padding prevents the shake */
+    overflow: visible !important;
+    position: relative !important;
+    perspective: 1000px !important; /* Adds depth to the flip */
 }
 
 .rs-brand__slider .rs-brand-slider-item a img.item-2 {
   display: none;
 }
 
+/* --- 3. RESTORED HOVER EFFECT (From your original file) --- */
 .rs-brand__slider .rs-brand-slider-item a:hover img {
-  transform: rotateX(360deg);
+    transform: rotateX(360deg) !important;
+    -webkit-transform: rotateX(360deg) !important;
 }
 
 .rs-brand.rs-brand-6 {
@@ -20916,6 +20925,7 @@ section {
     background-color: transparent;
 }
 
+
 /* --- Mobile Header Adjustments --- */
 @media (max-width: 767px) {
 
@@ -21336,26 +21346,27 @@ section {
     /* Use the specific class we added in JS */
     .mobile-grid-active {
         display: grid !important;
-        grid-template-columns: repeat(2, 1fr) !important; /* Forces 2 per level */
+        grid-template-columns: repeat(2, 1fr) !important;
         gap: 15px !important;
-        padding: 10px !important;
     }
 
     .rs-brand-slider-item {
         background: #ffffff !important;
+        height: 100px !important;
         border-radius: 10px !important;
-        padding: 15px !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
         box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important;
-        border: 1px solid #f0f0f0 !important;
-        height: 100px !important; /* Keeps them perfectly leveled */
+    }
+
+    /* Disable rotation on mobile for stability */
+    .rs-brand__slider .rs-brand-slider-item a:hover img {
+        transform: none !important;
     }
 
     .rs-brand-slider-item img.item-2 {
-        display: none !important; /* Hides repeated images */
+        display: none !important;
     }
+
+
 
 
     /*TEAM MEMBERS*/
@@ -21626,6 +21637,79 @@ section {
         background: #002147 !important; 
         border-radius: 10px !important;
     }
+
+    /* 1. Reduce card height and remove extra padding */
+    .branch-card-mini {
+        padding: 15px !important; /* Smaller internal gap */
+        min-height: auto !important; /* Remove any minimum height constraints */
+        height: auto !important; /* Let content define the height */
+        margin-bottom: 15px !important;
+    }
+
+    /* 2. Adjust internal content spacing */
+    .branch-card-mini .rs-content {
+        padding: 0 !important;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* 3. Ensure title uses full width to prevent empty horizontal space */
+    .branch-card-mini .title {
+        font-size: 15px !important;
+        line-height: 1.2 !important;
+        margin-bottom: 10px !important;
+        width: 100%;
+        white-space: normal; /* Allows text to wrap to 2 lines if needed */
+    }
+
+    /* 4. Fix for the background shape (Image 3) to prevent it from floating */
+    .branch-card-mini::before, 
+    .branch-card-mini .bg-shape {
+        background-size: cover !important;
+        opacity: 0.1; /* Keeps it subtle */
+    }
+
+    /* 5. Center the "View Details" link tightly under text */
+    .branch-card-mini .rs-link {
+        margin-top: 5px !important;
+        display: inline-block;
+    }
+
+    /* 1. Ensure the container is visible and centered */
+    .branch-slider .owl-nav {
+        display: flex !important; /* Force visibility on mobile */
+        justify-content: center !important;
+        gap: 15px !important; /* Separation between buttons */
+        margin-top: 20px !important;
+        float: none !important;
+    }
+
+    /* 2. Style the separate button parts */
+    .branch-slider .owl-nav .nav-btn {
+        background-image: linear-gradient(130deg, #f24c1a 0%, #f28e26 100%) !important;
+        color: #ffffff !important;
+        padding: 8px 18px !important; /* Slightly more compact for mobile */
+        border-radius: 6px !important;
+        font-size: 13px !important; /* Scaled down for small screens */
+        font-weight: 700 !important;
+        text-transform: uppercase;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        box-shadow: 0px 4px 10px rgba(242, 76, 26, 0.2) !important;
+    }
+
+    /* 3. Reset default Owl Carousel button styles */
+    .branch-slider .owl-nav button.owl-prev, 
+    .branch-slider .owl-nav button.owl-next {
+        background: transparent !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        border: none !important;
+        outline: none !important;
+    }
 }
 /* Isolated Reset for this section only */
 .course-explorer-fixed {
@@ -21688,7 +21772,62 @@ section {
     color: #111;
 }
 
-.branch-panel { display: none; }
-.branch-panel.active { display: block; animation: fadeIn 0.3s ease; }
+/* Core Panel Visibility */
+.branch-panel {
+    display: none;
+}
+.branch-panel.active {
+    display: block;
+    animation: fadeIn 0.4s ease;
+}
 
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+/* Container for both buttons - removes the shared background */
+.branch-slider .owl-nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* This creates the physical space between the two buttons */
+    margin-top: 40px;
+    background: transparent !important; /* Remove the single box background */
+    box-shadow: none !important;
+}
+
+/* Individual Button Styling */
+.branch-slider .owl-nav .nav-btn {
+    background-image: linear-gradient(130deg, #f24c1a 0%, #f28e26 100%);
+    color: #ffffff;
+    padding: 10px 25px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0px 5px 15px rgba(242, 76, 26, 0.3);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* Specific Owl Carousel button resets */
+.branch-slider .owl-nav button.owl-prev, 
+.branch-slider .owl-nav button.owl-next {
+    background: transparent !important; /* Prevents double background */
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+}
+
+/* Remove the divider line used in the previous version */
+.branch-slider .owl-nav button.owl-next::before {
+    display: none !important;
+}
+
+/* Hover Effects */
+.branch-slider .owl-nav .nav-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 8px 20px rgba(242, 76, 26, 0.5);
+    filter: brightness(1.1);
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
