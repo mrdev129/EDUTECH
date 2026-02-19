@@ -12565,7 +12565,7 @@ html.menu-is-open .menu-canvas-layer {
   text-align: center;
 }
 
-@media only screen and (min-width: 768px) and (max-width: 991px) {
+/* @media only screen and (min-width: 768px) and (max-width: 991px) {
   .rs-brand__slider .rs-brand-slider-item a {
     padding: 15px 30px;
   }
@@ -12575,7 +12575,7 @@ html.menu-is-open .menu-canvas-layer {
   .rs-brand__slider .rs-brand-slider-item a {
     padding: 10px 15px;
   }
-}
+} */
 
 @media only screen and (max-width: 575px) {
   .rs-brand__slider .rs-brand-slider-item a {
@@ -12583,17 +12583,26 @@ html.menu-is-open .menu-canvas-layer {
   }
 }
 
-.rs-brand__slider .rs-brand-slider-item a img {
-  width: 175px;
-  transition: all linear 0.3s;
+/* --- 1. STABILIZED CONTAINER (Desktop Only) --- */
+.rs-brand__slider .rs-brand-slider-item a {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 120px !important; /* Fixed height stops the container from moving */
+    padding: 0 !important;    /* Removing padding prevents the shake */
+    overflow: visible !important;
+    position: relative !important;
+    perspective: 1000px !important; /* Adds depth to the flip */
 }
 
 .rs-brand__slider .rs-brand-slider-item a img.item-2 {
   display: none;
 }
 
+/* --- 3. RESTORED HOVER EFFECT (From your original file) --- */
 .rs-brand__slider .rs-brand-slider-item a:hover img {
-  transform: rotateX(360deg);
+    transform: rotateX(360deg) !important;
+    -webkit-transform: rotateX(360deg) !important;
 }
 
 .rs-brand.rs-brand-6 {
@@ -20916,6 +20925,7 @@ section {
     background-color: transparent;
 }
 
+
 /* --- Mobile Header Adjustments --- */
 @media (max-width: 767px) {
 
@@ -21336,26 +21346,27 @@ section {
     /* Use the specific class we added in JS */
     .mobile-grid-active {
         display: grid !important;
-        grid-template-columns: repeat(2, 1fr) !important; /* Forces 2 per level */
+        grid-template-columns: repeat(2, 1fr) !important;
         gap: 15px !important;
-        padding: 10px !important;
     }
 
     .rs-brand-slider-item {
         background: #ffffff !important;
+        height: 100px !important;
         border-radius: 10px !important;
-        padding: 15px !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
         box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important;
-        border: 1px solid #f0f0f0 !important;
-        height: 100px !important; /* Keeps them perfectly leveled */
+    }
+
+    /* Disable rotation on mobile for stability */
+    .rs-brand__slider .rs-brand-slider-item a:hover img {
+        transform: none !important;
     }
 
     .rs-brand-slider-item img.item-2 {
-        display: none !important; /* Hides repeated images */
+        display: none !important;
     }
+
+
 
 
     /*TEAM MEMBERS*/
