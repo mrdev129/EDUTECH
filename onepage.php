@@ -605,7 +605,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         <div class="rs-carousel owl-carousel service-slider-bottom" data-loop="true" data-items="5"
                             data-margin="30" data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000"
                             data-smart-speed="800" data-dots="false" data-nav="true" data-nav-speed="false"
-                            data-center-mode="false" data-mobile-device="1" data-mobile-device-nav="true"
+                            data-center-mode="false" data-mobile-device="1.2" data-mobile-device-nav="true"
                             data-mobile-device-dots="false" data-ipad-device="3" data-ipad-device-nav="true"
                             data-ipad-device-dots="false" data-ipad-device2="2" data-ipad-device-nav2="true"
                             data-ipad-device-dots2="false" data-md-device="4" data-lg-device="5"
@@ -682,7 +682,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row featured-slider">
                     <div class="col-lg-4 col-sm-6">
                         <div class="rs-featured-2__item">
                             <div class="rs-thumb">
@@ -773,7 +773,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                     <?php echo $about['main_title']; ?>
                                 </h2>
 
-                             <br>
+                                <br>
 
                                 <!-- TABS -->
                                 <div id="rs-tabs" class="skltbs-theme-light use-drop skltbs-mode-tabs skltbs-init">
@@ -848,15 +848,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                                     <?php echo $about['core_point2']; ?></li>
                                             </ul>
 
-                                            <a class="main-btn" href="<?php echo $about['button_link']; ?>">
-                                                Know More About Us
-                                                <i class="ri-arrow-right-fill"></i>
-                                            </a>
-
-                                            <div class="play-icon">
-                                                <a class="rs-popup-videos" href="<?php echo cleanYouTube($about['video_link']); ?>">
-                                                    <i class="fa fa-play"></i>
+                                            <div class="d-flex align-items-center justify-content-center mt-4">
+                                                <a class="main-btn" href="<?php echo $about['button_link']; ?>">
+                                                    Know More About Us <i class="ri-arrow-right-fill"></i>
                                                 </a>
+                                                <div class="play-icon ms-3">
+                                                    <a class="rs-popup-videos" href="<?php echo $about['video_link']; ?>">
+                                                        <i class="fa fa-play"></i>
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
 
@@ -889,7 +889,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="rs-brand__slider">
-                            <div class="rs-carousel owl-carousel nav-style1" data-loop="true" data-items="5"
+                            <div class="rs-carousel owl-carousel mobile-brand-grid nav-style1" data-loop="true" data-items="5"
                                 data-margin="0" data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="3000"
                                 data-smart-speed="500" data-dots="false" data-nav="false" data-nav-speed="false"
                                 data-center-mode="false" data-mobile-device="2" data-mobile-device-nav="false"
@@ -2033,6 +2033,82 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     typeEffect();
                 }
             });
+
+            $(document).ready(function() {
+                var checkWidth = $(window).width();
+
+                if (checkWidth < 768) {
+                    // Only add carousel classes and init on mobile
+                    $(".featured-slider").addClass('owl-carousel').owlCarousel({
+                        items: 1,
+                        loop: true,
+                        margin: 20,
+                        dots: true,
+                        autoplay: true,
+                        stagePadding: 30 // For the "peek" effect
+                    });
+                }
+            });
+
+            $(document).ready(function() {
+                if ($(window).width() < 768) {
+                    $(".featured-slider").addClass('owl-carousel').owlCarousel({
+                        items: 1.2, // This creates the "peek" effect automatically
+                        loop: true,
+                        margin: 15,
+                        dots: true
+                    });
+                }
+            });
+
+           $(document).ready(function() {
+    var brandSlider = $('.mobile-brand-grid');
+
+    function initBrandSlider() {
+        var isMobile = $(window).width() < 768;
+
+        if (isMobile) {
+            // 1. If we are on mobile, kill the carousel completely
+            if (brandSlider.hasClass('owl-loaded')) {
+                brandSlider.trigger('destroy.owl.carousel').removeClass('owl-carousel owl-loaded');
+                brandSlider.find('.owl-stage-outer').children().unwrap();
+            }
+            // 2. Ensure the class used for Grid CSS is present
+            brandSlider.addClass('mobile-grid-active'); 
+        } else {
+            // 3. Re-initialize for desktop sliding
+            brandSlider.removeClass('mobile-grid-active').addClass('owl-carousel');
+            if (!brandSlider.hasClass('owl-loaded')) {
+                brandSlider.owlCarousel({
+                    items: 5,
+                    loop: true,
+                    autoplay: true,
+                    dots: false,
+                    nav: false
+                });
+            }
+        }
+    }
+
+    initBrandSlider();
+    $(window).on('resize', function() {
+        initBrandSlider();
+    });
+
+    $(document).ready(function() {
+    // Only initialize the blog slider for mobile users
+    if ($(window).width() < 768) {
+        $(".rs-blog-2 .owl-carousel").owlCarousel({
+            items: 1,
+            loop: true,
+            margin: 20,
+            autoplay: true,
+            dots: true,
+            stagePadding: 30 // Enables the card "peek"
+        });
+    }
+});
+});
         </script>
         <script>
             document.addEventListener("DOMContentLoaded", function() {
@@ -2071,6 +2147,38 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 });
 
             });
+
+            $(document).ready(function() {
+                if ($(window).width() < 768) {
+                    $(".featured-slider").owlCarousel({
+                        items: 1,
+                        loop: true,
+                        margin: 20,
+                        autoplay: true,
+                        dots: true, // Enables the circles
+                        nav: false,
+                        stagePadding: 30 // Shows a peek of the next card
+                    });
+                }
+            });
+
+            $(document).ready(function() {
+    // We only run this logic if the screen is mobile
+    if ($(window).width() < 768) {
+        var $teamSlider = $('.rs-project__slider');
+        
+        // Add the carousel class and initialize ONLY on mobile
+        $teamSlider.addClass('owl-carousel').owlCarousel({
+            items: 1,
+            loop: true,
+            margin: 20,
+            autoplay: true,
+            dots: true,
+            stagePadding: 40 // The "peek" effect
+        });
+    }
+    // On Desktop (>768px), this code does absolutely nothing, leaving your grid safe
+});
         </script>
 
 
@@ -2184,6 +2292,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <a href="https://wa.me/919999999999" target="_blank" class="contact-icon-box" title="Contact Us">
                 <i class="fa fa-whatsapp"></i> </a>
         </div>
+
+
 </body>
 
 </html>
