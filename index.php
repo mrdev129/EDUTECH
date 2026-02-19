@@ -1,22 +1,177 @@
-﻿<!doctype html>
+﻿<?php
+// Function to automatically convert standard links to embed links
+function cleanYouTube($url)
+{
+    if (strpos($url, 'watch?v=') !== false) {
+        return str_replace('watch?v=', 'embed/', explode('&', $url)[0]);
+    }
+    return $url;
+}
+?>
+<?php
+// Start session only if it's not already active
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+require_once 'config/db.php';
+
+// Fetch the about data ONCE for the whole page to avoid undefined variable errors
+$aboutQuery = $conn->query("SELECT * FROM about_section WHERE id=1");
+if ($aboutQuery && $aboutQuery->num_rows > 0) {
+    $about = $aboutQuery->fetch_assoc();
+} else {
+    // Fallback array to prevent "Undefined variable" warnings if DB is empty
+    $about = array_fill_keys([
+        'main_image',
+        'top_heading',
+        'main_title',
+        'short_description',
+        'mission_text',
+        'mission_point1',
+        'mission_point2',
+        'vision_text',
+        'vision_point1',
+        'vision_point2',
+        'core_text',
+        'core_point1',
+        'core_point2',
+        'video_link',
+        'button_link'
+    ], '');
+}
+
+/* ===============================
+   FLASH MESSAGE HANDLING
+================================= */
+$success = $_SESSION['success'] ?? '';
+$error = $_SESSION['error'] ?? '';
+
+unset($_SESSION['success']);
+unset($_SESSION['error']);
+
+/* ===============================
+   INPUT SANITIZATION FUNCTION
+================================= */
+function clean_input($data)
+{
+    return htmlspecialchars(trim($data), ENT_QUOTES, 'UTF-8');
+}
+
+/* ===============================
+   FORM SUBMISSION HANDLER
+================================= */
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+    // Collect & sanitize inputs
+    $full_name = clean_input($_POST['full_name'] ?? '');
+    $mobile = clean_input($_POST['mobile_number'] ?? '');
+    $email = clean_input($_POST['email'] ?? '');
+    $last_qualification = clean_input($_POST['last_qualification'] ?? '');
+    $preferred_course = clean_input($_POST['preferred_course'] ?? '');
+    $preferred_city = clean_input($_POST['preferred_city'] ?? '');
+    $budget_range = clean_input($_POST['budget_range'] ?? '');
+    $hostel_required = clean_input($_POST['hostel_required'] ?? '');
+    $message = clean_input($_POST['message'] ?? '');
+
+    /* ===============================
+       VALIDATION
+    ================================= */
+
+    if (
+        empty($full_name) || empty($mobile) || empty($email) ||
+        empty($last_qualification) || empty($preferred_course) ||
+        empty($preferred_city) || empty($budget_range) ||
+        empty($hostel_required)
+    ) {
+        $_SESSION['error'] = "All required fields must be filled.";
+    } elseif (!preg_match("/^[a-zA-Z ]+$/", $full_name)) {
+        $_SESSION['error'] = "Full name should contain only letters.";
+    } elseif (!preg_match("/^[0-9]{10}$/", $mobile)) {
+        $_SESSION['error'] = "Mobile number must be exactly 10 digits.";
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $_SESSION['error'] = "Invalid email format.";
+    } else {
+
+        /* ===============================
+           DUPLICATE MOBILE CHECK
+        ================================= */
+        $check = $conn->prepare("SELECT id FROM students WHERE mobile = ?");
+        $check->bind_param("s", $mobile);
+        $check->execute();
+        $check->store_result();
+
+        if ($check->num_rows > 0) {
+
+            $_SESSION['error'] = "This mobile number is already registered.";
+        } else {
+
+            /* ===============================
+               INSERT DATA SECURELY
+            ================================= */
+            $stmt = $conn->prepare("INSERT INTO students 
+                (full_name, mobile, email, last_qualification, preferred_course, preferred_city, budget_range, hostel_required, message)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+            if ($stmt) {
+
+                $stmt->bind_param(
+                    "sssssssss",
+                    $full_name,
+                    $mobile,
+                    $email,
+                    $last_qualification,
+                    $preferred_course,
+                    $preferred_city,
+                    $budget_range,
+                    $hostel_required,
+                    $message
+                );
+
+                if ($stmt->execute()) {
+                    $_SESSION['success'] = "Application submitted successfully!";
+                } else {
+                    $_SESSION['error'] = "Something went wrong. Please try again.";
+                }
+
+                $stmt->close();
+            } else {
+                $_SESSION['error'] = "Database error. Please contact admin.";
+            }
+        }
+
+        $check->close();
+    }
+
+    /* ===============================
+       POST-REDIRECT-GET
+    ================================= */
+    header("Location: " . basename($_SERVER['PHP_SELF']) . "#hero");
+    exit();
+}
+?>
+
+
+<!doctype html>
 <html class="no-js" lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Techzen - IT Solutions & Technology HTML Template</title>
+    <title>EDUTECH | ADMISSION EXPERT</title>
     <meta name="robots" content="noindex, follow">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/cliet_logo.png">
 
     <!-- CSS (Font, Vendor, Icon, Plugins & Style CSS files) -->
 
     <!-- Font CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="../../css2?family=Flow+Circular&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="../../css2?family=Flow+Circular&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
 
     <!-- Bootstrap & Icon Font -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -56,379 +211,231 @@
 
     <!-- Style CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
+
 </head>
 
 
 <body class="home-page-2">
 
-    <!--======== Header 2 start ========-->
-    <div class="full-width-header rs-header-layout2">
-        <!--Header Start-->
-        <header id="rs-header" class="rs-header">
-            <div class="rs-header-topber">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="rs-flex-box">
-                                <div class="rs-header-topber-contact">
-                                    <ul>
-                                        <li>
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="24" height="24">
-                                                <path d="M11 17.9381C7.05369 17.446 4 14.0796 4 10C4 5.58172 7.58172 2 12 2C16.4183 2 20 5.58172 20 10C20 14.0796 16.9463 17.446 13 17.9381V20.0116C16.9463 20.1039 20 20.7351 20 21.5C20 22.3284 16.4183 23 12 23C7.58172 23 4 22.3284 4 21.5C4 20.7351 7.05369 20.1039 11 20.0116V17.9381ZM12 16C15.3137 16 18 13.3137 18 10C18 6.68629 15.3137 4 12 4C8.68629 4 6 6.68629 6 10C6 13.3137 8.68629 16 12 16ZM12 12C10.8954 12 10 11.1046 10 10C10 8.89543 10.8954 8 12 8C13.1046 8 14 8.89543 14 10C14 11.1046 13.1046 12 12 12Z" fill="#000"></path>
-                                            </svg>
-                                            <span>19 Broklyn Golden Street. New York</span>
-                                        </li>
-                                        <li>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="14" viewbox="0 0 16 14" fill="none">
-                                                <path d="M16 12.3687C15.9987 12.5597 15.9223 12.7425 15.7873 12.8777C15.6523 13.0128 15.4695 13.0894 15.2785 13.0909H2.176C1.98459 13.0907 1.80109 13.0145 1.66581 12.8791C1.53053 12.7437 1.45455 12.5601 1.45455 12.3687V11.6364H14.5455V3.12727L8.72727 8.36364L1.45455 1.81818V0.727273C1.45455 0.534388 1.53117 0.349403 1.66756 0.213013C1.80395 0.0766231 1.98893 0 2.18182 0H15.2727C15.4656 0 15.6506 0.0766231 15.787 0.213013C15.9234 0.349403 16 0.534388 16 0.727273V12.3687ZM3.22473 1.45455L8.72727 6.40727L14.2298 1.45455H3.22473ZM0 8.72727H5.81818V10.1818H0V8.72727ZM0 5.09091H3.63636V6.54545H0V5.09091Z" fill="#1A73E9"></path>
-                                            </svg>
-                                            <span>Email: <a href="mailto:info@example.com">info@example.com</a></span>
-                                        </li>
-                                        <li>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 16 16" fill="none">
-                                                <path d="M8 16C3.5816 16 0 12.4184 0 8C0 3.5816 3.5816 0 8 0C12.4184 0 16 3.5816 16 8C16 12.4184 12.4184 16 8 16ZM8 14.4C9.69739 14.4 11.3253 13.7257 12.5255 12.5255C13.7257 11.3253 14.4 9.69739 14.4 8C14.4 6.30261 13.7257 4.67475 12.5255 3.47452C11.3253 2.27428 9.69739 1.6 8 1.6C6.30261 1.6 4.67475 2.27428 3.47452 3.47452C2.27428 4.67475 1.6 6.30261 1.6 8C1.6 9.69739 2.27428 11.3253 3.47452 12.5255C4.67475 13.7257 6.30261 14.4 8 14.4ZM8.8 8H12V9.6H7.2V4H8.8V8Z" fill="#1A73E9"></path>
-                                            </svg>
-                                            <span>Mon-Sat: 9.00am To 7.00pm </span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="rs-header-topber-social">
-                                    <span>Follow Us :</span>
-                                    <ul>
-                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a href="#"><i class="ri-twitter-x-fill"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
+    <!--======== Header Onepage 2 start ========-->
+    <div id="home" class="header-announcement-wrapper">
+        <header class="edutech-main-header">
+            <div class="container-fluid">
+                <div class="header-container">
+                    <div class="logo-side">
+                        <div class="logo-circle-wrap">
+                            <img src="assets/images/EDUTECH Admission Experts logo.png" alt="Logo" class="logo-glow">
                         </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Menu Start -->
-            <div class="menu-area menu-sticky">
-                <!-- Offer Section End -->
-                <div class="container">
-                    <div class="rs-menu-area">
-                        <div class="logo-area">
-                            <a href="index.html"><img src="assets/images/techzen_logo_home_2.png" alt=""></a>
-                            <a href="index.html"><img src="assets/images/techzen_logo_home_2.png" alt=""></a>
-                        </div>
-                        <div class="rs-header-rightside">
-                            <div class="main-menu hidden-md">
-                                <ul class="nav-menu">
-                                    <li class="has-clid relative">
-                                        <a href="index.html" class="active">
-                                            <cite class="rs_item_wrap">
-                                                Home
-                                                <span class="menu-item-description" title="06">06</span>
-                                            </cite>
-                                        </a>
-                                        <ul class="sub-menu">
-                                            <li class="has-clid">
-                                                <a class="active" href="index.html">Multipage <i class="fa fa-angle-down"></i></a>
-                                                <ul class="sub-menu">
-                                                    <li>
-                                                        <a class="active" href="index.html">Home 01</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="index-2.html">Home 02</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="index-3.html">Home 03</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="has-clid">
-                                                <a href="onepage.html">Onepage <i class="fa fa-angle-down"></i></a>
-                                                <ul class="sub-menu">
-                                                    <li>
-                                                        <a href="onepage.html">Onepage 01</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="onepage-2.html">Onepage 02</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="onepage-3.html">Onepage 03</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="about.html">About</a>
-                                    </li>
-                                    <li class="has-clid relative">
-                                        <a href="service-1.html">
-                                            <cite class="rs_item_wrap">
-                                                Services
-                                                <span class="menu-item-description" title="05">05</span>
-                                            </cite>
-                                        </a>
-                                        <ul class="sub-menu">
-                                            <li>
-                                                <a href="service-1.html">Service Style 01</a>
-                                            </li>
-                                            <li>
-                                                <a href="service-2.html">Service Style 02</a>
-                                            </li>
-                                            <li class="has-clid">
-                                                <a href="service-details.html">Service Details <i class="fa fa-angle-down"></i></a>
-                                                <ul class="sub-menu">
-                                                    <li>
-                                                        <a href="service-details.html">Service Details Style 01</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="service-details-2.html">Service Details Style 02</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="service-details-3.html">Service Details Style 03</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="has-clid relative">
-                                        <a href="#">
-                                            <cite class="rs_item_wrap">
-                                                Pages
-                                                <span class="menu-item-description" title="12">12</span>
-                                            </cite>
-                                        </a>
-                                        <ul class="sub-menu">
-                                            <li>
-                                                <a href="project.html">Project</a>
-                                            </li>
-                                            <li>
-                                                <a href="project-details.html">Project Details</a>
-                                            </li>
-                                            <li>
-                                                <a href="team.html">Team</a>
-                                            </li>
-                                            <li>
-                                                <a href="team-details.html">Team Details</a>
-                                            </li>
-                                            <li>
-                                                <a href="pricing.html">Pricing</a>
-                                            </li>
-                                            <li>
-                                                <a href="faq.html">Faq</a>
-                                            </li>
-                                            <li>
-                                                <a href="appointment.html">Appointment</a>
-                                            </li>
-                                            <li class="has-clid">
-                                                <a href="shop.html"> Shop <i class="fa fa-angle-down"></i></a>
-                                                <ul class="sub-menu">
-                                                    <li>
-                                                        <a href="shop.html">Product</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="product-single.html">Product Single</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="cart.html">Cart</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="checkout.html">Checkout</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="my-account.html">My Account</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="has-clid relative">
-                                        <a href="blog-standard.html">
-                                            <cite class="rs_item_wrap">
-                                                Blog
-                                                <span class="menu-item-description" title="02">02</span>
-                                            </cite>
-                                        </a>
-                                        <ul class="sub-menu">
-                                            <li><a href="blog-standard.html">Blog Standard </a></li>
-                                            <li><a href="blog-single.html">Blog Single</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="contact.html">Contact</a> </li>
-                                </ul> <!-- //.nav-menu -->
-                            </div> <!-- //.main-menu -->
-                            <div class="rs-search-box">
-                                <div class="search_icons">
-                                    <i class="ri-search-line"></i>
-                                    <i class="ri-close-line"></i>
-                                    <div class="sticky_form">
-                                        <form role="search" class="bs-search search-form" method="get">
-                                            <div class="search-wrap">
-                                                <label class="screen-reader-text active">
-                                                    Search for: </label>
-                                                <input type="search" placeholder="Searching..." name="s" class="search-input" value="">
-                                                <button type="submit" value="Search"><i class="ri-search-line"></i></button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="header-btn">
-                                <a class="main-btn" href="contact.html">Get a Quote <i class="ri-arrow-right-fill"></i></a>
-                            </div>
-                            <div class="canvasmenu-trigger view-md">
-                                <i class="fa fa-bars"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Menu End -->
-        </header>
-        <!--Header End-->
-    </div>
-    <!--======== Header 2 start ========-->
 
-    <!--======== Offcanvas Menu start ========-->
-    <div class="offcanvas-menu offcanvas-menu-2">
+                        <div class="logo-text">
+                            <span class="brand-name">EDUTECH</span>
+                            <span class="brand-tagline">ADMISSION EXPERTS</span>
+                        </div>
+                    </div>
+
+                    <div class="action-side">
+                        <a href="javascript:void(0);" id="openEnquire" class="main-btn">
+                            ENQUIRE NOW
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="static-announcement">
+            <div class="container">
+                <p class="sliding-text">Jan'26 Admissions Closing Soon! Avail Up to 25% Scholarship on 1st Semester*.</p>
+            </div>
+        </div>
+
+        <section class="split-hero d-flex align-items-center">
+            <div class="hero-bg-slider owl-carousel">
+                <div class="item" style="background-image: url('assets/images/banner/hero-1.jpg');"></div>
+                <div class="item" style="background-image: url('assets/images/banner/hero-2.jpg');"></div>
+                <div class="item" style="background-image: url('assets/images/banner/hero-3.jpg');"></div>
+                <div class="item" style="background-image: url('assets/images/banner/hero-4.jpg');"></div>
+            </div>
+
+            <div class="container position-relative z-index-2">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="hero-content-left text-white">
+                            <!-- <span class="ug-tag fw-bold">UG PROGRAM</span> -->
+                            <h1 class="expanding-text">
+                                Your Future, <br>
+                                Our <span class="typing-text"
+                                    data-words='["Guidance", "Expertise", "Support", "Solution"]'></span>
+                            </h1>
+                            <p class="journey-sub fs-4">START YOUR JOURNEY TODAY</p>
+                            <!-- <a href="#" class="brochure-btn btn btn-warning rounded-pill px-4">DOWNLOAD BROCHURE <i
+                                    class="ri-arrow-down-line"></i></a> -->
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5 offset-lg-1">
+                        <div id="heroFormBox" class="hero-form-box compact-form shadow-lg">
+                            <h3 class="form-title text-center text-dark fw-bold mb-4">Enquire Now</h3>
+                            <form action="" method="POST">
+                                <div class="row g-2">
+                                    <div class="col-md-6 mb-2">
+                                        <input type="text" name="full_name" class="form-control"
+                                            placeholder="Full Name *" required>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <input type="tel" name="mobile_number" class="form-control"
+                                            placeholder="Mobile *" required>
+                                    </div>
+                                    <div class="col-md-12 mb-2">
+                                        <input type="email" name="email" class="form-control" placeholder="Email Id *"
+                                            required>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <select name="last_qualification" class="form-select" required>
+                                            <option value="">Qualification *</option>
+                                            <option value="12th">12th</option>
+                                            <option value="Graduate">Graduate</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <select name="preferred_course" class="form-select" required>
+                                            <option value="">Course *</option>
+                                            <option value="B.Tech">B.Tech</option>
+                                            <option value="MBA">MBA</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-12 mb-2">
+                                        <div
+                                            class="hostel-toggle d-flex align-items-center justify-content-between p-2 rounded bg-light border">
+                                            <span class="small fw-bold text-dark">Hostel Required?</span>
+                                            <div class="btn-group btn-group-sm">
+                                                <input type="radio" class="btn-check" name="hostel_required" id="h1"
+                                                    value="Yes" checked>
+                                                <label class="btn btn-outline-primary" for="h1">Yes</label>
+                                                <input type="radio" class="btn-check" name="hostel_required" id="h2"
+                                                    value="No">
+                                                <label class="btn btn-outline-primary" for="h2">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <select name="preferred_city" class="form-select" required>
+                                            <option value="">Preferred City *</option>
+                                            <option value="Bhubaneswar">Bhubaneswar</option>
+                                            <option value="Delhi">Delhi</option>
+                                            <option value="Mumbai">Mumbai</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-6 mb-2">
+                                        <select name="budget_range" class="form-select" required>
+                                            <option value="">Budget Range *</option>
+                                            <option value="1-3 Lakh">1-3 Lakh</option>
+                                            <option value="3-5 Lakh">3-5 Lakh</option>
+                                            <option value="5+ Lakh">5+ Lakh</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-12 mb-2">
+                                        <textarea name="message" class="form-control"
+                                            placeholder="Message (Optional)"></textarea>
+                                    </div>
+
+                                </div>
+                                <button type="submit" class="hero-submit-btn w-100 mt-3">Submit Application</button>
+                                <?php if (!empty($success)): ?>
+                                    <div class="alert alert-success text-center">
+                                        <?= $success ?>
+                                    </div>
+                                <?php endif; ?>
+
+                                <?php if (!empty($error)): ?>
+                                    <div class="alert alert-danger text-center">
+                                        <?= $error ?>
+                                    </div>
+                                <?php endif; ?>
+
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="sliding-info-bar">
+            <marquee behavior="scroll" direction="left" scrollamount="7">
+                Official website of EDUTECH University Online. | Secure & Confidential: only through the secure link on
+                this safe us. | Admissions for 2026 are now open! Apply Today.
+            </marquee>
+        </div>
+        </section>
+
+
+        <div class="program-nav-bar">
+            <div class="container">
+                <div class="nav-flex-wrapper">
+                    <ul class="program-menu">
+                        <li><a href="#home">HOME</a></li>
+                        <li><a href="#about">ABOUT US</a></li>
+                        <li><a href="#course">COURSE</a></li>
+                        <li><a href="#blogs">BLOGS</a></li>
+                        <li><a href="#team">TEAM MEMBERS</a></li>
+                        <li><a href="#gallery">GALLERY</a></li>
+                        <li><a href="#contact">CONTACT US</a></li>
+                    </ul>
+                    <div class="nav-action">
+                        <a href="javascript:void(0);" id="openEnquireNav" class="navy-enquire-btn">
+                            ENQUIRE NOW
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--======== Header Onepage 2 start ========-->
+
+        <!-- ======== Offcanvas Menu start ========-->
+        <!-- <div class="offcanvas-menu offcanvas-menu-2">
         <div class="menu-canvas-close"><i class="fa fa-times" aria-hidden="true"></i></div>
         <div class="offcanvas-menu-inner">
             <div class="offc-logo mb-40">
                 <a href="index.html"><img src="assets/images/logo_home_4.png" alt="Logo"></a>
             </div>
             <ul class="nav-menu">
-                <li class="has-clid relative">
-                    <a href="index.html">Home</a>
-                    <ul class="sub-menu">
-                        <li class="has-clid">
-                            <a href="index.html">Multipage</a>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="index.html">Home 01</a>
-                                </li>
-                                <li>
-                                    <a href="index-2.html">Home 02</a>
-                                </li>
-                                <li>
-                                    <a href="index-3.html">Home 03</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="has-clid">
-                            <a href="onepage.html">Onepage</a>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="onepage.html">Onepage 01</a>
-                                </li>
-                                <li>
-                                    <a href="onepage-2.html">Onepage 02</a>
-                                </li>
-                                <li>
-                                    <a href="onepage-3.html">Onepage 03</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
+                <li>
+                    <a class="page-scroll" href="#rs-header">Home</a>
                 </li>
-                <li><a href="about.html">About</a></li>
-                <li class="has-clid relative">
-                    <a href="service-1.html">Services</a>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="service-1.html">Service Style 01</a>
-                        </li>
-                        <li>
-                            <a href="service-2.html">Service Style 02</a>
-                        </li>
-                        <li class="has-clid">
-                            <a href="service-details.html">Service Details</a>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="service-details.html">Service Details Style 01</a>
-                                </li>
-                                <li>
-                                    <a href="service-details-2.html">Service Details Style 02</a>
-                                </li>
-                                <li>
-                                    <a href="service-details-3.html">Service Details Style 03</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
+                <li>
+                    <a class="page-scroll" href="#rs-about">About</a>
                 </li>
-                <li class="has-clid relative">
-                    <a href="#">Pages</a>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="project.html">Project</a>
-                        </li>
-                        <li>
-                            <a href="project-details.html">Project Details</a>
-                        </li>
-                        <li>
-                            <a href="team.html">Team</a>
-                        </li>
-                        <li>
-                            <a href="team-details.html">Team Details</a>
-                        </li>
-                        <li>
-                            <a href="pricing.html">Pricing</a>
-                        </li>
-                        <li>
-                            <a href="faq.html">Faq</a>
-                        </li>
-                        <li>
-                            <a href="appointment.html">Appointment</a>
-                        </li>
-                        <li class="has-clid">
-                            <a href="shop.html">Shop</a>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="shop.html">Product</a>
-                                </li>
-                                <li>
-                                    <a href="product-single.html">Product Single</a>
-                                </li>
-                                <li>
-                                    <a href="cart.html">Cart</a>
-                                </li>
-                                <li>
-                                    <a href="checkout.html">Checkout</a>
-                                </li>
-                                <li>
-                                    <a href="my-account.html">My Account</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
+                <li>
+                    <a class="page-scroll" href="#rs-service">Services</a>
                 </li>
-                <li class="has-clid relative">
-                    <a href="blog-standard.html">Blog</a>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="blog-standard.html">Blog Standard</a>
-                        </li>
-                        <li>
-                            <a href="blog-single.html">Blog Single </a>
-                        </li>
-                    </ul>
+                <li>
+                    <a class="page-scroll" href="#rs-portfolios">Portfolios</a>
                 </li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul> <!-- //.nav-menu -->
-        </div>
-    </div>
-    <!--======== Offcanvas Menu Ends ========-->
+                <li>
+                    <a class="page-scroll" href="#rs-blog">Blog</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#rs-contact">Contact</a>
+                </li>
+            </ul> <! //.nav-menu -->
+        <!-- </div>
+    </div> 
+    ======== Offcanvas Menu Ends ======== -->
 
-    <!--======== Preloader area start ========-->
-    <div id="pre-load">
+        <!--======== Preloader area start ========-->
+        <!-- <div id="pre-load">
         <div id="loader" class="loader">
             <div class="loader-container">
                 <div class='loader-icon'><img src="assets/images/favicon.png" alt=""></div>
             </div>
         </div>
-    </div>
-    <!--======== Preloader area Ends ========-->
+    </div> -->
+        <!--======== Preloader area Ends ========-->
 
-    <!--======== Banner 2 Start ========-->
-    <section class="rs-banner-2">
+        <!--======== Banner 2 Start ========-->
+        <!-- <section class="rs-banner-2">
         <div class="container">
             <div class="row">
                 <div class="col-lg-2"></div>
@@ -437,1164 +444,1878 @@
                         <img class="wow fadeInDown" data-wow-duration="1.5s" data-wow-delay="0s" src="assets/images/banner/image-year.png" alt="">
                         <div class="rs-sub-heading wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.4s">
                             <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="">
-                            <span> Welcome To Techzen </span>
+                            <span> Welcome To EDUTECH </span>
                             <img src="assets/images/heart-pulse-rate-orange.svg" alt="">
                         </div>
-                        <h1 class="title wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.8s">Powerful Digital <span>Solutions</span></h1>
-                        <p class="wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1.2s">Capitalize on low hanging fruit to identify a ballpark value added heading towards a streamlined cloud solution. </p>
+                        <h1 class="title wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.8s">Your Future, Our <span>Guidance</span></h1>
+                        <p class="wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1.2s">We help students make the right career decisions by providing expert guidance, college insights, and personalized admission support for a brighter future.</p>
                         <a class="main-btn wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1.6s" href="about.html">Discover More <i class="ri-arrow-right-fill"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-2"></div>
             </div>
         </div>
-    </section>
-    <!--======== Banner 2 Ends ========-->
+    </section> -->
+        <!--======== Banner 2 Ends ========-->
 
-    <!--======== Service 2 Start ========-->
-    <div class="rs-service-2 pt-90 pb-120">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="rs-service-2__grid">
-                        <div class="rs-service-2__item">
-                            <div class="rs-service-2__icon">
-                                <img src="assets/images/service/service_icon1.png" alt="">
-                            </div>
-                            <h5 class="title"><a href="#">Data Analytics</a></h5>
-                        </div>
-                        <div class="rs-service-2__item">
-                            <div class="rs-service-2__icon">
-                                <img src="assets/images/service/service_icon2.png" alt="">
-                            </div>
-                            <h5 class="title"><a href="#">UI/UX Design Services</a></h5>
-                        </div>
-                        <div class="rs-service-2__item">
-                            <div class="rs-service-2__icon">
-                                <img src="assets/images/service/service_icon3.png" alt="">
-                            </div>
-                            <h5 class="title"><a href="#">Dedicated Teams</a></h5>
-                        </div>
-                        <div class="rs-service-2__item">
-                            <div class="rs-service-2__icon">
-                                <img src="assets/images/service/service_icon4.png" alt="">
-                            </div>
-                            <h5 class="title"><a href="#">Web Development</a></h5>
-                        </div>
-                        <div class="rs-service-2__item">
-                            <div class="rs-service-2__icon">
-                                <img src="assets/images/service/service_icon5.png" alt="">
-                            </div>
-                            <h5 class="title"><a href="#">Business Consultation</a></h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--======== Service 2 Ends ========-->
+        <section class="dashboard-info-section py-5">
+            <div class="container">
+                <div class="row g-4">
 
-    <!--======== Featured 2 Start ========-->
-    <section id="rs-service" class="rs-featured-2 pt-115 pb-120">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-12">
-                    <div class="rs-section-title black">
-                        <div class="top-sub-heading">
-                            <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
-                            <span>Our Feachered Services</span>
-                            <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
-                        </div>
-                        <h2 class="title split-in-fade">We run all kinds of IT services</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-sm-6">
-                    <div class="rs-featured-2__item">
-                        <div class="rs-thumb">
-                            <img src="assets/images/featured/featured-thumb-1.png" alt="">
-                        </div>
-                        <div class="rs-content">
-                            <div class="rs-icon">
-                                <img src="assets/images/featured/features-icon-1.png" alt="">
+                    <div class="col-lg-8 col-md-12">
+                        <div class="info-card h-100 notice-board-card shadow-sm">
+                            <div class="card-header-custom d-flex justify-content-between align-items-center mb-4">
+                                <h3 class="m-0 fw-bold">Notice Board</h3>
+                                <a href="all-notices.php" class="view-all-text">View All</a>
                             </div>
-                            <h4 class="title"><a href="service-details.html">IT Solutions</a></h4>
-                            <p>Bring to the table win-win survival strategies to ensure proactive domination.</p>
-                            <a class="rs-link" href="service-details.html">Read More <i class="ri-arrow-right-fill"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <div class="rs-featured-2__item">
-                        <div class="rs-thumb">
-                            <img src="assets/images/featured/featured-thumb-2.png" alt="">
-                        </div>
-                        <div class="rs-content">
-                            <div class="rs-icon">
-                                <img src="assets/images/featured/features-icon-2.png" alt="">
-                            </div>
-                            <h4 class="title"><a href="service-details.html">Cyber Security</a></h4>
-                            <p>Bring to the table win-win survival strategies to ensure proactive domination.</p>
-                            <a class="rs-link" href="service-details.html">Read More <i class="ri-arrow-right-fill"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <div class="rs-featured-2__item last-item">
-                        <div class="rs-thumb">
-                            <img src="assets/images/featured/featured-thumb-3.png" alt="">
-                        </div>
-                        <div class="rs-content">
-                            <div class="rs-icon">
-                                <img src="assets/images/featured/features-icon-3.png" alt="">
-                            </div>
-                            <h4 class="title"><a href="service-details.html">Cloud Services</a></h4>
-                            <p>Bring to the table win-win survival strategies to ensure proactive domination.</p>
-                            <a class="rs-link" href="service-details.html">Read More <i class="ri-arrow-right-fill"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="rs-featured-2__btn">
-                        <a class="main-btn" href="service-1.html"> View All Services <i class="ri-arrow-right-fill"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--======== Featured 2 Ends ========-->
 
-    <!--======== About 2 Start ========-->
-    <section id="rs-about" class="rs-about-2 pt-120 pb-30">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="rs-about-2__thumb">
-                        <img src="assets/images/about/about-img.png" alt="">
-                        <div class="rs-shape">
-                            <img class=" gsap-move left-100 start-91" src="assets/images/about/about-shape.png" alt="">
-                        </div>
-                        <div class="rs-counter-content">
-                            <h3 class="title"><span class="rs-count">30</span>+</h3>
-                            <span>Years of Experience</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="rs-about-2__main-content">
-                        <div class="rs-section-title black">
-                            <div class="top-sub-heading">
-                                <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
-                                <span>About Company</span>
-                                <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
+                            <div class="notice-list">
+                                <?php
+                                // Array for Admin Panel Integration: 
+                                // Replace this array later with a SQL fetch loop.
+                                $notices = [
+                                    ['d' => '17', 'm' => 'Feb', 'y' => '2026', 'title' => 'Information for candidates of B.Tech Admission Expert counseling 2026', 'pdf_size' => '22.15 KB'],
+                                    ['d' => '16', 'm' => 'Feb', 'y' => '2026', 'title' => 'Tentative vacancies for EDUTECH Admission Experts list for session Jan 2026', 'pdf_size' => '431.81 KB'],
+                                    ['d' => '13', 'm' => 'Feb', 'y' => '2026', 'title' => 'New partnership with Top Management Colleges in Bhubaneswar', 'pdf_size' => '62.66 KB'],
+                                    ['d' => '13', 'm' => 'Feb', 'y' => '2026', 'title' => 'Important Notice: Scholarship results regarding 1st semester admissions', 'pdf_size' => '178.75 KB'],
+                                    ['d' => '09', 'm' => 'Feb', 'y' => '2026', 'title' => 'Hostel orientation and allocation for Graduate candidates', 'pdf_size' => '131.61 KB']
+                                ];
+                                foreach ($notices as $n): ?>
+                                    <div class="notice-row d-flex align-items-center mb-4 border-bottom pb-3">
+                                        <div class="date-badge-box text-center me-3">
+                                            <span class="badge-now">Now</span>
+                                            <div class="date-inner">
+                                                <span class="day"><?php echo $n['d']; ?></span>
+                                                <span class="mon"><?php echo $n['m']; ?></span>
+                                                <span class="year"><?php echo $n['y']; ?></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="notice-content flex-grow-1">
+                                            <p class="notice-title m-0"><?php echo $n['title']; ?></p>
+                                        </div>
+
+                                        <div class="notice-actions d-flex align-items-center gap-2 ms-auto">
+                                            <span class="small text-muted d-none d-sm-inline">(<?php echo $n['pdf_size']; ?>)</span>
+                                            <a href="#" class="icon-btn pdf-btn" title="Download PDF">
+                                                <i class="fa fa-file-pdf-o"></i>
+                                            </a>
+                                            <a href="#" class="icon-btn view-btn" title="View Details">
+                                                <i class="fa fa-eye"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
                             </div>
-                            <h2 class="title split-in-fade">We believe that every problem has a solution</h2>
-                            <p>Bring to the table win-win survival strategies to ensure proactive domination at the end of
-                                the day, going forward.</p>
-                            <div id="rs-tabs" class="skltbs-theme-light use-drop skltbs-mode-tabs skltbs-init">
-                                <!-- tabGroup -->
-                                <ul class="skltbs-tab-group">
-                                    <!-- tabItem -->
-                                    <li class="skltbs-tab-item">
-                                        <!-- tab -->
-                                        <button class="skltbs-tab">Our Mission</button>
-                                    </li>
-                                    <li class="skltbs-tab-item">
-                                        <button class="skltbs-tab">Our Vision</button>
-                                    </li>
-                                    <li class="skltbs-tab-item">
-                                        <button class="skltbs-tab">Core Value</button>
-                                    </li>
+
+                            <nav class="mt-4">
+                                <ul class="custom-pagination d-flex justify-content-center align-items-center list-unstyled gap-2">
+                                    <li><a href="#" class="page-arrow"><i class="fa fa-chevron-left"></i></a></li>
+                                    <li><a href="#" class="page-num active">1</a></li>
+                                    <li><a href="#" class="page-num">2</a></li>
+                                    <li><a href="#" class="page-num">3</a></li>
+                                    <li><span class="page-dots">...</span></li>
+                                    <li><a href="#" class="page-num">53</a></li>
+                                    <li><a href="#" class="page-arrow"><i class="fa fa-chevron-right"></i></a></li>
                                 </ul>
-                                <!-- panelGroup -->
-                                <div class="skltbs-panel-group">
-                                    <!-- panel -->
-                                    <div class="skltbs-panel">
-                                        <p>Capitalize on low hanging fruit to identify a ballpark value added activity to
-                                            beta test.</p>
-                                        <ul>
-                                            <li><i class="ri-share-forward-fill"></i>Document the short and long term goals.</li>
-                                            <li><i class="ri-share-forward-fill"></i>Your product vision</li>
-                                        </ul>
-                                        <a class="main-btn" href="about.html">
-                                            Know More About Us
-                                            <i class="ri-arrow-right-fill"></i>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-12">
+                        <div class="side-wrapper h-100 d-flex flex-column gap-4">
+
+                            <div class="quick-links-section">
+                                <h4 class="fw-bold mb-3">Quick Links</h4>
+                                <div class="row g-3">
+                                    <div class="col-6">
+                                        <a href="#" class="quick-link-item">
+                                            <i class="fa fa-pencil text-danger"></i>
+                                            <span>Apply</span>
                                         </a>
-                                        <div class="play-icon">
-                                            <a class="rs-popup-videos" href="https://www.youtube.com/watch?v=5CLmRIHR5Zw"><i class="fa fa-play"></i></a>
-                                        </div>
                                     </div>
-                                    <div class="skltbs-panel">
-                                        <p>Capitalize on low hanging fruit to identify a ballpark value added activity to
-                                            beta test.</p>
-                                        <ul>
-                                            <li><i class="ri-share-forward-fill"></i>Document the short and long term goals.</li>
-                                            <li><i class="ri-share-forward-fill"></i>Your product vision</li>
-                                        </ul>
-                                        <a class="main-btn" href="about.html">
-                                            Know More About Us
-                                            <i class="ri-arrow-right-fill"></i>
+                                    <div class="col-6">
+                                        <a href="#" class="quick-link-item">
+                                            <i class="fa fa-id-card text-primary"></i>
+                                            <span>Admit Card</span>
                                         </a>
-                                        <div class="play-icon">
-                                            <a class="rs-popup-videos" href="https://www.youtube.com/watch?v=5CLmRIHR5Zw"><i class="fa fa-play"></i></a>
-                                        </div>
                                     </div>
-                                    <div class="skltbs-panel">
-                                        <p>Capitalize on low hanging fruit to identify a ballpark value added activity to
-                                            beta test.</p>
-                                        <ul>
-                                            <li><i class="ri-share-forward-fill"></i>Document the short and long term goals.</li>
-                                            <li><i class="ri-share-forward-fill"></i>Your product vision</li>
-                                        </ul>
-                                        <a class="main-btn" href="about.html">
-                                            Know More About Us
-                                            <i class="ri-arrow-right-fill"></i>
+                                    <div class="col-6">
+                                        <a href="#" class="quick-link-item">
+                                            <i class="fa fa-key text-warning"></i>
+                                            <span>Answer Key</span>
                                         </a>
-                                        <div class="play-icon">
-                                            <a class="rs-popup-videos" href="https://www.youtube.com/watch?v=5CLmRIHR5Zw"><i class="fa fa-play"></i></a>
+                                    </div>
+                                    <div class="col-6">
+                                        <a href="#" class="quick-link-item">
+                                            <i class="fa fa-chart-line text-success"></i>
+                                            <span>Result</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="info-card calendar-card shadow-sm">
+                                <div class="d-flex justify-content-between align-items-center mb-4">
+                                    <h5 class="m-0 fw-bold">Admission Calendar</h5>
+                                    <div class="cal-nav small text-muted">
+                                        <i class="fa fa-chevron-left pointer"></i>
+                                        <span class="mx-2 fw-bold text-dark">Feb, 2026</span>
+                                        <i class="fa fa-chevron-right pointer"></i>
+                                    </div>
+                                </div>
+
+                                <div class="calendar-timeline border-left-line">
+                                    <?php
+                                    $events = [
+                                        ['d' => '16', 'm' => 'MAR', 'title' => 'B.Tech Entrance Examination, 2026'],
+                                        ['d' => '16', 'm' => 'MAR', 'title' => 'SSA / UDC Grade Limited Competitive Exam'],
+                                        ['d' => '31', 'm' => 'MAR', 'title' => 'Selection Posts Examination Registration']
+                                    ];
+                                    foreach ($events as $e): ?>
+                                        <div class="calendar-item d-flex align-items-center mb-4">
+                                            <div class="cal-date-badge text-center">
+                                                <span class="cal-d"><?php echo $e['d']; ?></span>
+                                                <span class="cal-m"><?php echo $e['m']; ?></span>
+                                            </div>
+                                            <div class="cal-content ps-3 flex-grow-1 border-bottom pb-2">
+                                                <p class="small fw-bold mb-0 text-navy"><?php echo $e['title']; ?></p>
+                                            </div>
                                         </div>
-                                    </div>
+                                    <?php endforeach; ?>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--======== About 2 Ends ========-->
 
-    <!--======== Brand 2 Start ========-->
-    <div class="rs-brand rs-brand-2 pb-50 pt-85">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="rs-brand__top-title">
-                        <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="">
-                        <span>More than 5K+ Brands with work Techzen</span>
-                        <img src="assets/images/heart-pulse-rate-orange.svg" alt="">
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="rs-brand__slider">
-                        <div class="rs-carousel owl-carousel nav-style1" data-loop="true" data-items="5" data-margin="0" data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="3000" data-smart-speed="500" data-dots="false" data-nav="false" data-nav-speed="false" data-center-mode="false" data-mobile-device="2" data-mobile-device-nav="false" data-mobile-device-dots="false" data-ipad-device="4" data-ipad-device-nav="false" data-ipad-device-dots="false" data-ipad-device2="3" data-ipad-device-nav2="false" data-ipad-device-dots2="false" data-md-device="4" data-lg-device="5" data-md-device-nav="false" data-md-device-dots="false" data-doteach="false">
-                            <div class="rs-brand-slider-item">
-                                <a href="#">
-                                    <img src="assets/images/brand/partner1.png" alt="">
-                                    <img class="item-2" src="assets/images/brand/partner-white-1.png" alt="">
-                                </a>
+                                <div class="text-center mt-3">
+                                    <a href="full-calendar.php" class="view-all-text text-danger">View All</a>
+                                </div>
                             </div>
-                            <div class="rs-brand-slider-item">
-                                <a href="#">
-                                    <img src="assets/images/brand/partner2.png" alt="">
-                                    <img class="item-2" src="assets/images/brand/partner-white-2.png" alt="">
-                                </a>
-                            </div>
-                            <div class="rs-brand-slider-item">
-                                <a href="#">
-                                    <img src="assets/images/brand/partner3.png" alt="">
-                                    <img class="item-2" src="assets/images/brand/partner-white-3.png" alt="">
-                                </a>
-                            </div>
-                            <div class="rs-brand-slider-item">
-                                <a href="#">
-                                    <img src="assets/images/brand/partner4.png" alt="">
-                                    <img class="item-2" src="assets/images/brand/partner-white-4.png" alt="">
-                                </a>
-                            </div>
-                            <div class="rs-brand-slider-item">
-                                <a href="#">
-                                    <img src="assets/images/brand/partner5.png" alt="">
-                                    <img class="item-2" src="assets/images/brand/partner-white-5.png" alt="">
-                                </a>
-                            </div>
-                            <div class="rs-brand-slider-item">
-                                <a href="#">
-                                    <img src="assets/images/brand/partner6.png" alt="">
-                                    <img class="item-2" src="assets/images/brand/partner-white-6.png" alt="">
-                                </a>
-                            </div>
-                            <div class="rs-brand-slider-item">
-                                <a href="#">
-                                    <img src="assets/images/brand/partner7.png" alt="">
-                                    <img class="item-2" src="assets/images/brand/partner-white-7.png" alt="">
-                                </a>
-                            </div>
-                            <div class="rs-brand-slider-item">
-                                <a href="#">
-                                    <img src="assets/images/brand/partner8.png" alt="">
-                                    <img class="item-2" src="assets/images/brand/partner-white-8.png" alt="">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--======== Brand 2 Ends ========-->
 
-    <!--======== Project Start ========-->
-    <section id="rs-portfolios" class="rs-project">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="rs-top-line mb-110"></div>
-                </div>
-            </div>
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="rs-section-title black">
-                        <div class="top-sub-heading">
-                            <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
-                            <span>Our Projects</span>
-                            <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
-                        </div>
-                        <h2 class="title split-in-fade">See we have solution done IT projects</h2>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="rs-project__btn">
-                        <a class="main-btn" href="project.html">View All Services <i class="ri-arrow-right-fill"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="rs-carousel owl-carousel rs-project__slider mt-30" data-loop="true" data-items="3" data-margin="30" data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000" data-smart-speed="800" data-dots="true" data-nav="false" data-nav-speed="false" data-center-mode="false" data-mobile-device="1" data-mobile-device-nav="false" data-mobile-device-dots="true" data-ipad-device="2" data-ipad-device-nav="false" data-ipad-device-dots="true" data-ipad-device2="1" data-ipad-device-nav2="false" data-ipad-device-dots2="true" data-md-device="2" data-lg-device="3" data-md-device-nav="false" data-md-device-dots="true" data-doteach="false">
-                        <div class="rs-project__items">
-                            <div class="wrapping">
-                                <img src="assets/images/project/project-1.jpg" alt="">
-                                <div class="rs-project__content">
-                                    <ul>
-                                        <li><a href="#">Consultation</a></li>
-                                        <li><a href="#">Design</a></li>
-                                        <li><a href="#">Strategy</a></li>
-                                    </ul>
-                                    <h3 class="title"><a href="project-details.html">Analys & Backup Blockchain</a></h3>
-                                    <div class="rs-link">
-                                        <a href="project-details.html">View Details <i class="ri-arrow-right-fill"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="rs-project__items">
-                            <div class="wrapping">
-                                <img src="assets/images/project/project-2.jpg" alt="">
-                                <div class="rs-project__content">
-                                    <ul>
-                                        <li><a href="#">Consultation</a></li>
-                                        <li><a href="#">Design</a></li>
-                                        <li><a href="#">Strategy</a></li>
-                                    </ul>
-                                    <h3 class="title"><a href="project-details.html">Analys & Backup Blockchain</a></h3>
-                                    <div class="rs-link">
-                                        <a href="project-details.html">View Details <i class="ri-arrow-right-fill"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="rs-project__items">
-                            <div class="wrapping">
-                                <img src="assets/images/project/project-3.jpg" alt="">
-                                <div class="rs-project__content">
-                                    <ul>
-                                        <li><a href="#">Consultation</a></li>
-                                        <li><a href="#">Design</a></li>
-                                        <li><a href="#">Strategy</a></li>
-                                    </ul>
-                                    <h3 class="title"><a href="project-details.html">Analys & Backup Blockchain</a></h3>
-                                    <div class="rs-link">
-                                        <a href="project-details.html">View Details <i class="ri-arrow-right-fill"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="rs-project__items">
-                            <div class="wrapping">
-                                <img src="assets/images/project/project-4.jpg" alt="">
-                                <div class="rs-project__content">
-                                    <ul>
-                                        <li><a href="#">Consultation</a></li>
-                                        <li><a href="#">Design</a></li>
-                                        <li><a href="#">Strategy</a></li>
-                                    </ul>
-                                    <h3 class="title"><a href="project-details.html">Analys & Backup Blockchain</a></h3>
-                                    <div class="rs-link">
-                                        <a href="project-details.html">View Details <i class="ri-arrow-right-fill"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="rs-project__items">
-                            <div class="wrapping">
-                                <img src="assets/images/project/project-5.jpg" alt="">
-                                <div class="rs-project__content">
-                                    <ul>
-                                        <li><a href="#">Consultation</a></li>
-                                        <li><a href="#">Design</a></li>
-                                        <li><a href="#">Strategy</a></li>
-                                    </ul>
-                                    <h3 class="title"><a href="project-details.html">Analys & Backup Blockchain</a></h3>
-                                    <div class="rs-link">
-                                        <a href="project-details.html">View Details <i class="ri-arrow-right-fill"></i></a>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="rs-shape">
-            <img src="assets/images/project/port-cube.svg" alt="">
-        </div>
-    </section>
-    <!--======== Project Ends ========-->
 
-    <!--======== Why Choose 2 Start ========-->
-    <section class="rs-why-choose-2 pb-85">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="why-choose-2__content">
-                        <div class="rs-section-title black">
-                            <div class="top-sub-heading">
-                                <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
-                                <span>Why Choose Us</span>
-                                <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
-                            </div>
-                            <h2 class="title split-in-fade">35+ Years of delivering custom It solutions services.</h2>
-                            <p>Bring to the table win-win survival strategies to ensure proactive domination At the end of
-                                the day.</p>
-                        </div>
-                        <div class="skill-bars">
-                            <div class="rs-progress-skill why-choose-two__progress">
-                                <h4 class="rs-progress__title">Business Strategy</h4>
-                                <div class="rs-progress__bar">
-                                    <div class="rs-progress__inner rs-count-bar counted" data-percent="80%">
-                                        <p class="rs-progress__number count-text">80%</p>
-                                    </div>
-                                </div>
-                            </div><!-- /.rs-progress -->
-                            <div class="rs-progress-skill why-choose-two__progress">
-                                <h4 class="rs-progress__title">Cyber Security</h4>
-                                <div class="rs-progress__bar">
-                                    <div class="rs-progress__inner rs-count-bar counted" data-percent="75%">
-                                        <p class="rs-progress__number count-text">75%</p>
-                                    </div>
-                                </div>
-                            </div><!-- /.rs-progress -->
-                            <div class="rs-progress-skill why-choose-two__progress">
-                                <h4 class="rs-progress__title">Softwar Development</h4>
-                                <div class="rs-progress__bar">
-                                    <div class="rs-progress__inner rs-count-bar counted" data-percent="95%">
-                                        <p class="rs-progress__number count-text">95%</p>
-                                    </div>
-                                </div>
-                            </div><!-- /.rs-progress -->
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="rs-why-choose-2__thumb wow fadeInRight" data-wow-duration="1.5s" data-wow-delay="0.4s">
-                        <div class="rs-thumb-1">
-                            <img src="assets/images/why-choose/chose-right-left.jpg" alt="">
-                        </div>
-                        <div class="rs-thumb-2">
-                            <img src="assets/images/why-choose/chose-right-right.jpg" alt="">
-                            <img src="assets/images/why-choose/chose-right-bottom.png" alt="">
-                        </div>
-                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <!--======== Why Choose 2 Ends ========-->
+        </section>
 
-    <!--======== Counter 2 Start ========-->
-    <section class="rs-counter-2 pb-125">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="rs-counter-2__title">
-                        <h5 class="title">Glimpse of our work and presence</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-3 col-sm-6">
-                    <div class="rs-counter-2__item">
-                        <div class="rs-counter-2__icon">
-                            <img src="assets/images/counter/counter-icon-1.svg" alt="">
-                        </div>
-                        <div class="rs-counter-2__content">
-                            <h4 class="title"><span class="rs-count odometer" data-count="4560">00</span> +</h4>
-                            <span>Apps Developed</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="rs-counter-2__item item-2">
-                        <div class="rs-counter-2__icon">
-                            <img src="assets/images/counter/counter-icon-2.svg" alt="">
-                        </div>
-                        <div class="rs-counter-2__content">
-                            <h4 class="title"><span class="rs-count odometer" data-count="3600">00</span> +</h4>
-                            <span>Website Design</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="rs-counter-2__item item-3">
-                        <div class="rs-counter-2__icon">
-                            <img src="assets/images/counter/counter-icon-3.svg" alt="">
-                        </div>
-                        <div class="rs-counter-2__content">
-                            <h4 class="title"><span class="rs-count odometer" data-count="2750">00</span> +</h4>
-                            <span>Happy Clients</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="rs-counter-2__item item-4">
-                        <div class="rs-counter-2__icon">
-                            <img src="assets/images/counter/counter-icon-4.svg" alt="">
-                        </div>
-                        <div class="rs-counter-2__content">
-                            <h4 class="title"><span class="rs-count odometer" data-count="1200">00</span> +</h4>
-                            <span>Data Science</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--======== Counter 2 Ends ========-->
-
-    <!--======== Newsletter 2 Start ========-->
-    <section class="rs-newsletter-2 pt-95 pb-110">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-2"></div>
-                <div class="col-lg-8">
-                    <div class="rs-newsletter-2__box">
-                        <h2 class="title split-in-fade">Need any kind of IT solution for <span>your business?</span></h2>
-                        <div class="rs-newsletter-2__btn">
-                            <a class="main-btn" href="contact.html">Contact Us <i class="ri-arrow-right-fill"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2"></div>
-            </div>
-        </div>
-        <div class="rs-newsletter-2__shape-1">
-            <img class="gsap-rotate" src="assets/images/newsletter/close-ico-yeloow-grad.svg" alt="">
-
-        </div>
-        <div class="rs-newsletter-2__shape-2">
-            <img class="gsap-move down-100 start-91" src="assets/images/newsletter/circle-white.svg" alt="">
-        </div>
-    </section>
-    <!--======== Newsletter 2 Ends ========-->
-
-    <!--======== Pricing Start ========-->
-    <section class="rs-pricing pt-110 pb-120">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="rs-section-title black">
-                        <div class="top-sub-heading">
-                            <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
-                            <span>Start Business</span>
-                            <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
-                        </div>
-                        <h2 class="title split-in-fade">Our popular pricing package</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="rs-pricing__item">
-                        <div class="rs-pricing__top-header">
-                            <span>Silver Package</span>
-                            <div class="rs-pricing__price-box">
-                                <h3 class="title">$29.00 <span>Per Month</span></h3>
-                            </div>
-                        </div>
-                        <div class="rs-pricing__body">
-                            <ul>
-                                <li class="list"><i class="ri-checkbox-circle-line"></i> 30 Days Trial Features</li>
-                                <li class="list"><i class="ri-checkbox-circle-line"></i> Unlimited Features</li>
-                                <li class="list disabled"><i class="ri-checkbox-blank-circle-line"></i> Multi-Language Content</li>
-                                <li class="list disabled"><i class="ri-checkbox-blank-circle-line"></i> Data backup and recovery</li>
-                                <li class="list disabled"><i class="ri-checkbox-blank-circle-line"></i> Synced To Cloud Database</li>
-                            </ul>
-                            <a class="main-btn" href="contact.html">Get Started <i class="ri-arrow-right-fill"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="rs-pricing__item">
-                        <div class="rs-pricing__top-header">
-                            <span>Gold Package</span>
-                            <div class="rs-pricing__price-box">
-                                <h3 class="title">$49.00 <span>Per Month</span></h3>
-                            </div>
-                        </div>
-                        <div class="rs-pricing__body">
-                            <ul>
-                                <li class="list disabled"><i class="ri-checkbox-blank-circle-line"></i> 30 Days Trial Features</li>
-                                <li class="list"><i class="ri-checkbox-circle-line"></i> Unlimited Features</li>
-                                <li class="list"><i class="ri-checkbox-circle-line"></i> Multi-Language Content</li>
-                                <li class="list"><i class="ri-checkbox-circle-line"></i> Data backup and recovery</li>
-                                <li class="list disabled"><i class="ri-checkbox-blank-circle-line"></i> Synced To Cloud Database</li>
-                            </ul>
-                            <a class="main-btn" href="contact.html">Get Started <i class="ri-arrow-right-fill"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="rs-pricing__item last-item">
-                        <div class="rs-pricing__top-header">
-                            <span>Platinum Package</span>
-                            <div class="rs-pricing__price-box">
-                                <h3 class="title">$99.00 <span>Per Month</span></h3>
-                            </div>
-                        </div>
-                        <div class="rs-pricing__body">
-                            <ul>
-                                <li class="list"><i class="ri-checkbox-circle-line"></i> 30 Days Trial Features</li>
-                                <li class="list disabled"><i class="ri-checkbox-blank-circle-line"></i> Unlimited Features</li>
-                                <li class="list disabled"><i class="ri-checkbox-blank-circle-line"></i> Multi-Language Content</li>
-                                <li class="list disabled"><i class="ri-checkbox-blank-circle-line"></i> Data backup and recovery</li>
-                                <li class="list"><i class="ri-checkbox-circle-line"></i> Synced To Cloud Database</li>
-                            </ul>
-                            <a class="main-btn" href="contact.html">Get Started <i class="ri-arrow-right-fill"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--======== Pricing Ends ========-->
-
-    <!--======== Faq Start ========-->
-    <div class="rs-faq pb-120">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="rs-faq__thumb wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay="0.4s">
-                        <img src="assets/images/faq/faq-left-img.png" alt="faq">
-                        <div class="rs-shape">
-                            <img src="assets/images/faq/couple-ball-layer.svg" alt="faq">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="rs-faq__content">
-                        <div class="rs-section-title black">
-                            <div class="top-sub-heading">
-                                <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
-                                <span>FAQ</span>
-                                <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
-                            </div>
-                            <h2 class="title split-in-fade">Frequently asked questions</h2>
-                        </div>
-                        <div class="rs-faq__wrapper">
-                            <div class="accordion active">
-                                <div class="accordion_tab active">
-                                    01 How to use Techzen?
-                                    <div class="accordion_arrow">
-                                        <i class="ri-add-fill"></i>
-                                    </div>
-                                </div>
-                                <div class="accordion_content">
-                                    <div class="accordion_item">
-                                        <p>The rapid pace of technological progress has revolutionized every aspect of our
-                                            lives, leading to increased efficiency, connectivity, and access to information.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion">
-                                <div class="accordion_tab">
-                                    02 How to soft launch your business?
-                                    <div class="accordion_arrow">
-                                        <i class="ri-add-fill"></i>
-                                    </div>
-                                </div>
-                                <div class="accordion_content">
-                                    <div class="accordion_item">
-                                        <p>Podcasting operational change management inside of workflows to establish a
-                                            framework. Taking seamless key performance indicators offline to maximise the
-                                            long tail.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion">
-                                <div class="accordion_tab">
-                                    03 How to turn visitors into contributors?
-                                    <div class="accordion_arrow">
-                                        <i class="ri-add-fill"></i>
-                                    </div>
-                                </div>
-                                <div class="accordion_content">
-                                    <div class="accordion_item">
-                                        <p>Technology is at the forefront of innovation and progress, enabling us to tackle
-                                            some of the world’s biggest challenges and improve the quality of life for
-                                            people around the globe.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="rs-faq__link">
-                            <a class="main-btn" href="contact.html">Any Questions? <i class="ri-arrow-right-fill"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--======== Faq Ends ========-->
-
-    <!--======== Testimonial 2 Start ========-->
-    <section class="rs-testimonial-2 pt-110 pb-120">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="rs-testimonial-2__left-content">
-                        <div class="rs-section-title black">
-                            <div class="top-sub-heading">
-                                <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
-                                <span>Testimonials </span>
-                                <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
-                            </div>
-                            <h2 class="title split-in-fade">What happy clients says about us?</h2>
-                            <div class="rs-thumb">
-                                <img src="assets/images/testimonial/testimonial-left-img.jpg" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="rs-testimonial-2__slider-box">
-                        <div class="rs-carousel owl-carousel" data-loop="true" data-items="1" data-margin="0" data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000" data-smart-speed="800" data-dots="true" data-nav="false" data-nav-speed="false" data-center-mode="false" data-mobile-device="1" data-mobile-device-nav="false" data-mobile-device-dots="true" data-ipad-device="1" data-ipad-device-nav="false" data-ipad-device-dots="true" data-ipad-device2="1" data-ipad-device-nav2="false" data-ipad-device-dots2="true" data-md-device="1" data-lg-device="1" data-md-device-nav="false" data-md-device-dots="true" data-doteach="true">
-                            <div class="rs-testimonial-2__items">
-                                <div class="testimonial-content">
-                                    <img src="assets/images/testimonial/quote_orange.svg" alt="">
-                                    <p>Taking seamless key performance indicators offline to maximise the long tail. Keeping your eye on the ball while performing a deep dive on the start-up mentality. Podcasting operational change management inside of workflows to establish a framework.</p>
-                                </div>
-                                <div class="testimonial-author">
-                                    <div class="author-thumb">
-                                        <img src="assets/images/testimonial/testi1.jpg" alt="">
-                                    </div>
-                                    <div class="author-content">
-                                        <h5 class="title">Martins Ana</h5>
-                                        <span>CEO, Bribbble LLC</span>
-                                        <img src="assets/images/testimonial/testimonial-brsnd-2.png" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="rs-testimonial-2__items">
-                                <div class="testimonial-content">
-                                    <img src="assets/images/testimonial/quote_orange.svg" alt="">
-                                    <p>Keeping your eye on the ball while performing a deep dive on the start-up mentality. Taking seamless key performance indicators offline to maximise the long tail.  Podcasting operational change management inside of workflows to establish a framework.</p>
-                                </div>
-                                <div class="testimonial-author">
-                                    <div class="author-thumb">
-                                        <img src="assets/images/testimonial/testi2.jpg" alt="">
-                                    </div>
-                                    <div class="author-content">
-                                        <h5 class="title">Robards Lynda</h5>
-                                        <span>Company SEO, Google</span>
-                                        <img src="assets/images/testimonial/testimonial-brsnd-2.png" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="rs-testimonial-2__items">
-                                <div class="testimonial-content">
-                                    <img src="assets/images/testimonial/quote_orange.svg" alt="">
-                                    <p>Operational  podcasting change management inside of workflows to establish a framework . Keeping your eye on the ball while performing a deep dive on the start-up mentality. Taking seamless key performance indicators offline to maximize the long tail.</p>
-                                </div>
-                                <div class="testimonial-author">
-                                    <div class="author-thumb">
-                                        <img src="assets/images/testimonial/testi3.jpg" alt="">
-                                    </div>
-                                    <div class="author-content">
-                                        <h5 class="title">Taylor Matthew</h5>
-                                        <span>SEO & Founder, Facebook</span>
-                                        <img src="assets/images/testimonial/testimonial-brsnd-2.png" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="rs-testimonial-2__items">
-                                <div class="testimonial-content">
-                                    <img src="assets/images/testimonial/quote_orange.svg" alt="">
-                                    <p>Podcasting operational change management inside of workflows to establish a framework. Taking seamless key performance indicators offline to maximise the long tail. Keeping your eye on the ball while performing a deep dive on the start-up mentality.</p>
-                                </div>
-                                <div class="testimonial-author">
-                                    <div class="author-thumb">
-                                        <img src="assets/images/testimonial/testi4.jpg" alt="">
-                                    </div>
-                                    <div class="author-content">
-                                        <h5 class="title">Ribeiro Nicolas</h5>
-                                        <span>HR, Envato</span>
-                                        <img src="assets/images/testimonial/testimonial-brsnd-2.png" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="rs-testimonial-2__items">
-                                <div class="testimonial-content">
-                                    <img src="assets/images/testimonial/quote_orange.svg" alt="">
-                                    <p>Operational   establish to Podcasting change management inside of workflows a framework. Taking seamless key performance indicators offline to maximise the long tail. Keeping your eye on the ball while performing a deep dive on the start-up mentality.</p>
-                                </div>
-                                <div class="testimonial-author">
-                                    <div class="author-thumb">
-                                        <img src="assets/images/testimonial/testi5.jpg" alt="">
-                                    </div>
-                                    <div class="author-content">
-                                        <h5 class="title">Howard Esther</h5>
-                                        <span>CEO, Bribbble LLC</span>
-                                        <img src="assets/images/testimonial/testimonial-brsnd-2.png" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--======== Testimonial 2 Ends ========-->
-
-    <!--======== Blog 2 Start ========-->
-    <section id="rs-blog" class="rs-blog-2 pt-120">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="rs-section-title black">
-                        <div class="top-sub-heading">
-                            <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
-                            <span>News & Article</span>
-                            <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
-                        </div>
-                        <h2 class="title split-in-fade">Read our latest insights</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="rs-carousel owl-carousel nav-style1" data-loop="true" data-items="3" data-margin="20" data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000" data-smart-speed="800" data-dots="true" data-nav="false" data-nav-speed="false" data-center-mode="false" data-mobile-device="1" data-mobile-device-nav="false" data-mobile-device-dots="true" data-ipad-device="2" data-ipad-device-nav="false" data-ipad-device-dots="true" data-ipad-device2="2" data-ipad-device-nav2="false" data-ipad-device-dots2="true" data-md-device="2" data-lg-device="3" data-md-device-nav="false" data-md-device-dots="true" data-doteach="false">
-                        <div class="rs-blog-2__item">
-                            <div class="rs-thumb">
-                                <img src="assets/images/blog/blog-6.jpg" alt="">
-                            </div>
-                            <div class="rs-content">
-                                <div class="rs-category">
-                                    <a href="#">Software</a>
-                                </div>
-                                <h3 class="title"><a href="blog-single.html">10 reliable sources to learn about it solution</a></h3>
-                                <p>Podcasting operational change management inside of workflows to establish a...</p>
-                                <div class="rs-blog-footer">
-                                    <span>
-                                    <svg width="14" height="14" viewbox="0 0 14 14" xmlns="http://www.w3.org/2000/svg"><path d="M2.97 8.83317L0 11.1665V0.833171C0 0.65636 0.0702379 0.48679 0.195262 0.361766C0.320286 0.236742 0.489856 0.166504 0.666667 0.166504H10.6667C10.8435 0.166504 11.013 0.236742 11.1381 0.361766C11.2631 0.48679 11.3333 0.65636 11.3333 0.833171V8.83317H2.97ZM2.50867 7.49984H10V1.49984H1.33333V8.42317L2.50867 7.49984ZM4.66667 10.1665H11.4913L12.6667 11.0898V4.1665H13.3333C13.5101 4.1665 13.6797 4.23674 13.8047 4.36177C13.9298 4.48679 14 4.65636 14 4.83317V13.8332L11.03 11.4998H5.33333C5.15652 11.4998 4.98695 11.4296 4.86193 11.3046C4.7369 11.1796 4.66667 11.01 4.66667 10.8332V10.1665Z" fill="#F26F20"></path></svg>
-                                    2 Comments
-                                </span>
-                                    <a href="blog-single.html">Read More <i class="ri-arrow-right-fill"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="rs-blog-2__item">
-                            <div class="rs-thumb">
-                                <img src="assets/images/blog/blog-8.png" alt="">
-                            </div>
-                            <div class="rs-content">
-                                <div class="rs-category">
-                                    <a href="#">Design</a>
-                                </div>
-                                <h3 class="title"><a href="blog-single.html">10 reliable sources to learn about it solution</a></h3>
-                                <p>Podcasting operational change management inside of workflows to establish a...</p>
-                                <div class="rs-blog-footer">
-                                    <span>
-                                    <svg width="14" height="14" viewbox="0 0 14 14" xmlns="http://www.w3.org/2000/svg"><path d="M2.97 8.83317L0 11.1665V0.833171C0 0.65636 0.0702379 0.48679 0.195262 0.361766C0.320286 0.236742 0.489856 0.166504 0.666667 0.166504H10.6667C10.8435 0.166504 11.013 0.236742 11.1381 0.361766C11.2631 0.48679 11.3333 0.65636 11.3333 0.833171V8.83317H2.97ZM2.50867 7.49984H10V1.49984H1.33333V8.42317L2.50867 7.49984ZM4.66667 10.1665H11.4913L12.6667 11.0898V4.1665H13.3333C13.5101 4.1665 13.6797 4.23674 13.8047 4.36177C13.9298 4.48679 14 4.65636 14 4.83317V13.8332L11.03 11.4998H5.33333C5.15652 11.4998 4.98695 11.4296 4.86193 11.3046C4.7369 11.1796 4.66667 11.01 4.66667 10.8332V10.1665Z" fill="#F26F20"></path></svg>
-                                    2 Comments
-                                </span>
-                                    <a href="blog-single.html">Read More <i class="ri-arrow-right-fill"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="rs-blog-2__item">
-                            <div class="rs-thumb">
-                                <img src="assets/images/blog/blog-5.jpg" alt="">
-                            </div>
-                            <div class="rs-content">
-                                <div class="rs-category">
-                                    <a href="#">Development</a>
-                                </div>
-                                <h3 class="title"><a href="blog-single.html">10 reliable sources to learn about it solution</a></h3>
-                                <p>Podcasting operational change management inside of workflows to establish a...</p>
-                                <div class="rs-blog-footer">
-                                    <span>
-                                    <svg width="14" height="14" viewbox="0 0 14 14" xmlns="http://www.w3.org/2000/svg"><path d="M2.97 8.83317L0 11.1665V0.833171C0 0.65636 0.0702379 0.48679 0.195262 0.361766C0.320286 0.236742 0.489856 0.166504 0.666667 0.166504H10.6667C10.8435 0.166504 11.013 0.236742 11.1381 0.361766C11.2631 0.48679 11.3333 0.65636 11.3333 0.833171V8.83317H2.97ZM2.50867 7.49984H10V1.49984H1.33333V8.42317L2.50867 7.49984ZM4.66667 10.1665H11.4913L12.6667 11.0898V4.1665H13.3333C13.5101 4.1665 13.6797 4.23674 13.8047 4.36177C13.9298 4.48679 14 4.65636 14 4.83317V13.8332L11.03 11.4998H5.33333C5.15652 11.4998 4.98695 11.4296 4.86193 11.3046C4.7369 11.1796 4.66667 11.01 4.66667 10.8332V10.1665Z" fill="#F26F20"></path></svg>
-                                    2 Comments
-                                </span>
-                                    <a href="blog-single.html">Read More <i class="ri-arrow-right-fill"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="rs-blog-2__item">
-                            <div class="rs-thumb">
-                                <img src="assets/images/blog/blog-4.jpg" alt="">
-                            </div>
-                            <div class="rs-content">
-                                <div class="rs-category">
-                                    <a href="#">Ui/UX</a>
-                                </div>
-                                <h3 class="title"><a href="blog-single.html">10 reliable sources to learn about it solution</a></h3>
-                                <p>Podcasting operational change management inside of workflows to establish a...</p>
-                                <div class="rs-blog-footer">
-                                    <span>
-                                    <svg width="14" height="14" viewbox="0 0 14 14" xmlns="http://www.w3.org/2000/svg"><path d="M2.97 8.83317L0 11.1665V0.833171C0 0.65636 0.0702379 0.48679 0.195262 0.361766C0.320286 0.236742 0.489856 0.166504 0.666667 0.166504H10.6667C10.8435 0.166504 11.013 0.236742 11.1381 0.361766C11.2631 0.48679 11.3333 0.65636 11.3333 0.833171V8.83317H2.97ZM2.50867 7.49984H10V1.49984H1.33333V8.42317L2.50867 7.49984ZM4.66667 10.1665H11.4913L12.6667 11.0898V4.1665H13.3333C13.5101 4.1665 13.6797 4.23674 13.8047 4.36177C13.9298 4.48679 14 4.65636 14 4.83317V13.8332L11.03 11.4998H5.33333C5.15652 11.4998 4.98695 11.4296 4.86193 11.3046C4.7369 11.1796 4.66667 11.01 4.66667 10.8332V10.1665Z" fill="#F26F20"></path></svg>
-                                    2 Comments
-                                </span>
-                                    <a href="blog-single.html">Read More <i class="ri-arrow-right-fill"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="rs-blog-2__item">
-                            <div class="rs-thumb">
-                                <img src="assets/images/blog/blog-7.jpg" alt="">
-                            </div>
-                            <div class="rs-content">
-                                <div class="rs-category">
-                                    <a href="#">design</a>
-                                </div>
-                                <h3 class="title"><a href="blog-single.html">10 reliable sources to learn about it solution</a></h3>
-                                <p>Podcasting operational change management inside of workflows to establish a...</p>
-                                <div class="rs-blog-footer">
-                                    <span>
-                                    <svg width="14" height="14" viewbox="0 0 14 14" xmlns="http://www.w3.org/2000/svg"><path d="M2.97 8.83317L0 11.1665V0.833171C0 0.65636 0.0702379 0.48679 0.195262 0.361766C0.320286 0.236742 0.489856 0.166504 0.666667 0.166504H10.6667C10.8435 0.166504 11.013 0.236742 11.1381 0.361766C11.2631 0.48679 11.3333 0.65636 11.3333 0.833171V8.83317H2.97ZM2.50867 7.49984H10V1.49984H1.33333V8.42317L2.50867 7.49984ZM4.66667 10.1665H11.4913L12.6667 11.0898V4.1665H13.3333C13.5101 4.1665 13.6797 4.23674 13.8047 4.36177C13.9298 4.48679 14 4.65636 14 4.83317V13.8332L11.03 11.4998H5.33333C5.15652 11.4998 4.98695 11.4296 4.86193 11.3046C4.7369 11.1796 4.66667 11.01 4.66667 10.8332V10.1665Z" fill="#F79C53"></path></svg>
-                                    2 Comments
-                                </span>
-                                    <a href="blog-single.html">Read More <i class="ri-arrow-right-fill"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--======== Blog 2 Ends ========-->
-
-    <!--======== Footer 2 Start ========-->
-    <footer id="rs-contact" class="rs-footer rs-footer-2">
-        <div class="rs-footer__top">
+        <!--======== Service 2 Start ========-->
+        <div class="rs-service-2 pt-90 pb-120">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-4">
-                        <div class="rs-footer__info-box">
-                            <div class="icon">
-                                <img src="assets/images/footer/info-3.png" alt="">
-                            </div>
-                            <div class="content">
-                                <span>Contact Us</span>
-                                <a href="tel:+004555012065">(+004) 555 - 012 - 065</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="rs-footer__info-box">
-                            <div class="icon">
-                                <img src="assets/images/footer/info-1.png" alt="">
-                            </div>
-                            <div class="content">
-                                <span>Email Us</span>
-                                <a href="mailto:info@yourname.com">info@yourname.com</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="rs-footer__info-box">
-                            <div class="icon">
-                                <img src="assets/images/footer/info-2.png" alt="">
-                            </div>
-                            <div class="content">
-                                <span>Address</span>
-                                <h4 class="title"> 2972 Westheimer 96 Rd. </h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="rs-footer__main-box">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3">
-                        <div class="rs-footer__about-box">
-                            <a href="index-2.html"><img src="assets/images/techzen_logo_home_2.png" alt=""></a>
-                            <p> Proactively envisioned multimedia based expertise and cross-media growth strategies seamlessly.</p>
-                            <div class="rs-footer__social">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#"><i class="ri-twitter-x-fill"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="rs-footer__navigation">
-                            <div class="rs-footer-title">
-                                <h4 class="title">Our Services</h4>
-                            </div>
-                            <ul>
-                                <li><a href="service-details-2.html"><i class="ri-arrow-right-fill"></i> IT Management</a></li>
-                                <li><a href="service-details-2.html"><i class="ri-arrow-right-fill"></i> IT Solutions</a></li>
-                                <li><a href="service-details-2.html"><i class="ri-arrow-right-fill"></i> Machine Learning</a></li>
-                                <li><a href="service-details-2.html"><i class="ri-arrow-right-fill"></i> Product Design</a></li>
-                                <li><a href="service-details-2.html"><i class="ri-arrow-right-fill"></i> SEO Optimization</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="rs-footer__navigation rs-footer--navigation">
-                            <div class="rs-footer-title">
-                                <h4 class="title">Information</h4>
-                            </div>
-                            <ul>
-                                <li><a href="about.html"><i class="ri-arrow-right-fill"></i> About Techzen</a></li>
-                                <li><a href="team.html"><i class="ri-arrow-right-fill"></i> Our Team</a></li>
-                                <li><a href="pricing.html"><i class="ri-arrow-right-fill"></i> Pricing Plan</a></li>
-                                <li><a href="project.html"><i class="ri-arrow-right-fill"></i> Our Projects</a></li>
-                                <li><a href="appointment.html"><i class="ri-arrow-right-fill"></i> Appointment</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="rs-footer__newsletter">
-                            <div class="rs-footer-title">
-                                <h4 class="title">Newsletter</h4>
-                            </div>
-                            <p>Register now to get latest updates on promotions & coupons.</p>
-                            <form action="#">
-                                <div class="input-box">
-                                    <input type="email" placeholder="Your email address">
-                                    <button class="main-btn">Subscribe <svg width="13" height="14" viewbox="0 0 13 14" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M6.5 7.8125H0V6.1875H6.5V0.5L13 7L6.5 13.5V7.8125Z" fill="#fff"></path>
-                                        </svg></button>
+                    <div class="col-lg-12">
+                        <div class="rs-carousel owl-carousel service-slider-bottom" data-loop="true" data-items="5"
+                            data-margin="30" data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000"
+                            data-smart-speed="800" data-dots="false" data-nav="true" data-nav-speed="false"
+                            data-center-mode="false" data-mobile-device="1.2" data-mobile-device-nav="true"
+                            data-mobile-device-dots="false" data-ipad-device="3" data-ipad-device-nav="true"
+                            data-ipad-device-dots="false" data-ipad-device2="2" data-ipad-device-nav2="true"
+                            data-ipad-device-dots2="false" data-md-device="4" data-lg-device="5"
+                            data-md-device-nav="true" data-md-device-dots="false">
+
+
+                            <div class="rs-service-2__item">
+                                <div class="rs-service-2__icon">
+                                    <img src="assets/images/service/service_icon1.png" alt="">
                                 </div>
-                            </form>
+                                <h5 class="title"><a href="#">B.Tech</a></h5>
+                            </div>
+
+                            <div class="rs-service-2__item">
+                                <div class="rs-service-2__icon">
+                                    <img src="assets/images/service/service_icon2.png" alt="">
+                                </div>
+                                <h5 class="title"><a href="#">MBA</a></h5>
+                            </div>
+
+                            <div class="rs-service-2__item">
+                                <div class="rs-service-2__icon">
+                                    <img src="assets/images/service/service_icon3.png" alt="">
+                                </div>
+                                <h5 class="title"><a href="#">MCA</a></h5>
+                            </div>
+
+                            <div class="rs-service-2__item">
+                                <div class="rs-service-2__icon">
+                                    <img src="assets/images/service/service_icon4.png" alt="">
+                                </div>
+                                <h5 class="title"><a href="#">Diploma</a></h5>
+                            </div>
+
+                            <div class="rs-service-2__item">
+                                <div class="rs-service-2__icon">
+                                    <img src="assets/images/service/service_icon5.png" alt="">
+                                </div>
+                                <h5 class="title"><a href="#">Data Analytics</a></h5>
+                            </div>
+
+                            <div class="rs-service-2__item">
+                                <div class="rs-service-2__icon">
+                                    <img src="assets/images/service/service_icon1.png" alt="">
+                                </div>
+                                <h5 class="title"><a href="#">Web Development</a></h5>
+                            </div>
+
+                            <div class="rs-service-2__item">
+                                <div class="rs-service-2__icon">
+                                    <img src="assets/images/service/service_icon1.png" alt="">
+                                </div>
+                                <h5 class="title"><a href="#">UI/UX Design</a></h5>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="rs-footer__menu">
+        <!--======== Service 2 Ends ========-->
+
+        <section id="rs-course-explorer-unique" class="pt-115 pb-120" style="background: #fff; overflow: hidden;">
+    <div class="container">
+        <div class="rs-section-title black text-center mb-50">
+            <div class="top-sub-heading">
+                <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
+                <span>Program Finder</span>
+                <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
+            </div>
+            <h2 class="title">Explore Courses by Stream</h2>
+        </div>
+
+        <?php
+        $courseData = [
+            "B.Tech" => ["CSE", "IT", "Mechanical", "Civil", "EE", "ECE", "EEE", "Chemical", "AI & ML", "Data Science", "Cyber Security", "Robotics"],
+            "MBBS" => ["General Medicine", "Pediatrics", "Dermatology", "Psychiatry", "Radiology", "General Surgery", "Orthopedics", "ENT", "OB-GYN"],
+            "BDS" => ["Orthodontics", "Oral Surgery", "Prosthodontics", "Periodontics", "Conservative Dentistry", "Pediatric Dentistry"],
+            "MD/MS" => ["Pathology", "Microbiology", "Pharmacology", "General Surgery", "ENT", "Ophthalmology", "MDS"],
+            "Agriculture" => ["Agronomy", "Horticulture", "Soil Science", "Plant Pathology", "Forestry", "Seed Tech"],
+            "Veterinary" => ["Animal Nutrition", "Genetics", "Surgery", "Medicine", "Dairy Science", "Poultry"],
+            "MBA" => ["Finance", "Marketing", "HR", "Operations", "International Business", "Business Analytics", "Supply Chain"],
+            "MCA" => ["Software Development", "Data Science", "AI", "Cloud Computing", "Cyber Security", "Web Dev"],
+            "BBA" => ["Finance", "Marketing", "HR", "International Business", "Business Analytics", "Retail"],
+            "BCA" => ["Software Development", "Data Analytics", "Cyber Security", "Cloud Computing", "Web Dev"],
+            "Nursing" => ["General Nursing", "Pediatric", "Psychiatric", "Community Health", "Critical Care"],
+            "B.Pharm" => ["Pharmaceutical Chem", "Pharmacology", "Pharmaceutics", "Pharmacognosy", "Industrial"],
+            "Biotech" => ["Medical", "Agricultural", "Genetic Engineering", "Molecular", "Bioinformatics"],
+            "BHMS" => ["Materia Medica", "Organon", "Repertory", "Pharmacy"],
+            "BAMS" => ["Kayachikitsa", "Panchakarma", "Shalya", "Shalakya", "Dravyaguna"]
+        ];
+        ?>
+
+        <div class="category-slider-wrapper">
+            <div class="category-track" id="categoryDragTrack">
+                <?php $count = 0; foreach ($courseData as $stream => $branches): ?>
+                    <button class="category-btn <?= $count === 0 ? 'active' : '' ?>" 
+                            onclick="switchCourseStream(event, 'course-<?= str_replace([' ', '/', '.'], '', $stream) ?>')">
+                        <?= $stream ?>
+                    </button>
+                <?php $count++; endforeach; ?>
+            </div>
+        </div>
+
+        <div class="branch-grid-container mt-50">
+            <?php $count = 0; foreach ($courseData as $stream => $branches): ?>
+                <div id="course-<?= str_replace([' ', '/', '.'], '', $stream) ?>" 
+                     class="branch-panel <?= $count === 0 ? 'active' : '' ?>">
+                    <div class="row">
+                        <?php foreach ($branches as $branch): ?>
+                            <div class="col-lg-3 col-md-4 col-sm-6 mb-30">
+                                <div class="rs-featured-2__item branch-card-mini">
+                                    <div class="rs-content text-center">
+                                        <h4 class="title" style="font-size: 16px; margin-bottom: 5px;"><?= $branch ?></h4>
+                                        <a class="rs-link" href="#" style="font-size: 12px;">View Details <i class="ri-arrow-right-fill"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            <?php $count++; endforeach; ?>
+        </div>
+    </div>
+</section>
+
+
+        <!--======== About 2 Start ========-->
+        <section id="rs-about" class="rs-about-2 pt-120 pb-30">
+            <div id="about" class="container">
+                <div class="row align-items-center">
+
+                    <!-- LEFT IMAGE -->
+                    <div class="col-lg-6">
+                        <div class="rs-about-2__thumb">
+                            <img src="admin/uploads/about/<?php echo $about['main_image']; ?>" alt="About Image">
+                        </div>
+                    </div>
+
+                    <!-- RIGHT CONTENT -->
+                    <div class="col-lg-6">
+                        <div class="rs-about-2__main-content">
+                            <div class="rs-section-title black">
+
+                                <!-- TOP HEADING -->
+                                <div class="top-sub-heading">
+                                    <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
+                                    <span><?php echo $about['top_heading']; ?></span>
+                                    <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
+                                </div>
+
+                                <!-- MAIN TITLE -->
+                                <h2 class="title split-in-fade">
+                                    <?php echo $about['main_title']; ?>
+                                </h2>
+
+                                <br>
+
+                                <!-- TABS -->
+                                <div id="rs-tabs" class="skltbs-theme-light use-drop skltbs-mode-tabs skltbs-init">
+
+                                    <!-- TAB BUTTONS -->
+                                    <ul class="skltbs-tab-group">
+                                        <li class="skltbs-tab-item">
+                                            <button class="skltbs-tab">Our Mission</button>
+                                        </li>
+                                        <li class="skltbs-tab-item">
+                                            <button class="skltbs-tab">Our Vision</button>
+                                        </li>
+                                        <li class="skltbs-tab-item">
+                                            <button class="skltbs-tab">Core Value</button>
+                                        </li>
+                                    </ul>
+
+                                    <!-- TAB PANELS -->
+                                    <div class="skltbs-panel-group">
+
+                                        <!-- MISSION -->
+                                        <div class="skltbs-panel">
+                                            <p><?php echo $about['mission_text']; ?></p>
+                                            <ul>
+                                                <li><i class="ri-share-forward-fill"></i>
+                                                    <?php echo $about['mission_point1']; ?></li>
+                                                <li><i class="ri-share-forward-fill"></i>
+                                                    <?php echo $about['mission_point2']; ?></li>
+                                            </ul>
+
+                                            <a class="main-btn" href="<?php echo $about['button_link']; ?>">
+                                                Know More About Us
+                                                <i class="ri-arrow-right-fill"></i>
+                                            </a>
+
+                                            <div class="play-icon">
+                                                <a class="rs-popup-videos" href="<?php echo $about['video_link']; ?>">
+                                                    <i class="fa fa-play"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <!-- VISION -->
+                                        <div class="skltbs-panel">
+                                            <p><?php echo $about['vision_text']; ?></p>
+                                            <ul>
+                                                <li><i class="ri-share-forward-fill"></i>
+                                                    <?php echo $about['vision_point1']; ?></li>
+                                                <li><i class="ri-share-forward-fill"></i>
+                                                    <?php echo $about['vision_point2']; ?></li>
+                                            </ul>
+
+                                            <a class="main-btn" href="<?php echo $about['button_link']; ?>">
+                                                Know More About Us
+                                                <i class="ri-arrow-right-fill"></i>
+                                            </a>
+
+                                            <div class="play-icon">
+                                                <a class="rs-popup-videos" href="<?php echo $about['video_link']; ?>">
+                                                    <i class="fa fa-play"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <!-- CORE VALUE -->
+                                        <div class="skltbs-panel">
+                                            <p><?php echo $about['core_text']; ?></p>
+                                            <ul>
+                                                <li><i class="ri-share-forward-fill"></i>
+                                                    <?php echo $about['core_point1']; ?></li>
+                                                <li><i class="ri-share-forward-fill"></i>
+                                                    <?php echo $about['core_point2']; ?></li>
+                                            </ul>
+
+                                            <div class="d-flex align-items-center justify-content-center mt-4">
+                                                <a class="main-btn" href="<?php echo $about['button_link']; ?>">
+                                                    Know More About Us <i class="ri-arrow-right-fill"></i>
+                                                </a>
+                                                <div class="play-icon ms-3">
+                                                    <a class="rs-popup-videos" href="<?php echo $about['video_link']; ?>">
+                                                        <i class="fa fa-play"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- END TABS -->
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!--======== About 2 Ends ========-->
+
+
+        <!--======== Brand Start ========-->
+        <div class="rs-brand pb-90 pt-85">
+            <div id="gallery" class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="rs-brand__top-title">
+                            <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="">
+                            <span>Our College Partners</span>
+                            <img src="assets/images/heart-pulse-rate-orange.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="rs-brand__slider">
+                            <div class="rs-carousel owl-carousel mobile-brand-grid nav-style1" data-loop="true" data-items="5"
+                                data-margin="0" data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="3000"
+                                data-smart-speed="500" data-dots="false" data-nav="false" data-nav-speed="false"
+                                data-center-mode="false" data-mobile-device="2" data-mobile-device-nav="false"
+                                data-mobile-device-dots="false" data-ipad-device="4" data-ipad-device-nav="false"
+                                data-ipad-device-dots="false" data-ipad-device2="3" data-ipad-device-nav2="false"
+                                data-ipad-device-dots2="false" data-md-device="4" data-lg-device="5"
+                                data-md-device-nav="false" data-md-device-dots="false" data-doteach="false">
+                                <div class="rs-brand-slider-item">
+                                    <a href="#">
+                                        <img src="assets\images\brand\image-Photoroom (1).png" alt="">
+                                        <img class="item-2" src="assets/images/brand/partner-white-1.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="rs-brand-slider-item">
+                                    <a href="#">
+                                        <img src="assets\images\brand\image-Photoroom.png" alt="">
+                                        <img class="item-2" src="assets/images/brand/partner-white-2.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="rs-brand-slider-item">
+                                    <a href="#">
+                                        <img src="assets\images\brand\images-Photoroom (1).png" alt="">
+                                        <img class="item-2" src="assets/images/brand/partner-white-3.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="rs-brand-slider-item">
+                                    <a href="#">
+                                        <img src="assets\images\brand\logo-896x1024-Photoroom.png" alt="">
+                                        <img class="item-2" src="assets/images/brand/partner-white-4.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="rs-brand-slider-item">
+                                    <a href="#">
+                                        <img src="assets\images\brand\university-college-school-badge-logo-free-vector-Photoroom.png"
+                                            alt="">
+                                        <img class="item-2" src="assets/images/brand/partner-white-5.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="rs-brand-slider-item">
+                                    <a href="#">
+                                        <img src="assets\images\brand\University-Logo-backup-Photoroom.png" alt="">
+                                        <img class="item-2" src="assets/images/brand/partner-white-6.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="rs-brand-slider-item">
+                                    <a href="#">
+                                        <img src="assets\images\brand\images-Photoroom (2).png" alt="">
+                                        <img class="item-2" src="assets/images/brand/partner-white-7.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="rs-brand-slider-item">
+                                    <a href="#">
+                                        <img src="assets\images\brand\images-Photoroomxx.png" alt="">
+                                        <img class="item-2" src="assets/images/brand/partner-white-8.png" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--======== Brand Ends ========-->
+
+        <!--======== Project Start ========-->
+        <section id="rs-portfolios" class="rs-project">
+            <div id="team" class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="rs-top-line mb-110"></div>
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="rs-section-title black">
+                            <div class="top-sub-heading">
+                                <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
+                                <span>Our Team Members</span>
+                                <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
+                            </div>
+                            <h2 class="title split-in-fade">See our Team Members</h2>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="rs-project__btn">
+                            <a class="main-btn" href="project.html">View All Team Members <i
+                                    class="ri-arrow-right-fill"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="rs-carousel owl-carousel rs-project__slider mt-30" data-loop="true" data-items="3"
+                            data-margin="30" data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000"
+                            data-smart-speed="800" data-dots="true" data-nav="false" data-nav-speed="false"
+                            data-center-mode="false" data-mobile-device="1" data-mobile-device-nav="false"
+                            data-mobile-device-dots="true" data-ipad-device="2" data-ipad-device-nav="false"
+                            data-ipad-device-dots="true" data-ipad-device2="1" data-ipad-device-nav2="false"
+                            data-ipad-device-dots2="true" data-md-device="2" data-lg-device="3"
+                            data-md-device-nav="false" data-md-device-dots="true" data-doteach="false">
+                            <div class="rs-project__items">
+                                <div class="wrapping">
+                                    <img src="assets/images/project/project-1.jpg" alt="">
+                                    <div class="rs-project__content">
+                                        <ul>
+                                            <li><a href="#">Consultation</a></li>
+                                            <li><a href="#">Design</a></li>
+                                            <li><a href="#">Strategy</a></li>
+                                        </ul>
+                                        <h3 class="title"><a href="project-details.html">Sibani</a></h3>
+                                        <div class="rs-link">
+                                            <a href="project-details.html"><img src="assets\images\Socialmedia.png"
+                                                    style="width:40%; height:auto;" alt=""> <i
+                                                    class="ri-arrow-right-fill"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="rs-project__items">
+                                <div class="wrapping">
+                                    <img src="assets/images/project/project-2.jpg" alt="">
+                                    <div class="rs-project__content">
+                                        <ul>
+                                            <li><a href="#">Consultation</a></li>
+                                            <li><a href="#">Design</a></li>
+                                            <li><a href="#">Strategy</a></li>
+                                        </ul>
+                                        <h3 class="title"><a href="project-details.html">Satya</a></h3>
+                                        <div class="rs-link">
+                                            <a href="project-details.html"><img src="assets\images\Socialmedia.png"
+                                                    style="width:40%; height:auto;" alt=""> <i
+                                                    class="ri-arrow-right-fill"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="rs-project__items">
+                                <div class="wrapping">
+                                    <img src="assets/images/project/project-3.jpg" alt="">
+                                    <div class="rs-project__content">
+                                        <ul>
+                                            <li><a href="#">Consultation</a></li>
+                                            <li><a href="#">Design</a></li>
+                                            <li><a href="#">Strategy</a></li>
+                                        </ul>
+                                        <h3 class="title"><a href="project-details.html">Dev</a></h3>
+                                        <div class="rs-link">
+                                            <a href="project-details.html"><img src="assets\images\Socialmedia.png"
+                                                    style="width:40%; height:auto;" alt=""> <i
+                                                    class="ri-arrow-right-fill"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="rs-project__items">
+                                <div class="wrapping">
+                                    <img src="assets/images/project/project-4.jpg" alt="">
+                                    <div class="rs-project__content">
+                                        <ul>
+                                            <li><a href="#">Consultation</a></li>
+                                            <li><a href="#">Design</a></li>
+                                            <li><a href="#">Strategy</a></li>
+                                        </ul>
+                                        <h3 class="title"><a href="project-details.html">Hari</a></h3>
+                                        <div class="rs-link">
+                                            <a href="project-details.html"><img src="assets\images\Socialmedia.png"
+                                                    style="width:40%; height:auto;" alt=""> <i
+                                                    class="ri-arrow-right-fill"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="rs-project__items">
+                                <div class="wrapping">
+                                    <img src="assets/images/project/project-5.jpg" alt="">
+                                    <div class="rs-project__content">
+                                        <ul>
+                                            <li><a href="#">Consultation</a></li>
+                                            <li><a href="#">Design</a></li>
+                                            <li><a href="#">Strategy</a></li>
+                                        </ul>
+                                        <h3 class="title"><a href="project-details.html">Ram</a></h3>
+                                        <div class="rs-link">
+                                            <a href="project-details.html"><img src="assets\images\Socialmedia.png"
+                                                    style="width:40%; height:auto;" alt=""> <i
+                                                    class="ri-arrow-right-fill"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="rs-shape">
+                <img src="assets/images/project/port-cube.svg" alt="">
+            </div>
+        </section>
+        <!--======== Project Ends ========-->
+
+        <!--======== Why Choose 2 Start ========-->
+        <section class="rs-why-choose-2 pb-85">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-lg-5">
-                        <div class="rs-footer__copyright-text">
-                            <p>© 2024 Techzen. Designed By <a target="_blank" href="https://rstheme.com/">RSTheme.</a></p>
+                    <div class="col-lg-6">
+                        <div class="why-choose-2__content">
+                            <div class="rs-section-title black">
+                                <div class="top-sub-heading">
+                                    <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
+                                    <span>Why Choose Us</span>
+                                    <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
+                                </div>
+                                <h2 class="title split-in-fade">
+                                    Trusted Admission Guidance for a Brighter Academic Future
+                                </h2>
+                                <p>
+                                    We help students make confident career decisions by providing personalized
+                                    counseling,
+                                    trusted college partnerships, and complete admission support from start to finish.
+                                </p>
+                            </div>
+
+                            <div class="skill-bars">
+
+                                <div class="rs-progress-skill why-choose-two__progress">
+                                    <h4 class="rs-progress__title">Student Counseling & Career Guidance</h4>
+                                    <div class="rs-progress__bar">
+                                        <div class="rs-progress__inner rs-count-bar counted" data-percent="95%">
+                                            <p class="rs-progress__number count-text">95%</p>
+                                        </div>
+                                    </div>
+                                </div><!-- /.rs-progress -->
+
+                                <div class="rs-progress-skill why-choose-two__progress">
+                                    <h4 class="rs-progress__title">College Tie-ups & Admission Support</h4>
+                                    <div class="rs-progress__bar">
+                                        <div class="rs-progress__inner rs-count-bar counted" data-percent="90%">
+                                            <p class="rs-progress__number count-text">90%</p>
+                                        </div>
+                                    </div>
+                                </div><!-- /.rs-progress -->
+
+                                <div class="rs-progress-skill why-choose-two__progress">
+                                    <h4 class="rs-progress__title">Transparent Fee & Budget Planning</h4>
+                                    <div class="rs-progress__bar">
+                                        <div class="rs-progress__inner rs-count-bar counted" data-percent="92%">
+                                            <p class="rs-progress__number count-text">92%</p>
+                                        </div>
+                                    </div>
+                                </div><!-- /.rs-progress -->
+
+                            </div>
                         </div>
                     </div>
-                    <div class="col-lg-7">
-                        <div class="rs-footer__menu-box">
-                            <ul>
-                                <li><a href="contact.html">Privacy Policy</a></li>
-                                <li><a href="contact.html">Terms of use</a></li>
-                                <li><a href="contact.html">Sitemap</a></li>
-                                <li><a href="contact.html">Career</a></li>
-                            </ul>
+
+                    <div class="col-lg-6">
+                        <div class="rs-why-choose-2__thumb wow fadeInRight" data-wow-duration="1.5s"
+                            data-wow-delay="0.4s">
+                            <div class="rs-thumb-1">
+                                <img src="assets/images/why-choose/chose-right-left.jpg" alt="">
+                            </div>
+                            <div class="rs-thumb-2">
+                                <img src="assets/images/why-choose/chose-right-right.jpg" alt="">
+                                <img src="assets/images/why-choose/chose-right-bottom.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!--======== Why Choose 2 Ends ========-->
+
+
+        <!--======== Counter 2 Start ========-->
+        <section class="rs-counter-2 pb-125">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="rs-counter-2__title">
+                            <h5 class="title">Our Student Success Journey</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <!-- BTech -->
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="rs-counter-2__item">
+                            <div class="rs-counter-2__icon">
+                                <img src="assets/images/counter/counter-icon-1.svg" alt="">
+                            </div>
+                            <div class="rs-counter-2__content">
+                                <h4 class="title">
+                                    <span class="rs-count odometer" data-count="850">00</span> +
+                                </h4>
+                                <span>BTech Admissions</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MBA -->
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="rs-counter-2__item item-2">
+                            <div class="rs-counter-2__icon">
+                                <img src="assets/images/counter/counter-icon-2.svg" alt="">
+                            </div>
+                            <div class="rs-counter-2__content">
+                                <h4 class="title">
+                                    <span class="rs-count odometer" data-count="520">00</span> +
+                                </h4>
+                                <span>MBA Admissions</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MCA -->
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="rs-counter-2__item item-3">
+                            <div class="rs-counter-2__icon">
+                                <img src="assets/images/counter/counter-icon-3.svg" alt="">
+                            </div>
+                            <div class="rs-counter-2__content">
+                                <h4 class="title">
+                                    <span class="rs-count odometer" data-count="430">00</span> +
+                                </h4>
+                                <span>MCA Admissions</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Diploma -->
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="rs-counter-2__item item-4">
+                            <div class="rs-counter-2__icon">
+                                <img src="assets/images/counter/counter-icon-4.svg" alt="">
+                            </div>
+                            <div class="rs-counter-2__content">
+                                <h4 class="title">
+                                    <span class="rs-count odometer" data-count="670">00</span> +
+                                </h4>
+                                <span>Diploma Admissions</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!--======== Counter 2 Ends ========-->
+
+
+        <!--======== Newsletter 2 Start ========-->
+        <section class="rs-newsletter-2 pt-95 pb-110">
+            <div id="contact" class="container">
+                <div class="row">
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-8">
+                        <div class="rs-newsletter-2__box">
+                            <h2 class="title split-in-fade">Need any kind of IT solution for <span>your business?</span>
+                            </h2>
+                            <div class="rs-newsletter-2__btn">
+                                <a class="main-btn" href="contact.html">Contact Us <i
+                                        class="ri-arrow-right-fill"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2"></div>
+                </div>
+            </div>
+            <div class="rs-newsletter-2__shape-1">
+                <img class="gsap-rotate" src="assets/images/newsletter/close-ico-yeloow-grad.svg" alt="">
+
+            </div>
+            <div class="rs-newsletter-2__shape-2">
+                <img class="gsap-move down-100 start-91" src="assets/images/newsletter/circle-white.svg" alt="">
+            </div>
+        </section>
+        <!--======== Newsletter 2 Ends ========-->
+
+        <!--======== Pricing Start ========-->
+        <!-- <section class="rs-pricing pt-110 pb-120">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="rs-section-title black">
+                            <div class="top-sub-heading">
+                                <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
+                                <span>Start Business</span>
+                                <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
+                            </div>
+                            <h2 class="title split-in-fade">Our popular pricing package</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="rs-pricing__item">
+                            <div class="rs-pricing__top-header">
+                                <span>Silver Package</span>
+                                <div class="rs-pricing__price-box">
+                                    <h3 class="title">$29.00 <span>Per Month</span></h3>
+                                </div>
+                            </div>
+                            <div class="rs-pricing__body">
+                                <ul>
+                                    <li class="list"><i class="ri-checkbox-circle-line"></i> 30 Days Trial Features</li>
+                                    <li class="list"><i class="ri-checkbox-circle-line"></i> Unlimited Features</li>
+                                    <li class="list disabled"><i class="ri-checkbox-blank-circle-line"></i> Multi-Language Content</li>
+                                    <li class="list disabled"><i class="ri-checkbox-blank-circle-line"></i> Data backup and recovery</li>
+                                    <li class="list disabled"><i class="ri-checkbox-blank-circle-line"></i> Synced To Cloud Database</li>
+                                </ul>
+                                <a class="main-btn" href="contact.html">Get Started <i class="ri-arrow-right-fill"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="rs-pricing__item">
+                            <div class="rs-pricing__top-header">
+                                <span>Gold Package</span>
+                                <div class="rs-pricing__price-box">
+                                    <h3 class="title">$49.00 <span>Per Month</span></h3>
+                                </div>
+                            </div>
+                            <div class="rs-pricing__body">
+                                <ul>
+                                    <li class="list disabled"><i class="ri-checkbox-blank-circle-line"></i> 30 Days Trial Features</li>
+                                    <li class="list"><i class="ri-checkbox-circle-line"></i> Unlimited Features</li>
+                                    <li class="list"><i class="ri-checkbox-circle-line"></i> Multi-Language Content</li>
+                                    <li class="list"><i class="ri-checkbox-circle-line"></i> Data backup and recovery</li>
+                                    <li class="list disabled"><i class="ri-checkbox-blank-circle-line"></i> Synced To Cloud Database</li>
+                                </ul>
+                                <a class="main-btn" href="contact.html">Get Started <i class="ri-arrow-right-fill"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="rs-pricing__item last-item">
+                            <div class="rs-pricing__top-header">
+                                <span>Platinum Package</span>
+                                <div class="rs-pricing__price-box">
+                                    <h3 class="title">$99.00 <span>Per Month</span></h3>
+                                </div>
+                            </div>
+                            <div class="rs-pricing__body">
+                                <ul>
+                                    <li class="list"><i class="ri-checkbox-circle-line"></i> 30 Days Trial Features</li>
+                                    <li class="list disabled"><i class="ri-checkbox-blank-circle-line"></i> Unlimited Features</li>
+                                    <li class="list disabled"><i class="ri-checkbox-blank-circle-line"></i> Multi-Language Content</li>
+                                    <li class="list disabled"><i class="ri-checkbox-blank-circle-line"></i> Data backup and recovery</li>
+                                    <li class="list"><i class="ri-checkbox-circle-line"></i> Synced To Cloud Database</li>
+                                </ul>
+                                <a class="main-btn" href="contact.html">Get Started <i class="ri-arrow-right-fill"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+        <!--======== Pricing Ends ========-->
+
+        <!--======== Faq Start ========-->
+        <div class="rs-faq pb-120">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="rs-faq__thumb wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay="0.4s">
+                            <img src="assets/images/faq/faq-left-img.png" alt="faq">
+                            <div class="rs-shape">
+                                <img src="assets/images/faq/couple-ball-layer.svg" alt="faq">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="rs-faq__content">
+                            <div class="rs-section-title black">
+                                <div class="top-sub-heading">
+                                    <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
+                                    <span>FAQ</span>
+                                    <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
+                                </div>
+                                <h2 class="title split-in-fade">Frequently Asked Questions</h2>
+                            </div>
+
+                            <div class="rs-faq__wrapper">
+
+                                <!-- FAQ 1 -->
+                                <div class="accordion active">
+                                    <div class="accordion_tab active">
+                                        01 How can I apply for college admission through your platform?
+                                        <div class="accordion_arrow">
+                                            <i class="ri-add-fill"></i>
+                                        </div>
+                                    </div>
+                                    <div class="accordion_content">
+                                        <div class="accordion_item">
+                                            <p>
+                                                You can fill out the inquiry form on our website with your academic
+                                                details, preferred course, and city.
+                                                Our admission experts will contact you, guide you with suitable
+                                                colleges, and assist you throughout the complete admission process.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- FAQ 2 -->
+                                <div class="accordion">
+                                    <div class="accordion_tab">
+                                        02 Do you charge any registration or consultation fees?
+                                        <div class="accordion_arrow">
+                                            <i class="ri-add-fill"></i>
+                                        </div>
+                                    </div>
+                                    <div class="accordion_content">
+                                        <div class="accordion_item">
+                                            <p>
+                                                Our basic counseling and guidance services are completely free. In some
+                                                cases, specific premium services
+                                                may involve minimal charges, which will always be communicated
+                                                transparently before proceeding.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- FAQ 3 -->
+                                <div class="accordion">
+                                    <div class="accordion_tab">
+                                        03 What documents are required for admission?
+                                        <div class="accordion_arrow">
+                                            <i class="ri-add-fill"></i>
+                                        </div>
+                                    </div>
+                                    <div class="accordion_content">
+                                        <div class="accordion_item">
+                                            <p>
+                                                Generally, you will need your academic mark sheets, ID proof,
+                                                passport-size photographs,
+                                                and transfer/migration certificates. Our team will provide a complete
+                                                checklist based on your selected course and college.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- FAQ 4 -->
+                                <div class="accordion">
+                                    <div class="accordion_tab">
+                                        04 Can you help with hostel and accommodation facilities?
+                                        <div class="accordion_arrow">
+                                            <i class="ri-add-fill"></i>
+                                        </div>
+                                    </div>
+                                    <div class="accordion_content">
+                                        <div class="accordion_item">
+                                            <p>
+                                                Yes, we assist students in finding suitable hostel and accommodation
+                                                options based on their
+                                                budget and preferred city. We ensure safe and comfortable living
+                                                arrangements near the college campus.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- FAQ 5 -->
+                                <div class="accordion">
+                                    <div class="accordion_tab">
+                                        05 How long does the admission process take?
+                                        <div class="accordion_arrow">
+                                            <i class="ri-add-fill"></i>
+                                        </div>
+                                    </div>
+                                    <div class="accordion_content">
+                                        <div class="accordion_item">
+                                            <p>
+                                                The duration depends on the college and course selection. Typically, the
+                                                process may take
+                                                7 to 21 working days after document submission. Our team ensures
+                                                fast-track processing wherever possible.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="rs-faq__link">
+                                <a class="main-btn" href="contact.html">
+                                    Any Questions? <i class="ri-arrow-right-fill"></i>
+                                </a>
+                            </div>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </footer>
-    <!--======== Footer 2 Ends ========-->
+        <!--======== Faq Ends ========-->
 
-    <!--======== Scroll up and prograss start ========-->
-    <div id="scrollUp">
-        <svg class="arrowup" viewbox="0 0 24 24" width="18" height="18">
-            <path d="M13 7.828V20h-2V7.828l-5.364 5.364-1.414-1.414L12 4l7.778 7.778-1.414 1.414L13 7.828z" fill="#fff"></path>
-        </svg>
-        <svg class="scrollprogress" width="40" height="40">
-            <circle class="progress-circle" cx="20" cy="20" r="18" stroke-width="2" fill="none" stroke="#fff" stroke-dasharray="113.1" stroke-dashoffset="113.1"></circle>
-        </svg>
-    </div>
-    <!--======== Scroll up and prograss Ends ========-->
 
-    <!-- Custom Cursor Start -->
-    <div id="rs-mouse">
-        <div id="cursor-ball"></div>
-    </div>
-    <!-- Custom Cursor End -->
+        <!--======== Testimonial 2 Start ========-->
+        <section class="rs-testimonial-2 pt-110 pb-120">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="rs-testimonial-2__left-content">
+                            <div class="rs-section-title black">
+                                <div class="top-sub-heading">
+                                    <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
+                                    <span>Student Testimonials </span>
+                                    <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
+                                </div>
+                                <h2 class="title split-in-fade">What our admitted students say about us?</h2>
+                                <div class="rs-thumb">
+                                    <img src="assets/images/testimonial/testimonial-left-img.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="rs-testimonial-2__slider-box">
+                            <div class="rs-carousel owl-carousel" data-loop="true" data-items="1" data-margin="0"
+                                data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000"
+                                data-smart-speed="800" data-dots="true" data-nav="false" data-nav-speed="false"
+                                data-center-mode="false" data-mobile-device="1" data-mobile-device-nav="false"
+                                data-mobile-device-dots="true" data-ipad-device="1" data-ipad-device-nav="false"
+                                data-ipad-device-dots="true" data-ipad-device2="1" data-ipad-device-nav2="false"
+                                data-ipad-device-dots2="true" data-md-device="1" data-lg-device="1"
+                                data-md-device-nav="false" data-md-device-dots="true" data-doteach="true">
 
-    <!-- JS Vendor, Plugins & Activation Script Files -->
+                                <!-- Testimonial 1 -->
+                                <div class="rs-testimonial-2__items">
+                                    <div class="testimonial-content">
+                                        <img src="assets/images/testimonial/quote_orange.svg" alt="">
+                                        <p>I was confused about selecting the right college for B.Tech, but the team
+                                            guided me properly and helped me secure admission without any hassle.</p>
+                                    </div>
+                                    <div class="testimonial-author">
+                                        <div class="author-thumb">
+                                            <img src="assets/images/testimonial/testi1.jpg" alt="">
+                                        </div>
+                                        <div class="author-content">
+                                            <h5 class="title">Rahul Sharma</h5>
+                                            <span>B.Tech Computer Science, Delhi Technical University</span>
+                                            <img src="assets/images/testimonial/testimonial-brsnd-2.png" alt="">
+                                        </div>
+                                    </div>
+                                </div>
 
-    <!-- jquery Plugins JS -->
-    <script src="assets/js/jquery.min.js"></script>
+                                <!-- Testimonial 2 -->
+                                <div class="rs-testimonial-2__items">
+                                    <div class="testimonial-content">
+                                        <img src="assets/images/testimonial/quote_orange.svg" alt="">
+                                        <p>The counseling support was excellent. I got admission in MBA Marketing at my
+                                            preferred college smoothly and quickly.</p>
+                                    </div>
+                                    <div class="testimonial-author">
+                                        <div class="author-thumb">
+                                            <img src="assets/images/testimonial/testi2.jpg" alt="">
+                                        </div>
+                                        <div class="author-content">
+                                            <h5 class="title">Priya Verma</h5>
+                                            <span>MBA (Marketing), Pune Institute of Business Management</span>
+                                            <img src="assets/images/testimonial/testimonial-brsnd-2.png" alt="">
+                                        </div>
+                                    </div>
+                                </div>
 
-    <!-- jquery UI JS -->
-    <script src="assets/js/jquery-ui.min.js"></script>
+                                <!-- Testimonial 3 -->
+                                <div class="rs-testimonial-2__items">
+                                    <div class="testimonial-content">
+                                        <img src="assets/images/testimonial/quote_orange.svg" alt="">
+                                        <p>From application to final confirmation, everything was handled
+                                            professionally. I highly recommend their admission support services.</p>
+                                    </div>
+                                    <div class="testimonial-author">
+                                        <div class="author-thumb">
+                                            <img src="assets/images/testimonial/testi3.jpg" alt="">
+                                        </div>
+                                        <div class="author-content">
+                                            <h5 class="title">Amit Kumar</h5>
+                                            <span>BCA, Chandigarh Group of Colleges</span>
+                                            <img src="assets/images/testimonial/testimonial-brsnd-2.png" alt="">
+                                        </div>
+                                    </div>
+                                </div>
 
-    <!-- bootstrap JS -->
-    <script src="assets/js/bootstrap.min.js"></script>
+                                <!-- Testimonial 4 -->
+                                <div class="rs-testimonial-2__items">
+                                    <div class="testimonial-content">
+                                        <img src="assets/images/testimonial/quote_orange.svg" alt="">
+                                        <p>I also needed hostel support, and they arranged everything within my budget.
+                                            The process was smooth and stress-free.</p>
+                                    </div>
+                                    <div class="testimonial-author">
+                                        <div class="author-thumb">
+                                            <img src="assets/images/testimonial/testi4.jpg" alt="">
+                                        </div>
+                                        <div class="author-content">
+                                            <h5 class="title">Sneha Patel</h5>
+                                            <span>B.Sc Nursing, Apollo College of Nursing</span>
+                                            <img src="assets/images/testimonial/testimonial-brsnd-2.png" alt="">
+                                        </div>
+                                    </div>
+                                </div>
 
-    <!-- ajax-contact JS -->
-    <script src="assets/js/ajax-contact.js"></script>
+                                <!-- Testimonial 5 -->
+                                <div class="rs-testimonial-2__items">
+                                    <div class="testimonial-content">
+                                        <img src="assets/images/testimonial/quote_orange.svg" alt="">
+                                        <p>The team compared multiple colleges for me and helped me make the best
+                                            decision based on my budget and preferences.</p>
+                                    </div>
+                                    <div class="testimonial-author">
+                                        <div class="author-thumb">
+                                            <img src="assets/images/testimonial/testi5.jpg" alt="">
+                                        </div>
+                                        <div class="author-content">
+                                            <h5 class="title">Vikram Singh</h5>
+                                            <span>Diploma Mechanical Engineering, Government Polytechnic Jaipur</span>
+                                            <img src="assets/images/testimonial/testimonial-brsnd-2.png" alt="">
+                                        </div>
+                                    </div>
+                                </div>
 
-    <!-- wow animation JS -->
-    <script src="assets/js/wow.min.js"></script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--======== Testimonial 2 Ends ========-->
 
-    <!-- appear JS -->
-    <script src="assets/js/jquery.appear.min.js"></script>
 
-    <!-- typer JS -->
-    <script src="assets/js/typer.js"></script>
+        <!--======== Blog 2 Start ========-->
+        <section id="rs-blog" class="rs-blog-2 pt-120">
+            <div id="blogs" class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="rs-section-title black">
+                            <div class="top-sub-heading">
+                                <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
+                                <span>Insights & Updates</span>
+                                <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
+                            </div>
+                            <h2 class="title split-in-fade">Latest Admission News & Guidance</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="rs-carousel owl-carousel nav-style1" data-loop="true" data-items="3"
+                            data-margin="20" data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000"
+                            data-smart-speed="800" data-dots="true" data-nav="false" data-nav-speed="false"
+                            data-center-mode="false" data-mobile-device="1" data-mobile-device-nav="false"
+                            data-mobile-device-dots="true" data-ipad-device="2" data-ipad-device-nav="false"
+                            data-ipad-device-dots="true" data-ipad-device2="2" data-ipad-device-nav2="false"
+                            data-ipad-device-dots2="true" data-md-device="2" data-lg-device="3"
+                            data-md-device-nav="false" data-md-device-dots="true" data-doteach="false">
 
-    <!-- PageScroll2id JS -->
-    <script src="assets/js/jquery.malihu.PageScroll2id.min.js"></script>
+                            <!-- Blog 1 -->
+                            <div class="rs-blog-2__item">
+                                <div class="rs-thumb">
+                                    <img src="assets/images/blog/blog-6.jpg" alt="">
+                                </div>
+                                <div class="rs-content">
+                                    <div class="rs-category">
+                                        <a href="#">Admission Guide</a>
+                                    </div>
+                                    <h3 class="title"><a href="blog-single.html">Step-by-Step College Admission Process
+                                            for 2025</a></h3>
+                                    <p>Learn the complete admission process including documentation, eligibility
+                                        criteria, and important deadlines for top colleges.</p>
+                                    <div class="rs-blog-footer">
+                                        <span>Updated Guidance</span>
+                                        <a href="blog-single.html">Read More <i class="ri-arrow-right-fill"></i></a>
+                                    </div>
+                                </div>
+                            </div>
 
-    <!-- marquee JS -->
-    <script src="assets/js/jquery.marquee.min.js"></script>
+                            <!-- Blog 2 -->
+                            <div class="rs-blog-2__item">
+                                <div class="rs-thumb">
+                                    <img src="assets/images/blog/blog-8.png" alt="">
+                                </div>
+                                <div class="rs-content">
+                                    <div class="rs-category">
+                                        <a href="#">Career Counseling</a>
+                                    </div>
+                                    <h3 class="title"><a href="blog-single.html">How to Choose the Right Course After
+                                            12th?</a></h3>
+                                    <p>Confused about course selection? Explore the best career options based on your
+                                        interests, eligibility, and future opportunities.</p>
+                                    <div class="rs-blog-footer">
+                                        <span>Expert Advice</span>
+                                        <a href="blog-single.html">Read More <i class="ri-arrow-right-fill"></i></a>
+                                    </div>
+                                </div>
+                            </div>
 
-    <!-- Slick Slider JS -->
-    <script src="assets/js/slick.min.js"></script>
+                            <!-- Blog 3 -->
+                            <div class="rs-blog-2__item">
+                                <div class="rs-thumb">
+                                    <img src="assets/images/blog/blog-5.jpg" alt="">
+                                </div>
+                                <div class="rs-content">
+                                    <div class="rs-category">
+                                        <a href="#">Top Colleges</a>
+                                    </div>
+                                    <h3 class="title"><a href="blog-single.html">Top Engineering & Management Colleges
+                                            in India</a></h3>
+                                    <p>Discover the best colleges offering B.Tech, MBA, BCA, Nursing and other
+                                        professional courses across major cities.</p>
+                                    <div class="rs-blog-footer">
+                                        <span>College Updates</span>
+                                        <a href="blog-single.html">Read More <i class="ri-arrow-right-fill"></i></a>
+                                    </div>
+                                </div>
+                            </div>
 
-    <!-- owl carousel JS -->
-    <script src="assets/js/owl.carousel.min.js"></script>
+                            <!-- Blog 4 -->
+                            <div class="rs-blog-2__item">
+                                <div class="rs-thumb">
+                                    <img src="assets/images/blog/blog-4.jpg" alt="">
+                                </div>
+                                <div class="rs-content">
+                                    <div class="rs-category">
+                                        <a href="#">Scholarships</a>
+                                    </div>
+                                    <h3 class="title"><a href="blog-single.html">Scholarship Opportunities for Students
+                                            in 2025</a></h3>
+                                    <p>Check out the latest scholarship programs and financial aid options available for
+                                        eligible students.</p>
+                                    <div class="rs-blog-footer">
+                                        <span>Financial Support</span>
+                                        <a href="blog-single.html">Read More <i class="ri-arrow-right-fill"></i></a>
+                                    </div>
+                                </div>
+                            </div>
 
-    <!-- flickity JS -->
-    <script src="assets/js/flickity.pkgd.min.js"></script>
+                            <!-- Blog 5 -->
+                            <div class="rs-blog-2__item">
+                                <div class="rs-thumb">
+                                    <img src="assets/images/blog/blog-7.jpg" alt="">
+                                </div>
+                                <div class="rs-content">
+                                    <div class="rs-category">
+                                        <a href="#">Hostel & Facilities</a>
+                                    </div>
+                                    <h3 class="title"><a href="blog-single.html">How to Find Safe & Affordable Student
+                                            Accommodation</a></h3>
+                                    <p>Everything you need to know about hostel facilities, rental options, and budget
+                                        planning for students.</p>
+                                    <div class="rs-blog-footer">
+                                        <span>Student Support</span>
+                                        <a href="blog-single.html">Read More <i class="ri-arrow-right-fill"></i></a>
+                                    </div>
+                                </div>
+                            </div>
 
-    <!-- odometer JS -->
-    <script src="assets/js/odometer.min.js"></script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--======== Blog 2 Ends ========-->
 
-    <!-- skeletabs JS -->
-    <script src="assets/js/skeletabs.js"></script>
 
-    <!-- magnific popup JS -->
-    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+        <!--======== Footer 2 Start ========-->
+        <footer id="rs-contact" class="rs-footer rs-footer-2">
+            <div class="rs-footer__top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="rs-footer__info-box">
+                                <div class="icon">
+                                    <img src="assets/images/footer/info-3.png" alt="">
+                                </div>
+                                <div class="content">
+                                    <span>Contact Us</span>
+                                    <a href="tel:+004555012065">+91 9999999999</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="rs-footer__info-box">
+                                <div class="icon">
+                                    <img src="assets/images/footer/info-1.png" alt="">
+                                </div>
+                                <div class="content">
+                                    <span>Email Us</span>
+                                    <a href="mailto:edutech@gmail.com">edutech@gmail.com</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="rs-footer__info-box">
+                                <div class="icon">
+                                    <img src="assets/images/footer/info-2.png" alt="">
+                                </div>
+                                <div class="content">
+                                    <span>Address</span>
+                                    <h4 class="title"> Bhubaneswar, Odisha, 752054 </h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="rs-footer__main-box">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="rs-footer__about-box">
+                                <a href="index-2.html"><img src="assets/images/about/logo.jpeg" alt=""></a>
+                                <p> To empower students by providing expert guidance and transparent insights into the
+                                    complex world of higher education.</p>
+                                <div class="rs-footer__social">
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="#"><i class="ri-twitter-x-fill"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="rs-footer__navigation">
+                                <div class="rs-footer-title">
+                                    <h4 class="title">Our Services</h4>
+                                </div>
+                                <ul>
+                                    <li><a href="service-details-2.php"><i class="ri-arrow-right-fill"></i> B.Tech</a>
+                                    </li>
+                                    <li><a href="service-details-2.php"><i class="ri-arrow-right-fill"></i> MBA</a></li>
+                                    <li><a href="service-details-2.php"><i class="ri-arrow-right-fill"></i> MCA</a></li>
+                                    <li><a href="service-details-2.php"><i class="ri-arrow-right-fill"></i> Diploma</a>
+                                    </li>
+                                    <li><a href="service-details-2.php"><i class="ri-arrow-right-fill"></i> Other
+                                            Courses</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="rs-footer__navigation rs-footer--navigation">
+                                <div class="rs-footer-title">
+                                    <h4 class="title">Information</h4>
+                                </div>
+                                <ul>
+                                    <li><a href="about.html"><i class="ri-arrow-right-fill"></i> About</a></li>
+                                    <li><a href="team.html"><i class="ri-arrow-right-fill"></i> Our Team</a></li>
+                                    <li><a href="pricing.html"><i class="ri-arrow-right-fill"></i>Collaboration</a></li>
+                                    <li><a href="project.html"><i class="ri-arrow-right-fill"></i> Blogs</a></li>
+                                    <li><a href="appointment.html"><i class="ri-arrow-right-fill"></i> Gallery</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="rs-footer__newsletter">
+                                <div class="rs-footer-title">
+                                    <h4 class="title">Subscription</h4>
+                                </div>
+                                <p>Register now to get latest updates on promotions & coupons.</p>
+                                <form action="#">
+                                    <div class="input-box">
+                                        <input type="email" placeholder="Your email address">
+                                        <button class="main-btn">Subscribe <svg width="13" height="14"
+                                                viewbox="0 0 13 14" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M6.5 7.8125H0V6.1875H6.5V0.5L13 7L6.5 13.5V7.8125Z"
+                                                    fill="#fff"></path>
+                                            </svg></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="rs-footer__menu">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-5">
+                            <div class="rs-footer__copyright-text">
+                                <p>© 2026 EDUTECH. Designed By <a target="_blank" href="https://rstheme.com/">Team
+                                        DRS.</a></p>
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="rs-footer__menu-box">
+                                <ul>
+                                    <li><a href="contact.html">Privacy Policy</a></li>
+                                    <li><a href="contact.html">Terms of use</a></li>
+                                    <li><a href="contact.html">Sitemap</a></li>
+                                    <li><a href="contact.html">Career</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!--======== Footer 2 Ends ========-->
 
-    <!-- GSAP Interactions Start -->
-    <script src="assets/js/interactions/gsap.min.js"></script>
-    <script src="assets/js/interactions/rs-scroll-trigger.min.js"></script>
-    <script src="assets/js/interactions/rs-splitText.min.js"></script>
-    <script src="assets/js/interactions/rs-anim-int.js"></script>
-    <!-- GSAP Interactions End -->
+        <!--======== Scroll up and prograss start ========-->
+        <div id="scrollUp">
+            <svg class="arrowup" viewbox="0 0 24 24" width="18" height="18">
+                <path d="M13 7.828V20h-2V7.828l-5.364 5.364-1.414-1.414L12 4l7.778 7.778-1.414 1.414L13 7.828z"
+                    fill="#fff"></path>
+            </svg>
+            <svg class="scrollprogress" width="40" height="40">
+                <circle class="progress-circle" cx="20" cy="20" r="18" stroke-width="2" fill="none" stroke="#fff"
+                    stroke-dasharray="113.1" stroke-dashoffset="113.1"></circle>
+            </svg>
+        </div>
+        <!--======== Scroll up and prograss Ends ========-->
 
-    <!-- Activation JS -->
-    <script src="assets/js/main.js"></script>
+        <!-- Custom Cursor Start -->
+        <div id="rs-mouse">
+            <div id="cursor-ball"></div>
+        </div>
+        <!-- Custom Cursor End -->
+
+        <!-- JS Vendor, Plugins & Activation Script Files -->
+
+        <!-- jquery Plugins JS -->
+        <script src="assets/js/jquery.min.js"></script>
+
+        <!-- jquery UI JS -->
+        <script src="assets/js/jquery-ui.min.js"></script>
+
+        <!-- bootstrap JS -->
+        <script src="assets/js/bootstrap.min.js"></script>
+
+        <!-- ajax-contact JS -->
+        <script src="assets/js/ajax-contact.js"></script>
+
+        <!-- wow animation JS -->
+        <script src="assets/js/wow.min.js"></script>
+
+        <!-- appear JS -->
+        <script src="assets/js/jquery.appear.min.js"></script>
+
+        <!-- typer JS -->
+        <script src="assets/js/typer.js"></script>
+
+        <!-- PageScroll2id JS -->
+        <script src="assets/js/jquery.malihu.PageScroll2id.min.js"></script>
+
+        <!-- marquee JS -->
+        <script src="assets/js/jquery.marquee.min.js"></script>
+
+        <!-- Slick Slider JS -->
+        <script src="assets/js/slick.min.js"></script>
+
+        <!-- owl carousel JS -->
+        <script src="assets/js/owl.carousel.min.js"></script>
+
+        <!-- flickity JS -->
+        <script src="assets/js/flickity.pkgd.min.js"></script>
+
+        <!-- odometer JS -->
+        <script src="assets/js/odometer.min.js"></script>
+
+        <!-- skeletabs JS -->
+        <script src="assets/js/skeletabs.js"></script>
+
+        <!-- magnific popup JS -->
+        <script src="assets/js/jquery.magnific-popup.min.js"></script>
+
+        <!-- GSAP Interactions Start -->
+        <script src="assets/js/interactions/gsap.min.js"></script>
+        <script src="assets/js/interactions/rs-scroll-trigger.min.js"></script>
+        <script src="assets/js/interactions/rs-splitText.min.js"></script>
+        <script src="assets/js/interactions/rs-anim-int.js"></script>
+        <!-- GSAP Interactions End -->
+
+        <!-- Activation JS -->
+        <script src="assets/js/main.js"></script>
+
+        <script>
+            $(window).on('load', function() {
+                // 1. Initialize Background Slider (Sliding Left to Right)
+                var bgSlider = $('.hero-bg-slider');
+
+                if (bgSlider.length) {
+                    bgSlider.owlCarousel({
+                        items: 1,
+                        loop: true,
+                        autoplay: true,
+                        autoplayTimeout: 1000, // Stay on image for 1s
+                        smartSpeed: 800, // Sliding animation speed
+                        nav: false,
+                        dots: false,
+                        margin: 0,
+                        animateOut: false, // MUST be false for sliding left-to-right
+                        animateIn: false, // MUST be false for sliding left-to-right
+                        mouseDrag: false,
+                        touchDrag: false
+                    });
+
+                    // Force a refresh after a short delay to calculate widths correctly
+                    setTimeout(function() {
+                        bgSlider.trigger('refresh.owl.carousel');
+                    }, 200);
+                }
+
+                // 2. Typing Effect (Writes and Deletes)
+                const typingElement = document.querySelector(".typing-text");
+                if (typingElement) {
+                    const words = JSON.parse(typingElement.getAttribute("data-words"));
+                    let wordIndex = 0,
+                        charIndex = 0,
+                        isDeleting = false;
+
+                    function typeEffect() {
+                        const currentWord = words[wordIndex];
+
+                        if (isDeleting) {
+                            typingElement.textContent = currentWord.substring(0, charIndex--);
+                        } else {
+                            typingElement.textContent = currentWord.substring(0, charIndex++);
+                        }
+
+                        let typeSpeed = isDeleting ? 70 : 150;
+
+                        if (!isDeleting && charIndex === currentWord.length + 1) {
+                            typeSpeed = 2000; // Pause at full word
+                            isDeleting = true;
+                        } else if (isDeleting && charIndex === 0) {
+                            isDeleting = false;
+                            wordIndex = (wordIndex + 1) % words.length;
+                            typeSpeed = 500;
+                        }
+
+                        setTimeout(typeEffect, typeSpeed);
+                    }
+                    typeEffect();
+                }
+            });
+
+            $(document).ready(function() {
+                var checkWidth = $(window).width();
+
+                if (checkWidth < 768) {
+                    // Only add carousel classes and init on mobile
+                    $(".featured-slider").addClass('owl-carousel').owlCarousel({
+                        items: 1,
+                        loop: true,
+                        margin: 20,
+                        dots: true,
+                        autoplay: true,
+                        stagePadding: 30 // For the "peek" effect
+                    });
+                }
+            });
+
+            $(document).ready(function() {
+                if ($(window).width() < 768) {
+                    $(".featured-slider").addClass('owl-carousel').owlCarousel({
+                        items: 1.2, // This creates the "peek" effect automatically
+                        loop: true,
+                        margin: 15,
+                        dots: true
+                    });
+                }
+            });
+
+           $(document).ready(function() {
+    var brandSlider = $('.mobile-brand-grid');
+
+    function initBrandSlider() {
+        var isMobile = $(window).width() < 768;
+
+        if (isMobile) {
+            // 1. If we are on mobile, kill the carousel completely
+            if (brandSlider.hasClass('owl-loaded')) {
+                brandSlider.trigger('destroy.owl.carousel').removeClass('owl-carousel owl-loaded');
+                brandSlider.find('.owl-stage-outer').children().unwrap();
+            }
+            // 2. Ensure the class used for Grid CSS is present
+            brandSlider.addClass('mobile-grid-active'); 
+        } else {
+            // 3. Re-initialize for desktop sliding
+            brandSlider.removeClass('mobile-grid-active').addClass('owl-carousel');
+            if (!brandSlider.hasClass('owl-loaded')) {
+                brandSlider.owlCarousel({
+                    items: 5,
+                    loop: true,
+                    autoplay: true,
+                    dots: false,
+                    nav: false
+                });
+            }
+        }
+    }
+
+    initBrandSlider();
+    $(window).on('resize', function() {
+        initBrandSlider();
+    });
+
+    $(document).ready(function() {
+    // Only initialize the blog slider for mobile users
+    if ($(window).width() < 768) {
+        $(".rs-blog-2 .owl-carousel").owlCarousel({
+            items: 1,
+            loop: true,
+            margin: 20,
+            autoplay: true,
+            dots: true,
+            stagePadding: 30 // Enables the card "peek"
+        });
+    }
+});
+});
+        </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+
+                const modal = document.getElementById("enquireModal");
+                const modalContent = document.querySelector(".enquire-modal-content");
+                const closeBtn = document.querySelector(".enquire-close");
+
+                // All open buttons
+                const openButtons = [
+                    document.getElementById("openEnquire"),
+                    document.getElementById("openEnquireNav")
+                ];
+
+                openButtons.forEach(function(btn) {
+                    if (btn) {
+                        btn.addEventListener("click", function(e) {
+                            e.preventDefault();
+                            modal.style.display = "flex";
+                        });
+                    }
+                });
+
+                // Close using cross
+                if (closeBtn) {
+                    closeBtn.addEventListener("click", function() {
+                        modal.style.display = "none";
+                    });
+                }
+
+                // Close when clicking outside form
+                modal.addEventListener("click", function(e) {
+                    if (!modalContent.contains(e.target)) {
+                        modal.style.display = "none";
+                    }
+                });
+
+            });
+
+            $(document).ready(function() {
+                if ($(window).width() < 768) {
+                    $(".featured-slider").owlCarousel({
+                        items: 1,
+                        loop: true,
+                        margin: 20,
+                        autoplay: true,
+                        dots: true, // Enables the circles
+                        nav: false,
+                        stagePadding: 30 // Shows a peek of the next card
+                    });
+                }
+            });
+
+            $(document).ready(function() {
+    // We only run this logic if the screen is mobile
+    if ($(window).width() < 768) {
+        var $teamSlider = $('.rs-project__slider');
+        
+        // Add the carousel class and initialize ONLY on mobile
+        $teamSlider.addClass('owl-carousel').owlCarousel({
+            items: 1,
+            loop: true,
+            margin: 20,
+            autoplay: true,
+            dots: true,
+            stagePadding: 40 // The "peek" effect
+        });
+    }
+    // On Desktop (>768px), this code does absolutely nothing, leaving your grid safe
+});
+        </script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const slider = document.querySelector('.category-slider-wrapper');
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    // Mouse Drag Logic
+    slider.addEventListener('mousedown', (e) => {
+        isDown = true;
+        startX = e.pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+    });
+    slider.addEventListener('mouseleave', () => { isDown = false; });
+    slider.addEventListener('mouseup', () => { isDown = false; });
+    slider.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - slider.offsetLeft;
+        const walk = (x - startX) * 2;
+        slider.scrollLeft = scrollLeft - walk;
+    });
+
+    // Tab Switch Logic
+    window.switchCourseStream = function(evt, streamId) {
+        document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.branch-panel').forEach(panel => panel.classList.remove('active'));
+        
+        document.getElementById(streamId).classList.add('active');
+        evt.currentTarget.classList.add('active');
+        
+        // Keeps the button visible in the slider
+        evt.currentTarget.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    };
+});
+</script>
+
+
+
+
+        <!-- ENQUIRE MODAL -->
+        <div id="enquireModal" class="enquire-modal">
+            <div class="enquire-overlay"></div>
+
+            <div class="enquire-modal-content">
+                <button type="button" class="enquire-close">&times;</button>
+
+                <!-- COPY SAME HERO FORM HERE -->
+                <div class="hero-form-box compact-form shadow-lg">
+                    <h3 class="form-title text-center text-dark fw-bold mb-4">Enquire Now</h3>
+
+                    <?php if (!empty($success)): ?>
+                        <div class="alert alert-success text-center"><?= $success ?></div>
+                    <?php endif; ?>
+
+                    <?php if (!empty($error)): ?>
+                        <div class="alert alert-danger text-center"><?= $error ?></div>
+                    <?php endif; ?>
+
+                    <form method="POST" action="">
+                        <!-- COPY YOUR FULL FORM FIELDS HERE EXACTLY SAME -->
+                        <div class="row g-2">
+                            <div class="col-md-6 mb-2">
+                                <input type="text" name="full_name" class="form-control" placeholder="Full Name *"
+                                    required>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <input type="tel" name="mobile_number" class="form-control" placeholder="Mobile *"
+                                    required>
+                            </div>
+                            <div class="col-md-12 mb-2">
+                                <input type="email" name="email" class="form-control" placeholder="Email Id *" required>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <select name="last_qualification" class="form-select" required>
+                                    <option value="">Qualification *</option>
+                                    <option value="12th">12th</option>
+                                    <option value="Graduate">Graduate</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <select name="preferred_course" class="form-select" required>
+                                    <option value="">Course *</option>
+                                    <option value="B.Tech">B.Tech</option>
+                                    <option value="MBA">MBA</option>
+                                </select>
+                            </div>
+                            <div class="col-md-12 mb-2">
+                                <div
+                                    class="hostel-toggle d-flex align-items-center justify-content-between p-2 rounded bg-light border">
+                                    <span class="small fw-bold text-dark">Hostel Required?</span>
+                                    <div class="btn-group btn-group-sm">
+                                        <input type="radio" class="btn-check" name="hostel_required" id="h1" value="Yes"
+                                            checked>
+                                        <label class="btn btn-outline-primary" for="h1">Yes</label>
+                                        <input type="radio" class="btn-check" name="hostel_required" id="h2" value="No">
+                                        <label class="btn btn-outline-primary" for="h2">No</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <select name="preferred_city" class="form-select" required>
+                                    <option value="">Preferred City *</option>
+                                    <option value="Bhubaneswar">Bhubaneswar</option>
+                                    <option value="Delhi">Delhi</option>
+                                    <option value="Mumbai">Mumbai</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 mb-2">
+                                <select name="budget_range" class="form-select" required>
+                                    <option value="">Budget Range *</option>
+                                    <option value="1-3 Lakh">1-3 Lakh</option>
+                                    <option value="3-5 Lakh">3-5 Lakh</option>
+                                    <option value="5+ Lakh">5+ Lakh</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-12 mb-2">
+                                <textarea name="message" class="form-control"
+                                    placeholder="Message (Optional)"></textarea>
+                            </div>
+
+                        </div>
+                        <button type="submit" class="hero-submit-btn w-100 mt-3">Submit Application</button>
+                        <?php if (!empty($success)): ?>
+                            <div class="alert alert-success text-center">
+                                <?= $success ?>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if (!empty($error)): ?>
+                            <div class="alert alert-danger text-center">
+                                <?= $error ?>
+                            </div>
+                        <?php endif; ?>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="floating-contact">
+            <a href="https://wa.me/919999999999" target="_blank" class="contact-icon-box" title="Contact Us">
+                <i class="fa fa-whatsapp"></i> </a>
+        </div>
+
 
 </body>
 
