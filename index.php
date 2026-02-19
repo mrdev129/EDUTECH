@@ -668,68 +668,90 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <!--======== Service 2 Ends ========-->
 
         <section id="rs-course-explorer-unique" class="pt-115 pb-120" style="background: #fff; overflow: hidden;">
-    <div class="container">
-        <div class="rs-section-title black text-center mb-50">
-            <div class="top-sub-heading">
-                <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
-                <span>Program Finder</span>
-                <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
-            </div>
-            <h2 class="title">Explore Courses by Stream</h2>
-        </div>
+            <div class="container">
+                <div class="rs-section-title black text-center mb-50">
+                    <div class="top-sub-heading">
+                        <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
+                        <span>Program Finder</span>
+                        <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
+                    </div>
+                    <h2 class="title">Explore Courses by Stream</h2>
+                </div>
 
-        <?php
-        $courseData = [
-            "B.Tech" => ["CSE", "IT", "Mechanical", "Civil", "EE", "ECE", "EEE", "Chemical", "AI & ML", "Data Science", "Cyber Security", "Robotics"],
-            "MBBS" => ["General Medicine", "Pediatrics", "Dermatology", "Psychiatry", "Radiology", "General Surgery", "Orthopedics", "ENT", "OB-GYN"],
-            "BDS" => ["Orthodontics", "Oral Surgery", "Prosthodontics", "Periodontics", "Conservative Dentistry", "Pediatric Dentistry"],
-            "MD/MS" => ["Pathology", "Microbiology", "Pharmacology", "General Surgery", "ENT", "Ophthalmology", "MDS"],
-            "Agriculture" => ["Agronomy", "Horticulture", "Soil Science", "Plant Pathology", "Forestry", "Seed Tech"],
-            "Veterinary" => ["Animal Nutrition", "Genetics", "Surgery", "Medicine", "Dairy Science", "Poultry"],
-            "MBA" => ["Finance", "Marketing", "HR", "Operations", "International Business", "Business Analytics", "Supply Chain"],
-            "MCA" => ["Software Development", "Data Science", "AI", "Cloud Computing", "Cyber Security", "Web Dev"],
-            "BBA" => ["Finance", "Marketing", "HR", "International Business", "Business Analytics", "Retail"],
-            "BCA" => ["Software Development", "Data Analytics", "Cyber Security", "Cloud Computing", "Web Dev"],
-            "Nursing" => ["General Nursing", "Pediatric", "Psychiatric", "Community Health", "Critical Care"],
-            "B.Pharm" => ["Pharmaceutical Chem", "Pharmacology", "Pharmaceutics", "Pharmacognosy", "Industrial"],
-            "Biotech" => ["Medical", "Agricultural", "Genetic Engineering", "Molecular", "Bioinformatics"],
-            "BHMS" => ["Materia Medica", "Organon", "Repertory", "Pharmacy"],
-            "BAMS" => ["Kayachikitsa", "Panchakarma", "Shalya", "Shalakya", "Dravyaguna"]
-        ];
-        ?>
+                <?php
+                $courseData = [
+                    "B.Tech" => ["CSE", "IT", "Mechanical", "Civil", "EE", "ECE", "EEE", "Chemical", "AI & ML", "Data Science", "Cyber Security", "Robotics"],
+                    "MBBS" => ["General Medicine", "Pediatrics", "Dermatology", "Psychiatry", "Radiology", "General Surgery", "Orthopedics", "ENT", "OB-GYN"],
+                    "BDS" => ["Orthodontics", "Oral Surgery", "Prosthodontics", "Periodontics", "Conservative Dentistry", "Pediatric Dentistry"],
+                    "MD/MS" => ["Pathology", "Microbiology", "Pharmacology", "General Surgery", "ENT", "Ophthalmology", "MDS"],
+                    "Agriculture" => ["Agronomy", "Horticulture", "Soil Science", "Plant Pathology", "Forestry", "Seed Tech"],
+                    "Veterinary" => ["Animal Nutrition", "Genetics", "Surgery", "Medicine", "Dairy Science", "Poultry"],
+                    "MBA" => ["Finance", "Marketing", "HR", "Operations", "International Business", "Business Analytics", "Supply Chain"],
+                    "MCA" => ["Software Development", "Data Science", "AI", "Cloud Computing", "Cyber Security", "Web Dev"],
+                    "BBA" => ["Finance", "Marketing", "HR", "International Business", "Business Analytics", "Retail"],
+                    "BCA" => ["Software Development", "Data Analytics", "Cyber Security", "Cloud Computing", "Web Dev"],
+                    "Nursing" => ["General Nursing", "Pediatric", "Psychiatric", "Community Health", "Critical Care"],
+                    "B.Pharm" => ["Pharmaceutical Chem", "Pharmacology", "Pharmaceutics", "Pharmacognosy", "Industrial"],
+                    "Biotech" => ["Medical", "Agricultural", "Genetic Engineering", "Molecular", "Bioinformatics"],
+                    "BHMS" => ["Materia Medica", "Organon", "Repertory", "Pharmacy"],
+                    "BAMS" => ["Kayachikitsa", "Panchakarma", "Shalya", "Shalakya", "Dravyaguna"]
+                ];
+                ?>
 
-        <div class="category-slider-wrapper">
-            <div class="category-track" id="categoryDragTrack">
-                <?php $count = 0; foreach ($courseData as $stream => $branches): ?>
-                    <button class="category-btn <?= $count === 0 ? 'active' : '' ?>" 
-                            onclick="switchCourseStream(event, 'course-<?= str_replace([' ', '/', '.'], '', $stream) ?>')">
-                        <?= $stream ?>
-                    </button>
-                <?php $count++; endforeach; ?>
-            </div>
-        </div>
-
-        <div class="branch-grid-container mt-50">
-            <?php $count = 0; foreach ($courseData as $stream => $branches): ?>
-                <div id="course-<?= str_replace([' ', '/', '.'], '', $stream) ?>" 
-                     class="branch-panel <?= $count === 0 ? 'active' : '' ?>">
-                    <div class="row">
-                        <?php foreach ($branches as $branch): ?>
-                            <div class="col-lg-3 col-md-4 col-sm-6 mb-30">
-                                <div class="rs-featured-2__item branch-card-mini">
-                                    <div class="rs-content text-center">
-                                        <h4 class="title" style="font-size: 16px; margin-bottom: 5px;"><?= $branch ?></h4>
-                                        <a class="rs-link" href="#" style="font-size: 12px;">View Details <i class="ri-arrow-right-fill"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php endforeach; ?>
+                <div class="category-slider-wrapper">
+                    <div class="category-track" id="categoryDragTrack">
+                        <?php $count = 0;
+                        foreach ($courseData as $stream => $branches): ?>
+                            <button class="category-btn <?= $count === 0 ? 'active' : '' ?>"
+                                onclick="switchCourseStream(event, 'course-<?= str_replace([' ', '/', '.'], '', $stream) ?>')">
+                                <?= $stream ?>
+                            </button>
+                        <?php $count++;
+                        endforeach; ?>
                     </div>
                 </div>
-            <?php $count++; endforeach; ?>
-        </div>
-    </div>
-</section>
+
+                <div class="branch-grid-container mt-50">
+                    <?php $count = 0;
+                    foreach ($courseData as $stream => $branches):
+                        // Create a clean ID: B.Tech -> course-BTech, MD/MS -> course-MDMS
+                        $cleanId = 'course-' . str_replace([' ', '/', '.'], '', $stream);
+                    ?>
+                        <div id="<?= $cleanId ?>" class="branch-panel <?= $count === 0 ? 'active' : '' ?>">
+
+                            <div class="rs-carousel owl-carousel branch-slider"
+                                data-loop="true"
+                                data-items="3"
+                                data-margin="30"
+                                data-autoplay="true"
+                                data-hoverpause="true"
+                                data-smart-speed="800"
+                                data-dots="false"
+                                data-nav="true"
+                                data-nav-text='["<span class=\"nav-btn prev-btn\"><i class=\"fa fa-arrow-left\"></i> Prev</span>","<span class=\"nav-btn next-btn\">Next <i class=\"fa fa-arrow-right\"></i></span>"]'
+                                data-md-device="3"
+                                data-ipad-device="2"
+                                data-mobile-device="1">
+
+                                <?php foreach ($branches as $branch): ?>
+                                    <div class="branch-item">
+                                        <div class="rs-featured-2__item branch-card-mini" style="margin: 10px;">
+                                            <div class="rs-content text-center">
+                                                <h4 class="title" style="font-size: 16px; margin-bottom: 5px;"><?= $branch ?></h4>
+                                                <a class="rs-link" href="#" style="font-size: 12px;">
+                                                    View Details <i class="ri-arrow-right-fill"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                    <?php $count++;
+                    endforeach; ?>
+                </div>
+            </div>
+        </section>
 
 
         <!--======== About 2 Start ========-->
@@ -2049,54 +2071,54 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 }
             });
 
-           $(document).ready(function() {
-    var brandSlider = $('.mobile-brand-grid');
+            $(document).ready(function() {
+                var brandSlider = $('.mobile-brand-grid');
 
-    function initBrandSlider() {
-        var isMobile = $(window).width() < 768;
+                function initBrandSlider() {
+                    var isMobile = $(window).width() < 768;
 
-        if (isMobile) {
-            // 1. If we are on mobile, kill the carousel completely
-            if (brandSlider.hasClass('owl-loaded')) {
-                brandSlider.trigger('destroy.owl.carousel').removeClass('owl-carousel owl-loaded');
-                brandSlider.find('.owl-stage-outer').children().unwrap();
-            }
-            // 2. Ensure the class used for Grid CSS is present
-            brandSlider.addClass('mobile-grid-active'); 
-        } else {
-            // 3. Re-initialize for desktop sliding
-            brandSlider.removeClass('mobile-grid-active').addClass('owl-carousel');
-            if (!brandSlider.hasClass('owl-loaded')) {
-                brandSlider.owlCarousel({
-                    items: 5,
-                    loop: true,
-                    autoplay: true,
-                    dots: false,
-                    nav: false
+                    if (isMobile) {
+                        // 1. If we are on mobile, kill the carousel completely
+                        if (brandSlider.hasClass('owl-loaded')) {
+                            brandSlider.trigger('destroy.owl.carousel').removeClass('owl-carousel owl-loaded');
+                            brandSlider.find('.owl-stage-outer').children().unwrap();
+                        }
+                        // 2. Ensure the class used for Grid CSS is present
+                        brandSlider.addClass('mobile-grid-active');
+                    } else {
+                        // 3. Re-initialize for desktop sliding
+                        brandSlider.removeClass('mobile-grid-active').addClass('owl-carousel');
+                        if (!brandSlider.hasClass('owl-loaded')) {
+                            brandSlider.owlCarousel({
+                                items: 5,
+                                loop: true,
+                                autoplay: true,
+                                dots: false,
+                                nav: false
+                            });
+                        }
+                    }
+                }
+
+                initBrandSlider();
+                $(window).on('resize', function() {
+                    initBrandSlider();
                 });
-            }
-        }
-    }
 
-    initBrandSlider();
-    $(window).on('resize', function() {
-        initBrandSlider();
-    });
-
-    $(document).ready(function() {
-    // Only initialize the blog slider for mobile users
-    if ($(window).width() < 768) {
-        $(".rs-blog-2 .owl-carousel").owlCarousel({
-            items: 1,
-            loop: true,
-            margin: 20,
-            autoplay: true,
-            dots: true,
-            stagePadding: 30 // Enables the card "peek"
-        });
-    }
-});
-});
+                $(document).ready(function() {
+                    // Only initialize the blog slider for mobile users
+                    if ($(window).width() < 768) {
+                        $(".rs-blog-2 .owl-carousel").owlCarousel({
+                            items: 1,
+                            loop: true,
+                            margin: 20,
+                            autoplay: true,
+                            dots: true,
+                            stagePadding: 30 // Enables the card "peek"
+                        });
+                    }
+                });
+            });
         </script>
         <script>
             document.addEventListener("DOMContentLoaded", function() {
@@ -2151,60 +2173,100 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             });
 
             $(document).ready(function() {
-    // We only run this logic if the screen is mobile
-    if ($(window).width() < 768) {
-        var $teamSlider = $('.rs-project__slider');
-        
-        // Add the carousel class and initialize ONLY on mobile
-        $teamSlider.addClass('owl-carousel').owlCarousel({
-            items: 1,
-            loop: true,
-            margin: 20,
-            autoplay: true,
-            dots: true,
-            stagePadding: 40 // The "peek" effect
-        });
-    }
-    // On Desktop (>768px), this code does absolutely nothing, leaving your grid safe
-});
+                // We only run this logic if the screen is mobile
+                if ($(window).width() < 768) {
+                    var $teamSlider = $('.rs-project__slider');
+
+                    // Add the carousel class and initialize ONLY on mobile
+                    $teamSlider.addClass('owl-carousel').owlCarousel({
+                        items: 1,
+                        loop: true,
+                        margin: 20,
+                        autoplay: true,
+                        dots: true,
+                        stagePadding: 40 // The "peek" effect
+                    });
+                }
+                // On Desktop (>768px), this code does absolutely nothing, leaving your grid safe
+            });
         </script>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const slider = document.querySelector('.category-slider-wrapper');
-    let isDown = false;
-    let startX;
-    let scrollLeft;
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const slider = document.querySelector('.category-slider-wrapper');
+                let isDown = false;
+                let startX;
+                let scrollLeft;
 
-    // Mouse Drag Logic
-    slider.addEventListener('mousedown', (e) => {
-        isDown = true;
-        startX = e.pageX - slider.offsetLeft;
-        scrollLeft = slider.scrollLeft;
-    });
-    slider.addEventListener('mouseleave', () => { isDown = false; });
-    slider.addEventListener('mouseup', () => { isDown = false; });
-    slider.addEventListener('mousemove', (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - slider.offsetLeft;
-        const walk = (x - startX) * 2;
-        slider.scrollLeft = scrollLeft - walk;
-    });
+                // Mouse Drag Logic
+                slider.addEventListener('mousedown', (e) => {
+                    isDown = true;
+                    startX = e.pageX - slider.offsetLeft;
+                    scrollLeft = slider.scrollLeft;
+                });
+                slider.addEventListener('mouseleave', () => {
+                    isDown = false;
+                });
+                slider.addEventListener('mouseup', () => {
+                    isDown = false;
+                });
+                slider.addEventListener('mousemove', (e) => {
+                    if (!isDown) return;
+                    e.preventDefault();
+                    const x = e.pageX - slider.offsetLeft;
+                    const walk = (x - startX) * 2;
+                    slider.scrollLeft = scrollLeft - walk;
+                });
 
-    // Tab Switch Logic
-    window.switchCourseStream = function(evt, streamId) {
-        document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
-        document.querySelectorAll('.branch-panel').forEach(panel => panel.classList.remove('active'));
-        
-        document.getElementById(streamId).classList.add('active');
-        evt.currentTarget.classList.add('active');
-        
-        // Keeps the button visible in the slider
-        evt.currentTarget.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-    };
-});
-</script>
+                window.switchCourseStream = function(evt, streamId) {
+                    document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+                    document.querySelectorAll('.branch-panel').forEach(panel => panel.classList.remove('active'));
+
+                    const activePanel = document.getElementById(streamId);
+                    if (activePanel) {
+                        activePanel.classList.add('active');
+                        evt.currentTarget.classList.add('active');
+
+                        setTimeout(function() {
+                            var $carousel = $(activePanel).find('.branch-slider');
+                            if ($carousel.hasClass('owl-loaded')) {
+                                $carousel.trigger('refresh.owl.carousel');
+                            } else {
+                                // Inside your switchCourseStream function, update the owlCarousel initialization:
+                                $carousel.owlCarousel({
+                                    loop: true,
+                                    margin: 30,
+                                    nav: true,
+                                    dots: false,
+                                    autoplay: true,
+                                    // Use the same SPAN structure here
+                                    navText: [
+                                        "<span class='nav-btn prev-btn'><i class='fa fa-arrow-left'></i> Prev</span>",
+                                        "<span class='nav-btn next-btn'>Next <i class='fa fa-arrow-right'></i></span>"
+                                    ],
+                                    responsive: {
+                                        0: {
+                                            items: 1
+                                        },
+                                        768: {
+                                            items: 2
+                                        },
+                                        992: {
+                                            items: 3
+                                        }
+                                    }
+                                });
+                            }
+                        }, 100);
+                    }
+                    evt.currentTarget.scrollIntoView({
+                        behavior: 'smooth',
+                        inline: 'center',
+                        block: 'nearest'
+                    });
+                };
+            });
+        </script>
 
 
 
