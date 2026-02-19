@@ -20455,6 +20455,18 @@ section {
   transform: translateY(-2px);
 }
 
+
+/* Ensure the secondary image stays hidden on desktop unless hovered */
+.rs-brand-slider-item img.item-2 {
+    display: none;
+}
+.rs-brand-slider-item:hover img.item-2 {
+    display: block; /* Restore your hover effect for desktop */
+}
+.rs-brand-slider-item:hover img:not(.item-2) {
+    display: none;
+}
+
 /* Responsive adjustment for small screens */
 @media (max-width: 991px) {
   .program-menu {
@@ -20902,4 +20914,716 @@ section {
     object-fit: cover;      /* Forces the image to fill the space so it looks larger */
     object-position: center; 
     background-color: transparent;
+}
+
+/* --- Mobile Header Adjustments --- */
+@media (max-width: 767px) {
+
+  
+    /* 1. Reduce overall header height and margins */
+    .edutech-main-header {
+        height: 50px; /* Slimmer bar */
+        margin: 10px 10px 0 10px; /* Tighter margins to screen edge */
+        padding: 0 10px;
+    }
+
+    .header-container {
+        padding: 0 5px;
+    }
+
+    /* 2. Shrink the Logo Circle */
+    .logo-circle-wrap {
+        width: 55px; /* Reduced from 72px */
+        height: 55px;
+        border-width: 2px; /* Thinner border for smaller scale */
+        margin-left: -2px;
+    }
+
+    .logo-circle-wrap img {
+        height: 38px; /* Balanced logo size inside circle */
+    }
+
+    /* 3. Scale down the Brand Text */
+    .brand-name {
+        font-size: 14px; /* Reduced from 20px */
+    }
+
+    .brand-tagline {
+        font-size: 7px; /* Tiny tagline matching your Amity reference */
+        letter-spacing: 0.5px;
+    }
+
+    .logo-side {
+        gap: 8px; /* Tighter gap between circle and text */
+    }
+
+    /* 4. Tweak the Enquire Button to fit the bar */
+    #openEnquire.main-btn {
+        padding: 6px 15px; /* Slimmer padding */
+        font-size: 10px; /* Smaller font */
+        margin-right: 0;
+        white-space: nowrap;
+    }
+    
+    /* 5. Match the Yellow Announcement Bar margin */
+    /* .static-announcement {
+        margin: 5px 10px 0 10px;
+        border-radius: 8px;
+    } */
+
+    .static-announcement {
+        padding: 8px 10px; /* Vertical padding for better height */
+        margin: 8px 10px 0 10px; /* Matches header margin */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        border-radius: 8px; /* Slightly rounded corners like the reference */
+        overflow: visible; /* Ensure text isn't cut off */
+    }
+
+    .static-announcement .container {
+        padding: 0;
+        white-space: normal; /* Allows text to wrap if it's too long for very small screens */
+    }
+
+    .sliding-text {
+        animation: none; /* Stops the right-to-left sliding */
+        padding-left: 0; /* Removes the sliding start offset */
+        font-size: 11px; /* Scaled down to fit one or two lines comfortably */
+        line-height: 1.3;
+        display: block;
+        width: 100%;
+        color: #002147; /* Ensure high contrast with yellow background */
+        font-weight: 700;
+    }
+
+    /* 1. Section Container Reset */
+    .split-hero {
+        display: block !important; /* Forces vertical stacking */
+        height: auto !important;
+        min-height: auto;
+        padding: 0;
+        background: #fff; /* Sets white background for the form area below */
+        position: relative;
+    }
+
+    /* 2. The Blue Hero Image Box (Squeezed Container) */
+    .hero-bg-slider {
+        position: relative !important; /* Takes up space in the flow */
+        height: 480px !important; /* Matches the vertical height of the reference */
+        margin: 10px 15px; /* Creates the gap from screen edges */
+        border-radius: 20px; /* Bends the corners like the image */
+        overflow: hidden;
+        z-index: 1;
+    }
+
+    .hero-bg-slider .item {
+        height: 480px !important;
+    }
+
+    /* 3. Positioning the Hero Text Over the Box */
+    .hero-content-left {
+        position: absolute;
+        top: 10px; /* Matches the top margin of the slider */
+        left: 15px;
+        right: 15px;
+        height: 480px;
+        z-index: 5;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 0 20px;
+        pointer-events: none; /* Ensures text doesn't block slider interaction */
+    }
+
+    .expanding-text {
+        font-size: 26px !important;
+        line-height: 1.2;
+    }
+
+    .journey-sub {
+        font-size: 14px !important;
+        margin-top: 15px;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+
+    /* 4. The Enquire Form (Stacked Below) */
+    .hero-form-box.compact-form {
+        position: relative;
+        z-index: 10;
+        max-width: 100%;
+        margin: 20px 15px 40px !important; /* Adds space between image and form */
+        border: 1px solid #e1e1e1; /* Subtle border like the reference */
+        border-radius: 15px;
+        padding: 30px 20px !important;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    }
+
+    .form-title {
+        font-size: 24px;
+        font-weight: 600;
+        color: #002147;
+    }
+
+    /* Adjusting container to allow flow */
+    .split-hero .container {
+        position: static !important;
+        max-width: 100%;
+        padding: 0;
+    }
+
+    .split-hero .row {
+        margin: 0;
+        display: block;
+    }
+
+    /* Touch-friendly inputs for Satyanarayan's form */
+    .hero-form-box .form-control, 
+    .hero-form-box .form-select {
+        height: 45px;
+        font-size: 16px; /* Prevents auto-zoom on mobile */
+        border-radius: 8px;
+    }
+
+    .sliding-info-bar {
+        padding: 10px 0; /* Slimmer vertical height for phones */
+        margin: 8px 15px; /* Matches the 15px side-gap of your hero and header */
+        font-size: 13px; /* Smaller text to prevent the bar from looking bulky */
+        border-radius: 10px; /* Bends the corners to match the hero image box */
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    /* Slowing down the movement for mobile */
+    .sliding-info-bar marquee {
+        font-weight: 500;
+        /* Note: scrollamount is an HTML attribute, but reducing font-size 
+           and adding padding helps the text feel more readable and 'slower' 
+           on a narrow screen. */
+        padding: 0 10px; 
+    }
+
+    /* 1. CRITICAL: Prevents sticky bar from being hidden by parent overflow settings */
+    html, body {
+        overflow-x: hidden !important;
+        overflow-y: visible !important; /* Required for sticky to function */
+    }
+
+    .program-nav-bar {
+        position: -webkit-sticky !important; /* Safari Support */
+        position: sticky !important; 
+        top: 0 !important;           /* Anchors to the very top edge */
+        display: block !important;    /* Forces visibility */
+        visibility: visible !important;
+        opacity: 1 !important;
+        z-index: 99999 !important;   /* Stays above all sections */
+        background: #ffffff !important; 
+        width: 100% !important;
+        margin: 0 !important;        /* Full width for stability */
+        padding: 10px 0 !important;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important; 
+        border-radius: 0 !important;
+    }
+
+    /* 2. SLIDING ROW: Forces menu items and button into one horizontal line */
+    .nav-flex-wrapper {
+        display: flex !important;      /* Flex allows side-by-side layout */
+        flex-wrap: nowrap !important;  /* Forces a single row */
+        align-items: center !important;
+        overflow-x: auto !important;   /* Enables the horizontal sliding */
+        -webkit-overflow-scrolling: touch; /* Smooth swipe for phones */
+        padding: 0 15px !important;
+    }
+
+    /* Prevent menu and button from shrinking or wrapping */
+    .program-menu {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        gap: 25px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        flex-shrink: 0 !important; /* Keeps menu items at original width */
+    }
+
+    .nav-action {
+        display: inline-block !important;
+        margin-left: 25px !important;
+        flex-shrink: 0 !important; /* Keeps button at original width */
+    }
+
+    .program-menu li {
+        list-style: none !important;
+        white-space: nowrap !important; /* Prevents text from wrapping to two lines */
+    }
+
+    /* 3. TYPOGRAPHY & ACTIVE LINK: Blue underline from your demo */
+    .program-menu li a {
+        font-size: 13px !important;
+        font-weight: 700 !important;
+        color: #003366 !important;
+        text-transform: uppercase;
+        padding-bottom: 5px;
+        border-bottom: 3px solid transparent;
+        transition: 0.3s;
+        text-decoration: none !important;
+    }
+
+    .program-menu li a.active-link {
+        color: #007bff !important; /* Blue text */
+        border-bottom: 3px solid #007bff !important; /* Blue underline */
+    }
+
+    /* 4. BUTTON & SCROLLBAR TWEAKS */
+    .navy-enquire-btn {
+        padding: 8px 20px !important;
+        font-size: 12px !important;
+        white-space: nowrap !important;
+        border-radius: 50px !important;
+    }
+
+    .nav-flex-wrapper::-webkit-scrollbar {
+        display: none; /* Keeps the sliding menu looking like an app */
+    }
+
+
+   /* 1. Structural fix for the "peek" sliding effect */
+    .rs-service-2 .container, 
+    .rs-featured-2 .container {
+        padding-right: 0 !important;
+        margin-right: 0 !important;
+        max-width: 100% !important;
+    }
+
+    /* Allows the next card to be partially visible on the right */
+    .service-slider-bottom .owl-stage-outer, 
+    .featured-slider .owl-stage-outer {
+        padding-right: 40px !important; 
+        overflow: visible !important;
+    }
+
+    /* Consistent card height for sliding */
+    .rs-service-2__item, 
+    .rs-featured-2__item {
+        margin: 10px 5px !important;
+        height: 350px !important; 
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    /* 2. Dots/Pill Buttons Styling */
+    .service-slider-bottom .owl-dots, 
+    .featured-slider .owl-dots {
+        display: flex !important;
+        justify-content: center !important;
+        margin-top: 30px !important;
+        gap: 10px !important;
+    }
+
+    .service-slider-bottom .owl-dot span, 
+    .featured-slider .owl-dot span {
+        width: 12px !important;
+        height: 12px !important;
+        background: #D1D5DB !important; /* Inactive circle color */
+        border-radius: 50% !important;
+        display: block !important;
+        transition: 0.3s ease !important;
+    }
+
+    /* Active Pill Shape logic from demo */
+    .service-slider-bottom .owl-dot.active span, 
+    .featured-slider .owl-dot.active span {
+        width: 30px !important; /* Becomes a pill */
+        background: #002147 !important; /* Matches your navy theme */
+        border-radius: 10px !important;
+    }
+    
+/*ABOUT SECTION*/
+
+
+
+   /* 1. Header Centering */
+    .rs-about-2__main-content .rs-section-title {
+        text-align: center !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        margin-bottom: 25px !important;
+    }
+
+    /* 2. One-Level Tabs: Mission, Vision, Core Value */
+    .skltbs-tab-group {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important; /* Forces single line */
+        justify-content: space-between !important;
+        border-bottom: 1px solid #dee2e6 !important;
+        padding-bottom: 10px !important;
+        margin-bottom: 20px !important;
+    }
+
+    .skltbs-tab-item {
+        flex: 1 !important; /* Equal width for all 3 options */
+        text-align: center !important;
+    }
+
+    .skltbs-tab-group .skltbs-tab {
+        font-size: 13px !important; /* Fits perfectly on narrow screens */
+        font-weight: 700 !important;
+        background: transparent !important;
+        border: none !important;
+        padding: 0 0 5px 0 !important;
+    }
+
+    .skltbs-tab.skltbs-active {
+        color: #F26F20 !important;
+        border-bottom: 2px solid #F26F20 !important;
+    }
+
+    /* 3. Panel Fix: Prevent Doubled Content */
+    .skltbs-panel {
+        display: none !important; /* Only JS can toggle this */
+    }
+    .skltbs-panel.skltbs-active {
+        display: block !important;
+        text-align: left !important;
+    }
+
+    /* 4. One-Level Actions: Button & Play Icon Side-by-Side */
+    /* Target the d-flex you added in the HTML to keep it horizontal */
+    .skltbs-panel .d-flex,
+    .skltbs-panel .main-btn, 
+    .skltbs-panel .play-icon {
+        display: inline-flex !important;
+        flex-direction: row !important; /* Keep horizontal */
+        flex-wrap: nowrap !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        margin: 15px 10px 15px 0 !important;
+    }
+
+    /* Reset the play-icon's margin to sit close to the button */
+    .skltbs-panel .play-icon {
+        margin-left: 5px !important;
+    }
+
+    .skltbs-panel .main-btn {
+        padding: 12px 22px !important;
+        font-size: 14px !important;
+        border-radius: 8px !important;
+        white-space: nowrap !important; /* Prevents text from breaking into 2 lines */
+        background: #F26F20 !important;
+        color: #fff !important;
+    }
+
+    .skltbs-panel .play-icon a {
+        width: 48px !important;
+        height: 48px !important;
+        background: #F26F20 !important;
+        color: #fff !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        box-shadow: 0 0 0 8px rgba(242, 111, 32, 0.2) !important;
+    }
+
+    /*PARTNER COLLEGES*/
+    /* Use the specific class we added in JS */
+    .mobile-grid-active {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important; /* Forces 2 per level */
+        gap: 15px !important;
+        padding: 10px !important;
+    }
+
+    .rs-brand-slider-item {
+        background: #ffffff !important;
+        border-radius: 10px !important;
+        padding: 15px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important;
+        border: 1px solid #f0f0f0 !important;
+        height: 100px !important; /* Keeps them perfectly leveled */
+    }
+
+    .rs-brand-slider-item img.item-2 {
+        display: none !important; /* Hides repeated images */
+    }
+
+
+    /*TEAM MEMBERS*/
+
+    /* 1. Center the Section Title and Sub-heading */
+    .rs-project .rs-section-title {
+        text-align: center !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        margin-bottom: 25px !important;
+    }
+
+    /* 2. Center the "View All Team Members" Button */
+    .rs-project__btn {
+        text-align: center !important;
+        width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+        margin-bottom: 35px !important;
+    }
+
+    /* Ensure the button itself has the correct shape and spacing */
+    .rs-project__btn .main-btn {
+        display: inline-flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        padding: 12px 25px !important;
+        font-size: 14px !important;
+        white-space: nowrap !important;
+    }
+
+    /* 3. Center the heart-pulse icons with the text */
+    .rs-project .top-sub-heading {
+        display: inline-flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 10px !important;
+        width: 100% !important;
+    }
+
+
+    /*WHY TO CHOOSE*/
+    /* 1. Hide the entire image column on mobile */
+    .rs-why-choose-2 .col-lg-6:last-child,
+    .rs-why-choose-2__thumb {
+        display: none !important;
+    }
+
+    /* 2. Center the text content and progress bars */
+    .why-choose-2__content {
+        text-align: center !important;
+        padding-right: 0 !important;
+    }
+
+    /* 3. Center the header and pulse icons */
+    .rs-why-choose-2 .rs-section-title {
+        text-align: center !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    .rs-why-choose-2 .top-sub-heading {
+        display: inline-flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 10px !important;
+        width: 100% !important;
+    }
+
+    /* 4. Align Skill Bars for centered layout */
+    .rs-progress-skill {
+        text-align: left !important; /* Keep text left-aligned inside a centered container for readability */
+        margin-bottom: 25px !important;
+    }
+
+    .rs-progress__title {
+        font-size: 14px !important;
+        margin-bottom: 10px !important;
+    }
+
+    /* Adjust section padding for mobile */
+    .rs-why-choose-2 {
+        padding-bottom: 60px !important;
+        padding-top: 40px !important;
+    }
+
+
+    /*COUNTER*/
+    /* 1. Force the row into a 2-column grid */
+    .rs-counter-2 .container > .row:last-child {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important; /* Forces 2 columns per level */
+        gap: 15px !important;
+        padding: 0 10px;
+    }
+
+    /* 2. Reset Bootstrap column widths for the grid */
+    .rs-counter-2 .col-sm-6 {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+    }
+
+    /* 3. Style each counter item for a balanced look */
+    .rs-counter-2__item {
+        text-align: center !important;
+        padding: 20px 10px !important;
+        margin-bottom: 0 !important; /* Grid handles spacing via 'gap' */
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        background: #fdfdfd; /* Subtle background to distinguish cards */
+        border-radius: 12px;
+        border: 1px solid #f0f0f0;
+    }
+
+    /* 4. Center icons and text */
+    .rs-counter-2__icon {
+        margin-bottom: 15px !important;
+        margin-right: 0 !important; /* Removes desktop side-margin */
+    }
+
+    .rs-counter-2__content {
+        text-align: center !important;
+    }
+
+    .rs-counter-2__content .title {
+        font-size: 22px !important; /* Slightly smaller for mobile grid space */
+        margin-bottom: 5px !important;
+    }
+
+    .rs-counter-2__content span {
+        font-size: 12px !important;
+        font-weight: 600 !important;
+        display: block;
+    }
+
+    /* Center the main section title */
+    .rs-counter-2__title {
+        text-align: center !important;
+        margin-bottom: 30px !important;
+    }
+
+
+    /*FAQ*/
+
+    /* 1. Remove FAQ Left Image strictly for mobile */
+    .rs-faq .col-lg-6:first-child,
+    .rs-faq__thumb {
+        display: none !important;
+    }
+
+    /* 2. Center Headings and Pulse Icons */
+    .rs-faq .rs-section-title {
+        text-align: center !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        margin-bottom: 25px !important;
+    }
+
+    .rs-faq .top-sub-heading {
+        display: inline-flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 8px !important;
+        width: 100% !important;
+    }
+
+    /* 3. Center Accordion Container but keep text readable */
+    .rs-faq__content {
+        padding-left: 0 !important;
+        text-align: center !important;
+    }
+
+    .rs-faq__wrapper {
+        text-align: left !important; /* Content inside should stay left-aligned */
+        max-width: 100% !important;
+    }
+
+    /* 4. Center the Contact Button */
+    .rs-faq__link {
+        display: flex !important;
+        justify-content: center !important;
+        margin-top: 35px !important;
+        width: 100% !important;
+    }
+
+    .rs-faq__link .main-btn {
+        padding: 12px 25px !important;
+        font-size: 14px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+    }
+
+    /* 5. Mobile spacing adjustment */
+    .rs-faq {
+        padding-bottom: 70px !important;
+        padding-top: 20px !important;
+    }
+
+    /*BLOGS*/
+
+    /* 1. Center the Main Header */
+    .rs-blog-2 .rs-section-title {
+        text-align: center !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    .rs-blog-2 .top-sub-heading {
+        display: inline-flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 10px !important;
+        width: 100% !important;
+    }
+
+    /* 2. Fix Button Breaking into 2 lines */
+    .rs-blog-footer a {
+        white-space: nowrap !important; /* Forces text to stay on one line */
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 5px !important;
+        font-size: 13px !important;
+        font-weight: 700 !important;
+    }
+
+    /* 3. Sliding "Peek" structural fix */
+    .rs-blog-2 .container {
+        padding-right: 0 !important;
+        max-width: 100% !important;
+    }
+
+    .rs-blog-2 .owl-stage-outer {
+        padding-right: 40px !important; 
+        overflow: visible !important;
+    }
+
+    .rs-blog-2__item {
+        margin: 0 10px !important;
+        border-radius: 15px !important;
+        overflow: hidden !important;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08) !important;
+    }
+
+    /* 4. Pill-Shaped Navigation Dots */
+    .rs-blog-2 .owl-dots {
+        display: flex !important;
+        justify-content: center !important;
+        margin-top: 30px !important;
+        gap: 8px !important;
+    }
+
+    .rs-blog-2 .owl-dot span {
+        width: 10px !important;
+        height: 10px !important;
+        background: #D1D5DB !important;
+        border-radius: 50% !important;
+        transition: 0.3s ease !important;
+    }
+
+    .rs-blog-2 .owl-dot.active span {
+        width: 25px !important; /* Pill shape */
+        background: #002147 !important; 
+        border-radius: 10px !important;
+    }
 }
