@@ -598,7 +598,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </section>
 
         <!--======== Service 2 Start ========-->
-        <div class="rs-service-2 pt-90 pb-120">
+        <!-- <div class="rs-service-2 pt-90 pb-120">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
@@ -664,7 +664,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!--======== Service 2 Ends ========-->
 
         <section id="rs-course-explorer-unique" class="pt-115 pb-120" style="background: #fff; overflow: hidden;">
