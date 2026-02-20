@@ -883,86 +883,75 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </section>
         <!--======== About 2 Ends ========-->
 
-
         <!--======== Brand Start ========-->
-        <div class="rs-brand pb-90 pt-85">
-            <div id="gallery" class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="rs-brand__top-title">
-                            <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="">
-                            <span>Our College Partners</span>
-                            <img src="assets/images/heart-pulse-rate-orange.svg" alt="">
-                        </div>
-                    </div>
+        <div class="rs-brand">
+            <div class="container">
+
+                <div class="rs-brand__top-title text-center">
+                    <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="">
+                    <span>Our College Partners</span>
+                    <img src="assets/images/heart-pulse-rate-orange.svg" alt="">
                 </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="rs-brand__slider">
-                            <div class="rs-carousel owl-carousel mobile-brand-grid nav-style1" data-loop="true" data-items="5"
-                                data-margin="0" data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="3000"
-                                data-smart-speed="500" data-dots="false" data-nav="false" data-nav-speed="false"
-                                data-center-mode="false" data-mobile-device="2" data-mobile-device-nav="false"
-                                data-mobile-device-dots="false" data-ipad-device="4" data-ipad-device-nav="false"
-                                data-ipad-device-dots="false" data-ipad-device2="3" data-ipad-device-nav2="false"
-                                data-ipad-device-dots2="false" data-md-device="4" data-lg-device="5"
-                                data-md-device-nav="false" data-md-device-dots="false" data-doteach="false">
-                                <div class="rs-brand-slider-item">
-                                    <a href="#">
-                                        <img src="assets\images\brand\image-Photoroom (1).png" alt="">
-                                        <img class="item-2" src="assets/images/brand/partner-white-1.png" alt="">
-                                    </a>
-                                </div>
-                                <div class="rs-brand-slider-item">
-                                    <a href="#">
-                                        <img src="assets\images\brand\image-Photoroom.png" alt="">
-                                        <img class="item-2" src="assets/images/brand/partner-white-2.png" alt="">
-                                    </a>
-                                </div>
-                                <div class="rs-brand-slider-item">
-                                    <a href="#">
-                                        <img src="assets\images\brand\images-Photoroom (1).png" alt="">
-                                        <img class="item-2" src="assets/images/brand/partner-white-3.png" alt="">
-                                    </a>
-                                </div>
-                                <div class="rs-brand-slider-item">
-                                    <a href="#">
-                                        <img src="assets\images\brand\logo-896x1024-Photoroom.png" alt="">
-                                        <img class="item-2" src="assets/images/brand/partner-white-4.png" alt="">
-                                    </a>
-                                </div>
-                                <div class="rs-brand-slider-item">
-                                    <a href="#">
-                                        <img src="assets\images\brand\university-college-school-badge-logo-free-vector-Photoroom.png"
-                                            alt="">
-                                        <img class="item-2" src="assets/images/brand/partner-white-5.png" alt="">
-                                    </a>
-                                </div>
-                                <div class="rs-brand-slider-item">
-                                    <a href="#">
-                                        <img src="assets\images\brand\University-Logo-backup-Photoroom.png" alt="">
-                                        <img class="item-2" src="assets/images/brand/partner-white-6.png" alt="">
-                                    </a>
-                                </div>
-                                <div class="rs-brand-slider-item">
-                                    <a href="#">
-                                        <img src="assets\images\brand\images-Photoroom (2).png" alt="">
-                                        <img class="item-2" src="assets/images/brand/partner-white-7.png" alt="">
-                                    </a>
-                                </div>
-                                <div class="rs-brand-slider-item">
-                                    <a href="#">
-                                        <img src="assets\images\brand\images-Photoroomxx.png" alt="">
-                                        <img class="item-2" src="assets/images/brand/partner-white-8.png" alt="">
-                                    </a>
-                                </div>
+
+                <div class="rs-brand__slider">
+                    <div class="owl-carousel brand-carousel">
+
+                        <!-- YOUR ORIGINAL IMAGES (UNCHANGED) -->
+
+                        <div class="brand-item">
+                            <div class="circle-card">
+                                <img src="assets/images/brand/image-Photoroom (1).png">
                             </div>
                         </div>
+
+                        <div class="brand-item">
+                            <div class="circle-card">
+                                <img src="assets/images/brand/image-Photoroom.png">
+                            </div>
+                        </div>
+
+                        <div class="brand-item">
+                            <div class="circle-card">
+                                <img src="assets/images/brand/images-Photoroom (1).png">
+                            </div>
+                        </div>
+
+                        <div class="brand-item">
+                            <div class="circle-card">
+                                <img src="assets/images/brand/logo-896x1024-Photoroom.png">
+                            </div>
+                        </div>
+
+                        <div class="brand-item">
+                            <div class="circle-card">
+                                <img src="assets/images/brand/university-college-school-badge-logo-free-vector-Photoroom.png">
+                            </div>
+                        </div>
+
+                        <div class="brand-item">
+                            <div class="circle-card">
+                                <img src="assets/images/brand/University-Logo-backup-Photoroom.png">
+                            </div>
+                        </div>
+
+                        <div class="brand-item">
+                            <div class="circle-card">
+                                <img src="assets/images/brand/images-Photoroom (2).png">
+                            </div>
+                        </div>
+
+                        <div class="brand-item">
+                            <div class="circle-card">
+                                <img src="assets/images/brand/images-Photoroomxx.png">
+                            </div>
+                        </div>
+
                     </div>
                 </div>
+
             </div>
         </div>
-        <!--======== Brand Ends ========-->
+        <!--======== Brand End ========-->
 
         <!--======== Project Start ========-->
         <section id="rs-portfolios" class="rs-project">
@@ -2266,6 +2255,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     });
                 };
             });
+
+            $('.brand-carousel').owlCarousel({
+    loop: true,
+    margin: 30,
+    autoplay: true,
+    autoplayTimeout: 2000,
+    autoplayHoverPause: false,
+    smartSpeed: 800,
+    dots: false,
+    nav: false,
+    responsive:{
+        0:{ items:2 },
+        600:{ items:3 },
+        1000:{ items:5 }
+    }
+});
         </script>
 
 
