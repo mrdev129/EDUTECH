@@ -12450,269 +12450,100 @@ html.menu-is-open .menu-canvas-layer {
 /*----------------------------------------*/
 /*  03.11 - Brand
 /*----------------------------------------*/
+/* ==========================================
+   FINAL STABLE AUTO SLIDER (NO HOVER)
+   ========================================== */
+
 .rs-brand {
-  position: relative;
-  z-index: 10;
+    padding: 80px 0;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+/* Fix Owl overflow */
+.rs-brand .owl-stage-outer {
+    overflow: hidden !important;
+}
+
+/* Brand Item Center */
+.brand-item {
+    display: flex;
+    justify-content: center;
+}
+
+/* Circle Card */
+.circle-card {
+    width: 160px;
+    height: 160px;
+    background: #ffffff;
+    border-radius: 50%;
+    border: 1px solid #f0f0f0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin: auto;
+    transition: none !important;
+}
+
+/* Image Fix */
+.circle-card img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+    transition: none !important;
+}
+
+/* REMOVE ALL HOVER EFFECTS */
+.brand-item:hover .circle-card,
+.brand-item:hover img {
+    transform: none !important;
+    opacity: 1 !important;
 }
 
 .rs-brand__top-title {
-  text-align: center;
-  position: relative;
-  margin-bottom: 45px;
-}
-
-.rs-brand__top-title span {
-  font-size: 24px;
-  line-height: 24px;
-  font-weight: 700;
-  font-family: "Urbanist", sans-serif;
-  color: #0a0a0a;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-color: transparent;
-  background-image: linear-gradient(99.43deg, #f24c1a 0.99%, #f28e26 99.43%);
-}
-
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-  .rs-brand__top-title span {
+    text-align: center;
+    margin-bottom: 50px;
+    font-weight: 400;
     font-size: 20px;
-  }
+    color: #f26522;   /* Orange Color */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
 }
 
-@media only screen and (max-width: 767px) {
-  .rs-brand__top-title span {
-    font-size: 18px;
-  }
+/* Heartbeat icons color */
+.rs-brand__top-title img {
+    height: 18px;
+    width: auto;
+    filter: brightness(0) saturate(100%) 
+            invert(52%) sepia(87%) 
+            saturate(1826%) hue-rotate(347deg) 
+            brightness(99%) contrast(96%);
+}
+/* ================= MOBILE RESPONSIVE ================= */
+
+@media (max-width: 991px) {
+    .circle-card {
+        width: 130px;
+        height: 130px;
+        padding: 15px;
+    }
 }
 
-.rs-brand__top-title::before {
-  position: absolute;
-  content: "";
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  height: 2px;
-  width: 28%;
-  background: #EBECF2;
-}
+@media (max-width: 576px) {
+    .rs-brand {
+        padding: 50px 0;
+    }
 
-@media only screen and (min-width: 1200px) and (max-width: 1549px) {
-  .rs-brand__top-title::before {
-    width: 24%;
-  }
-}
-
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
-  .rs-brand__top-title::before {
-    width: 20%;
-  }
-}
-
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-  .rs-brand__top-title::before {
-    display: none;
-  }
-}
-
-@media only screen and (max-width: 767px) {
-  .rs-brand__top-title::before {
-    display: none;
-  }
-}
-
-.rs-brand__top-title::after {
-  position: absolute;
-  content: "";
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  height: 2px;
-  width: 28%;
-  background: #EBECF2;
-}
-
-@media only screen and (min-width: 1200px) and (max-width: 1549px) {
-  .rs-brand__top-title::after {
-    width: 24%;
-  }
-}
-
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
-  .rs-brand__top-title::after {
-    width: 20%;
-  }
-}
-
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-  .rs-brand__top-title::after {
-    display: none;
-  }
-}
-
-@media only screen and (max-width: 767px) {
-  .rs-brand__top-title::after {
-    display: none;
-  }
-}
-
-.rs-brand__top-title img.item-2 {
-  display: none;
-}
-
-.rs-brand__slider .rs-brand-slider-item a {
-  display: block;
-  padding: 30px 30px;
-  text-align: center;
-}
-
-/* @media only screen and (min-width: 768px) and (max-width: 991px) {
-  .rs-brand__slider .rs-brand-slider-item a {
-    padding: 15px 30px;
-  }
-}
-
-@media only screen and (max-width: 767px) {
-  .rs-brand__slider .rs-brand-slider-item a {
-    padding: 10px 15px;
-  }
-} */
-
-@media only screen and (max-width: 575px) {
-  .rs-brand__slider .rs-brand-slider-item a {
-    padding: 15px;
-  }
-}
-
-/* --- 1. STABILIZED CONTAINER (Desktop Only) --- */
-.rs-brand__slider .rs-brand-slider-item a {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    height: 120px !important; /* Fixed height stops the container from moving */
-    padding: 0 !important;    /* Removing padding prevents the shake */
-    overflow: visible !important;
-    position: relative !important;
-    perspective: 1000px !important; /* Adds depth to the flip */
-}
-
-.rs-brand__slider .rs-brand-slider-item a img.item-2 {
-  display: none;
-}
-
-/* --- 3. RESTORED HOVER EFFECT (From your original file) --- */
-.rs-brand__slider .rs-brand-slider-item a:hover img {
-    transform: rotateX(360deg) !important;
-    -webkit-transform: rotateX(360deg) !important;
-}
-
-.rs-brand.rs-brand-6 {
-  background-image: url(../images/brand/pcb-pattern-bg-left-top.png);
-  background-size: auto;
-  background-position: top left;
-  background-repeat: no-repeat;
-}
-
-.rs-brand.rs-brand-2 .rs-brand__top-title span {
-  background: -webkit-linear-gradient(130deg, #f28e26 0%, #f24c1a 100%);
-  background-clip: border-box;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.rs-brand.service-brand .rs-brand__top-title span {
-  background: -webkit-linear-gradient(130deg, #f28e26 0%, #f24c1a 100%);
-  background-clip: border-box;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.rs-brand-3 {
-  background-image: url(../images/brand/parter-bg.jpg);
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-}
-
-.rs-brand-3__slider .rs-brand-slider-item {
-  padding: 30px 44px 30px 45px;
-}
-
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-  .rs-brand-3__slider .rs-brand-slider-item {
-    padding: 30px 20px 30px 20px;
-  }
-}
-
-@media only screen and (max-width: 767px) {
-  .rs-brand-3__slider .rs-brand-slider-item {
-    padding: 30px 20px 30px 20px;
-  }
-}
-
-@media only screen and (max-width: 575px) {
-  .rs-brand-3__slider .rs-brand-slider-item {
-    padding: 0px 20px 0px 20px;
-  }
-}
-
-.rs-brand-3__slider .rs-brand-slider-item img {
-  transition: all linear 0.3s;
-}
-
-.rs-brand-3__slider .rs-brand-slider-item:hover img {
-  transform: rotateX(-360deg);
-}
-
-.rs-brand-3__slider .owl-stage {
-  display: flex;
-  align-items: center;
-}
-
-.rs-customer {
-  padding-bottom: 400px;
-  position: relative;
-  z-index: 10;
-}
-
-@media only screen and (max-width: 767px) {
-  .rs-customer {
-    padding-bottom: 340px;
-  }
-}
-
-.rs-customer__top-title {
-  margin-bottom: 50px;
-  text-align: center;
-}
-
-.rs-customer__top-title span {
-  font-family: "Urbanist", sans-serif;
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 26px;
-  color: #0a0a0a;
-  margin: 0;
-  padding: 0px 10px 0px 10px;
-}
-
-.rs-customer__item {
-  margin-right: 25px;
-  margin-bottom: 30px;
-  display: inline-flex;
-}
-
-.rs-customer__item img {
-  height: 130px;
-  padding: 30px 30px 30px 30px;
-  background-color: #F2FFF7;
-  border-style: solid;
-  border-width: 1px 1px 1px 1px;
-  border-color: #EBEBEB;
-  cursor: pointer;
-}
-
-.rs-contact-brand .rs-contact-brand__box .brand-item img.item-2 {
-  display: none;
+    .circle-card {
+        width: 110px;
+        height: 110px;
+        padding: 12px;
+    }
 }
 
 /*----------------------------------------*/
@@ -21344,45 +21175,27 @@ section {
 
     /*PARTNER COLLEGES*/
     /* Use the specific class we added in JS */
-<<<<<<< HEAD
-     .rs-brand {
-        padding: 60px 0;
-    }
-
-    .circle-card {
-        width: 120px;
-        height: 120px;
-        padding: 18px;
-    }
-
-    .rs-brand .owl-stage-outer {
-        padding: 20px 0;
-    }
-
-=======
     .mobile-grid-active {
         display: grid !important;
         grid-template-columns: repeat(2, 1fr) !important;
-        gap: 15px !important;
+        gap: 12px !important;
+        padding: 10px !important;
     }
 
     .rs-brand-slider-item {
-        background: #ffffff !important;
-        height: 100px !important;
-        border-radius: 10px !important;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.06) !important;
+        border: 1px solid #f0f0f0;
+        height: 110px !important;
     }
 
-    /* Disable rotation on mobile for stability */
-    .rs-brand__slider .rs-brand-slider-item a:hover img {
-        transform: none !important;
+    .rs-brand__slider .rs-brand-slider-item a {
+        height: 100% !important;
+        padding: 10px !important;
     }
 
-    .rs-brand-slider-item img.item-2 {
-        display: none !important;
+    .rs-brand__slider .rs-brand-slider-item a:hover {
+        transform: none !important; /* No lift on mobile touch */
     }
->>>>>>> 09d6d9cee9767c1a86d09a213cd74e10687c5f0d
-
 
 
 
@@ -21848,4 +21661,3 @@ section {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
-

@@ -597,6 +597,66 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </div>
         </section>
 
+
+
+        <section class="rs-featured-cards pt-100 pb-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-30">
+                <div class="rs-featured-5__item" style="background: linear-gradient(130deg, #002147 0%, #004080 100%);">
+                    <div class="rs-thumb">
+                        <img src="assets/images/featured/exam-icon.png" alt="Exams">
+                    </div>
+                    <div class="rs-content">
+                        <h4 class="title" style="color: #fff;">Exams</h4>
+                        <p style="color: #fff; font-size: 14px;">Stay updated with entrance exam dates, patterns, and preparation tips.</p>
+                        <a class="main-btn" href="#" style="padding: 10px 20px; font-size: 14px;">Find Exams</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 mb-30">
+                <div class="rs-featured-5__item" style="background: linear-gradient(130deg, #28a745 0%, #34d058 100%);">
+                    <div class="rs-thumb">
+                        <img src="assets/images/featured/college-icon.png" alt="Colleges">
+                    </div>
+                    <div class="rs-content">
+                        <h4 class="title" style="color: #fff;">Colleges</h4>
+                        <p style="color: #fff; font-size: 14px;">Discover colleges that match your interests, budget, and career goals.</p>
+                        <a class="main-btn" href="#" style="padding: 10px 20px; font-size: 14px;">Find College</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 mb-30">
+                <div class="rs-featured-5__item" style="background: linear-gradient(130deg, #F26F20 0%, #FFA500 100%);">
+                    <div class="rs-thumb">
+                        <img src="assets/images/featured/course-icon.png" alt="Courses">
+                    </div>
+                    <div class="rs-content">
+                        <h4 class="title" style="color: #fff;">Courses</h4>
+                        <p style="color: #fff; font-size: 14px;">Browse industry-relevant courses designed for your future success.</p>
+                        <a class="main-btn" href="#" style="padding: 10px 20px; font-size: 14px;">Find Courses</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 mb-30">
+                <div class="rs-featured-5__item" style="background: linear-gradient(130deg, #6f42c1 0%, #8959e0 100%);">
+                    <div class="rs-thumb">
+                        <img src="assets/images/featured/job-icon.png" alt="Jobs">
+                    </div>
+                    <div class="rs-content">
+                        <h4 class="title" style="color: #fff;">Jobs</h4>
+                        <p style="color: #fff; font-size: 14px;">Explore career paths and placement opportunities after graduation.</p>
+                        <a class="main-btn" href="#" style="padding: 10px 20px; font-size: 14px;">Find Jobs</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
         <!--======== Service 2 Start ========-->
         <!-- <div class="rs-service-2 pt-90 pb-120">
             <div class="container">
@@ -884,73 +944,57 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <!--======== About 2 Ends ========-->
 
         <!--======== Brand Start ========-->
-        <div class="rs-brand">
-            <div class="container">
+       <!--======== Brand Start ========-->
+<div class="rs-brand">
+    <div class="container">
 
-                <div class="rs-brand__top-title text-center">
-                    <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="">
-                    <span>Our College Partners</span>
-                    <img src="assets/images/heart-pulse-rate-orange.svg" alt="">
+        <div class="rs-brand__top-title text-center">
+            <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="">
+            <span>Our College Partners</span>
+            <img src="assets/images/heart-pulse-rate-orange.svg" alt="">
+        </div>
+
+        <div class="rs-brand__slider">
+            <div class="owl-carousel brand-carousel">
+
+                <div class="brand-item">
+                    <img src="assets/images/brand/image-Photoroom (1).png" alt="">
                 </div>
 
-                <div class="rs-brand__slider">
-                    <div class="owl-carousel brand-carousel">
+                <div class="brand-item">
+                    <img src="assets/images/brand/image-Photoroom.png" alt="">
+                </div>
 
-                        <!-- YOUR ORIGINAL IMAGES (UNCHANGED) -->
+                <div class="brand-item">
+                    <img src="assets/images/brand/images-Photoroom (1).png" alt="">
+                </div>
 
-                        <div class="brand-item">
-                            <div class="circle-card">
-                                <img src="assets/images/brand/image-Photoroom (1).png">
-                            </div>
-                        </div>
+                <div class="brand-item">
+                    <img src="assets/images/brand/logo-896x1024-Photoroom.png" alt="">
+                </div>
 
-                        <div class="brand-item">
-                            <div class="circle-card">
-                                <img src="assets/images/brand/image-Photoroom.png">
-                            </div>
-                        </div>
+                <div class="brand-item">
+                    <img src="assets/images/brand/university-college-school-badge-logo-free-vector-Photoroom.png" alt="">
+                </div>
 
-                        <div class="brand-item">
-                            <div class="circle-card">
-                                <img src="assets/images/brand/images-Photoroom (1).png">
-                            </div>
-                        </div>
+                <div class="brand-item">
+                    <img src="assets/images/brand/University-Logo-backup-Photoroom.png" alt="">
+                </div>
 
-                        <div class="brand-item">
-                            <div class="circle-card">
-                                <img src="assets/images/brand/logo-896x1024-Photoroom.png">
-                            </div>
-                        </div>
+                <div class="brand-item">
+                    <img src="assets/images/brand/images-Photoroom (2).png" alt="">
+                </div>
 
-                        <div class="brand-item">
-                            <div class="circle-card">
-                                <img src="assets/images/brand/university-college-school-badge-logo-free-vector-Photoroom.png">
-                            </div>
-                        </div>
-
-                        <div class="brand-item">
-                            <div class="circle-card">
-                                <img src="assets/images/brand/University-Logo-backup-Photoroom.png">
-                            </div>
-                        </div>
-
-                        <div class="brand-item">
-                            <div class="circle-card">
-                                <img src="assets/images/brand/images-Photoroom (2).png">
-                            </div>
-                        </div>
-
-                        <div class="brand-item">
-                            <div class="circle-card">
-                                <img src="assets/images/brand/images-Photoroomxx.png">
-                            </div>
-                        </div>
-
-                    </div>
+                <div class="brand-item">
+                    <img src="assets/images/brand/images-Photoroomxx.png" alt="">
                 </div>
 
             </div>
         </div>
+
+    </div>
+</div>
+<!--======== Brand End ========-->
         <!--======== Brand End ========-->
 
         <!--======== Project Start ========-->
@@ -2089,41 +2133,43 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </script>
         <script>
             document.addEventListener("DOMContentLoaded", function() {
+    const modal = document.getElementById("enquireModal");
+    const modalContent = document.querySelector(".enquire-modal-content");
+    const closeBtn = document.querySelector(".enquire-close");
 
-                const modal = document.getElementById("enquireModal");
-                const modalContent = document.querySelector(".enquire-modal-content");
-                const closeBtn = document.querySelector(".enquire-close");
+    // --- NEW LOGIC: Always show on load/refresh ---
+    if (modal) {
+        modal.style.display = "flex";
+    }
 
-                // All open buttons
-                const openButtons = [
-                    document.getElementById("openEnquire"),
-                    document.getElementById("openEnquireNav")
-                ];
+    // Existing open buttons logic
+    const openButtons = [
+        document.getElementById("openEnquire"),
+        document.getElementById("openEnquireNav")
+    ];
 
-                openButtons.forEach(function(btn) {
-                    if (btn) {
-                        btn.addEventListener("click", function(e) {
-                            e.preventDefault();
-                            modal.style.display = "flex";
-                        });
-                    }
-                });
-
-                // Close using cross
-                if (closeBtn) {
-                    closeBtn.addEventListener("click", function() {
-                        modal.style.display = "none";
-                    });
-                }
-
-                // Close when clicking outside form
-                modal.addEventListener("click", function(e) {
-                    if (!modalContent.contains(e.target)) {
-                        modal.style.display = "none";
-                    }
-                });
-
+    openButtons.forEach(function(btn) {
+        if (btn) {
+            btn.addEventListener("click", function(e) {
+                e.preventDefault();
+                modal.style.display = "flex";
             });
+        }
+    });
+
+    // Close logic
+    if (closeBtn) {
+        closeBtn.addEventListener("click", function() {
+            modal.style.display = "none";
+        });
+    }
+
+    modal.addEventListener("click", function(e) {
+        if (!modalContent.contains(e.target)) {
+            modal.style.display = "none";
+        }
+    });
+});
 
             $(document).ready(function() {
                 if ($(window).width() < 768) {
@@ -2234,29 +2280,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 };
             });
 
-            $(document).ready(function() {
-                $('.brand-carousel').owlCarousel({
-                    loop: true,
-                    margin: 30,
-                    autoplay: true,
-                    autoplayTimeout: 2000,
-                    autoplayHoverPause: false,
-                    smartSpeed: 800,
-                    dots: false,
-                    nav: false,
-                    responsive: {
-                        0: {
-                            items: 2
-                        },
-                        600: {
-                            items: 3
-                        },
-                        1000: {
-                            items: 5
-                        }
-                    }
-                });
-            });
+            
         </script>
 
 
@@ -2370,6 +2394,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </div>
 
 
+        <script>
+$('.brand-carousel').owlCarousel({
+    loop: true,
+    margin: 30,
+    autoplay: true,
+    autoplayTimeout: 2000,
+    autoplayHoverPause: false,
+    smartSpeed: 800,
+    dots: false,
+    nav: false,
+    responsive:{
+        0:{ items:2 },
+        600:{ items:3 },
+        1000:{ items:5 }
+    }
+});
+</script>
 </body>
 
 </html>
