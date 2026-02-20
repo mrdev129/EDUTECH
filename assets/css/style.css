@@ -12450,58 +12450,269 @@ html.menu-is-open .menu-canvas-layer {
 /*----------------------------------------*/
 /*  03.11 - Brand
 /*----------------------------------------*/
-/* ==========================================
-   FINAL STABLE AUTO SLIDER (NO HOVER)
-   ========================================== */
-
 .rs-brand {
-    padding: 90px 0;
-    background: #ffffff;
-    overflow: visible;
+  position: relative;
+  z-index: 10;
 }
 
-/* Prevent cropping */
-.rs-brand .owl-stage-outer {
+.rs-brand__top-title {
+  text-align: center;
+  position: relative;
+  margin-bottom: 45px;
+}
+
+.rs-brand__top-title span {
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: 700;
+  font-family: "Urbanist", sans-serif;
+  color: #0a0a0a;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-color: transparent;
+  background-image: linear-gradient(99.43deg, #f24c1a 0.99%, #f28e26 99.43%);
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .rs-brand__top-title span {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .rs-brand__top-title span {
+    font-size: 18px;
+  }
+}
+
+.rs-brand__top-title::before {
+  position: absolute;
+  content: "";
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 2px;
+  width: 28%;
+  background: #EBECF2;
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1549px) {
+  .rs-brand__top-title::before {
+    width: 24%;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .rs-brand__top-title::before {
+    width: 20%;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .rs-brand__top-title::before {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .rs-brand__top-title::before {
+    display: none;
+  }
+}
+
+.rs-brand__top-title::after {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 2px;
+  width: 28%;
+  background: #EBECF2;
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1549px) {
+  .rs-brand__top-title::after {
+    width: 24%;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .rs-brand__top-title::after {
+    width: 20%;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .rs-brand__top-title::after {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .rs-brand__top-title::after {
+    display: none;
+  }
+}
+
+.rs-brand__top-title img.item-2 {
+  display: none;
+}
+
+.rs-brand__slider .rs-brand-slider-item a {
+  display: block;
+  padding: 30px 30px;
+  text-align: center;
+}
+
+/* @media only screen and (min-width: 768px) and (max-width: 991px) {
+  .rs-brand__slider .rs-brand-slider-item a {
+    padding: 15px 30px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .rs-brand__slider .rs-brand-slider-item a {
+    padding: 10px 15px;
+  }
+} */
+
+@media only screen and (max-width: 575px) {
+  .rs-brand__slider .rs-brand-slider-item a {
+    padding: 15px;
+  }
+}
+
+/* --- 1. STABILIZED CONTAINER (Desktop Only) --- */
+.rs-brand__slider .rs-brand-slider-item a {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 120px !important; /* Fixed height stops the container from moving */
+    padding: 0 !important;    /* Removing padding prevents the shake */
     overflow: visible !important;
-    padding: 30px 0;
+    position: relative !important;
+    perspective: 1000px !important; /* Adds depth to the flip */
 }
 
-/* Circle Card */
-.circle-card {
-    width: 160px;
-    height: 160px;
-    background: #ffffff;
-    border-radius: 50%;
-    border: 1px solid #f0f0f0;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 25px;
-    margin: auto;
-
-    /* Disable ALL hover effects */
-    transition: none !important;
-    transform: none !important;
+.rs-brand__slider .rs-brand-slider-item a img.item-2 {
+  display: none;
 }
 
-/* Image Fix */
-.circle-card img {
-    max-width: 100% !important;
-    max-height: 100% !important;
-    width: auto !important;
-    height: auto !important;
-    object-fit: contain !important;
-    display: block !important;
-    transform: none !important;
-    opacity: 1 !important;
+/* --- 3. RESTORED HOVER EFFECT (From your original file) --- */
+.rs-brand__slider .rs-brand-slider-item a:hover img {
+    transform: rotateX(360deg) !important;
+    -webkit-transform: rotateX(360deg) !important;
 }
 
-/* Remove theme hover overrides */
-.brand-item:hover .circle-card,
-.brand-item:hover img {
-    transform: none !important;
-    opacity: 1 !important;
+.rs-brand.rs-brand-6 {
+  background-image: url(../images/brand/pcb-pattern-bg-left-top.png);
+  background-size: auto;
+  background-position: top left;
+  background-repeat: no-repeat;
+}
+
+.rs-brand.rs-brand-2 .rs-brand__top-title span {
+  background: -webkit-linear-gradient(130deg, #f28e26 0%, #f24c1a 100%);
+  background-clip: border-box;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.rs-brand.service-brand .rs-brand__top-title span {
+  background: -webkit-linear-gradient(130deg, #f28e26 0%, #f24c1a 100%);
+  background-clip: border-box;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.rs-brand-3 {
+  background-image: url(../images/brand/parter-bg.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.rs-brand-3__slider .rs-brand-slider-item {
+  padding: 30px 44px 30px 45px;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .rs-brand-3__slider .rs-brand-slider-item {
+    padding: 30px 20px 30px 20px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .rs-brand-3__slider .rs-brand-slider-item {
+    padding: 30px 20px 30px 20px;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .rs-brand-3__slider .rs-brand-slider-item {
+    padding: 0px 20px 0px 20px;
+  }
+}
+
+.rs-brand-3__slider .rs-brand-slider-item img {
+  transition: all linear 0.3s;
+}
+
+.rs-brand-3__slider .rs-brand-slider-item:hover img {
+  transform: rotateX(-360deg);
+}
+
+.rs-brand-3__slider .owl-stage {
+  display: flex;
+  align-items: center;
+}
+
+.rs-customer {
+  padding-bottom: 400px;
+  position: relative;
+  z-index: 10;
+}
+
+@media only screen and (max-width: 767px) {
+  .rs-customer {
+    padding-bottom: 340px;
+  }
+}
+
+.rs-customer__top-title {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.rs-customer__top-title span {
+  font-family: "Urbanist", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26px;
+  color: #0a0a0a;
+  margin: 0;
+  padding: 0px 10px 0px 10px;
+}
+
+.rs-customer__item {
+  margin-right: 25px;
+  margin-bottom: 30px;
+  display: inline-flex;
+}
+
+.rs-customer__item img {
+  height: 130px;
+  padding: 30px 30px 30px 30px;
+  background-color: #F2FFF7;
+  border-style: solid;
+  border-width: 1px 1px 1px 1px;
+  border-color: #EBEBEB;
+  cursor: pointer;
+}
+
+.rs-contact-brand .rs-contact-brand__box .brand-item img.item-2 {
+  display: none;
 }
 
 /*----------------------------------------*/
@@ -21133,6 +21344,7 @@ section {
 
     /*PARTNER COLLEGES*/
     /* Use the specific class we added in JS */
+<<<<<<< HEAD
      .rs-brand {
         padding: 60px 0;
     }
@@ -21146,6 +21358,30 @@ section {
     .rs-brand .owl-stage-outer {
         padding: 20px 0;
     }
+
+=======
+    .mobile-grid-active {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 15px !important;
+    }
+
+    .rs-brand-slider-item {
+        background: #ffffff !important;
+        height: 100px !important;
+        border-radius: 10px !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important;
+    }
+
+    /* Disable rotation on mobile for stability */
+    .rs-brand__slider .rs-brand-slider-item a:hover img {
+        transform: none !important;
+    }
+
+    .rs-brand-slider-item img.item-2 {
+        display: none !important;
+    }
+>>>>>>> 09d6d9cee9767c1a86d09a213cd74e10687c5f0d
 
 
 
