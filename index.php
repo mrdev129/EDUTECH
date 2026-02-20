@@ -2033,32 +2033,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 }
             });
 
-            $(document).ready(function() {
-                var checkWidth = $(window).width();
 
-                if (checkWidth < 768) {
-                    // Only add carousel classes and init on mobile
-                    $(".featured-slider").addClass('owl-carousel').owlCarousel({
-                        items: 1,
-                        loop: true,
-                        margin: 20,
-                        dots: true,
-                        autoplay: true,
-                        stagePadding: 30 // For the "peek" effect
-                    });
-                }
-            });
 
-            $(document).ready(function() {
-                if ($(window).width() < 768) {
-                    $(".featured-slider").addClass('owl-carousel').owlCarousel({
-                        items: 1.2, // This creates the "peek" effect automatically
-                        loop: true,
-                        margin: 15,
-                        dots: true
-                    });
-                }
-            });
 
             $(document).ready(function() {
                 var brandSlider = $('.mobile-brand-grid');
@@ -2094,19 +2070,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     initBrandSlider();
                 });
 
-                $(document).ready(function() {
-                    // Only initialize the blog slider for mobile users
-                    if ($(window).width() < 768) {
-                        $(".rs-blog-2 .owl-carousel").owlCarousel({
-                            items: 1,
-                            loop: true,
-                            margin: 20,
-                            autoplay: true,
-                            dots: true,
-                            stagePadding: 30 // Enables the card "peek"
-                        });
-                    }
-                });
+
+            });
+
+            $(document).ready(function() {
+                // Only initialize the blog slider for mobile users
+                if ($(window).width() < 768) {
+                    $(".rs-blog-2 .owl-carousel").owlCarousel({
+                        items: 1,
+                        loop: true,
+                        margin: 20,
+                        autoplay: true,
+                        dots: true,
+                        stagePadding: 30 // Enables the card "peek"
+                    });
+                }
             });
         </script>
         <script>
@@ -2256,21 +2234,29 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 };
             });
 
-            $('.brand-carousel').owlCarousel({
-    loop: true,
-    margin: 30,
-    autoplay: true,
-    autoplayTimeout: 2000,
-    autoplayHoverPause: false,
-    smartSpeed: 800,
-    dots: false,
-    nav: false,
-    responsive:{
-        0:{ items:2 },
-        600:{ items:3 },
-        1000:{ items:5 }
-    }
-});
+            $(document).ready(function() {
+                $('.brand-carousel').owlCarousel({
+                    loop: true,
+                    margin: 30,
+                    autoplay: true,
+                    autoplayTimeout: 2000,
+                    autoplayHoverPause: false,
+                    smartSpeed: 800,
+                    dots: false,
+                    nav: false,
+                    responsive: {
+                        0: {
+                            items: 2
+                        },
+                        600: {
+                            items: 3
+                        },
+                        1000: {
+                            items: 5
+                        }
+                    }
+                });
+            });
         </script>
 
 

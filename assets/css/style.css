@@ -21133,27 +21133,20 @@ section {
 
     /*PARTNER COLLEGES*/
     /* Use the specific class we added in JS */
-    .mobile-grid-active {
-        display: grid !important;
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 12px !important;
-        padding: 10px !important;
+     .rs-brand {
+        padding: 60px 0;
     }
 
-    .rs-brand-slider-item {
-        box-shadow: 0 4px 12px rgba(0,0,0,0.06) !important;
-        border: 1px solid #f0f0f0;
-        height: 110px !important;
+    .circle-card {
+        width: 120px;
+        height: 120px;
+        padding: 18px;
     }
 
-    .rs-brand__slider .rs-brand-slider-item a {
-        height: 100% !important;
-        padding: 10px !important;
+    .rs-brand .owl-stage-outer {
+        padding: 20px 0;
     }
 
-    .rs-brand__slider .rs-brand-slider-item a:hover {
-        transform: none !important; /* No lift on mobile touch */
-    }
 
 
 
