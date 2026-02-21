@@ -21888,3 +21888,158 @@ section {
   opacity: 1;
   transform: translateY(0);
 }
+
+
+/* ==========================================================================
+   DYNAMIC STREAM SECTION (NAVY & ORANGE)
+   ========================================================================== */
+
+/* 1. SEPARATION: Creates space between the top Pill and the Container */
+.stream-pill-wrapper { 
+    z-index: 10; 
+    margin-bottom: 25px; /* Creates the gap like your Management section */
+}
+
+/* 2. PILL STYLE: Solid Navy Blue */
+.stream-floating-pill {
+    background: #002147; /* Theme Navy */
+    color: #ffffff;
+    padding: 12px 60px;
+    border-radius: 50px;
+    font-weight: 800;
+    display: inline-block;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+    text-transform: uppercase;
+}
+
+/* 3. WRAPPER: No Outer Border with clean shadow */
+.stream-grid-wrapper {
+    background: #ffffff;
+    border-radius: 15px;
+    overflow: hidden;
+    border: none !important; /* Removed outer border as requested */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* 4. HEADER: Orange Gradient */
+.stream-orange-header {
+    background: linear-gradient(90deg, #F26F20 0%, #ff8c42 100%); /* Theme Orange */
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* 5. SIDEBAR: Reference 2 Pill Style (Dynamic) */
+.right-sidebar-panel.reference-style {
+    background: #2563eb; /* Primary Blue sidebar */
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-pill {
+    background: rgba(255, 255, 255, 0.15); /* Transparent blue for inactive */
+    color: #ffffff;
+    padding: 15px 25px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Dynamic Active State: White background + Navy text */
+.sidebar-pill.active {
+    background: #ffffff !important; 
+    color: #002147 !important; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); /* */
+}
+
+/* 6. DESCRIPTION & TAGS */
+.description-box {
+    background: #f9fbff;
+    border-left: 5px solid #F26F20; /* Orange Accent */
+    padding: 20px;
+}
+
+.spec-tag {
+    background: #f8f9fa;
+    color: #002147;
+    padding: 8px 18px;
+    border-radius: 6px;
+    border: 1px solid #eee;
+    margin: 5px;
+    display: inline-flex;
+    align-items: center;
+    font-weight: 700;
+}
+
+.spec-tag i { color: #F26F20; margin-right: 10px; }
+
+/* 7. ENQUIRY BUTTON: Rounded Pill */
+.sidebar-enquiry-btn-rounded {
+    display: block;
+    background: #ffffff;
+    color: #002147;
+    padding: 15px 30px;
+    border-radius: 50px; /* Fully rounded */
+    font-weight: 800;
+    text-decoration: none;
+    text-align: center;
+}
+
+/* 8. EXPLORE MORE: Matches Wireframe */
+.explore-more-btn {
+    text-transform: lowercase; /* Per wireframe */
+    border: 1.5px solid #002147;
+    padding: 8px 30px;
+    color: #002147;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+/* Modal Overlay */
+.enquire-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 33, 71, 0.85); /* Navy transparent background */
+    z-index: 100000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Modal Box */
+.enquire-modal-content {
+    background: #ffffff;
+    width: 90%;
+    max-width: 450px;
+    border-radius: 15px;
+    position: relative;
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+/* Close Button Positioned at Top Right */
+.enquire-close {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    background: #F26F20; /* Theme Orange */
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: bold;
+    border: 3px solid #fff;
+}
+
+@keyframes modalSlideIn {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
