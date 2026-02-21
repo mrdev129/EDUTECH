@@ -1309,7 +1309,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
         <!--======== Newsletter 2 Start ========-->
-        <section class="rs-newsletter-2 pt-95 pb-110 reveal">
+        <!-- <section class="rs-newsletter-2 pt-95 pb-110 reveal">
             <div id="contact" class="container">
                 <div class="row">
                     <div class="col-lg-2"></div>
@@ -1333,7 +1333,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <div class="rs-newsletter-2__shape-2">
                 <img class="gsap-move down-100 start-91" src="assets/images/newsletter/circle-white.svg" alt="">
             </div>
-        </section>
+        </section> -->
         <!--======== Newsletter 2 Ends ========-->
 
         <!--======== Pricing Start ========-->
@@ -1827,46 +1827,121 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
         <!--======== Footer 2 Start ========-->
+        
         <footer id="rs-contact" class="rs-footer rs-footer-2 reveal">
-            <div class="rs-footer__top">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="rs-footer__info-box">
-                                <div class="icon">
-                                    <img src="assets/images/footer/info-3.png" alt="">
+            <section class="rs-contact-page pt-120 pb-120">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="rs-contact-page__info">
+                    <div class="rs-section-title black">
+                        <h3 class="title split-in-fade">Get in touch with us</h3>
+                        <p>Fill out the form below and our admission experts will contact you to discuss suitable courses, colleges, budget options, and hostel facilities based on your preferences.</p>
+                        <p></p>
+                    </div>
+                    
+                    <div class="rs-contact-page__info-box">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <h5 class="title mb-15">Head Office (India):</h5>
+                                <div class="info-box-item">
+                                    <div class="rs-info-icon">
+                                        <i class="ri-map-2-line"></i>
+                                    </div>
+                                    <div class="rs-info-contact">
+                                        <span>Address</span>
+                                        <h5 class="title">
+                                            HIG-141 K6 (A), 1st Floor 
+                                            Kalinga Nagar <br>PIN - 751019
+                                            Bhubaneswar, Odisha
+                                        </h5>
+                                    </div>
                                 </div>
-                                <div class="content">
-                                    <span>Contact Us</span>
-                                    <a href="tel:+004555012065">+91 9999999999</a>
+                                <div class="info-box-item mb-15">
+                                    <div class="rs-info-icon">
+                                        <i class="ri-phone-line"></i>
+                                    </div>
+                                    <div class="rs-info-contact">
+                                        <span>Call Us</span>
+                                        <h5 class="title"><a href="tel:+919876543210">+91 98765 43210</a></h5>
+                                    </div>
+                                </div>
+                                <div class="info-box-item">
+                                    <div class="rs-info-icon">
+                                        <i class="ri-mail-send-line"></i>
+                                    </div>
+                                    <div class="rs-info-contact">
+                                        <span>Email Us</span>
+                                        <h5 class="title"><a href="mailto:edutechadmissionexperts@gmail.com">edutechadmissionexperts@gmail.com</a></h5>
+                                    </div>
                                 </div>
                             </div>
+                            
                         </div>
-                        <div class="col-lg-4">
-                            <div class="rs-footer__info-box">
-                                <div class="icon">
-                                    <img src="assets/images/footer/info-1.png" alt="">
-                                </div>
-                                <div class="content">
-                                    <span>Email Us</span>
-                                    <a href="mailto:edutech@gmail.com">edutech@gmail.com</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="rs-footer__info-box">
-                                <div class="icon">
-                                    <img src="assets/images/footer/info-2.png" alt="">
-                                </div>
-                                <div class="content">
-                                    <span>Address</span>
-                                    <h4 class="title"> Bhubaneswar, Odisha, 752054 </h4>
-                                </div>
-                            </div>
-                        </div>
+                    </div>
+
+                    <div class="rs-contact-page__info-social mt-20">
+                        <h5 class="title">Follow Us:</h5>
+                        <ul>
+                            <li><a href="#"><i class="ri-facebook-fill"></i></a></li>
+                            <li><a href="#"><i class="ri-instagram-fill"></i></a></li>
+                            <li><a href="#"><i class="ri-linkedin-fill"></i></a></li>
+                            <li><a href="#"><i class="ri-youtube-fill"></i></a></li>
+                            <li><a href="#"><i class="ri-whatsapp-fill"></i></a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
+
+            <div class="col-lg-6">
+                <div class="rs-contact-page__content">
+                    <div class="rs-section-title black">
+                        <h3 class="title split-in-fade">Let's discuss with us</h3>
+                        <p>Fill out the form below and our admission experts will contact you to discuss suitable courses, colleges, budget options, and hostel facilities based on your preferences.</p>
+                    </div>
+
+                    <form id="contact-form" action="" method="post">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="input-box">
+                                    <input type="text" id="name" name="name" placeholder="Full Name">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="input-box">
+                                    <input type="email" id="email" name="email" placeholder="Email Address">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="input-box">
+                                    <input type="text" id="topic" name="topic" placeholder="Preferred Course">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="input-box">
+                                    <input type="text" id="phone" name="phone" placeholder="Mobile Number">
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="input-box">
+                                    <textarea name="message" id="message" placeholder="Tell us about your preferred city, budget range, or any specific requirement..."></textarea>
+                                    <button type="submit" class="main-btn">Submit Inquiry <i class="ri-arrow-right-fill"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- <p id="form-messages" class="form-message"></p> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <!--======== Contact Page Ends ========-->
+<!--======== Contact Map Start ========-->
+    <div class="rs-contact-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3743.4911157931533!2d85.83120177469385!3d20.238456914454027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a19a726c8ffc807%3A0x212845f89456a2cd!2sLingaraj%20Temple!5e0!3m2!1sen!2sin!4v1771681075912!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <!--======== Contact Map Ends ========-->
             <div class="rs-footer__main-box">
                 <div class="container">
                     <div class="row">
