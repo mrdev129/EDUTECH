@@ -212,6 +212,26 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <!-- Style CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
 
+    <style>
+        /* 1. Initial State: Lowered and Invisible */
+        .reveal {
+            opacity: 0;
+            transform: translateY(60px) scale(0.95);
+            /* Moves it down and slightly smaller */
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            /* Smooth "pop" curve */
+            visibility: hidden;
+            will-change: opacity, transform;
+        }
+
+        /* 2. Active State: Triggered when scrolled into view */
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            /* Moves to original spot and full size */
+            visibility: visible;
+        }
+    </style>
 </head>
 
 
@@ -374,7 +394,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <div class="program-nav-bar">
             <div class="container">
                 <div class="nav-flex-wrapper">
-                    <ul class="program-menu">
+                    <ul class="program-menu reveal">
                         <li><a href="#home">HOME</a></li>
                         <li><a href="#about">ABOUT US</a></li>
                         <li><a href="#course">COURSE</a></li>
@@ -383,7 +403,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         <li><a href="#gallery">GALLERY</a></li>
                         <li><a href="#contact">CONTACT US</a></li>
                     </ul>
-                    <div class="nav-action">
+                    <div class="nav-action reveal">
                         <a href="javascript:void(0);" id="openEnquireNav" class="navy-enquire-btn">
                             ENQUIRE NOW
                         </a>
@@ -458,7 +478,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </section> -->
         <!--======== Banner 2 Ends ========-->
 
-        <section class="dashboard-info-section py-5">
+        <section class="dashboard-info-section py-5 reveal">
             <div class="container">
                 <div class="row g-4">
 
@@ -598,64 +618,64 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </section>
 
 
-
-        <section class="rs-featured-cards pt-100 pb-100">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-md-6 mb-30">
-                <div class="rs-featured-5__item" style="background: linear-gradient(130deg, #002147 0%, #004080 100%);">
-                    <div class="rs-thumb">
-                        <img src="assets/images/featured/exam-icon.png" alt="Exams">
+        <!--======== Four Card Start ========-->
+        <section class="rs-featured-cards pt-100 pb-100 reveal">
+            <div class="container">
+                <div class="row reveal">
+                    <div class="col-lg-3 col-md-6 mb-30">
+                        <div class="rs-featured-5__item" style="background: linear-gradient(130deg, #002147 0%, #004080 100%);">
+                            <div class="rs-thumb">
+                                <img src="assets/images/featured/exam-icon.png" alt="Exams">
+                            </div>
+                            <div class="rs-content">
+                                <h4 class="title" style="color: #fff;">Exams</h4>
+                                <p style="color: #fff; font-size: 14px;">Stay updated with entrance exam dates, patterns, and preparation tips.</p>
+                                <a class="main-btn" href="#" style="padding: 10px 20px; font-size: 14px;">Find Exams</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="rs-content">
-                        <h4 class="title" style="color: #fff;">Exams</h4>
-                        <p style="color: #fff; font-size: 14px;">Stay updated with entrance exam dates, patterns, and preparation tips.</p>
-                        <a class="main-btn" href="#" style="padding: 10px 20px; font-size: 14px;">Find Exams</a>
+
+                    <div class="col-lg-3 col-md-6 mb-30">
+                        <div class="rs-featured-5__item" style="background: linear-gradient(130deg, #28a745 0%, #34d058 100%);">
+                            <div class="rs-thumb">
+                                <img src="assets/images/featured/college-icon.png" alt="Colleges">
+                            </div>
+                            <div class="rs-content">
+                                <h4 class="title" style="color: #fff;">Colleges</h4>
+                                <p style="color: #fff; font-size: 14px;">Discover colleges that match your interests, budget, and career goals.</p>
+                                <a class="main-btn" href="#" style="padding: 10px 20px; font-size: 14px;">Find College</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 mb-30">
+                        <div class="rs-featured-5__item" style="background: linear-gradient(130deg, #F26F20 0%, #FFA500 100%);">
+                            <div class="rs-thumb">
+                                <img src="assets/images/featured/course-icon.png" alt="Courses">
+                            </div>
+                            <div class="rs-content">
+                                <h4 class="title" style="color: #fff;">Courses</h4>
+                                <p style="color: #fff; font-size: 14px;">Browse industry-relevant courses designed for your future success.</p>
+                                <a class="main-btn" href="#" style="padding: 10px 20px; font-size: 14px;">Find Courses</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 mb-30">
+                        <div class="rs-featured-5__item" style="background: linear-gradient(130deg, #6f42c1 0%, #8959e0 100%);">
+                            <div class="rs-thumb">
+                                <img src="assets/images/featured/job-icon.png" alt="Jobs">
+                            </div>
+                            <div class="rs-content">
+                                <h4 class="title" style="color: #fff;">Jobs</h4>
+                                <p style="color: #fff; font-size: 14px;">Explore career paths and placement opportunities after graduation.</p>
+                                <a class="main-btn" href="#" style="padding: 10px 20px; font-size: 14px;">Find Jobs</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <div class="col-lg-3 col-md-6 mb-30">
-                <div class="rs-featured-5__item" style="background: linear-gradient(130deg, #28a745 0%, #34d058 100%);">
-                    <div class="rs-thumb">
-                        <img src="assets/images/featured/college-icon.png" alt="Colleges">
-                    </div>
-                    <div class="rs-content">
-                        <h4 class="title" style="color: #fff;">Colleges</h4>
-                        <p style="color: #fff; font-size: 14px;">Discover colleges that match your interests, budget, and career goals.</p>
-                        <a class="main-btn" href="#" style="padding: 10px 20px; font-size: 14px;">Find College</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 mb-30">
-                <div class="rs-featured-5__item" style="background: linear-gradient(130deg, #F26F20 0%, #FFA500 100%);">
-                    <div class="rs-thumb">
-                        <img src="assets/images/featured/course-icon.png" alt="Courses">
-                    </div>
-                    <div class="rs-content">
-                        <h4 class="title" style="color: #fff;">Courses</h4>
-                        <p style="color: #fff; font-size: 14px;">Browse industry-relevant courses designed for your future success.</p>
-                        <a class="main-btn" href="#" style="padding: 10px 20px; font-size: 14px;">Find Courses</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 mb-30">
-                <div class="rs-featured-5__item" style="background: linear-gradient(130deg, #6f42c1 0%, #8959e0 100%);">
-                    <div class="rs-thumb">
-                        <img src="assets/images/featured/job-icon.png" alt="Jobs">
-                    </div>
-                    <div class="rs-content">
-                        <h4 class="title" style="color: #fff;">Jobs</h4>
-                        <p style="color: #fff; font-size: 14px;">Explore career paths and placement opportunities after graduation.</p>
-                        <a class="main-btn" href="#" style="padding: 10px 20px; font-size: 14px;">Find Jobs</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+        </section>
 
         <!--======== Service 2 Start ========-->
         <!-- <div class="rs-service-2 pt-90 pb-120">
@@ -727,7 +747,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </div> -->
         <!--======== Service 2 Ends ========-->
 
-        <section id="rs-course-explorer-unique" class="pt-115 pb-120" style="background: #fff; overflow: hidden;">
+        <section id="rs-course-explorer-unique" class="pt-115 pb-120 reveal" style="background: #fff; overflow: hidden;">
             <div class="container">
                 <div class="rs-section-title black text-center mb-50">
                     <div class="top-sub-heading">
@@ -758,7 +778,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 ];
                 ?>
 
-                <div class="category-slider-wrapper">
+                <div class="category-slider-wrapper reveal">
                     <div class="category-track" id="categoryDragTrack">
                         <?php $count = 0;
                         foreach ($courseData as $stream => $branches): ?>
@@ -771,7 +791,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     </div>
                 </div>
 
-                <div class="branch-grid-container mt-50">
+                <div class="branch-grid-container mt-50 reveal">
                     <?php $count = 0;
                     foreach ($courseData as $stream => $branches):
                         // Create a clean ID: B.Tech -> course-BTech, MD/MS -> course-MDMS
@@ -815,7 +835,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
         <!--======== About 2 Start ========-->
-        <section id="rs-about" class="rs-about-2 pt-120 pb-30">
+        <section id="rs-about" class="rs-about-2 pt-120 pb-30 reveal">
             <div id="about" class="container">
                 <div class="row align-items-center">
 
@@ -944,61 +964,61 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <!--======== About 2 Ends ========-->
 
         <!--======== Brand Start ========-->
-       <!--======== Brand Start ========-->
-<div class="rs-brand">
-    <div class="container">
+        <!--======== Brand Start ========-->
+        <div class="rs-brand reveal">
+            <div class="container">
 
-        <div class="rs-brand__top-title text-center">
-            <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="">
-            <span>Our College Partners</span>
-            <img src="assets/images/heart-pulse-rate-orange.svg" alt="">
-        </div>
-
-        <div class="rs-brand__slider">
-            <div class="owl-carousel brand-carousel">
-
-                <div class="brand-item">
-                    <img src="assets/images/brand/image-Photoroom (1).png" alt="">
+                <div class="rs-brand__top-title text-center">
+                    <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="">
+                    <span>Our College Partners</span>
+                    <img src="assets/images/heart-pulse-rate-orange.svg" alt="">
                 </div>
 
-                <div class="brand-item">
-                    <img src="assets/images/brand/image-Photoroom.png" alt="">
-                </div>
+                <div class="rs-brand__slider">
+                    <div class="owl-carousel brand-carousel">
 
-                <div class="brand-item">
-                    <img src="assets/images/brand/images-Photoroom (1).png" alt="">
-                </div>
+                        <div class="brand-item">
+                            <img src="assets/images/brand/image-Photoroom (1).png" alt="">
+                        </div>
 
-                <div class="brand-item">
-                    <img src="assets/images/brand/logo-896x1024-Photoroom.png" alt="">
-                </div>
+                        <div class="brand-item">
+                            <img src="assets/images/brand/image-Photoroom.png" alt="">
+                        </div>
 
-                <div class="brand-item">
-                    <img src="assets/images/brand/university-college-school-badge-logo-free-vector-Photoroom.png" alt="">
-                </div>
+                        <div class="brand-item">
+                            <img src="assets/images/brand/images-Photoroom (1).png" alt="">
+                        </div>
 
-                <div class="brand-item">
-                    <img src="assets/images/brand/University-Logo-backup-Photoroom.png" alt="">
-                </div>
+                        <div class="brand-item">
+                            <img src="assets/images/brand/logo-896x1024-Photoroom.png" alt="">
+                        </div>
 
-                <div class="brand-item">
-                    <img src="assets/images/brand/images-Photoroom (2).png" alt="">
-                </div>
+                        <div class="brand-item">
+                            <img src="assets/images/brand/university-college-school-badge-logo-free-vector-Photoroom.png" alt="">
+                        </div>
 
-                <div class="brand-item">
-                    <img src="assets/images/brand/images-Photoroomxx.png" alt="">
+                        <div class="brand-item">
+                            <img src="assets/images/brand/University-Logo-backup-Photoroom.png" alt="">
+                        </div>
+
+                        <div class="brand-item">
+                            <img src="assets/images/brand/images-Photoroom (2).png" alt="">
+                        </div>
+
+                        <div class="brand-item">
+                            <img src="assets/images/brand/images-Photoroomxx.png" alt="">
+                        </div>
+
+                    </div>
                 </div>
 
             </div>
         </div>
-
-    </div>
-</div>
-<!--======== Brand End ========-->
+        <!--======== Brand End ========-->
         <!--======== Brand End ========-->
 
         <!--======== Project Start ========-->
-        <section id="rs-portfolios" class="rs-project">
+        <section id="rs-portfolios" class="rs-project reveal">
             <div id="team" class="container">
                 <div class="row">
                     <div class="col-lg-12">
@@ -1134,7 +1154,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <!--======== Project Ends ========-->
 
         <!--======== Why Choose 2 Start ========-->
-        <section class="rs-why-choose-2 pb-85">
+        <section class="rs-why-choose-2 pb-85 reveal">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-6">
@@ -1208,7 +1228,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
         <!--======== Counter 2 Start ========-->
-        <section class="rs-counter-2 pb-125">
+        <section class="rs-counter-2 pb-125 reveal">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
@@ -1287,7 +1307,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
         <!--======== Newsletter 2 Start ========-->
-        <section class="rs-newsletter-2 pt-95 pb-110">
+        <section class="rs-newsletter-2 pt-95 pb-110 reveal">
             <div id="contact" class="container">
                 <div class="row">
                     <div class="col-lg-2"></div>
@@ -1396,7 +1416,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <!--======== Pricing Ends ========-->
 
         <!--======== Faq Start ========-->
-        <div class="rs-faq pb-120">
+        <div class="rs-faq pb-120 reveal">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-6">
@@ -1537,7 +1557,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
         <!--======== Testimonial 2 Start ========-->
-        <section class="rs-testimonial-2 pt-110 pb-120">
+        <section class="rs-testimonial-2 pt-110 pb-120 reveal">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-6">
@@ -1671,7 +1691,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
         <!--======== Blog 2 Start ========-->
-        <section id="rs-blog" class="rs-blog-2 pt-120">
+        <section id="rs-blog" class="rs-blog-2 pt-120 reveal">
             <div id="blogs" class="container">
                 <div class="row">
                     <div class="col-lg-12">
@@ -1805,7 +1825,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
         <!--======== Footer 2 Start ========-->
-        <footer id="rs-contact" class="rs-footer rs-footer-2">
+        <footer id="rs-contact" class="rs-footer rs-footer-2 reveal">
             <div class="rs-footer__top">
                 <div class="container">
                     <div class="row">
@@ -2133,43 +2153,43 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </script>
         <script>
             document.addEventListener("DOMContentLoaded", function() {
-    const modal = document.getElementById("enquireModal");
-    const modalContent = document.querySelector(".enquire-modal-content");
-    const closeBtn = document.querySelector(".enquire-close");
+                const modal = document.getElementById("enquireModal");
+                const modalContent = document.querySelector(".enquire-modal-content");
+                const closeBtn = document.querySelector(".enquire-close");
 
-    // --- NEW LOGIC: Always show on load/refresh ---
-    if (modal) {
-        modal.style.display = "flex";
-    }
+                // --- NEW LOGIC: Always show on load/refresh ---
+                if (modal) {
+                    modal.style.display = "flex";
+                }
 
-    // Existing open buttons logic
-    const openButtons = [
-        document.getElementById("openEnquire"),
-        document.getElementById("openEnquireNav")
-    ];
+                // Existing open buttons logic
+                const openButtons = [
+                    document.getElementById("openEnquire"),
+                    document.getElementById("openEnquireNav")
+                ];
 
-    openButtons.forEach(function(btn) {
-        if (btn) {
-            btn.addEventListener("click", function(e) {
-                e.preventDefault();
-                modal.style.display = "flex";
+                openButtons.forEach(function(btn) {
+                    if (btn) {
+                        btn.addEventListener("click", function(e) {
+                            e.preventDefault();
+                            modal.style.display = "flex";
+                        });
+                    }
+                });
+
+                // Close logic
+                if (closeBtn) {
+                    closeBtn.addEventListener("click", function() {
+                        modal.style.display = "none";
+                    });
+                }
+
+                modal.addEventListener("click", function(e) {
+                    if (!modalContent.contains(e.target)) {
+                        modal.style.display = "none";
+                    }
+                });
             });
-        }
-    });
-
-    // Close logic
-    if (closeBtn) {
-        closeBtn.addEventListener("click", function() {
-            modal.style.display = "none";
-        });
-    }
-
-    modal.addEventListener("click", function(e) {
-        if (!modalContent.contains(e.target)) {
-            modal.style.display = "none";
-        }
-    });
-});
 
             $(document).ready(function() {
                 if ($(window).width() < 768) {
@@ -2279,8 +2299,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     });
                 };
             });
-
-            
         </script>
 
 
@@ -2395,22 +2413,52 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
         <script>
-$('.brand-carousel').owlCarousel({
-    loop: true,
-    margin: 30,
-    autoplay: true,
-    autoplayTimeout: 2000,
-    autoplayHoverPause: false,
-    smartSpeed: 800,
-    dots: false,
-    nav: false,
-    responsive:{
-        0:{ items:2 },
-        600:{ items:3 },
-        1000:{ items:5 }
-    }
-});
-</script>
+            $('.brand-carousel').owlCarousel({
+                loop: true,
+                margin: 30,
+                autoplay: true,
+                autoplayTimeout: 2000,
+                autoplayHoverPause: false,
+                smartSpeed: 800,
+                dots: false,
+                nav: false,
+                responsive: {
+                    0: {
+                        items: 2
+                    },
+                    600: {
+                        items: 3
+                    },
+                    1000: {
+                        items: 5
+                    }
+                }
+            });
+        </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const observerOptions = {
+                    threshold: 0.15, // Triggers when 15% of the section is visible
+                    rootMargin: "0px 0px -50px 0px" // Triggers slightly before the section hits the top
+                };
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            // This adds the CSS class that runs the pop-up animation
+                            entry.target.classList.add("active");
+                            // Stop observing so it doesn't "re-pop" every time you scroll
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, observerOptions);
+
+                // Attach the observer to every element with the 'reveal' class
+                document.querySelectorAll(".reveal").forEach((el) => {
+                    observer.observe(el);
+                });
+            });
+        </script>
 </body>
 
 </html>
