@@ -231,6 +231,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             /* Moves to original spot and full size */
             visibility: visible;
         }
+
+        
     </style>
 </head>
 
