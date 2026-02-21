@@ -256,6 +256,26 @@
             opacity: 1;
             transform: scale(1);
         }
+        .main-btn {
+  padding: 15px 40px; /* Original balanced padding */
+  font-weight: 500;
+  color: #ffffff;
+  background-color: #f28e26;
+  background-image: linear-gradient(130deg, #f28e26 0%, #f24c1a 45%, #f28e26 90%);
+  background-position: 100% 0;
+  background-size: 200% 200%;
+  border-radius: 6px; /* Original slight rounding */
+  transition: all linear 0.3s;
+  display: inline-flex;
+  gap: 7px;
+}
+
+/* Specific fix for the Header button to be more 'Oval' on mobile/desktop */
+#home .main-btn {
+  border-radius: 30px !important; /* Forces the oval shape */
+  padding: 8px 25px !important;   /* Matches smaller header height */
+  font-size: 12px !important;
+}
     </style>
 
 </head>
@@ -280,7 +300,9 @@
                     </div>
 
                     <div class="action-side">
-                        <a href="javascript:void(0);" id="openEnquire" class="main-btn">
+                        <a href="javascript:void(0);"
+                            onclick="document.getElementById('enquireModal').style.display='flex'"
+                            class="main-btn">
                             ENQUIRE NOW
                         </a>
                     </div>
@@ -311,7 +333,7 @@
 
                             <!-- <div id="specializationContainer" class="mb-4 text-center">
                             </div> -->
-<br><br><br>
+                            <br><br><br>
                             <div class="description-box p-3 mb-4">
                                 <h5 class="fw-bold text-navy"><i class="fa fa-info-circle"></i> Course Description</h5>
                                 <p id="streamDescription" class="m-0 text-muted">
@@ -483,99 +505,172 @@
         </footer>
         <!--======== Footer 2 Ends ========-->
         <script>
+            /** * Data Object: Centralized storage for all course content.
+             * Add or edit your specializations and descriptions here.
+             */
             const streamData = {
                 btech: {
                     label: "B.TECH",
                     header: "Engineering Specializations",
-                    desc: "Bachelor of Technology focuses on software, mechanical, civil, and electronic systems. It provides a foundation in engineering principles and practical problem-solving.",
+                    desc: "Bachelor of Technology focuses on software, mechanical, civil, and electronic systems. It provides a foundation in engineering principles and practical problem-solving in industrial contexts.",
                     specs: ["Computer Science", "IT", "Mechanical", "Civil", "Electronics", "AI & ML", "Data Science"]
                 },
                 mbbs: {
                     label: "MBBS",
                     header: "Medical Specializations",
-                    desc: "MBBS deals with the prevention, diagnosis, and treatment of human diseases. Students rotate through various clinical departments to gain comprehensive knowledge.",
+                    desc: "MBBS deals with the prevention, diagnosis, and treatment of human diseases. Students rotate through various clinical departments to gain comprehensive medical and surgical knowledge.",
                     specs: ["General Medicine", "Pediatrics", "Dermatology", "Surgery", "Orthopedics", "Radiology", "ENT", "OB-GYN"]
                 },
                 mba: {
                     label: "MBA",
                     header: "Management Specializations",
-                    desc: "Master of Business Administration focuses on leadership, strategy, and organizational efficiency in global corporate environments.",
-                    specs: ["Finance", "Marketing", "Human Resources", "Operations", "Digital Marketing"]
+                    desc: "Master of Business Administration focuses on leadership, strategy, and organizational efficiency. It prepares professionals for management roles in global corporate environments.",
+                    specs: ["Finance", "Marketing", "Human Resources", "International Business", "Operations", "Digital Marketing"]
                 },
                 mca: {
                     label: "MCA",
                     header: "IT Specializations",
-                    desc: "Master of Computer Applications is designed for advanced software development and system management, focusing on modern computing technologies.",
+                    desc: "Master of Computer Applications is designed for advanced software development and system management, focusing on modern computing technologies and enterprise applications.",
                     specs: ["Software Development", "Cloud Computing", "Web Technologies", "Networking", "Database Management"]
                 },
                 bba: {
                     label: "BBA",
                     header: "Business Specializations",
-                    desc: "Bachelor of Business Administration provides a broad understanding of business functions, focusing on management and accounting.",
+                    desc: "Bachelor of Business Administration provides a broad understanding of business functions, focusing on management, accounting, and professional communication for entry-level corporate roles.",
                     specs: ["Finance", "Marketing", "HR", "Business Analytics", "Retail Management"]
                 },
                 bca: {
                     label: "BCA",
                     header: "Computer Specializations",
-                    desc: "Bachelor of Computer Applications focuses on fundamental software skills, data structures, and programming logic.",
+                    desc: "Bachelor of Computer Applications focuses on fundamental software skills, data structures, and programming logic needed to excel in the growing IT industry.",
                     specs: ["Web Dev", "Software Engineering", "Cyber Security", "Mobile App Dev", "Data Analytics"]
                 }
             };
 
+            /**
+             * Update Function: Handles all UI changes when a new stream is selected.
+             * @param {string} key - The key matching the streamData object (e.g., 'mbbs').
+             * @param {HTMLElement} element - The clicked sidebar pill element.
+             */
             function updateStream(key, element) {
                 const data = streamData[key];
                 if (!data) return;
 
-                // 1. Update Top Pill Label and Left Header/Desc
+                // 1. Update Labels and Headers
                 document.getElementById('currentStreamLabel').innerText = data.label;
                 document.getElementById('courseTitleHeader').innerText = data.header;
                 document.getElementById('streamDescription').innerText = data.desc;
 
-                // 2. DYNAMIC REDIRECTION: Link to your existing PHP files
+                // 2. DYNAMIC REDIRECTION: Update the "explore more" link
                 const exploreBtn = document.querySelector('.explore-more-btn');
-                exploreBtn.setAttribute('href', key.toUpperCase() + '.php');
+                if (exploreBtn) {
+                    exploreBtn.setAttribute('href', key.toUpperCase() + '.php');
+                }
 
-                // 3. Update Specialization Tags
+                // 3. Update Specialization Tags (Left Side)
                 const specContainer = document.getElementById('specializationContainer');
-                specContainer.innerHTML = '';
-                data.specs.forEach(spec => {
-                    const span = document.createElement('span');
-                    span.className = 'spec-tag';
-                    span.innerHTML = `<i class="fa fa-hand-o-right"></i> ${spec}`;
-                    specContainer.appendChild(span);
+                if (specContainer) {
+                    specContainer.innerHTML = ''; // Clear current tags
+                    data.specs.forEach(spec => {
+                        const span = document.createElement('span');
+                        span.className = 'spec-tag'; // Uses your Navy/Orange themed CSS
+                        span.innerHTML = `<i class="fa fa-hand-o-right"></i> ${spec}`;
+                        specContainer.appendChild(span);
+                    });
+                }
+
+                // 4. COLOR SHIFT: Manage Sidebar Pill Active States
+                // We target '.sidebar-pill' specifically to avoid the "fixed" highlighting issue.
+                document.querySelectorAll('.sidebar-pill').forEach(pill => {
+                    pill.classList.remove('active'); // Revert previous white button back to blue
                 });
 
-                // 4. COLOR SHIFT: Manage Sidebar Pill Colors
-                document.querySelectorAll('.sidebar-pill').forEach(pill => {
-                    pill.classList.remove('active'); // Revert previous white pill back to blue
-                });
-                element.classList.add('active'); // Change clicked pill to white background
+                if (element) {
+                    element.classList.add('active'); // Change clicked blue button to white
+                }
             }
 
-            // Initial Page Load: Set to MBBS to match your requirement
+            /**
+             * Initial Load: Synchronizes the page content on startup.
+             */
             document.addEventListener('DOMContentLoaded', () => {
-                const mbbsPill = document.querySelector('.sidebar-pill:nth-child(2)');
-                updateStream('mbbs', mbbsPill);
+                // Start with MBBS by default to match your initial labels
+                const defaultPill = document.querySelector('.sidebar-pill:nth-child(2)');
+                if (defaultPill) {
+                    updateStream('mbbs', defaultPill);
+                }
             });
         </script>
 
-        <div id="enquireModal" class="enquire-modal-overlay" style="display: none;">
-            <div class="enquire-modal-content shadow-lg">
-                <span class="enquire-close" onclick="document.getElementById('enquireModal').style.display='none'">&times;</span>
+        <div id="enquireModal" class="enquire-modal">
+            <div class="enquire-overlay" onclick="document.getElementById('enquireModal').style.display='none'"></div>
 
-                <div class="modal-inner-form p-4">
-                    <h3 class="text-navy fw-bold mb-3">Admission Enquiry</h3>
-                    <form action="mail.php" method="POST">
-                        <input type="text" name="name" placeholder="Full Name" class="form-control mb-3" required>
-                        <input type="email" name="email" placeholder="Email Address" class="form-control mb-3" required>
-                        <input type="tel" name="phone" placeholder="Phone Number" class="form-control mb-3" required>
-                        <select name="course" class="form-control mb-3">
-                            <option value="">Select Course</option>
-                            <option value="BTECH">B.Tech</option>
-                            <option value="MBBS">MBBS</option>
-                            <option value="MBA">MBA</option>
-                        </select>
-                        <button type="submit" class="main-btn w-100">SUBMIT REQUEST</button>
+            <div class="enquire-modal-content">
+                <button type="button" class="enquire-close" onclick="document.getElementById('enquireModal').style.display='none'">&times;</button>
+
+                <div class="hero-form-box compact-form shadow-lg">
+                    <h3 class="form-title text-center text-dark fw-bold mb-4">Enquire Now</h3>
+
+                    <form method="POST" action="mail.php">
+                        <div class="row g-2">
+                            <div class="col-md-6 mb-2">
+                                <input type="text" name="full_name" class="form-control" placeholder="Full Name *" required>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <input type="tel" name="mobile_number" class="form-control" placeholder="Mobile *" required>
+                            </div>
+                            <div class="col-md-12 mb-2">
+                                <input type="email" name="email" class="form-control" placeholder="Email Id *" required>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <select name="last_qualification" class="form-select" required>
+                                    <option value="">Qualification *</option>
+                                    <option value="12th">12th</option>
+                                    <option value="Graduate">Graduate</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <select name="preferred_course" class="form-select" required>
+                                    <option value="">Course *</option>
+                                    <option value="B.Tech">B.Tech</option>
+                                    <option value="MBBS">MBBS</option>
+                                    <option value="MBA">MBA</option>
+                                    <option value="MCA">MCA</option>
+                                    <option value="BBA">BBA</option>
+                                    <option value="BCA">BCA</option>
+                                </select>
+                            </div>
+                            <div class="col-md-12 mb-2">
+                                <div class="hostel-toggle d-flex align-items-center justify-content-between p-2 rounded bg-light border">
+                                    <span class="small fw-bold text-dark">Hostel Required?</span>
+                                    <div class="btn-group btn-group-sm">
+                                        <input type="radio" class="btn-check" name="hostel_required" id="h1" value="Yes" checked>
+                                        <label class="btn btn-outline-primary" for="h1">Yes</label>
+                                        <input type="radio" class="btn-check" name="hostel_required" id="h2" value="No">
+                                        <label class="btn btn-outline-primary" for="h2">No</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <select name="preferred_city" class="form-select" required>
+                                    <option value="">Preferred City *</option>
+                                    <option value="Bhubaneswar">Bhubaneswar</option>
+                                    <option value="Bangalore">Bangalore</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <select name="budget_range" class="form-select" required>
+                                    <option value="">Budget Range *</option>
+                                    <option value="1-3 Lakh">1-3 Lakh</option>
+                                    <option value="3-5 Lakh">3-5 Lakh</option>
+                                    <option value="5+ Lakh">5+ Lakh</option>
+                                </select>
+                            </div>
+                            <div class="col-md-12 mb-2">
+                                <textarea name="message" class="form-control" placeholder="Message (Optional)"></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" class="hero-submit-btn w-100 mt-3">Submit Application</button>
                     </form>
                 </div>
             </div>

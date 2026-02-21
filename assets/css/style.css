@@ -21996,50 +21996,74 @@ section {
     text-decoration: none;
 }
 
-/* Modal Overlay */
-.enquire-modal-overlay {
+/* --- Transparent White Blurred Overlay --- */
+.enquire-modal {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 33, 71, 0.85); /* Navy transparent background */
-    z-index: 100000;
-    display: flex;
+    inset: 0;
+    display: none; /* Controlled by JS flex toggle */
     align-items: center;
     justify-content: center;
+    z-index: 999999 !important;
 }
 
-/* Modal Box */
+.enquire-overlay {
+    position: absolute;
+    inset: 0;
+    /* Transparent white instead of navy tint */
+    background: rgba(255, 255, 255, 0.4) !important; 
+    /* THE BLUR EFFECT */
+    backdrop-filter: blur(12px) !important; 
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* --- Removing the Left White Space --- */
 .enquire-modal-content {
-    background: #ffffff;
-    width: 90%;
-    max-width: 450px;
-    border-radius: 15px;
     position: relative;
-    animation: modalSlideIn 0.3s ease-out;
+    z-index: 10;
+    width: 95%;
+    max-width: 500px;
+    background: #ffffff !important;
+    border-radius: 20px;
+    /* REMOVED: Extra padding that caused the left white gap in image_5e60bb.png */
+    padding: 0 !important; 
+    overflow: visible;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2) !important;
 }
 
-/* Close Button Positioned at Top Right */
+/* Ensure the internal form takes up the full width of the content box */
+.hero-form-box.compact-form {
+    padding: 30px !important;
+    width: 100%;
+    margin: 0 !important;
+    background: transparent !important; /* Let content box handle background */
+    box-shadow: none !important; /* Let content box handle shadow */
+}
+
+/* --- Orange Buttons from Index Page style --- */
 .enquire-close {
     position: absolute;
     top: -15px;
     right: -15px;
-    background: #F26F20; /* Theme Orange */
+    background: #f37925; /* Exact Orange from image */
     color: white;
+    border: 3px solid #fff;
     width: 35px;
     height: 35px;
     border-radius: 50%;
+    cursor: pointer;
+    font-size: 22px;
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    font-size: 24px;
-    font-weight: bold;
-    border: 3px solid #fff;
 }
 
-@keyframes modalSlideIn {
-    from { transform: translateY(-50px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+.hero-submit-btn {
+    background: #f37925;
+    color: white;
+    border: none;
+    padding: 15px;
+    font-weight: 700;
+    font-size: 18px;
+    border-radius: 10px;
+    transition: 0.3s ease;
 }
