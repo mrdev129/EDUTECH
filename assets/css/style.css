@@ -8720,6 +8720,12 @@ html.menu-is-open .menu-canvas-layer {
 /*----------------------------------------*/
 /*  03.04 - Featured
 /*----------------------------------------*/
+
+/* Add these for a staggered effect */
+.reveal:nth-child(2) { transition-delay: 0.2s; }
+.reveal:nth-child(3) { transition-delay: 0.4s; }
+.reveal:nth-child(4) { transition-delay: 0.6s; }
+
 .rs-featured {
   background-color: transparent;
   background-image: linear-gradient(99.43deg, #0c43fed9 0.99%, #b42af3 99.43%);
@@ -12455,95 +12461,94 @@ html.menu-is-open .menu-canvas-layer {
    ========================================== */
 
 .rs-brand {
-    padding: 80px 0;
-    background: #ffffff;
-    overflow: hidden;
+  padding: 80px 0;
+  background: #ffffff;
+  overflow: hidden;
 }
 
 /* Fix Owl overflow */
 .rs-brand .owl-stage-outer {
-    overflow: hidden !important;
+  overflow: hidden !important;
 }
 
 /* Brand Item Center */
 .brand-item {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 /* Circle Card */
 .circle-card {
-    width: 160px;
-    height: 160px;
-    background: #ffffff;
-    border-radius: 50%;
-    border: 1px solid #f0f0f0;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    margin: auto;
-    transition: none !important;
+  width: 160px;
+  height: 160px;
+  background: #ffffff;
+  border-radius: 50%;
+  border: 1px solid #f0f0f0;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  margin: auto;
+  transition: none !important;
 }
 
 /* Image Fix */
 .circle-card img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    display: block;
-    transition: none !important;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+  transition: none !important;
 }
 
 /* REMOVE ALL HOVER EFFECTS */
 .brand-item:hover .circle-card,
 .brand-item:hover img {
-    transform: none !important;
-    opacity: 1 !important;
+  transform: none !important;
+  opacity: 1 !important;
 }
 
 .rs-brand__top-title {
-    text-align: center;
-    margin-bottom: 50px;
-    font-weight: 400;
-    font-size: 20px;
-    color: #f26522;   /* Orange Color */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
+  text-align: center;
+  margin-bottom: 50px;
+  font-weight: 400;
+  font-size: 20px;
+  color: #f26522;
+  /* Orange Color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
 }
 
 /* Heartbeat icons color */
 .rs-brand__top-title img {
-    height: 18px;
-    width: auto;
-    filter: brightness(0) saturate(100%) 
-            invert(52%) sepia(87%) 
-            saturate(1826%) hue-rotate(347deg) 
-            brightness(99%) contrast(96%);
+  height: 18px;
+  width: auto;
+  filter: brightness(0) saturate(100%) invert(52%) sepia(87%) saturate(1826%) hue-rotate(347deg) brightness(99%) contrast(96%);
 }
+
 /* ================= MOBILE RESPONSIVE ================= */
 
 @media (max-width: 991px) {
-    .circle-card {
-        width: 130px;
-        height: 130px;
-        padding: 15px;
-    }
+  .circle-card {
+    width: 130px;
+    height: 130px;
+    padding: 15px;
+  }
 }
 
 @media (max-width: 576px) {
-    .rs-brand {
-        padding: 50px 0;
-    }
+  .rs-brand {
+    padding: 50px 0;
+  }
 
-    .circle-card {
-        width: 110px;
-        height: 110px;
-        padding: 12px;
-    }
+  .circle-card {
+    width: 110px;
+    height: 110px;
+    padding: 12px;
+  }
 }
 
 /*----------------------------------------*/
@@ -19861,112 +19866,126 @@ section {
 /* --- Optimized Header Container --- */
 /* --- Optimized Header Container --- */
 .edutech-main-header {
-    background: #002147 !important;
-    padding: 0; 
-    margin: 20px 15px 0 15px; 
-    border-radius: 50px; 
-    height: 60px; /* Keeping the 60px bar height */
-    display: flex;
-    align-items: center;
-    position: relative;
-    z-index: 100;
+  background: #002147 !important;
+  padding: 0;
+  margin: 20px 15px 0 15px;
+  border-radius: 50px;
+  height: 60px;
+  /* Keeping the 60px bar height */
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 100;
 }
+
 /* Flex layout to push elements to absolute corners */
 .header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 20px;
 }
 
 /* --- Reduced Circle Gap Structure --- */
 .logo-circle-wrap {
-    background: #ffffff; 
-    /* Reduced from 80px to 72px to clear the yellow bar below */
-    width: 72px; 
-    height: 72px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: -5px; 
-    /* Adjusted margin-top to center the smaller 72px circle over the 60px bar */
-    margin-top: 0px; 
-    border: 4px solid #002147; 
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
-    z-index: 10;
+  background: #ffffff;
+  /* Reduced from 80px to 72px to clear the yellow bar below */
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -5px;
+  /* Adjusted margin-top to center the smaller 72px circle over the 60px bar */
+  margin-top: 0px;
+  border: 4px solid #002147;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  z-index: 10;
 }
 
 .logo-circle-wrap img {
-    /* Scaled logo down to 50px to look balanced in the smaller 72px circle */
-    height: 50px; 
-    width: auto;
-    border-radius: 50%;
+  /* Scaled logo down to 50px to look balanced in the smaller 72px circle */
+  height: 50px;
+  width: auto;
+  border-radius: 50%;
 }
 
 /* --- Alignment & Typography --- */
 .logo-side {
-    display: flex;
-    align-items: center;
-    gap: 12px; /* Slightly tightened gap for smaller circle */
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  /* Slightly tightened gap for smaller circle */
 }
 
 .logo-text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .brand-name {
-    font-family: "Urbanist", sans-serif !important;
-    font-size: 20px;
-    font-weight: 800;
-    color: #ffffff;
-    text-transform: uppercase;
-    line-height: 1;
+  font-family: "Urbanist", sans-serif !important;
+  font-size: 20px;
+  font-weight: 800;
+  color: #ffffff;
+  text-transform: uppercase;
+  line-height: 1;
 }
 
 .brand-tagline {
-    font-family: "Urbanist", sans-serif !important;
-    font-size: 10px;
-    font-weight: 700;
-    color: #ffffff;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+  font-family: "Urbanist", sans-serif !important;
+  font-size: 10px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 /* --- Professional Glow Effect for the Logo Circle --- */
 .logo-glow {
-    animation: logo-pulse 3s infinite ease-in-out;
+  animation: logo-pulse 3s infinite ease-in-out;
 }
 
 @keyframes logo-pulse {
-    0%, 100% { filter: drop-shadow(0 0 5px rgba(255, 165, 0, 0.4)); }
-    50% { filter: drop-shadow(0 0 12px rgba(255, 165, 0, 0.7)); }
+
+  0%,
+  100% {
+    filter: drop-shadow(0 0 5px rgba(255, 165, 0, 0.4));
+  }
+
+  50% {
+    filter: drop-shadow(0 0 12px rgba(255, 165, 0, 0.7));
+  }
 }
 
 /* Ensure the Enquire button fits the rounded header */
 #openEnquire.main-btn {
-    margin-right: 10px;
-    padding: 8px 25px;
-    border-radius: 30px;
-    font-size: 12px;
+  margin-right: 10px;
+  padding: 8px 25px;
+  border-radius: 30px;
+  font-size: 12px;
 }
+
 /* Refined animation for the oval button */
 @keyframes glow-pop {
-    0% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(255, 165, 0, 0.7);
-    }
-    50% {
-        transform: scale(1.05); /* Subtle pop for smaller header */
-        box-shadow: 0 0 15px 10px rgba(255, 165, 0, 0); 
-    }
-    100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(255, 165, 0, 0);
-    }
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 165, 0, 0.7);
+  }
+
+  50% {
+    transform: scale(1.05);
+    /* Subtle pop for smaller header */
+    box-shadow: 0 0 15px 10px rgba(255, 165, 0, 0);
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 165, 0, 0);
+  }
 }
 
 /* .brand-tagline {
@@ -19987,59 +20006,65 @@ section {
 
 /* --- MINIMIZED ANNOUNCEMENT BAR --- */
 .static-announcement {
-    background: var(--edutech-yellow);
-    text-align: center;
-    /* Decreased height: Padding reduced from 10px to 4px */
-    padding: 4px 0; 
-    margin: 8px 15px 0 15px; /* Matched top margin to minimized header */
-    border-radius: 12px;
-    font-weight: 700;
-    color: var(--edutech-navy);
-    position: relative;
-    z-index: 90;
-    overflow: hidden; 
+  background: var(--edutech-yellow);
+  text-align: center;
+  /* Decreased height: Padding reduced from 10px to 4px */
+  padding: 4px 0;
+  margin: 8px 15px 0 15px;
+  /* Matched top margin to minimized header */
+  border-radius: 12px;
+  font-weight: 700;
+  color: var(--edutech-navy);
+  position: relative;
+  z-index: 90;
+  overflow: hidden;
 }
 
 /* Force container to 100% width for edge-to-edge sliding */
 .static-announcement .container {
-    max-width: 100% !important;
-    width: 100% !important;
-    overflow: hidden;
-    white-space: nowrap;
-    padding: 0;
+  max-width: 100% !important;
+  width: 100% !important;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 0;
 }
 
 /* Updated sliding text with smaller font to fit thin bar */
 .sliding-text {
-    display: inline-block;
-    padding-left: 100%;
-    font-size: 14px; /* Slightly decreased font size for a sleeker look */
-    line-height: 1;  /* Tight line height for minimized bar */
-    animation: slide-left 15s linear infinite;
+  display: inline-block;
+  padding-left: 100%;
+  font-size: 14px;
+  /* Slightly decreased font size for a sleeker look */
+  line-height: 1;
+  /* Tight line height for minimized bar */
+  animation: slide-left 15s linear infinite;
 }
 
 /* Animation remains the same for right-to-left movement */
 @keyframes slide-left {
-    0% {
-        transform: translateX(0%);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 /* 3. Hero Section - Slightly Reduced Size */
 /* 1. Balanced Hero Container */
 .split-hero {
-    height: 530px; /* Reduced slightly from 560px */
-    min-height: 530px;
-    padding: 0; 
-    position: relative;
-    border-radius: 30px; /* Bent sides as requested */
-    margin: 12px 15px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
+  height: 530px;
+  /* Reduced slightly from 560px */
+  min-height: 530px;
+  padding: 0;
+  position: relative;
+  border-radius: 30px;
+  /* Bent sides as requested */
+  margin: 12px 15px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 
 /* Slider Background Layering */
@@ -20068,10 +20093,11 @@ section {
 /* Each item carries its own blue filter */
 /* 2. Synchronized Slider Height */
 .hero-bg-slider .item {
-    height: 560px; /* Must match container */
-    width: 100%;
-    background-size: cover;
-    background-position: center;
+  height: 560px;
+  /* Must match container */
+  width: 100%;
+  background-size: cover;
+  background-position: center;
 }
 
 /* This is the blue 'glass' over the photo */
@@ -20127,56 +20153,59 @@ section {
   margin-left: auto;
   background: #ffffff;
   border-radius: 20px; */
-  /* Bends for form corner */
-  /* padding: 30px !important;
+/* Bends for form corner */
+/* padding: 30px !important;
 } */
 
 
 /* 3. Adjusted Form Density */
 .hero-form-box.compact-form {
-    max-width: 440px; 
-    margin-left: auto;
-    background: #ffffff;
-    border-radius: 20px;
-    padding: 18px 22px !important; /* Balanced padding */
-    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+  max-width: 440px;
+  margin-left: auto;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 18px 22px !important;
+  /* Balanced padding */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
 }
 
 /* Row spacing for your exact form fields */
 .hero-form-box.compact-form .mb-2 {
-    margin-bottom: 7px !important; /* Slightly more room than ultra-compact */
+  margin-bottom: 7px !important;
+  /* Slightly more room than ultra-compact */
 }
 
 /* Field heights */
 .hero-form-box.compact-form .form-control,
 .hero-form-box.compact-form .form-select {
-    height: 38px; 
-    padding: 4px 12px;
-    font-size: 14px;
+  height: 38px;
+  padding: 4px 12px;
+  font-size: 14px;
 }
 
 /* Hostel Toggle specific spacing */
 .hero-form-box.compact-form .hostel-toggle {
-    padding: 4px 10px !important;
-    margin-bottom: 7px;
+  padding: 4px 10px !important;
+  margin-bottom: 7px;
 }
 
 /* Message field height */
 .hero-form-box.compact-form textarea.form-control {
-    height: 55px; 
+  height: 55px;
 }
 
 /* Title and Button spacing */
 .hero-form-box.compact-form .form-title {
-    font-size: 20px;
-    margin-bottom: 12px !important;
+  font-size: 20px;
+  margin-bottom: 12px !important;
 }
 
 .hero-submit-btn {
-    padding: 11px;
-    margin-top: 8px !important;
-    font-weight: 700;
+  padding: 11px;
+  margin-top: 8px !important;
+  font-weight: 700;
 }
+
 .hero-submit-btn {
   background: var(--edutech-orange);
   color: white;
@@ -20192,11 +20221,13 @@ section {
   background: var(--edutech-navy);
   color: white;
   /* Increased height: Padding increased from 4px to 12px */
-  padding: 12px 0; 
-  margin: 10px 15px; 
+  padding: 12px 0;
+  margin: 10px 15px;
   border-radius: 12px;
-  font-weight: 600; /* Slightly bolder for better visibility */
-  font-size: 18px; /* Increased from 14px for a larger, clearer look */
+  font-weight: 600;
+  /* Slightly bolder for better visibility */
+  font-size: 18px;
+  /* Increased from 14px for a larger, clearer look */
   position: relative;
   overflow: hidden;
   display: flex;
@@ -20205,9 +20236,9 @@ section {
 
 /* Adjusted marquee for the larger container */
 .sliding-info-bar marquee {
-    display: block;
-    line-height: 1.2;
-    width: 100%;
+  display: block;
+  line-height: 1.2;
+  width: 100%;
 }
 
 /* Footer Navigation Styling */
@@ -20240,10 +20271,10 @@ section {
 }
 
 .program-nav-bar .container {
-    /* Set max-width to match the Dashboard container boundaries */
-    max-width: 1320px !important;
-    padding-right: var(--bs-gutter-x, .75rem);
-    padding-left: var(--bs-gutter-x, .75rem);
+  /* Set max-width to match the Dashboard container boundaries */
+  max-width: 1320px !important;
+  padding-right: var(--bs-gutter-x, .75rem);
+  padding-left: var(--bs-gutter-x, .75rem);
 }
 
 .nav-flex-wrapper {
@@ -20298,13 +20329,16 @@ section {
 
 /* Ensure the secondary image stays hidden on desktop unless hovered */
 .rs-brand-slider-item img.item-2 {
-    display: none;
+  display: none;
 }
+
 .rs-brand-slider-item:hover img.item-2 {
-    display: block; /* Restore your hover effect for desktop */
+  display: block;
+  /* Restore your hover effect for desktop */
 }
+
 .rs-brand-slider-item:hover img:not(.item-2) {
-    display: none;
+  display: none;
 }
 
 /* Responsive adjustment for small screens */
@@ -20318,53 +20352,54 @@ section {
 /* ===== NAV BAR ALIGNMENT FIX ===== */
 
 .program-nav-bar .nav-flex-wrapper {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    width: 100%;
-    /* Aligns HOME button with the Notice Board card left border */
-    padding-left: 12px !important; 
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  /* Aligns HOME button with the Notice Board card left border */
+  padding-left: 12px !important;
 }
 
 /* Center the menu but start the list from the left */
 .program-menu {
-    display: flex;
-    justify-content: flex-start; 
-    align-items: center;
-    gap: 45px !important; /* Balanced spacing between options */
-    list-style: none;
-    margin: 0; 
-    padding: 0;
-    flex-grow: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 45px !important;
+  /* Balanced spacing between options */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-grow: 1;
 }
 
 .program-menu li a {
-    color: #003366; 
-    font-size: 14px;
-    font-weight: 700 !important;
-    text-transform: uppercase;
-    text-decoration: none;
-    display: inline-block;
-    
-    /* ANTI-BLUR FIX: Forces GPU rendering to keep text sharp during scale */
-    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), color 0.3s ease;
-    backface-visibility: hidden;
-    -webkit-font-smoothing: antialiased;
-    transform: translateZ(0); 
-    will-change: transform;
+  color: #003366;
+  font-size: 14px;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+
+  /* ANTI-BLUR FIX: Forces GPU rendering to keep text sharp during scale */
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), color 0.3s ease;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 .program-menu li a:hover {
-    color: #F26F20; 
-    /* scale(1.1) is optimized for sharpness; larger scales often cause blur */
-    transform: scale(1.1) translateZ(0); 
-    font-weight: 800 !important;
+  color: #F26F20;
+  /* scale(1.1) is optimized for sharpness; larger scales often cause blur */
+  transform: scale(1.1) translateZ(0);
+  font-weight: 800 !important;
 }
 
 .nav-action {
-    margin-left: auto;
-    /* Aligns the ENQUIRE button with the right border of Quick Links */
-    padding-right: 12px !important;
+  margin-left: auto;
+  /* Aligns the ENQUIRE button with the right border of Quick Links */
+  padding-right: 12px !important;
 }
 
 
@@ -20450,1214 +20485,1349 @@ section {
 
 /* General Card Styling with Bold, Visible Borders */
 .info-card {
-    background: #ffffff;
-    border: 2px solid #DEDEDE !important; /* Bold Border as requested */
-    border-radius: 15px;
-    padding: 30px;
-    height: 100%;
-    transition: all 0.3s ease;
+  background: #ffffff;
+  border: 2px solid #DEDEDE !important;
+  /* Bold Border as requested */
+  border-radius: 15px;
+  padding: 30px;
+  height: 100%;
+  transition: all 0.3s ease;
 }
 
 .view-all-text {
-    color: #8b2d2d; /* Reddish brown matching your screenshot */
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 14px;
-    transition: color 0.3s ease;
+  color: #8b2d2d;
+  /* Reddish brown matching your screenshot */
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: color 0.3s ease;
 }
 
 .view-all-text:hover {
-    color: #F26F20; /* Theme Orange on hover */
+  color: #F26F20;
+  /* Theme Orange on hover */
 }
 
 /* Notice Board Date Badge Styles */
 .date-badge-box {
-    min-width: 65px;
+  min-width: 65px;
 }
 
 .badge-now {
-    background: #8b2d2d;
-    color: #ffffff;
-    font-size: 10px;
-    padding: 2px 8px;
-    border-radius: 20px;
-    display: inline-block;
-    margin-bottom: -10px;
-    position: relative;
-    z-index: 2;
+  background: #8b2d2d;
+  color: #ffffff;
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: -10px;
+  position: relative;
+  z-index: 2;
 }
 
 .date-inner {
-    border: 2px solid #8b2d2d;
-    border-radius: 8px;
-    padding: 12px 5px 5px;
-    background: #ffffff;
+  border: 2px solid #8b2d2d;
+  border-radius: 8px;
+  padding: 12px 5px 5px;
+  background: #ffffff;
 }
 
-.date-inner .day { 
-    display: block; 
-    font-weight: 800; 
-    font-size: 18px; 
-    line-height: 1; 
-    color: #333333; 
+.date-inner .day {
+  display: block;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 1;
+  color: #333333;
 }
 
-.date-inner .mon { 
-    display: block; 
-    font-weight: 700; 
-    font-size: 11px; 
-    text-transform: uppercase; 
-    color: #8b2d2d; 
+.date-inner .mon {
+  display: block;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #8b2d2d;
 }
 
-.date-inner .year { 
-    display: block; 
-    font-size: 10px; 
-    color: #666666; 
+.date-inner .year {
+  display: block;
+  font-size: 10px;
+  color: #666666;
 }
 
 .notice-title {
-    font-size: 15px;
-    font-weight: 500;
-    color: #333333;
-    line-height: 1.4;
+  font-size: 15px;
+  font-weight: 500;
+  color: #333333;
+  line-height: 1.4;
 }
 
 /* Quick Links Button Styling */
 .quick-link-item {
-    display: flex;
-    align-items: center;
-    padding: 15px;
-    border: 2px solid #EAEAEA; /* Bold, visible border */
-    border-radius: 12px;
-    text-decoration: none;
-    color: #333333;
-    font-weight: 700;
-    transition: all 0.3s ease;
-    background: #ffffff;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border: 2px solid #EAEAEA;
+  /* Bold, visible border */
+  border-radius: 12px;
+  text-decoration: none;
+  color: #333333;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  background: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
 }
 
 .quick-link-item:hover {
-    border-color: #F26F20; /* Brand Orange */
-    transform: translateY(-3px);
-    color: #002147; /* Brand Navy */
+  border-color: #F26F20;
+  /* Brand Orange */
+  transform: translateY(-3px);
+  color: #002147;
+  /* Brand Navy */
 }
 
 /* Pagination Styling (1 2 3 and arrows) */
-.custom-pagination .page-num, 
+.custom-pagination .page-num,
 .custom-pagination .page-arrow {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid #EAEAEA;
-    border-radius: 50%;
-    color: #444444;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #EAEAEA;
+  border-radius: 50%;
+  color: #444444;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
 
 .custom-pagination .page-num.active {
-    background: #8b2d2d;
-    color: #ffffff;
-    border-color: #8b2d2d;
+  background: #8b2d2d;
+  color: #ffffff;
+  border-color: #8b2d2d;
 }
 
 .custom-pagination .page-num:hover:not(.active),
 .custom-pagination .page-arrow:hover {
-    background: #f8f8f8;
-    border-color: #8b2d2d;
-    color: #8b2d2d;
+  background: #f8f8f8;
+  border-color: #8b2d2d;
+  color: #8b2d2d;
 }
 
 .page-dots {
-    color: #999999;
-    font-weight: bold;
-    padding: 0 5px;
+  color: #999999;
+  font-weight: bold;
+  padding: 0 5px;
 }
 
 /* Timeline / Calendar Card Styling */
 .calendar-item {
-    position: relative;
-    padding-bottom: 15px;
+  position: relative;
+  padding-bottom: 15px;
 }
 
 .cal-date {
-    background: #8b2d2d;
-    color: #ffffff;
-    padding: 8px;
-    border-radius: 8px;
-    min-width: 55px;
-    z-index: 2;
+  background: #8b2d2d;
+  color: #ffffff;
+  padding: 8px;
+  border-radius: 8px;
+  min-width: 55px;
+  z-index: 2;
 }
 
-.cal-d { 
-    display: block; 
-    font-size: 22px; 
-    font-weight: 800; 
-    line-height: 1; 
+.cal-d {
+  display: block;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1;
 }
 
-.cal-m { 
-    display: block; 
-    font-size: 11px; 
-    font-weight: 700;
+.cal-m {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
 }
 
 .cal-info {
-    border-bottom: 1px solid #eeeeee;
+  border-bottom: 1px solid #eeeeee;
 }
 
 /* Vertical line for the calendar timeline */
 .border-left-timeline {
-    position: relative;
-    padding-left: 10px;
+  position: relative;
+  padding-left: 10px;
 }
 
 .border-left-timeline::before {
-    content: '';
-    position: absolute;
-    left: 27px; /* Centers line behind the date box */
-    top: 0;
-    bottom: 50px;
-    width: 2px;
-    background: #8b2d2d;
-    opacity: 0.3;
-    z-index: 1;
+  content: '';
+  position: absolute;
+  left: 27px;
+  /* Centers line behind the date box */
+  top: 0;
+  bottom: 50px;
+  width: 2px;
+  background: #8b2d2d;
+  opacity: 0.3;
+  z-index: 1;
 }
 
 /* Responsive Fixes */
 @media (max-width: 991px) {
-    .side-container {
-        margin-top: 30px;
-    }
+  .side-container {
+    margin-top: 30px;
+  }
 }
 
 
 /* Responsive Base for Icons */
 .responsive-icon {
-    font-size: 1.2rem; /* Scales with root font size */
-    padding: 10px;
-    border: 1px solid #DEDEDE;
-    border-radius: 50%;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
+  font-size: 1.2rem;
+  /* Scales with root font size */
+  padding: 10px;
+  border: 1px solid #DEDEDE;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
 }
 
 /* Hover Effect to match your theme */
 .responsive-icon:hover {
-    color: #F26F20; /* Your theme orange */
-    border-color: #F26F20;
-    background-color: rgba(242, 111, 32, 0.05);
+  color: #F26F20;
+  /* Your theme orange */
+  border-color: #F26F20;
+  background-color: rgba(242, 111, 32, 0.05);
 }
 
 /* Quick Link Icons specifically */
 .link-icon {
-    font-size: 1.1rem;
-    margin-right: 10px;
+  font-size: 1.1rem;
+  margin-right: 10px;
 }
 
 /* Media Queries for different devices */
 @media (max-width: 768px) {
-    .responsive-icon {
-        width: 35px;
-        height: 35px;
-        font-size: 1rem;
-    }
-    
-    .link-text {
-        font-size: 14px; /* Adjust text size for tablets */
-    }
+  .responsive-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+
+  .link-text {
+    font-size: 14px;
+    /* Adjust text size for tablets */
+  }
 }
 
 @media (max-width: 576px) {
-    .notice-actions {
-        margin-left: 10px;
-    }
-    
-    .responsive-icon {
-        width: 30px;
-        height: 30px;
-        font-size: 0.9rem;
-    }
+  .notice-actions {
+    margin-left: 10px;
+  }
+
+  .responsive-icon {
+    width: 30px;
+    height: 30px;
+    font-size: 0.9rem;
+  }
 }
 
 
 /* --- Floating Contact Icon Styles --- */
 .floating-contact {
-    position: fixed;
-    bottom: 80px;
-    right: 15px;
-    z-index: 9999; /* Ensures it stays above everything */
+  position: fixed;
+  bottom: 80px;
+  right: 15px;
+  z-index: 9999;
+  /* Ensures it stays above everything */
 }
 
 .contact-icon-box {
-    width: 60px;
-    height: 60px;
-    background-color: #F26F20; /* Your brand Orange */
-    color: #ffffff !important;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 30px;
-    text-decoration: none;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, background-color 0.3s ease;
+  width: 60px;
+  height: 60px;
+  background-color: #F26F20;
+  /* Your brand Orange */
+  color: #ffffff !important;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 /* Hover Effect: Zoom in and Bold */
 .contact-icon-box:hover {
-    transform: scale(1.2); /* Zoom effect similar to your navigation */
-    background-color: #002147; /* Changes to your Navy Blue on hover */
-    color: #ffffff;
+  transform: scale(1.2);
+  /* Zoom effect similar to your navigation */
+  background-color: #002147;
+  /* Changes to your Navy Blue on hover */
+  color: #ffffff;
 }
 
 /* Optional: Continuous subtle pulse to grab attention */
 .floating-contact {
-    animation: contact-pulse 2s infinite;
+  animation: contact-pulse 2s infinite;
 }
 
 @keyframes contact-pulse {
-    0% {
-        box-shadow: 0 0 0 0 rgba(242, 111, 32, 0.7);
-    }
-    70% {
-        box-shadow: 0 0 0 15px rgba(242, 111, 32, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(242, 111, 32, 0);
-    }
+  0% {
+    box-shadow: 0 0 0 0 rgba(242, 111, 32, 0.7);
+  }
+
+  70% {
+    box-shadow: 0 0 0 15px rgba(242, 111, 32, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(242, 111, 32, 0);
+  }
 }
 
 .rs-about-2__thumb {
-    width: 100%;            
-    max-width: 600px;       
-    height: 450px;          
-    overflow: hidden;       
-    background: transparent; /* No visible box background */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  max-width: 600px;
+  height: 450px;
+  overflow: hidden;
+  background: transparent;
+  /* No visible box background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .rs-about-2__thumb img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;      /* Forces the image to fill the space so it looks larger */
-    object-position: center; 
-    background-color: transparent;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Forces the image to fill the space so it looks larger */
+  object-position: center;
+  background-color: transparent;
 }
 
 
 /* --- Mobile Header Adjustments --- */
 @media (max-width: 767px) {
 
-  
-    /* 1. Reduce overall header height and margins */
-    .edutech-main-header {
-        height: 50px; /* Slimmer bar */
-        margin: 10px 10px 0 10px; /* Tighter margins to screen edge */
-        padding: 0 10px;
-    }
 
-    .header-container {
-        padding: 0 5px;
-    }
+  /* 1. Reduce overall header height and margins */
+  .edutech-main-header {
+    height: 50px;
+    /* Slimmer bar */
+    margin: 10px 10px 0 10px;
+    /* Tighter margins to screen edge */
+    padding: 0 10px;
+  }
 
-    /* 2. Shrink the Logo Circle */
-    .logo-circle-wrap {
-        width: 55px; /* Reduced from 72px */
-        height: 55px;
-        border-width: 2px; /* Thinner border for smaller scale */
-        margin-left: -2px;
-    }
+  .header-container {
+    padding: 0 5px;
+  }
 
-    .logo-circle-wrap img {
-        height: 38px; /* Balanced logo size inside circle */
-    }
+  /* 2. Shrink the Logo Circle */
+  .logo-circle-wrap {
+    width: 55px;
+    /* Reduced from 72px */
+    height: 55px;
+    border-width: 2px;
+    /* Thinner border for smaller scale */
+    margin-left: -2px;
+  }
 
-    /* 3. Scale down the Brand Text */
-    .brand-name {
-        font-size: 14px; /* Reduced from 20px */
-    }
+  .logo-circle-wrap img {
+    height: 38px;
+    /* Balanced logo size inside circle */
+  }
 
-    .brand-tagline {
-        font-size: 7px; /* Tiny tagline matching your Amity reference */
-        letter-spacing: 0.5px;
-    }
+  /* 3. Scale down the Brand Text */
+  .brand-name {
+    font-size: 14px;
+    /* Reduced from 20px */
+  }
 
-    .logo-side {
-        gap: 8px; /* Tighter gap between circle and text */
-    }
+  .brand-tagline {
+    font-size: 7px;
+    /* Tiny tagline matching your Amity reference */
+    letter-spacing: 0.5px;
+  }
 
-    /* 4. Tweak the Enquire Button to fit the bar */
-    #openEnquire.main-btn {
-        padding: 6px 15px; /* Slimmer padding */
-        font-size: 10px; /* Smaller font */
-        margin-right: 0;
-        white-space: nowrap;
-    }
-    
-    /* 5. Match the Yellow Announcement Bar margin */
-    /* .static-announcement {
+  .logo-side {
+    gap: 8px;
+    /* Tighter gap between circle and text */
+  }
+
+  /* 4. Tweak the Enquire Button to fit the bar */
+  #openEnquire.main-btn {
+    padding: 6px 15px;
+    /* Slimmer padding */
+    font-size: 10px;
+    /* Smaller font */
+    margin-right: 0;
+    white-space: nowrap;
+  }
+
+  /* 5. Match the Yellow Announcement Bar margin */
+  /* .static-announcement {
         margin: 5px 10px 0 10px;
         border-radius: 8px;
     } */
 
-    .static-announcement {
-        padding: 8px 10px; /* Vertical padding for better height */
-        margin: 8px 10px 0 10px; /* Matches header margin */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        border-radius: 8px; /* Slightly rounded corners like the reference */
-        overflow: visible; /* Ensure text isn't cut off */
-    }
+  .static-announcement {
+    padding: 8px 10px;
+    /* Vertical padding for better height */
+    margin: 8px 10px 0 10px;
+    /* Matches header margin */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 8px;
+    /* Slightly rounded corners like the reference */
+    overflow: visible;
+    /* Ensure text isn't cut off */
+  }
 
-    .static-announcement .container {
-        padding: 0;
-        white-space: normal; /* Allows text to wrap if it's too long for very small screens */
-    }
+  .static-announcement .container {
+    padding: 0;
+    white-space: normal;
+    /* Allows text to wrap if it's too long for very small screens */
+  }
 
-    .sliding-text {
-        animation: none; /* Stops the right-to-left sliding */
-        padding-left: 0; /* Removes the sliding start offset */
-        font-size: 11px; /* Scaled down to fit one or two lines comfortably */
-        line-height: 1.3;
-        display: block;
-        width: 100%;
-        color: #002147; /* Ensure high contrast with yellow background */
-        font-weight: 700;
-    }
+  .sliding-text {
+    animation: none;
+    /* Stops the right-to-left sliding */
+    padding-left: 0;
+    /* Removes the sliding start offset */
+    font-size: 11px;
+    /* Scaled down to fit one or two lines comfortably */
+    line-height: 1.3;
+    display: block;
+    width: 100%;
+    color: #002147;
+    /* Ensure high contrast with yellow background */
+    font-weight: 700;
+  }
 
-    /* 1. Section Container Reset */
-    .split-hero {
-        display: block !important; /* Forces vertical stacking */
-        height: auto !important;
-        min-height: auto;
-        padding: 0;
-        background: #fff; /* Sets white background for the form area below */
-        position: relative;
-    }
+  /* 1. Section Container Reset */
+  .split-hero {
+    display: block !important;
+    /* Forces vertical stacking */
+    height: auto !important;
+    min-height: auto;
+    padding: 0;
+    background: #fff;
+    /* Sets white background for the form area below */
+    position: relative;
+  }
 
-    /* 2. The Blue Hero Image Box (Squeezed Container) */
-    .hero-bg-slider {
-        position: relative !important; /* Takes up space in the flow */
-        height: 480px !important; /* Matches the vertical height of the reference */
-        margin: 10px 15px; /* Creates the gap from screen edges */
-        border-radius: 20px; /* Bends the corners like the image */
-        overflow: hidden;
-        z-index: 1;
-    }
+  /* 2. The Blue Hero Image Box (Squeezed Container) */
+  .hero-bg-slider {
+    position: relative !important;
+    /* Takes up space in the flow */
+    height: 480px !important;
+    /* Matches the vertical height of the reference */
+    margin: 10px 15px;
+    /* Creates the gap from screen edges */
+    border-radius: 20px;
+    /* Bends the corners like the image */
+    overflow: hidden;
+    z-index: 1;
+  }
 
-    .hero-bg-slider .item {
-        height: 480px !important;
-    }
+  .hero-bg-slider .item {
+    height: 480px !important;
+  }
 
-    /* 3. Positioning the Hero Text Over the Box */
-    .hero-content-left {
-        position: absolute;
-        top: 10px; /* Matches the top margin of the slider */
-        left: 15px;
-        right: 15px;
-        height: 480px;
-        z-index: 5;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding: 0 20px;
-        pointer-events: none; /* Ensures text doesn't block slider interaction */
-    }
+  /* 3. Positioning the Hero Text Over the Box */
+  .hero-content-left {
+    position: absolute;
+    top: 10px;
+    /* Matches the top margin of the slider */
+    left: 15px;
+    right: 15px;
+    height: 480px;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    pointer-events: none;
+    /* Ensures text doesn't block slider interaction */
+  }
 
-    .expanding-text {
-        font-size: 26px !important;
-        line-height: 1.2;
-    }
+  .expanding-text {
+    font-size: 26px !important;
+    line-height: 1.2;
+  }
 
-    .journey-sub {
-        font-size: 14px !important;
-        margin-top: 15px;
-        font-weight: 700;
-        letter-spacing: 1px;
-    }
+  .journey-sub {
+    font-size: 14px !important;
+    margin-top: 15px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
 
-    /* 4. The Enquire Form (Stacked Below) */
-    .hero-form-box.compact-form {
-        position: relative;
-        z-index: 10;
-        max-width: 100%;
-        margin: 20px 15px 40px !important; /* Adds space between image and form */
-        border: 1px solid #e1e1e1; /* Subtle border like the reference */
-        border-radius: 15px;
-        padding: 30px 20px !important;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-    }
+  /* 4. The Enquire Form (Stacked Below) */
+  .hero-form-box.compact-form {
+    position: relative;
+    z-index: 10;
+    max-width: 100%;
+    margin: 20px 15px 40px !important;
+    /* Adds space between image and form */
+    border: 1px solid #e1e1e1;
+    /* Subtle border like the reference */
+    border-radius: 15px;
+    padding: 30px 20px !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  }
 
-    .form-title {
-        font-size: 24px;
-        font-weight: 600;
-        color: #002147;
-    }
+  .form-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #002147;
+  }
 
-    /* Adjusting container to allow flow */
-    .split-hero .container {
-        position: static !important;
-        max-width: 100%;
-        padding: 0;
-    }
+  /* Adjusting container to allow flow */
+  .split-hero .container {
+    position: static !important;
+    max-width: 100%;
+    padding: 0;
+  }
 
-    .split-hero .row {
-        margin: 0;
-        display: block;
-    }
+  .split-hero .row {
+    margin: 0;
+    display: block;
+  }
 
-    /* Touch-friendly inputs for Satyanarayan's form */
-    .hero-form-box .form-control, 
-    .hero-form-box .form-select {
-        height: 45px;
-        font-size: 16px; /* Prevents auto-zoom on mobile */
-        border-radius: 8px;
-    }
+  /* Touch-friendly inputs for Satyanarayan's form */
+  .hero-form-box .form-control,
+  .hero-form-box .form-select {
+    height: 45px;
+    font-size: 16px;
+    /* Prevents auto-zoom on mobile */
+    border-radius: 8px;
+  }
 
-    .sliding-info-bar {
-        padding: 10px 0; /* Slimmer vertical height for phones */
-        margin: 8px 15px; /* Matches the 15px side-gap of your hero and header */
-        font-size: 13px; /* Smaller text to prevent the bar from looking bulky */
-        border-radius: 10px; /* Bends the corners to match the hero image box */
-        display: flex;
-        align-items: center;
-        overflow: hidden;
-    }
+  .sliding-info-bar {
+    padding: 10px 0;
+    /* Slimmer vertical height for phones */
+    margin: 8px 15px;
+    /* Matches the 15px side-gap of your hero and header */
+    font-size: 13px;
+    /* Smaller text to prevent the bar from looking bulky */
+    border-radius: 10px;
+    /* Bends the corners to match the hero image box */
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
 
-    /* Slowing down the movement for mobile */
-    .sliding-info-bar marquee {
-        font-weight: 500;
-        /* Note: scrollamount is an HTML attribute, but reducing font-size 
+  /* Slowing down the movement for mobile */
+  .sliding-info-bar marquee {
+    font-weight: 500;
+    /* Note: scrollamount is an HTML attribute, but reducing font-size 
            and adding padding helps the text feel more readable and 'slower' 
            on a narrow screen. */
-        padding: 0 10px; 
-    }
-
-    /* 1. CRITICAL: Prevents sticky bar from being hidden by parent overflow settings */
-    html, body {
-        overflow-x: hidden !important;
-        overflow-y: visible !important; /* Required for sticky to function */
-    }
-
-    .program-nav-bar {
-        position: -webkit-sticky !important; /* Safari Support */
-        position: sticky !important; 
-        top: 0 !important;           /* Anchors to the very top edge */
-        display: block !important;    /* Forces visibility */
-        visibility: visible !important;
-        opacity: 1 !important;
-        z-index: 99999 !important;   /* Stays above all sections */
-        background: #ffffff !important; 
-        width: 100% !important;
-        margin: 0 !important;        /* Full width for stability */
-        padding: 10px 0 !important;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important; 
-        border-radius: 0 !important;
-    }
-
-    /* 2. SLIDING ROW: Forces menu items and button into one horizontal line */
-    .nav-flex-wrapper {
-        display: flex !important;      /* Flex allows side-by-side layout */
-        flex-wrap: nowrap !important;  /* Forces a single row */
-        align-items: center !important;
-        overflow-x: auto !important;   /* Enables the horizontal sliding */
-        -webkit-overflow-scrolling: touch; /* Smooth swipe for phones */
-        padding: 0 15px !important;
-    }
-
-    /* Prevent menu and button from shrinking or wrapping */
-    .program-menu {
-        display: flex !important;
-        flex-wrap: nowrap !important;
-        gap: 25px !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        flex-shrink: 0 !important; /* Keeps menu items at original width */
-    }
-
-    .nav-action {
-        display: inline-block !important;
-        margin-left: 25px !important;
-        flex-shrink: 0 !important; /* Keeps button at original width */
-    }
-
-    .program-menu li {
-        list-style: none !important;
-        white-space: nowrap !important; /* Prevents text from wrapping to two lines */
-    }
-
-    /* 3. TYPOGRAPHY & ACTIVE LINK: Blue underline from your demo */
-    .program-menu li a {
-        font-size: 13px !important;
-        font-weight: 700 !important;
-        color: #003366 !important;
-        text-transform: uppercase;
-        padding-bottom: 5px;
-        border-bottom: 3px solid transparent;
-        transition: 0.3s;
-        text-decoration: none !important;
-    }
-
-    .program-menu li a.active-link {
-        color: #007bff !important; /* Blue text */
-        border-bottom: 3px solid #007bff !important; /* Blue underline */
-    }
-
-    /* 4. BUTTON & SCROLLBAR TWEAKS */
-    .navy-enquire-btn {
-        padding: 8px 20px !important;
-        font-size: 12px !important;
-        white-space: nowrap !important;
-        border-radius: 50px !important;
-    }
-
-    .nav-flex-wrapper::-webkit-scrollbar {
-        display: none; /* Keeps the sliding menu looking like an app */
-    }
-
-
-   /* 1. Structural fix for the "peek" sliding effect */
-    .rs-service-2 .container, 
-    .rs-featured-2 .container {
-        padding-right: 0 !important;
-        margin-right: 0 !important;
-        max-width: 100% !important;
-    }
-
-    /* Allows the next card to be partially visible on the right */
-    .service-slider-bottom .owl-stage-outer, 
-    .featured-slider .owl-stage-outer {
-        padding-right: 40px !important; 
-        overflow: visible !important;
-    }
-
-    /* Consistent card height for sliding */
-    .rs-service-2__item, 
-    .rs-featured-2__item {
-        margin: 10px 5px !important;
-        height: 350px !important; 
-        display: flex !important;
-        flex-direction: column !important;
-    }
-
-    /* 2. Dots/Pill Buttons Styling */
-    .service-slider-bottom .owl-dots, 
-    .featured-slider .owl-dots {
-        display: flex !important;
-        justify-content: center !important;
-        margin-top: 30px !important;
-        gap: 10px !important;
-    }
-
-    .service-slider-bottom .owl-dot span, 
-    .featured-slider .owl-dot span {
-        width: 12px !important;
-        height: 12px !important;
-        background: #D1D5DB !important; /* Inactive circle color */
-        border-radius: 50% !important;
-        display: block !important;
-        transition: 0.3s ease !important;
-    }
-
-    /* Active Pill Shape logic from demo */
-    .service-slider-bottom .owl-dot.active span, 
-    .featured-slider .owl-dot.active span {
-        width: 30px !important; /* Becomes a pill */
-        background: #002147 !important; /* Matches your navy theme */
-        border-radius: 10px !important;
-    }
-    
-/*ABOUT SECTION*/
-
-
-
-   /* 1. Header Centering */
-    .rs-about-2__main-content .rs-section-title {
-        text-align: center !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        margin-bottom: 25px !important;
-    }
-
-    /* 2. One-Level Tabs: Mission, Vision, Core Value */
-    .skltbs-tab-group {
-        display: flex !important;
-        flex-direction: row !important;
-        flex-wrap: nowrap !important; /* Forces single line */
-        justify-content: space-between !important;
-        border-bottom: 1px solid #dee2e6 !important;
-        padding-bottom: 10px !important;
-        margin-bottom: 20px !important;
-    }
-
-    .skltbs-tab-item {
-        flex: 1 !important; /* Equal width for all 3 options */
-        text-align: center !important;
-    }
-
-    .skltbs-tab-group .skltbs-tab {
-        font-size: 13px !important; /* Fits perfectly on narrow screens */
-        font-weight: 700 !important;
-        background: transparent !important;
-        border: none !important;
-        padding: 0 0 5px 0 !important;
-    }
-
-    .skltbs-tab.skltbs-active {
-        color: #F26F20 !important;
-        border-bottom: 2px solid #F26F20 !important;
-    }
-
-    /* 3. Panel Fix: Prevent Doubled Content */
-    .skltbs-panel {
-        display: none !important; /* Only JS can toggle this */
-    }
-    .skltbs-panel.skltbs-active {
-        display: block !important;
-        text-align: left !important;
-    }
-
-    /* 4. One-Level Actions: Button & Play Icon Side-by-Side */
-    /* Target the d-flex you added in the HTML to keep it horizontal */
-    .skltbs-panel .d-flex,
-    .skltbs-panel .main-btn, 
-    .skltbs-panel .play-icon {
-        display: inline-flex !important;
-        flex-direction: row !important; /* Keep horizontal */
-        flex-wrap: nowrap !important;
-        align-items: center !important;
-        justify-content: flex-start !important;
-        margin: 15px 10px 15px 0 !important;
-    }
-
-    /* Reset the play-icon's margin to sit close to the button */
-    .skltbs-panel .play-icon {
-        margin-left: 5px !important;
-    }
-
-    .skltbs-panel .main-btn {
-        padding: 12px 22px !important;
-        font-size: 14px !important;
-        border-radius: 8px !important;
-        white-space: nowrap !important; /* Prevents text from breaking into 2 lines */
-        background: #F26F20 !important;
-        color: #fff !important;
-    }
-
-    .skltbs-panel .play-icon a {
-        width: 48px !important;
-        height: 48px !important;
-        background: #F26F20 !important;
-        color: #fff !important;
-        border-radius: 50% !important;
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        box-shadow: 0 0 0 8px rgba(242, 111, 32, 0.2) !important;
-    }
-
-    /*PARTNER COLLEGES*/
-    /* Use the specific class we added in JS */
-    .mobile-grid-active {
-        display: grid !important;
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 12px !important;
-        padding: 10px !important;
-    }
-
-    .rs-brand-slider-item {
-        box-shadow: 0 4px 12px rgba(0,0,0,0.06) !important;
-        border: 1px solid #f0f0f0;
-        height: 110px !important;
-    }
-
-    .rs-brand__slider .rs-brand-slider-item a {
-        height: 100% !important;
-        padding: 10px !important;
-    }
-
-    .rs-brand__slider .rs-brand-slider-item a:hover {
-        transform: none !important; /* No lift on mobile touch */
-    }
-
-
-
-    /*TEAM MEMBERS*/
-
-    /* 1. Center the Section Title and Sub-heading */
-    .rs-project .rs-section-title {
-        text-align: center !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        margin-bottom: 25px !important;
-    }
-
-    /* 2. Center the "View All Team Members" Button */
-    .rs-project__btn {
-        text-align: center !important;
-        width: 100% !important;
-        display: flex !important;
-        justify-content: center !important;
-        margin-bottom: 35px !important;
-    }
-
-    /* Ensure the button itself has the correct shape and spacing */
-    .rs-project__btn .main-btn {
-        display: inline-flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        padding: 12px 25px !important;
-        font-size: 14px !important;
-        white-space: nowrap !important;
-    }
-
-    /* 3. Center the heart-pulse icons with the text */
-    .rs-project .top-sub-heading {
-        display: inline-flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        gap: 10px !important;
-        width: 100% !important;
-    }
-
-
-    /*WHY TO CHOOSE*/
-    /* 1. Hide the entire image column on mobile */
-    .rs-why-choose-2 .col-lg-6:last-child,
-    .rs-why-choose-2__thumb {
-        display: none !important;
-    }
-
-    /* 2. Center the text content and progress bars */
-    .why-choose-2__content {
-        text-align: center !important;
-        padding-right: 0 !important;
-    }
-
-    /* 3. Center the header and pulse icons */
-    .rs-why-choose-2 .rs-section-title {
-        text-align: center !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-    }
-
-    .rs-why-choose-2 .top-sub-heading {
-        display: inline-flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        gap: 10px !important;
-        width: 100% !important;
-    }
-
-    /* 4. Align Skill Bars for centered layout */
-    .rs-progress-skill {
-        text-align: left !important; /* Keep text left-aligned inside a centered container for readability */
-        margin-bottom: 25px !important;
-    }
-
-    .rs-progress__title {
-        font-size: 14px !important;
-        margin-bottom: 10px !important;
-    }
-
-    /* Adjust section padding for mobile */
-    .rs-why-choose-2 {
-        padding-bottom: 60px !important;
-        padding-top: 40px !important;
-    }
-
-
-    /*COUNTER*/
-    /* 1. Force the row into a 2-column grid */
-    .rs-counter-2 .container > .row:last-child {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important; /* Forces 2 columns per level */
-        gap: 15px !important;
-        padding: 0 10px;
-    }
-
-    /* 2. Reset Bootstrap column widths for the grid */
-    .rs-counter-2 .col-sm-6 {
-        width: 100% !important;
-        max-width: 100% !important;
-        padding: 0 !important;
-    }
-
-    /* 3. Style each counter item for a balanced look */
-    .rs-counter-2__item {
-        text-align: center !important;
-        padding: 20px 10px !important;
-        margin-bottom: 0 !important; /* Grid handles spacing via 'gap' */
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        background: #fdfdfd; /* Subtle background to distinguish cards */
-        border-radius: 12px;
-        border: 1px solid #f0f0f0;
-    }
-
-    /* 4. Center icons and text */
-    .rs-counter-2__icon {
-        margin-bottom: 15px !important;
-        margin-right: 0 !important; /* Removes desktop side-margin */
-    }
-
-    .rs-counter-2__content {
-        text-align: center !important;
-    }
-
-    .rs-counter-2__content .title {
-        font-size: 22px !important; /* Slightly smaller for mobile grid space */
-        margin-bottom: 5px !important;
-    }
-
-    .rs-counter-2__content span {
-        font-size: 12px !important;
-        font-weight: 600 !important;
-        display: block;
-    }
-
-    /* Center the main section title */
-    .rs-counter-2__title {
-        text-align: center !important;
-        margin-bottom: 30px !important;
-    }
-
-
-    /*FAQ*/
-
-    /* 1. Remove FAQ Left Image strictly for mobile */
-    .rs-faq .col-lg-6:first-child,
-    .rs-faq__thumb {
-        display: none !important;
-    }
-
-    /* 2. Center Headings and Pulse Icons */
-    .rs-faq .rs-section-title {
-        text-align: center !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        margin-bottom: 25px !important;
-    }
-
-    .rs-faq .top-sub-heading {
-        display: inline-flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        gap: 8px !important;
-        width: 100% !important;
-    }
-
-    /* 3. Center Accordion Container but keep text readable */
-    .rs-faq__content {
-        padding-left: 0 !important;
-        text-align: center !important;
-    }
-
-    .rs-faq__wrapper {
-        text-align: left !important; /* Content inside should stay left-aligned */
-        max-width: 100% !important;
-    }
-
-    /* 4. Center the Contact Button */
-    .rs-faq__link {
-        display: flex !important;
-        justify-content: center !important;
-        margin-top: 35px !important;
-        width: 100% !important;
-    }
-
-    .rs-faq__link .main-btn {
-        padding: 12px 25px !important;
-        font-size: 14px !important;
-        display: inline-flex !important;
-        align-items: center !important;
-    }
-
-    /* 5. Mobile spacing adjustment */
-    .rs-faq {
-        padding-bottom: 70px !important;
-        padding-top: 20px !important;
-    }
-
-    /*BLOGS*/
-
-    /* 1. Center the Main Header */
-    .rs-blog-2 .rs-section-title {
-        text-align: center !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-    }
-
-    .rs-blog-2 .top-sub-heading {
-        display: inline-flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        gap: 10px !important;
-        width: 100% !important;
-    }
-
-    /* 2. Fix Button Breaking into 2 lines */
-    .rs-blog-footer a {
-        white-space: nowrap !important; /* Forces text to stay on one line */
-        display: inline-flex !important;
-        align-items: center !important;
-        gap: 5px !important;
-        font-size: 13px !important;
-        font-weight: 700 !important;
-    }
-
-    /* 3. Sliding "Peek" structural fix */
-    .rs-blog-2 .container {
-        padding-right: 0 !important;
-        max-width: 100% !important;
-    }
-
-    .rs-blog-2 .owl-stage-outer {
-        padding-right: 40px !important; 
-        overflow: visible !important;
-    }
-
-    .rs-blog-2__item {
-        margin: 0 10px !important;
-        border-radius: 15px !important;
-        overflow: hidden !important;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.08) !important;
-    }
-
-    /* 4. Pill-Shaped Navigation Dots */
-    .rs-blog-2 .owl-dots {
-        display: flex !important;
-        justify-content: center !important;
-        margin-top: 30px !important;
-        gap: 8px !important;
-    }
-
-    .rs-blog-2 .owl-dot span {
-        width: 10px !important;
-        height: 10px !important;
-        background: #D1D5DB !important;
-        border-radius: 50% !important;
-        transition: 0.3s ease !important;
-    }
-
-    .rs-blog-2 .owl-dot.active span {
-        width: 25px !important; /* Pill shape */
-        background: #002147 !important; 
-        border-radius: 10px !important;
-    }
-
-    /* 1. Reduce card height and remove extra padding */
-    .branch-card-mini {
-        padding: 15px !important; /* Smaller internal gap */
-        min-height: auto !important; /* Remove any minimum height constraints */
-        height: auto !important; /* Let content define the height */
-        margin-bottom: 15px !important;
-    }
-
-    /* 2. Adjust internal content spacing */
-    .branch-card-mini .rs-content {
-        padding: 0 !important;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    /* 3. Ensure title uses full width to prevent empty horizontal space */
-    .branch-card-mini .title {
-        font-size: 15px !important;
-        line-height: 1.2 !important;
-        margin-bottom: 10px !important;
-        width: 100%;
-        white-space: normal; /* Allows text to wrap to 2 lines if needed */
-    }
-
-    /* 4. Fix for the background shape (Image 3) to prevent it from floating */
-    .branch-card-mini::before, 
-    .branch-card-mini .bg-shape {
-        background-size: cover !important;
-        opacity: 0.1; /* Keeps it subtle */
-    }
-
-    /* 5. Center the "View Details" link tightly under text */
-    .branch-card-mini .rs-link {
-        margin-top: 5px !important;
-        display: inline-block;
-    }
-
-    /* 1. Ensure the container is visible and centered */
-    .branch-slider .owl-nav {
-        display: flex !important; /* Force visibility on mobile */
-        justify-content: center !important;
-        gap: 15px !important; /* Separation between buttons */
-        margin-top: 20px !important;
-        float: none !important;
-    }
-
-    /* 2. Style the separate button parts */
-    .branch-slider .owl-nav .nav-btn {
-        background-image: linear-gradient(130deg, #f24c1a 0%, #f28e26 100%) !important;
-        color: #ffffff !important;
-        padding: 8px 18px !important; /* Slightly more compact for mobile */
-        border-radius: 6px !important;
-        font-size: 13px !important; /* Scaled down for small screens */
-        font-weight: 700 !important;
-        text-transform: uppercase;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        box-shadow: 0px 4px 10px rgba(242, 76, 26, 0.2) !important;
-    }
-
-    /* 3. Reset default Owl Carousel button styles */
-    .branch-slider .owl-nav button.owl-prev, 
-    .branch-slider .owl-nav button.owl-next {
-        background: transparent !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        border: none !important;
-        outline: none !important;
-    }
+    padding: 0 10px;
+  }
+
+  /* 1. CRITICAL: Prevents sticky bar from being hidden by parent overflow settings */
+  html,
+  body {
+    overflow-x: hidden !important;
+    overflow-y: visible !important;
+    /* Required for sticky to function */
+  }
+
+  .program-nav-bar {
+    position: -webkit-sticky !important;
+    /* Safari Support */
+    position: sticky !important;
+    top: 0 !important;
+    /* Anchors to the very top edge */
+    display: block !important;
+    /* Forces visibility */
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 99999 !important;
+    /* Stays above all sections */
+    background: #ffffff !important;
+    width: 100% !important;
+    margin: 0 !important;
+    /* Full width for stability */
+    padding: 10px 0 !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+    border-radius: 0 !important;
+  }
+
+  /* 2. SLIDING ROW: Forces menu items and button into one horizontal line */
+  .nav-flex-wrapper {
+    display: flex !important;
+    /* Flex allows side-by-side layout */
+    flex-wrap: nowrap !important;
+    /* Forces a single row */
+    align-items: center !important;
+    overflow-x: auto !important;
+    /* Enables the horizontal sliding */
+    -webkit-overflow-scrolling: touch;
+    /* Smooth swipe for phones */
+    padding: 0 15px !important;
+  }
+
+  /* Prevent menu and button from shrinking or wrapping */
+  .program-menu {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 25px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    flex-shrink: 0 !important;
+    /* Keeps menu items at original width */
+  }
+
+  .nav-action {
+    display: inline-block !important;
+    margin-left: 25px !important;
+    flex-shrink: 0 !important;
+    /* Keeps button at original width */
+  }
+
+  .program-menu li {
+    list-style: none !important;
+    white-space: nowrap !important;
+    /* Prevents text from wrapping to two lines */
+  }
+
+  /* 3. TYPOGRAPHY & ACTIVE LINK: Blue underline from your demo */
+  .program-menu li a {
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    color: #003366 !important;
+    text-transform: uppercase;
+    padding-bottom: 5px;
+    border-bottom: 3px solid transparent;
+    transition: 0.3s;
+    text-decoration: none !important;
+  }
+
+  .program-menu li a.active-link {
+    color: #007bff !important;
+    /* Blue text */
+    border-bottom: 3px solid #007bff !important;
+    /* Blue underline */
+  }
+
+  /* 4. BUTTON & SCROLLBAR TWEAKS */
+  .navy-enquire-btn {
+    padding: 8px 20px !important;
+    font-size: 12px !important;
+    white-space: nowrap !important;
+    border-radius: 50px !important;
+  }
+
+  .nav-flex-wrapper::-webkit-scrollbar {
+    display: none;
+    /* Keeps the sliding menu looking like an app */
+  }
+
+
+  /* 1. Structural fix for the "peek" sliding effect */
+  .rs-service-2 .container,
+  .rs-featured-2 .container {
+    padding-right: 0 !important;
+    margin-right: 0 !important;
+    max-width: 100% !important;
+  }
+
+  /* Allows the next card to be partially visible on the right */
+  .service-slider-bottom .owl-stage-outer,
+  .featured-slider .owl-stage-outer {
+    padding-right: 40px !important;
+    overflow: visible !important;
+  }
+
+  /* Consistent card height for sliding */
+  .rs-service-2__item,
+  .rs-featured-2__item {
+    margin: 10px 5px !important;
+    height: 350px !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  /* 2. Dots/Pill Buttons Styling */
+  .service-slider-bottom .owl-dots,
+  .featured-slider .owl-dots {
+    display: flex !important;
+    justify-content: center !important;
+    margin-top: 30px !important;
+    gap: 10px !important;
+  }
+
+  .service-slider-bottom .owl-dot span,
+  .featured-slider .owl-dot span {
+    width: 12px !important;
+    height: 12px !important;
+    background: #D1D5DB !important;
+    /* Inactive circle color */
+    border-radius: 50% !important;
+    display: block !important;
+    transition: 0.3s ease !important;
+  }
+
+  /* Active Pill Shape logic from demo */
+  .service-slider-bottom .owl-dot.active span,
+  .featured-slider .owl-dot.active span {
+    width: 30px !important;
+    /* Becomes a pill */
+    background: #002147 !important;
+    /* Matches your navy theme */
+    border-radius: 10px !important;
+  }
+
+  /*ABOUT SECTION*/
+
+
+
+  /* 1. Header Centering */
+  .rs-about-2__main-content .rs-section-title {
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    margin-bottom: 25px !important;
+  }
+
+  /* 2. One-Level Tabs: Mission, Vision, Core Value */
+  .skltbs-tab-group {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    /* Forces single line */
+    justify-content: space-between !important;
+    border-bottom: 1px solid #dee2e6 !important;
+    padding-bottom: 10px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .skltbs-tab-item {
+    flex: 1 !important;
+    /* Equal width for all 3 options */
+    text-align: center !important;
+  }
+
+  .skltbs-tab-group .skltbs-tab {
+    font-size: 13px !important;
+    /* Fits perfectly on narrow screens */
+    font-weight: 700 !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 0 5px 0 !important;
+  }
+
+  .skltbs-tab.skltbs-active {
+    color: #F26F20 !important;
+    border-bottom: 2px solid #F26F20 !important;
+  }
+
+  /* 3. Panel Fix: Prevent Doubled Content */
+  .skltbs-panel {
+    display: none !important;
+    /* Only JS can toggle this */
+  }
+
+  .skltbs-panel.skltbs-active {
+    display: block !important;
+    text-align: left !important;
+  }
+
+  /* 4. One-Level Actions: Button & Play Icon Side-by-Side */
+  /* Target the d-flex you added in the HTML to keep it horizontal */
+  .skltbs-panel .d-flex,
+  .skltbs-panel .main-btn,
+  .skltbs-panel .play-icon {
+    display: inline-flex !important;
+    flex-direction: row !important;
+    /* Keep horizontal */
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    margin: 15px 10px 15px 0 !important;
+  }
+
+  /* Reset the play-icon's margin to sit close to the button */
+  .skltbs-panel .play-icon {
+    margin-left: 5px !important;
+  }
+
+  .skltbs-panel .main-btn {
+    padding: 12px 22px !important;
+    font-size: 14px !important;
+    border-radius: 8px !important;
+    white-space: nowrap !important;
+    /* Prevents text from breaking into 2 lines */
+    background: #F26F20 !important;
+    color: #fff !important;
+  }
+
+  .skltbs-panel .play-icon a {
+    width: 48px !important;
+    height: 48px !important;
+    background: #F26F20 !important;
+    color: #fff !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    box-shadow: 0 0 0 8px rgba(242, 111, 32, 0.2) !important;
+  }
+
+  /*PARTNER COLLEGES*/
+  /* Use the specific class we added in JS */
+  .mobile-grid-active {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+    padding: 10px !important;
+  }
+
+  .rs-brand-slider-item {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06) !important;
+    border: 1px solid #f0f0f0;
+    height: 110px !important;
+  }
+
+  .rs-brand__slider .rs-brand-slider-item a {
+    height: 100% !important;
+    padding: 10px !important;
+  }
+
+  .rs-brand__slider .rs-brand-slider-item a:hover {
+    transform: none !important;
+    /* No lift on mobile touch */
+  }
+
+
+
+  /*TEAM MEMBERS*/
+
+  /* 1. Center the Section Title and Sub-heading */
+  .rs-project .rs-section-title {
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    margin-bottom: 25px !important;
+  }
+
+  /* 2. Center the "View All Team Members" Button */
+  .rs-project__btn {
+    text-align: center !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    margin-bottom: 35px !important;
+  }
+
+  /* Ensure the button itself has the correct shape and spacing */
+  .rs-project__btn .main-btn {
+    display: inline-flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 12px 25px !important;
+    font-size: 14px !important;
+    white-space: nowrap !important;
+  }
+
+  /* 3. Center the heart-pulse icons with the text */
+  .rs-project .top-sub-heading {
+    display: inline-flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+
+
+  /*WHY TO CHOOSE*/
+  /* 1. Hide the entire image column on mobile */
+  .rs-why-choose-2 .col-lg-6:last-child,
+  .rs-why-choose-2__thumb {
+    display: none !important;
+  }
+
+  /* 2. Center the text content and progress bars */
+  .why-choose-2__content {
+    text-align: center !important;
+    padding-right: 0 !important;
+  }
+
+  /* 3. Center the header and pulse icons */
+  .rs-why-choose-2 .rs-section-title {
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  .rs-why-choose-2 .top-sub-heading {
+    display: inline-flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+
+  /* 4. Align Skill Bars for centered layout */
+  .rs-progress-skill {
+    text-align: left !important;
+    /* Keep text left-aligned inside a centered container for readability */
+    margin-bottom: 25px !important;
+  }
+
+  .rs-progress__title {
+    font-size: 14px !important;
+    margin-bottom: 10px !important;
+  }
+
+  /* Adjust section padding for mobile */
+  .rs-why-choose-2 {
+    padding-bottom: 60px !important;
+    padding-top: 40px !important;
+  }
+
+
+  /*COUNTER*/
+  /* 1. Force the row into a 2-column grid */
+  .rs-counter-2 .container>.row:last-child {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    /* Forces 2 columns per level */
+    gap: 15px !important;
+    padding: 0 10px;
+  }
+
+  /* 2. Reset Bootstrap column widths for the grid */
+  .rs-counter-2 .col-sm-6 {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  /* 3. Style each counter item for a balanced look */
+  .rs-counter-2__item {
+    text-align: center !important;
+    padding: 20px 10px !important;
+    margin-bottom: 0 !important;
+    /* Grid handles spacing via 'gap' */
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    background: #fdfdfd;
+    /* Subtle background to distinguish cards */
+    border-radius: 12px;
+    border: 1px solid #f0f0f0;
+  }
+
+  /* 4. Center icons and text */
+  .rs-counter-2__icon {
+    margin-bottom: 15px !important;
+    margin-right: 0 !important;
+    /* Removes desktop side-margin */
+  }
+
+  .rs-counter-2__content {
+    text-align: center !important;
+  }
+
+  .rs-counter-2__content .title {
+    font-size: 22px !important;
+    /* Slightly smaller for mobile grid space */
+    margin-bottom: 5px !important;
+  }
+
+  .rs-counter-2__content span {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    display: block;
+  }
+
+  /* Center the main section title */
+  .rs-counter-2__title {
+    text-align: center !important;
+    margin-bottom: 30px !important;
+  }
+
+
+  /*FAQ*/
+
+  /* 1. Remove FAQ Left Image strictly for mobile */
+  .rs-faq .col-lg-6:first-child,
+  .rs-faq__thumb {
+    display: none !important;
+  }
+
+  /* 2. Center Headings and Pulse Icons */
+  .rs-faq .rs-section-title {
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    margin-bottom: 25px !important;
+  }
+
+  .rs-faq .top-sub-heading {
+    display: inline-flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+
+  /* 3. Center Accordion Container but keep text readable */
+  .rs-faq__content {
+    padding-left: 0 !important;
+    text-align: center !important;
+  }
+
+  .rs-faq__wrapper {
+    text-align: left !important;
+    /* Content inside should stay left-aligned */
+    max-width: 100% !important;
+  }
+
+  /* 4. Center the Contact Button */
+  .rs-faq__link {
+    display: flex !important;
+    justify-content: center !important;
+    margin-top: 35px !important;
+    width: 100% !important;
+  }
+
+  .rs-faq__link .main-btn {
+    padding: 12px 25px !important;
+    font-size: 14px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+  }
+
+  /* 5. Mobile spacing adjustment */
+  .rs-faq {
+    padding-bottom: 70px !important;
+    padding-top: 20px !important;
+  }
+
+  /*BLOGS*/
+
+  /* 1. Center the Main Header */
+  .rs-blog-2 .rs-section-title {
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  .rs-blog-2 .top-sub-heading {
+    display: inline-flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+
+  /* 2. Fix Button Breaking into 2 lines */
+  .rs-blog-footer a {
+    white-space: nowrap !important;
+    /* Forces text to stay on one line */
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+  }
+
+  /* 3. Sliding "Peek" structural fix */
+  .rs-blog-2 .container {
+    padding-right: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .rs-blog-2 .owl-stage-outer {
+    padding-right: 40px !important;
+    overflow: visible !important;
+  }
+
+  .rs-blog-2__item {
+    margin: 0 10px !important;
+    border-radius: 15px !important;
+    overflow: hidden !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  /* 4. Pill-Shaped Navigation Dots */
+  .rs-blog-2 .owl-dots {
+    display: flex !important;
+    justify-content: center !important;
+    margin-top: 30px !important;
+    gap: 8px !important;
+  }
+
+  .rs-blog-2 .owl-dot span {
+    width: 10px !important;
+    height: 10px !important;
+    background: #D1D5DB !important;
+    border-radius: 50% !important;
+    transition: 0.3s ease !important;
+  }
+
+  .rs-blog-2 .owl-dot.active span {
+    width: 25px !important;
+    /* Pill shape */
+    background: #002147 !important;
+    border-radius: 10px !important;
+  }
+
+  /* 1. Reduce card height and remove extra padding */
+  .branch-card-mini {
+    padding: 15px !important;
+    /* Smaller internal gap */
+    min-height: auto !important;
+    /* Remove any minimum height constraints */
+    height: auto !important;
+    /* Let content define the height */
+    margin-bottom: 15px !important;
+  }
+
+  /* 2. Adjust internal content spacing */
+  .branch-card-mini .rs-content {
+    padding: 0 !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* 3. Ensure title uses full width to prevent empty horizontal space */
+  .branch-card-mini .title {
+    font-size: 15px !important;
+    line-height: 1.2 !important;
+    margin-bottom: 10px !important;
+    width: 100%;
+    white-space: normal;
+    /* Allows text to wrap to 2 lines if needed */
+  }
+
+  /* 4. Fix for the background shape (Image 3) to prevent it from floating */
+  .branch-card-mini::before,
+  .branch-card-mini .bg-shape {
+    background-size: cover !important;
+    opacity: 0.1;
+    /* Keeps it subtle */
+  }
+
+  /* 5. Center the "View Details" link tightly under text */
+  .branch-card-mini .rs-link {
+    margin-top: 5px !important;
+    display: inline-block;
+  }
+
+  /* 1. Ensure the container is visible and centered */
+  .branch-slider .owl-nav {
+    display: flex !important;
+    /* Force visibility on mobile */
+    justify-content: center !important;
+    gap: 15px !important;
+    /* Separation between buttons */
+    margin-top: 20px !important;
+    float: none !important;
+  }
+
+  /* 2. Style the separate button parts */
+  .branch-slider .owl-nav .nav-btn {
+    background-image: linear-gradient(130deg, #f24c1a 0%, #f28e26 100%) !important;
+    color: #ffffff !important;
+    padding: 8px 18px !important;
+    /* Slightly more compact for mobile */
+    border-radius: 6px !important;
+    font-size: 13px !important;
+    /* Scaled down for small screens */
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0px 4px 10px rgba(242, 76, 26, 0.2) !important;
+  }
+
+  /* 3. Reset default Owl Carousel button styles */
+  .branch-slider .owl-nav button.owl-prev,
+  .branch-slider .owl-nav button.owl-next {
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    outline: none !important;
+  }
 }
+
 /* Isolated Reset for this section only */
 .course-explorer-fixed {
-    padding: 60px 0 !important; /* Controlled vertical padding */
-    margin: 0 !important;
-    background: #fff;
-    border-top: 1px solid #f0f0f0;
-    border-bottom: 1px solid #f0f0f0;
+  padding: 60px 0 !important;
+  /* Controlled vertical padding */
+  margin: 0 !important;
+  background: #fff;
+  border-top: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
 }
 
 /* Draggable Row */
 .category-slider-wrapper {
-    overflow-x: auto;
-    cursor: grab; /* Shows hand cursor */
-    padding: 5px 0 15px 0;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+  overflow-x: auto;
+  cursor: grab;
+  /* Shows hand cursor */
+  padding: 5px 0 15px 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
-.category-slider-wrapper::-webkit-scrollbar { display: none; }
-.category-slider-wrapper:active { cursor: grabbing; }
+
+.category-slider-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.category-slider-wrapper:active {
+  cursor: grabbing;
+}
 
 .category-track {
-    display: flex;
-    white-space: nowrap;
-    gap: 10px;
-    width: max-content;
-    user-select: none; /* Prevents text selection while dragging */
+  display: flex;
+  white-space: nowrap;
+  gap: 10px;
+  width: max-content;
+  user-select: none;
+  /* Prevents text selection while dragging */
 }
 
 .category-btn {
-    padding: 8px 22px;
-    background: #f8f9fa;
-    border: 1px solid #eee;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 14px;
-    transition: 0.3s;
+  padding: 8px 22px;
+  background: #f8f9fa;
+  border: 1px solid #eee;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: 0.3s;
 }
 
 .category-btn.active {
-    background: #ff5e14;
-    color: #fff;
-    border-color: #ff5e14;
+  background: #ff5e14;
+  color: #fff;
+  border-color: #ff5e14;
 }
 
 /* Branch Cards Compact */
 .branch-card-mini {
-    background: #fff;
-    border: 1px solid #eee;
-    border-radius: 8px;
-    padding: 15px;
-    text-align: center;
-    transition: 0.3s;
-    height: 100%;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 15px;
+  text-align: center;
+  transition: 0.3s;
+  height: 100%;
 }
 
 .branch-card-mini .title {
-    font-size: 15px;
-    margin-bottom: 8px;
-    color: #111;
+  font-size: 15px;
+  margin-bottom: 8px;
+  color: #111;
 }
 
 /* Core Panel Visibility */
 .branch-panel {
-    display: none;
+  display: none;
 }
+
 .branch-panel.active {
-    display: block;
-    animation: fadeIn 0.4s ease;
+  display: block;
+  animation: fadeIn 0.4s ease;
 }
 
 /* Container for both buttons - removes the shared background */
 .branch-slider .owl-nav {
-    display: flex;
-    justify-content: center;
-    gap: 20px; /* This creates the physical space between the two buttons */
-    margin-top: 40px;
-    background: transparent !important; /* Remove the single box background */
-    box-shadow: none !important;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  /* This creates the physical space between the two buttons */
+  margin-top: 40px;
+  background: transparent !important;
+  /* Remove the single box background */
+  box-shadow: none !important;
 }
 
 /* Individual Button Styling */
 .branch-slider .owl-nav .nav-btn {
-    background-image: linear-gradient(130deg, #f24c1a 0%, #f28e26 100%);
-    color: #ffffff;
-    padding: 10px 25px;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    box-shadow: 0px 5px 15px rgba(242, 76, 26, 0.3);
-    transition: all 0.3s ease;
-    cursor: pointer;
+  background-image: linear-gradient(130deg, #f24c1a 0%, #f28e26 100%);
+  color: #ffffff;
+  padding: 10px 25px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0px 5px 15px rgba(242, 76, 26, 0.3);
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 /* Specific Owl Carousel button resets */
-.branch-slider .owl-nav button.owl-prev, 
+.branch-slider .owl-nav button.owl-prev,
 .branch-slider .owl-nav button.owl-next {
-    background: transparent !important; /* Prevents double background */
-    margin: 0 !important;
-    padding: 0 !important;
-    border: none !important;
+  background: transparent !important;
+  /* Prevents double background */
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
 }
 
 /* Remove the divider line used in the previous version */
 .branch-slider .owl-nav button.owl-next::before {
-    display: none !important;
+  display: none !important;
 }
 
 /* Hover Effects */
 .branch-slider .owl-nav .nav-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0px 8px 20px rgba(242, 76, 26, 0.5);
-    filter: brightness(1.1);
+  transform: translateY(-3px);
+  box-shadow: 0px 8px 20px rgba(242, 76, 26, 0.5);
+  filter: brightness(1.1);
 }
+
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* The initial hidden state */
+.reveal {
+  position: relative;
+  opacity: 0;
+  transform: translateY(100px);
+  transition: all 0.8s ease-out;
+}
+
+/* The state when the element is visible in the viewport */
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
 }
