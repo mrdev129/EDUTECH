@@ -627,7 +627,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <div class="col-lg-3 col-md-6 mb-30">
                         <div class="rs-featured-5__item" style="background: linear-gradient(130deg, #002147 0%, #004080 100%);">
                             <div class="rs-thumb">
-                                <img src="assets/images/featured/exam-icon.png" alt="Exams">
+                                <img src="assets/images/featured/ex1.png" alt="Exams">
                             </div>
                             <div class="rs-content">
                                 <h4 class="title" style="color: #fff;">Exams</h4>
@@ -640,7 +640,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <div class="col-lg-3 col-md-6 mb-30">
                         <div class="rs-featured-5__item" style="background: linear-gradient(130deg, #28a745 0%, #34d058 100%);">
                             <div class="rs-thumb">
-                                <img src="assets/images/featured/college-icon.png" alt="Colleges">
+                                <img src="assets/images/featured/clg1.png" alt="Colleges">
                             </div>
                             <div class="rs-content">
                                 <h4 class="title" style="color: #fff;">Colleges</h4>
@@ -653,7 +653,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <div class="col-lg-3 col-md-6 mb-30">
                         <div class="rs-featured-5__item" style="background: linear-gradient(130deg, #F26F20 0%, #FFA500 100%);">
                             <div class="rs-thumb">
-                                <img src="assets/images/featured/course-icon.png" alt="Courses">
+                                <img src="assets/images/featured/co1.png" alt="Courses">
                             </div>
                             <div class="rs-content">
                                 <h4 class="title" style="color: #fff;">Courses</h4>
@@ -666,7 +666,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <div class="col-lg-3 col-md-6 mb-30">
                         <div class="rs-featured-5__item" style="background: linear-gradient(130deg, #6f42c1 0%, #8959e0 100%);">
                             <div class="rs-thumb">
-                                <img src="assets/images/featured/job-icon.png" alt="Jobs">
+                                <img src="assets/images/featured/jb1.png" alt="Jobs">
                             </div>
                             <div class="rs-content">
                                 <h4 class="title" style="color: #fff;">Jobs</h4>
