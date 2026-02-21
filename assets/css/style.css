@@ -8722,9 +8722,17 @@ html.menu-is-open .menu-canvas-layer {
 /*----------------------------------------*/
 
 /* Add these for a staggered effect */
-.reveal:nth-child(2) { transition-delay: 0.2s; }
-.reveal:nth-child(3) { transition-delay: 0.4s; }
-.reveal:nth-child(4) { transition-delay: 0.6s; }
+.reveal:nth-child(2) {
+  transition-delay: 0.2s;
+}
+
+.reveal:nth-child(3) {
+  transition-delay: 0.4s;
+}
+
+.reveal:nth-child(4) {
+  transition-delay: 0.6s;
+}
 
 .rs-featured {
   background-color: transparent;
@@ -20813,6 +20821,27 @@ section {
 /* --- Mobile Header Adjustments --- */
 @media (max-width: 767px) {
 
+  /*Enquiry*/
+  .enquire-modal-content {
+    position: relative !important;
+    margin: 20px auto;
+    width: 90%;
+  }
+
+  .enquire-close {
+    position: absolute !important;
+    top: -12px !important;
+    right: -12px !important;
+    background: #001a35 !important;
+    /* Dark Navy from your image */
+    border: 2px solid #ffffff !important;
+    width: 32px !important;
+    height: 32px !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    z-index: 10001 !important;
+  }
 
   /* 1. Reduce overall header height and margins */
   .edutech-main-header {
@@ -21036,33 +21065,34 @@ section {
     padding: 0 10px;
   }
 
-  /* 1. CRITICAL: Prevents sticky bar from being hidden by parent overflow settings */
+  /* 1. CRITICAL FIXED: Clip allows sticky to function, hidden breaks it */
   html,
   body {
-    overflow-x: hidden !important;
+    overflow-x: clip !important;
     overflow-y: visible !important;
-    /* Required for sticky to function */
+    height: auto !important;
+    /* Ensures the body doesn't have a locked height */
+  }
+
+  /* Ensure no other parent wrapper (like your header-announcement-wrapper) 
+   has overflow: hidden or a fixed height */
+  .header-announcement-wrapper {
+    overflow: visible !important;
   }
 
   .program-nav-bar {
     position: -webkit-sticky !important;
-    /* Safari Support */
     position: sticky !important;
     top: 0 !important;
-    /* Anchors to the very top edge */
-    display: block !important;
-    /* Forces visibility */
-    visibility: visible !important;
-    opacity: 1 !important;
     z-index: 99999 !important;
-    /* Stays above all sections */
     background: #ffffff !important;
     width: 100% !important;
     margin: 0 !important;
-    /* Full width for stability */
     padding: 10px 0 !important;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
     border-radius: 0 !important;
+    /* Optional: Ensure it covers full width on small screens */
+    left: 0;
   }
 
   /* 2. SLIDING ROW: Forces menu items and button into one horizontal line */
@@ -21189,6 +21219,33 @@ section {
     /* Matches your navy theme */
     border-radius: 10px !important;
   }
+
+/*Four Card*/
+.mobile-card-slider {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 20px;
+        scroll-snap-type: x mandatory;
+    }
+
+    .mobile-card-slider [class*="col-"] {
+        flex: 0 0 85% !important; /* Shows 85% of one card and a peek of the next */
+        max-width: 85% !important;
+        scroll-snap-align: center;
+    }
+
+    /* Hide the scrollbar for a clean app-like look */
+    .mobile-card-slider::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .rs-featured-5__item {
+        margin-bottom: 0 !important; /* Prevents vertical stacking gaps */
+        height: 100%;
+    }
+
 
   /*ABOUT SECTION*/
 

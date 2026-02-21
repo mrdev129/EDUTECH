@@ -394,7 +394,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <div class="program-nav-bar">
             <div class="container">
                 <div class="nav-flex-wrapper">
-                    <ul class="program-menu reveal">
+                    <ul class="program-menu">
                         <li><a href="#home">HOME</a></li>
                         <li><a href="#about">ABOUT US</a></li>
                         <li><a href="#course">COURSE</a></li>
@@ -403,7 +403,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         <li><a href="#gallery">GALLERY</a></li>
                         <li><a href="#contact">CONTACT US</a></li>
                     </ul>
-                    <div class="nav-action reveal">
+                    <div class="nav-action">
                         <a href="javascript:void(0);" id="openEnquireNav" class="navy-enquire-btn">
                             ENQUIRE NOW
                         </a>
@@ -621,7 +621,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <!--======== Four Card Start ========-->
         <section class="rs-featured-cards pt-100 pb-100 reveal">
             <div class="container">
-                <div class="row reveal">
+                <div class="row reveal mobile-card-slider">
                     <div class="col-lg-3 col-md-6 mb-30">
                         <div class="rs-featured-5__item" style="background: linear-gradient(130deg, #002147 0%, #004080 100%);">
                             <div class="rs-thumb">
