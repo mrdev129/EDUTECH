@@ -661,7 +661,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                             <div class="rs-content">
                                 <h4 class="title" style="color: #fff;">Courses</h4>
                                 <p style="color: #fff; font-size: 14px;">Browse industry-relevant courses designed for your future success.</p>
-                                <a class="main-btn" href="#" style="padding: 10px 20px; font-size: 14px;">Find Courses</a>
+                                <a class="main-btn" href="management.php" style="padding: 10px 20px; font-size: 14px;">Find Courses</a>
                             </div>
                         </div>
                     </div>
