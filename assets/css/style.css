@@ -22169,3 +22169,53 @@ section {
         margin-top: 40px; /* Matched to FAQ mobile margin-top */
     }
 }
+/* --- Fix for Invisible Text in Four Cards --- */
+
+/* --- Force Images to Full Width in Four Cards --- */
+
+.rs-featured-cards .rs-featured-5__item {
+    padding: 0 !important;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Ensures all cards in the row stay equal height */
+}
+
+.rs-featured-cards .rs-featured-5__item .rs-thumb {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 380px !important; /* Adjust this height to match your banner's vertical scale */
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden;
+}
+
+.rs-featured-cards .rs-featured-5__item .rs-thumb img {
+    width: 100% !important; /* Forces horizontal stretch to container edges */
+    height: 100% !important;
+    /* Use 'cover' to fill without distortion (will crop top/bottom slightly) */
+    /* Use 'fill' if you want the entire banner visible (may stretch horizontally) */
+    object-fit: cover !important; 
+    display: block;
+}
+
+/* Ensure the text area below remains clean and centered */
+.rs-featured-cards .rs-featured-5__item .rs-content {
+    padding: 25px 15px !important;
+    background: #ffffff;
+    text-align: center;
+    flex-grow: 1;
+}
+/* 4. Ensure heading and text are visible and spaced correctly */
+.rs-featured-5__item .rs-content .title {
+    margin-top: 0 !important;
+    margin-bottom: 12px !important;
+    color: #002147 !important; /* High contrast navy blue */
+    font-weight: 800 !important;
+}
+
+.rs-featured-5__item .rs-content p {
+    color: #454545 !important; /* Visible dark grey */
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+    margin-bottom: 20px !important;
+}
