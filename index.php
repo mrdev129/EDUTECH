@@ -210,8 +210,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <link rel="stylesheet" href="assets/css/rs-layouts.css">
 
     <!-- Style CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
 
+    <link rel="stylesheet" href="assets/css/style.css?v=1.2">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Poppins:wght@600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&display=swap" rel="stylesheet">
     <style>
         /* 1. Initial State: Lowered and Invisible */
         .reveal {
@@ -231,8 +236,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             /* Moves to original spot and full size */
             visibility: visible;
         }
-
-        
     </style>
 </head>
 
@@ -399,7 +402,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <ul class="program-menu">
                         <li><a href="#home">HOME</a></li>
                         <li><a href="#about">ABOUT US</a></li>
-                        <li><a href="#course">COURSE</a></li>
+                        <li><a href="management.php">COURSE</a></li>
                         <li><a href="#blogs">BLOGS</a></li>
                         <li><a href="#team">TEAM MEMBERS</a></li>
                         <li><a href="#gallery">GALLERY</a></li>
@@ -749,7 +752,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </div> -->
         <!--======== Service 2 Ends ========-->
 
-        <section id="rs-course-explorer-unique" class="pt-115 pb-120 reveal" style="background: #fff; overflow: hidden;">
+        <section id="rs-course-explorer-unique" class="pt-20 pb-60 reveal" style="background: #fff; overflow: hidden;">
             <div class="container">
                 <div class="rs-section-title black text-center mb-50">
                     <div class="top-sub-heading">
@@ -837,7 +840,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
         <!--======== About 2 Start ========-->
-        <section id="rs-about" class="rs-about-2 pt-120 pb-30 reveal">
+        <!-- <section id="rs-about" class="rs-about-2 pt-120 pb-30 reveal"> -->
+        <section id="rs-about" class="rs-about-2 pt-60 pb-10 reveal">
             <div id="about" class="container">
                 <div class="row align-items-center">
 
@@ -1827,121 +1831,121 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
         <!--======== Footer 2 Start ========-->
-        
+
         <footer id="rs-contact" class="rs-footer rs-footer-2 reveal">
             <section class="rs-contact-page pt-120 pb-120">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="rs-contact-page__info">
-                    <div class="rs-section-title black">
-                        <h3 class="title split-in-fade">Get in touch with us</h3>
-                        <p>Fill out the form below and our admission experts will contact you to discuss suitable courses, colleges, budget options, and hostel facilities based on your preferences.</p>
-                        <p></p>
-                    </div>
-                    
-                    <div class="rs-contact-page__info-box">
-                        <div class="row">
-                            <div class="col-lg-8">
-                                <h5 class="title mb-15">Head Office (India):</h5>
-                                <div class="info-box-item">
-                                    <div class="rs-info-icon">
-                                        <i class="ri-map-2-line"></i>
-                                    </div>
-                                    <div class="rs-info-contact">
-                                        <span>Address</span>
-                                        <h5 class="title">
-                                            HIG-141 K6 (A), 1st Floor 
-                                            Kalinga Nagar <br>PIN - 751019
-                                            Bhubaneswar, Odisha
-                                        </h5>
-                                    </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="rs-contact-page__info">
+                                <div class="rs-section-title black">
+                                    <h3 class="title split-in-fade">Get in touch with us</h3>
+                                    <p>Fill out the form below and our admission experts will contact you to discuss suitable courses, colleges, budget options, and hostel facilities based on your preferences.</p>
+                                    <p></p>
                                 </div>
-                                <div class="info-box-item mb-15">
-                                    <div class="rs-info-icon">
-                                        <i class="ri-phone-line"></i>
-                                    </div>
-                                    <div class="rs-info-contact">
-                                        <span>Call Us</span>
-                                        <h5 class="title"><a href="tel:+919876543210">+91 98765 43210</a></h5>
-                                    </div>
-                                </div>
-                                <div class="info-box-item">
-                                    <div class="rs-info-icon">
-                                        <i class="ri-mail-send-line"></i>
-                                    </div>
-                                    <div class="rs-info-contact">
-                                        <span>Email Us</span>
-                                        <h5 class="title"><a href="mailto:edutechadmissionexperts@gmail.com">edutechadmissionexperts@gmail.com</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
 
-                    <div class="rs-contact-page__info-social mt-20">
-                        <h5 class="title">Follow Us:</h5>
-                        <ul>
-                            <li><a href="#"><i class="ri-facebook-fill"></i></a></li>
-                            <li><a href="#"><i class="ri-instagram-fill"></i></a></li>
-                            <li><a href="#"><i class="ri-linkedin-fill"></i></a></li>
-                            <li><a href="#"><i class="ri-youtube-fill"></i></a></li>
-                            <li><a href="#"><i class="ri-whatsapp-fill"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+                                <div class="rs-contact-page__info-box">
+                                    <div class="row">
+                                        <div class="col-lg-8">
+                                            <h5 class="title mb-15">Head Office (India):</h5>
+                                            <div class="info-box-item">
+                                                <div class="rs-info-icon">
+                                                    <i class="ri-map-2-line"></i>
+                                                </div>
+                                                <div class="rs-info-contact">
+                                                    <span>Address</span>
+                                                    <h5 class="title">
+                                                        HIG-141 K6 (A), 1st Floor
+                                                        Kalinga Nagar <br>PIN - 751019
+                                                        Bhubaneswar, Odisha
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                            <div class="info-box-item mb-15">
+                                                <div class="rs-info-icon">
+                                                    <i class="ri-phone-line"></i>
+                                                </div>
+                                                <div class="rs-info-contact">
+                                                    <span>Call Us</span>
+                                                    <h5 class="title"><a href="tel:+919876543210">+91 98765 43210</a></h5>
+                                                </div>
+                                            </div>
+                                            <div class="info-box-item">
+                                                <div class="rs-info-icon">
+                                                    <i class="ri-mail-send-line"></i>
+                                                </div>
+                                                <div class="rs-info-contact">
+                                                    <span>Email Us</span>
+                                                    <h5 class="title"><a href="mailto:edutechadmissionexperts@gmail.com">edutechadmissionexperts@gmail.com</a></h5>
+                                                </div>
+                                            </div>
+                                        </div>
 
-            <div class="col-lg-6">
-                <div class="rs-contact-page__content">
-                    <div class="rs-section-title black">
-                        <h3 class="title split-in-fade">Let's discuss with us</h3>
-                        <p>Fill out the form below and our admission experts will contact you to discuss suitable courses, colleges, budget options, and hostel facilities based on your preferences.</p>
-                    </div>
+                                    </div>
+                                </div>
 
-                    <form id="contact-form" action="" method="post">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="input-box">
-                                    <input type="text" id="name" name="name" placeholder="Full Name">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="input-box">
-                                    <input type="email" id="email" name="email" placeholder="Email Address">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="input-box">
-                                    <input type="text" id="topic" name="topic" placeholder="Preferred Course">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="input-box">
-                                    <input type="text" id="phone" name="phone" placeholder="Mobile Number">
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="input-box">
-                                    <textarea name="message" id="message" placeholder="Tell us about your preferred city, budget range, or any specific requirement..."></textarea>
-                                    <button type="submit" class="main-btn">Submit Inquiry <i class="ri-arrow-right-fill"></i></button>
+                                <div class="rs-contact-page__info-social mt-20">
+                                    <h5 class="title">Follow Us:</h5>
+                                    <ul>
+                                        <li><a href="#"><i class="ri-facebook-fill"></i></a></li>
+                                        <li><a href="#"><i class="ri-instagram-fill"></i></a></li>
+                                        <li><a href="#"><i class="ri-linkedin-fill"></i></a></li>
+                                        <li><a href="#"><i class="ri-youtube-fill"></i></a></li>
+                                        <li><a href="#"><i class="ri-whatsapp-fill"></i></a></li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
-                    </form>
-                    <!-- <p id="form-messages" class="form-message"></p> -->
+
+                        <div class="col-lg-6">
+                            <div class="rs-contact-page__content">
+                                <div class="rs-section-title black">
+                                    <h3 class="title split-in-fade">Let's discuss with us</h3>
+                                    <p>Fill out the form below and our admission experts will contact you to discuss suitable courses, colleges, budget options, and hostel facilities based on your preferences.</p>
+                                </div>
+
+                                <form id="contact-form" action="" method="post">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="input-box">
+                                                <input type="text" id="name" name="name" placeholder="Full Name">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="input-box">
+                                                <input type="email" id="email" name="email" placeholder="Email Address">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="input-box">
+                                                <input type="text" id="topic" name="topic" placeholder="Preferred Course">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="input-box">
+                                                <input type="text" id="phone" name="phone" placeholder="Mobile Number">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="input-box">
+                                                <textarea name="message" id="message" placeholder="Tell us about your preferred city, budget range, or any specific requirement..."></textarea>
+                                                <button type="submit" class="main-btn">Submit Inquiry <i class="ri-arrow-right-fill"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <!-- <p id="form-messages" class="form-message"></p> -->
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </section>
+            <!--======== Contact Page Ends ========-->
+            <!--======== Contact Map Start ========-->
+            <div class="rs-contact-map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3743.4911157931533!2d85.83120177469385!3d20.238456914454027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a19a726c8ffc807%3A0x212845f89456a2cd!2sLingaraj%20Temple!5e0!3m2!1sen!2sin!4v1771681075912!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
-        </div>
-    </div>
-</section>
-    <!--======== Contact Page Ends ========-->
-<!--======== Contact Map Start ========-->
-    <div class="rs-contact-map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3743.4911157931533!2d85.83120177469385!3d20.238456914454027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a19a726c8ffc807%3A0x212845f89456a2cd!2sLingaraj%20Temple!5e0!3m2!1sen!2sin!4v1771681075912!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
-    <!--======== Contact Map Ends ========-->
+            <!--======== Contact Map Ends ========-->
             <div class="rs-footer__main-box">
                 <div class="container">
                     <div class="row">

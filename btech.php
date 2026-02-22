@@ -251,6 +251,45 @@ body{
     opacity: 1;
     transform: scale(1);
 }
+
+/* --- Scrollable Sidebar Container (Updated for 6 Items) --- */
+.course-list {
+    list-style: none;
+    /* Height adjusted to show exactly 6 items clearly */
+    max-height: 410px; 
+    overflow-y: auto;  /* Enables vertical scrolling */
+    padding-right: 10px; /* Space for the scrollbar */
+    margin-bottom: 20px;
+    /* Smooth transition for active state changes */
+    scroll-behavior: smooth;
+}
+
+/* --- Custom Scrollbar Styling --- */
+.course-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.course-list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.course-list::-webkit-scrollbar-thumb {
+    background: #F26F20; /* Your Brand Orange */
+    border-radius: 10px;
+}
+
+.course-list::-webkit-scrollbar-thumb:hover {
+    background: #f28e26;
+}
+
+/* Sidebar behavior */
+.stream-sidebar {
+    position: sticky;
+    top: 100px; 
+    height: fit-content;
+    max-height: 85vh; 
+}
 </style>
 
 </head>

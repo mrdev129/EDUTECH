@@ -251,6 +251,44 @@ body{
     opacity: 1;
     transform: scale(1);
 }
+
+/* --- SCROLLABLE SIDEBAR CONTAINER --- */
+.course-list {
+    list-style: none;
+    /* Height adjusted for 6 visible options before scrolling */
+    max-height: 410px; 
+    overflow-y: auto;  /* Enables vertical scrolling */
+    padding-right: 10px; /* Space for the scrollbar */
+    margin-bottom: 20px;
+    scroll-behavior: smooth;
+}
+
+/* --- Custom Scrollbar Styling (Matches Theme) --- */
+.course-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.course-list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.course-list::-webkit-scrollbar-thumb {
+    background: #F26F20; /* Your Brand Orange */
+    border-radius: 10px;
+}
+
+.course-list::-webkit-scrollbar-thumb:hover {
+    background: #f28e26;
+}
+
+/* Ensure the Sidebar remains sticky while scrolling content */
+.stream-sidebar {
+    position: sticky;
+    top: 100px; 
+    height: fit-content;
+    max-height: 85vh; 
+}
 </style>
 
 </head>
@@ -312,7 +350,7 @@ body{
 <!-- RIGHT SIDEBAR -->
 <div class="stream-sidebar">
 
-    <div class="stream-sidebar">
+    
     <h4 class="sidebar-title">BBA Specializations</h4>
     <ul class="course-list">
         <li class="active" onclick="changeCourse('finance', this)">Finance</li>
@@ -323,7 +361,7 @@ body{
         <li onclick="changeCourse('retail', this)">Retail Management</li>
     </ul>
     <a href="#" class="enquiry-btn">Enquiry Now</a>
-</div>
+
     
 
 </div>

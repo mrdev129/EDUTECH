@@ -12517,25 +12517,25 @@ html.menu-is-open .menu-canvas-layer {
   opacity: 1 !important;
 }
 
-.rs-brand__top-title {
+/* .rs-brand__top-title {
   text-align: center;
   margin-bottom: 50px;
   font-weight: 400;
   font-size: 20px;
-  color: #f26522;
+  color: #f26522; */
   /* Orange Color */
-  display: flex;
+  /* display: flex;
   align-items: center;
   justify-content: center;
   gap: 15px;
-}
+} */
 
-/* Heartbeat icons color */
+/* Heartbeat icons color
 .rs-brand__top-title img {
   height: 18px;
   width: auto;
   filter: brightness(0) saturate(100%) invert(52%) sepia(87%) saturate(1826%) hue-rotate(347deg) brightness(99%) contrast(96%);
-}
+} */
 
 /* ================= MOBILE RESPONSIVE ================= */
 
@@ -20317,7 +20317,7 @@ section {
 } */
 
 /* Navy Enquire Button */
-.navy-enquire-btn {
+/* .navy-enquire-btn {
   background: var(--edutech-navy);
   color: #ffffff !important;
   padding: 10px 30px;
@@ -20327,6 +20327,25 @@ section {
   text-decoration: none;
   transition: 0.3s;
   display: inline-block;
+} */
+
+/* Update the Enquire Now button font */
+.navy-enquire-btn {
+    font-family: 'Montserrat', sans-serif !important;
+    /* font-family: 'Playfair Display', serif !important; */
+    /* font-family: 'Plus Jakarta Sans', sans-serif !important; */
+    /* font-family: 'Fraunces', serif !important; */
+    
+    background: var(--edutech-navy);
+    color: #ffffff !important;
+    padding: 10px 30px;
+    border-radius: 50px;
+    font-size: 13px; /* Slightly adjusted for the new font balance */
+    font-weight: 800; /* Extra bold for the CTA button */
+    text-decoration: none;
+    transition: 0.3s;
+    display: inline-block;
+    letter-spacing: 1px;
 }
 
 .navy-enquire-btn:hover {
@@ -20381,20 +20400,23 @@ section {
   flex-grow: 1;
 }
 
+/* Update the main menu links */
 .program-menu li a {
-  color: #003366;
-  font-size: 14px;
-  font-weight: 700 !important;
-  text-transform: uppercase;
-  text-decoration: none;
-  display: inline-block;
-
-  /* ANTI-BLUR FIX: Forces GPU rendering to keep text sharp during scale */
-  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), color 0.3s ease;
-  backface-visibility: hidden;
-  -webkit-font-smoothing: antialiased;
-  transform: translateZ(0);
-  will-change: transform;
+    /* Changing font to Montserrat for a premium feel */
+    font-family: 'Montserrat', sans-serif !important;
+    
+    color: #003366;
+    font-size: 14px;
+    font-weight: 700 !important; /* Bold weights feel more premium in nav bars */
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), color 0.3s ease;
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    transform: translateZ(0);
+    will-change: transform;
+    letter-spacing: 0.5px; /* Slight letter spacing adds a professional touch */
 }
 
 .program-menu li a:hover {
@@ -21220,31 +21242,33 @@ section {
     border-radius: 10px !important;
   }
 
-/*Four Card*/
-.mobile-card-slider {
-        display: flex !important;
-        flex-wrap: nowrap !important;
-        overflow-x: auto !important;
-        -webkit-overflow-scrolling: touch;
-        padding-bottom: 20px;
-        scroll-snap-type: x mandatory;
-    }
+  /*Four Card*/
+  .mobile-card-slider {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 20px;
+    scroll-snap-type: x mandatory;
+  }
 
-    .mobile-card-slider [class*="col-"] {
-        flex: 0 0 85% !important; /* Shows 85% of one card and a peek of the next */
-        max-width: 85% !important;
-        scroll-snap-align: center;
-    }
+  .mobile-card-slider [class*="col-"] {
+    flex: 0 0 85% !important;
+    /* Shows 85% of one card and a peek of the next */
+    max-width: 85% !important;
+    scroll-snap-align: center;
+  }
 
-    /* Hide the scrollbar for a clean app-like look */
-    .mobile-card-slider::-webkit-scrollbar {
-        display: none;
-    }
-    
-    .rs-featured-5__item {
-        margin-bottom: 0 !important; /* Prevents vertical stacking gaps */
-        height: 100%;
-    }
+  /* Hide the scrollbar for a clean app-like look */
+  .mobile-card-slider::-webkit-scrollbar {
+    display: none;
+  }
+
+  .rs-featured-5__item {
+    margin-bottom: 0 !important;
+    /* Prevents vertical stacking gaps */
+    height: 100%;
+  }
 
 
   /*ABOUT SECTION*/
@@ -21895,152 +21919,253 @@ section {
    ========================================================================== */
 
 /* 1. SEPARATION: Creates space between the top Pill and the Container */
-.stream-pill-wrapper { 
-    z-index: 10; 
-    margin-bottom: 25px; /* Creates the gap like your Management section */
+.stream-pill-wrapper {
+  z-index: 10;
+  margin-bottom: 25px;
+  /* Creates the gap like your Management section */
 }
 
 /* 2. PILL STYLE: Solid Navy Blue */
 .stream-floating-pill {
-    background: #002147; /* Theme Navy */
-    color: #ffffff;
-    padding: 12px 60px;
-    border-radius: 50px;
-    font-weight: 800;
-    display: inline-block;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
-    text-transform: uppercase;
+  background: #002147;
+  /* Theme Navy */
+  color: #ffffff;
+  padding: 12px 60px;
+  border-radius: 50px;
+  font-weight: 800;
+  display: inline-block;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+  text-transform: uppercase;
 }
 
 /* 3. WRAPPER: No Outer Border with clean shadow */
 .stream-grid-wrapper {
-    background: #ffffff;
-    border-radius: 15px;
-    overflow: hidden;
-    border: none !important; /* Removed outer border as requested */
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  background: #ffffff;
+  border-radius: 15px;
+  overflow: hidden;
+  border: none !important;
+  /* Removed outer border as requested */
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
 }
 
 /* 4. HEADER: Orange Gradient */
 .stream-orange-header {
-    background: linear-gradient(90deg, #F26F20 0%, #ff8c42 100%); /* Theme Orange */
-    padding: 20px;
-    border-radius: 8px;
+  background: linear-gradient(90deg, #F26F20 0%, #ff8c42 100%);
+  /* Theme Orange */
+  padding: 20px;
+  border-radius: 8px;
 }
 
 /* 5. SIDEBAR: Reference 2 Pill Style (Dynamic) */
 .right-sidebar-panel.reference-style {
-    background: #2563eb; /* Primary Blue sidebar */
-    display: flex;
-    flex-direction: column;
+  background: #2563eb;
+  /* Primary Blue sidebar */
+  display: flex;
+  flex-direction: column;
 }
 
 .sidebar-pill {
-    background: rgba(255, 255, 255, 0.15); /* Transparent blue for inactive */
-    color: #ffffff;
-    padding: 15px 25px;
-    margin-bottom: 12px;
-    border-radius: 10px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.15);
+  /* Transparent blue for inactive */
+  color: #ffffff;
+  padding: 15px 25px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 /* Dynamic Active State: White background + Navy text */
 .sidebar-pill.active {
-    background: #ffffff !important; 
-    color: #002147 !important; 
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); /* */
+  background: #ffffff !important;
+  color: #002147 !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  /* */
 }
 
 /* 6. DESCRIPTION & TAGS */
 .description-box {
-    background: #f9fbff;
-    border-left: 5px solid #F26F20; /* Orange Accent */
-    padding: 20px;
+  background: #f9fbff;
+  border-left: 5px solid #F26F20;
+  /* Orange Accent */
+  padding: 20px;
 }
 
 .spec-tag {
-    background: #f8f9fa;
-    color: #002147;
-    padding: 8px 18px;
-    border-radius: 6px;
-    border: 1px solid #eee;
-    margin: 5px;
-    display: inline-flex;
-    align-items: center;
-    font-weight: 700;
+  background: #f8f9fa;
+  color: #002147;
+  padding: 8px 18px;
+  border-radius: 6px;
+  border: 1px solid #eee;
+  margin: 5px;
+  display: inline-flex;
+  align-items: center;
+  font-weight: 700;
 }
 
-.spec-tag i { color: #F26F20; margin-right: 10px; }
+.spec-tag i {
+  color: #F26F20;
+  margin-right: 10px;
+}
 
 /* 7. ENQUIRY BUTTON: Rounded Pill */
 .sidebar-enquiry-btn-rounded {
-    display: block;
-    background: #ffffff;
-    color: #002147;
-    padding: 15px 30px;
-    border-radius: 50px; /* Fully rounded */
-    font-weight: 800;
-    text-decoration: none;
-    text-align: center;
+  display: block;
+  background: #ffffff;
+  color: #002147;
+  padding: 15px 30px;
+  border-radius: 50px;
+  /* Fully rounded */
+  font-weight: 800;
+  text-decoration: none;
+  text-align: center;
 }
 
 /* 8. EXPLORE MORE: Matches Wireframe */
 .explore-more-btn {
-    text-transform: lowercase; /* Per wireframe */
-    border: 1.5px solid #002147;
-    padding: 8px 30px;
-    color: #002147;
-    font-weight: 700;
-    text-decoration: none;
+  text-transform: lowercase;
+  /* Per wireframe */
+  border: 1.5px solid #002147;
+  padding: 8px 30px;
+  color: #002147;
+  font-weight: 700;
+  text-decoration: none;
 }
 
 /* Modal Overlay */
 .enquire-modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 33, 71, 0.85); /* Navy transparent background */
-    z-index: 100000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 33, 71, 0.85);
+  /* Navy transparent background */
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Modal Box */
 .enquire-modal-content {
-    background: #ffffff;
-    width: 90%;
-    max-width: 450px;
-    border-radius: 15px;
-    position: relative;
-    animation: modalSlideIn 0.3s ease-out;
+  background: #ffffff;
+  width: 90%;
+  max-width: 450px;
+  border-radius: 15px;
+  position: relative;
+  animation: modalSlideIn 0.3s ease-out;
 }
 
 /* Close Button Positioned at Top Right */
 .enquire-close {
-    position: absolute;
-    top: -15px;
-    right: -15px;
-    background: #F26F20; /* Theme Orange */
-    color: white;
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 24px;
-    font-weight: bold;
-    border: 3px solid #fff;
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  background: #F26F20;
+  /* Theme Orange */
+  color: white;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: bold;
+  border: 3px solid #fff;
 }
 
 @keyframes modalSlideIn {
-    from { transform: translateY(-50px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
+/* Premium Serif Override */
+.program-nav-bar .program-menu li a, 
+.program-nav-bar .nav-action .navy-enquire-btn {
+    /* Choose your favorite from above and put it here */
+    font-family: 'Fraunces', serif !important; 
+    
+    font-weight: 700 !important;
+    text-transform: uppercase; /* Serifs look very elite in uppercase */
+    letter-spacing: 1px !important; /* Premium fonts need 'air' between letters */
+    font-style: normal !important;
+}
+
+/* Adjust the button specifically so it doesn't look too 'blocky' */
+.program-nav-bar .nav-action .navy-enquire-btn {
+    font-size: 13px !important;
+    padding: 12px 35px !important;
+}
+
+/* Reduce bottom gap of About Section */
+#rs-about.pt-120 {
+    padding-top: 60px !important; /* Reduced from 120px */
+}
+
+#rs-about.pb-30 {
+    padding-bottom: 10px !important; /* Reduced from 30px */
+}
+
+/* Reduce top gap of Course Explorer Section */
+#rs-course-explorer-unique.pt-115 {
+    padding-top: 20px !important; /* Reduced from 115px */
+}
+
+/* 1. Container Styling: Aligns with .rs-faq__content logic */
+.rs-brand .rs-brand__top-title {
+    text-align: center;
+    margin-bottom: 37px; /* Matched to FAQ .rs-section-title margin */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* 2. Text Styling: Matches FAQ Premium Serif Design */
+.rs-brand .rs-brand__top-title span {
+    /* Font Family & Weight */
+    font-family: 'Fraunces', serif !important; 
+    font-weight: 200 !important;
+    
+    /* Size & Elite Spacing */
+    font-size: 20px !important;
+    /* text-transform: uppercase !important; */
+    letter-spacing: 1px !important;
+
+    /* Matching the FAQ Gradient */
+    background: linear-gradient(99.43deg, #f24c1a 0.99%, #f28e26 99.43%) !important;
+    
+    /* Clipping properties to ensure gradient is inside letters */
+    -webkit-background-clip: text !important;
+    background-clip: text !important; 
+    -webkit-text-fill-color: transparent !important;
+    
+    display: inline-block !important;
+}
+
+/* 3. Icon Styling: Ensures alignment and brand color filter */
+.rs-brand .rs-brand__top-title img {
+    height: 18px !important;
+    width: auto !important;
+    vertical-align: middle !important;
+    /* Brand Orange Filter from FAQ logic */
+    filter: brightness(0) saturate(100%) invert(52%) sepia(87%) saturate(1826%) hue-rotate(347deg) brightness(99%) contrast(96%) !important;
+}
+
+/* 4. Responsive Adjustment: Matches FAQ mobile behavior */
+@media only screen and (max-width: 767px) {
+    .rs-brand .rs-brand__top-title {
+        margin-top: 40px; /* Matched to FAQ mobile margin-top */
+    }
+}
