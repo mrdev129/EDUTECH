@@ -285,7 +285,7 @@ $result = $conn->query($sql);
             </a>
           </li> -->
                         <li>
-                            <a href="index-2.php">
+                            <a href="index.php">
                                 <i class="ri-circle-fill circle-icon w-auto"></i>
                                 Student
                             </a>
