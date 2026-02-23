@@ -35,180 +35,171 @@
 <body>
 
   <!-- Theme Customization Structure Start -->
-<div class="body-overlay"></div>
+  <div class="body-overlay"></div>
 
-<button type="button"
-    class="theme-customization__button w-48-px h-48-px bg-primary-600 text-white rounded-circle d-flex justify-content-center align-items-center position-fixed end-0 bottom-0 mb-40 me-40 text-2xxl bg-hover-primary-700" aria-label="Theme Customization Button">
+  <button type="button"
+    class="theme-customization__button w-48-px h-48-px bg-primary-600 text-white rounded-circle d-flex justify-content-center align-items-center position-fixed end-0 bottom-0 mb-40 me-40 text-2xxl bg-hover-primary-700"
+    aria-label="Theme Customization Button">
     <i class="ri-settings-3-line animate-spin"></i>
-</button>
-<div class="theme-customization-sidebar w-100 bg-base h-100vh overflow-y-auto position-fixed end-0 top-0">
+  </button>
+  <div class="theme-customization-sidebar w-100 bg-base h-100vh overflow-y-auto position-fixed end-0 top-0">
     <div class="d-flex align-items-center gap-3 py-16 px-24 justify-content-between border-bottom">
-        <div>
-            <h6 class="text-sm dark:text-white">Theme Settings</h6>
-            <p class="text-xs mb-0 text-neutral-500 dark:text-neutral-200">Customize and preview instantly</p>
-        </div>
-        <button data-slot="button"
-            class="theme-customization-sidebar__close text-neutral-900 bg-transparent text-hover-primary-600 d-flex text-xl">
-            <i class="ri-close-fill"></i>
-        </button>
+      <div>
+        <h6 class="text-sm dark:text-white">Theme Settings</h6>
+        <p class="text-xs mb-0 text-neutral-500 dark:text-neutral-200">Customize and preview instantly</p>
+      </div>
+      <button data-slot="button"
+        class="theme-customization-sidebar__close text-neutral-900 bg-transparent text-hover-primary-600 d-flex text-xl">
+        <i class="ri-close-fill"></i>
+      </button>
     </div>
 
     <div class="d-flex flex-column gap-48 p-24 overflow-y-auto flex-grow-1">
 
-        <div class="theme-setting-item">
-            <h6 class="fw-medium text-primary-light text-md mb-3">Theme Mode</h6>
-            <div class="d-grid grid-cols-3 gap-3 dark-light-mode">
-                <button type="button"
-                    class="theme-btn theme-setting-item__btn d-flex align-items-center justify-content-center h-64-px rounded-3 text-xl active"
-                    data-theme="light" aria-label="light">
-                    <i class="ri-sun-line"></i>
-                </button>
-                <button type="button"
-                    class="theme-btn theme-setting-item__btn d-flex align-items-center justify-content-center h-64-px rounded-3 text-xl"
-                    data-theme="dark" aria-label="dark">
-                    <i class="ri-moon-line"></i>
-                </button>
-                <button type="button"
-                    class="theme-btn theme-setting-item__btn d-flex align-items-center justify-content-center h-64-px rounded-3 text-xl"
-                    data-theme="system" aria-label="system">
-                    <i class="ri-computer-line"></i>
-                </button>
-            </div>
+      <div class="theme-setting-item">
+        <h6 class="fw-medium text-primary-light text-md mb-3">Theme Mode</h6>
+        <div class="d-grid grid-cols-3 gap-3 dark-light-mode">
+          <button type="button"
+            class="theme-btn theme-setting-item__btn d-flex align-items-center justify-content-center h-64-px rounded-3 text-xl active"
+            data-theme="light" aria-label="light">
+            <i class="ri-sun-line"></i>
+          </button>
+          <button type="button"
+            class="theme-btn theme-setting-item__btn d-flex align-items-center justify-content-center h-64-px rounded-3 text-xl"
+            data-theme="dark" aria-label="dark">
+            <i class="ri-moon-line"></i>
+          </button>
+          <button type="button"
+            class="theme-btn theme-setting-item__btn d-flex align-items-center justify-content-center h-64-px rounded-3 text-xl"
+            data-theme="system" aria-label="system">
+            <i class="ri-computer-line"></i>
+          </button>
         </div>
+      </div>
 
-        <div class="theme-setting-item">
-            <h6 class="fw-medium text-primary-light text-md mb-3">Page Direction</h6>
-            <div class="d-grid grid-cols-2 gap-3">
-                <button type="button"
-                    class="theme-setting-item__btn ltr-mode-btn d-flex align-items-center justify-content-center gap-2 h-56-px rounded-3 text-xl" aria-label="LTR">
-                    <span><i class="ri-align-item-left-line"></i></span>
-                    <span class="h6 text-sm font-medium mb-0">LTR</span>
-                </button>
+      <div class="theme-setting-item">
+        <h6 class="fw-medium text-primary-light text-md mb-3">Page Direction</h6>
+        <div class="d-grid grid-cols-2 gap-3">
+          <button type="button"
+            class="theme-setting-item__btn ltr-mode-btn d-flex align-items-center justify-content-center gap-2 h-56-px rounded-3 text-xl"
+            aria-label="LTR">
+            <span><i class="ri-align-item-left-line"></i></span>
+            <span class="h6 text-sm font-medium mb-0">LTR</span>
+          </button>
 
-                <button type="button"
-                    class="theme-setting-item__btn rtl-mode-btn d-flex align-items-center justify-content-center gap-2 h-56-px rounded-3 text-xl" aria-label="RTL">
-                    <span class="h6 text-sm font-medium mb-0">RTL</span>
-                    <span><i class="ri-align-item-right-line"></i></span>
-                </button>
-            </div>
+          <button type="button"
+            class="theme-setting-item__btn rtl-mode-btn d-flex align-items-center justify-content-center gap-2 h-56-px rounded-3 text-xl"
+            aria-label="RTL">
+            <span class="h6 text-sm font-medium mb-0">RTL</span>
+            <span><i class="ri-align-item-right-line"></i></span>
+          </button>
         </div>
+      </div>
 
-        <div class="theme-setting-item">
-            <h6 class="fw-medium text-primary-light text-md mb-3">Color Schema</h6>
-            <div class="d-grid grid-cols-3 gap-3">
-                <button type="button"
-                    class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
-                    data-color="base" aria-label="Base">
-                    <span class="color-picker-btn__box h-40-px w-100 rounded-3"
-                        style="background-color: #25A194;"></span>
-                    <span class="fw-medium mt-1" style="color: #25A194;">Base</span>
-                </button>
-                <button type="button"
-                    class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
-                    data-color="red" aria-label="Red">
-                    <span class="color-picker-btn__box h-40-px w-100 rounded-3"
-                        style="background-color: #dc2626;"></span>
-                    <span class="fw-medium mt-1" style="color: #dc2626;">Red</span>
-                </button>
-                <button type="button"
-                    class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
-                    data-color="blue" aria-label="Blue">
-                    <span class="color-picker-btn__box h-40-px w-100 rounded-3"
-                        style="background-color: #2563eb;"></span>
-                    <span class="fw-medium mt-1" style="color: #2563eb;">Blue</span>
-                </button>
-                <button type="button"
-                    class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
-                    data-color="yellow" aria-label="Yellow">
-                    <span class="color-picker-btn__box h-40-px w-100 rounded-3"
-                        style="background-color: #ff9f29;"></span>
-                    <span class="fw-medium mt-1" style="color: #ff9f29;">Yellow</span>
-                </button>
-                <button type="button"
-                    class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
-                    data-color="cyan" aria-label="Cyan">
-                    <span class="color-picker-btn__box h-40-px w-100 rounded-3"
-                        style="background-color: #00b8f2;"></span>
-                    <span class="fw-medium mt-1" style="color: #00b8f2;">Cyan</span>
-                </button>
-                <button type="button"
-                    class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
-                    data-color="violet" aria-label="Violet">
-                    <span class="color-picker-btn__box h-40-px w-100 rounded-3"
-                        style="background-color: #7c3aed;"></span>
-                    <span class="fw-medium mt-1" style="color: #7c3aed;">Violet</span>
-                </button>
-            </div>
+      <div class="theme-setting-item">
+        <h6 class="fw-medium text-primary-light text-md mb-3">Color Schema</h6>
+        <div class="d-grid grid-cols-3 gap-3">
+          <button type="button" class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
+            data-color="base" aria-label="Base">
+            <span class="color-picker-btn__box h-40-px w-100 rounded-3" style="background-color: #25A194;"></span>
+            <span class="fw-medium mt-1" style="color: #25A194;">Base</span>
+          </button>
+          <button type="button" class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
+            data-color="red" aria-label="Red">
+            <span class="color-picker-btn__box h-40-px w-100 rounded-3" style="background-color: #dc2626;"></span>
+            <span class="fw-medium mt-1" style="color: #dc2626;">Red</span>
+          </button>
+          <button type="button" class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
+            data-color="blue" aria-label="Blue">
+            <span class="color-picker-btn__box h-40-px w-100 rounded-3" style="background-color: #2563eb;"></span>
+            <span class="fw-medium mt-1" style="color: #2563eb;">Blue</span>
+          </button>
+          <button type="button" class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
+            data-color="yellow" aria-label="Yellow">
+            <span class="color-picker-btn__box h-40-px w-100 rounded-3" style="background-color: #ff9f29;"></span>
+            <span class="fw-medium mt-1" style="color: #ff9f29;">Yellow</span>
+          </button>
+          <button type="button" class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
+            data-color="cyan" aria-label="Cyan">
+            <span class="color-picker-btn__box h-40-px w-100 rounded-3" style="background-color: #00b8f2;"></span>
+            <span class="fw-medium mt-1" style="color: #00b8f2;">Cyan</span>
+          </button>
+          <button type="button" class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
+            data-color="violet" aria-label="Violet">
+            <span class="color-picker-btn__box h-40-px w-100 rounded-3" style="background-color: #7c3aed;"></span>
+            <span class="fw-medium mt-1" style="color: #7c3aed;">Violet</span>
+          </button>
         </div>
+      </div>
 
     </div>
-</div>
-<!-- Theme Customization Structure End -->
+  </div>
+  <!-- Theme Customization Structure End -->
 
   <div class="overlay bg-black bg-opacity-50 w-100 h-100 position-fixed z-9 visibility-hidden opacity-0 duration-300">
   </div>
-<aside class="sidebar">
-  <button type="button" class="sidebar-close-btn">
-    <iconify-icon icon="radix-icons:cross-2"></iconify-icon>
-  </button>
-  <div class="">
-    <div class="sidebar-logo d-flex align-items-center justify-content-between">
-      <a href="index.php" class="">
-        <img src="assets/images/logo.png" alt="site logo" class="light-logo">
-        <img src="assets/images/logo-light.png" alt="site logo" class="dark-logo">
-        <img src="assets/images/logo-icon.png" alt="site logo" class="logo-icon">
-      </a>
-      <button type="button" class="text-xxl d-xl-flex d-none line-height-1 sidebar-toggle text-neutral-500"
-        aria-label="Collapse Sidebar">
-        <i class="ri-contract-left-line"></i>
-      </button>
+  <aside class="sidebar">
+    <button type="button" class="sidebar-close-btn">
+      <iconify-icon icon="radix-icons:cross-2"></iconify-icon>
+    </button>
+    <div class="">
+      <div class="sidebar-logo d-flex align-items-center justify-content-between">
+        <a href="index.php" class="">
+          <img src="assets/images/logo.png" alt="site logo" class="light-logo">
+          <img src="assets/images/logo-light.png" alt="site logo" class="dark-logo">
+          <img src="assets/images/logo-icon.png" alt="site logo" class="logo-icon">
+        </a>
+        <button type="button" class="text-xxl d-xl-flex d-none line-height-1 sidebar-toggle text-neutral-500"
+          aria-label="Collapse Sidebar">
+          <i class="ri-contract-left-line"></i>
+        </button>
+      </div>
     </div>
-  </div>
-  <!-- User Info start -->
-  <div class="mx-16 py-12">
-    <div class="dropdown profile-dropdown">
-      <button type="button"
-        class="profile-dropdown__button d-flex align-items-center justify-content-between p-10 w-100 overflow-hidden bg-neutral-50 radius-12 "
-        data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-        <span class="d-flex align-items-start gap-10">
-          <img src="assets/images/thumbs/leave-request-img2.png" alt="Thumbnail"
-            class="w-40-px h-40-px rounded-circle object-fit-cover flex-shrink-0">
-          <span class="profile-dropdown__contents">
-            <span class="h6 mb-0 text-md d-block text-primary-light">Jone Copper</span>
-            <span class="text-secondary-light text-sm mb-0 d-block">Admin</span>
+    <!-- User Info start -->
+    <div class="mx-16 py-12">
+      <div class="dropdown profile-dropdown">
+        <button type="button"
+          class="profile-dropdown__button d-flex align-items-center justify-content-between p-10 w-100 overflow-hidden bg-neutral-50 radius-12 "
+          data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+          <span class="d-flex align-items-start gap-10">
+            <img src="assets/images/thumbs/leave-request-img2.png" alt="Thumbnail"
+              class="w-40-px h-40-px rounded-circle object-fit-cover flex-shrink-0">
+            <span class="profile-dropdown__contents">
+              <span class="h6 mb-0 text-md d-block text-primary-light">Jone Copper</span>
+              <span class="text-secondary-light text-sm mb-0 d-block">Admin</span>
+            </span>
           </span>
-        </span>
-        <span class="profile-dropdown__icon pe-8 text-xl d-flex line-height-1">
-          <i class="ri-arrow-right-s-line"></i>
-        </span>
-      </button>
-      <ul class="dropdown-menu dropdown-menu-lg-end border p-12">
-        <li>
-          <a href="student-details.php" 
-            class="dropdown-item rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-2 py-6">
-            <i class="ri-user-3-line"></i>
-            My Profile
-          </a>
-        </li>
-        <li>
-          <a href="general.php"
-            class="dropdown-item rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-2 py-6">
-            <i class="ri-settings-3-line"></i>
-            Setting
-          </a>
-        </li>
-        <li>
-          <a href="login.php"
-            class="dropdown-item rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-2 py-6">
-            <i class="ri-shut-down-line"></i>
-            Log Out
-          </a>
-        </li>
-      </ul>
+          <span class="profile-dropdown__icon pe-8 text-xl d-flex line-height-1">
+            <i class="ri-arrow-right-s-line"></i>
+          </span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-lg-end border p-12">
+          <li>
+            <a href="student-details.php"
+              class="dropdown-item rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-2 py-6">
+              <i class="ri-user-3-line"></i>
+              My Profile
+            </a>
+          </li>
+          <li>
+            <a href="general.php"
+              class="dropdown-item rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-2 py-6">
+              <i class="ri-settings-3-line"></i>
+              Setting
+            </a>
+          </li>
+          <li>
+            <a href="login.php"
+              class="dropdown-item rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-2 py-6">
+              <i class="ri-shut-down-line"></i>
+              Log Out
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
-  <!-- User Info end -->
-  <div class="sidebar-menu-area">
+    <!-- User Info end -->
+    <div class="sidebar-menu-area">
       <ul class="sidebar-menu" id="sidebar-menu">
         <li class="dropdown">
           <a href="javascript:void(0)">
@@ -216,36 +207,12 @@
             <span>Dashboard </span>
           </a>
           <ul class="sidebar-submenu">
-            <!-- <li>
-            <a href="index.php">
-              <i class="ri-circle-fill circle-icon w-auto"></i>
-              School
-            </a>
-          </li> -->
             <li>
-              <a href="index-2.php">
+              <a href="index.php">
                 <i class="ri-circle-fill circle-icon w-auto"></i>
-                Student
+                Home
               </a>
             </li>
-            <!-- <li>
-            <a href="index-3.php">
-              <i class="ri-circle-fill circle-icon w-auto"></i>
-              Teacher
-            </a>
-          </li>
-          <li>
-            <a href="index-4.php">
-              <i class="ri-circle-fill circle-icon w-auto"></i>
-              Parent
-            </a>
-          </li> -->
-            <!-- <li>
-            <a href="index-5.php">
-              <i class="ri-circle-fill circle-icon w-auto"></i>
-              LMS 
-            </a>
-          </li> -->
           </ul>
         </li>
         <li class="dropdown">
@@ -292,44 +259,57 @@
             </li>
           </ul>
         </li>
-        <!-- <li class="dropdown">
+        <li class="dropdown">
           <a href="javascript:void(0)">
             <i class="ri-user-follow-line"></i>
-            <span>Teachers</span>
+            <span>About</span>
           </a>
           <ul class="sidebar-submenu">
             <li>
-              <a href="add-new-teacher.php">
-                <i class="ri-circle-fill circle-icon w-auto"></i>
-                Add New Teacher
-              </a>
-            </li>
-            <li>
-              <a href="teacher-list.php">
-                <i class="ri-circle-fill circle-icon w-auto"></i>
-                Teacher List
-              </a>
-            </li>
-            <li>
-              <a href="edit-teacher.php">
-                <i class="ri-circle-fill circle-icon w-auto"></i>
-                Edit Teacher
-              </a>
-            </li>
-            <li>
-              <a href="teacher-details.php">
-                <i class="ri-circle-fill circle-icon w-auto"></i>
-                Teacher Details
-              </a>
-            </li>
-            <li>
-              <a href="teacher-timetable.php">
-                <i class="ri-circle-fill circle-icon w-auto"></i>
-                Teacher Timetable
+              <a href="about-section.php">
+                <i class="ti-info-alt"></i>
+                <span>About update</span>
               </a>
             </li>
           </ul>
-        </li> -->
+        </li>
+        <li class="dropdown">
+          <a href="javascript:void(0)">
+            <i class="ri-message-2-line"></i>
+            <span>Responses</span>
+          </a>
+          <ul class="sidebar-submenu">
+
+            <li>
+              <a href="response.php?filter=today">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                <span>Today's Inquiries</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="response.php?filter=unread">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                <span>Unread Inquiries</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="response.php?filter=read">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                <span>Read Inquiries</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="response.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                <span>All Inquiries</span>
+              </a>
+            </li>
+
+          </ul>
+        </li>
         <!-- <li class="dropdown">
           <a href="javascript:void(0)">
             <i class="ri-account-circle-line"></i>
@@ -701,1340 +681,1021 @@
         </li> -->
       </ul>
     </div>
-</aside>
+  </aside>
 
-<main class="dashboard-main">
-  <div class="navbar-header shadow-1">
-  <div class="row align-items-center justify-content-between">
-    <div class="col-auto">
-      <div class="d-flex flex-wrap align-items-center gap-4">
-        <button type="button" class="sidebar-mobile-toggle" aria-label="Sidebar Mobile Toggler Button">
-          <iconify-icon icon="heroicons:bars-3-solid" class="icon"></iconify-icon>
-        </button>
-        <form class="navbar-search">
-          <input type="text" class="bg-transparent" name="search" placeholder="Search">
-          <iconify-icon icon="ion:search-outline" class="icon"></iconify-icon>
-        </form>
-      </div>
-    </div>
-    <div class="col-auto">
-      <div class="d-flex flex-wrap align-items-center gap-3">
-        <button type="button" data-theme-toggle
-          class="w-40-px h-40-px bg-neutral-200 rounded-circle d-flex justify-content-center align-items-center" aria-label="Dark & Light Mode Button"></button>
-        <div class="dropdown d-inline-block">
-          <button
-            class="has-indicator w-40-px h-40-px bg-neutral-200 rounded-circle d-flex justify-content-center align-items-center"
-            type="button" data-bs-toggle="dropdown" aria-label="Language Change Button">
-            <img src="assets/images/flags/flag1.png" alt="image" class="w-24 h-24 object-fit-cover rounded-circle">
-          </button>
-          <div class="dropdown-menu to-top dropdown-menu-sm">
-            <div
-              class="py-12 px-16 radius-8 bg-primary-50 mb-16 d-flex align-items-center justify-content-between gap-2">
-              <div>
-                <h6 class="text-lg text-primary-light fw-semibold mb-0">Choose Your Language</h6>
-              </div>
-            </div>
-
-            <div class="max-h-400-px overflow-y-auto scroll-sm pe-8">
-              <div class="form-check style-check d-flex align-items-center justify-content-between mb-16">
-                <label class="form-check-label line-height-1 fw-medium text-secondary-light" for="english">
-                  <span class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
-                    <img src="assets/images/flags/flag1.png" alt="Image"
-                      class="w-36-px h-36-px bg-success-subtle text-success-main rounded-circle flex-shrink-0">
-                    <span class="text-md fw-semibold mb-0">English</span>
-                  </span>
-                </label>
-                <input class="form-check-input" type="radio" name="crypto" id="english">
-              </div>
-
-              <div class="form-check style-check d-flex align-items-center justify-content-between mb-16">
-                <label class="form-check-label line-height-1 fw-medium text-secondary-light" for="japan">
-                  <span class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
-                    <img src="assets/images/flags/flag2.png" alt="Image"
-                      class="w-36-px h-36-px bg-success-subtle text-success-main rounded-circle flex-shrink-0">
-                    <span class="text-md fw-semibold mb-0">Japan</span>
-                  </span>
-                </label>
-                <input class="form-check-input" type="radio" name="crypto" id="japan">
-              </div>
-
-              <div class="form-check style-check d-flex align-items-center justify-content-between mb-16">
-                <label class="form-check-label line-height-1 fw-medium text-secondary-light" for="france">
-                  <span class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
-                    <img src="assets/images/flags/flag3.png" alt="Image"
-                      class="w-36-px h-36-px bg-success-subtle text-success-main rounded-circle flex-shrink-0">
-                    <span class="text-md fw-semibold mb-0">France</span>
-                  </span>
-                </label>
-                <input class="form-check-input" type="radio" name="crypto" id="france">
-              </div>
-
-              <div class="form-check style-check d-flex align-items-center justify-content-between mb-16">
-                <label class="form-check-label line-height-1 fw-medium text-secondary-light" for="germany">
-                  <span class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
-                    <img src="assets/images/flags/flag4.png" alt="Image"
-                      class="w-36-px h-36-px bg-success-subtle text-success-main rounded-circle flex-shrink-0">
-                    <span class="text-md fw-semibold mb-0">Germany</span>
-                  </span>
-                </label>
-                <input class="form-check-input" type="radio" name="crypto" id="germany">
-              </div>
-
-              <div class="form-check style-check d-flex align-items-center justify-content-between mb-16">
-                <label class="form-check-label line-height-1 fw-medium text-secondary-light" for="korea">
-                  <span class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
-                    <img src="assets/images/flags/flag5.png" alt="Image"
-                      class="w-36-px h-36-px bg-success-subtle text-success-main rounded-circle flex-shrink-0">
-                    <span class="text-md fw-semibold mb-0">South Korea</span>
-                  </span>
-                </label>
-                <input class="form-check-input" type="radio" name="crypto" id="korea">
-              </div>
-
-              <div class="form-check style-check d-flex align-items-center justify-content-between mb-16">
-                <label class="form-check-label line-height-1 fw-medium text-secondary-light" for="bangladesh">
-                  <span class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
-                    <img src="assets/images/flags/flag6.png" alt="Image"
-                      class="w-36-px h-36-px bg-success-subtle text-success-main rounded-circle flex-shrink-0">
-                    <span class="text-md fw-semibold mb-0">Bangladesh</span>
-                  </span>
-                </label>
-                <input class="form-check-input" type="radio" name="crypto" id="bangladesh">
-              </div>
-
-              <div class="form-check style-check d-flex align-items-center justify-content-between mb-16">
-                <label class="form-check-label line-height-1 fw-medium text-secondary-light" for="india">
-                  <span class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
-                    <img src="assets/images/flags/flag7.png" alt="Image"
-                      class="w-36-px h-36-px bg-success-subtle text-success-main rounded-circle flex-shrink-0">
-                    <span class="text-md fw-semibold mb-0">India</span>
-                  </span>
-                </label>
-                <input class="form-check-input" type="radio" name="crypto" id="india">
-              </div>
-              <div class="form-check style-check d-flex align-items-center justify-content-between">
-                <label class="form-check-label line-height-1 fw-medium text-secondary-light" for="canada">
-                  <span class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
-                    <img src="assets/images/flags/flag8.png" alt="Image"
-                      class="w-36-px h-36-px bg-success-subtle text-success-main rounded-circle flex-shrink-0">
-                    <span class="text-md fw-semibold mb-0">Canada</span>
-                  </span>
-                </label>
-                <input class="form-check-input" type="radio" name="crypto" id="canada">
-              </div>
-            </div>
-          </div>
-        </div><!-- Language dropdown end -->
-
-        <div class="dropdown">
-          <button
-            class="has-indicator w-40-px h-40-px bg-neutral-200 rounded-circle d-flex justify-content-center align-items-center position-relative"
-            type="button" data-bs-toggle="dropdown" aria-label="Notification Button">
-            <iconify-icon icon="iconoir:bell" class="text-primary-light text-xl"></iconify-icon>
-            <span class="w-8-px h-8-px bg-danger-600 position-absolute end-0 top-0 rounded-circle mt-2 me-2"></span>
-          </button>
-          <div class="dropdown-menu to-top dropdown-menu-lg p-0">
-            <div
-              class="m-16 py-12 px-16 radius-8 bg-primary-50 mb-16 d-flex align-items-center justify-content-between gap-2">
-              <div>
-                <h6 class="text-lg text-primary-light fw-semibold mb-0">Notifications</h6>
-              </div>
-              <span
-                class="text-primary-600 fw-semibold text-lg w-40-px h-40-px rounded-circle bg-base d-flex justify-content-center align-items-center">05</span>
-            </div>
-
-            <div class="max-h-400-px overflow-y-auto scroll-sm pe-4">
-              <a href="javascript:void(0)"
-                class="px-24 py-12 d-flex align-items-start gap-3 mb-2 justify-content-between">
-                <div class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
-                  <span
-                    class="w-44-px h-44-px bg-success-subtle text-success-main rounded-circle d-flex justify-content-center align-items-center flex-shrink-0">
-                    <iconify-icon icon="bitcoin-icons:verify-outline" class="icon text-xxl"></iconify-icon>
-                  </span>
-                  <div>
-                    <h6 class="text-md fw-semibold mb-4">Congratulations</h6>
-                    <p class="mb-0 text-sm text-secondary-light text-w-200-px">Your profile has been Verified. Your
-                      profile has been Verified</p>
-                  </div>
-                </div>
-                <span class="text-sm text-secondary-light flex-shrink-0">23 Mins ago</span>
-              </a>
-
-              <a href="javascript:void(0)"
-                class="px-24 py-12 d-flex align-items-start gap-3 mb-2 justify-content-between bg-neutral-50">
-                <div class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
-                  <span
-                    class="w-44-px h-44-px bg-success-subtle text-success-main rounded-circle d-flex justify-content-center align-items-center flex-shrink-0">
-                    <img src="assets/images/notification/profile-1.png" alt="Image">
-                  </span>
-                  <div>
-                    <h6 class="text-md fw-semibold mb-4">Ronald Richards</h6>
-                    <p class="mb-0 text-sm text-secondary-light text-w-200-px">You can stitch between artboards</p>
-                  </div>
-                </div>
-                <span class="text-sm text-secondary-light flex-shrink-0">23 Mins ago</span>
-              </a>
-
-              <a href="javascript:void(0)"
-                class="px-24 py-12 d-flex align-items-start gap-3 mb-2 justify-content-between">
-                <div class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
-                  <span
-                    class="w-44-px h-44-px bg-info-subtle text-info-main rounded-circle d-flex justify-content-center align-items-center flex-shrink-0">
-                    AM
-                  </span>
-                  <div>
-                    <h6 class="text-md fw-semibold mb-4">Arlene McCoy</h6>
-                    <p class="mb-0 text-sm text-secondary-light text-w-200-px">Invite you to prototyping</p>
-                  </div>
-                </div>
-                <span class="text-sm text-secondary-light flex-shrink-0">23 Mins ago</span>
-              </a>
-
-              <a href="javascript:void(0)"
-                class="px-24 py-12 d-flex align-items-start gap-3 mb-2 justify-content-between bg-neutral-50">
-                <div class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
-                  <span
-                    class="w-44-px h-44-px bg-success-subtle text-success-main rounded-circle d-flex justify-content-center align-items-center flex-shrink-0">
-                    <img src="assets/images/notification/profile-2.png" alt="Image">
-                  </span>
-                  <div>
-                    <h6 class="text-md fw-semibold mb-4">Robiul Hasan</h6>
-                    <p class="mb-0 text-sm text-secondary-light text-w-200-px">Invite you to prototyping</p>
-                  </div>
-                </div>
-                <span class="text-sm text-secondary-light flex-shrink-0">23 Mins ago</span>
-              </a>
-
-              <a href="javascript:void(0)"
-                class="px-24 py-12 d-flex align-items-start gap-3 mb-2 justify-content-between">
-                <div class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
-                  <span
-                    class="w-44-px h-44-px bg-info-subtle text-info-main rounded-circle d-flex justify-content-center align-items-center flex-shrink-0">
-                    DR
-                  </span>
-                  <div>
-                    <h6 class="text-md fw-semibold mb-4">Darlene Robertson</h6>
-                    <p class="mb-0 text-sm text-secondary-light text-w-200-px">Invite you to prototyping</p>
-                  </div>
-                </div>
-                <span class="text-sm text-secondary-light flex-shrink-0">23 Mins ago</span>
-              </a>
-            </div>
-
-            <div class="text-center py-12 px-16">
-              <a href="javascript:void(0)" class="text-primary-600 fw-semibold text-md hover-underline">See All Notification</a>
-            </div>
-
-          </div>
-        </div><!-- Notification dropdown end -->
-
-      </div>
-    </div>
-  </div>
-</div>
-
-  <div class="dashboard-main-body">
-
-    <div class="breadcrumb d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
-  <div class="">
-    <h6 class="fw-semibold mb-0">Dashboard</h6>
-    <p class="text-neutral-600 mt-4 mb-0">School -> Manage your school, track attendance, expense, and net worth.</p>
-  </div>
-</div>
-
-    <div class="mt-24">
-      <div class="row gy-4">
-        <div class="col-xxl-8">
-          <div class="row gy-4">
-            <div class="col-xxl-4 col-sm-6">
-              <div class="card shadow-1 radius-8 gradient-bg-end-1 h-100">
-                <div class="card-body p-20">
-                  <div class="d-flex flex-wrap align-items-center gap-3 mb-16">
-                    <div
-                      class="w-44-px h-44-px bg-warning-600 rounded-circle d-flex justify-content-center align-items-center">
-                      <img src="assets/images/icons/dashboard-icon1.png" alt="Icon">
-                    </div>
-                    <p class="fw-medium text-primary-light mb-1">Total Student</p>
-                  </div>
-                  <h6 class="mb-0">20,000</h6>
-                  <p class="fw-medium text-sm text-primary-light mt-12 mb-0 d-flex align-items-center gap-2">
-                    <span class="d-inline-flex align-items-center gap-1 text-primary-600 text-sm fw-semibold">
-                      10%
-                      <iconify-icon icon="bxs:up-arrow" class="text-xs"></iconify-icon>
-                    </span>
-                    +5 This Month
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-xxl-4 col-sm-6">
-              <div class="card shadow-1 radius-8 gradient-bg-end-2 h-100">
-                <div class="card-body p-20">
-                  <div class="d-flex flex-wrap align-items-center gap-3 mb-16">
-                    <div
-                      class="w-44-px h-44-px bg-blue-600 rounded-circle d-flex justify-content-center align-items-center">
-                      <img src="assets/images/icons/dashboard-icon2.png" alt="Icon">
-                    </div>
-                    <p class="fw-medium text-primary-light mb-1">Total Student</p>
-                  </div>
-                  <h6 class="mb-0">20,000</h6>
-                  <p class="fw-medium text-sm text-primary-light mt-12 mb-0 d-flex align-items-center gap-2">
-                    <span class="d-inline-flex align-items-center gap-1 text-primary-600 text-sm fw-semibold">
-                      10%
-                      <iconify-icon icon="bxs:up-arrow" class="text-xs"></iconify-icon>
-                    </span>
-                    +5 This Month
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-xxl-4 col-sm-6">
-              <div class="card shadow-1 radius-8 gradient-bg-end-3 h-100">
-                <div class="card-body p-20">
-                  <div class="d-flex flex-wrap align-items-center gap-3 mb-16">
-                    <div
-                      class="w-44-px h-44-px bg-purple-600 rounded-circle d-flex justify-content-center align-items-center">
-                      <img src="assets/images/icons/dashboard-icon3.png" alt="Icon">
-                    </div>
-                    <p class="fw-medium text-primary-light mb-1">Total Student</p>
-                  </div>
-                  <h6 class="mb-0">20,000</h6>
-                  <p class="fw-medium text-sm text-primary-light mt-12 mb-0 d-flex align-items-center gap-2">
-                    <span class="d-inline-flex align-items-center gap-1 text-primary-600 text-sm fw-semibold">
-                      10%
-                      <iconify-icon icon="bxs:up-arrow" class="text-xs"></iconify-icon>
-                    </span>
-                    +5 This Month
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-xxl-4 col-sm-6">
-              <div class="card shadow-1 radius-8 gradient-bg-end-4 h-100">
-                <div class="card-body p-20">
-                  <div class="d-flex flex-wrap align-items-center gap-3 mb-16">
-                    <div
-                      class="w-44-px h-44-px bg-primary-600 rounded-circle d-flex justify-content-center align-items-center">
-                      <img src="assets/images/icons/dashboard-icon4.png" alt="Icon">
-                    </div>
-                    <p class="fw-medium text-primary-light mb-1">Total Student</p>
-                  </div>
-                  <h6 class="mb-0">20,000</h6>
-                  <p class="fw-medium text-sm text-primary-light mt-12 mb-0 d-flex align-items-center gap-2">
-                    <span class="d-inline-flex align-items-center gap-1 text-primary-600 text-sm fw-semibold">
-                      10%
-                      <iconify-icon icon="bxs:up-arrow" class="text-xs"></iconify-icon>
-                    </span>
-                    +5 This Month
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-xxl-4 col-sm-6">
-              <div class="card shadow-1 radius-8 gradient-bg-end-5 h-100">
-                <div class="card-body p-20">
-                  <div class="d-flex flex-wrap align-items-center gap-3 mb-16">
-                    <div
-                      class="w-44-px h-44-px bg-success-600 rounded-circle d-flex justify-content-center align-items-center">
-                      <img src="assets/images/icons/dashboard-icon5.png" alt="Icon">
-                    </div>
-                    <p class="fw-medium text-primary-light mb-1">Total Student</p>
-                  </div>
-                  <h6 class="mb-0">20,000</h6>
-                  <p class="fw-medium text-sm text-primary-light mt-12 mb-0 d-flex align-items-center gap-2">
-                    <span class="d-inline-flex align-items-center gap-1 text-primary-600 text-sm fw-semibold">
-                      10%
-                      <iconify-icon icon="bxs:up-arrow" class="text-xs"></iconify-icon>
-                    </span>
-                    +5 This Month
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-xxl-4 col-sm-6">
-              <div class="card shadow-1 radius-8 gradient-bg-end-6 h-100">
-                <div class="card-body p-20">
-                  <div class="d-flex flex-wrap align-items-center gap-3 mb-16">
-                    <div
-                      class="w-44-px h-44-px bg-cyan-600 rounded-circle d-flex justify-content-center align-items-center">
-                      <img src="assets/images/icons/dashboard-icon6.png" alt="Icon">
-                    </div>
-                    <p class="fw-medium text-primary-light mb-1">Total Student</p>
-                  </div>
-                  <h6 class="mb-0">20,000</h6>
-                  <p class="fw-medium text-sm text-primary-light mt-12 mb-0 d-flex align-items-center gap-2">
-                    <span class="d-inline-flex align-items-center gap-1 text-primary-600 text-sm fw-semibold">
-                      10%
-                      <iconify-icon icon="bxs:up-arrow" class="text-xs"></iconify-icon>
-                    </span>
-                    +5 This Month
-                  </p>
-                </div>
-              </div>
-            </div>
+  <main class="dashboard-main">
+    <div class="navbar-header shadow-1">
+      <div class="row align-items-center justify-content-between">
+        <div class="col-auto">
+          <div class="d-flex flex-wrap align-items-center gap-4">
+            <button type="button" class="sidebar-mobile-toggle" aria-label="Sidebar Mobile Toggler Button">
+              <iconify-icon icon="heroicons:bars-3-solid" class="icon"></iconify-icon>
+            </button>
+            <form class="navbar-search">
+              <input type="text" class="bg-transparent" name="search" placeholder="Search">
+              <iconify-icon icon="ion:search-outline" class="icon"></iconify-icon>
+            </form>
           </div>
         </div>
-        <div class="col-xxl-4">
-          <div class="card h-100">
-            <div class="card-body p-0">
+        <div class="col-auto">
+          <div class="d-flex flex-wrap align-items-center gap-3">
+            <button type="button" data-theme-toggle
+              class="w-40-px h-40-px bg-neutral-200 rounded-circle d-flex justify-content-center align-items-center"
+              aria-label="Dark & Light Mode Button"></button>
+            <div class="dropdown d-inline-block">
+              <button
+                class="has-indicator w-40-px h-40-px bg-neutral-200 rounded-circle d-flex justify-content-center align-items-center"
+                type="button" data-bs-toggle="dropdown" aria-label="Language Change Button">
+                <img src="assets/images/flags/flag1.png" alt="image" class="w-24 h-24 object-fit-cover rounded-circle">
+              </button>
+              <div class="dropdown-menu to-top dropdown-menu-sm">
+                <div
+                  class="py-12 px-16 radius-8 bg-primary-50 mb-16 d-flex align-items-center justify-content-between gap-2">
+                  <div>
+                    <h6 class="text-lg text-primary-light fw-semibold mb-0">Choose Your Language</h6>
+                  </div>
+                </div>
+
+                <div class="max-h-400-px overflow-y-auto scroll-sm pe-8">
+                  <div class="form-check style-check d-flex align-items-center justify-content-between mb-16">
+                    <label class="form-check-label line-height-1 fw-medium text-secondary-light" for="english">
+                      <span class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
+                        <img src="assets/images/flags/flag1.png" alt="Image"
+                          class="w-36-px h-36-px bg-success-subtle text-success-main rounded-circle flex-shrink-0">
+                        <span class="text-md fw-semibold mb-0">English</span>
+                      </span>
+                    </label>
+                    <input class="form-check-input" type="radio" name="crypto" id="english">
+                  </div>
+
+                  <div class="form-check style-check d-flex align-items-center justify-content-between mb-16">
+                    <label class="form-check-label line-height-1 fw-medium text-secondary-light" for="japan">
+                      <span class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
+                        <img src="assets/images/flags/flag2.png" alt="Image"
+                          class="w-36-px h-36-px bg-success-subtle text-success-main rounded-circle flex-shrink-0">
+                        <span class="text-md fw-semibold mb-0">Japan</span>
+                      </span>
+                    </label>
+                    <input class="form-check-input" type="radio" name="crypto" id="japan">
+                  </div>
+
+                  <div class="form-check style-check d-flex align-items-center justify-content-between mb-16">
+                    <label class="form-check-label line-height-1 fw-medium text-secondary-light" for="france">
+                      <span class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
+                        <img src="assets/images/flags/flag3.png" alt="Image"
+                          class="w-36-px h-36-px bg-success-subtle text-success-main rounded-circle flex-shrink-0">
+                        <span class="text-md fw-semibold mb-0">France</span>
+                      </span>
+                    </label>
+                    <input class="form-check-input" type="radio" name="crypto" id="france">
+                  </div>
+
+                  <div class="form-check style-check d-flex align-items-center justify-content-between mb-16">
+                    <label class="form-check-label line-height-1 fw-medium text-secondary-light" for="germany">
+                      <span class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
+                        <img src="assets/images/flags/flag4.png" alt="Image"
+                          class="w-36-px h-36-px bg-success-subtle text-success-main rounded-circle flex-shrink-0">
+                        <span class="text-md fw-semibold mb-0">Germany</span>
+                      </span>
+                    </label>
+                    <input class="form-check-input" type="radio" name="crypto" id="germany">
+                  </div>
+
+                  <div class="form-check style-check d-flex align-items-center justify-content-between mb-16">
+                    <label class="form-check-label line-height-1 fw-medium text-secondary-light" for="korea">
+                      <span class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
+                        <img src="assets/images/flags/flag5.png" alt="Image"
+                          class="w-36-px h-36-px bg-success-subtle text-success-main rounded-circle flex-shrink-0">
+                        <span class="text-md fw-semibold mb-0">South Korea</span>
+                      </span>
+                    </label>
+                    <input class="form-check-input" type="radio" name="crypto" id="korea">
+                  </div>
+
+                  <div class="form-check style-check d-flex align-items-center justify-content-between mb-16">
+                    <label class="form-check-label line-height-1 fw-medium text-secondary-light" for="bangladesh">
+                      <span class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
+                        <img src="assets/images/flags/flag6.png" alt="Image"
+                          class="w-36-px h-36-px bg-success-subtle text-success-main rounded-circle flex-shrink-0">
+                        <span class="text-md fw-semibold mb-0">Bangladesh</span>
+                      </span>
+                    </label>
+                    <input class="form-check-input" type="radio" name="crypto" id="bangladesh">
+                  </div>
+
+                  <div class="form-check style-check d-flex align-items-center justify-content-between mb-16">
+                    <label class="form-check-label line-height-1 fw-medium text-secondary-light" for="india">
+                      <span class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
+                        <img src="assets/images/flags/flag7.png" alt="Image"
+                          class="w-36-px h-36-px bg-success-subtle text-success-main rounded-circle flex-shrink-0">
+                        <span class="text-md fw-semibold mb-0">India</span>
+                      </span>
+                    </label>
+                    <input class="form-check-input" type="radio" name="crypto" id="india">
+                  </div>
+                  <div class="form-check style-check d-flex align-items-center justify-content-between">
+                    <label class="form-check-label line-height-1 fw-medium text-secondary-light" for="canada">
+                      <span class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
+                        <img src="assets/images/flags/flag8.png" alt="Image"
+                          class="w-36-px h-36-px bg-success-subtle text-success-main rounded-circle flex-shrink-0">
+                        <span class="text-md fw-semibold mb-0">Canada</span>
+                      </span>
+                    </label>
+                    <input class="form-check-input" type="radio" name="crypto" id="canada">
+                  </div>
+                </div>
+              </div>
+            </div><!-- Language dropdown end -->
+
+            <div class="dropdown">
+              <button
+                class="has-indicator w-40-px h-40-px bg-neutral-200 rounded-circle d-flex justify-content-center align-items-center position-relative"
+                type="button" data-bs-toggle="dropdown" aria-label="Notification Button">
+                <iconify-icon icon="iconoir:bell" class="text-primary-light text-xl"></iconify-icon>
+                <span class="w-8-px h-8-px bg-danger-600 position-absolute end-0 top-0 rounded-circle mt-2 me-2"></span>
+              </button>
+              <div class="dropdown-menu to-top dropdown-menu-lg p-0">
+                <div
+                  class="m-16 py-12 px-16 radius-8 bg-primary-50 mb-16 d-flex align-items-center justify-content-between gap-2">
+                  <div>
+                    <h6 class="text-lg text-primary-light fw-semibold mb-0">Notifications</h6>
+                  </div>
+                  <span
+                    class="text-primary-600 fw-semibold text-lg w-40-px h-40-px rounded-circle bg-base d-flex justify-content-center align-items-center">05</span>
+                </div>
+
+                <div class="max-h-400-px overflow-y-auto scroll-sm pe-4">
+                  <a href="javascript:void(0)"
+                    class="px-24 py-12 d-flex align-items-start gap-3 mb-2 justify-content-between">
+                    <div class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
+                      <span
+                        class="w-44-px h-44-px bg-success-subtle text-success-main rounded-circle d-flex justify-content-center align-items-center flex-shrink-0">
+                        <iconify-icon icon="bitcoin-icons:verify-outline" class="icon text-xxl"></iconify-icon>
+                      </span>
+                      <div>
+                        <h6 class="text-md fw-semibold mb-4">Congratulations</h6>
+                        <p class="mb-0 text-sm text-secondary-light text-w-200-px">Your profile has been Verified. Your
+                          profile has been Verified</p>
+                      </div>
+                    </div>
+                    <span class="text-sm text-secondary-light flex-shrink-0">23 Mins ago</span>
+                  </a>
+
+                  <a href="javascript:void(0)"
+                    class="px-24 py-12 d-flex align-items-start gap-3 mb-2 justify-content-between bg-neutral-50">
+                    <div class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
+                      <span
+                        class="w-44-px h-44-px bg-success-subtle text-success-main rounded-circle d-flex justify-content-center align-items-center flex-shrink-0">
+                        <img src="assets/images/notification/profile-1.png" alt="Image">
+                      </span>
+                      <div>
+                        <h6 class="text-md fw-semibold mb-4">Ronald Richards</h6>
+                        <p class="mb-0 text-sm text-secondary-light text-w-200-px">You can stitch between artboards</p>
+                      </div>
+                    </div>
+                    <span class="text-sm text-secondary-light flex-shrink-0">23 Mins ago</span>
+                  </a>
+
+                  <a href="javascript:void(0)"
+                    class="px-24 py-12 d-flex align-items-start gap-3 mb-2 justify-content-between">
+                    <div class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
+                      <span
+                        class="w-44-px h-44-px bg-info-subtle text-info-main rounded-circle d-flex justify-content-center align-items-center flex-shrink-0">
+                        AM
+                      </span>
+                      <div>
+                        <h6 class="text-md fw-semibold mb-4">Arlene McCoy</h6>
+                        <p class="mb-0 text-sm text-secondary-light text-w-200-px">Invite you to prototyping</p>
+                      </div>
+                    </div>
+                    <span class="text-sm text-secondary-light flex-shrink-0">23 Mins ago</span>
+                  </a>
+
+                  <a href="javascript:void(0)"
+                    class="px-24 py-12 d-flex align-items-start gap-3 mb-2 justify-content-between bg-neutral-50">
+                    <div class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
+                      <span
+                        class="w-44-px h-44-px bg-success-subtle text-success-main rounded-circle d-flex justify-content-center align-items-center flex-shrink-0">
+                        <img src="assets/images/notification/profile-2.png" alt="Image">
+                      </span>
+                      <div>
+                        <h6 class="text-md fw-semibold mb-4">Robiul Hasan</h6>
+                        <p class="mb-0 text-sm text-secondary-light text-w-200-px">Invite you to prototyping</p>
+                      </div>
+                    </div>
+                    <span class="text-sm text-secondary-light flex-shrink-0">23 Mins ago</span>
+                  </a>
+
+                  <a href="javascript:void(0)"
+                    class="px-24 py-12 d-flex align-items-start gap-3 mb-2 justify-content-between">
+                    <div class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
+                      <span
+                        class="w-44-px h-44-px bg-info-subtle text-info-main rounded-circle d-flex justify-content-center align-items-center flex-shrink-0">
+                        DR
+                      </span>
+                      <div>
+                        <h6 class="text-md fw-semibold mb-4">Darlene Robertson</h6>
+                        <p class="mb-0 text-sm text-secondary-light text-w-200-px">Invite you to prototyping</p>
+                      </div>
+                    </div>
+                    <span class="text-sm text-secondary-light flex-shrink-0">23 Mins ago</span>
+                  </a>
+                </div>
+
+                <div class="text-center py-12 px-16">
+                  <a href="javascript:void(0)" class="text-primary-600 fw-semibold text-md hover-underline">See All
+                    Notification</a>
+                </div>
+
+              </div>
+            </div><!-- Notification dropdown end -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dashboard-main-body">
+
+      <div class="breadcrumb d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
+        <div class="">
+          <h6 class="fw-semibold mb-0">Dashboard</h6>
+          <p class="text-neutral-600 mt-4 mb-0">Student -> Manage courses, students, and assignments efficiently from a
+            centralized teacher.</p>
+        </div>
+      </div>
+
+      <div class="mt-24">
+        <div class="row gy-4">
+
+          <!-- Dashboard widgets start -->
+          <div class="col-xxl-4">
+            <div class="card radius-12 border-0 h-100">
+              <div class="card-body p-24 d-flex gap-16 flex-sm-nowrap flex-wrap">
+                <div
+                  class="radius-8 overflow-hidden position-relative z-1 py-32 px-20 text-center d-flex justify-content-center align-items-center flex-grow-1">
+                  <img src="assets/images/bg/edit-profile-bg.png" alt="BG Image"
+                    class="position-absolute start-0 top-0 w-100 h-100 z-n1">
+                  <div class="">
+                    <span class="mb-12">
+                      <img src="assets/images/thumbs/studnt-edit-profile-img.png" alt="BG Image"
+                        class="rounded-circle object-fit-cover">
+                    </span>
+                    <h6 class="text-white">Devon Lane</h6>
+                    <span class="text-white text-lg d-block">Class: 7</span>
+                    <span class="text-white text-lg d-block">Roll No: 03</span>
+                    <div class="mt-12">
+                      <a href="edit-teacher.php"
+                        class="px-20 py-8 text-white bg-white bg-opacity-10 radius-6 fw-medium text-lg">Edit
+                        Profile</a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="d-flex flex-column gap-20 flex-grow-1 justify-content-between">
+                  <div class="radius-8 py-24 px-24 text-start d-flex align-items-center gap-12 bg-purple-100">
+                    <span
+                      class="w-48-px h-48-px d-inline-flex justify-content-center align-items-center rounded-circle border border-purple-300 bg-purple-200">
+                      <img src="assets/images/icons/teacher-widget-icon1.png" alt="User Icon">
+                    </span>
+                    <div class="">
+                      <span class="text-secondary-light fw-medium d-block">Events</span>
+                      <h5 class="text-primary-light">10</h5>
+                    </div>
+                  </div>
+                  <div class="radius-8 py-24 px-24 text-start d-flex align-items-center gap-12 bg-success-100">
+                    <span
+                      class="w-48-px h-48-px d-inline-flex justify-content-center align-items-center rounded-circle border border-success-300 bg-success-200">
+                      <img src="assets/images/icons/teacher-widget-icon2.png" alt="User Icon">
+                    </span>
+                    <div class="">
+                      <span class="text-secondary-light fw-medium d-block">Notifications</span>
+                      <h5 class="text-primary-light">15</h5>
+                    </div>
+                  </div>
+                  <div class="radius-8 py-24 px-24 text-start d-flex align-items-center gap-12 bg-primary-100">
+                    <span
+                      class="w-48-px h-48-px d-inline-flex justify-content-center align-items-center rounded-circle border border-primary-300 bg-primary-200">
+                      <img src="assets/images/icons/teacher-widget-icon3.png" alt="User Icon">
+                    </span>
+                    <div class="">
+                      <span class="text-secondary-light fw-medium d-block">Attendance</span>
+                      <h5 class="text-primary-light">90%</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Dashboard widgets end -->
+
+          <!-- User activity Start -->
+          <div class="col-xxl-4 col-lg-6">
+            <div class="card radius-12 border-0 h-100">
               <div
-                class="d-flex flex-wrap align-items-center justify-content-between px-20 py-16 border-bottom border-neutral-200">
-                <h6 class="text-lg mb-0">Student Attendance</h6>
+                class="d-flex align-items-center flex-wrap gap-2 justify-content-between py-12 px-20 border-bottom border-neutral-200">
+                <h6 class="mb-2 fw-bold text-lg">Attendance</h6>
+                <select class="form-select bg-base form-select-sm w-auto radius-8">
+                  <option>Yearly</option>
+                  <option>Monthly</option>
+                  <option>Weekly</option>
+                  <option>Today</option>
+                </select>
               </div>
-              <div class="p-20">
-                <div class="d-flex gap-6">
-                  <div class="h-44-px bg-primary-600 rounded" style="width: 87%;"></div>
-                  <div class="h-44-px bg-warning-600 rounded" style="width: 40%;"></div>
-                  <div class="h-44-px bg-purple-600 rounded" style="width: 20%;"></div>
-                  <div class="h-44-px bg-success-600 rounded" style="width: 20%;"></div>
-                </div>
-                <div class="mt-32 d-flex flex-column gap-24">
-                  <div class="d-flex align-items-center justify-content-between">
-                    <div class="d-flex align-items-center gap-2">
-                      <span class="w-12-px h-12-px radius-2 bg-primary-600"></span>
-                      <span class="text-neutral-600">Present </span>
-                    </div>
-                    <span class="fw-semibold text-primary-light">87%</span>
+              <div class="card-body py-24">
+                <div class=" gap-20">
+                  <div class="text-center">
+                    <div id="userOverviewDonutChart" class="apexcharts-tooltip-z-none"></div>
                   </div>
-                  <div class="d-flex align-items-center justify-content-between">
-                    <div class="d-flex align-items-center gap-2">
-                      <span class="w-12-px h-12-px radius-2 bg-warning-600"></span>
-                      <span class="text-neutral-600">Absent: </span>
+                  <div class="d-flex gap-12 justify-content-around mt-24">
+                    <div class="d-flex align-items-start gap-8">
+                      <span class="w-6-px h-16-px bg-success-500 rounded-pill position-relative mt-8">
+                      </span>
+                      <div class="">
+                        <h6 class="mb-0">200</h6>
+                        <p class="text-secondary-light text-sm mb-0">Present</p>
+                      </div>
                     </div>
-                    <span class="fw-semibold text-primary-light">40%</span>
-                  </div>
-                  <div class="d-flex align-items-center justify-content-between">
-                    <div class="d-flex align-items-center gap-2">
-                      <span class="w-12-px h-12-px radius-2 bg-purple-600"></span>
-                      <span class="text-neutral-600">Late </span>
+                    <div class="d-flex align-items-start gap-8">
+                      <span class="w-6-px h-16-px bg-info rounded-pill position-relative mt-8">
+                      </span>
+                      <div class="">
+                        <h6 class="mb-0">300</h6>
+                        <p class="text-secondary-light text-sm mb-0">Half Day </p>
+                      </div>
                     </div>
-                    <span class="fw-semibold text-primary-light">20%</span>
-                  </div>
-                  <div class="d-flex align-items-center justify-content-between">
-                    <div class="d-flex align-items-center gap-2">
-                      <span class="w-12-px h-12-px radius-2 bg-success-600"></span>
-                      <span class="text-neutral-600">Half day </span>
+                    <div class="d-flex align-items-start gap-8">
+                      <span class="w-6-px h-16-px bg-purple rounded-pill position-relative mt-8"></span>
+                      <div class="">
+                        <h6 class="mb-0">172</h6>
+                        <p class="text-secondary-light text-sm mb-0">Late</p>
+                      </div>
                     </div>
-                    <span class="fw-semibold text-primary-light">20%</span>
+                    <div class="d-flex align-items-start gap-8">
+                      <span class="w-6-px h-16-px bg-warning rounded-pill position-relative mt-8"></span>
+                      <div class="">
+                        <h6 class="mb-0">500</h6>
+                        <p class="text-secondary-light text-sm mb-0">Absent</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-12">
-          <div class="row gy-4">
-            <div class="col-xxl-8">
-              <div class="row gy-4">
-                <div class="col-12">
-                  <div class="card h-100">
-                    <div class="card-body p-0">
-                      <div
-                        class="d-flex flex-wrap align-items-center justify-content-between px-20 py-16 border-bottom border-neutral-200">
-                        <h6 class="text-lg mb-0">Revenue Statistic</h6>
-                      </div>
-                      <div class="p-20">
-                        <ul class="d-flex flex-wrap align-items-center justify-content-center mb-16 gap-3">
-                          <li class="d-flex align-items-center gap-8">
-                            <span class="w-12-px h-12-px radius-2 rotate-45-deg bg-primary-600"></span>
-                            <span class="text-secondary-light text-sm fw-semibold">
-                              Total Fee:
-                              <span class="text-primary-light fw-bold">$500</span>
-                            </span>
-                          </li>
-                          <li class="d-flex align-items-center gap-8">
-                            <span class="w-12-px h-12-px radius-2 rotate-45-deg bg-warning-600"></span>
-                            <span class="text-secondary-light text-sm font-semibold">
-                              Collected Fee:
-                              <span class="text-primary-light fw-bold"> $300</span>
-                            </span>
-                          </li>
-                        </ul>
-                        <div id="revenueStatistic"></div>
+          <!-- User activity End -->
+
+          <!-- Leave Status start -->
+          <div class="col-xxl-4 col-lg-6">
+            <div class="card radius-12 border-0 h-100">
+              <div
+                class="d-flex align-items-center flex-wrap gap-2 justify-content-between py-12 px-20 border-bottom border-neutral-200">
+                <h6 class="mb-2 fw-bold text-lg">Today's Class</h6>
+              </div>
+              <div class="card-body pe-0 py-8">
+                <div class="d-flex flex-column max-h-390-px overflow-y-auto scroll-sm pe-20">
+                  <div class="d-flex align-items-center justify-content-between gap-3 py-10 border-bottom">
+                    <div class="flex-grow-1">
+                      <h6 class="text-lg mb-4 fw-medium">English</h6>
+                      <div class="d-flex align-items-center gap-8">
+                        <span class="d-flex">
+                          <i class="ri-graduation-cap-line"></i>
+                        </span>
+                        <span class="text-sm text-secondary-light fw-medium">09:300 - 09:45
+                          AM</span>
                       </div>
                     </div>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="card h-100">
-                    <div class="card-body p-0">
-                      <div
-                        class="d-flex flex-wrap align-items-center justify-content-between px-20 py-16 border-bottom border-neutral-200">
-                        <h6 class="text-lg mb-0">Notice Board</h6>
-                        <div class="dropdown">
-                          <button type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <iconify-icon icon="entypo:dots-three-vertical"
-                              class="icon text-secondary-light"></iconify-icon>
-                          </button>
-                          <ul class="dropdown-menu p-12 border bg-base shadow">
-                            <li>
-                              <button type="button"
-                                class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-10"
-                                data-bs-toggle="modal" data-bs-target="#exampleModalView">
-                                <iconify-icon icon="hugeicons:view" class="icon text-lg line-height-1"></iconify-icon>
-                                View
-                              </button>
-                            </li>
-                            <li>
-                              <button type="button"
-                                class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-10"
-                                data-bs-toggle="modal" data-bs-target="#exampleModalEdit">
-                                <iconify-icon icon="lucide:edit" class="icon text-lg line-height-1"></iconify-icon>
-                                Edit
-                              </button>
-                            </li>
-                            <li>
-                              <button type="button"
-                                class="delete-item dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-danger-100 text-hover-danger-600 d-flex align-items-center gap-10"
-                                data-bs-toggle="modal" data-bs-target="#exampleModalDelete">
-                                <iconify-icon icon="fluent:delete-24-regular"
-                                  class="icon text-lg line-height-1"></iconify-icon>
-                                Delete
-                              </button>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div class="ps-20 pt-20 pb-20">
-                        <div class="pe-20 d-flex flex-column gap-20 max-h-462-px overflow-y-auto scroll-sm">
-                          <div class="d-flex align-items-start gap-16">
-                            <img src="assets/images/thumbs/notice-board-img1.png" alt="Thumbnail"
-                              class="w-40-px h-40-px rounded-circle object-fit-cover flex-shrink-0">
-                            <div class="">
-                              <h6 class="mb-4 text-lg">Admin</h6>
-                              <p class="text-secondary-light text-sm mb-0">Lorem Ipsum is simply dummy text of the
-                                printing and typesetti</p>
-                              <span class="text-secondary-light text-sm mb-0 mt-4">25 Jan 2024</span>
-                            </div>
-                          </div>
-                          <div class="d-flex align-items-start gap-16">
-                            <img src="assets/images/thumbs/notice-board-img2.png" alt="Thumbnail"
-                              class="w-40-px h-40-px rounded-circle object-fit-cover flex-shrink-0">
-                            <div class="">
-                              <h6 class="mb-4 text-lg">Kathryn Murphy</h6>
-                              <p class="text-secondary-light text-sm mb-0">Lorem Ipsum is simply dummy text of the
-                                printing and typesett ing industry Lorem Ipsum is simply dummy text of the printing and
-                                typesetting industry.</p>
-                              <span class="text-secondary-light text-sm mb-0 mt-4">25 Jan 2024</span>
-                            </div>
-                          </div>
-                          <div class="d-flex align-items-start gap-16">
-                            <img src="assets/images/thumbs/notice-board-img3.png" alt="Thumbnail"
-                              class="w-40-px h-40-px rounded-circle object-fit-cover flex-shrink-0">
-                            <div class="">
-                              <h6 class="mb-4 text-lg">Admin</h6>
-                              <p class="text-secondary-light text-sm mb-0">Lorem Ipsum is simply dummy text of the
-                                printing and typesetti</p>
-                              <span class="text-secondary-light text-sm mb-0 mt-4">25 Jan 2024</span>
-                            </div>
-                          </div>
-                          <div class="d-flex align-items-start gap-16">
-                            <img src="assets/images/thumbs/notice-board-img2.png" alt="Thumbnail"
-                              class="w-40-px h-40-px rounded-circle object-fit-cover flex-shrink-0">
-                            <div class="">
-                              <h6 class="mb-4 text-lg">John Doe</h6>
-                              <p class="text-secondary-light text-sm mb-0">Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Laborum voluptas corporis qui dolore est odit officia fuga?</p>
-                              <span class="text-secondary-light text-sm mb-0 mt-4">25 Jan 2024</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                    <div class="">
+                      <span
+                        class="bg-success-100 text-success-600 px-24 py-4 radius-4 fw-medium text-sm">Completed</span>
                     </div>
                   </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="card h-100">
-                    <div class="card-body p-0">
-                      <div
-                        class="d-flex flex-wrap align-items-center justify-content-between px-20 py-16 border-bottom border-neutral-200">
-                        <h6 class="text-lg mb-0">Leave Requests</h6>
-                        <div class="dropdown">
-                          <button type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <iconify-icon icon="entypo:dots-three-vertical"
-                              class="icon text-secondary-light"></iconify-icon>
-                          </button>
-                          <ul class="dropdown-menu p-12 border bg-base shadow">
-                            <li>
-                              <button type="button"
-                                class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-10"
-                                data-bs-toggle="modal" data-bs-target="#exampleModalView">
-                                <iconify-icon icon="hugeicons:view" class="icon text-lg line-height-1"></iconify-icon>
-                                View
-                              </button>
-                            </li>
-                            <li>
-                              <button type="button"
-                                class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-10"
-                                data-bs-toggle="modal" data-bs-target="#exampleModalEdit">
-                                <iconify-icon icon="lucide:edit" class="icon text-lg line-height-1"></iconify-icon>
-                                Edit
-                              </button>
-                            </li>
-                            <li>
-                              <button type="button"
-                                class="delete-item dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-danger-100 text-hover-danger-600 d-flex align-items-center gap-10"
-                                data-bs-toggle="modal" data-bs-target="#exampleModalDelete">
-                                <iconify-icon icon="fluent:delete-24-regular"
-                                  class="icon text-lg line-height-1"></iconify-icon>
-                                Delete
-                              </button>
-                            </li>
-                          </ul>
-                        </div>
+                  <div class="d-flex align-items-center justify-content-between gap-3 py-10 border-bottom">
+                    <div class="flex-grow-1">
+                      <h6 class="text-lg mb-4 fw-medium">Physics</h6>
+                      <div class="d-flex align-items-center gap-8">
+                        <span class="d-flex">
+                          <i class="ri-graduation-cap-line"></i>
+                        </span>
+                        <span class="text-sm text-secondary-light fw-medium">09:50 - 10:35 AM</span>
                       </div>
-                      <div class="ps-20 pt-20 pb-20">
-                        <div class="pe-20 d-flex flex-column gap-28 max-h-462-px overflow-y-auto scroll-sm">
-                          <div class="d-flex align-items-center justify-content-between gap-16">
-                            <div class="d-flex align-items-start gap-16">
-                              <img src="assets/images/thumbs/leave-request-img1.png" alt="Thumbnail"
-                                class="w-40-px h-40-px rounded-circle object-fit-cover flex-shrink-0">
-                              <div class="">
-                                <h6 class="mb-0 text-lg">Darlene Robertson</h6>
-                                <span class="text-secondary-light text-sm mb-0">English Teacher</span>
-                              </div>
-                            </div>
-                            <div class="text-end">
-                              <span class="d-block fw-bold text-primary-light">3 Days</span>
-                              <p class="text-secondary-light text-sm mb-0">Apply on: 10 April</p>
-                            </div>
-                          </div>
-                          <div class="d-flex align-items-center justify-content-between gap-16">
-                            <div class="d-flex align-items-start gap-16">
-                              <img src="assets/images/thumbs/leave-request-img2.png" alt="Thumbnail"
-                                class="w-40-px h-40-px rounded-circle object-fit-cover flex-shrink-0">
-                              <div class="">
-                                <h6 class="mb-0 text-lg">Esther Howard</h6>
-                                <span class="text-secondary-light text-sm mb-0">English Teacher</span>
-                              </div>
-                            </div>
-                            <div class="text-end">
-                              <span class="d-block fw-bold text-primary-light">3 Days</span>
-                              <p class="text-secondary-light text-sm mb-0">Apply on: 10 April</p>
-                            </div>
-                          </div>
-                          <div class="d-flex align-items-center justify-content-between gap-16">
-                            <div class="d-flex align-items-start gap-16">
-                              <img src="assets/images/thumbs/leave-request-img3.png" alt="Thumbnail"
-                                class="w-40-px h-40-px rounded-circle object-fit-cover flex-shrink-0">
-                              <div class="">
-                                <h6 class="mb-0 text-lg">Kristin Watson</h6>
-                                <span class="text-secondary-light text-sm mb-0">English Teacher</span>
-                              </div>
-                            </div>
-                            <div class="text-end">
-                              <span class="d-block fw-bold text-primary-light">3 Days</span>
-                              <p class="text-secondary-light text-sm mb-0">Apply on: 10 April</p>
-                            </div>
-                          </div>
-                          <div class="d-flex align-items-center justify-content-between gap-16">
-                            <div class="d-flex align-items-start gap-16">
-                              <img src="assets/images/thumbs/leave-request-img4.png" alt="Thumbnail"
-                                class="w-40-px h-40-px rounded-circle object-fit-cover flex-shrink-0">
-                              <div class="">
-                                <h6 class="mb-0 text-lg">Leslie Alexander</h6>
-                                <span class="text-secondary-light text-sm mb-0">English Teacher</span>
-                              </div>
-                            </div>
-                            <div class="text-end">
-                              <span class="d-block fw-bold text-primary-light">3 Days</span>
-                              <p class="text-secondary-light text-sm mb-0">Apply on: 10 April</p>
-                            </div>
-                          </div>
-                          <div class="d-flex align-items-center justify-content-between gap-16">
-                            <div class="d-flex align-items-start gap-16">
-                              <img src="assets/images/thumbs/leave-request-img5.png" alt="Thumbnail"
-                                class="w-40-px h-40-px rounded-circle object-fit-cover flex-shrink-0">
-                              <div class="">
-                                <h6 class="mb-0 text-lg">Dianne Russell</h6>
-                                <span class="text-secondary-light text-sm mb-0">English Teacher</span>
-                              </div>
-                            </div>
-                            <div class="text-end">
-                              <span class="d-block fw-bold text-primary-light">3 Days</span>
-                              <p class="text-secondary-light text-sm mb-0">Apply on: 10 April</p>
-                            </div>
-                          </div>
-                          <div class="d-flex align-items-center justify-content-between gap-16">
-                            <div class="d-flex align-items-start gap-16">
-                              <img src="assets/images/thumbs/leave-request-img3.png" alt="Thumbnail"
-                                class="w-40-px h-40-px rounded-circle object-fit-cover flex-shrink-0">
-                              <div class="">
-                                <h6 class="mb-0 text-lg">Kristin Watson</h6>
-                                <span class="text-secondary-light text-sm mb-0">English Teacher</span>
-                              </div>
-                            </div>
-                            <div class="text-end">
-                              <span class="d-block fw-bold text-primary-light">3 Days</span>
-                              <p class="text-secondary-light text-sm mb-0">Apply on: 10 April</p>
-                            </div>
-                          </div>
-                        </div>
+                    </div>
+                    <div class="">
+                      <span
+                        class="bg-warning-100 text-warning-600 px-24 py-4 radius-4 fw-medium text-sm">Inprogress</span>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-between gap-3 py-10 border-bottom">
+                    <div class="flex-grow-1">
+                      <h6 class="text-lg mb-4 fw-medium">Bangla</h6>
+                      <div class="d-flex align-items-center gap-8">
+                        <span class="d-flex">
+                          <i class="ri-graduation-cap-line"></i>
+                        </span>
+                        <span class="text-sm text-secondary-light fw-medium">09:300 - 09:45
+                          AM</span>
                       </div>
+                    </div>
+                    <div class="">
+                      <span
+                        class="bg-warning-100 text-warning-600 px-24 py-4 radius-4 fw-medium text-sm">Inprogress</span>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-between gap-3 py-10 border-bottom">
+                    <div class="flex-grow-1">
+                      <h6 class="text-lg mb-4 fw-medium">Chemistry</h6>
+                      <div class="d-flex align-items-center gap-8">
+                        <span class="d-flex">
+                          <i class="ri-graduation-cap-line"></i>
+                        </span>
+                        <span class="text-sm text-secondary-light fw-medium">09:300 - 09:45
+                          AM</span>
+                      </div>
+                    </div>
+                    <div class="">
+                      <span
+                        class="bg-warning-100 text-warning-600 px-24 py-4 radius-4 fw-medium text-sm">Inprogress</span>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-between gap-3 py-10 border-bottom">
+                    <div class="flex-grow-1">
+                      <h6 class="text-lg mb-4 fw-medium">Accounting</h6>
+                      <div class="d-flex align-items-center gap-8">
+                        <span class="d-flex">
+                          <i class="ri-graduation-cap-line"></i>
+                        </span>
+                        <span class="text-sm text-secondary-light fw-medium">09:300 - 09:45
+                          AM</span>
+                      </div>
+                    </div>
+                    <div class="">
+                      <span
+                        class="bg-warning-100 text-warning-600 px-24 py-4 radius-4 fw-medium text-sm">Inprogress</span>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-between gap-3 py-10 border-bottom">
+                    <div class="flex-grow-1">
+                      <h6 class="text-lg mb-4 fw-medium">English</h6>
+                      <div class="d-flex align-items-center gap-8">
+                        <span class="d-flex">
+                          <i class="ri-graduation-cap-line"></i>
+                        </span>
+                        <span class="text-sm text-secondary-light fw-medium">09:300 - 09:45
+                          AM</span>
+                      </div>
+                    </div>
+                    <div class="">
+                      <span
+                        class="bg-success-100 text-success-600 px-24 py-4 radius-4 fw-medium text-sm">Completed</span>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-between gap-3 py-10 border-bottom">
+                    <div class="flex-grow-1">
+                      <h6 class="text-lg mb-4 fw-medium">English</h6>
+                      <div class="d-flex align-items-center gap-8">
+                        <span class="d-flex">
+                          <i class="ri-graduation-cap-line"></i>
+                        </span>
+                        <span class="text-sm text-secondary-light fw-medium">09:300 - 09:45
+                          AM</span>
+                      </div>
+                    </div>
+                    <div class="">
+                      <span
+                        class="bg-success-100 text-success-600 px-24 py-4 radius-4 fw-medium text-sm">Completed</span>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-xxl-4">
-              <div class="card h-100">
-                <div class="card-body p-0">
-                  <div
-                    class="d-flex flex-wrap align-items-center justify-content-between px-20 py-16 border-bottom border-neutral-200">
-                    <h6 class="text-lg mb-0">Calendar</h6>
-                  </div>
+          </div>
+          <!-- Leave Status End -->
 
-                  <div class="p-20">
-                    <div class="calendar">
-                      <div class="calendar__header">
-                        <button type="button" class="calendar__arrow left">
-                          <i class="ri-arrow-left-s-line"></i>
+          <!-- Recent Enrolled Courses Start -->
+          <div class="col-xxl-8">
+            <div class="card radius-12 border-0">
+              <div
+                class="d-flex align-items-center flex-wrap gap-2 justify-content-between py-12 px-20 border-bottom border-neutral-200">
+                <h6 class="mb-2 fw-bold text-lg">Exam Results</h6>
+                <div class="dropdown">
+                  <button type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <iconify-icon icon="entypo:dots-three-vertical" class="icon text-secondary-light"></iconify-icon>
+                  </button>
+                  <ul class="dropdown-menu p-12 border bg-base shadow">
+                    <li>
+                      <button type="button"
+                        class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-10"
+                        data-bs-toggle="modal" data-bs-target="#exampleModalView">
+                        <iconify-icon icon="hugeicons:view" class="icon text-lg line-height-1"></iconify-icon>
+                        View
+                      </button>
+                    </li>
+                    <li>
+                      <button type="button"
+                        class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-10"
+                        data-bs-toggle="modal" data-bs-target="#exampleModalEdit">
+                        <iconify-icon icon="lucide:edit" class="icon text-lg line-height-1"></iconify-icon>
+                        Edit
+                      </button>
+                    </li>
+                    <li>
+                      <button type="button"
+                        class="delete-item dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-danger-100 text-hover-danger-600 d-flex align-items-center gap-10"
+                        data-bs-toggle="modal" data-bs-target="#exampleModalDelete">
+                        <iconify-icon icon="fluent:delete-24-regular" class="icon text-lg line-height-1"></iconify-icon>
+                        Delete
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="card-body p-0">
+                <div class="table-responsive scroll-sm">
+                  <table class="table bordered-table mb-0 data-table" id="dataTable" data-page-length='10'>
+                    <thead>
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Exam Name</th>
+                        <th scope="col">Subject</th>
+                        <th scope="col">Grade</th>
+                        <th scope="col">Marks%</th>
+                        <th scope="col">CGPA</th>
+                        <th scope="col">Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="py-10-px"><span class="text-primary-600">AD52365</span></td>
+                        <td class="py-10-px">Class Test</td>
+                        <td class="py-10-px">English</td>
+                        <td class="py-10-px">A</td>
+                        <td class="py-10-px">95%</td>
+                        <td class="py-10-px">4.2</td>
+                        <td class="py-10-px">
+                          <span
+                            class="bg-success-100 text-success-600 px-24 py-4 radius-4 fw-medium text-sm">Pass</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="py-10-px"><span class="text-primary-600">AD52365</span></td>
+                        <td class="py-10-px">First Semester</td>
+                        <td class="py-10-px">Chemistry </td>
+                        <td class="py-10-px">A</td>
+                        <td class="py-10-px">80%</td>
+                        <td class="py-10-px">3.2</td>
+                        <td class="py-10-px">
+                          <span
+                            class="bg-success-100 text-success-600 px-24 py-4 radius-4 fw-medium text-sm">Pass</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="py-10-px"><span class="text-primary-600">AD52365</span></td>
+                        <td class="py-10-px">Class Test</td>
+                        <td class="py-10-px">Bangla</td>
+                        <td class="py-10-px">B</td>
+                        <td class="py-10-px">70%</td>
+                        <td class="py-10-px">4.5</td>
+                        <td class="py-10-px">
+                          <span
+                            class="bg-success-100 text-success-600 px-24 py-4 radius-4 fw-medium text-sm">Pass</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="py-10-px"><span class="text-primary-600">AD52365</span></td>
+                        <td class="py-10-px">Class Test</td>
+                        <td class="py-10-px">Accounting</td>
+                        <td class="py-10-px">C</td>
+                        <td class="py-10-px">60%</td>
+                        <td class="py-10-px">3.9</td>
+                        <td class="py-10-px">
+                          <span
+                            class="bg-success-100 text-success-600 px-24 py-4 radius-4 fw-medium text-sm">Pass</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="py-10-px"><span class="text-primary-600">AD52365</span></td>
+                        <td class="py-10-px">First Semester</td>
+                        <td class="py-10-px">Chemistry </td>
+                        <td class="py-10-px">A</td>
+                        <td class="py-10-px">80%</td>
+                        <td class="py-10-px">3.2</td>
+                        <td class="py-10-px">
+                          <span
+                            class="bg-success-100 text-success-600 px-24 py-4 radius-4 fw-medium text-sm">Pass</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="py-10-px"><span class="text-primary-600">AD52365</span></td>
+                        <td class="py-10-px">Class Test</td>
+                        <td class="py-10-px">English </td>
+                        <td class="py-10-px">F</td>
+                        <td class="py-10-px">30%</td>
+                        <td class="py-10-px">2.5</td>
+                        <td class="py-10-px">
+                          <span class="bg-danger-100 text-danger-600 px-24 py-4 radius-4 fw-medium text-sm">Fail</span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Recent Enrolled Courses End -->
+
+          <!-- Calendar start -->
+          <div class="col-xxl-4 col-lg-6">
+            <div class="card h-100">
+              <div class="card-body p-0">
+                <div
+                  class="d-flex flex-wrap align-items-center justify-content-between px-20 py-16 border-bottom border-neutral-200">
+                  <h6 class="text-lg mb-0">Calendar</h6>
+                </div>
+                <div class="p-20">
+                  <div class="calendar style-big">
+                    <div class="calendar__header">
+                      <button type="button" class="calendar__arrow left">
+                        <i class="ri-arrow-left-s-line"></i>
+                      </button>
+                      <p class="display text-md text-secondary-light fw-semibold mb-0">""</p>
+                      <button type="button" class="calendar__arrow right">
+                        <i class="ri-arrow-right-s-line"></i>
+                      </button>
+                    </div>
+
+                    <div class="calendar__week week">
+                      <div class="calendar__week-text">Su</div>
+                      <div class="calendar__week-text">Mo</div>
+                      <div class="calendar__week-text">Tu</div>
+                      <div class="calendar__week-text">We</div>
+                      <div class="calendar__week-text">Th</div>
+                      <div class="calendar__week-text">Fr</div>
+                      <div class="calendar__week-text">Sa</div>
+                    </div>
+                    <div class="days"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Calendar end -->
+
+          <!-- Leave Status start -->
+          <div class="col-xxl-4 col-lg-6">
+            <div class="card radius-12 border-0 h-100">
+              <div
+                class="d-flex align-items-center flex-wrap gap-2 justify-content-between py-12 px-20 border-bottom border-neutral-200">
+                <h6 class="mb-2 fw-bold text-lg">Leave Status</h6>
+                <select class="form-select bg-base form-select-sm w-auto radius-8">
+                  <option>Yearly</option>
+                  <option>Monthly</option>
+                  <option>Weekly</option>
+                  <option>Today</option>
+                </select>
+              </div>
+              <div class="card-body pe-0">
+                <div class="d-flex flex-column max-h-494-px overflow-y-auto scroll-sm pe-20">
+                  <div class="d-flex align-items-center justify-content-between gap-3 py-10 border-bottom">
+                    <div class="flex-grow-1">
+                      <h6 class="text-lg mb-0 fw-medium">Emergency Leave</h6>
+                      <span class="text-sm text-secondary-light fw-medium">Date: 10/10/24</span>
+                    </div>
+                    <div class="">
+                      <span class="bg-warning-100 text-warning-600 px-24 py-4 radius-4 fw-medium text-sm">Pending</span>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-between gap-3 py-10 border-bottom">
+                    <div class="flex-grow-1">
+                      <h6 class="text-lg mb-0 fw-medium">Medical Leave</h6>
+                      <span class="text-sm text-secondary-light fw-medium">Date: 10/10/24</span>
+                    </div>
+                    <div class="">
+                      <span
+                        class="bg-success-100 text-success-600 px-24 py-4 radius-4 fw-medium text-sm">Accepted</span>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-between gap-3 py-10 border-bottom">
+                    <div class="flex-grow-1">
+                      <h6 class="text-lg mb-0 fw-medium">Now Well</h6>
+                      <span class="text-sm text-secondary-light fw-medium">Date: 10/10/24</span>
+                    </div>
+                    <div class="">
+                      <span class="bg-warning-100 text-warning-600 px-24 py-4 radius-4 fw-medium text-sm">Pending</span>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-between gap-3 py-10 border-bottom">
+                    <div class="flex-grow-1">
+                      <h6 class="text-lg mb-0 fw-medium">Medical Leave</h6>
+                      <span class="text-sm text-secondary-light fw-medium">Date: 10/10/24</span>
+                    </div>
+                    <div class="">
+                      <span
+                        class="bg-success-100 text-success-600 px-24 py-4 radius-4 fw-medium text-sm">Accepted</span>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-between gap-3 py-10 border-bottom">
+                    <div class="flex-grow-1">
+                      <h6 class="text-lg mb-0 fw-medium">Emergency Leave</h6>
+                      <span class="text-sm text-secondary-light fw-medium">Date: 10/10/24</span>
+                    </div>
+                    <div class="">
+                      <span
+                        class="bg-success-100 text-success-600 px-24 py-4 radius-4 fw-medium text-sm">Accepted</span>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-between gap-3 py-10 border-bottom">
+                    <div class="flex-grow-1">
+                      <h6 class="text-lg mb-0 fw-medium">Now Well</h6>
+                      <span class="text-sm text-secondary-light fw-medium">Date: 10/10/24</span>
+                    </div>
+                    <div class="">
+                      <span class="bg-warning-100 text-warning-600 px-24 py-4 radius-4 fw-medium text-sm">Pending</span>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-between gap-3 py-10 border-bottom">
+                    <div class="flex-grow-1">
+                      <h6 class="text-lg mb-0 fw-medium">Medical Leave</h6>
+                      <span class="text-sm text-secondary-light fw-medium">Date: 10/10/24</span>
+                    </div>
+                    <div class="">
+                      <span
+                        class="bg-success-100 text-success-600 px-24 py-4 radius-4 fw-medium text-sm">Accepted</span>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-between gap-3 py-10 border-bottom">
+                    <div class="flex-grow-1">
+                      <h6 class="text-lg mb-0 fw-medium">Emergency Leave</h6>
+                      <span class="text-sm text-secondary-light fw-medium">Date: 10/10/24</span>
+                    </div>
+                    <div class="">
+                      <span
+                        class="bg-success-100 text-success-600 px-24 py-4 radius-4 fw-medium text-sm">Accepted</span>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-between gap-3 py-10 border-bottom">
+                    <div class="flex-grow-1">
+                      <h6 class="text-lg mb-0 fw-medium">Emergency Leave</h6>
+                      <span class="text-sm text-secondary-light fw-medium">Date: 10/10/24</span>
+                    </div>
+                    <div class="">
+                      <span class="bg-warning-100 text-warning-600 px-24 py-4 radius-4 fw-medium text-sm">Pending</span>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-between gap-3 py-10 border-bottom">
+                    <div class="flex-grow-1">
+                      <h6 class="text-lg mb-0 fw-medium">Medical Leave</h6>
+                      <span class="text-sm text-secondary-light fw-medium">Date: 10/10/24</span>
+                    </div>
+                    <div class="">
+                      <span
+                        class="bg-success-100 text-success-600 px-24 py-4 radius-4 fw-medium text-sm">Accepted</span>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-between gap-3 py-10 border-bottom">
+                    <div class="flex-grow-1">
+                      <h6 class="text-lg mb-0 fw-medium">Now Well</h6>
+                      <span class="text-sm text-secondary-light fw-medium">Date: 10/10/24</span>
+                    </div>
+                    <div class="">
+                      <span class="bg-warning-100 text-warning-600 px-24 py-4 radius-4 fw-medium text-sm">Pending</span>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-between gap-3 py-10 border-bottom">
+                    <div class="flex-grow-1">
+                      <h6 class="text-lg mb-0 fw-medium">Medical Leave</h6>
+                      <span class="text-sm text-secondary-light fw-medium">Date: 10/10/24</span>
+                    </div>
+                    <div class="">
+                      <span
+                        class="bg-success-100 text-success-600 px-24 py-4 radius-4 fw-medium text-sm">Accepted</span>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-between gap-3 py-10 border-bottom">
+                    <div class="flex-grow-1">
+                      <h6 class="text-lg mb-0 fw-medium">Emergency Leave</h6>
+                      <span class="text-sm text-secondary-light fw-medium">Date: 10/10/24</span>
+                    </div>
+                    <div class="">
+                      <span
+                        class="bg-success-100 text-success-600 px-24 py-4 radius-4 fw-medium text-sm">Accepted</span>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-between gap-3 py-10 border-bottom">
+                    <div class="flex-grow-1">
+                      <h6 class="text-lg mb-0 fw-medium">Now Well</h6>
+                      <span class="text-sm text-secondary-light fw-medium">Date: 10/10/24</span>
+                    </div>
+                    <div class="">
+                      <span class="bg-warning-100 text-warning-600 px-24 py-4 radius-4 fw-medium text-sm">Pending</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Leave Status End -->
+
+          <!-- Notice Board start -->
+          <div class="col-xxl-4 col-lg-6">
+            <div class="card h-100">
+              <div class="card-body p-0">
+                <div
+                  class="d-flex flex-wrap align-items-center justify-content-between px-20 py-16 border-bottom border-neutral-200">
+                  <h6 class="text-lg mb-0">Notice Board</h6>
+                  <div class="dropdown">
+                    <button type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <iconify-icon icon="entypo:dots-three-vertical" class="icon text-secondary-light"></iconify-icon>
+                    </button>
+                    <ul class="dropdown-menu p-12 border bg-base shadow">
+                      <li>
+                        <button type="button"
+                          class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-10"
+                          data-bs-toggle="modal" data-bs-target="#exampleModalView">
+                          <iconify-icon icon="hugeicons:view" class="icon text-lg line-height-1"></iconify-icon>
+                          View
                         </button>
-                        <p class="display text-md text-secondary-light fw-semibold mb-0">""</p>
-                        <button type="button" class="calendar__arrow right">
-                          <i class="ri-arrow-right-s-line"></i>
+                      </li>
+                      <li>
+                        <button type="button"
+                          class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-10"
+                          data-bs-toggle="modal" data-bs-target="#exampleModalEdit">
+                          <iconify-icon icon="lucide:edit" class="icon text-lg line-height-1"></iconify-icon>
+                          Edit
                         </button>
-                      </div>
-
-                      <div class="calendar__week week">
-                        <div class="calendar__week-text">Su</div>
-                        <div class="calendar__week-text">Mo</div>
-                        <div class="calendar__week-text">Tu</div>
-                        <div class="calendar__week-text">We</div>
-                        <div class="calendar__week-text">Th</div>
-                        <div class="calendar__week-text">Fr</div>
-                        <div class="calendar__week-text">Sa</div>
-                      </div>
-                      <div class="days"></div>
-                    </div>
-                  </div>
-
-                  <div class="ps-20 pt-20 pb-20 border-top border-neutral-200">
-                    <h6 class="text-lg mb-20">Upcoming Events</h6>
-                    <div class="pe-20 d-flex flex-column gap-32 overflow-y-auto max-h-500-px scroll-sm">
-                      <div class="d-flex align-items-center justify-content-between gap-16">
-                        <div class="ps-10 border-start-width-3-px border-purple-600">
-                          <div class="d-flex align-items-end gap-6">
-                            <h6 class="text-lg fw-normal mb-0">09:00 - 09:45</h6>
-                            <span class="text-xs text-secondary-light line-height-1 mb-2">AM</span>
-                          </div>
-                          <p class="text-secondary-light mt-4 mb-2 text-sm">Marketing Strategy Kickoff</p>
-                          <p class="text-xs text-secondary-light mb-0">Lead by <a href="javascript:void(0)"
-                              class="text-primary-600 hover-underline">Robert Fox</a></p>
-                        </div>
-                        <div>
-                          <a href="javascript:void(0)"
-                            class="py-6 px-16 radius-4 bg-neutral-100 text-secondary-light fw-semibold bg-hover-primary-600 hover-text-white">View</a>
-                        </div>
-                      </div>
-                      <div class="d-flex align-items-center justify-content-between gap-16">
-                        <div class="ps-10 border-start-width-3-px border-warning-600">
-                          <div class="d-flex align-items-end gap-6">
-                            <h6 class="text-lg fw-normal mb-0">11:15 - 12:00</h6>
-                            <span class="text-xs text-secondary-light line-height-1 mb-2">AM</span>
-                          </div>
-                          <p class="text-secondary-light mt-4 mb-2 text-sm">Product Design Brainstorm</p>
-                          <p class="text-xs text-secondary-light mb-0">Lead by <a href="javascript:void(0)"
-                              class="text-primary-600 hover-underline">Leslie Alexander</a></p>
-                        </div>
-                        <div>
-                          <a href="javascript:void(0)"
-                            class="py-6 px-16 radius-4 bg-neutral-100 text-secondary-light fw-semibold bg-hover-primary-600 hover-text-white">View</a>
-                        </div>
-                      </div>
-                      <div class="d-flex align-items-center justify-content-between gap-16">
-                        <div class="ps-10 border-start-width-3-px border-blue-600">
-                          <div class="d-flex align-items-end gap-6">
-                            <h6 class="text-lg fw-normal mb-0">02:00 - 03:00</h6>
-                            <span class="text-xs text-secondary-light line-height-1 mb-2">PM</span>
-                          </div>
-                          <p class="text-secondary-light mt-4 mb-2 text-sm">Client Feedback Review</p>
-                          <p class="text-xs text-secondary-light mb-0">Lead by <a href="javascript:void(0)"
-                              class="text-primary-600 hover-underline">Courtney Henry</a></p>
-                        </div>
-                        <div>
-                          <a href="javascript:void(0)"
-                            class="py-6 px-16 radius-4 bg-neutral-100 text-secondary-light fw-semibold bg-hover-primary-600 hover-text-white">View</a>
-                        </div>
-                      </div>
-                      <div class="d-flex align-items-center justify-content-between gap-16">
-                        <div class="ps-10 border-start-width-3-px border-success-600">
-                          <div class="d-flex align-items-end gap-6">
-                            <h6 class="text-lg fw-normal mb-0">04:15 - 05:00</h6>
-                            <span class="text-xs text-secondary-light line-height-1 mb-2">PM</span>
-                          </div>
-                          <p class="text-secondary-light mt-4 mb-2 text-sm">Sprint Planning & Task Allocation</p>
-                          <p class="text-xs text-secondary-light mb-0">Lead by <a href="javascript:void(0)"
-                              class="text-primary-600 hover-underline">Eleanor Pena</a></p>
-                        </div>
-                        <div>
-                          <a href="javascript:void(0)"
-                            class="py-6 px-16 radius-4 bg-neutral-100 text-secondary-light fw-semibold bg-hover-primary-600 hover-text-white">View</a>
-                        </div>
-                      </div>
-                      <div class="d-flex align-items-center justify-content-between gap-16">
-                        <div class="ps-10 border-start-width-3-px border-primary-600">
-                          <div class="d-flex align-items-end gap-6">
-                            <h6 class="text-lg fw-normal mb-0">01:15 - 02:00</h6>
-                            <span class="text-xs text-secondary-light line-height-1 mb-2">PM</span>
-                          </div>
-                          <p class="text-secondary-light mt-4 mb-2 text-sm">Client Feedback Review</p>
-                          <p class="text-xs text-secondary-light mb-0">Lead by <a href="javascript:void(0)"
-                              class="text-primary-600 hover-underline">John</a></p>
-                        </div>
-                        <div>
-                          <a href="javascript:void(0)"
-                            class="py-6 px-16 radius-4 bg-neutral-100 text-secondary-light fw-semibold bg-hover-primary-600 hover-text-white">View</a>
-                        </div>
-                      </div>
-                      <div class="d-flex align-items-center justify-content-between gap-16">
-                        <div class="ps-10 border-start-width-3-px border-warning-600">
-                          <div class="d-flex align-items-end gap-6">
-                            <h6 class="text-lg fw-normal mb-0">11:15 - 12:00</h6>
-                            <span class="text-xs text-secondary-light line-height-1 mb-2">AM</span>
-                          </div>
-                          <p class="text-secondary-light mt-4 mb-2 text-sm">Product Design Brainstorm</p>
-                          <p class="text-xs text-secondary-light mb-0">Lead by <a href="javascript:void(0)"
-                              class="text-primary-600 hover-underline">Leslie Alexander</a></p>
-                        </div>
-                        <div>
-                          <a href="javascript:void(0)"
-                            class="py-6 px-16 radius-4 bg-neutral-100 text-secondary-light fw-semibold bg-hover-primary-600 hover-text-white">View</a>
-                        </div>
-                      </div>
-                    </div>
+                      </li>
+                      <li>
+                        <button type="button"
+                          class="delete-item dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-danger-100 text-hover-danger-600 d-flex align-items-center gap-10"
+                          data-bs-toggle="modal" data-bs-target="#exampleModalDelete">
+                          <iconify-icon icon="fluent:delete-24-regular"
+                            class="icon text-lg line-height-1"></iconify-icon>
+                          Delete
+                        </button>
+                      </li>
+                    </ul>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xxl-4 col-lg-6">
-          <div class="card h-100">
-            <div class="card-body p-0">
-              <div
-                class="d-flex flex-wrap align-items-center justify-content-between px-20 py-16 border-bottom border-neutral-200">
-                <h6 class="text-lg mb-0">User Overview</h6>
-                <div class="dropdown">
-                  <button type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <iconify-icon icon="entypo:dots-three-vertical" class="icon text-secondary-light"></iconify-icon>
-                  </button>
-                  <ul class="dropdown-menu p-12 border bg-base shadow">
-                    <li>
-                      <button type="button"
-                        class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-10"
-                        data-bs-toggle="modal" data-bs-target="#exampleModalView">
-                        <iconify-icon icon="hugeicons:view" class="icon text-lg line-height-1"></iconify-icon>
-                        View
-                      </button>
-                    </li>
-                    <li>
-                      <button type="button"
-                        class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-10"
-                        data-bs-toggle="modal" data-bs-target="#exampleModalEdit">
-                        <iconify-icon icon="lucide:edit" class="icon text-lg line-height-1"></iconify-icon>
-                        Edit
-                      </button>
-                    </li>
-                    <li>
-                      <button type="button"
-                        class="delete-item dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-danger-100 text-hover-danger-600 d-flex align-items-center gap-10"
-                        data-bs-toggle="modal" data-bs-target="#exampleModalDelete">
-                        <iconify-icon icon="fluent:delete-24-regular" class="icon text-lg line-height-1"></iconify-icon>
-                        Delete
-                      </button>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="p-20">
-                <div>
-                  <div class="mt-40 mb-24 pe-110 position-relative max-w-288-px mx-auto">
-                    <div
-                      class="w-170-px h-170-px rounded-circle z-1 position-relative d-inline-flex justify-content-center align-items-center">
-                      <img src="assets/images/icons/radial-bg1.png" alt="Image"
-                        class="position-absolute top-0 start-0 z-n1 w-100 h-100 object-fit-cover">
-                      <h5 class="text-white"> 60% </h5>
-                    </div>
-                    <div
-                      class="w-144-px h-144-px rounded-circle z-1 position-relative d-inline-flex justify-content-center align-items-center position-absolute top-0 end-0 mt--36">
-                      <img src="assets/images/icons/radial-bg2.png" alt="Image"
-                        class="position-absolute top-0 start-0 z-n1 w-100 h-100 object-fit-cover">
-                      <h5 class="text-white"> 30% </h5>
-                    </div>
-                    <div
-                      class="w-110-px h-110-px rounded-circle z-1 position-relative d-inline-flex justify-content-center align-items-center position-absolute bottom-0 start-50 translate-middle-x ms-48">
-                      <img src="assets/images/icons/radial-bg3.png" alt="Image"
-                        class="position-absolute top-0 start-0 z-n1 w-100 h-100 object-fit-cover">
-                      <h5 class="text-white"> 10% </h5>
-                    </div>
-                  </div>
-
-                  <div class="d-flex align-items-center flex-wrap gap-24 justify-content-evenly">
-                    <div class="d-flex flex-column align-items-start">
-                      <div class="d-flex align-items-center gap-2">
-                        <span class="w-12-px h-12-px rounded-pill bg-success-600"></span>
-                        <span class="text-secondary-light text-sm fw-normal">Student</span>
-                      </div>
-                      <h6 class="text-primary-light fw-semibold mb-0 mt-4 text-lg">750</h6>
-                    </div>
-                    <div class="d-flex flex-column align-items-start">
-                      <div class="d-flex align-items-center gap-2">
-                        <span class="w-12-px h-12-px rounded-pill bg-warning-600"></span>
-                        <span class="text-secondary-light text-sm fw-normal">Teacher</span>
-                      </div>
-                      <h6 class="text-primary-light fw-semibold mb-0 mt-4 text-lg">56</h6>
-                    </div>
-                    <div class="d-flex flex-column align-items-start">
-                      <div class="d-flex align-items-center gap-2">
-                        <span class="w-12-px h-12-px rounded-pill bg-blue-600"></span>
-                        <span class="text-secondary-light text-sm fw-normal">Staffs </span>
-                      </div>
-                      <h6 class="text-primary-light fw-semibold mb-0 mt-4 text-lg">15</h6>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xxl-8 col-lg-6">
-          <div class="card h-100">
-            <div class="card-body p-0">
-              <div
-                class="d-flex flex-wrap align-items-center justify-content-between px-20 py-16 border-bottom border-neutral-200">
-                <h6 class="text-lg mb-0">Income Vs Expense </h6>
-                <div class="dropdown">
-                  <button type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <iconify-icon icon="entypo:dots-three-vertical" class="icon text-secondary-light"></iconify-icon>
-                  </button>
-                  <ul class="dropdown-menu p-12 border bg-base shadow">
-                    <li>
-                      <button type="button"
-                        class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-10"
-                        data-bs-toggle="modal" data-bs-target="#exampleModalView">
-                        <iconify-icon icon="hugeicons:view" class="icon text-lg line-height-1"></iconify-icon>
-                        View
-                      </button>
-                    </li>
-                    <li>
-                      <button type="button"
-                        class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-10"
-                        data-bs-toggle="modal" data-bs-target="#exampleModalEdit">
-                        <iconify-icon icon="lucide:edit" class="icon text-lg line-height-1"></iconify-icon>
-                        Edit
-                      </button>
-                    </li>
-                    <li>
-                      <button type="button"
-                        class="delete-item dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-danger-100 text-hover-danger-600 d-flex align-items-center gap-10"
-                        data-bs-toggle="modal" data-bs-target="#exampleModalDelete">
-                        <iconify-icon icon="fluent:delete-24-regular" class="icon text-lg line-height-1"></iconify-icon>
-                        Delete
-                      </button>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="p-20">
-                <ul class="d-flex flex-wrap align-items-center justify-content-center mb-16 gap-3">
-                  <li class="d-flex align-items-center gap-8">
-                    <span class="w-12-px h-12-px rounded-circle bg-primary-600"></span>
-                    <span class="text-secondary-light text-sm fw-semibold">
-                      Income:
-                      <span class="text-primary-light fw-bold">$500</span>
-                    </span>
-                  </li>
-                  <li class="d-flex align-items-center gap-8">
-                    <span class="w-12-px h-12-px rounded-circle bg-warning-600"></span>
-                    <span class="text-secondary-light text-sm font-semibold">
-                      Expense:
-                      <span class="text-primary-light fw-bold"> $300</span>
-                    </span>
-                  </li>
-                </ul>
-                <div id="incomeExpense" class="apexcharts-tooltip-style-1"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xxl-4 col-lg-6">
-          <div class="card h-100">
-            <div class="card-body p-0">
-              <div
-                class="d-flex flex-wrap align-items-center justify-content-between px-20 py-16 border-bottom border-neutral-200">
-                <h6 class="text-lg mb-0">Top Teachers</h6>
-                <div class="dropdown">
-                  <button type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <iconify-icon icon="entypo:dots-three-vertical" class="icon text-secondary-light"></iconify-icon>
-                  </button>
-                  <ul class="dropdown-menu p-12 border bg-base shadow">
-                    <li>
-                      <button type="button"
-                        class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-10"
-                        data-bs-toggle="modal" data-bs-target="#exampleModalView">
-                        <iconify-icon icon="hugeicons:view" class="icon text-lg line-height-1"></iconify-icon>
-                        View
-                      </button>
-                    </li>
-                    <li>
-                      <button type="button"
-                        class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-10"
-                        data-bs-toggle="modal" data-bs-target="#exampleModalEdit">
-                        <iconify-icon icon="lucide:edit" class="icon text-lg line-height-1"></iconify-icon>
-                        Edit
-                      </button>
-                    </li>
-                    <li>
-                      <button type="button"
-                        class="delete-item dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-danger-100 text-hover-danger-600 d-flex align-items-center gap-10"
-                        data-bs-toggle="modal" data-bs-target="#exampleModalDelete">
-                        <iconify-icon icon="fluent:delete-24-regular" class="icon text-lg line-height-1"></iconify-icon>
-                        Delete
-                      </button>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="ps-20 pt-20 pb-20">
-                <div class="pe-20 d-flex flex-column gap-20 max-h-462-px overflow-y-auto scroll-sm">
-                  <div class="d-flex align-items-center justify-content-between gap-16">
+                <div class="ps-20 pt-20 pb-20">
+                  <div class="pe-20 d-flex flex-column gap-28 overflow-y-auto max-h-490-px scroll-sm">
                     <div class="d-flex align-items-start gap-16">
-                      <img src="assets/images/thumbs/top-teacher-img1.png" alt="Thumbnail"
+                      <img src="assets/images/thumbs/notice-board-img1.png" alt="Thumbnail"
                         class="w-40-px h-40-px rounded-circle object-fit-cover flex-shrink-0">
                       <div class="">
-                        <h6 class="mb-0 text-lg">Theresa Webb</h6>
-                        <span class="text-secondary-light text-sm mb-0">example@gmail.com</span>
+                        <h6 class="mb-4 text-lg">Admin</h6>
+                        <p class="text-secondary-light text-sm mb-0">Lorem Ipsum is simply dummy
+                          text of the
+                          printing and typesetti</p>
+                        <span class="text-secondary-light text-sm mb-0 mt-4">25 Jan 2024</span>
                       </div>
                     </div>
-                    <div class="text-end">
-                      <span class="d-block fw-semibold text-primary-light">Mathematics</span>
-                    </div>
-                  </div>
-                  <div class="d-flex align-items-center justify-content-between gap-16">
                     <div class="d-flex align-items-start gap-16">
-                      <img src="assets/images/thumbs/top-teacher-img2.png" alt="Thumbnail"
+                      <img src="assets/images/thumbs/notice-board-img2.png" alt="Thumbnail"
                         class="w-40-px h-40-px rounded-circle object-fit-cover flex-shrink-0">
                       <div class="">
-                        <h6 class="mb-0 text-lg">Darrell Steward</h6>
-                        <span class="text-secondary-light text-sm mb-0">example@gmail.com</span>
+                        <h6 class="mb-4 text-lg">Kathryn Murphy</h6>
+                        <p class="text-secondary-light text-sm mb-0">Lorem Ipsum is simply dummy
+                          text of the
+                          printing and typesett ing industry Lorem Ipsum is simply dummy text of
+                          the printing and
+                          typesetting industry.</p>
+                        <span class="text-secondary-light text-sm mb-0 mt-4">25 Jan 2024</span>
                       </div>
                     </div>
-                    <div class="text-end">
-                      <span class="d-block fw-semibold text-primary-light">Physics</span>
-                    </div>
-                  </div>
-                  <div class="d-flex align-items-center justify-content-between gap-16">
                     <div class="d-flex align-items-start gap-16">
-                      <img src="assets/images/thumbs/top-teacher-img3.png" alt="Thumbnail"
+                      <img src="assets/images/thumbs/notice-board-img3.png" alt="Thumbnail"
                         class="w-40-px h-40-px rounded-circle object-fit-cover flex-shrink-0">
                       <div class="">
-                        <h6 class="mb-0 text-lg">Jane Cooper</h6>
-                        <span class="text-secondary-light text-sm mb-0">example@gmail.com</span>
+                        <h6 class="mb-4 text-lg">Admin</h6>
+                        <p class="text-secondary-light text-sm mb-0">Lorem Ipsum is simply dummy
+                          text of the
+                          printing and typesetti</p>
+                        <span class="text-secondary-light text-sm mb-0 mt-4">25 Jan 2024</span>
                       </div>
                     </div>
-                    <div class="text-end">
-                      <span class="d-block fw-semibold text-primary-light">Biology</span>
-                    </div>
-                  </div>
-                  <div class="d-flex align-items-center justify-content-between gap-16">
                     <div class="d-flex align-items-start gap-16">
-                      <img src="assets/images/thumbs/top-teacher-img4.png" alt="Thumbnail"
+                      <img src="assets/images/thumbs/notice-board-img2.png" alt="Thumbnail"
                         class="w-40-px h-40-px rounded-circle object-fit-cover flex-shrink-0">
                       <div class="">
-                        <h6 class="mb-0 text-lg">Savannah Nguyen</h6>
-                        <span class="text-secondary-light text-sm mb-0">example@gmail.com</span>
+                        <h6 class="mb-4 text-lg">John Doe</h6>
+                        <p class="text-secondary-light text-sm mb-0">Lorem ipsum dolor sit amet
+                          consectetur
+                          adipisicing elit. Laborum voluptas corporis qui dolore est odit officia
+                          fuga?</p>
+                        <span class="text-secondary-light text-sm mb-0 mt-4">25 Jan 2024</span>
                       </div>
-                    </div>
-                    <div class="text-end">
-                      <span class="d-block fw-semibold text-primary-light">English</span>
-                    </div>
-                  </div>
-                  <div class="d-flex align-items-center justify-content-between gap-16">
-                    <div class="d-flex align-items-start gap-16">
-                      <img src="assets/images/thumbs/top-teacher-img5.png" alt="Thumbnail"
-                        class="w-40-px h-40-px rounded-circle object-fit-cover flex-shrink-0">
-                      <div class="">
-                        <h6 class="mb-0 text-lg">Eleanor Pena</h6>
-                        <span class="text-secondary-light text-sm mb-0">example@gmail.com</span>
-                      </div>
-                    </div>
-                    <div class="text-end">
-                      <span class="d-block fw-semibold text-primary-light">Math</span>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-xxl-4 col-lg-6">
-          <div class="card h-100">
-            <div class="card-body p-0">
-              <div
-                class="d-flex flex-wrap align-items-center justify-content-between px-20 py-16 border-bottom border-neutral-200">
-                <h6 class="text-lg mb-0">New Admissions</h6>
-                <div class="dropdown">
-                  <button type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <iconify-icon icon="entypo:dots-three-vertical" class="icon text-secondary-light"></iconify-icon>
-                  </button>
-                  <ul class="dropdown-menu p-12 border bg-base shadow">
-                    <li>
-                      <button type="button"
-                        class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-10"
-                        data-bs-toggle="modal" data-bs-target="#exampleModalView">
-                        <iconify-icon icon="hugeicons:view" class="icon text-lg line-height-1"></iconify-icon>
-                        View
-                      </button>
-                    </li>
-                    <li>
-                      <button type="button"
-                        class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-10"
-                        data-bs-toggle="modal" data-bs-target="#exampleModalEdit">
-                        <iconify-icon icon="lucide:edit" class="icon text-lg line-height-1"></iconify-icon>
-                        Edit
-                      </button>
-                    </li>
-                    <li>
-                      <button type="button"
-                        class="delete-item dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-danger-100 text-hover-danger-600 d-flex align-items-center gap-10"
-                        data-bs-toggle="modal" data-bs-target="#exampleModalDelete">
-                        <iconify-icon icon="fluent:delete-24-regular" class="icon text-lg line-height-1"></iconify-icon>
-                        Delete
-                      </button>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="p-20">
-                <div class="position-relative text-center">
-                  <div id="newAdmissions" class="y-value-left apexcharts-tooltip-z-none"></div>
-                  <div class="text-center position-absolute top-50 start-50 translate-middle">
-                    <h5 class="mb-4">50</h5>
-                    <span class="text-secondary-light">Total Admissions</span>
-                  </div>
-                </div>
-                <ul class="d-flex flex-wrap align-items-center justify-content-center mt-48 gap-24">
-                  <li class="d-flex align-items-center gap-2">
-                    <span class="w-12-px h-12-px radius-2 bg-success-600 rotate-45-deg"></span>
-                    <div class="">
-                      <span class="text-secondary-light fw-medium">
-                        English:
-                        <span class="fw-bold text-primary-light">15</span>
-                      </span>
-                    </div>
-                  </li>
-                  <li class="d-flex align-items-center gap-2">
-                    <span class="w-12-px h-12-px radius-2 bg-blue-600 rotate-45-deg"></span>
-                    <div class="">
-                      <span class="text-secondary-light fw-medium">
-                        Math:
-                        <span class="fw-bold text-primary-light">15</span>
-                      </span>
-                    </div>
-                  </li>
-                  <li class="d-flex align-items-center gap-2">
-                    <span class="w-12-px h-12-px radius-2 bg-warning-600 rotate-45-deg"></span>
-                    <div class="">
-                      <span class="text-secondary-light fw-medium">
-                        Biology:
-                        <span class="fw-bold text-primary-light">5</span>
-                      </span>
-                    </div>
-                  </li>
-                  <li class="d-flex align-items-center gap-2">
-                    <span class="w-12-px h-12-px radius-2 bg-primary-600 rotate-45-deg"></span>
-                    <div class="">
-                      <span class="text-secondary-light fw-medium">
-                        Physics:
-                        <span class="fw-bold text-primary-light">10</span>
-                      </span>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xxl-4">
-          <div class="card radius-12 border-0 h-100">
-            <div
-              class="d-flex align-items-center flex-wrap gap-2 justify-content-between py-12 px-20 border-bottom border-neutral-200">
-              <h6 class="mb-2 fw-bold text-lg">Top Student</h6>
-              <div class="dropdown">
-                <button type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <iconify-icon icon="entypo:dots-three-vertical" class="icon text-secondary-light"></iconify-icon>
-                </button>
-                <ul class="dropdown-menu p-12 border bg-base shadow">
-                  <li>
-                    <button type="button"
-                      class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-10"
-                      data-bs-toggle="modal" data-bs-target="#exampleModalView">
-                      <iconify-icon icon="hugeicons:view" class="icon text-lg line-height-1"></iconify-icon>
-                      View
-                    </button>
-                  </li>
-                  <li>
-                    <button type="button"
-                      class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-10"
-                      data-bs-toggle="modal" data-bs-target="#exampleModalEdit">
-                      <iconify-icon icon="lucide:edit" class="icon text-lg line-height-1"></iconify-icon>
-                      Edit
-                    </button>
-                  </li>
-                  <li>
-                    <button type="button"
-                      class="delete-item dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-danger-100 text-hover-danger-600 d-flex align-items-center gap-10"
-                      data-bs-toggle="modal" data-bs-target="#exampleModalDelete">
-                      <iconify-icon icon="fluent:delete-24-regular" class="icon text-lg line-height-1"></iconify-icon>
-                      Delete
-                    </button>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="card-body">
-              <div class="d-flex flex-column gap-28">
-                <div class="d-flex align-items-center justify-content-between gap-10">
-                  <div class="d-flex align-items-center gap-12">
-                    <span class="w-44-px h-44-px rounded-circle d-flex justify-content-center align-items-center">
-                      <img src="assets/images/thumbs/avatar-img1.png"
-                        class="w-44-px h-44-px object-fit-cover rounded-circle" alt="Icon">
-                    </span>
-                    <div class="">
-                      <h6 class="text-sm mb-2">Brooklyn Simmons</h6>
-                      <span class="text-xs text-secondary-light">Class: Six</span>
-                    </div>
-                  </div>
-                  <div class="d-flex align-items-center gap-8">
-                    <span class="text-sm text-secondary-light">Marks</span>
-                    <span class="text-primary-light text-sm d-block text-end">
-                      <svg class="radial-progress w-44-px" data-percentage="20" viewBox="0 0 80 80">
-                        <circle class="incomplete stroke-8-px opacity-02 stroke-blue" cx="40" cy="40" r="35"></circle>
-                        <circle class="complete stroke-8-px stroke-blue" cx="40" cy="40" r="35">
-                        </circle>
-                        <text class="percentage fill-black" x="50%" y="57%"
-                          transform="matrix(0, 1, -1, 0, 80, 0)">20</text>
-                      </svg>
-                    </span>
-                  </div>
-                </div>
+          <!-- Notice Board End -->
 
-                <div class="d-flex align-items-center justify-content-between gap-10">
-                  <div class="d-flex align-items-center gap-12">
-                    <span class="w-44-px h-44-px rounded-circle d-flex justify-content-center align-items-center">
-                      <img src="assets/images/thumbs/avatar-img2.png"
-                        class="w-44-px h-44-px object-fit-cover rounded-circle" alt="Icon">
-                    </span>
-                    <div class="">
-                      <h6 class="text-sm mb-2">Floyd Miles</h6>
-                      <span class="text-xs text-secondary-light">Class: Seven</span>
+          <!-- Upcoming Events start -->
+          <div class="col-xxl-4 col-lg-6">
+            <div class="card h-100">
+              <div class="card-body p-0">
+                <div
+                  class="d-flex flex-wrap align-items-center justify-content-between px-20 py-16 border-bottom border-neutral-200">
+                  <h6 class="text-lg mb-0">Upcoming Events</h6>
+                </div>
+                <div class="ps-20 pt-20 pb-20">
+                  <div class="pe-20 d-flex flex-column gap-28 overflow-y-auto max-h-490-px scroll-sm">
+                    <div class="d-flex align-items-center justify-content-between gap-16">
+                      <div class="ps-10 border-start-width-3-px border-purple-600">
+                        <div class="d-flex align-items-end gap-6">
+                          <h6 class="text-lg fw-normal mb-0">09:00 - 09:45</h6>
+                          <span class="text-xs text-secondary-light line-height-1 mb-2">AM</span>
+                        </div>
+                        <p class="text-secondary-light mt-4 mb-2 text-sm">Marketing Strategy Kickoff
+                        </p>
+                        <p class="text-xs text-secondary-light mb-0">Lead by <a href="javascript:void(0)"
+                            class="text-primary-600 hover-underline">Robert Fox</a></p>
+                      </div>
+                      <div>
+                        <a href="javascript:void(0)"
+                          class="py-6 px-16 radius-4 bg-neutral-100 text-secondary-light fw-semibold bg-hover-primary-600 hover-text-white">View</a>
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between gap-16">
+                      <div class="ps-10 border-start-width-3-px border-warning-600">
+                        <div class="d-flex align-items-end gap-6">
+                          <h6 class="text-lg fw-normal mb-0">11:15 - 12:00</h6>
+                          <span class="text-xs text-secondary-light line-height-1 mb-2">AM</span>
+                        </div>
+                        <p class="text-secondary-light mt-4 mb-2 text-sm">Product Design Brainstorm
+                        </p>
+                        <p class="text-xs text-secondary-light mb-0">Lead by <a href="javascript:void(0)"
+                            class="text-primary-600 hover-underline">Leslie Alexander</a></p>
+                      </div>
+                      <div>
+                        <a href="javascript:void(0)"
+                          class="py-6 px-16 radius-4 bg-neutral-100 text-secondary-light fw-semibold bg-hover-primary-600 hover-text-white">View</a>
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between gap-16">
+                      <div class="ps-10 border-start-width-3-px border-blue-600">
+                        <div class="d-flex align-items-end gap-6">
+                          <h6 class="text-lg fw-normal mb-0">02:00 - 03:00</h6>
+                          <span class="text-xs text-secondary-light line-height-1 mb-2">PM</span>
+                        </div>
+                        <p class="text-secondary-light mt-4 mb-2 text-sm">Client Feedback Review</p>
+                        <p class="text-xs text-secondary-light mb-0">Lead by <a href="javascript:void(0)"
+                            class="text-primary-600 hover-underline">Courtney Henry</a></p>
+                      </div>
+                      <div>
+                        <a href="javascript:void(0)"
+                          class="py-6 px-16 radius-4 bg-neutral-100 text-secondary-light fw-semibold bg-hover-primary-600 hover-text-white">View</a>
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between gap-16">
+                      <div class="ps-10 border-start-width-3-px border-success-600">
+                        <div class="d-flex align-items-end gap-6">
+                          <h6 class="text-lg fw-normal mb-0">04:15 - 05:00</h6>
+                          <span class="text-xs text-secondary-light line-height-1 mb-2">PM</span>
+                        </div>
+                        <p class="text-secondary-light mt-4 mb-2 text-sm">Sprint Planning &amp; Task
+                          Allocation</p>
+                        <p class="text-xs text-secondary-light mb-0">Lead by <a href="javascript:void(0)"
+                            class="text-primary-600 hover-underline">Eleanor Pena</a></p>
+                      </div>
+                      <div>
+                        <a href="javascript:void(0)"
+                          class="py-6 px-16 radius-4 bg-neutral-100 text-secondary-light fw-semibold bg-hover-primary-600 hover-text-white">View</a>
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between gap-16">
+                      <div class="ps-10 border-start-width-3-px border-primary-600">
+                        <div class="d-flex align-items-end gap-6">
+                          <h6 class="text-lg fw-normal mb-0">01:15 - 02:00</h6>
+                          <span class="text-xs text-secondary-light line-height-1 mb-2">PM</span>
+                        </div>
+                        <p class="text-secondary-light mt-4 mb-2 text-sm">Client Feedback Review</p>
+                        <p class="text-xs text-secondary-light mb-0">Lead by <a href="javascript:void(0)"
+                            class="text-primary-600 hover-underline">John</a></p>
+                      </div>
+                      <div>
+                        <a href="javascript:void(0)"
+                          class="py-6 px-16 radius-4 bg-neutral-100 text-secondary-light fw-semibold bg-hover-primary-600 hover-text-white">View</a>
+                      </div>
                     </div>
                   </div>
-                  <div class="d-flex align-items-center gap-8">
-                    <span class="text-sm text-secondary-light">Marks</span>
-                    <span class="text-primary-light text-sm d-block text-end">
-                      <svg class="radial-progress w-44-px" data-percentage="35" viewBox="0 0 80 80">
-                        <circle class="incomplete stroke-8-px opacity-02 stroke-red" cx="40" cy="40" r="35"></circle>
-                        <circle class="complete stroke-8-px stroke-red" cx="40" cy="40" r="35">
-                        </circle>
-                        <text class="percentage fill-black" x="50%" y="57%"
-                          transform="matrix(0, 1, -1, 0, 80, 0)">35</text>
-                      </svg>
-                    </span>
-                  </div>
                 </div>
-
-                <div class="d-flex align-items-center justify-content-between gap-10">
-                  <div class="d-flex align-items-center gap-12">
-                    <span class="w-44-px h-44-px rounded-circle d-flex justify-content-center align-items-center">
-                      <img src="assets/images/thumbs/avatar-img2.png"
-                        class="w-44-px h-44-px object-fit-cover rounded-circle" alt="Icon">
-                    </span>
-                    <div class="">
-                      <h6 class="text-sm mb-2">Courtney Henry</h6>
-                      <span class="text-xs text-secondary-light">Class: Eight</span>
-                    </div>
-                  </div>
-                  <div class="d-flex align-items-center gap-8">
-                    <span class="text-sm text-secondary-light">Marks</span>
-                    <span class="text-primary-light text-sm d-block text-end">
-                      <svg class="radial-progress w-44-px" data-percentage="45" viewBox="0 0 80 80">
-                        <circle class="incomplete stroke-8-px opacity-02 stroke-warning" cx="40" cy="40" r="35">
-                        </circle>
-                        <circle class="complete stroke-8-px stroke-warning" cx="40" cy="40" r="35">
-                        </circle>
-                        <text class="percentage fill-black" x="50%" y="57%"
-                          transform="matrix(0, 1, -1, 0, 80, 0)">45</text>
-                      </svg>
-                    </span>
-                  </div>
-                </div>
-
-                <div class="d-flex align-items-center justify-content-between gap-10">
-                  <div class="d-flex align-items-center gap-12">
-                    <span class="w-44-px h-44-px rounded-circle d-flex justify-content-center align-items-center">
-                      <img src="assets/images/thumbs/avatar-img4.png"
-                        class="w-44-px h-44-px object-fit-cover rounded-circle" alt="Icon">
-                    </span>
-                    <div class="">
-                      <h6 class="text-sm mb-2">Kathryn Murphy</h6>
-                      <span class="text-xs text-secondary-light">Class: Nine</span>
-                    </div>
-                  </div>
-                  <div class="d-flex align-items-center gap-8">
-                    <span class="text-sm text-secondary-light">Marks</span>
-                    <span class="text-primary-light text-sm d-block text-end">
-                      <svg class="radial-progress w-44-px" data-percentage="65" viewBox="0 0 80 80">
-                        <circle class="incomplete stroke-8-px opacity-02 stroke-green" cx="40" cy="40" r="35"></circle>
-                        <circle class="complete stroke-8-px stroke-green" cx="40" cy="40" r="35">
-                        </circle>
-                        <text class="percentage fill-black" x="50%" y="57%"
-                          transform="matrix(0, 1, -1, 0, 80, 0)">65</text>
-                      </svg>
-                    </span>
-                  </div>
-                </div>
-
-                <div class="d-flex align-items-center justify-content-between gap-10">
-                  <div class="d-flex align-items-center gap-12">
-                    <span class="w-44-px h-44-px rounded-circle d-flex justify-content-center align-items-center">
-                      <img src="assets/images/thumbs/avatar-img5.png"
-                        class="w-44-px h-44-px object-fit-cover rounded-circle" alt="Icon">
-                    </span>
-                    <div class="">
-                      <h6 class="text-sm mb-2">Annette Black</h6>
-                      <span class="text-xs text-secondary-light">Class: Ten</span>
-                    </div>
-                  </div>
-                  <div class="d-flex align-items-center gap-8">
-                    <span class="text-sm text-secondary-light">Marks</span>
-                    <span class="text-primary-light text-sm d-block text-end">
-                      <svg class="radial-progress w-44-px" data-percentage="65" viewBox="0 0 80 80">
-                        <circle class="incomplete stroke-8-px opacity-02 stroke-blue" cx="40" cy="40" r="35"></circle>
-                        <circle class="complete stroke-8-px stroke-blue" cx="40" cy="40" r="35">
-                        </circle>
-                        <text class="percentage fill-black" x="50%" y="57%"
-                          transform="matrix(0, 1, -1, 0, 80, 0)">65</text>
-                      </svg>
-                    </span>
-                  </div>
-                </div>
-
               </div>
             </div>
           </div>
+          <!-- Upcoming Events End -->
+
         </div>
       </div>
     </div>
-  </div>
 
-  <footer class="d-footer">
-  <div class="">
-    <p class="mb-0 text-center"> &copy; <span class="current-year"></span> Made With ❤️ by Wowtheme7.</p>
-  </div>
-</footer>
-</main>
+    <footer class="d-footer">
+      <div class="">
+        <p class="mb-0 text-center"> &copy; <span class="current-year"></span> Made With ❤️ by Wowtheme7.</p>
+      </div>
+    </footer>
+  </main>
 
   <!-- jQuery library js -->
   <script src="assets/js/lib/jquery-3.7.1.min.js"></script>
@@ -2046,356 +1707,169 @@
   <script src="assets/js/lib/iconify-icon.min.js"></script>
   <!-- Data Table js -->
   <script src="assets/js/lib/dataTables.min.js"></script>
-  
+
   <!-- jQuery UI js -->
   <script src="assets/js/lib/jquery-ui.min.js"></script>
-  
+
   <!-- main js -->
   <script src="assets/js/app.js"></script>
 
-<script>
-  // ============================ Revenue Statistics Chart start ===============================
-  var options = {
-    series: [{
-      name: 'Total Fee',
-      data: [25, 35, 50, 60, 26, 20, 40, 20, 50, 16, 10, 40]
-    }, {
-      name: 'Collected Fee',
-      data: [15, 16, 24, 30, 20, 15, 20, 10, 25, 10, 6, 20]
-    }],
-    chart: {
-      type: 'bar',
-      height: 250,
-      stacked: true,
-      toolbar: {
-        show: false
-      },
-      zoom: {
-        enabled: true
-      }
-    },
-    colors: ["#25A194", "#FF7A2C"],
-    plotOptions: {
-      bar: {
-        horizontal: false,
-        columnWidth: "50%",
-        shape: "pyramid",
-      },
-    },
-    xaxis: {
-      categories: ['Jan', 'Feb', 'Mar', 'Apr',
-        'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
-      ],
-    },
-    yaxis: {
-      labels: {
-        formatter: function (value) {
-          return "$" + value + "k";
-        },
-        style: {
-          fontSize: "14px"
-        }
-      },
-    },
-    legend: {
-      show: false,
-    },
-    fill: {
-      opacity: 1
-    }
-  };
+  <script>
 
-  var chart = new ApexCharts(document.querySelector("#revenueStatistic"), options);
-  chart.render()
-  // ============================ Revenue Statistics Chart End ===============================
-
-  // ===================== Income Vs Expense Start =============================== 
-  function createChartThree(chartId, color1, color2) {
+    // ================================ Users Overview Donut chart Start ================================ 
     var options = {
-      series: [{
-        name: 'Income',
-        data: [48, 35, 55, 32, 48, 30, 15, 50, 57]
-      }, {
-        name: 'Expense',
-        data: [12, 20, 15, 26, 22, 60, 40, 32, 25]
-      }],
+      series: [200, 200, 200, 200],
+      colors: ['#487FFF', '#9935FE', '#FF9F29', "#45B369"],
+      labels: ['Total Visitors', 'Registrations', 'Total Page Views', 'Registrations'],
       legend: {
         show: false
       },
       chart: {
-        type: 'area',
-        width: '100%',
-        height: 260,
-        toolbar: {
-          show: false
+        type: 'donut',
+        height: 270,
+        sparkline: {
+          enabled: true // Remove whitespace
+        },
+        margin: {
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0
         },
         padding: {
-          left: 0,
-          right: 0,
           top: 0,
-          bottom: 0
+          right: 0,
+          bottom: 0,
+          left: 0
         }
+      },
+      stroke: {
+        width: 0,
       },
       dataLabels: {
         enabled: false
       },
-      stroke: {
-        curve: 'stepline',
-        width: 2,
-        colors: [color1, color2],
-        lineCap: 'round'
-      },
-      grid: {
-        show: true,
-        borderColor: '#D1D5DB',
-        strokeDashArray: 1,
-        position: 'back',
-        xaxis: {
-          lines: {
-            show: false
-          }
-        },
-        yaxis: {
-          lines: {
-            show: true
-          }
-        },
-        row: {
-          colors: undefined,
-          opacity: 0.2
-        },
-        column: {
-          colors: undefined,
-          opacity: 0.2
-        },
-        padding: {
-          top: -20,
-          right: 0,
-          bottom: -10,
-          left: 0
-        },
-      },
-      colors: [color1, color2],
-      markers: {
-        colors: [color1, color2],
-        strokeWidth: 1,
-        size: 0,
-        hover: {
-          size: 10
-        }
-      },
-      xaxis: {
-        labels: {
-          show: false
-        },
-        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-        tooltip: {
-          enabled: false
-        },
-        labels: {
-          formatter: function (value) {
-            return value;
+      responsive: [{
+        breakpoint: 480,
+        options: {
+          chart: {
+            width: 300
           },
-          style: {
-            fontSize: "14px"
+          legend: {
+            position: 'bottom'
           }
         }
-      },
-      yaxis: {
-        labels: {
-          formatter: function (value) {
-            return "$" + value + "k";
-          },
-          style: {
-            fontSize: "14px"
-          }
-        },
-      },
-      tooltip: {
-        x: {
-          format: 'dd/MM/yy HH:mm'
-        }
-      },
-      fill: {
-        type: "gradient",
-        gradient: {
-          shade: "light",
-          type: "vertical",
-          opacityFrom: 0.4,
-          opacityTo: 0.05,
-          stops: [0, 100]
-        }
-      }
+      }],
     };
 
-    var chart = new ApexCharts(document.querySelector(`#${chartId}`), options);
+    var chart = new ApexCharts(document.querySelector("#userOverviewDonutChart"), options);
     chart.render();
-  }
+    // ================================ Users Overview Donut chart End ================================ 
 
-  createChartThree('incomeExpense', '#16a34a', '#FF9F29');
-  // ===================== Income Vs Expense End =============================== 
+    // ============================= Calendar Js Start =================================
+    let display = document.querySelector(".display");
+    let days = document.querySelector(".days");
+    let previous = document.querySelector(".left");
+    let next = document.querySelector(".right");
 
-  // ================================ New Admissions Chart Start ================================ 
-  var options = {
-    series: [40, 87, 87, 30],
-    colors: ['#0A51CE', '#25A194', '#FF7A2C', '#009F5E'],
-    labels: ['Health', 'Business', 'Lifestyle', 'Entertainment'],
-    legend: {
-      show: false
-    },
-    chart: {
-      type: 'donut',
-      height: 270,
-      sparkline: {
-        enabled: true // Remove whitespace
-      },
-      margin: {
-        top: 0,
-        right: 0,
-        bottom: 0,
-        left: 0
-      },
-      padding: {
-        top: 0,
-        right: 0,
-        bottom: 0,
-        left: 0
+    let date = new Date();
+
+    let year = date.getFullYear();
+    let month = date.getMonth();
+
+    function displayCalendar() {
+      const firstDay = new Date(year, month, 1);
+
+      const lastDay = new Date(year, month + 1, 0);
+
+      const firstDayIndex = firstDay.getDay(); //4
+
+      const numberOfDays = lastDay.getDate(); //31
+
+      let formattedDate = date.toLocaleString("en-US", {
+        month: "long",
+        year: "numeric"
+      });
+
+      display.innerHTML = `${formattedDate}`;
+
+      for (let x = 1; x <= firstDayIndex; x++) {
+        const div = document.createElement("div");
+        div.innerHTML += "";
+
+        days.appendChild(div);
       }
-    },
-    stroke: {
-      width: 2,
-    },
-    dataLabels: {
-      enabled: false
-    },
-    responsive: [{
-      breakpoint: 480,
-      options: {
-        chart: {
-          width: 200
-        },
-        legend: {
-          position: 'bottom'
+
+      for (let i = 1; i <= numberOfDays; i++) {
+        let div = document.createElement("div");
+        let currentDate = new Date(year, month, i);
+
+        div.dataset.date = currentDate.toDateString();
+
+        div.innerHTML += i;
+        days.appendChild(div);
+        if (
+          currentDate.getFullYear() === new Date().getFullYear() &&
+          currentDate.getMonth() === new Date().getMonth() &&
+          currentDate.getDate() === new Date().getDate()
+        ) {
+          div.classList.add("current-date");
         }
       }
-    }],
-  };
+    }
 
-  var chart = new ApexCharts(document.querySelector("#newAdmissions"), options);
-  chart.render();
-  // ================================ New Admissions Chart End ================================ 
+    // Call the function to display the calendar
+    displayCalendar();
 
-  // ================================ Animated Radial Progress Bar Start ================================ 
-  $('svg.radial-progress').each(function (index, value) {
-    $(this).find($('circle.complete')).removeAttr('style');
-  });
+    previous.addEventListener("click", () => {
+      days.innerHTML = "";
 
-  // Activate progress animation on scroll
-  $(window).scroll(function () {
-    $('svg.radial-progress').each(function (index, value) {
-      // Trigger when the element is fully in the viewport
-      if (
-        $(window).scrollTop() >= $(this).offset().top - $(window).height() &&
-        $(window).scrollTop() <= $(this).offset().top + $(this).height()
-      ) {
-        // Get percentage of progress
-        const percent = $(value).data('percentage');
-        // Get radius of the svg's circle.complete
-        const radius = $(this).find($('circle.complete')).attr('r');
-        // Get circumference (2πr)
-        const circumference = 2 * Math.PI * radius;
-        // Get stroke-dashoffset value based on the percentage of the circumference
-        const strokeDashOffset = circumference - ((percent * circumference) / 100);
-        // Transition progress for 1.25 seconds
-        $(this).find($('circle.complete')).animate({ 'stroke-dashoffset': strokeDashOffset }, 1250);
+      if (month < 0) {
+        month = 11;
+        year = year - 1;
       }
-    });
-  }).trigger('scroll');
-  // ================================ Animated Radial Progress Bar End ================================
-
-  // ============================= Calendar Js Start =================================
-  let display = document.querySelector(".display");
-  let days = document.querySelector(".days");
-  let previous = document.querySelector(".left");
-  let next = document.querySelector(".right");
-
-  let date = new Date();
-
-  let year = date.getFullYear();
-  let month = date.getMonth();
-
-  function displayCalendar() {
-    const firstDay = new Date(year, month, 1);
-
-    const lastDay = new Date(year, month + 1, 0);
-
-    const firstDayIndex = firstDay.getDay(); //4
-
-    const numberOfDays = lastDay.getDate(); //31
-
-    let formattedDate = date.toLocaleString("en-US", {
-      month: "long",
-      year: "numeric"
+      month = month - 1;
+      date.setMonth(month);
+      displayCalendar();
     });
 
-    display.innerHTML = `${formattedDate}`;
+    next.addEventListener("click", () => {
+      days.innerHTML = "";
 
-    for (let x = 1; x <= firstDayIndex; x++) {
-      const div = document.createElement("div");
-      div.innerHTML += "";
-
-      days.appendChild(div);
-    }
-
-    for (let i = 1; i <= numberOfDays; i++) {
-      let div = document.createElement("div");
-      let currentDate = new Date(year, month, i);
-
-      div.dataset.date = currentDate.toDateString();
-
-      div.innerHTML += i;
-      days.appendChild(div);
-      if (
-        currentDate.getFullYear() === new Date().getFullYear() &&
-        currentDate.getMonth() === new Date().getMonth() &&
-        currentDate.getDate() === new Date().getDate()
-      ) {
-        div.classList.add("current-date");
+      if (month > 11) {
+        month = 0;
+        year = year + 1;
       }
-    }
-  }
 
-  // Call the function to display the calendar
-  displayCalendar();
+      month = month + 1;
+      date.setMonth(month);
 
-  previous.addEventListener("click", () => {
-    days.innerHTML = "";
+      displayCalendar();
+    });
+    // ============================= Calendar Js End =================================
 
-    if (month < 0) {
-      month = 11;
-      year = year - 1;
-    }
-    month = month - 1;
-    date.setMonth(month);
-    displayCalendar();
-  });
 
-  next.addEventListener("click", () => {
-    days.innerHTML = "";
+    let table = new DataTable('#dataTable');
 
-    if (month > 11) {
-      month = 0;
-      year = year + 1;
-    }
+    //============================= ✅ Data Table start =============================
+    $('.data-table').each(function () {
+      const $table = $(this);
+      const tableInstance = new DataTable(this);
 
-    month = month + 1;
-    date.setMonth(month);
+      // Handle search input (inside same wrapper)
+      $table.closest('.dataTable-wrapper').find('.dt-search .dt-input').on('keyup', function () {
+        tableInstance.search(this.value).draw();
+      });
 
-    displayCalendar();
-  });
-  // ============================= Calendar Js End =================================
+      // Handle page length change (inside same wrapper)
+      $table.closest('.dataTable-wrapper').find('.dt-length .dt-input').on('change', function () {
+        const value = $(this).val();
+        tableInstance.page.len(value).draw();
+      });
+    });
+    //============================= ✅ Data Table end =============================
 
-</script>
+  </script>
 
 </body>
 
