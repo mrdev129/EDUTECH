@@ -206,6 +206,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
 
     <link rel="stylesheet" href="assets/css/style.css?v=1.2">
+    <link rel="stylesheet" href="assets/css/team.css">
 
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Poppins:wght@600;700;800&family=Outfit:wght@600;700;800&display=swap"
@@ -1028,141 +1029,188 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <!--======== Brand End ========-->
         <!--======== Brand End ========-->
 
-        <!--======== Project Start ========-->
+        <!--======== TEAM MEMBERS ========-->
         <section id="rs-portfolios" class="rs-project reveal">
-            <div id="team" class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="rs-top-line mb-110"></div>
+    <div id="team" class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="rs-top-line mb-110"></div>
+            </div>
+        </div>
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="rs-section-title black">
+                    <div class="top-sub-heading">
+                        <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
+                        <span>Our Team Members</span>
+                        <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
                     </div>
-                </div>
-                <div class="row align-items-center">
-                    <div class="col-lg-6">
-                        <div class="rs-section-title black">
-                            <div class="top-sub-heading">
-                                <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
-                                <span>Our Team Members</span>
-                                <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
-                            </div>
-                            <h2 class="title split-in-fade">See our Team Members</h2>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="rs-project__btn">
-                            <a class="main-btn" href="project.html">View All Team Members <i
-                                    class="ri-arrow-right-fill"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="rs-carousel owl-carousel rs-project__slider mt-30" data-loop="true" data-items="3"
-                            data-margin="30" data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000"
-                            data-smart-speed="800" data-dots="true" data-nav="false" data-nav-speed="false"
-                            data-center-mode="false" data-mobile-device="1" data-mobile-device-nav="false"
-                            data-mobile-device-dots="true" data-ipad-device="2" data-ipad-device-nav="false"
-                            data-ipad-device-dots="true" data-ipad-device2="1" data-ipad-device-nav2="false"
-                            data-ipad-device-dots2="true" data-md-device="2" data-lg-device="3"
-                            data-md-device-nav="false" data-md-device-dots="true" data-doteach="false">
-                            <div class="rs-project__items">
-                                <div class="wrapping">
-                                    <img src="assets/images/project/project-1.jpg" alt="">
-                                    <div class="rs-project__content">
-                                        <ul>
-                                            <li><a href="#">Consultation</a></li>
-                                            <li><a href="#">Design</a></li>
-                                            <li><a href="#">Strategy</a></li>
-                                        </ul>
-                                        <h3 class="title"><a href="project-details.html">Sibani</a></h3>
-                                        <div class="rs-link">
-                                            <a href="project-details.html"><img src="assets\images\Socialmedia.png"
-                                                    style="width:40%; height:auto;" alt=""> <i
-                                                    class="ri-arrow-right-fill"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="rs-project__items">
-                                <div class="wrapping">
-                                    <img src="assets/images/project/project-2.jpg" alt="">
-                                    <div class="rs-project__content">
-                                        <ul>
-                                            <li><a href="#">Consultation</a></li>
-                                            <li><a href="#">Design</a></li>
-                                            <li><a href="#">Strategy</a></li>
-                                        </ul>
-                                        <h3 class="title"><a href="project-details.html">Satya</a></h3>
-                                        <div class="rs-link">
-                                            <a href="project-details.html"><img src="assets\images\Socialmedia.png"
-                                                    style="width:40%; height:auto;" alt=""> <i
-                                                    class="ri-arrow-right-fill"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="rs-project__items">
-                                <div class="wrapping">
-                                    <img src="assets/images/project/project-3.jpg" alt="">
-                                    <div class="rs-project__content">
-                                        <ul>
-                                            <li><a href="#">Consultation</a></li>
-                                            <li><a href="#">Design</a></li>
-                                            <li><a href="#">Strategy</a></li>
-                                        </ul>
-                                        <h3 class="title"><a href="project-details.html">Dev</a></h3>
-                                        <div class="rs-link">
-                                            <a href="project-details.html"><img src="assets\images\Socialmedia.png"
-                                                    style="width:40%; height:auto;" alt=""> <i
-                                                    class="ri-arrow-right-fill"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="rs-project__items">
-                                <div class="wrapping">
-                                    <img src="assets/images/project/project-4.jpg" alt="">
-                                    <div class="rs-project__content">
-                                        <ul>
-                                            <li><a href="#">Consultation</a></li>
-                                            <li><a href="#">Design</a></li>
-                                            <li><a href="#">Strategy</a></li>
-                                        </ul>
-                                        <h3 class="title"><a href="project-details.html">Hari</a></h3>
-                                        <div class="rs-link">
-                                            <a href="project-details.html"><img src="assets\images\Socialmedia.png"
-                                                    style="width:40%; height:auto;" alt=""> <i
-                                                    class="ri-arrow-right-fill"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="rs-project__items">
-                                <div class="wrapping">
-                                    <img src="assets/images/project/project-5.jpg" alt="">
-                                    <div class="rs-project__content">
-                                        <ul>
-                                            <li><a href="#">Consultation</a></li>
-                                            <li><a href="#">Design</a></li>
-                                            <li><a href="#">Strategy</a></li>
-                                        </ul>
-                                        <h3 class="title"><a href="project-details.html">Ram</a></h3>
-                                        <div class="rs-link">
-                                            <a href="project-details.html"><img src="assets\images\Socialmedia.png"
-                                                    style="width:40%; height:auto;" alt=""> <i
-                                                    class="ri-arrow-right-fill"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <h2 class="title split-in-fade">See our Team Members</h2>
                 </div>
             </div>
-            <div class="rs-shape">
-                <img src="assets/images/project/port-cube.svg" alt="">
+            <div class="col-lg-6">
+                <div class="rs-project__btn">
+                    <a class="main-btn" href="project.html">View All Team Members <i class="ri-arrow-right-fill"></i></a>
+                </div>
             </div>
-        </section>
-        <!--======== Project Ends ========-->
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="rs-carousel owl-carousel rs-project__slider mt-30" data-loop="true" data-items="3"
+                    data-margin="30" data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000"
+                    data-smart-speed="800" data-dots="true" data-nav="false" data-nav-speed="false"
+                    data-center-mode="false" data-mobile-device="1" data-mobile-device-nav="false"
+                    data-mobile-device-dots="true" data-ipad-device="2" data-ipad-device-nav="false"
+                    data-ipad-device-dots="true" data-ipad-device2="1" data-ipad-device-nav2="false"
+                    data-ipad-device-dots2="true" data-md-device="2" data-lg-device="3"
+                    data-md-device-nav="false" data-md-device-dots="true" data-doteach="false">
+                    
+                    <div class="rs-project__items team-card-glass">
+                        <div class="wrapping">
+                            <img src="assets/images/project/project-1.jpg" alt="">
+                            
+                            <div class="team-glass-layer">
+                                <div class="glass-text">
+                                    <h4 class="name">Dr. Pragati Sahai</h4>
+                                    <p class="sub">Assistant Professor | 10+ Years Experience</p>
+                                    <p class="bio">Expert career counselor specializing in management admissions and academic research with a proven track record.</p>
+                                </div>
+                            </div>
+
+                            <div class="rs-project__content">
+                                <ul>
+                                    <li><a href="#">Consultation</a></li>
+                                    <li><a href="#">Design</a></li>
+                                    <li><a href="#">Strategy</a></li>
+                                </ul>
+                                <h3 class="title"><a href="project-details.html">Sibani</a></h3>
+                                <div class="rs-link">
+                                    <a href="project-details.html"><img src="assets/images/Socialmedia.png"
+                                            style="width:40%; height:auto;" alt=""> <i
+                                            class="ri-arrow-right-fill"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rs-project__items team-card-glass">
+                        <div class="wrapping">
+                            <img src="assets/images/project/project-2.jpg" alt="">
+                            
+                            <div class="team-glass-layer">
+                                <div class="glass-text">
+                                    <h4 class="name">Dr. Rashmi Saxena</h4>
+                                    <p class="sub">Assistant Professor | PhD in Management</p>
+                                    <p class="bio">Dedicated academician focusing on management strategies and student success pathways.</p>
+                                </div>
+                            </div>
+
+                            <div class="rs-project__content">
+                                <ul>
+                                    <li><a href="#">Consultation</a></li>
+                                    <li><a href="#">Design</a></li>
+                                    <li><a href="#">Strategy</a></li>
+                                </ul>
+                                <h3 class="title"><a href="project-details.html">Satya</a></h3>
+                                <div class="rs-link">
+                                    <a href="project-details.html"><img src="assets/images/Socialmedia.png"
+                                            style="width:40%; height:auto;" alt=""> <i
+                                            class="ri-arrow-right-fill"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rs-project__items team-card-glass">
+                        <div class="wrapping">
+                            <img src="assets/images/project/project-3.jpg" alt="">
+                            
+                            <div class="team-glass-layer">
+                                <div class="glass-text">
+                                    <h4 class="name">Dr. Sachit Paliwal</h4>
+                                    <p class="sub">Assistant Professor | 12+ Years Experience</p>
+                                    <p class="bio">Leading expert in agriculture and medical stream admissions with extensive industrial knowledge.</p>
+                                </div>
+                            </div>
+
+                            <div class="rs-project__content">
+                                <ul>
+                                    <li><a href="#">Consultation</a></li>
+                                    <li><a href="#">Design</a></li>
+                                    <li><a href="#">Strategy</a></li>
+                                </ul>
+                                <h3 class="title"><a href="project-details.html">Dev</a></h3>
+                                <div class="rs-link">
+                                    <a href="project-details.html"><img src="assets/images/Socialmedia.png"
+                                            style="width:40%; height:auto;" alt=""> <i
+                                            class="ri-arrow-right-fill"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rs-project__items team-card-glass">
+                        <div class="wrapping">
+                            <img src="assets/images/project/project-4.jpg" alt="">
+                            
+                            <div class="team-glass-layer">
+                                <div class="glass-text">
+                                    <h4 class="name">Ms. Mona Chaudhary</h4>
+                                    <p class="sub">Assistant Professor | 9+ Years Experience</p>
+                                    <p class="bio">Academic advisor specializing in postgraduate strategies and student mentoring.</p>
+                                </div>
+                            </div>
+
+                            <div class="rs-project__content">
+                                <ul>
+                                    <li><a href="#">Consultation</a></li>
+                                    <li><a href="#">Design</a></li>
+                                    <li><a href="#">Strategy</a></li>
+                                </ul>
+                                <h3 class="title"><a href="project-details.html">Hari</a></h3>
+                                <div class="rs-link">
+                                    <a href="project-details.html"><img src="assets/images/Socialmedia.png"
+                                            style="width:40%; height:auto;" alt=""> <i
+                                            class="ri-arrow-right-fill"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rs-project__items team-card-glass">
+                        <div class="wrapping">
+                            <img src="assets/images/project/project-5.jpg" alt="">
+                            
+                            <div class="team-glass-layer">
+                                <div class="glass-text">
+                                    <h4 class="name">Dr. Sunil Kumar</h4>
+                                    <p class="sub">Assistant Professor | PhD in Management</p>
+                                    <p class="bio">Senior expert in vocational training and diploma pathways for technical students.</p>
+                                </div>
+                            </div>
+
+                            <div class="rs-project__content">
+                                <ul>
+                                    <li><a href="#">Consultation</a></li>
+                                    <li><a href="#">Design</a></li>
+                                    <li><a href="#">Strategy</a></li>
+                                </ul>
+                                <h3 class="title"><a href="project-details.html">Ram</a></h3>
+                                <div class="rs-link">
+                                    <a href="project-details.html"><img src="assets/images/Socialmedia.png"
+                                            style="width:40%; height:auto;" alt=""> <i
+                                            class="ri-arrow-right-fill"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+        <!--======== TEAM MEMBERS ========-->
 
         <!--======== Why Choose 2 Start ========-->
         <section class="rs-why-choose-2 pb-85 reveal">
