@@ -1,13 +1,4 @@
-﻿<?php
-// Function to automatically convert standard links to embed links
-function cleanYouTube($url)
-{
-    if (strpos($url, 'watch?v=') !== false) {
-        return str_replace('watch?v=', 'embed/', explode('&', $url)[0]);
-    }
-    return $url;
-}
-?>
+﻿
 <?php
 // Start session only if it's not already active
 if (session_status() === PHP_SESSION_NONE) {
@@ -152,6 +143,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 ?>
 
 
+
+
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -214,9 +207,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     <link rel="stylesheet" href="assets/css/style.css?v=1.2">
 
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Poppins:wght@600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Poppins:wght@600;700;800&family=Outfit:wght@600;700;800&display=swap"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&display=swap"
+        rel="stylesheet">
     <style>
         /* 1. Initial State: Lowered and Invisible */
         .reveal {
@@ -269,7 +266,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         <div class="static-announcement">
             <div class="container">
-                <p class="sliding-text">Jan'26 Admissions Closing Soon! Avail Up to 25% Scholarship on 1st Semester*.</p>
+                <p class="sliding-text">Jan'26 Admissions Closing Soon! Avail Up to 25% Scholarship on 1st Semester*.
+                </p>
             </div>
         </div>
 
@@ -521,7 +519,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                         </div>
 
                                         <div class="notice-actions d-flex align-items-center gap-2 ms-auto">
-                                            <span class="small text-muted d-none d-sm-inline">(<?php echo $n['pdf_size']; ?>)</span>
+                                            <span
+                                                class="small text-muted d-none d-sm-inline">(<?php echo $n['pdf_size']; ?>)</span>
                                             <a href="#" class="icon-btn pdf-btn" title="Download PDF">
                                                 <i class="fa fa-file-pdf-o"></i>
                                             </a>
@@ -534,7 +533,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                             </div>
 
                             <nav class="mt-4">
-                                <ul class="custom-pagination d-flex justify-content-center align-items-center list-unstyled gap-2">
+                                <ul
+                                    class="custom-pagination d-flex justify-content-center align-items-center list-unstyled gap-2">
                                     <li><a href="#" class="page-arrow"><i class="fa fa-chevron-left"></i></a></li>
                                     <li><a href="#" class="page-num active">1</a></li>
                                     <li><a href="#" class="page-num">2</a></li>
@@ -628,52 +628,62 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <div class="container">
                 <div class="row reveal mobile-card-slider">
                     <div class="col-lg-3 col-md-6 mb-30">
-                        <div class="rs-featured-5__item" style="background: linear-gradient(130deg, #002147 0%, #004080 100%);">
+                        <div class="rs-featured-5__item"
+                            style="background: linear-gradient(130deg, #002147 0%, #004080 100%);">
                             <div class="rs-thumb">
                                 <img src="assets/images/featured/ex1.png" alt="Exams">
                             </div>
                             <div class="rs-content">
                                 <h4 class="title" style="color: #fff;">Exams</h4>
-                                <p style="color: #fff; font-size: 14px;">Stay updated with entrance exam dates, patterns, and preparation tips.</p>
+                                <p style="color: #fff; font-size: 14px;">Stay updated with entrance exam dates,
+                                    patterns, and preparation tips.</p>
                                 <a class="main-btn" href="#" style="padding: 10px 20px; font-size: 14px;">Find Exams</a>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-6 mb-30">
-                        <div class="rs-featured-5__item" style="background: linear-gradient(130deg, #28a745 0%, #34d058 100%);">
+                        <div class="rs-featured-5__item"
+                            style="background: linear-gradient(130deg, #28a745 0%, #34d058 100%);">
                             <div class="rs-thumb">
                                 <img src="assets/images/featured/clg1.png" alt="Colleges">
                             </div>
                             <div class="rs-content">
                                 <h4 class="title" style="color: #fff;">Colleges</h4>
-                                <p style="color: #fff; font-size: 14px;">Discover colleges that match your interests, budget, and career goals.</p>
-                                <a class="main-btn" href="#" style="padding: 10px 20px; font-size: 14px;">Find College</a>
+                                <p style="color: #fff; font-size: 14px;">Discover colleges that match your interests,
+                                    budget, and career goals.</p>
+                                <a class="main-btn" href="#" style="padding: 10px 20px; font-size: 14px;">Find
+                                    College</a>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-6 mb-30">
-                        <div class="rs-featured-5__item" style="background: linear-gradient(130deg, #F26F20 0%, #FFA500 100%);">
+                        <div class="rs-featured-5__item"
+                            style="background: linear-gradient(130deg, #F26F20 0%, #FFA500 100%);">
                             <div class="rs-thumb">
                                 <img src="assets/images/featured/co1.png" alt="Courses">
                             </div>
                             <div class="rs-content">
                                 <h4 class="title" style="color: #fff;">Courses</h4>
-                                <p style="color: #fff; font-size: 14px;">Browse industry-relevant courses designed for your future success.</p>
-                                <a class="main-btn" href="management.php" style="padding: 10px 20px; font-size: 14px;">Find Courses</a>
+                                <p style="color: #fff; font-size: 14px;">Browse industry-relevant courses designed for
+                                    your future success.</p>
+                                <a class="main-btn" href="management.php"
+                                    style="padding: 10px 20px; font-size: 14px;">Find Courses</a>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-6 mb-30">
-                        <div class="rs-featured-5__item" style="background: linear-gradient(130deg, #6f42c1 0%, #8959e0 100%);">
+                        <div class="rs-featured-5__item"
+                            style="background: linear-gradient(130deg, #6f42c1 0%, #8959e0 100%);">
                             <div class="rs-thumb">
                                 <img src="assets/images/featured/jb1.png" alt="Jobs">
                             </div>
                             <div class="rs-content">
                                 <h4 class="title" style="color: #fff;">Jobs</h4>
-                                <p style="color: #fff; font-size: 14px;">Explore career paths and placement opportunities after graduation.</p>
+                                <p style="color: #fff; font-size: 14px;">Explore career paths and placement
+                                    opportunities after graduation.</p>
                                 <a class="main-btn" href="#" style="padding: 10px 20px; font-size: 14px;">Find Jobs</a>
                             </div>
                         </div>
@@ -791,7 +801,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                 onclick="switchCourseStream(event, 'course-<?= str_replace([' ', '/', '.'], '', $stream) ?>')">
                                 <?= $stream ?>
                             </button>
-                        <?php $count++;
+                            <?php $count++;
                         endforeach; ?>
                     </div>
                 </div>
@@ -801,28 +811,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     foreach ($courseData as $stream => $branches):
                         // Create a clean ID: B.Tech -> course-BTech, MD/MS -> course-MDMS
                         $cleanId = 'course-' . str_replace([' ', '/', '.'], '', $stream);
-                    ?>
+                        ?>
                         <div id="<?= $cleanId ?>" class="branch-panel <?= $count === 0 ? 'active' : '' ?>">
 
-                            <div class="rs-carousel owl-carousel branch-slider"
-                                data-loop="true"
-                                data-items="3"
-                                data-margin="30"
-                                data-autoplay="true"
-                                data-hoverpause="true"
-                                data-smart-speed="800"
-                                data-dots="false"
-                                data-nav="true"
+                            <div class="rs-carousel owl-carousel branch-slider" data-loop="true" data-items="3"
+                                data-margin="30" data-autoplay="true" data-hoverpause="true" data-smart-speed="800"
+                                data-dots="false" data-nav="true"
                                 data-nav-text='["<span class=\"nav-btn prev-btn\"><i class=\"fa fa-arrow-left\"></i> Prev</span>","<span class=\"nav-btn next-btn\">Next <i class=\"fa fa-arrow-right\"></i></span>"]'
-                                data-md-device="3"
-                                data-ipad-device="2"
-                                data-mobile-device="1">
+                                data-md-device="3" data-ipad-device="2" data-mobile-device="1">
 
                                 <?php foreach ($branches as $branch): ?>
                                     <div class="branch-item">
                                         <div class="rs-featured-2__item branch-card-mini" style="margin: 10px;">
                                             <div class="rs-content text-center">
-                                                <h4 class="title" style="font-size: 16px; margin-bottom: 5px;"><?= $branch ?></h4>
+                                                <h4 class="title" style="font-size: 16px; margin-bottom: 5px;"><?= $branch ?>
+                                                </h4>
                                                 <a class="rs-link" href="#" style="font-size: 12px;">
                                                     View Details <i class="ri-arrow-right-fill"></i>
                                                 </a>
@@ -832,7 +835,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                 <?php endforeach; ?>
                             </div>
                         </div>
-                    <?php $count++;
+                        <?php $count++;
                     endforeach; ?>
                 </div>
             </div>
@@ -949,7 +952,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                                     Know More About Us <i class="ri-arrow-right-fill"></i>
                                                 </a>
                                                 <div class="play-icon ms-3">
-                                                    <a class="rs-popup-videos" href="<?php echo $about['video_link']; ?>">
+                                                    <a class="rs-popup-videos"
+                                                        href="<?php echo $about['video_link']; ?>">
                                                         <i class="fa fa-play"></i>
                                                     </a>
                                                 </div>
@@ -1000,7 +1004,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         </div>
 
                         <div class="brand-item">
-                            <img src="assets/images/brand/university-college-school-badge-logo-free-vector-Photoroom.png" alt="">
+                            <img src="assets/images/brand/university-college-school-badge-logo-free-vector-Photoroom.png"
+                                alt="">
                         </div>
 
                         <div class="brand-item">
@@ -1840,7 +1845,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                             <div class="rs-contact-page__info">
                                 <div class="rs-section-title black">
                                     <h3 class="title split-in-fade">Get in touch with us</h3>
-                                    <p>Fill out the form below and our admission experts will contact you to discuss suitable courses, colleges, budget options, and hostel facilities based on your preferences.</p>
+                                    <p>Fill out the form below and our admission experts will contact you to discuss
+                                        suitable courses, colleges, budget options, and hostel facilities based on your
+                                        preferences.</p>
                                     <p></p>
                                 </div>
 
@@ -1867,7 +1874,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                                 </div>
                                                 <div class="rs-info-contact">
                                                     <span>Call Us</span>
-                                                    <h5 class="title"><a href="tel:+919876543210">+91 98765 43210</a></h5>
+                                                    <h5 class="title"><a href="tel:+919876543210">+91 98765 43210</a>
+                                                    </h5>
                                                 </div>
                                             </div>
                                             <div class="info-box-item">
@@ -1876,7 +1884,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                                 </div>
                                                 <div class="rs-info-contact">
                                                     <span>Email Us</span>
-                                                    <h5 class="title"><a href="mailto:edutechadmissionexperts@gmail.com">edutechadmissionexperts@gmail.com</a></h5>
+                                                    <h5 class="title"><a
+                                                            href="mailto:edutechadmissionexperts@gmail.com">edutechadmissionexperts@gmail.com</a>
+                                                    </h5>
                                                 </div>
                                             </div>
                                         </div>
@@ -1901,7 +1911,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                             <div class="rs-contact-page__content">
                                 <div class="rs-section-title black">
                                     <h3 class="title split-in-fade">Let's discuss with us</h3>
-                                    <p>Fill out the form below and our admission experts will contact you to discuss suitable courses, colleges, budget options, and hostel facilities based on your preferences.</p>
+                                    <p>Fill out the form below and our admission experts will contact you to discuss
+                                        suitable courses, colleges, budget options, and hostel facilities based on your
+                                        preferences.</p>
                                 </div>
 
                                 <form id="contact-form" action="" method="post">
@@ -1918,7 +1930,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="input-box">
-                                                <input type="text" id="topic" name="topic" placeholder="Preferred Course">
+                                                <input type="text" id="city" name="city" placeholder="Preferred City">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
@@ -1928,8 +1940,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="input-box">
-                                                <textarea name="message" id="message" placeholder="Tell us about your preferred city, budget range, or any specific requirement..."></textarea>
-                                                <button type="submit" class="main-btn">Submit Inquiry <i class="ri-arrow-right-fill"></i></button>
+                                                <textarea name="message" id="message"
+                                                    placeholder="Tell us about your preferred city, budget range, or any specific requirement..."></textarea>
+                                                
+                                            </div>
+                                        </div>
+                                        <div id="form-response" class="mb-3"></div>
+                                        <!-- Honeypot Spam Field -->
+                                        <div style="display:none;">
+                                            <input type="text" name="website">
+                                        </div>
+
+                                        <div class="col-lg-12">
+                                            <div class="input-box">
+                                                <button type="submit" class="main-btn">
+                                                    Submit Inquiry <i class="ri-arrow-right-fill"></i>
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -1943,7 +1969,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <!--======== Contact Page Ends ========-->
             <!--======== Contact Map Start ========-->
             <div class="rs-contact-map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3743.4911157931533!2d85.83120177469385!3d20.238456914454027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a19a726c8ffc807%3A0x212845f89456a2cd!2sLingaraj%20Temple!5e0!3m2!1sen!2sin!4v1771681075912!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3743.4911157931533!2d85.83120177469385!3d20.238456914454027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a19a726c8ffc807%3A0x212845f89456a2cd!2sLingaraj%20Temple!5e0!3m2!1sen!2sin!4v1771681075912!5m2!1sen!2sin"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade" width="600" height="450" style="border:0;"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
             <!--======== Contact Map Ends ========-->
             <div class="rs-footer__main-box">
@@ -2118,7 +2148,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <script src="assets/js/main.js"></script>
 
         <script>
-            $(window).on('load', function() {
+            $(window).on('load', function () {
                 // 1. Initialize Background Slider (Sliding Left to Right)
                 var bgSlider = $('.hero-bg-slider');
 
@@ -2139,7 +2169,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     });
 
                     // Force a refresh after a short delay to calculate widths correctly
-                    setTimeout(function() {
+                    setTimeout(function () {
                         bgSlider.trigger('refresh.owl.carousel');
                     }, 200);
                 }
@@ -2181,7 +2211,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
 
-            $(document).ready(function() {
+            $(document).ready(function () {
                 var brandSlider = $('.mobile-brand-grid');
 
                 function initBrandSlider() {
@@ -2211,14 +2241,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 }
 
                 initBrandSlider();
-                $(window).on('resize', function() {
+                $(window).on('resize', function () {
                     initBrandSlider();
                 });
 
 
             });
 
-            $(document).ready(function() {
+            $(document).ready(function () {
                 // Only initialize the blog slider for mobile users
                 if ($(window).width() < 768) {
                     $(".rs-blog-2 .owl-carousel").owlCarousel({
@@ -2233,7 +2263,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             });
         </script>
         <script>
-            document.addEventListener("DOMContentLoaded", function() {
+            document.addEventListener("DOMContentLoaded", function () {
                 const modal = document.getElementById("enquireModal");
                 const modalContent = document.querySelector(".enquire-modal-content");
                 const closeBtn = document.querySelector(".enquire-close");
@@ -2249,9 +2279,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     document.getElementById("openEnquireNav")
                 ];
 
-                openButtons.forEach(function(btn) {
+                openButtons.forEach(function (btn) {
                     if (btn) {
-                        btn.addEventListener("click", function(e) {
+                        btn.addEventListener("click", function (e) {
                             e.preventDefault();
                             modal.style.display = "flex";
                         });
@@ -2260,19 +2290,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                 // Close logic
                 if (closeBtn) {
-                    closeBtn.addEventListener("click", function() {
+                    closeBtn.addEventListener("click", function () {
                         modal.style.display = "none";
                     });
                 }
 
-                modal.addEventListener("click", function(e) {
+                modal.addEventListener("click", function (e) {
                     if (!modalContent.contains(e.target)) {
                         modal.style.display = "none";
                     }
                 });
             });
 
-            $(document).ready(function() {
+            $(document).ready(function () {
                 if ($(window).width() < 768) {
                     $(".featured-slider").owlCarousel({
                         items: 1,
@@ -2286,7 +2316,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 }
             });
 
-            $(document).ready(function() {
+            $(document).ready(function () {
                 // We only run this logic if the screen is mobile
                 if ($(window).width() < 768) {
                     var $teamSlider = $('.rs-project__slider');
@@ -2306,7 +2336,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </script>
 
         <script>
-            document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('DOMContentLoaded', function () {
                 const slider = document.querySelector('.category-slider-wrapper');
                 let isDown = false;
                 let startX;
@@ -2332,7 +2362,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     slider.scrollLeft = scrollLeft - walk;
                 });
 
-                window.switchCourseStream = function(evt, streamId) {
+                window.switchCourseStream = function (evt, streamId) {
                     document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
                     document.querySelectorAll('.branch-panel').forEach(panel => panel.classList.remove('active'));
 
@@ -2341,7 +2371,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         activePanel.classList.add('active');
                         evt.currentTarget.classList.add('active');
 
-                        setTimeout(function() {
+                        setTimeout(function () {
                             var $carousel = $(activePanel).find('.branch-slider');
                             if ($carousel.hasClass('owl-loaded')) {
                                 $carousel.trigger('refresh.owl.carousel');
@@ -2382,6 +2412,26 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             });
         </script>
 
+    <script>
+document.getElementById("contact-form").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    let formData = new FormData(this);
+
+    fetch("save_inquiry.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById("form-response").innerHTML = data;
+        document.getElementById("contact-form").reset();
+    })
+    .catch(error => {
+        document.getElementById("form-response").innerHTML = "Something went wrong!";
+    });
+});
+</script>
 
 
 
@@ -2517,7 +2567,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             });
         </script>
         <script>
-            document.addEventListener("DOMContentLoaded", function() {
+            document.addEventListener("DOMContentLoaded", function () {
                 const observerOptions = {
                     threshold: 0.15, // Triggers when 15% of the section is visible
                     rootMargin: "0px 0px -50px 0px" // Triggers slightly before the section hits the top
