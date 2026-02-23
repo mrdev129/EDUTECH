@@ -259,42 +259,18 @@ if (!$result) {
     <!-- User Info end -->
     <div class="sidebar-menu-area">
       <ul class="sidebar-menu" id="sidebar-menu">
-        <li class="dropdown">
+         <li class="dropdown">
           <a href="javascript:void(0)">
             <i class="ri-home-4-line"></i>
             <span>Dashboard </span>
           </a>
           <ul class="sidebar-submenu">
-            <!-- <li>
-            <a href="index.php">
-              <i class="ri-circle-fill circle-icon w-auto"></i>
-              School
-            </a>
-          </li> -->
             <li>
               <a href="index-2.php">
                 <i class="ri-circle-fill circle-icon w-auto"></i>
-                Student
+                Home
               </a>
             </li>
-            <!-- <li>
-            <a href="index-3.php">
-              <i class="ri-circle-fill circle-icon w-auto"></i>
-              Teacher
-            </a>
-          </li>
-          <li>
-            <a href="index-4.php">
-              <i class="ri-circle-fill circle-icon w-auto"></i>
-              Parent
-            </a>
-          </li> -->
-            <!-- <li>
-            <a href="index-5.php">
-              <i class="ri-circle-fill circle-icon w-auto"></i>
-              LMS 
-            </a>
-          </li> -->
           </ul>
         </li>
         <li class="dropdown">
@@ -355,6 +331,43 @@ if (!$result) {
             </li>
           </ul>
         </li>
+        <li class="dropdown">
+  <a href="javascript:void(0)">
+    <i class="ri-message-2-line"></i>
+    <span>Responses</span>
+  </a>
+  <ul class="sidebar-submenu">
+
+    <li>
+      <a href="response.php?filter=today">
+        <i class="ri-circle-fill circle-icon w-auto"></i>
+        <span>Today's Inquiries</span>
+      </a>
+    </li>
+
+    <li>
+      <a href="response.php?filter=unread">
+        <i class="ri-circle-fill circle-icon w-auto"></i>
+        <span>Unread Inquiries</span>
+      </a>
+    </li>
+
+    <li>
+      <a href="response.php?filter=read">
+        <i class="ri-circle-fill circle-icon w-auto"></i>
+        <span>Read Inquiries</span>
+      </a>
+    </li>
+
+    <li>
+      <a href="response.php">
+        <i class="ri-circle-fill circle-icon w-auto"></i>
+        <span>All Inquiries</span>
+      </a>
+    </li>
+
+  </ul>
+</li>
         <!-- <li class="dropdown">
           <a href="javascript:void(0)">
             <i class="ri-user-follow-line"></i>

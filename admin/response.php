@@ -1,0 +1,1388 @@
+<?php
+include '../config/db.php';
+
+$filter = $_GET['filter'] ?? '';
+
+$where = "";
+
+if ($filter == "today") {
+    $where = "WHERE DATE(created_at) = CURDATE()";
+}
+elseif ($filter == "unread") {
+    $where = "WHERE status = 'unread'";
+}
+elseif ($filter == "read") {
+    $where = "WHERE status = 'read'";
+}
+else {
+    $where = ""; // All inquiries
+}
+
+$sql = "SELECT * FROM contact_inquiries $where ORDER BY created_at ASC";
+$result = $conn->query($sql);
+?>
+
+
+<!-- meta tags and other links -->
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description"
+        content="Modern Education Admin Dashboard for schools, colleges, universities, and eLearning platforms. Includes student and course management, attendance, exams, payments, analytics, and a fully responsive clean UI—ideal for LMS, coaching centers, and academic admin systems.">
+    <meta name="keywords"
+        content="Education Admin Dashboard, School Admin Panel, College Dashboard, University Dashboard, LMS Dashboard, eLearning Admin Template, Student Management System, Course Management, Education Template, Study Dashboard, Online Learning Dashboard, Academic Admin Panel, Bootstrap Dashboard, React Education Dashboard, Next.js Education Template">
+    <meta name="robots" content="INDEX,FOLLOW">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title -->
+    <title>EDUTECH | ADMISSION EXPERT</title>
+    <link rel="icon" type="image/png" href="assets/images/favicon.png" sizes="16x16">
+    <!-- remix icon font css  -->
+    <link rel="stylesheet" href="assets/css/remixicon.css">
+    <!-- BootStrap css -->
+    <link rel="stylesheet" href="assets/css/lib/bootstrap.min.css">
+    <!-- Apex Chart css -->
+    <link rel="stylesheet" href="assets/css/lib/apexcharts.css">
+    <!-- Data Table css -->
+    <link rel="stylesheet" href="assets/css/lib/dataTables.min.css">
+    <!-- Date picker css -->
+    <link rel="stylesheet" href="assets/css/lib/flatpickr.min.css">
+    <!-- Calendar css -->
+    <link rel="stylesheet" href="assets/css/lib/full-calendar.css">
+    <!-- calendar -->
+    <link rel="stylesheet" href="assets/css/lib/calendar.css">
+    <!-- main css -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .paging_simple_numbers .paginate_button.current {
+            background: #001f3f !important;
+            /* Navy Blue */
+            color: white !important;
+            border: 1px solid #001f3f !important;
+        }
+
+        .paging_simple_numbers .paginate_button:hover {
+            background: #ff9f29 !important;
+            /* Orange */
+            color: white !important;
+            border: 1px solid #ff9f29 !important;
+        }
+
+        /* Ensures the search input and button are the exact same height */
+        .h-40-px {
+            height: 40px !important;
+        }
+
+        /* Adjusts the search icon position inside the 40px input */
+        .navbar-search .icon {
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+            color: #94a3b8;
+        }
+
+        /* Keeps the elements grouped together even on smaller screens */
+        .dataTable-wrapper .d-flex {
+            display: flex !important;
+            flex-direction: row !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Theme Customization Structure Start -->
+    <div class="body-overlay"></div>
+
+    <button type="button"
+        class="theme-customization__button w-48-px h-48-px bg-primary-600 text-white rounded-circle d-flex justify-content-center align-items-center position-fixed end-0 bottom-0 mb-40 me-40 text-2xxl bg-hover-primary-700"
+        aria-label="Theme Customization Button">
+        <i class="ri-settings-3-line animate-spin"></i>
+    </button>
+    <div class="theme-customization-sidebar w-100 bg-base h-100vh overflow-y-auto position-fixed end-0 top-0">
+        <div class="d-flex align-items-center gap-3 py-16 px-24 justify-content-between border-bottom">
+            <div>
+                <h6 class="text-sm dark:text-white">Theme Settings</h6>
+                <p class="text-xs mb-0 text-neutral-500 dark:text-neutral-200">Customize and preview instantly</p>
+            </div>
+            <button data-slot="button"
+                class="theme-customization-sidebar__close text-neutral-900 bg-transparent text-hover-primary-600 d-flex text-xl">
+                <i class="ri-close-fill"></i>
+            </button>
+        </div>
+
+        <div class="d-flex flex-column gap-48 p-24 overflow-y-auto flex-grow-1">
+
+            <div class="theme-setting-item">
+                <h6 class="fw-medium text-primary-light text-md mb-3">Theme Mode</h6>
+                <div class="d-grid grid-cols-3 gap-3 dark-light-mode">
+                    <button type="button"
+                        class="theme-btn theme-setting-item__btn d-flex align-items-center justify-content-center h-64-px rounded-3 text-xl active"
+                        data-theme="light" aria-label="light">
+                        <i class="ri-sun-line"></i>
+                    </button>
+                    <button type="button"
+                        class="theme-btn theme-setting-item__btn d-flex align-items-center justify-content-center h-64-px rounded-3 text-xl"
+                        data-theme="dark" aria-label="dark">
+                        <i class="ri-moon-line"></i>
+                    </button>
+                    <button type="button"
+                        class="theme-btn theme-setting-item__btn d-flex align-items-center justify-content-center h-64-px rounded-3 text-xl"
+                        data-theme="system" aria-label="system">
+                        <i class="ri-computer-line"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="theme-setting-item">
+                <h6 class="fw-medium text-primary-light text-md mb-3">Page Direction</h6>
+                <div class="d-grid grid-cols-2 gap-3">
+                    <button type="button"
+                        class="theme-setting-item__btn ltr-mode-btn d-flex align-items-center justify-content-center gap-2 h-56-px rounded-3 text-xl"
+                        aria-label="LTR">
+                        <span><i class="ri-align-item-left-line"></i></span>
+                        <span class="h6 text-sm font-medium mb-0">LTR</span>
+                    </button>
+
+                    <button type="button"
+                        class="theme-setting-item__btn rtl-mode-btn d-flex align-items-center justify-content-center gap-2 h-56-px rounded-3 text-xl"
+                        aria-label="RTL">
+                        <span class="h6 text-sm font-medium mb-0">RTL</span>
+                        <span><i class="ri-align-item-right-line"></i></span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="theme-setting-item">
+                <h6 class="fw-medium text-primary-light text-md mb-3">Color Schema</h6>
+                <div class="d-grid grid-cols-3 gap-3">
+                    <button type="button"
+                        class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
+                        data-color="base" aria-label="Base">
+                        <span class="color-picker-btn__box h-40-px w-100 rounded-3"
+                            style="background-color: #25A194;"></span>
+                        <span class="fw-medium mt-1" style="color: #25A194;">Base</span>
+                    </button>
+                    <button type="button"
+                        class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
+                        data-color="red" aria-label="Red">
+                        <span class="color-picker-btn__box h-40-px w-100 rounded-3"
+                            style="background-color: #dc2626;"></span>
+                        <span class="fw-medium mt-1" style="color: #dc2626;">Red</span>
+                    </button>
+                    <button type="button"
+                        class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
+                        data-color="blue" aria-label="Blue">
+                        <span class="color-picker-btn__box h-40-px w-100 rounded-3"
+                            style="background-color: #2563eb;"></span>
+                        <span class="fw-medium mt-1" style="color: #2563eb;">Blue</span>
+                    </button>
+                    <button type="button"
+                        class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
+                        data-color="yellow" aria-label="Yellow">
+                        <span class="color-picker-btn__box h-40-px w-100 rounded-3"
+                            style="background-color: #ff9f29;"></span>
+                        <span class="fw-medium mt-1" style="color: #ff9f29;">Yellow</span>
+                    </button>
+                    <button type="button"
+                        class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
+                        data-color="cyan" aria-label="Cyan">
+                        <span class="color-picker-btn__box h-40-px w-100 rounded-3"
+                            style="background-color: #00b8f2;"></span>
+                        <span class="fw-medium mt-1" style="color: #00b8f2;">Cyan</span>
+                    </button>
+                    <button type="button"
+                        class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
+                        data-color="violet" aria-label="Violet">
+                        <span class="color-picker-btn__box h-40-px w-100 rounded-3"
+                            style="background-color: #7c3aed;"></span>
+                        <span class="fw-medium mt-1" style="color: #7c3aed;">Violet</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Theme Customization Structure End -->
+
+    <div class="overlay bg-black bg-opacity-50 w-100 h-100 position-fixed z-9 visibility-hidden opacity-0 duration-300">
+    </div>
+    <aside class="sidebar">
+        <button type="button" class="sidebar-close-btn">
+            <iconify-icon icon="radix-icons:cross-2"></iconify-icon>
+        </button>
+        <div class="">
+            <div class="sidebar-logo d-flex align-items-center justify-content-between">
+                <a href="index.php" class="">
+                    <img src="assets/images/logo.png" alt="site logo" class="light-logo">
+                    <img src="assets/images/logo-light.png" alt="site logo" class="dark-logo">
+                    <img src="assets/images/logo-icon.png" alt="site logo" class="logo-icon">
+                </a>
+                <button type="button" class="text-xxl d-xl-flex d-none line-height-1 sidebar-toggle text-neutral-500"
+                    aria-label="Collapse Sidebar">
+                    <i class="ri-contract-left-line"></i>
+                </button>
+            </div>
+        </div>
+        <!-- User Info start -->
+        <div class="mx-16 py-12">
+            <div class="dropdown profile-dropdown">
+                <button type="button"
+                    class="profile-dropdown__button d-flex align-items-center justify-content-between p-10 w-100 overflow-hidden bg-neutral-50 radius-12 "
+                    data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                    <span class="d-flex align-items-start gap-10">
+                        <img src="assets/images/thumbs/leave-request-img2.png" alt="Thumbnail"
+                            class="w-40-px h-40-px rounded-circle object-fit-cover flex-shrink-0">
+                        <span class="profile-dropdown__contents">
+                            <span class="h6 mb-0 text-md d-block text-primary-light">Jone Copper</span>
+                            <span class="text-secondary-light text-sm mb-0 d-block">Admin</span>
+                        </span>
+                    </span>
+                    <span class="profile-dropdown__icon pe-8 text-xl d-flex line-height-1">
+                        <i class="ri-arrow-right-s-line"></i>
+                    </span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-lg-end border p-12">
+                    <li>
+                        <a href="student-details.php"
+                            class="dropdown-item rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-2 py-6">
+                            <i class="ri-user-3-line"></i>
+                            My Profile
+                        </a>
+                    </li>
+                    <li>
+                        <a href="general.php"
+                            class="dropdown-item rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-2 py-6">
+                            <i class="ri-settings-3-line"></i>
+                            Setting
+                        </a>
+                    </li>
+                    <li>
+                        <a href="login.php"
+                            class="dropdown-item rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 d-flex align-items-center gap-2 py-6">
+                            <i class="ri-shut-down-line"></i>
+                            Log Out
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- User Info end -->
+        <div class="sidebar-menu-area">
+            <ul class="sidebar-menu" id="sidebar-menu">
+                <li class="dropdown">
+                    <a href="javascript:void(0)">
+                        <i class="ri-home-4-line"></i>
+                        <span>Dashboard </span>
+                    </a>
+                    <ul class="sidebar-submenu">
+                        <!-- <li>
+            <a href="index.php">
+              <i class="ri-circle-fill circle-icon w-auto"></i>
+              School
+            </a>
+          </li> -->
+                        <li>
+                            <a href="index-2.php">
+                                <i class="ri-circle-fill circle-icon w-auto"></i>
+                                Student
+                            </a>
+                        </li>
+                        <!-- <li>
+            <a href="index-3.php">
+              <i class="ri-circle-fill circle-icon w-auto"></i>
+              Teacher
+            </a>
+          </li>
+          <li>
+            <a href="index-4.php">
+              <i class="ri-circle-fill circle-icon w-auto"></i>
+              Parent
+            </a>
+          </li> -->
+                        <!-- <li>
+            <a href="index-5.php">
+              <i class="ri-circle-fill circle-icon w-auto"></i>
+              LMS 
+            </a>
+          </li> -->
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)">
+                        <i class="ri-graduation-cap-line"></i>
+                        <span>Students</span>
+                    </a>
+                    <ul class="sidebar-submenu">
+                        <li>
+                            <a href="add-new-student.php">
+                                <i class="ri-circle-fill circle-icon w-auto"></i>
+                                Add New Student
+                            </a>
+                        </li>
+                        <li>
+                            <a href="student-list.php">
+                                <i class="ri-circle-fill circle-icon w-auto"></i>
+                                Student List
+                            </a>
+                        </li>
+                        <li>
+                            <a href="suspended-student.php">
+                                <i class="ri-circle-fill circle-icon w-auto"></i>
+                                Suspend Student
+                            </a>
+                        </li>
+                        <!-- <li>
+            <a href="student-category.php">
+              <i class="ri-circle-fill circle-icon w-auto"></i>
+              Student Categories
+            </a>
+          </li> -->
+                        <!-- <li>
+            <a href="edit-student.php">
+              <i class="ri-circle-fill circle-icon w-auto"></i>
+              Edit Student
+            </a>
+          </li> -->
+                        <li>
+                            <a href="student-details.php">
+                                <i class="ri-circle-fill circle-icon w-auto"></i>
+                                Student Details
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)">
+                        <i class="ri-user-follow-line"></i>
+                        <span>About</span>
+                    </a>
+                    <ul class="sidebar-submenu">
+                        <li>
+                            <a href="about-section.php">
+                                <i class="ti-info-alt"></i>
+                                <span>About update</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+  <a href="javascript:void(0)">
+    <i class="ri-message-2-line"></i>
+    <span>Responses</span>
+  </a>
+  <ul class="sidebar-submenu">
+
+    <li>
+      <a href="response.php?filter=today">
+        <i class="ri-circle-fill circle-icon w-auto"></i>
+        <span>Today's Inquiries</span>
+      </a>
+    </li>
+
+    <li>
+      <a href="response.php?filter=unread">
+        <i class="ri-circle-fill circle-icon w-auto"></i>
+        <span>Unread Inquiries</span>
+      </a>
+    </li>
+
+    <li>
+      <a href="response.php?filter=read">
+        <i class="ri-circle-fill circle-icon w-auto"></i>
+        <span>Read Inquiries</span>
+      </a>
+    </li>
+
+    <li>
+      <a href="response.php">
+        <i class="ri-circle-fill circle-icon w-auto"></i>
+        <span>All Inquiries</span>
+      </a>
+    </li>
+
+  </ul>
+</li>
+                <!-- <li class="dropdown">
+          <a href="javascript:void(0)">
+            <i class="ri-user-follow-line"></i>
+            <span>Teachers</span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li>
+              <a href="add-new-teacher.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Add New Teacher
+              </a>
+            </li>
+            <li>
+              <a href="teacher-list.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Teacher List
+              </a>
+            </li>
+            <li>
+              <a href="edit-teacher.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Edit Teacher
+              </a>
+            </li>
+            <li>
+              <a href="teacher-details.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Teacher Details
+              </a>
+            </li>
+            <li>
+              <a href="teacher-timetable.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Teacher Timetable
+              </a>
+            </li>
+          </ul>
+        </li> -->
+                <!-- <li class="dropdown">
+          <a href="javascript:void(0)">
+            <i class="ri-account-circle-line"></i>
+            <span>Guardian</span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li>
+              <a href="add-new-guardian.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Add New Guardians
+              </a>
+            </li>
+            <li>
+              <a href="guardian-list.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Guardians List
+              </a>
+            </li>
+            <li>
+              <a href="edit-guardian.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Edit Guardian
+              </a>
+            </li>
+            <li>
+              <a href="guardian-details.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Guardian Details
+              </a>
+            </li>
+          </ul>
+        </li> -->
+                <!-- <li class="dropdown">
+          <a href="javascript:void(0)">
+            <i class="ri-list-view"></i>
+            <span>Classes</span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li>
+              <a href="section-list.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Section
+              </a>
+            </li>
+            <li>
+              <a href="subject-list.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Subjects
+              </a>
+            </li>
+            <li>
+              <a href="class-list.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Class List
+              </a>
+            </li>
+            <li>
+              <a href="class-room-list.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Class Room
+              </a>
+            </li>
+          </ul>
+        </li> -->
+                <!-- <li class="dropdown">
+          <a href="javascript:void(0)">
+            <i class="ri-file-edit-line"></i>
+            <span>Examinations</span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li>
+              <a href="exam.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Exam
+              </a>
+            </li>
+            <li>
+              <a href="exam-schedule.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Exam Schedule
+              </a>
+            </li>
+            <li>
+              <a href="exam-result.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Exam Result
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="javascript:void(0)">
+            <i class="ri-money-dollar-circle-line"></i>
+            <span>Fees Collection</span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li>
+              <a href="fees-collect.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Fees Collect
+              </a>
+            </li>
+            <li>
+              <a href="fees-type.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Fees Type
+              </a>
+            </li>
+            <li>
+              <a href="fees-group.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Fees Group
+              </a>
+            </li>
+            <li>
+              <a href="fees-discount.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Fees Discount
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="javascript:void(0)">
+            <i class="ri-calendar-check-line"></i>
+            <span>Attendance</span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li>
+              <a href="student-attendance.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Student Attendance
+              </a>
+            </li>
+            <li>
+              <a href="teacher-attendance.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Teacher Attendance
+              </a>
+            </li>
+            <li>
+              <a href="employee-attendance.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Employee Attendance
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="javascript:void(0)">
+            <i class="ri-time-line"></i>
+            <span>Leaves</span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li>
+              <a href="leave-types.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Leave Types
+              </a>
+            </li>
+            <li>
+              <a href="leave-request.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Leave Request
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="certificate.php">
+            <i class="ri-home-4-line"></i>
+            <span>Certificate </span>
+          </a>
+        </li>
+        <li class="dropdown">
+          <a href="javascript:void(0)">
+            <i class="ri-book-2-line"></i>
+            <span>Library</span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li>
+              <a href="books-list.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Books List
+              </a>
+            </li>
+            <li>
+              <a href="members-list.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Members List
+              </a>
+            </li>
+            <li>
+              <a href="member-details.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Members Details
+              </a>
+            </li>
+            <li>
+              <a href="issue-return.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Issue Return
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="javascript:void(0)">
+            <i class="ri-money-dollar-circle-line"></i>
+            <span>Accounts</span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li>
+              <a href="income-head.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Income Head
+              </a>
+            </li>
+            <li>
+              <a href="income-list.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Income List
+              </a>
+            </li>
+            <li>
+              <a href="expense-head.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Expense Head
+              </a>
+            </li>
+            <li>
+              <a href="expense-list.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Expense List
+              </a>
+            </li>
+            <li>
+              <a href="transaction.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Transaction
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="javascript:void(0)">
+            <i class="ri-user-settings-line"></i>
+            <span>HRM</span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li>
+              <a href="employee-list.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Employee List
+              </a>
+            </li>
+            <li>
+              <a href="employee-details.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Employee Details
+              </a>
+            </li>
+            <li>
+              <a href="add-new-employee.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Add New Employee
+              </a>
+            </li>
+            <li>
+              <a href="payroll.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Payroll
+              </a>
+            </li>
+            <li>
+              <a href="designation.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Designation
+              </a>
+            <li>
+              <a href="department.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Department
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="notice-board.php">
+            <i class="ri-booklet-line"></i>
+            <span>Notice Board </span>
+          </a>
+        </li>
+        <li>
+          <a href="event.php">
+            <i class="ri-calendar-event-line"></i>
+            <span>Event </span>
+          </a>
+        </li>
+        <li>
+          <a href="message.php">
+            <i class="ri-message-2-line"></i>
+            <span>Message </span>
+          </a>
+        </li>
+        <li>
+          <a href="subscription-plan.php">
+            <i class="ri-price-tag-3-line"></i>
+            <span>Subscription Plan </span>
+          </a>
+        </li>
+        <li>
+          <a href="role-access.php">
+            <i class="ri-macbook-line"></i>
+            <span>Role & Access</span>
+          </a>
+        </li>
+        <li class="dropdown">
+          <a href="javascript:void(0)">
+            <i class="ri-shield-check-line"></i>
+            <span>Authentication</span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li>
+              <a href="login.php"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Login</a>
+            </li>
+            <li>
+              <a href="register.php"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Register</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="assign-role-plan.php">
+            <i class="ri-user-follow-line"></i>
+            <span>Assign Role</span>
+          </a>
+        </li>
+        <li class="dropdown">
+          <a href="javascript:void(0)">
+            <i class="ri-user-settings-line"></i>
+            <span>Settings</span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li>
+              <a href="general.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                General
+              </a>
+            </li>
+            <li>
+              <a href="notification.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Notification
+              </a>
+            </li>
+            <li>
+              <a href="currencies.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Currencies
+              </a>
+            </li>
+            <li>
+              <a href="languages.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                Languages
+              </a>
+            </li>
+          </ul>
+        </li> -->
+            </ul>
+        </div>
+    </aside>
+
+    <main class="dashboard-main">
+        <div class="navbar-header shadow-1">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-auto">
+                    <div class="d-flex flex-wrap align-items-center gap-4">
+                        <button type="button" class="sidebar-mobile-toggle" aria-label="Sidebar Mobile Toggler Button">
+                            <iconify-icon icon="heroicons:bars-3-solid" class="icon"></iconify-icon>
+                        </button>
+                        <form class="navbar-search">
+                            <input type="text" class="bg-transparent" name="search" placeholder="Search">
+                            <iconify-icon icon="ion:search-outline" class="icon"></iconify-icon>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <div class="d-flex flex-wrap align-items-center gap-3">
+                        <button type="button" data-theme-toggle
+                            class="w-40-px h-40-px bg-neutral-200 rounded-circle d-flex justify-content-center align-items-center"
+                            aria-label="Dark & Light Mode Button"></button>
+                        <div class="dropdown d-inline-block">
+                            <button
+                                class="has-indicator w-40-px h-40-px bg-neutral-200 rounded-circle d-flex justify-content-center align-items-center"
+                                type="button" data-bs-toggle="dropdown" aria-label="Language Change Button">
+                                <img src="assets/images/flags/flag1.png" alt="image"
+                                    class="w-24 h-24 object-fit-cover rounded-circle">
+                            </button>
+                            <div class="dropdown-menu to-top dropdown-menu-sm">
+                                <div
+                                    class="py-12 px-16 radius-8 bg-primary-50 mb-16 d-flex align-items-center justify-content-between gap-2">
+                                    <div>
+                                        <h6 class="text-lg text-primary-light fw-semibold mb-0">Choose Your Language
+                                        </h6>
+                                    </div>
+                                </div>
+
+                                <div class="max-h-400-px overflow-y-auto scroll-sm pe-8">
+                                    <div
+                                        class="form-check style-check d-flex align-items-center justify-content-between mb-16">
+                                        <label class="form-check-label line-height-1 fw-medium text-secondary-light"
+                                            for="english">
+                                            <span
+                                                class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
+                                                <img src="assets/images/flags/flag1.png" alt="Image"
+                                                    class="w-36-px h-36-px bg-success-subtle text-success-main rounded-circle flex-shrink-0">
+                                                <span class="text-md fw-semibold mb-0">English</span>
+                                            </span>
+                                        </label>
+                                        <input class="form-check-input" type="radio" name="crypto" id="english">
+                                    </div>
+
+                                    <div
+                                        class="form-check style-check d-flex align-items-center justify-content-between mb-16">
+                                        <label class="form-check-label line-height-1 fw-medium text-secondary-light"
+                                            for="japan">
+                                            <span
+                                                class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
+                                                <img src="assets/images/flags/flag2.png" alt="Image"
+                                                    class="w-36-px h-36-px bg-success-subtle text-success-main rounded-circle flex-shrink-0">
+                                                <span class="text-md fw-semibold mb-0">Japan</span>
+                                            </span>
+                                        </label>
+                                        <input class="form-check-input" type="radio" name="crypto" id="japan">
+                                    </div>
+
+                                    <div
+                                        class="form-check style-check d-flex align-items-center justify-content-between mb-16">
+                                        <label class="form-check-label line-height-1 fw-medium text-secondary-light"
+                                            for="france">
+                                            <span
+                                                class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
+                                                <img src="assets/images/flags/flag3.png" alt="Image"
+                                                    class="w-36-px h-36-px bg-success-subtle text-success-main rounded-circle flex-shrink-0">
+                                                <span class="text-md fw-semibold mb-0">France</span>
+                                            </span>
+                                        </label>
+                                        <input class="form-check-input" type="radio" name="crypto" id="france">
+                                    </div>
+
+                                    <div
+                                        class="form-check style-check d-flex align-items-center justify-content-between mb-16">
+                                        <label class="form-check-label line-height-1 fw-medium text-secondary-light"
+                                            for="germany">
+                                            <span
+                                                class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
+                                                <img src="assets/images/flags/flag4.png" alt="Image"
+                                                    class="w-36-px h-36-px bg-success-subtle text-success-main rounded-circle flex-shrink-0">
+                                                <span class="text-md fw-semibold mb-0">Germany</span>
+                                            </span>
+                                        </label>
+                                        <input class="form-check-input" type="radio" name="crypto" id="germany">
+                                    </div>
+
+                                    <div
+                                        class="form-check style-check d-flex align-items-center justify-content-between mb-16">
+                                        <label class="form-check-label line-height-1 fw-medium text-secondary-light"
+                                            for="korea">
+                                            <span
+                                                class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
+                                                <img src="assets/images/flags/flag5.png" alt="Image"
+                                                    class="w-36-px h-36-px bg-success-subtle text-success-main rounded-circle flex-shrink-0">
+                                                <span class="text-md fw-semibold mb-0">South Korea</span>
+                                            </span>
+                                        </label>
+                                        <input class="form-check-input" type="radio" name="crypto" id="korea">
+                                    </div>
+
+                                    <div
+                                        class="form-check style-check d-flex align-items-center justify-content-between mb-16">
+                                        <label class="form-check-label line-height-1 fw-medium text-secondary-light"
+                                            for="bangladesh">
+                                            <span
+                                                class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
+                                                <img src="assets/images/flags/flag6.png" alt="Image"
+                                                    class="w-36-px h-36-px bg-success-subtle text-success-main rounded-circle flex-shrink-0">
+                                                <span class="text-md fw-semibold mb-0">Bangladesh</span>
+                                            </span>
+                                        </label>
+                                        <input class="form-check-input" type="radio" name="crypto" id="bangladesh">
+                                    </div>
+
+                                    <div
+                                        class="form-check style-check d-flex align-items-center justify-content-between mb-16">
+                                        <label class="form-check-label line-height-1 fw-medium text-secondary-light"
+                                            for="india">
+                                            <span
+                                                class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
+                                                <img src="assets/images/flags/flag7.png" alt="Image"
+                                                    class="w-36-px h-36-px bg-success-subtle text-success-main rounded-circle flex-shrink-0">
+                                                <span class="text-md fw-semibold mb-0">India</span>
+                                            </span>
+                                        </label>
+                                        <input class="form-check-input" type="radio" name="crypto" id="india">
+                                    </div>
+                                    <div
+                                        class="form-check style-check d-flex align-items-center justify-content-between">
+                                        <label class="form-check-label line-height-1 fw-medium text-secondary-light"
+                                            for="canada">
+                                            <span
+                                                class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
+                                                <img src="assets/images/flags/flag8.png" alt="Image"
+                                                    class="w-36-px h-36-px bg-success-subtle text-success-main rounded-circle flex-shrink-0">
+                                                <span class="text-md fw-semibold mb-0">Canada</span>
+                                            </span>
+                                        </label>
+                                        <input class="form-check-input" type="radio" name="crypto" id="canada">
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- Language dropdown end -->
+
+                        <div class="dropdown">
+                            <button
+                                class="has-indicator w-40-px h-40-px bg-neutral-200 rounded-circle d-flex justify-content-center align-items-center position-relative"
+                                type="button" data-bs-toggle="dropdown" aria-label="Notification Button">
+                                <iconify-icon icon="iconoir:bell" class="text-primary-light text-xl"></iconify-icon>
+                                <span
+                                    class="w-8-px h-8-px bg-danger-600 position-absolute end-0 top-0 rounded-circle mt-2 me-2"></span>
+                            </button>
+                            <div class="dropdown-menu to-top dropdown-menu-lg p-0">
+                                <div
+                                    class="m-16 py-12 px-16 radius-8 bg-primary-50 mb-16 d-flex align-items-center justify-content-between gap-2">
+                                    <div>
+                                        <h6 class="text-lg text-primary-light fw-semibold mb-0">Notifications</h6>
+                                    </div>
+                                    <span
+                                        class="text-primary-600 fw-semibold text-lg w-40-px h-40-px rounded-circle bg-base d-flex justify-content-center align-items-center">05</span>
+                                </div>
+
+                                <div class="max-h-400-px overflow-y-auto scroll-sm pe-4">
+                                    <a href="javascript:void(0)"
+                                        class="px-24 py-12 d-flex align-items-start gap-3 mb-2 justify-content-between">
+                                        <div
+                                            class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
+                                            <span
+                                                class="w-44-px h-44-px bg-success-subtle text-success-main rounded-circle d-flex justify-content-center align-items-center flex-shrink-0">
+                                                <iconify-icon icon="bitcoin-icons:verify-outline"
+                                                    class="icon text-xxl"></iconify-icon>
+                                            </span>
+                                            <div>
+                                                <h6 class="text-md fw-semibold mb-4">Congratulations</h6>
+                                                <p class="mb-0 text-sm text-secondary-light text-w-200-px">Your profile
+                                                    has been Verified. Your
+                                                    profile has been Verified</p>
+                                            </div>
+                                        </div>
+                                        <span class="text-sm text-secondary-light flex-shrink-0">23 Mins ago</span>
+                                    </a>
+
+                                    <a href="javascript:void(0)"
+                                        class="px-24 py-12 d-flex align-items-start gap-3 mb-2 justify-content-between bg-neutral-50">
+                                        <div
+                                            class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
+                                            <span
+                                                class="w-44-px h-44-px bg-success-subtle text-success-main rounded-circle d-flex justify-content-center align-items-center flex-shrink-0">
+                                                <img src="assets/images/notification/profile-1.png" alt="Image">
+                                            </span>
+                                            <div>
+                                                <h6 class="text-md fw-semibold mb-4">Ronald Richards</h6>
+                                                <p class="mb-0 text-sm text-secondary-light text-w-200-px">You can
+                                                    stitch between artboards</p>
+                                            </div>
+                                        </div>
+                                        <span class="text-sm text-secondary-light flex-shrink-0">23 Mins ago</span>
+                                    </a>
+
+                                    <a href="javascript:void(0)"
+                                        class="px-24 py-12 d-flex align-items-start gap-3 mb-2 justify-content-between">
+                                        <div
+                                            class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
+                                            <span
+                                                class="w-44-px h-44-px bg-info-subtle text-info-main rounded-circle d-flex justify-content-center align-items-center flex-shrink-0">
+                                                AM
+                                            </span>
+                                            <div>
+                                                <h6 class="text-md fw-semibold mb-4">Arlene McCoy</h6>
+                                                <p class="mb-0 text-sm text-secondary-light text-w-200-px">Invite you to
+                                                    prototyping</p>
+                                            </div>
+                                        </div>
+                                        <span class="text-sm text-secondary-light flex-shrink-0">23 Mins ago</span>
+                                    </a>
+
+                                    <a href="javascript:void(0)"
+                                        class="px-24 py-12 d-flex align-items-start gap-3 mb-2 justify-content-between bg-neutral-50">
+                                        <div
+                                            class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
+                                            <span
+                                                class="w-44-px h-44-px bg-success-subtle text-success-main rounded-circle d-flex justify-content-center align-items-center flex-shrink-0">
+                                                <img src="assets/images/notification/profile-2.png" alt="Image">
+                                            </span>
+                                            <div>
+                                                <h6 class="text-md fw-semibold mb-4">Robiul Hasan</h6>
+                                                <p class="mb-0 text-sm text-secondary-light text-w-200-px">Invite you to
+                                                    prototyping</p>
+                                            </div>
+                                        </div>
+                                        <span class="text-sm text-secondary-light flex-shrink-0">23 Mins ago</span>
+                                    </a>
+
+                                    <a href="javascript:void(0)"
+                                        class="px-24 py-12 d-flex align-items-start gap-3 mb-2 justify-content-between">
+                                        <div
+                                            class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3">
+                                            <span
+                                                class="w-44-px h-44-px bg-info-subtle text-info-main rounded-circle d-flex justify-content-center align-items-center flex-shrink-0">
+                                                DR
+                                            </span>
+                                            <div>
+                                                <h6 class="text-md fw-semibold mb-4">Darlene Robertson</h6>
+                                                <p class="mb-0 text-sm text-secondary-light text-w-200-px">Invite you to
+                                                    prototyping</p>
+                                            </div>
+                                        </div>
+                                        <span class="text-sm text-secondary-light flex-shrink-0">23 Mins ago</span>
+                                    </a>
+                                </div>
+
+                                <div class="text-center py-12 px-16">
+                                    <a href="javascript:void(0)"
+                                        class="text-primary-600 fw-semibold text-md hover-underline">See All
+                                        Notification</a>
+                                </div>
+
+                            </div>
+                        </div><!-- Notification dropdown end -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-main-body">
+
+            <!-- Breadcrumb -->
+            <div class="breadcrumb d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
+                <div>
+                    <h1 class="fw-semibold mb-4 h6 text-primary-light">Student List</h1>
+                    <div>
+                        <a href="index.php" class="text-secondary-light hover-text-primary hover-underline">
+                            Dashboard
+                        </a>
+                        <span class="text-secondary-light"> / Student List</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Table Section -->
+            <div class="mt-24">
+                <div class="card h-100">
+                    <div class="card-body p-0 dataTable-wrapper">
+
+                        <div
+                            class="d-flex align-items-center justify-content-start gap-16 px-24 py-20 border-bottom border-neutral-200">
+
+                            <div class="dropdown">
+                                <button
+                                    class="btn btn-outline-neutral-600 dropdown-toggle d-flex align-items-center gap-2 h-40-px"
+                                    type="button" data-bs-toggle="dropdown">
+                                    <i class="ri-download-2-line"></i> Export
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#" id="exportPDF">PDF</a></li>
+                                    <li><a class="dropdown-item" href="#" id="exportExcel">Excel</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="navbar-search m-0" style="max-width: 300px; width: 100%;">
+                                <input type="text" id="customSearch"
+                                    class="bg-neutral-50 border border-neutral-200 h-40-px radius-8 px-12 w-100"
+                                    placeholder="Search students..." style="outline: none;">
+                                <iconify-icon icon="ion:search-outline" class="icon"
+                                    style="right: 12px; left: auto;"></iconify-icon>
+                            </div>
+
+                        </div>
+                        <div class="p-0">
+                            <table class="table bordered-table mb-0 data-table" id="dataTable">
+
+                                <thead>
+                                    <tr>
+                                        <th>S.L</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Date</th>
+                                        <th>Submit Time</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+
+                                    <?php if ($result->num_rows > 0): ?>
+
+                                        <?php $sl = 1; ?>
+                                        <?php while ($row = $result->fetch_assoc()): ?>
+
+                                            <tr>
+                                                <td><?= $sl++ ?></td>
+
+                                                <!-- Name (Same Design As Before) -->
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="assets/images/thumbs/avatar-img1.png"
+                                                            class="flex-shrink-0 me-12 radius-8" width="40">
+                                                        <div>
+                                                            <h6 class="text-md mb-0 fw-medium">
+                                                                <?= htmlspecialchars($row['full_name']) ?>
+                                                            </h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+
+                                                <!-- Email -->
+                                                <td>
+                                                    <span class="text-sm text-secondary-light">
+                                                        <?= htmlspecialchars($row['email']) ?>
+                                                    </span>
+                                                </td>
+
+                                                <!-- Date -->
+                                                <td>
+                                                    <?= date("d M Y", strtotime($row['created_at'])) ?>
+                                                </td>
+
+                                                <!-- Submit Time -->
+                                                <td>
+                                                    <?= date("h:i A", strtotime($row['created_at'])) ?>
+                                                </td>
+
+                                                <!-- Action Buttons -->
+                                                <td>
+                                                    <div class="d-flex align-items-center gap-8">
+
+                                                        <!-- View Button -->
+                                                        <a href="view-response.php?id=<?= $row['id'] ?>"
+                                                            class="btn btn-sm bg-primary-600 text-white px-16 py-6 radius-6">
+                                                            <i class="ri-eye-line"></i> View
+                                                        </a>
+
+                                                        <!-- Delete Button -->
+                                                        <a href="delete-response.php?id=<?= $row['id'] ?>"
+                                                            onclick="return confirm('Are you sure you want to delete this response?')"
+                                                            class="btn btn-sm bg-danger-600 text-white px-16 py-6 radius-6">
+                                                            <i class="ri-delete-bin-line"></i> Delete
+                                                        </a>
+
+                                                    </div>
+                                                </td>
+
+                                            </tr>
+
+                                        <?php endwhile; ?>
+
+                                    <?php else: ?>
+
+                                        <tr>
+                                            <td colspan="6" class="text-center py-4">
+                                                No Responses Found
+                                            </td>
+                                        </tr>
+
+                                    <?php endif; ?>
+
+                                </tbody>
+
+
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <footer class="d-footer">
+            <div class="">
+                <p class="mb-0 text-center"> &copy; <span class="current-year"></span> Made With Team DRS.</p>
+            </div>
+        </footer>
+    </main>
+
+
+    <!-- jQuery library js -->
+    <script src="assets/js/lib/jquery-3.7.1.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="assets/js/lib/bootstrap.bundle.min.js"></script>
+    <!-- Apex Chart js -->
+    <script src="assets/js/lib/apexcharts.min.js"></script>
+    <!-- Iconify Font js -->
+    <script src="assets/js/lib/iconify-icon.min.js"></script>
+    <!-- Data Table js -->
+    <script src="assets/js/lib/dataTables.min.js"></script>
+
+    <!-- jQuery UI js -->
+    <script src="assets/js/lib/jquery-ui.min.js"></script>
+
+    <!-- main js -->
+    <script src="assets/js/app.js"></script>
+
+    <!-- <script>
+    let table = new DataTable('#dataTable');
+
+    // ✅ Data Table start
+    $('.data-table').each(function () {
+        const $table = $(this);
+        const tableInstance = new DataTable(this);
+
+        // Handle search input (inside same wrapper)
+        $table.closest('.dataTable-wrapper').find('.dt-search .dt-input').on('keyup', function () {
+            tableInstance.search(this.value).draw();
+        });
+
+        // Handle page length change (inside same wrapper)
+        $table.closest('.dataTable-wrapper').find('.dt-length .dt-input').on('change', function () {
+            const value = $(this).val();
+            tableInstance.page.len(value).draw();
+        });
+    });
+    // ✅ Data Table end
+</script> -->
+
+    <script>
+        $(document).ready(function () {
+            // ✅ Initialize table with 12-row pagination
+            const tableInstance = new DataTable('#dataTable', {
+                pageLength: 12,
+                dom: 'rtp', // ✅ This line erases the default search/length bars
+                language: {
+                    paginate: {
+                        next: '<i class="ri-arrow-right-s-line"></i>',
+                        previous: '<i class="ri-arrow-left-s-line"></i>'
+                    }
+                }
+            });
+
+            // ✅ Connect your new Custom Search line to the table
+            $('#customSearch').on('keyup', function () {
+                tableInstance.search(this.value).draw();
+            });
+
+            // ✅ Handle Export Buttons
+            function getCurrentPageData() {
+                const rows = [];
+                const headers = [];
+
+                // Get table headers (exclude Action column)
+                $('#dataTable thead th').each(function (index) {
+                    if (index !== 9) { // Action column index
+                        headers.push($(this).text().trim());
+                    }
+                });
+
+                // Get visible rows only (current page)
+                $('#dataTable tbody tr:visible').each(function () {
+                    const rowData = [];
+                    $(this).find('td').each(function (index) {
+                        if (index !== 9) { // Skip Action column
+                            rowData.push($(this).text().trim());
+                        }
+                    });
+                    rows.push(rowData);
+                });
+
+                return { headers, rows };
+            }
+
+            // ✅ PDF Export
+            $('#exportPDF').on('click', function (e) {
+                e.preventDefault();
+
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF('landscape');
+
+                const tableData = getCurrentPageData();
+
+                const now = new Date();
+                const filename = "Student_List_" +
+                    now.toLocaleDateString().replace(/\//g, '-') + "_" +
+                    now.getHours() + "-" +
+                    now.getMinutes() + "-" +
+                    now.getSeconds();
+
+                doc.autoTable({
+                    head: [tableData.headers],
+                    body: tableData.rows,
+                    styles: { fontSize: 8 }
+                });
+
+                doc.save(filename + ".pdf");
+            });
+
+            // ✅ Excel Export
+            $('#exportExcel').on('click', function (e) {
+                e.preventDefault();
+
+                const tableData = getCurrentPageData();
+
+                const worksheet = XLSX.utils.aoa_to_sheet([
+                    tableData.headers,
+                    ...tableData.rows
+                ]);
+
+                const workbook = XLSX.utils.book_new();
+                XLSX.utils.book_append_sheet(workbook, worksheet, "Students");
+
+                const now = new Date();
+                const filename = "Student_List_" +
+                    now.toLocaleDateString().replace(/\//g, '-') + "_" +
+                    now.getHours() + "-" +
+                    now.getMinutes() + "-" +
+                    now.getSeconds();
+
+                XLSX.writeFile(workbook, filename + ".xlsx");
+            });
+
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+
+</body>
+
+</html>

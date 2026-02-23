@@ -397,6 +397,43 @@ $about = $conn->query("SELECT * FROM about_section WHERE id = 1")->fetch_assoc()
             </li>
           </ul>
         </li>
+        <li class="dropdown">
+  <a href="javascript:void(0)">
+    <i class="ri-message-2-line"></i>
+    <span>Responses</span>
+  </a>
+  <ul class="sidebar-submenu">
+
+    <li>
+      <a href="response.php?filter=today">
+        <i class="ri-circle-fill circle-icon w-auto"></i>
+        <span>Today's Inquiries</span>
+      </a>
+    </li>
+
+    <li>
+      <a href="response.php?filter=unread">
+        <i class="ri-circle-fill circle-icon w-auto"></i>
+        <span>Unread Inquiries</span>
+      </a>
+    </li>
+
+    <li>
+      <a href="response.php?filter=read">
+        <i class="ri-circle-fill circle-icon w-auto"></i>
+        <span>Read Inquiries</span>
+      </a>
+    </li>
+
+    <li>
+      <a href="response.php">
+        <i class="ri-circle-fill circle-icon w-auto"></i>
+        <span>All Inquiries</span>
+      </a>
+    </li>
+
+  </ul>
+</li>
         <!-- <li class="dropdown">
           <a href="javascript:void(0)">
             <i class="ri-user-follow-line"></i>
