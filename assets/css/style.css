@@ -22248,3 +22248,28 @@ section {
     font-size: 15px !important;
     line-height: 1.5;
 }
+
+
+/* Styling for Branch Cards in Program Finder */
+.branch-card-mini {
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.branch-card-mini:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+    border-color: #F26F20 !important;
+}
+
+.branch-card-mini .rs-thumb img:hover {
+    transform: scale(1.1); /* Subtle zoom effect on image hover */
+}
+
+/* Ensure Owl Nav buttons stay centered vertically on cards */
+.branch-slider .owl-nav {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}

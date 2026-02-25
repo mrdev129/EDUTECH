@@ -662,22 +662,132 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 </div>
 
                 <?php
+                // Multi-dimensional array mapping Streams -> Branches -> Images
                 $courseData = [
-                    "B.Tech" => ["CSE", "IT", "Mechanical", "Civil", "EE", "ECE", "EEE", "Chemical", "AI & ML", "Data Science", "Cyber Security", "Robotics"],
-                    "MBBS" => ["General Medicine", "Pediatrics", "Dermatology", "Psychiatry", "Radiology", "General Surgery", "Orthopedics", "ENT", "OB-GYN"],
-                    "BDS" => ["Orthodontics", "Oral Surgery", "Prosthodontics", "Periodontics", "Conservative Dentistry", "Pediatric Dentistry"],
-                    "MD/MS" => ["Pathology", "Microbiology", "Pharmacology", "General Surgery", "ENT", "Ophthalmology", "MDS"],
-                    "Agriculture" => ["Agronomy", "Horticulture", "Soil Science", "Plant Pathology", "Forestry", "Seed Tech"],
-                    "Veterinary" => ["Animal Nutrition", "Genetics", "Surgery", "Medicine", "Dairy Science", "Poultry"],
-                    "MBA" => ["Finance", "Marketing", "HR", "Operations", "International Business", "Business Analytics", "Supply Chain"],
-                    "MCA" => ["Software Development", "Data Science", "AI", "Cloud Computing", "Cyber Security", "Web Dev"],
-                    "BBA" => ["Finance", "Marketing", "HR", "International Business", "Business Analytics", "Retail"],
-                    "BCA" => ["Software Development", "Data Analytics", "Cyber Security", "Cloud Computing", "Web Dev"],
-                    "Nursing" => ["General Nursing", "Pediatric", "Psychiatric", "Community Health", "Critical Care"],
-                    "B.Pharm" => ["Pharmaceutical Chem", "Pharmacology", "Pharmaceutics", "Pharmacognosy", "Industrial"],
-                    "Biotech" => ["Medical", "Agricultural", "Genetic Engineering", "Molecular", "Bioinformatics"],
-                    "BHMS" => ["Materia Medica", "Organon", "Repertory", "Pharmacy"],
-                    "BAMS" => ["Kayachikitsa", "Panchakarma", "Shalya", "Shalakya", "Dravyaguna"]
+                    "B.Tech" => [
+                        ["name" => "CSE", "img" => "assets/images/courses/cse.jpg"],
+                        ["name" => "IT", "img" => "assets/images/courses/it.jpg"],
+                        ["name" => "Mechanical", "img" => "assets/images/courses/mech.jpg"],
+                        ["name" => "Civil", "img" => "assets/images/courses/civil.jpg"],
+                        ["name" => "EE", "img" => "assets/images/courses/ee.jpg"],
+                        ["name" => "ECE", "img" => "assets/images/courses/ece.jpg"],
+                        ["name" => "EEE", "img" => "assets/images/courses/eee.jpg"],
+                        ["name" => "Chemical", "img" => "assets/images/courses/chemical.png"],
+                        ["name" => "AI & ML", "img" => "assets/images/courses/aiml.jpg"],
+                        ["name" => "Data Science", "img" => "assets/images/courses/datascience.jpg"],
+                        ["name" => "Cyber Security", "img" => "assets/images/courses/cyber.webp"],
+                        ["name" => "Robotics", "img" => "assets/images/courses/robotics.webp"]
+                    ],
+                    "MBBS" => [
+                        ["name" => "General Medicine", "img" => "assets/images/courses/med-gen.jpg"],
+                        ["name" => "Pediatrics", "img" => "assets/images/courses/med-pedia.webp"],
+                        ["name" => "Dermatology", "img" => "assets/images/courses/med-derma.jpg"],
+                        ["name" => "Psychiatry", "img" => "assets/images/courses/med-psych.jpg"],
+                        ["name" => "Radiology", "img" => "assets/images/courses/med-radio.jpg"],
+                        ["name" => "General Surgery", "img" => "assets/images/courses/med-surgery.avif"],
+                        ["name" => "Orthopedics", "img" => "assets/images/courses/med-ortho.png"],
+                        ["name" => "ENT", "img" => "assets/images/courses/med-ent.jpg"],
+                        ["name" => "OB-GYN", "img" => "assets/images/courses/med-gyn.jpg"]
+                    ],
+                    "BDS" => [
+                        ["name" => "Orthodontics", "img" => "assets/images/courses/bds-ortho.jpg"],
+                        ["name" => "Oral Surgery", "img" => "assets/images/courses/bds-surgery.jpg"],
+                        ["name" => "Prosthodontics", "img" => "assets/images/courses/bds-prostho.jpg"],
+                        ["name" => "Periodontics", "img" => "assets/images/courses/bds-perio.jpg"],
+                        ["name" => "Conservative Dentistry", "img" => "assets/images/courses/bds-con.jpg"],
+                        ["name" => "Pediatric Dentistry", "img" => "assets/images/courses/bds-pedia.jpg"]
+                    ],
+                    "MD/MS" => [
+                        ["name" => "Pathology", "img" => "assets/images/courses/md-path.jpg"],
+                        ["name" => "Microbiology", "img" => "assets/images/courses/md-micro.jpg"],
+                        ["name" => "Pharmacology", "img" => "assets/images/courses/md-pharm.jpg"],
+                        ["name" => "General Surgery", "img" => "assets/images/courses/ms-surg.jpg"],
+                        ["name" => "ENT", "img" => "assets/images/courses/ms-ent.jpg"],
+                        ["name" => "Ophthalmology", "img" => "assets/images/courses/ms-ophth.jpg"],
+                        ["name" => "MDS", "img" => "assets/images/courses/mds.jpg"]
+                    ],
+                    "Agriculture" => [
+                        ["name" => "Agronomy", "img" => "assets/images/courses/agri-agro.jpg"],
+                        ["name" => "Horticulture", "img" => "assets/images/courses/agri-horti.jpg"],
+                        ["name" => "Soil Science", "img" => "assets/images/courses/agri-soil.jpg"],
+                        ["name" => "Plant Pathology", "img" => "assets/images/courses/agri-plant.jpg"],
+                        ["name" => "Forestry", "img" => "assets/images/courses/agri-forest.jpg"],
+                        ["name" => "Seed Tech", "img" => "assets/images/courses/agri-seed.jpg"]
+                    ],
+                    "Veterinary" => [
+                        ["name" => "Animal Nutrition", "img" => "assets/images/courses/vet-nutri.jpg"],
+                        ["name" => "Genetics", "img" => "assets/images/courses/vet-gen.jpg"],
+                        ["name" => "Surgery", "img" => "assets/images/courses/vet-surg.jpg"],
+                        ["name" => "Medicine", "img" => "assets/images/courses/vet-med.jpg"],
+                        ["name" => "Dairy Science", "img" => "assets/images/courses/vet-dairy.jpg"],
+                        ["name" => "Poultry", "img" => "assets/images/courses/vet-poultry.jpg"]
+                    ],
+                    "MBA" => [
+                        ["name" => "Finance", "img" => "assets/images/courses/mba-fin.avif"],
+                        ["name" => "Marketing", "img" => "assets/images/courses/mba-mkt.avif"],
+                        ["name" => "HR", "img" => "assets/images/courses/mba-hr.jpg"],
+                        ["name" => "Operations", "img" => "assets/images/courses/mba-ops.jpeg"],
+                        ["name" => "International Business", "img" => "assets/images/courses/mba-ib.jpg"],
+                        ["name" => "Business Analytics", "img" => "assets/images/courses/mba-ana.jpg"],
+                        ["name" => "Supply Chain", "img" => "assets/images/courses/mba-scm.jpg"]
+                    ],
+                    "MCA" => [
+                        ["name" => "Software Development", "img" => "assets/images/courses/mca-dev.jpg"],
+                        ["name" => "Data Science", "img" => "assets/images/courses/mca-ds.jpg"],
+                        ["name" => "AI", "img" => "assets/images/courses/mca-ai.jpg"],
+                        ["name" => "Cloud Computing", "img" => "assets/images/courses/mca-cloud.webp"],
+                        ["name" => "Cyber Security", "img" => "assets/images/courses/mca-cyber.jpg"],
+                        ["name" => "Web Dev", "img" => "assets/images/courses/mca-web.jpg"]
+                    ],
+                    "BBA" => [
+                        ["name" => "Finance", "img" => "assets/images/courses/bba-fin.avif"],
+                        ["name" => "Marketing", "img" => "assets/images/courses/bba-mkt.avif"],
+                        ["name" => "HR", "img" => "assets/images/courses/bba-hr.jpg"],
+                        ["name" => "International Business", "img" => "assets/images/courses/bba-ib.jpg"],
+                        ["name" => "Business Analytics", "img" => "assets/images/courses/bba-ana.jpg"],
+                        ["name" => "Retail", "img" => "assets/images/courses/bba-retail.jpg"]
+                    ],
+                    "BCA" => [
+                        ["name" => "Software Development", "img" => "assets/images/courses/bca-dev.jpg"],
+                        ["name" => "Data Analytics", "img" => "assets/images/courses/bca-ana.jpg"],
+                        ["name" => "Cyber Security", "img" => "assets/images/courses/bca-cyber.jpg"],
+                        ["name" => "Cloud Computing", "img" => "assets/images/courses/bca-cloud.webp"],
+                        ["name" => "Web Dev", "img" => "assets/images/courses/bca-web.jpg"]
+                    ],
+                    "Nursing" => [
+                        ["name" => "General Nursing", "img" => "assets/images/courses/nur-gen.jpg"],
+                        ["name" => "Pediatric", "img" => "assets/images/courses/nur-pedia.jpg"],
+                        ["name" => "Psychiatric", "img" => "assets/images/courses/nur-psych.jpg"],
+                        ["name" => "Community Health", "img" => "assets/images/courses/nur-comm.jpg"],
+                        ["name" => "Critical Care", "img" => "assets/images/courses/nur-care.jpg"]
+                    ],
+                    "B.Pharm" => [
+                        ["name" => "Pharmaceutical Chem", "img" => "assets/images/courses/pharm-chem.jpg"],
+                        ["name" => "Pharmacology", "img" => "assets/images/courses/pharm-logy.jpg"],
+                        ["name" => "Pharmaceutics", "img" => "assets/images/courses/pharm-ceutics.jpg"],
+                        ["name" => "Pharmacognosy", "img" => "assets/images/courses/pharm-nosy.jpg"],
+                        ["name" => "Industrial", "img" => "assets/images/courses/pharm-indus.jpg"]
+                    ],
+                    "Biotech" => [
+                        ["name" => "Medical", "img" => "assets/images/courses/bio-med.jpg"],
+                        ["name" => "Agricultural", "img" => "assets/images/courses/bio-agri.jpg"],
+                        ["name" => "Genetic Engineering", "img" => "assets/images/courses/bio-gen.jpg"],
+                        ["name" => "Molecular", "img" => "assets/images/courses/bio-mol.jpg"],
+                        ["name" => "Bioinformatics", "img" => "assets/images/courses/bio-info.jpg"]
+                    ],
+                    "BHMS" => [
+                        ["name" => "Materia Medica", "img" => "assets/images/courses/bhms-mat.jpg"],
+                        ["name" => "Organon", "img" => "assets/images/courses/bhms-org.jpg"],
+                        ["name" => "Repertory", "img" => "assets/images/courses/bhms-rep.jpg"],
+                        ["name" => "Pharmacy", "img" => "assets/images/courses/bhms-pharm.jpg"]
+                    ],
+                    "BAMS" => [
+                        ["name" => "Kayachikitsa", "img" => "assets/images/courses/bams-kaya.jpg"],
+                        ["name" => "Panchakarma", "img" => "assets/images/courses/bams-pancha.jpg"],
+                        ["name" => "Shalya", "img" => "assets/images/courses/bams-shalya.jpg"],
+                        ["name" => "Shalakya", "img" => "assets/images/courses/bams-shala.jpg"],
+                        ["name" => "Dravyaguna", "img" => "assets/images/courses/bams-dravya.jpg"]
+                    ]
                 ];
                 ?>
 
@@ -697,7 +807,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <div class="branch-grid-container mt-50 reveal">
                     <?php $count = 0;
                     foreach ($courseData as $stream => $branches):
-                        // Create a clean ID: B.Tech -> course-BTech, MD/MS -> course-MDMS
                         $cleanId = 'course-' . str_replace([' ', '/', '.'], '', $stream);
                     ?>
                         <div id="<?= $cleanId ?>" class="branch-panel <?= $count === 0 ? 'active' : '' ?>">
@@ -710,11 +819,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                                 <?php foreach ($branches as $branch): ?>
                                     <div class="branch-item">
-                                        <div class="rs-featured-2__item branch-card-mini" style="margin: 10px;">
-                                            <div class="rs-content text-center">
-                                                <h4 class="title" style="font-size: 16px; margin-bottom: 5px;"><?= $branch ?>
+                                        <div class="rs-featured-2__item branch-card-mini" style="margin: 10px; padding: 0; overflow: hidden; border: 1px solid #eee; border-radius: 12px; background: #fff;">
+
+                                            <div class="rs-thumb" style="height: 180px; overflow: hidden; position: relative;">
+                                                <img src="<?= $branch['img'] ?>" alt="<?= $branch['name'] ?>" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+                                            </div>
+
+                                            <div class="rs-content text-center" style="padding: 20px;">
+                                                <h4 class="title" style="font-size: 18px; margin-bottom: 8px; font-weight: 800; color: #002147;">
+                                                    <?= $branch['name'] ?>
                                                 </h4>
-                                                <a class="rs-link" href="#" style="font-size: 12px;">
+                                                <a class="rs-link" href="#" style="font-size: 14px; font-weight: 700; color: #F26F20; text-decoration: none;">
                                                     View Details <i class="ri-arrow-right-fill"></i>
                                                 </a>
                                             </div>
