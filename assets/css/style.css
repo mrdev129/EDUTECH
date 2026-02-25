@@ -22169,54 +22169,107 @@ section {
         margin-top: 40px; /* Matched to FAQ mobile margin-top */
     }
 }
-/* --- Fix for Invisible Text in Four Cards --- */
 
-/* --- Force Images to Full Width in Four Cards --- */
+/* ==========================================================================
+   Consolidated Four Cards CSS (Complete Full-Width Container Images)
+   ========================================================================== */
 
+/* 1. Base rules for all 4 cards */
 .rs-featured-cards .rs-featured-5__item {
     padding: 0 !important;
-    display: flex;
-    flex-direction: column;
-    height: 100%; /* Ensures all cards in the row stay equal height */
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+    min-height: 550px; /* Tall enough to prevent text overlap */
+    overflow: hidden !important;
+    background: #ffffff !important; 
+    border-radius: 15px !important;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.08);
+    border: 1px solid #eee;
 }
 
+/* 2. Full-Width Image Container */
 .rs-featured-cards .rs-featured-5__item .rs-thumb {
     width: 100% !important;
     max-width: 100% !important;
-    height: 380px !important; /* Adjust this height to match your banner's vertical scale */
+    height: 380px !important; /* Fixed height for a robust banner look */
     margin: 0 !important;
     padding: 0 !important;
-    overflow: hidden;
+    overflow: hidden !important;
+    position: relative;
+    background: #002147; /* Dark fallback matches your brand */
 }
 
+/* 3. Logic to make image COMPLETE within container */
 .rs-featured-cards .rs-featured-5__item .rs-thumb img {
-    width: 100% !important; /* Forces horizontal stretch to container edges */
+    width: 100% !important;
     height: 100% !important;
-    /* Use 'cover' to fill without distortion (will crop top/bottom slightly) */
-    /* Use 'fill' if you want the entire banner visible (may stretch horizontally) */
+    /* 'cover' is essential here: it stretches the image to fill 
+       both width and height completely without leaving side gaps */
     object-fit: cover !important; 
-    display: block;
+    object-position: center center !important;
+    display: block !important;
 }
 
-/* Ensure the text area below remains clean and centered */
+/* 4. White Content Area */
 .rs-featured-cards .rs-featured-5__item .rs-content {
-    padding: 25px 15px !important;
-    background: #ffffff;
-    text-align: center;
-    flex-grow: 1;
+    padding: 25px 20px !important;
+    text-align: center !important;
+    flex-grow: 1 !important;
+    background: #ffffff !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
-/* 4. Ensure heading and text are visible and spaced correctly */
+
+/* 5. EXCEPTIONS FOR ALIGNMENT */
+
+/* Specific fix for Courses (3rd card) - ensures boy isn't cropped weirdly */
+.course-card-alt .rs-thumb img {
+    object-fit: cover !important; 
+    object-position: top center !important;
+}
+
+/* Specific fix for Jobs (4th card) - moves character slightly if needed */
+.rs-featured-cards .row .col-lg-3:nth-child(4) .rs-thumb img {
+    object-position: center top !important;
+}
+
+/* 6. Typography Styling */
 .rs-featured-5__item .rs-content .title {
-    margin-top: 0 !important;
-    margin-bottom: 12px !important;
-    color: #002147 !important; /* High contrast navy blue */
+    color: #002147 !important;
+    font-size: 22px !important;
     font-weight: 800 !important;
+    margin-bottom: 12px !important;
 }
 
 .rs-featured-5__item .rs-content p {
-    color: #454545 !important; /* Visible dark grey */
+    color: #454545 !important;
     font-size: 15px !important;
-    line-height: 1.5 !important;
-    margin-bottom: 20px !important;
+    line-height: 1.5;
 }
 
+
+/* Styling for Branch Cards in Program Finder */
+.branch-card-mini {
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.branch-card-mini:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+    border-color: #F26F20 !important;
+}
+
+.branch-card-mini .rs-thumb img:hover {
+    transform: scale(1.1); /* Subtle zoom effect on image hover */
+}
+
+/* Ensure Owl Nav buttons stay centered vertically on cards */
+.branch-slider .owl-nav {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}

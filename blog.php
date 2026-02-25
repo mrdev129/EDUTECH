@@ -99,34 +99,43 @@
             display: flex;
             align-items: center;
         }
+
         .enquire-modal {
-    display: none; /* Keep it hidden until the script runs */
-    position: fixed;
-    z-index: 9999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-}
+            display: none;
+            /* Keep it hidden until the script runs */
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
 
-.enquire-overlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-}
+        /* --- Fix: Remove white space on the left --- */
+        .enquire-modal-content {
+            position: relative;
+            /* Change 'margin: 5% auto' to 'margin: 5% 0' to align left */
+            margin: 5% 20px;
+            width: 100%;
+            max-width: 500px;
+            /* Keep your desired width */
+            z-index: 10000;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            /* Ensure no internal padding pushes the box away from the edge */
+            left: 0;
+        }
 
-.enquire-modal-content {
-    position: relative;
-    margin: 5% auto;
-    width: 90%;
-    max-width: 500px;
-    z-index: 10000;
-    background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(12px);
-  border-radius: 20px;
-}
-
+        /* Ensure the overlay doesn't interfere with alignment */
+        .enquire-overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            left: 0;
+            top: 0;
+        }
     </style>
 </head>
 
@@ -367,7 +376,7 @@
     <!--======== Footer 2 Start ========-->
 
     <footer id="rs-contact" class="rs-footer rs-footer-2">
-        
+
         <div class="rs-footer__main-box">
             <div class="container">
                 <div class="row">
@@ -494,133 +503,133 @@
             });
         });
 
-        document.addEventListener("DOMContentLoaded", function () {
-                const modal = document.getElementById("enquireModal");
-                const modalContent = document.querySelector(".enquire-modal-content");
-                const closeBtn = document.querySelector(".enquire-close");
+        document.addEventListener("DOMContentLoaded", function() {
+            const modal = document.getElementById("enquireModal");
+            const modalContent = document.querySelector(".enquire-modal-content");
+            const closeBtn = document.querySelector(".enquire-close");
 
-                // --- NEW LOGIC: Always show on load/refresh ---
-                if (modal) {
-                    modal.style.display = "flex";
-                }
+            // --- NEW LOGIC: Always show on load/refresh ---
+            if (modal) {
+                modal.style.display = "flex";
+            }
 
-                // Existing open buttons logic
-                const openButtons = [
-                    document.getElementById("openEnquire"),
-                    document.getElementById("openEnquireNav")
-                ];
+            // Existing open buttons logic
+            const openButtons = [
+                document.getElementById("openEnquire"),
+                document.getElementById("openEnquireNav")
+            ];
 
-                openButtons.forEach(function (btn) {
-                    if (btn) {
-                        btn.addEventListener("click", function (e) {
-                            e.preventDefault();
-                            modal.style.display = "flex";
-                        });
-                    }
-                });
-
-                // Close logic
-                if (closeBtn) {
-                    closeBtn.addEventListener("click", function () {
-                        modal.style.display = "none";
-                    });
-                }
-
-                modal.addEventListener("click", function (e) {
-                    if (!modalContent.contains(e.target)) {
-                        modal.style.display = "none";
-                    }
-                });
-            });
-
-            $(document).ready(function () {
-                if ($(window).width() < 768) {
-                    $(".featured-slider").owlCarousel({
-                        items: 1,
-                        loop: true,
-                        margin: 20,
-                        autoplay: true,
-                        dots: true, // Enables the circles
-                        nav: false,
-                        stagePadding: 30 // Shows a peek of the next card
+            openButtons.forEach(function(btn) {
+                if (btn) {
+                    btn.addEventListener("click", function(e) {
+                        e.preventDefault();
+                        modal.style.display = "flex";
                     });
                 }
             });
+
+            // Close logic
+            if (closeBtn) {
+                closeBtn.addEventListener("click", function() {
+                    modal.style.display = "none";
+                });
+            }
+
+            modal.addEventListener("click", function(e) {
+                if (!modalContent.contains(e.target)) {
+                    modal.style.display = "none";
+                }
+            });
+        });
+
+        $(document).ready(function() {
+            if ($(window).width() < 768) {
+                $(".featured-slider").owlCarousel({
+                    items: 1,
+                    loop: true,
+                    margin: 20,
+                    autoplay: true,
+                    dots: true, // Enables the circles
+                    nav: false,
+                    stagePadding: 30 // Shows a peek of the next card
+                });
+            }
+        });
     </script>
-    
-     <div id="enquireModal" class="enquire-modal">
-            <div class="enquire-overlay" onclick="document.getElementById('enquireModal').style.display='none'"></div>
 
-            <div class="enquire-modal-content">
-                <button type="button" class="enquire-close" onclick="document.getElementById('enquireModal').style.display='none'">&times;</button>
+    <div id="enquireModal" class="enquire-modal">
+        <div class="enquire-overlay" onclick="document.getElementById('enquireModal').style.display='none'"></div>
 
-                <div class="hero-form-box compact-form shadow-lg">
-                    <h3 class="form-title text-center text-dark fw-bold mb-4">Enquire Now</h3>
+        <div class="enquire-modal-content">
+            <button type="button" class="enquire-close" onclick="document.getElementById('enquireModal').style.display='none'">&times;</button>
 
-                    <form method="POST" action="mail.php">
-                        <div class="row g-2">
-                            <div class="col-md-6 mb-2">
-                                <input type="text" name="full_name" class="form-control" placeholder="Full Name *" required>
-                            </div>
-                            <div class="col-md-6 mb-2">
-                                <input type="tel" name="mobile_number" class="form-control" placeholder="Mobile *" required>
-                            </div>
-                            <div class="col-md-12 mb-2">
-                                <input type="email" name="email" class="form-control" placeholder="Email Id *" required>
-                            </div>
-                            <div class="col-md-6 mb-2">
-                                <select name="last_qualification" class="form-select" required>
-                                    <option value="">Qualification *</option>
-                                    <option value="12th">12th</option>
-                                    <option value="Graduate">Graduate</option>
-                                </select>
-                            </div>
-                            <div class="col-md-6 mb-2">
-                                <select name="preferred_course" class="form-select" required>
-                                    <option value="">Course *</option>
-                                    <option value="B.Tech">B.Tech</option>
-                                    <option value="MBBS">MBBS</option>
-                                    <option value="MBA">MBA</option>
-                                    <option value="MCA">MCA</option>
-                                    <option value="BBA">BBA</option>
-                                    <option value="BCA">BCA</option>
-                                </select>
-                            </div>
-                            <div class="col-md-12 mb-2">
-                                <div class="hostel-toggle d-flex align-items-center justify-content-between p-2 rounded bg-light border">
-                                    <span class="small fw-bold text-dark">Hostel Required?</span>
-                                    <div class="btn-group btn-group-sm">
-                                        <input type="radio" class="btn-check" name="hostel_required" id="h1" value="Yes" checked>
-                                        <label class="btn btn-outline-primary" for="h1">Yes</label>
-                                        <input type="radio" class="btn-check" name="hostel_required" id="h2" value="No">
-                                        <label class="btn btn-outline-primary" for="h2">No</label>
-                                    </div>
+            <div class="hero-form-box compact-form shadow-lg">
+                <h3 class="form-title text-center text-dark fw-bold mb-4">Enquire Now</h3>
+
+                <form method="POST" action="mail.php">
+                    <div class="row g-2">
+                        <div class="col-md-6 mb-2">
+                            <input type="text" name="full_name" class="form-control" placeholder="Full Name *" required>
+                        </div>
+                        <div class="col-md-6 mb-2">
+                            <input type="tel" name="mobile_number" class="form-control" placeholder="Mobile *" required>
+                        </div>
+                        <div class="col-md-12 mb-2">
+                            <input type="email" name="email" class="form-control" placeholder="Email Id *" required>
+                        </div>
+                        <div class="col-md-6 mb-2">
+                            <select name="last_qualification" class="form-select" required>
+                                <option value="">Qualification *</option>
+                                <option value="12th">12th</option>
+                                <option value="Graduate">Graduate</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-2">
+                            <select name="preferred_course" class="form-select" required>
+                                <option value="">Course *</option>
+                                <option value="B.Tech">B.Tech</option>
+                                <option value="MBBS">MBBS</option>
+                                <option value="MBA">MBA</option>
+                                <option value="MCA">MCA</option>
+                                <option value="BBA">BBA</option>
+                                <option value="BCA">BCA</option>
+                            </select>
+                        </div>
+                        <div class="col-md-12 mb-2">
+                            <div class="hostel-toggle d-flex align-items-center justify-content-between p-2 rounded bg-light border">
+                                <span class="small fw-bold text-dark">Hostel Required?</span>
+                                <div class="btn-group btn-group-sm">
+                                    <input type="radio" class="btn-check" name="hostel_required" id="h1" value="Yes" checked>
+                                    <label class="btn btn-outline-primary" for="h1">Yes</label>
+                                    <input type="radio" class="btn-check" name="hostel_required" id="h2" value="No">
+                                    <label class="btn btn-outline-primary" for="h2">No</label>
                                 </div>
                             </div>
-                            <div class="col-md-6 mb-2">
-                                <select name="preferred_city" class="form-select" required>
-                                    <option value="">Preferred City *</option>
-                                    <option value="Bhubaneswar">Bhubaneswar</option>
-                                    <option value="Bangalore">Bangalore</option>
-                                </select>
-                            </div>
-                            <div class="col-md-6 mb-2">
-                                <select name="budget_range" class="form-select" required>
-                                    <option value="">Budget Range *</option>
-                                    <option value="1-3 Lakh">1-3 Lakh</option>
-                                    <option value="3-5 Lakh">3-5 Lakh</option>
-                                    <option value="5+ Lakh">5+ Lakh</option>
-                                </select>
-                            </div>
-                            <div class="col-md-12 mb-2">
-                                <textarea name="message" class="form-control" placeholder="Message (Optional)"></textarea>
-                            </div>
                         </div>
-                        <button type="submit" class="hero-submit-btn w-100 mt-3">Submit Application</button>
-                    </form>
-                </div>
+                        <div class="col-md-6 mb-2">
+                            <select name="preferred_city" class="form-select" required>
+                                <option value="">Preferred City *</option>
+                                <option value="Bhubaneswar">Bhubaneswar</option>
+                                <option value="Bangalore">Bangalore</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-2">
+                            <select name="budget_range" class="form-select" required>
+                                <option value="">Budget Range *</option>
+                                <option value="1-3 Lakh">1-3 Lakh</option>
+                                <option value="3-5 Lakh">3-5 Lakh</option>
+                                <option value="5+ Lakh">5+ Lakh</option>
+                            </select>
+                        </div>
+                        <div class="col-md-12 mb-2">
+                            <textarea name="message" class="form-control" placeholder="Message (Optional)"></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="hero-submit-btn w-100 mt-3">Submit Application</button>
+                </form>
             </div>
         </div>
+    </div>
 </body>
 
 </html>
