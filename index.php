@@ -1,80 +1,37 @@
-﻿
-<?php
-// Start session only if it's not already active
+﻿<?php
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
 require_once 'config/db.php';
 
-// Fetch the about data ONCE for the whole page to avoid undefined variable errors
+// Fetch about data
 $aboutQuery = $conn->query("SELECT * FROM about_section WHERE id=1");
 if ($aboutQuery && $aboutQuery->num_rows > 0) {
     $about = $aboutQuery->fetch_assoc();
 } else {
-    // Fallback array to prevent "Undefined variable" warnings if DB is empty
-    $about = array_fill_keys([
-        'main_image',
-        'top_heading',
-        'main_title',
-        'short_description',
-        'mission_text',
-        'mission_point1',
-        'mission_point2',
-        'vision_text',
-        'vision_point1',
-        'vision_point2',
-        'core_text',
-        'core_point1',
-        'core_point2',
-        'video_link',
-        'button_link'
-    ], '');
+    $about = array_fill_keys(['main_image', 'top_heading', 'main_title', 'short_description', 'mission_text', 'mission_point1', 'mission_point2', 'vision_text', 'vision_point1', 'vision_point2', 'core_text', 'core_point1', 'core_point2', 'video_link', 'button_link'], '');
 }
 
-/* ===============================
-   FLASH MESSAGE HANDLING
-================================= */
 $success = $_SESSION['success'] ?? '';
 $error = $_SESSION['error'] ?? '';
+unset($_SESSION['success'], $_SESSION['error']);
 
-unset($_SESSION['success']);
-unset($_SESSION['error']);
-
-/* ===============================
-   INPUT SANITIZATION FUNCTION
-================================= */
 function clean_input($data)
 {
     return htmlspecialchars(trim($data), ENT_QUOTES, 'UTF-8');
 }
 
-/* ===============================
-   FORM SUBMISSION HANDLER
-================================= */
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-
-    // Collect & sanitize inputs
     $full_name = clean_input($_POST['full_name'] ?? '');
-    $mobile = clean_input($_POST['mobile_number'] ?? '');
-    $email = clean_input($_POST['email'] ?? '');
-    $last_qualification = clean_input($_POST['last_qualification'] ?? '');
-    $preferred_course = clean_input($_POST['preferred_course'] ?? '');
-    $preferred_city = clean_input($_POST['preferred_city'] ?? '');
-    $budget_range = clean_input($_POST['budget_range'] ?? '');
-    $hostel_required = clean_input($_POST['hostel_required'] ?? '');
-    $message = clean_input($_POST['message'] ?? '');
+    $mobile    = clean_input($_POST['mobile_number'] ?? '');
+    $email     = clean_input($_POST['email'] ?? '');
+    $state     = clean_input($_POST['state'] ?? '');
+    $district  = clean_input($_POST['district'] ?? '');
+    $city      = clean_input($_POST['city'] ?? '');
+    $message   = clean_input($_POST['message'] ?? '');
 
-    /* ===============================
-       VALIDATION
-    ================================= */
-
-    if (
-        empty($full_name) || empty($mobile) || empty($email) ||
-        empty($last_qualification) || empty($preferred_course) ||
-        empty($preferred_city) || empty($budget_range) ||
-        empty($hostel_required)
-    ) {
+    if (empty($full_name) || empty($mobile) || empty($email) || empty($state) || empty($district) || empty($city)) {
         $_SESSION['error'] = "All required fields must be filled.";
     } elseif (!preg_match("/^[a-zA-Z ]+$/", $full_name)) {
         $_SESSION['error'] = "Full name should contain only letters.";
@@ -83,60 +40,30 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $_SESSION['error'] = "Invalid email format.";
     } else {
-
-        /* ===============================
-           DUPLICATE MOBILE CHECK
-        ================================= */
+        // Duplicate Check
         $check = $conn->prepare("SELECT id FROM students WHERE mobile = ?");
         $check->bind_param("s", $mobile);
         $check->execute();
         $check->store_result();
 
         if ($check->num_rows > 0) {
-
             $_SESSION['error'] = "This mobile number is already registered.";
         } else {
-
-            /* ===============================
-               INSERT DATA SECURELY
-            ================================= */
-            $stmt = $conn->prepare("INSERT INTO students 
-                (full_name, mobile, email, last_qualification, preferred_course, preferred_city, budget_range, hostel_required, message)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-
+            $stmt = $conn->prepare("INSERT INTO students (full_name, mobile, email, state, district, city, message) VALUES (?, ?, ?, ?, ?, ?, ?)");
             if ($stmt) {
-
-                $stmt->bind_param(
-                    "sssssssss",
-                    $full_name,
-                    $mobile,
-                    $email,
-                    $last_qualification,
-                    $preferred_course,
-                    $preferred_city,
-                    $budget_range,
-                    $hostel_required,
-                    $message
-                );
-
+                $stmt->bind_param("sssssss", $full_name, $mobile, $email, $state, $district, $city, $message);
                 if ($stmt->execute()) {
                     $_SESSION['success'] = "Application submitted successfully!";
                 } else {
                     $_SESSION['error'] = "Something went wrong. Please try again.";
                 }
-
                 $stmt->close();
             } else {
-                $_SESSION['error'] = "Database error. Please contact admin.";
+                $_SESSION['error'] = "Database error.";
             }
         }
-
         $check->close();
     }
-
-    /* ===============================
-       POST-REDIRECT-GET
-    ================================= */
     header("Location: " . basename($_SERVER['PHP_SELF']) . "#hero");
     exit();
 }
@@ -205,7 +132,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <!-- Style CSS -->
     <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
 
-    <link rel="stylesheet" href="assets/css/style.css?v=1.2">
+    <link rel="stylesheet" href="assets/css/style.css?v=1.3">
     <link rel="stylesheet" href="assets/css/team.css">
 
     <link
@@ -302,83 +229,43 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                             <form action="" method="POST">
                                 <div class="row g-2">
                                     <div class="col-md-6 mb-2">
-                                        <input type="text" name="full_name" class="form-control"
-                                            placeholder="Full Name *" required>
+                                        <input type="text" name="full_name" class="form-control" placeholder="Full Name *" required>
                                     </div>
                                     <div class="col-md-6 mb-2">
-                                        <input type="tel" name="mobile_number" class="form-control"
-                                            placeholder="Mobile *" required>
+                                        <input type="tel" name="mobile_number" class="form-control" placeholder="Mobile *" required>
                                     </div>
                                     <div class="col-md-12 mb-2">
-                                        <input type="email" name="email" class="form-control" placeholder="Email Id *"
-                                            required>
-                                    </div>
-                                    <div class="col-md-6 mb-2">
-                                        <select name="last_qualification" class="form-select" required>
-                                            <option value="">Qualification *</option>
-                                            <option value="12th">12th</option>
-                                            <option value="Graduate">Graduate</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6 mb-2">
-                                        <select name="preferred_course" class="form-select" required>
-                                            <option value="">Course *</option>
-                                            <option value="B.Tech">B.Tech</option>
-                                            <option value="MBA">MBA</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-12 mb-2">
-                                        <div
-                                            class="hostel-toggle d-flex align-items-center justify-content-between p-2 rounded bg-light border">
-                                            <span class="small fw-bold text-dark">Hostel Required?</span>
-                                            <div class="btn-group btn-group-sm">
-                                                <input type="radio" class="btn-check" name="hostel_required" id="h1"
-                                                    value="Yes" checked>
-                                                <label class="btn btn-outline-primary" for="h1">Yes</label>
-                                                <input type="radio" class="btn-check" name="hostel_required" id="h2"
-                                                    value="No">
-                                                <label class="btn btn-outline-primary" for="h2">No</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 mb-2">
-                                        <select name="preferred_city" class="form-select" required>
-                                            <option value="">Preferred City *</option>
-                                            <option value="Bhubaneswar">Bhubaneswar</option>
-                                            <option value="Delhi">Delhi</option>
-                                            <option value="Mumbai">Mumbai</option>
-                                        </select>
+                                        <input type="email" name="email" class="form-control" placeholder="Email Id *" required>
                                     </div>
 
                                     <div class="col-md-6 mb-2">
-                                        <select name="budget_range" class="form-select" required>
-                                            <option value="">Budget Range *</option>
-                                            <option value="1-3 Lakh">1-3 Lakh</option>
-                                            <option value="3-5 Lakh">3-5 Lakh</option>
-                                            <option value="5+ Lakh">5+ Lakh</option>
+                                        <select name="state" id="stateSelHero" class="form-select" required>
+                                            <option value="">Select State *</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <select name="district" id="districtSelHero" class="form-select" required>
+                                            <option value="">Select District *</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-12 mb-2">
+                                        <select name="city" id="citySelHero" class="form-select" required>
+                                            <option value="">Select City *</option>
                                         </select>
                                     </div>
 
                                     <div class="col-md-12 mb-2">
-                                        <textarea name="message" class="form-control"
-                                            placeholder="Message (Optional)"></textarea>
+                                        <textarea name="message" class="form-control" placeholder="Message (Optional)"></textarea>
                                     </div>
-
                                 </div>
                                 <button type="submit" class="hero-submit-btn w-100 mt-3">Submit Application</button>
+
                                 <?php if (!empty($success)): ?>
-                                    <div class="alert alert-success text-center">
-                                        <?= $success ?>
-                                    </div>
+                                    <div class="alert alert-success text-center mt-2"><?= $success ?></div>
                                 <?php endif; ?>
-
                                 <?php if (!empty($error)): ?>
-                                    <div class="alert alert-danger text-center">
-                                        <?= $error ?>
-                                    </div>
+                                    <div class="alert alert-danger text-center mt-2"><?= $error ?></div>
                                 <?php endif; ?>
-
-
                             </form>
                         </div>
                     </div>
@@ -402,7 +289,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         <li><a href="#home">HOME</a></li>
                         <li><a href="#about">ABOUT US</a></li>
                         <li><a href="management.php">COURSE</a></li>
-                        <li><a href="#blogs">BLOGS</a></li>
+                        <li><a href="blog.php">BLOGS</a></li>
                         <li><a href="#team">TEAM MEMBERS</a></li>
                         <li><a href="#gallery">GALLERY</a></li>
                         <li><a href="#contact">CONTACT US</a></li>
@@ -663,7 +550,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         <div class="rs-featured-5__item"
                             style="background: linear-gradient(130deg, #F26F20 0%, #FFA500 100%);">
                             <div class="rs-thumb">
-                                <img src="assets/images/featured/co1.png" alt="Courses">
+                                <img src="assets/images/featured/co11.png" alt="Courses">
                             </div>
                             <div class="rs-content">
                                 <h4 class="title" style="color: #fff;">Courses</h4>
@@ -679,7 +566,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         <div class="rs-featured-5__item"
                             style="background: linear-gradient(130deg, #6f42c1 0%, #8959e0 100%);">
                             <div class="rs-thumb">
-                                <img src="assets/images/featured/jb1.png" alt="Jobs">
+                                <img src="assets/images/featured/jb1.jpeg" alt="Jobs">
                             </div>
                             <div class="rs-content">
                                 <h4 class="title" style="color: #fff;">Jobs</h4>
@@ -764,7 +651,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <!--======== Service 2 Ends ========-->
 
         <section id="rs-course-explorer-unique" class="pt-20 pb-60 reveal" style="background: #fff; overflow: hidden;">
-            <div class="container">
+            <div class="container" id="course">
                 <div class="rs-section-title black text-center mb-50">
                     <div class="top-sub-heading">
                         <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
@@ -802,7 +689,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                 onclick="switchCourseStream(event, 'course-<?= str_replace([' ', '/', '.'], '', $stream) ?>')">
                                 <?= $stream ?>
                             </button>
-                            <?php $count++;
+                        <?php $count++;
                         endforeach; ?>
                     </div>
                 </div>
@@ -812,7 +699,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     foreach ($courseData as $stream => $branches):
                         // Create a clean ID: B.Tech -> course-BTech, MD/MS -> course-MDMS
                         $cleanId = 'course-' . str_replace([' ', '/', '.'], '', $stream);
-                        ?>
+                    ?>
                         <div id="<?= $cleanId ?>" class="branch-panel <?= $count === 0 ? 'active' : '' ?>">
 
                             <div class="rs-carousel owl-carousel branch-slider" data-loop="true" data-items="3"
@@ -836,7 +723,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                 <?php endforeach; ?>
                             </div>
                         </div>
-                        <?php $count++;
+                    <?php $count++;
                     endforeach; ?>
                 </div>
             </div>
@@ -1031,185 +918,185 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         <!--======== TEAM MEMBERS ========-->
         <section id="rs-portfolios" class="rs-project reveal">
-    <div id="team" class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="rs-top-line mb-110"></div>
-            </div>
-        </div>
-        <div class="row align-items-center">
-            <div class="col-lg-6">
-                <div class="rs-section-title black">
-                    <div class="top-sub-heading">
-                        <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
-                        <span>Our Team Members</span>
-                        <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
+            <div id="team" class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="rs-top-line mb-110"></div>
                     </div>
-                    <h2 class="title split-in-fade">See our Team Members</h2>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="rs-section-title black">
+                            <div class="top-sub-heading">
+                                <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
+                                <span>Our Team Members</span>
+                                <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
+                            </div>
+                            <h2 class="title split-in-fade">See our Team Members</h2>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="rs-project__btn">
+                            <a class="main-btn" href="project.html">View All Team Members <i class="ri-arrow-right-fill"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="rs-carousel owl-carousel rs-project__slider mt-30" data-loop="true" data-items="3"
+                            data-margin="30" data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000"
+                            data-smart-speed="800" data-dots="true" data-nav="false" data-nav-speed="false"
+                            data-center-mode="false" data-mobile-device="1" data-mobile-device-nav="false"
+                            data-mobile-device-dots="true" data-ipad-device="2" data-ipad-device-nav="false"
+                            data-ipad-device-dots="true" data-ipad-device2="1" data-ipad-device-nav2="false"
+                            data-ipad-device-dots2="true" data-md-device="2" data-lg-device="3"
+                            data-md-device-nav="false" data-md-device-dots="true" data-doteach="false">
+
+                            <div class="rs-project__items team-card-glass">
+                                <div class="wrapping">
+                                    <img src="assets/images/project/project-1.jpg" alt="">
+
+                                    <div class="team-glass-layer">
+                                        <div class="glass-text">
+                                            <h4 class="name">Dr. Pragati Sahai</h4>
+                                            <p class="sub">Assistant Professor | 10+ Years Experience</p>
+                                            <p class="bio">Expert career counselor specializing in management admissions and academic research with a proven track record.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="rs-project__content">
+                                        <ul>
+                                            <li><a href="#">Consultation</a></li>
+                                            <li><a href="#">Design</a></li>
+                                            <li><a href="#">Strategy</a></li>
+                                        </ul>
+                                        <h3 class="title"><a href="project-details.html">Sibani</a></h3>
+                                        <div class="rs-link">
+                                            <a href="project-details.html"><img src="assets/images/Socialmedia.png"
+                                                    style="width:40%; height:auto;" alt=""> <i
+                                                    class="ri-arrow-right-fill"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="rs-project__items team-card-glass">
+                                <div class="wrapping">
+                                    <img src="assets/images/project/project-2.jpg" alt="">
+
+                                    <div class="team-glass-layer">
+                                        <div class="glass-text">
+                                            <h4 class="name">Dr. Rashmi Saxena</h4>
+                                            <p class="sub">Assistant Professor | PhD in Management</p>
+                                            <p class="bio">Dedicated academician focusing on management strategies and student success pathways.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="rs-project__content">
+                                        <ul>
+                                            <li><a href="#">Consultation</a></li>
+                                            <li><a href="#">Design</a></li>
+                                            <li><a href="#">Strategy</a></li>
+                                        </ul>
+                                        <h3 class="title"><a href="project-details.html">Satya</a></h3>
+                                        <div class="rs-link">
+                                            <a href="project-details.html"><img src="assets/images/Socialmedia.png"
+                                                    style="width:40%; height:auto;" alt=""> <i
+                                                    class="ri-arrow-right-fill"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="rs-project__items team-card-glass">
+                                <div class="wrapping">
+                                    <img src="assets/images/project/project-3.jpg" alt="">
+
+                                    <div class="team-glass-layer">
+                                        <div class="glass-text">
+                                            <h4 class="name">Dr. Sachit Paliwal</h4>
+                                            <p class="sub">Assistant Professor | 12+ Years Experience</p>
+                                            <p class="bio">Leading expert in agriculture and medical stream admissions with extensive industrial knowledge.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="rs-project__content">
+                                        <ul>
+                                            <li><a href="#">Consultation</a></li>
+                                            <li><a href="#">Design</a></li>
+                                            <li><a href="#">Strategy</a></li>
+                                        </ul>
+                                        <h3 class="title"><a href="project-details.html">Dev</a></h3>
+                                        <div class="rs-link">
+                                            <a href="project-details.html"><img src="assets/images/Socialmedia.png"
+                                                    style="width:40%; height:auto;" alt=""> <i
+                                                    class="ri-arrow-right-fill"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="rs-project__items team-card-glass">
+                                <div class="wrapping">
+                                    <img src="assets/images/project/project-4.jpg" alt="">
+
+                                    <div class="team-glass-layer">
+                                        <div class="glass-text">
+                                            <h4 class="name">Ms. Mona Chaudhary</h4>
+                                            <p class="sub">Assistant Professor | 9+ Years Experience</p>
+                                            <p class="bio">Academic advisor specializing in postgraduate strategies and student mentoring.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="rs-project__content">
+                                        <ul>
+                                            <li><a href="#">Consultation</a></li>
+                                            <li><a href="#">Design</a></li>
+                                            <li><a href="#">Strategy</a></li>
+                                        </ul>
+                                        <h3 class="title"><a href="project-details.html">Hari</a></h3>
+                                        <div class="rs-link">
+                                            <a href="project-details.html"><img src="assets/images/Socialmedia.png"
+                                                    style="width:40%; height:auto;" alt=""> <i
+                                                    class="ri-arrow-right-fill"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="rs-project__items team-card-glass">
+                                <div class="wrapping">
+                                    <img src="assets/images/project/project-5.jpg" alt="">
+
+                                    <div class="team-glass-layer">
+                                        <div class="glass-text">
+                                            <h4 class="name">Dr. Sunil Kumar</h4>
+                                            <p class="sub">Assistant Professor | PhD in Management</p>
+                                            <p class="bio">Senior expert in vocational training and diploma pathways for technical students.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="rs-project__content">
+                                        <ul>
+                                            <li><a href="#">Consultation</a></li>
+                                            <li><a href="#">Design</a></li>
+                                            <li><a href="#">Strategy</a></li>
+                                        </ul>
+                                        <h3 class="title"><a href="project-details.html">Ram</a></h3>
+                                        <div class="rs-link">
+                                            <a href="project-details.html"><img src="assets/images/Socialmedia.png"
+                                                    style="width:40%; height:auto;" alt=""> <i
+                                                    class="ri-arrow-right-fill"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-6">
-                <div class="rs-project__btn">
-                    <a class="main-btn" href="project.html">View All Team Members <i class="ri-arrow-right-fill"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="rs-carousel owl-carousel rs-project__slider mt-30" data-loop="true" data-items="3"
-                    data-margin="30" data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000"
-                    data-smart-speed="800" data-dots="true" data-nav="false" data-nav-speed="false"
-                    data-center-mode="false" data-mobile-device="1" data-mobile-device-nav="false"
-                    data-mobile-device-dots="true" data-ipad-device="2" data-ipad-device-nav="false"
-                    data-ipad-device-dots="true" data-ipad-device2="1" data-ipad-device-nav2="false"
-                    data-ipad-device-dots2="true" data-md-device="2" data-lg-device="3"
-                    data-md-device-nav="false" data-md-device-dots="true" data-doteach="false">
-                    
-                    <div class="rs-project__items team-card-glass">
-                        <div class="wrapping">
-                            <img src="assets/images/project/project-1.jpg" alt="">
-                            
-                            <div class="team-glass-layer">
-                                <div class="glass-text">
-                                    <h4 class="name">Dr. Pragati Sahai</h4>
-                                    <p class="sub">Assistant Professor | 10+ Years Experience</p>
-                                    <p class="bio">Expert career counselor specializing in management admissions and academic research with a proven track record.</p>
-                                </div>
-                            </div>
-
-                            <div class="rs-project__content">
-                                <ul>
-                                    <li><a href="#">Consultation</a></li>
-                                    <li><a href="#">Design</a></li>
-                                    <li><a href="#">Strategy</a></li>
-                                </ul>
-                                <h3 class="title"><a href="project-details.html">Sibani</a></h3>
-                                <div class="rs-link">
-                                    <a href="project-details.html"><img src="assets/images/Socialmedia.png"
-                                            style="width:40%; height:auto;" alt=""> <i
-                                            class="ri-arrow-right-fill"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="rs-project__items team-card-glass">
-                        <div class="wrapping">
-                            <img src="assets/images/project/project-2.jpg" alt="">
-                            
-                            <div class="team-glass-layer">
-                                <div class="glass-text">
-                                    <h4 class="name">Dr. Rashmi Saxena</h4>
-                                    <p class="sub">Assistant Professor | PhD in Management</p>
-                                    <p class="bio">Dedicated academician focusing on management strategies and student success pathways.</p>
-                                </div>
-                            </div>
-
-                            <div class="rs-project__content">
-                                <ul>
-                                    <li><a href="#">Consultation</a></li>
-                                    <li><a href="#">Design</a></li>
-                                    <li><a href="#">Strategy</a></li>
-                                </ul>
-                                <h3 class="title"><a href="project-details.html">Satya</a></h3>
-                                <div class="rs-link">
-                                    <a href="project-details.html"><img src="assets/images/Socialmedia.png"
-                                            style="width:40%; height:auto;" alt=""> <i
-                                            class="ri-arrow-right-fill"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="rs-project__items team-card-glass">
-                        <div class="wrapping">
-                            <img src="assets/images/project/project-3.jpg" alt="">
-                            
-                            <div class="team-glass-layer">
-                                <div class="glass-text">
-                                    <h4 class="name">Dr. Sachit Paliwal</h4>
-                                    <p class="sub">Assistant Professor | 12+ Years Experience</p>
-                                    <p class="bio">Leading expert in agriculture and medical stream admissions with extensive industrial knowledge.</p>
-                                </div>
-                            </div>
-
-                            <div class="rs-project__content">
-                                <ul>
-                                    <li><a href="#">Consultation</a></li>
-                                    <li><a href="#">Design</a></li>
-                                    <li><a href="#">Strategy</a></li>
-                                </ul>
-                                <h3 class="title"><a href="project-details.html">Dev</a></h3>
-                                <div class="rs-link">
-                                    <a href="project-details.html"><img src="assets/images/Socialmedia.png"
-                                            style="width:40%; height:auto;" alt=""> <i
-                                            class="ri-arrow-right-fill"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="rs-project__items team-card-glass">
-                        <div class="wrapping">
-                            <img src="assets/images/project/project-4.jpg" alt="">
-                            
-                            <div class="team-glass-layer">
-                                <div class="glass-text">
-                                    <h4 class="name">Ms. Mona Chaudhary</h4>
-                                    <p class="sub">Assistant Professor | 9+ Years Experience</p>
-                                    <p class="bio">Academic advisor specializing in postgraduate strategies and student mentoring.</p>
-                                </div>
-                            </div>
-
-                            <div class="rs-project__content">
-                                <ul>
-                                    <li><a href="#">Consultation</a></li>
-                                    <li><a href="#">Design</a></li>
-                                    <li><a href="#">Strategy</a></li>
-                                </ul>
-                                <h3 class="title"><a href="project-details.html">Hari</a></h3>
-                                <div class="rs-link">
-                                    <a href="project-details.html"><img src="assets/images/Socialmedia.png"
-                                            style="width:40%; height:auto;" alt=""> <i
-                                            class="ri-arrow-right-fill"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="rs-project__items team-card-glass">
-                        <div class="wrapping">
-                            <img src="assets/images/project/project-5.jpg" alt="">
-                            
-                            <div class="team-glass-layer">
-                                <div class="glass-text">
-                                    <h4 class="name">Dr. Sunil Kumar</h4>
-                                    <p class="sub">Assistant Professor | PhD in Management</p>
-                                    <p class="bio">Senior expert in vocational training and diploma pathways for technical students.</p>
-                                </div>
-                            </div>
-
-                            <div class="rs-project__content">
-                                <ul>
-                                    <li><a href="#">Consultation</a></li>
-                                    <li><a href="#">Design</a></li>
-                                    <li><a href="#">Strategy</a></li>
-                                </ul>
-                                <h3 class="title"><a href="project-details.html">Ram</a></h3>
-                                <div class="rs-link">
-                                    <a href="project-details.html"><img src="assets/images/Socialmedia.png"
-                                            style="width:40%; height:auto;" alt=""> <i
-                                            class="ri-arrow-right-fill"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+        </section>
         <!--======== TEAM MEMBERS ========-->
 
         <!--======== Why Choose 2 Start ========-->
@@ -1990,7 +1877,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                             <div class="input-box">
                                                 <textarea name="message" id="message"
                                                     placeholder="Tell us about your preferred city, budget range, or any specific requirement..."></textarea>
-                                                
+
                                             </div>
                                         </div>
                                         <div id="form-response" class="mb-3"></div>
@@ -2062,14 +1949,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         <div class="col-lg-3">
                             <div class="rs-footer__navigation rs-footer--navigation">
                                 <div class="rs-footer-title">
-                                    <h4 class="title">Information</h4>
+                                    <h4 class="title">Quick Links</h4>
                                 </div>
                                 <ul>
-                                    <li><a href="about.html"><i class="ri-arrow-right-fill"></i> About</a></li>
-                                    <li><a href="team.html"><i class="ri-arrow-right-fill"></i> Our Team</a></li>
-                                    <li><a href="pricing.html"><i class="ri-arrow-right-fill"></i>Collaboration</a></li>
-                                    <li><a href="project.html"><i class="ri-arrow-right-fill"></i> Blogs</a></li>
-                                    <li><a href="appointment.html"><i class="ri-arrow-right-fill"></i> Gallery</a></li>
+                                    <li><a href="#home"><i class="ri-arrow-right-fill"></i> Home</a></li>
+                                    <li><a href="#about"><i class="ri-arrow-right-fill"></i> About</a></li>
+                                    <li><a href="#course"><i class="ri-arrow-right-fill"></i>Course</a></li>
+                                    <li><a href="blog.php"><i class="ri-arrow-right-fill"></i> Blogs</a></li>
+                                    <li><a href="#team"><i class="ri-arrow-right-fill"></i> Team Members</a></li>
+                                    <li><a href="#gallery"><i class="ri-arrow-right-fill"></i> Gallery</a></li>
+                                    <li><a href="#contact"><i class="ri-arrow-right-fill"></i> Contact Us</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -2196,7 +2085,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <script src="assets/js/main.js"></script>
 
         <script>
-            $(window).on('load', function () {
+            $(window).on('load', function() {
                 // 1. Initialize Background Slider (Sliding Left to Right)
                 var bgSlider = $('.hero-bg-slider');
 
@@ -2217,7 +2106,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     });
 
                     // Force a refresh after a short delay to calculate widths correctly
-                    setTimeout(function () {
+                    setTimeout(function() {
                         bgSlider.trigger('refresh.owl.carousel');
                     }, 200);
                 }
@@ -2259,7 +2148,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
 
-            $(document).ready(function () {
+            $(document).ready(function() {
                 var brandSlider = $('.mobile-brand-grid');
 
                 function initBrandSlider() {
@@ -2289,14 +2178,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 }
 
                 initBrandSlider();
-                $(window).on('resize', function () {
+                $(window).on('resize', function() {
                     initBrandSlider();
                 });
 
 
             });
 
-            $(document).ready(function () {
+            $(document).ready(function() {
                 // Only initialize the blog slider for mobile users
                 if ($(window).width() < 768) {
                     $(".rs-blog-2 .owl-carousel").owlCarousel({
@@ -2311,7 +2200,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             });
         </script>
         <script>
-            document.addEventListener("DOMContentLoaded", function () {
+            document.addEventListener("DOMContentLoaded", function() {
                 const modal = document.getElementById("enquireModal");
                 const modalContent = document.querySelector(".enquire-modal-content");
                 const closeBtn = document.querySelector(".enquire-close");
@@ -2327,9 +2216,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     document.getElementById("openEnquireNav")
                 ];
 
-                openButtons.forEach(function (btn) {
+                openButtons.forEach(function(btn) {
                     if (btn) {
-                        btn.addEventListener("click", function (e) {
+                        btn.addEventListener("click", function(e) {
                             e.preventDefault();
                             modal.style.display = "flex";
                         });
@@ -2338,19 +2227,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                 // Close logic
                 if (closeBtn) {
-                    closeBtn.addEventListener("click", function () {
+                    closeBtn.addEventListener("click", function() {
                         modal.style.display = "none";
                     });
                 }
 
-                modal.addEventListener("click", function (e) {
+                modal.addEventListener("click", function(e) {
                     if (!modalContent.contains(e.target)) {
                         modal.style.display = "none";
                     }
                 });
             });
 
-            $(document).ready(function () {
+            $(document).ready(function() {
                 if ($(window).width() < 768) {
                     $(".featured-slider").owlCarousel({
                         items: 1,
@@ -2364,7 +2253,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 }
             });
 
-            $(document).ready(function () {
+            $(document).ready(function() {
                 // We only run this logic if the screen is mobile
                 if ($(window).width() < 768) {
                     var $teamSlider = $('.rs-project__slider');
@@ -2384,7 +2273,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </script>
 
         <script>
-            document.addEventListener('DOMContentLoaded', function () {
+            document.addEventListener('DOMContentLoaded', function() {
                 const slider = document.querySelector('.category-slider-wrapper');
                 let isDown = false;
                 let startX;
@@ -2410,7 +2299,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     slider.scrollLeft = scrollLeft - walk;
                 });
 
-                window.switchCourseStream = function (evt, streamId) {
+                window.switchCourseStream = function(evt, streamId) {
                     document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
                     document.querySelectorAll('.branch-panel').forEach(panel => panel.classList.remove('active'));
 
@@ -2419,7 +2308,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         activePanel.classList.add('active');
                         evt.currentTarget.classList.add('active');
 
-                        setTimeout(function () {
+                        setTimeout(function() {
                             var $carousel = $(activePanel).find('.branch-slider');
                             if ($carousel.hasClass('owl-loaded')) {
                                 $carousel.trigger('refresh.owl.carousel');
@@ -2460,37 +2349,35 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             });
         </script>
 
-    <script>
-document.getElementById("contact-form").addEventListener("submit", function(e){
-    e.preventDefault();
+        <script>
+            document.getElementById("contact-form").addEventListener("submit", function(e) {
+                e.preventDefault();
 
-    let formData = new FormData(this);
+                let formData = new FormData(this);
 
-    fetch("save_inquiry.php", {
-        method: "POST",
-        body: formData
-    })
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById("form-response").innerHTML = data;
-        document.getElementById("contact-form").reset();
-    })
-    .catch(error => {
-        document.getElementById("form-response").innerHTML = "Something went wrong!";
-    });
-});
-</script>
+                fetch("save_inquiry.php", {
+                        method: "POST",
+                        body: formData
+                    })
+                    .then(response => response.text())
+                    .then(data => {
+                        document.getElementById("form-response").innerHTML = data;
+                        document.getElementById("contact-form").reset();
+                    })
+                    .catch(error => {
+                        document.getElementById("form-response").innerHTML = "Something went wrong!";
+                    });
+            });
+        </script>
 
 
 
-        <!-- ENQUIRE MODAL -->
         <div id="enquireModal" class="enquire-modal">
             <div class="enquire-overlay"></div>
 
             <div class="enquire-modal-content">
                 <button type="button" class="enquire-close">&times;</button>
 
-                <!-- COPY SAME HERO FORM HERE -->
                 <div class="hero-form-box compact-form shadow-lg">
                     <h3 class="form-title text-center text-dark fw-bold mb-4">Enquire Now</h3>
 
@@ -2503,88 +2390,95 @@ document.getElementById("contact-form").addEventListener("submit", function(e){
                     <?php endif; ?>
 
                     <form method="POST" action="">
-                        <!-- COPY YOUR FULL FORM FIELDS HERE EXACTLY SAME -->
                         <div class="row g-2">
                             <div class="col-md-6 mb-2">
-                                <input type="text" name="full_name" class="form-control" placeholder="Full Name *"
-                                    required>
+                                <input type="text" name="full_name" class="form-control" placeholder="Full Name *" required>
                             </div>
                             <div class="col-md-6 mb-2">
-                                <input type="tel" name="mobile_number" class="form-control" placeholder="Mobile *"
-                                    required>
+                                <input type="tel" name="mobile_number" class="form-control" placeholder="Mobile *" required>
                             </div>
                             <div class="col-md-12 mb-2">
                                 <input type="email" name="email" class="form-control" placeholder="Email Id *" required>
                             </div>
+
                             <div class="col-md-6 mb-2">
-                                <select name="last_qualification" class="form-select" required>
-                                    <option value="">Qualification *</option>
-                                    <option value="12th">12th</option>
-                                    <option value="Graduate">Graduate</option>
+                                <select name="state" id="stateSel" class="form-select" required>
+                                    <option value="">Select State *</option>
                                 </select>
                             </div>
                             <div class="col-md-6 mb-2">
-                                <select name="preferred_course" class="form-select" required>
-                                    <option value="">Course *</option>
-                                    <option value="B.Tech">B.Tech</option>
-                                    <option value="MBA">MBA</option>
+                                <select name="district" id="districtSel" class="form-select" required>
+                                    <option value="">Select District *</option>
                                 </select>
                             </div>
                             <div class="col-md-12 mb-2">
-                                <div
-                                    class="hostel-toggle d-flex align-items-center justify-content-between p-2 rounded bg-light border">
-                                    <span class="small fw-bold text-dark">Hostel Required?</span>
-                                    <div class="btn-group btn-group-sm">
-                                        <input type="radio" class="btn-check" name="hostel_required" id="h1" value="Yes"
-                                            checked>
-                                        <label class="btn btn-outline-primary" for="h1">Yes</label>
-                                        <input type="radio" class="btn-check" name="hostel_required" id="h2" value="No">
-                                        <label class="btn btn-outline-primary" for="h2">No</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-2">
-                                <select name="preferred_city" class="form-select" required>
-                                    <option value="">Preferred City *</option>
-                                    <option value="Bhubaneswar">Bhubaneswar</option>
-                                    <option value="Delhi">Delhi</option>
-                                    <option value="Mumbai">Mumbai</option>
-                                </select>
-                            </div>
-
-                            <div class="col-md-6 mb-2">
-                                <select name="budget_range" class="form-select" required>
-                                    <option value="">Budget Range *</option>
-                                    <option value="1-3 Lakh">1-3 Lakh</option>
-                                    <option value="3-5 Lakh">3-5 Lakh</option>
-                                    <option value="5+ Lakh">5+ Lakh</option>
+                                <select name="city" id="citySel" class="form-select" required>
+                                    <option value="">Select City *</option>
                                 </select>
                             </div>
 
                             <div class="col-md-12 mb-2">
-                                <textarea name="message" class="form-control"
-                                    placeholder="Message (Optional)"></textarea>
+                                <textarea name="message" class="form-control" placeholder="Message (Optional)"></textarea>
                             </div>
-
                         </div>
                         <button type="submit" class="hero-submit-btn w-100 mt-3">Submit Application</button>
-                        <?php if (!empty($success)): ?>
-                            <div class="alert alert-success text-center">
-                                <?= $success ?>
-                            </div>
-                        <?php endif; ?>
-
-                        <?php if (!empty($error)): ?>
-                            <div class="alert alert-danger text-center">
-                                <?= $error ?>
-                            </div>
-                        <?php endif; ?>
                     </form>
                 </div>
-
             </div>
         </div>
 
+        <script>
+            var stateObject = {
+                "ODISHA": {
+                    "KHORDHA": ["BHUBANESWAR", "JATANI", "KHORDHA TOWN"],
+                    "CUTTACK": ["CUTTACK CITY", "CHOUDWAR", "ATHAGARH"],
+                    "PURI": ["PURI CITY", "KONARK", "PIPLI"]
+                },
+                "BIHAR": {
+                    "PATNA": ["PATNA CITY", "DANAPUR"],
+                    "GAYA": ["GAYA CITY", "BODH GAYA"],
+                    "MUZAFFARPUR": ["MUZAFFARPUR TOWN"]
+                },
+                "JHARKHAND": {
+                    "RANCHI": ["RANCHI CITY", "HATIA"],
+                    "EAST SINGHBHUM": ["JAMSHEDPUR"],
+                    "DHANBAD": ["DHANBAD TOWN"]
+                }
+            }
+
+            window.addEventListener('DOMContentLoaded', (event) => {
+                var stateSel = document.getElementById("stateSel");
+                var districtSel = document.getElementById("districtSel");
+                var citySel = document.getElementById("citySel");
+
+                // Load States
+                for (var state in stateObject) {
+                    stateSel.options[stateSel.options.length] = new Option(state, state);
+                }
+
+                // State change logic
+                stateSel.onchange = function() {
+                    districtSel.length = 1; // reset
+                    citySel.length = 1; // reset
+                    if (this.value == "") return;
+
+                    for (var district in stateObject[this.value]) {
+                        districtSel.options[districtSel.options.length] = new Option(district, district);
+                    }
+                };
+
+                // District change logic
+                districtSel.onchange = function() {
+                    citySel.length = 1; // reset
+                    if (this.value == "") return;
+
+                    var cities = stateObject[stateSel.value][this.value];
+                    for (var i = 0; i < cities.length; i++) {
+                        citySel.options[citySel.options.length] = new Option(cities[i], cities[i]);
+                    }
+                };
+            });
+        </script>
         <div class="floating-contact">
             <a href="https://wa.me/919999999999" target="_blank" class="contact-icon-box" title="Contact Us">
                 <i class="fa fa-whatsapp"></i> </a>
@@ -2615,7 +2509,7 @@ document.getElementById("contact-form").addEventListener("submit", function(e){
             });
         </script>
         <script>
-            document.addEventListener("DOMContentLoaded", function () {
+            document.addEventListener("DOMContentLoaded", function() {
                 const observerOptions = {
                     threshold: 0.15, // Triggers when 15% of the section is visible
                     rootMargin: "0px 0px -50px 0px" // Triggers slightly before the section hits the top
