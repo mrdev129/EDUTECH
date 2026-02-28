@@ -174,7 +174,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <div class="header-container">
                     <div class="logo-side">
                         <div class="logo-circle-wrap">
-                            <img src="assets/images/EDUTECH Admission Experts logo.png" alt="Logo" class="logo-glow">
+                            <img src="assets/images/EDU-LOGO.jpeg" alt="Logo" class="logo-glow">
                         </div>
 
                         <div class="logo-text">
