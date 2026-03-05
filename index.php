@@ -133,6 +133,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
 
     <link rel="stylesheet" href="assets/css/style.css?v=1.3">
+    <link rel="stylesheet" href="assets/css/card-swipe.css?v=1.2">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/team.css">
 
     <link
@@ -853,8 +855,44 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                     <!-- LEFT IMAGE -->
                     <div class="col-lg-6">
-                        <div class="rs-about-2__thumb">
-                            <img src="admin/uploads/about/<?php echo $about['main_image']; ?>" alt="About Image">
+                        <div class="max-w-lg w-full mx-auto">
+                            <div class="flex justify-center mb-6 space-x-3">
+                                <div class="progress-dot w-3 h-3 rounded-full bg-slate-300" data-index="0"></div>
+                                <div class="progress-dot w-3 h-3 rounded-full bg-slate-300" data-index="1"></div>
+                                <div class="progress-dot w-3 h-3 rounded-full bg-slate-300" data-index="2"></div>
+                            </div>
+
+                            <div class="card-stack mb-12">
+                                <div class="card active bounce-in" data-index="0">
+                                    <div class="card-front p-0 overflow-hidden">
+                                        <img src="assets/images/about/process-1.png" alt="Process 1" class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                                <div class="card next" data-index="1">
+                                    <div class="card-front p-0 overflow-hidden">
+                                        <img src="assets/images/about/process-2.png" alt="Process 2" class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                                <div class="card next-2" data-index="2">
+                                    <div class="card-front p-0 overflow-hidden">
+                                        <img src="assets/images/about/process-3.png" alt="Process 3" class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="nav-button-wrapper" style="display: flex !important; justify-content: center !important; width: 100% !important; margin-top: 25px !important; position: relative !important; z-index: 100 !important;">
+    <div class="glass-pill-container">
+        <button id="prev-btn" class="circle-btn">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button id="flip-btn-main" class="circle-btn center-large">
+            <i class="fas fa-sync-alt"></i>
+        </button>
+        <button id="next-btn" class="circle-btn">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+</div>
                         </div>
                     </div>
 
@@ -883,13 +921,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                     <!-- TAB BUTTONS -->
                                     <ul class="skltbs-tab-group">
                                         <li class="skltbs-tab-item">
-                                            <button class="skltbs-tab">Our Mission</button>
+                                            <button class="skltbs-tab about-tab-sync" data-tab-index="0">Our Mission</button>
                                         </li>
                                         <li class="skltbs-tab-item">
-                                            <button class="skltbs-tab">Our Vision</button>
+                                            <button class="skltbs-tab about-tab-sync" data-tab-index="1">Our Vision</button>
                                         </li>
                                         <li class="skltbs-tab-item">
-                                            <button class="skltbs-tab">Core Value</button>
+                                            <button class="skltbs-tab about-tab-sync" data-tab-index="2">Core Value</button>
                                         </li>
                                     </ul>
 
@@ -2645,6 +2683,313 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 document.querySelectorAll(".reveal").forEach((el) => {
                     observer.observe(el);
                 });
+            });
+        </script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const cards = document.querySelectorAll('.card');
+                const progressDots = document.querySelectorAll('.progress-dot');
+                const prevBtn = document.getElementById('prev-btn');
+                const nextBtn = document.getElementById('next-btn');
+                const flipBtn = document.getElementById('flip-btn');
+                let currentIndex = 0;
+                const totalCards = cards.length; // Store total count for loop logic
+
+                let startX = 0;
+                let currentX = 0;
+                let isDragging = false;
+
+                // Initialize cards
+                updateCards();
+
+                // Updated Next card function with infinite loop
+                function nextCard() {
+                    // Add swipe animation to current card
+                    cards[currentIndex].classList.add('swipe-left');
+
+                    setTimeout(() => {
+                        // Loop: if at index 2 (third card), next is 0 (first card)
+                        currentIndex = (currentIndex + 1) % totalCards;
+                        updateCards();
+                    }, 400);
+                }
+
+                // Updated Previous card function with infinite loop
+                function prevCard() {
+                    // Add swipe animation to current card
+                    cards[currentIndex].classList.add('swipe-right');
+
+                    setTimeout(() => {
+                        // Loop: if at index 0, previous is 2 (totalCards - 1)
+                        currentIndex = (currentIndex - 1 + totalCards) % totalCards;
+                        updateCards();
+                    }, 400);
+                }
+
+                // Update card positions and progress
+                function updateCards() {
+                    cards.forEach((card, index) => {
+                        card.classList.remove('active', 'next', 'next-2', 'next-3', 'previous', 'previous-2', 'previous-3', 'hidden', 'swipe-left', 'swipe-right');
+
+                        if (index === currentIndex) {
+                            card.classList.add('active');
+                        } else if (index === (currentIndex + 1) % totalCards) {
+                            card.classList.add('next');
+                        } else if (index === (currentIndex + 2) % totalCards) {
+                            card.classList.add('next-2');
+                        } else if (index === (currentIndex + 3) % totalCards) {
+                            card.classList.add('next-3');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    });
+
+                    // Update progress indicators
+                    progressDots.forEach((dot, index) => {
+                        if (index === currentIndex) {
+                            dot.classList.add('active', 'bg-white');
+                            dot.classList.remove('bg-white/30');
+                        } else {
+                            dot.classList.remove('active', 'bg-white');
+                            dot.classList.add('bg-white/30');
+                        }
+                    });
+
+                    // Button states: Disabled for infinite loop is usually false, 
+                    // but we keep them active so user can click indefinitely.
+                    prevBtn.disabled = false;
+                    nextBtn.disabled = false;
+                    prevBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                    nextBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                }
+
+                // Flip current card
+                function flipCurrentCard() {
+                    cards[currentIndex].classList.toggle('flipped');
+                }
+
+                // Event listeners for navigation buttons
+                prevBtn.addEventListener('click', prevCard);
+                nextBtn.addEventListener('click', nextCard);
+                flipBtn.addEventListener('click', flipCurrentCard);
+
+                // Event listeners for card buttons
+                cards.forEach(card => {
+                    const flipBtnItem = card.querySelector('.flip-btn');
+                    const swipeLeftBtn = card.querySelector('.swipe-left-btn');
+                    const swipeRightBtn = card.querySelector('.swipe-right-btn');
+
+                    if (flipBtnItem) {
+                        flipBtnItem.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            card.classList.toggle('flipped');
+                        });
+                    }
+
+                    if (swipeLeftBtn) {
+                        swipeLeftBtn.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            if (card.classList.contains('active')) {
+                                prevCard();
+                            }
+                        });
+                    }
+
+                    if (swipeRightBtn) {
+                        swipeRightBtn.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            if (card.classList.contains('active')) {
+                                nextCard();
+                            }
+                        });
+                    }
+                });
+
+                // Click on card to navigate (if it's not active)
+                cards.forEach(card => {
+                    card.addEventListener('click', (e) => {
+                        if (!card.classList.contains('active') && !card.classList.contains('flipped')) {
+                            const index = parseInt(card.getAttribute('data-index'));
+                            currentIndex = index;
+                            updateCards();
+                        }
+                    });
+                });
+
+                // Touch events for mobile swipe
+                const cardStack = document.querySelector('.card-stack');
+
+                cardStack.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                    isDragging = true;
+                });
+
+                cardStack.addEventListener('touchmove', (e) => {
+                    if (!isDragging) return;
+                    currentX = e.touches[0].clientX;
+                    const diff = currentX - startX;
+                    if (cards[currentIndex]) {
+                        cards[currentIndex].style.transform = `translateX(${diff}px) rotateZ(${diff * 0.1}deg)`;
+                    }
+                });
+
+                cardStack.addEventListener('touchend', () => {
+                    if (!isDragging) return;
+                    isDragging = false;
+                    if (cards[currentIndex]) {
+                        cards[currentIndex].style.transform = '';
+                    }
+
+                    const diff = currentX - startX;
+                    const swipeThreshold = 50;
+
+                    if (Math.abs(diff) > swipeThreshold) {
+                        if (diff > 0) {
+                            prevCard();
+                        } else {
+                            nextCard();
+                        }
+                    }
+                });
+
+                // Mouse events for desktop drag
+                cardStack.addEventListener('mousedown', (e) => {
+                    startX = e.clientX;
+                    isDragging = true;
+                    cardStack.style.cursor = 'grabbing';
+                });
+
+                document.addEventListener('mousemove', (e) => {
+                    if (!isDragging) return;
+                    currentX = e.clientX;
+                    const diff = currentX - startX;
+                    if (cards[currentIndex]) {
+                        cards[currentIndex].style.transform = `translateX(${diff}px) rotateZ(${diff * 0.1}deg)`;
+                    }
+                });
+
+                document.addEventListener('mouseup', () => {
+                    if (!isDragging) return;
+                    isDragging = false;
+                    cardStack.style.cursor = '';
+                    if (cards[currentIndex]) {
+                        cards[currentIndex].style.transform = '';
+                    }
+
+                    const diff = currentX - startX;
+                    const swipeThreshold = 50;
+
+                    if (Math.abs(diff) > swipeThreshold) {
+                        if (diff > 0) {
+                            prevCard();
+                        } else {
+                            nextCard();
+                        }
+                    }
+                });
+
+                // Keyboard navigation
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowLeft') {
+                        prevCard();
+                    } else if (e.key === 'ArrowRight') {
+                        nextCard();
+                    } else if (e.key === ' ' || e.key === 'Spacebar') {
+                        e.preventDefault();
+                        flipCurrentCard();
+                    }
+                });
+            });
+
+
+            document.addEventListener('DOMContentLoaded', function() {
+                // Existing variables
+                const cards = document.querySelectorAll('.card');
+                const progressDots = document.querySelectorAll('.progress-dot');
+                const tabButtons = document.querySelectorAll('.about-tab-sync');
+                const tabPanels = document.querySelectorAll('.skltbs-panel');
+
+                let currentIndex = 0;
+                const totalCards = cards.length;
+
+                // --- FUNCTION: Sync Tabs when Card Swipes ---
+                function syncTabs(index) {
+                    tabButtons.forEach((btn, i) => {
+                        if (i === index) {
+                            btn.classList.add('skltbs-active');
+                            // Trigger the skeletal tabs internal display logic
+                            if (tabPanels[i]) {
+                                tabPanels.forEach(p => p.classList.remove('skltbs-active'));
+                                tabPanels[i].classList.add('skltbs-active');
+                            }
+                        } else {
+                            btn.classList.remove('skltbs-active');
+                        }
+                    });
+                }
+
+                // --- FUNCTION: Update Cards (Modified to include tab sync) ---
+                function updateCards() {
+                    cards.forEach((card, index) => {
+                        card.classList.remove('active', 'next', 'next-2', 'previous', 'hidden', 'swipe-left', 'swipe-right');
+
+                        if (index === currentIndex) {
+                            card.classList.add('active');
+                        } else if (index === (currentIndex + 1) % totalCards) {
+                            card.classList.add('next');
+                        } else if (index === (currentIndex + 2) % totalCards) {
+                            card.classList.add('next-2');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    });
+
+                    // Sync Dots
+                    progressDots.forEach((dot, i) => {
+                        dot.classList.toggle('bg-white', i === currentIndex);
+                        dot.classList.toggle('bg-white/30', i !== currentIndex);
+                    });
+
+                    // NEW: Sync the Tabs
+                    syncTabs(currentIndex);
+                }
+
+                // --- EVENT: Sync Card when Tab is Clicked ---
+                tabButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        const targetIndex = parseInt(this.getAttribute('data-tab-index'));
+
+                        if (targetIndex !== currentIndex) {
+                            // Add swipe animation to old card
+                            cards[currentIndex].classList.add(targetIndex > currentIndex ? 'swipe-left' : 'swipe-right');
+
+                            setTimeout(() => {
+                                currentIndex = targetIndex;
+                                updateCards();
+                            }, 300);
+                        }
+                    });
+                });
+
+                // --- Existing Nav Buttons (Remain the same) ---
+                document.getElementById('next-btn').addEventListener('click', () => {
+                    cards[currentIndex].classList.add('swipe-left');
+                    setTimeout(() => {
+                        currentIndex = (currentIndex + 1) % totalCards;
+                        updateCards();
+                    }, 400);
+                });
+
+                document.getElementById('prev-btn').addEventListener('click', () => {
+                    cards[currentIndex].classList.add('swipe-right');
+                    setTimeout(() => {
+                        currentIndex = (currentIndex - 1 + totalCards) % totalCards;
+                        updateCards();
+                    }, 400);
+                });
+
+                updateCards(); // Initial run
             });
         </script>
 </body>
