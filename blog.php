@@ -1,3 +1,48 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+require_once 'config/db.php';
+
+$success = $_SESSION['success'] ?? '';
+$error = $_SESSION['error'] ?? '';
+unset($_SESSION['success'], $_SESSION['error']);
+
+// Reuse your clean_input function
+function clean_input($data)
+{
+    return htmlspecialchars(trim($data), ENT_QUOTES, 'UTF-8');
+}
+
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enquiry_form'])) {
+    $full_name = clean_input($_POST['full_name'] ?? '');
+    $mobile    = clean_input($_POST['mobile_number'] ?? '');
+    $email     = clean_input($_POST['email'] ?? '');
+    $state     = clean_input($_POST['state'] ?? '');
+    $district  = clean_input($_POST['district'] ?? '');
+    $city      = clean_input($_POST['city'] ?? '');
+    $message   = clean_input($_POST['message'] ?? '');
+
+    // Validation logic (Same as index.php)
+    if (empty($full_name) || empty($mobile) || empty($email)) {
+        $_SESSION['error'] = "Required fields must be filled.";
+    } else {
+        $stmt = $conn->prepare("INSERT INTO students (full_name, mobile, email, state, district, city, message) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssssss", $full_name, $mobile, $email, $state, $district, $city, $message);
+        if ($stmt->execute()) {
+            $_SESSION['success'] = "Application submitted successfully!";
+        } else {
+            $_SESSION['error'] = "Submission failed.";
+        }
+        $stmt->close();
+    }
+    header("Location: blog.php");
+    exit();
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -100,41 +145,85 @@
             align-items: center;
         }
 
+        /* 1. Main Modal Wrapper */
         .enquire-modal {
             display: none;
-            /* Keep it hidden until the script runs */
+            /* Controlled via JS */
             position: fixed;
-            z-index: 9999;
-            left: 0;
-            top: 0;
+            inset: 0;
             width: 100%;
             height: 100%;
+            z-index: 999999 !important;
+            /* Highest layer on page */
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* --- Fix: Remove white space on the left --- */
-        .enquire-modal-content {
-            position: relative;
-            /* Change 'margin: 5% auto' to 'margin: 5% 0' to align left */
-            margin: 5% 20px;
-            width: 100%;
-            max-width: 500px;
-            /* Keep your desired width */
-            z-index: 10000;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(12px);
-            border-radius: 20px;
-            /* Ensure no internal padding pushes the box away from the edge */
-            left: 0;
-        }
-
-        /* Ensure the overlay doesn't interfere with alignment */
+        /* 2. The Dark Background Overlay */
         .enquire-overlay {
             position: absolute;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            left: 0;
-            top: 0;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(4px);
+            z-index: 1;
+            /* Stays at the bottom of the modal stack */
+        }
+
+        /* 3. The White Form Container */
+        .enquire-modal-content {
+            position: relative;
+            /* Creates a new stacking context */
+            background: #ffffff !important;
+            /* Solid white background */
+            padding: 35px 30px !important;
+            border-radius: 20px;
+            width: 450px;
+            max-width: 90%;
+            z-index: 10 !important;
+            /* Leapfrogs the overlay */
+            margin: 0 !important;
+            float: none !important;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important;
+        }
+
+        /* 4. The Close Button (The Cross) */
+        .enquire-close {
+            position: absolute;
+            top: -15px !important;
+            right: -15px !important;
+            width: 35px;
+            height: 35px;
+            background: #ff4d4d !important;
+            /* Bright red */
+            color: #ffffff !important;
+            border: 3px solid #ffffff;
+            /* Contrast border */
+            border-radius: 50%;
+            font-size: 22px;
+            font-weight: bold;
+            cursor: pointer !important;
+            z-index: 99 !important;
+            /* Absolute highest layer for clickability */
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            pointer-events: auto !important;
+            /* Forces capture of mouse clicks */
+        }
+
+        .enquire-close:hover {
+            background: #e60000 !important;
+            transform: scale(1.1);
+        }
+
+        /* Adjust form controls inside modal */
+        .enquire-modal-content .form-control,
+        .enquire-modal-content .form-select {
+            border: 1px solid #e2e8f0;
+            height: 42px;
+            font-size: 14px;
         }
     </style>
 </head>
@@ -558,78 +647,115 @@
     </script>
 
     <div id="enquireModal" class="enquire-modal">
-        <div class="enquire-overlay" onclick="document.getElementById('enquireModal').style.display='none'"></div>
+        <div class="enquire-overlay"></div>
 
-        <div class="enquire-modal-content">
-            <button type="button" class="enquire-close" onclick="document.getElementById('enquireModal').style.display='none'">&times;</button>
+        <div class="enquire-modal-content hero-form-box compact-form shadow-lg">
+            <button type="button" class="enquire-close" aria-label="Close form">×</button>
 
-            <div class="hero-form-box compact-form shadow-lg">
-                <h3 class="form-title text-center text-dark fw-bold mb-4">Enquire Now</h3>
+            <h3 class="form-title text-center text-dark fw-bold mb-4">Enquire Now</h3>
 
-                <form method="POST" action="mail.php">
-                    <div class="row g-2">
-                        <div class="col-md-6 mb-2">
-                            <input type="text" name="full_name" class="form-control" placeholder="Full Name *" required>
-                        </div>
-                        <div class="col-md-6 mb-2">
-                            <input type="tel" name="mobile_number" class="form-control" placeholder="Mobile *" required>
-                        </div>
-                        <div class="col-md-12 mb-2">
-                            <input type="email" name="email" class="form-control" placeholder="Email Id *" required>
-                        </div>
-                        <div class="col-md-6 mb-2">
-                            <select name="last_qualification" class="form-select" required>
-                                <option value="">Qualification *</option>
-                                <option value="12th">12th</option>
-                                <option value="Graduate">Graduate</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6 mb-2">
-                            <select name="preferred_course" class="form-select" required>
-                                <option value="">Course *</option>
-                                <option value="B.Tech">B.Tech</option>
-                                <option value="MBBS">MBBS</option>
-                                <option value="MBA">MBA</option>
-                                <option value="MCA">MCA</option>
-                                <option value="BBA">BBA</option>
-                                <option value="BCA">BCA</option>
-                            </select>
-                        </div>
-                        <div class="col-md-12 mb-2">
-                            <div class="hostel-toggle d-flex align-items-center justify-content-between p-2 rounded bg-light border">
-                                <span class="small fw-bold text-dark">Hostel Required?</span>
-                                <div class="btn-group btn-group-sm">
-                                    <input type="radio" class="btn-check" name="hostel_required" id="h1" value="Yes" checked>
-                                    <label class="btn btn-outline-primary" for="h1">Yes</label>
-                                    <input type="radio" class="btn-check" name="hostel_required" id="h2" value="No">
-                                    <label class="btn btn-outline-primary" for="h2">No</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-2">
-                            <select name="preferred_city" class="form-select" required>
-                                <option value="">Preferred City *</option>
-                                <option value="Bhubaneswar">Bhubaneswar</option>
-                                <option value="Bangalore">Bangalore</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6 mb-2">
-                            <select name="budget_range" class="form-select" required>
-                                <option value="">Budget Range *</option>
-                                <option value="1-3 Lakh">1-3 Lakh</option>
-                                <option value="3-5 Lakh">3-5 Lakh</option>
-                                <option value="5+ Lakh">5+ Lakh</option>
-                            </select>
-                        </div>
-                        <div class="col-md-12 mb-2">
-                            <textarea name="message" class="form-control" placeholder="Message (Optional)"></textarea>
-                        </div>
+            <form method="POST" action="">
+                <input type="hidden" name="enquiry_form" value="1">
+                <div class="row g-2">
+                    <div class="col-md-6 mb-2">
+                        <input type="text" name="full_name" class="form-control" placeholder="Full Name *" required>
                     </div>
-                    <button type="submit" class="hero-submit-btn w-100 mt-3">Submit Application</button>
-                </form>
-            </div>
+                    <div class="col-md-6 mb-2">
+                        <input type="tel" name="mobile_number" class="form-control" placeholder="Mobile *" required>
+                    </div>
+                    <div class="col-md-12 mb-2">
+                        <input type="email" name="email" class="form-control" placeholder="Email Id *" required>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <select name="state" id="stateSel" class="form-select" required>
+                            <option value="">Select State *</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <select name="district" id="districtSel" class="form-select" required>
+                            <option value="">Select District *</option>
+                        </select>
+                    </div>
+                    <div class="col-md-12 mb-2">
+                        <select name="city" id="citySel" class="form-select" required>
+                            <option value="">Select City *</option>
+                        </select>
+                    </div>
+                    <div class="col-md-12 mb-2">
+                        <textarea name="message" class="form-control" placeholder="Message (Optional)"></textarea>
+                    </div>
+                </div>
+                <button type="submit" class="hero-submit-btn w-100 mt-3">Submit Application</button>
+            </form>
         </div>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const modal = document.getElementById("enquireModal");
+            const closeBtn = document.querySelector(".enquire-close");
+            const overlay = document.querySelector(".enquire-overlay");
+
+            // 1. Force centering and display flex on load
+            if (modal) {
+                modal.style.setProperty('display', 'flex', 'important');
+            }
+
+            // 2. CLOSE LOGIC (Button)
+            if (closeBtn) {
+                closeBtn.addEventListener("click", function(e) {
+                    e.preventDefault();
+                    e.stopPropagation(); // Prevents click from traveling to the background
+                    modal.style.setProperty('display', 'none', 'important');
+                });
+            }
+
+            // 3. CLOSE LOGIC (Background Click)
+            if (overlay) {
+                overlay.addEventListener("click", function() {
+                    modal.style.setProperty('display', 'none', 'important');
+                });
+            }
+
+            // 4. DYNAMIC DROPDOWNS
+            var stateObject = {
+                "ODISHA": {
+                    "KHORDHA": ["BHUBANESWAR", "JATANI"],
+                    "CUTTACK": ["CUTTACK CITY"]
+                },
+                "BIHAR": {
+                    "PATNA": ["PATNA CITY"]
+                }
+            };
+
+            var stateSel = document.getElementById("stateSel"),
+                districtSel = document.getElementById("districtSel"),
+                citySel = document.getElementById("citySel");
+
+            if (stateSel && districtSel && citySel) {
+                for (var state in stateObject) {
+                    stateSel.options[stateSel.options.length] = new Option(state, state);
+                }
+
+                stateSel.onchange = function() {
+                    districtSel.length = 1;
+                    citySel.length = 1;
+                    if (this.value == "") return;
+                    for (var district in stateObject[this.value]) {
+                        districtSel.options[districtSel.options.length] = new Option(district, district);
+                    }
+                };
+
+                districtSel.onchange = function() {
+                    citySel.length = 1;
+                    if (this.value == "") return;
+                    var cities = stateObject[stateSel.value][this.value];
+                    for (var i = 0; i < cities.length; i++) {
+                        citySel.options[citySel.options.length] = new Option(cities[i], cities[i]);
+                    }
+                };
+            }
+        });
+    </script>
 </body>
 
 </html>

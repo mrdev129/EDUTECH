@@ -44,7 +44,7 @@ if (!$result) {
   <!-- calendar -->
   <link rel="stylesheet" href="assets/css/lib/calendar.css">
   <!-- main css -->
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=1.1">
   <style>
     .paging_simple_numbers .paginate_button.current {
       background: #001f3f !important;
@@ -1051,110 +1051,56 @@ if (!$result) {
                   <tr>
                     <th>S.L</th>
                     <th>Name</th>
-                    <th>Qualification</th>
-                    <th>Course</th>
+                    <th>State</th>
+                    <th>District</th>
                     <th>City</th>
                     <th>Mobile</th>
-                    <th>Budget</th>
-                    <th>Hostel</th>
                     <th>Applied On</th>
                     <th>Action</th>
                   </tr>
                 </thead>
-
                 <tbody>
-
                   <?php if ($result->num_rows > 0): ?>
-
                     <?php $sl = 1; ?>
                     <?php while ($row = $result->fetch_assoc()): ?>
-
                       <tr>
-                        <td><?= $sl++ ?></td>
+                        <td data-label="S.L" class="mobile-hide"><?= $sl++ ?></td>
 
-                        <td>
+                        <td data-label="Name">
                           <div class="d-flex align-items-center">
+<<<<<<< HEAD
+                            <img src="assets/images/thumbs/avatar-img1.png" class="flex-shrink-0 me-12 radius-8" width="48">
+=======
                             <img src="assets/images/thumbs/avatar-img1.png" class="flex-shrink-0 me-12 radius-8" width="40">
+>>>>>>> 0ca3908c5890a5873d062046df26ffc6b83646c5
                             <div>
-                              <h6 class="text-md mb-0 fw-medium">
-                                <?= htmlspecialchars($row['full_name']) ?>
-                              </h6>
-                              <span class="text-sm text-secondary-light">
-                                <?= htmlspecialchars($row['email']) ?>
-                              </span>
+                              <h6 class="text-md mb-0 fw-bold"><?= htmlspecialchars($row['full_name']) ?></h6>
+                              <span class="text-sm text-secondary-light"><?= htmlspecialchars($row['email']) ?></span>
                             </div>
                           </div>
                         </td>
 
-                        <td><?= htmlspecialchars($row['last_qualification']) ?></td>
-                        <td><?= htmlspecialchars($row['preferred_course']) ?></td>
-                        <td><?= htmlspecialchars($row['preferred_city']) ?></td>
-                        <td><?= htmlspecialchars($row['mobile']) ?></td>
-                        <td><?= htmlspecialchars($row['budget_range']) ?></td>
+                        <td data-label="State"><?= htmlspecialchars($row['state'] ?? 'N/A') ?></td>
+                        <td data-label="District"><?= htmlspecialchars($row['district'] ?? 'N/A') ?></td>
+                        <td data-label="City"><?= htmlspecialchars($row['city'] ?? 'N/A') ?></td>
+                        <td data-label="Mobile"><?= htmlspecialchars($row['mobile']) ?></td>
+
+                        <td data-label="Applied On"><?= date("d M Y", strtotime($row['created_at'])) ?></td>
 
                         <td>
-                          <?php if ($row['hostel_required'] == "Yes"): ?>
-                            <span class="bg-success-100 text-success-600 px-24 py-4 radius-4 fw-medium text-sm">
-                              Yes
-                            </span>
-                          <?php else: ?>
-                            <span class="bg-danger-100 text-danger-600 px-24 py-4 radius-4 fw-medium text-sm">
-                              No
-                            </span>
-                          <?php endif; ?>
-                        </td>
-
-                        <td>
-                          <?= date("d M Y", strtotime($row['created_at'])) ?>
-                        </td>
-
-                        <td>
-                          <div class="btn-group">
-                            <button type="button" class="text-primary-light text-xl" data-bs-toggle="dropdown">
-                              <iconify-icon icon="tabler:dots-vertical"></iconify-icon>
+                          <div class="d-flex align-items-center gap-2">
+                            <a href="student-details.php?id=<?= $row['id'] ?>" class="btn btn-primary-600 btn-sm">
+                              <i class="ri-eye-line"></i> View
+                            </a>
+                            <button class="btn btn-danger-600 btn-sm">
+                              <i class="ri-delete-bin-line"></i> Delete
                             </button>
-
-                            <ul class="dropdown-menu dropdown-menu-lg-end border p-12">
-                              <li>
-                                <a href="edit-student.php?id=<?= $row['id'] ?>"
-                                  class="dropdown-item rounded text-secondary-light bg-hover-neutral-200 d-flex align-items-center gap-2 py-6">
-                                  <i class="ri-edit-2-line"></i> Edit
-                                </a>
-                              </li>
-
-                              <li>
-                                <a href="student-details.php?id=<?= $row['id'] ?>"
-                                  class="dropdown-item rounded text-info bg-hover-neutral-200 d-flex align-items-center gap-2 py-6">
-                                  <i class="ri-file-list-line"></i> Delete
-                                </a>
-                              </li>
-
-                              <!-- <li>
-                                <a href="delete-student.php?id=<?= $row['id'] ?>"
-                                  onclick="return confirm('Are you sure?')"
-                                  class="dropdown-item rounded text-danger bg-hover-neutral-200 d-flex align-items-center gap-2 py-6">
-                                  <i class="ri-delete-bin-6-line"></i> Delete
-                                </a>
-                              </li> -->
-                            </ul>
                           </div>
                         </td>
                       </tr>
-
                     <?php endwhile; ?>
-
-                  <?php else: ?>
-
-                    <tr>
-                      <td colspan="10" class="text-center py-4">
-                        No Students Found
-                      </td>
-                    </tr>
-
                   <?php endif; ?>
-
                 </tbody>
-
 
               </table>
             </div>
@@ -1259,23 +1205,50 @@ if (!$result) {
         const headers = [];
 
         // Get table headers (exclude Action column)
+<<<<<<< HEAD
+        $('#dataTable thead th').each(function(index) {
+          if (index !== 6) { // Action column index
+=======
         $('#dataTable thead th').each(function (index) {
           if (index !== 9) { // Action column index
+>>>>>>> 0ca3908c5890a5873d062046df26ffc6b83646c5
             headers.push($(this).text().trim());
           }
         });
 
         // Get visible rows only (current page)
+<<<<<<< HEAD
+        $('#dataTable tbody tr:visible').each(function() {
+          const rowData = [];
+          $(this).find('td').each(function(index) {
+            if (index !== 6) { // Skip Action column
+=======
         $('#dataTable tbody tr:visible').each(function () {
           const rowData = [];
           $(this).find('td').each(function (index) {
             if (index !== 9) { // Skip Action column
+>>>>>>> 0ca3908c5890a5873d062046df26ffc6b83646c5
               rowData.push($(this).text().trim());
             }
           });
           rows.push(rowData);
         });
 
+<<<<<<< HEAD
+        return {
+          headers,
+          rows
+        };
+      }
+
+      // ✅ PDF Export
+      $('#exportPDF').on('click', function(e) {
+        e.preventDefault();
+
+        const {
+          jsPDF
+        } = window.jspdf;
+=======
         return { headers, rows };
       }
 
@@ -1284,6 +1257,7 @@ if (!$result) {
         e.preventDefault();
 
         const { jsPDF } = window.jspdf;
+>>>>>>> 0ca3908c5890a5873d062046df26ffc6b83646c5
         const doc = new jsPDF('landscape');
 
         const tableData = getCurrentPageData();
@@ -1298,14 +1272,24 @@ if (!$result) {
         doc.autoTable({
           head: [tableData.headers],
           body: tableData.rows,
+<<<<<<< HEAD
+          styles: {
+            fontSize: 8
+          }
+=======
           styles: { fontSize: 8 }
+>>>>>>> 0ca3908c5890a5873d062046df26ffc6b83646c5
         });
 
         doc.save(filename + ".pdf");
       });
 
       // ✅ Excel Export
+<<<<<<< HEAD
+      $('#exportExcel').on('click', function(e) {
+=======
       $('#exportExcel').on('click', function (e) {
+>>>>>>> 0ca3908c5890a5873d062046df26ffc6b83646c5
         e.preventDefault();
 
         const tableData = getCurrentPageData();
