@@ -5,14 +5,6 @@ if (session_status() === PHP_SESSION_NONE) {
 
 require_once 'config/db.php';
 
-// Fetch about data
-$aboutQuery = $conn->query("SELECT * FROM about_section WHERE id=1");
-if ($aboutQuery && $aboutQuery->num_rows > 0) {
-    $about = $aboutQuery->fetch_assoc();
-} else {
-    $about = array_fill_keys(['main_image', 'top_heading', 'main_title', 'short_description', 'mission_text', 'mission_point1', 'mission_point2', 'vision_text', 'vision_point1', 'vision_point2', 'core_text', 'core_point1', 'core_point2', 'video_link', 'button_link'], '');
-}
-
 $success = $_SESSION['success'] ?? '';
 $error = $_SESSION['error'] ?? '';
 unset($_SESSION['success'], $_SESSION['error']);
@@ -24,12 +16,12 @@ function clean_input($data)
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $full_name = clean_input($_POST['full_name'] ?? '');
-    $mobile    = clean_input($_POST['mobile_number'] ?? '');
-    $email     = clean_input($_POST['email'] ?? '');
-    $state     = clean_input($_POST['state'] ?? '');
-    $district  = clean_input($_POST['district'] ?? '');
-    $city      = clean_input($_POST['city'] ?? '');
-    $message   = clean_input($_POST['message'] ?? '');
+    $mobile = clean_input($_POST['mobile_number'] ?? '');
+    $email = clean_input($_POST['email'] ?? '');
+    $state = clean_input($_POST['state'] ?? '');
+    $district = clean_input($_POST['district'] ?? '');
+    $city = clean_input($_POST['city'] ?? '');
+    $message = clean_input($_POST['message'] ?? '');
 
     if (empty($full_name) || empty($mobile) || empty($email) || empty($state) || empty($district) || empty($city)) {
         $_SESSION['error'] = "All required fields must be filled.";
@@ -72,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
 
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="en">
 
 <head>
@@ -213,9 +205,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         <div class="hero-content-left text-white">
                             <!-- <span class="ug-tag fw-bold">UG PROGRAM</span> -->
                             <h1 class="expanding-text">
-                                Your Future, <br>
+                                Your Dream, <br>
                                 Our <span class="typing-text"
-                                    data-words='["Guidance", "Expertise", "Support", "Solution"]'></span>
+                                    data-words='["Mission"]'></span>
                             </h1>
                             <p class="journey-sub fs-4">START YOUR JOURNEY TODAY</p>
                             <!-- <a href="#" class="brochure-btn btn btn-warning rounded-pill px-4">DOWNLOAD BROCHURE <i
@@ -229,13 +221,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                             <form action="" method="POST">
                                 <div class="row g-2">
                                     <div class="col-md-6 mb-2">
-                                        <input type="text" name="full_name" class="form-control" placeholder="Full Name *" required>
+                                        <input type="text" name="full_name" class="form-control"
+                                            placeholder="Full Name *" required>
                                     </div>
                                     <div class="col-md-6 mb-2">
-                                        <input type="tel" name="mobile_number" class="form-control" placeholder="Mobile *" required>
+                                        <input type="tel" name="mobile_number" class="form-control"
+                                            placeholder="Mobile *" required>
                                     </div>
                                     <div class="col-md-12 mb-2">
-                                        <input type="email" name="email" class="form-control" placeholder="Email Id *" required>
+                                        <input type="email" name="email" class="form-control" placeholder="Email Id *"
+                                            required>
                                     </div>
 
                                     <div class="col-md-6 mb-2">
@@ -255,7 +250,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                     </div>
 
                                     <div class="col-md-12 mb-2">
-                                        <textarea name="message" class="form-control" placeholder="Message (Optional)"></textarea>
+                                        <textarea name="message" class="form-control"
+                                            placeholder="Message (Optional)"></textarea>
                                     </div>
                                 </div>
                                 <button type="submit" class="hero-submit-btn w-100 mt-3">Submit Application</button>
@@ -279,7 +275,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 this safe us. | Admissions for 2026 are now open! Apply Today.
             </marquee>
         </div>
-        </section>
 
 
         <div class="program-nav-bar">
@@ -799,7 +794,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                 onclick="switchCourseStream(event, 'course-<?= str_replace([' ', '/', '.'], '', $stream) ?>')">
                                 <?= $stream ?>
                             </button>
-                        <?php $count++;
+                            <?php $count++;
                         endforeach; ?>
                     </div>
                 </div>
@@ -808,7 +803,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <?php $count = 0;
                     foreach ($courseData as $stream => $branches):
                         $cleanId = 'course-' . str_replace([' ', '/', '.'], '', $stream);
-                    ?>
+                        ?>
                         <div id="<?= $cleanId ?>" class="branch-panel <?= $count === 0 ? 'active' : '' ?>">
 
                             <div class="rs-carousel owl-carousel branch-slider" data-loop="true" data-items="3"
@@ -819,17 +814,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                                 <?php foreach ($branches as $branch): ?>
                                     <div class="branch-item">
-                                        <div class="rs-featured-2__item branch-card-mini" style="margin: 10px; padding: 0; overflow: hidden; border: 1px solid #eee; border-radius: 12px; background: #fff;">
+                                        <div class="rs-featured-2__item branch-card-mini"
+                                            style="margin: 10px; padding: 0; overflow: hidden; border: 1px solid #eee; border-radius: 12px; background: #fff;">
 
                                             <div class="rs-thumb" style="height: 180px; overflow: hidden; position: relative;">
-                                                <img src="<?= $branch['img'] ?>" alt="<?= $branch['name'] ?>" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+                                                <img src="<?= $branch['img'] ?>" alt="<?= $branch['name'] ?>"
+                                                    style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
                                             </div>
 
                                             <div class="rs-content text-center" style="padding: 20px;">
-                                                <h4 class="title" style="font-size: 18px; margin-bottom: 8px; font-weight: 800; color: #002147;">
+                                                <h4 class="title"
+                                                    style="font-size: 18px; margin-bottom: 8px; font-weight: 800; color: #002147;">
                                                     <?= $branch['name'] ?>
                                                 </h4>
-                                                <a class="rs-link" href="#" style="font-size: 14px; font-weight: 700; color: #F26F20; text-decoration: none;">
+                                                <a class="rs-link" href="#"
+                                                    style="font-size: 14px; font-weight: 700; color: #F26F20; text-decoration: none;">
                                                     View Details <i class="ri-arrow-right-fill"></i>
                                                 </a>
                                             </div>
@@ -838,7 +837,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                 <?php endforeach; ?>
                             </div>
                         </div>
-                    <?php $count++;
+                        <?php $count++;
                     endforeach; ?>
                 </div>
             </div>
@@ -846,7 +845,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
         <!--======== About 2 Start ========-->
-        <!-- <section id="rs-about" class="rs-about-2 pt-120 pb-30 reveal"> -->
         <section id="rs-about" class="rs-about-2 pt-60 pb-10 reveal">
             <div id="about" class="container">
                 <div class="row align-items-center">
@@ -854,7 +852,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <!-- LEFT IMAGE -->
                     <div class="col-lg-6">
                         <div class="rs-about-2__thumb">
-                            <img src="admin/uploads/about/<?php echo $about['main_image']; ?>" alt="About Image">
+                            <img src="assets/images/about/about-main.jpg" alt="About EDUTECH">
                         </div>
                     </div>
 
@@ -866,13 +864,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                 <!-- TOP HEADING -->
                                 <div class="top-sub-heading">
                                     <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
-                                    <span><?php echo $about['top_heading']; ?></span>
+                                    <span>Welcome To EDUTECH</span>
                                     <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
                                 </div>
 
                                 <!-- MAIN TITLE -->
                                 <h2 class="title split-in-fade">
-                                    <?php echo $about['main_title']; ?>
+                                    Guiding Students Towards the Right Career Path
                                 </h2>
 
                                 <br>
@@ -898,21 +896,28 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                                         <!-- MISSION -->
                                         <div class="skltbs-panel">
-                                            <p><?php echo $about['mission_text']; ?></p>
+                                            <p>
+                                                Our mission is to guide students and professionals toward the right
+                                                educational and career opportunities through personalized counselling,
+                                                modern technology, and transparent support.
+                                            </p>
+
                                             <ul>
-                                                <li><i class="ri-share-forward-fill"></i>
-                                                    <?php echo $about['mission_point1']; ?></li>
-                                                <li><i class="ri-share-forward-fill"></i>
-                                                    <?php echo $about['mission_point2']; ?></li>
+                                                <li><i class="ri-share-forward-fill"></i> Personalized mentorship to
+                                                    help students choose the right course and college.</li>
+
+                                                <li><i class="ri-share-forward-fill"></i> Career-focused guidance that
+                                                    connects education with future opportunities.</li>
                                             </ul>
 
-                                            <a class="main-btn" href="<?php echo $about['button_link']; ?>">
+                                            <a class="main-btn" href="about.php">
                                                 Know More About Us
                                                 <i class="ri-arrow-right-fill"></i>
                                             </a>
 
                                             <div class="play-icon">
-                                                <a class="rs-popup-videos" href="<?php echo $about['video_link']; ?>">
+                                                <a class="rs-popup-videos"
+                                                    href="https://www.youtube.com/watch?v=example">
                                                     <i class="fa fa-play"></i>
                                                 </a>
                                             </div>
@@ -920,21 +925,36 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                                         <!-- VISION -->
                                         <div class="skltbs-panel">
-                                            <p><?php echo $about['vision_text']; ?></p>
+                                            <p>
+                                                Our vision is to become a trusted education guidance platform that helps
+                                                students
+                                                confidently choose the right academic path and build successful careers.
+                                                We aim to
+                                                bridge the gap between students and quality institutions through
+                                                reliable guidance
+                                                and modern counselling methods.
+                                            </p>
+
                                             <ul>
-                                                <li><i class="ri-share-forward-fill"></i>
-                                                    <?php echo $about['vision_point1']; ?></li>
-                                                <li><i class="ri-share-forward-fill"></i>
-                                                    <?php echo $about['vision_point2']; ?></li>
+                                                <li>
+                                                    <i class="ri-share-forward-fill"></i>
+                                                    Making quality education accessible to students everywhere.
+                                                </li>
+
+                                                <li>
+                                                    <i class="ri-share-forward-fill"></i>
+                                                    Supporting students from admission guidance to career readiness.
+                                                </li>
                                             </ul>
 
-                                            <a class="main-btn" href="<?php echo $about['button_link']; ?>">
+                                            <a class="main-btn" href="about.html">
                                                 Know More About Us
                                                 <i class="ri-arrow-right-fill"></i>
                                             </a>
 
                                             <div class="play-icon">
-                                                <a class="rs-popup-videos" href="<?php echo $about['video_link']; ?>">
+                                                <a class="rs-popup-videos"
+                                                    href="https://www.youtube.com/watch?v=example">
                                                     <i class="fa fa-play"></i>
                                                 </a>
                                             </div>
@@ -942,25 +962,42 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                                         <!-- CORE VALUE -->
                                         <div class="skltbs-panel">
-                                            <p><?php echo $about['core_text']; ?></p>
+
+                                            <p>
+                                                Our core values define how we guide students and build trust with
+                                                families.
+                                                We focus on integrity, dedication, and student success in every step of
+                                                the
+                                                education consulting journey.
+                                            </p>
+
                                             <ul>
-                                                <li><i class="ri-share-forward-fill"></i>
-                                                    <?php echo $about['core_point1']; ?></li>
-                                                <li><i class="ri-share-forward-fill"></i>
-                                                    <?php echo $about['core_point2']; ?></li>
+                                                <li>
+                                                    <i class="ri-share-forward-fill"></i>
+                                                    Student-First Approach – Every student’s success is our priority.
+                                                </li>
+
+                                                <li>
+                                                    <i class="ri-share-forward-fill"></i>
+                                                    Transparency & Integrity – Honest guidance in every admission
+                                                    process.
+                                                </li>
                                             </ul>
 
-                                            <div class="d-flex align-items-center justify-content-center mt-4">
-                                                <a class="main-btn" href="<?php echo $about['button_link']; ?>">
-                                                    Know More About Us <i class="ri-arrow-right-fill"></i>
+                                            
+                                                <a class="main-btn" href="about.html">
+                                                    Know More About Us
+                                                    <i class="ri-arrow-right-fill"></i>
                                                 </a>
+
                                                 <div class="play-icon ms-3">
                                                     <a class="rs-popup-videos"
-                                                        href="<?php echo $about['video_link']; ?>">
+                                                        href="https://www.youtube.com/watch?v=example">
                                                         <i class="fa fa-play"></i>
                                                     </a>
                                                 </div>
-                                            </div>
+                                            
+
                                         </div>
 
                                     </div>
@@ -1052,7 +1089,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     </div>
                     <div class="col-lg-6">
                         <div class="rs-project__btn">
-                            <a class="main-btn" href="project.html">View All Team Members <i class="ri-arrow-right-fill"></i></a>
+                            <a class="main-btn" href="project.html">View All Team Members <i
+                                    class="ri-arrow-right-fill"></i></a>
                         </div>
                     </div>
                 </div>
@@ -1075,7 +1113,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                         <div class="glass-text">
                                             <h4 class="name">Dr. Pragati Sahai</h4>
                                             <p class="sub">Assistant Professor | 10+ Years Experience</p>
-                                            <p class="bio">Expert career counselor specializing in management admissions and academic research with a proven track record.</p>
+                                            <p class="bio">Expert career counselor specializing in management admissions
+                                                and academic research with a proven track record.</p>
                                         </div>
                                     </div>
 
@@ -1103,7 +1142,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                         <div class="glass-text">
                                             <h4 class="name">Dr. Rashmi Saxena</h4>
                                             <p class="sub">Assistant Professor | PhD in Management</p>
-                                            <p class="bio">Dedicated academician focusing on management strategies and student success pathways.</p>
+                                            <p class="bio">Dedicated academician focusing on management strategies and
+                                                student success pathways.</p>
                                         </div>
                                     </div>
 
@@ -1131,7 +1171,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                         <div class="glass-text">
                                             <h4 class="name">Dr. Sachit Paliwal</h4>
                                             <p class="sub">Assistant Professor | 12+ Years Experience</p>
-                                            <p class="bio">Leading expert in agriculture and medical stream admissions with extensive industrial knowledge.</p>
+                                            <p class="bio">Leading expert in agriculture and medical stream admissions
+                                                with extensive industrial knowledge.</p>
                                         </div>
                                     </div>
 
@@ -1159,7 +1200,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                         <div class="glass-text">
                                             <h4 class="name">Ms. Mona Chaudhary</h4>
                                             <p class="sub">Assistant Professor | 9+ Years Experience</p>
-                                            <p class="bio">Academic advisor specializing in postgraduate strategies and student mentoring.</p>
+                                            <p class="bio">Academic advisor specializing in postgraduate strategies and
+                                                student mentoring.</p>
                                         </div>
                                     </div>
 
@@ -1187,7 +1229,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                         <div class="glass-text">
                                             <h4 class="name">Dr. Sunil Kumar</h4>
                                             <p class="sub">Assistant Professor | PhD in Management</p>
-                                            <p class="bio">Senior expert in vocational training and diploma pathways for technical students.</p>
+                                            <p class="bio">Senior expert in vocational training and diploma pathways for
+                                                technical students.</p>
                                         </div>
                                     </div>
 
@@ -1924,7 +1967,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                                 </div>
                                                 <div class="rs-info-contact">
                                                     <span>Call Us</span>
-                                                    <h5 class="title"><a href="tel:+919876543210">+91 98765 43210</a>
+                                                    <h5 class="title"><a href="tel:+919438850101">+91 9438850101</a>
+                                                    </h5>
+                                                    <h5 class="title"><a href="tel:+918637274841">+91 8637274841</a>
+                                                    </h5>
+                                                    <h5 class="title"><a href="tel:+917205150641">+91 7205150641</a>
                                                     </h5>
                                                 </div>
                                             </div>
@@ -2020,7 +2067,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <!--======== Contact Map Start ========-->
             <div class="rs-contact-map">
                 <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3743.4911157931533!2d85.83120177469385!3d20.238456914454027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a19a726c8ffc807%3A0x212845f89456a2cd!2sLingaraj%20Temple!5e0!3m2!1sen!2sin!4v1771681075912!5m2!1sen!2sin"
+                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3743.325324883753!2d85.74879577734762!3d20.245338265813242!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjDCsDE0JzQzLjIiTiA4NcKwNDUnMTMuMiJF!5e0!3m2!1sen!2sin!4v1772709818674!5m2!1sen!2sin"
                     width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade" width="600" height="450" style="border:0;"
                     allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -2200,7 +2247,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <script src="assets/js/main.js"></script>
 
         <script>
-            $(window).on('load', function() {
+            $(window).on('load', function () {
                 // 1. Initialize Background Slider (Sliding Left to Right)
                 var bgSlider = $('.hero-bg-slider');
 
@@ -2221,7 +2268,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     });
 
                     // Force a refresh after a short delay to calculate widths correctly
-                    setTimeout(function() {
+                    setTimeout(function () {
                         bgSlider.trigger('refresh.owl.carousel');
                     }, 200);
                 }
@@ -2263,7 +2310,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
 
-            $(document).ready(function() {
+            $(document).ready(function () {
                 var brandSlider = $('.mobile-brand-grid');
 
                 function initBrandSlider() {
@@ -2293,14 +2340,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 }
 
                 initBrandSlider();
-                $(window).on('resize', function() {
+                $(window).on('resize', function () {
                     initBrandSlider();
                 });
 
 
             });
 
-            $(document).ready(function() {
+            $(document).ready(function () {
                 // Only initialize the blog slider for mobile users
                 if ($(window).width() < 768) {
                     $(".rs-blog-2 .owl-carousel").owlCarousel({
@@ -2315,7 +2362,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             });
         </script>
         <script>
-            document.addEventListener("DOMContentLoaded", function() {
+            document.addEventListener("DOMContentLoaded", function () {
                 const modal = document.getElementById("enquireModal");
                 const modalContent = document.querySelector(".enquire-modal-content");
                 const closeBtn = document.querySelector(".enquire-close");
@@ -2331,9 +2378,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     document.getElementById("openEnquireNav")
                 ];
 
-                openButtons.forEach(function(btn) {
+                openButtons.forEach(function (btn) {
                     if (btn) {
-                        btn.addEventListener("click", function(e) {
+                        btn.addEventListener("click", function (e) {
                             e.preventDefault();
                             modal.style.display = "flex";
                         });
@@ -2342,19 +2389,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                 // Close logic
                 if (closeBtn) {
-                    closeBtn.addEventListener("click", function() {
+                    closeBtn.addEventListener("click", function () {
                         modal.style.display = "none";
                     });
                 }
 
-                modal.addEventListener("click", function(e) {
+                modal.addEventListener("click", function (e) {
                     if (!modalContent.contains(e.target)) {
                         modal.style.display = "none";
                     }
                 });
             });
 
-            $(document).ready(function() {
+            $(document).ready(function () {
                 if ($(window).width() < 768) {
                     $(".featured-slider").owlCarousel({
                         items: 1,
@@ -2368,7 +2415,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 }
             });
 
-            $(document).ready(function() {
+            $(document).ready(function () {
                 // We only run this logic if the screen is mobile
                 if ($(window).width() < 768) {
                     var $teamSlider = $('.rs-project__slider');
@@ -2388,7 +2435,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </script>
 
         <script>
-            document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('DOMContentLoaded', function () {
                 const slider = document.querySelector('.category-slider-wrapper');
                 let isDown = false;
                 let startX;
@@ -2414,7 +2461,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     slider.scrollLeft = scrollLeft - walk;
                 });
 
-                window.switchCourseStream = function(evt, streamId) {
+                window.switchCourseStream = function (evt, streamId) {
                     document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
                     document.querySelectorAll('.branch-panel').forEach(panel => panel.classList.remove('active'));
 
@@ -2423,7 +2470,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         activePanel.classList.add('active');
                         evt.currentTarget.classList.add('active');
 
-                        setTimeout(function() {
+                        setTimeout(function () {
                             var $carousel = $(activePanel).find('.branch-slider');
                             if ($carousel.hasClass('owl-loaded')) {
                                 $carousel.trigger('refresh.owl.carousel');
@@ -2465,15 +2512,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </script>
 
         <script>
-            document.getElementById("contact-form").addEventListener("submit", function(e) {
+            document.getElementById("contact-form").addEventListener("submit", function (e) {
                 e.preventDefault();
 
                 let formData = new FormData(this);
 
                 fetch("save_inquiry.php", {
-                        method: "POST",
-                        body: formData
-                    })
+                    method: "POST",
+                    body: formData
+                })
                     .then(response => response.text())
                     .then(data => {
                         document.getElementById("form-response").innerHTML = data;
@@ -2507,10 +2554,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <form method="POST" action="">
                         <div class="row g-2">
                             <div class="col-md-6 mb-2">
-                                <input type="text" name="full_name" class="form-control" placeholder="Full Name *" required>
+                                <input type="text" name="full_name" class="form-control" placeholder="Full Name *"
+                                    required>
                             </div>
                             <div class="col-md-6 mb-2">
-                                <input type="tel" name="mobile_number" class="form-control" placeholder="Mobile *" required>
+                                <input type="tel" name="mobile_number" class="form-control" placeholder="Mobile *"
+                                    required>
                             </div>
                             <div class="col-md-12 mb-2">
                                 <input type="email" name="email" class="form-control" placeholder="Email Id *" required>
@@ -2533,7 +2582,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                             </div>
 
                             <div class="col-md-12 mb-2">
-                                <textarea name="message" class="form-control" placeholder="Message (Optional)"></textarea>
+                                <textarea name="message" class="form-control"
+                                    placeholder="Message (Optional)"></textarea>
                             </div>
                         </div>
                         <button type="submit" class="hero-submit-btn w-100 mt-3">Submit Application</button>
@@ -2572,7 +2622,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 }
 
                 // State change logic
-                stateSel.onchange = function() {
+                stateSel.onchange = function () {
                     districtSel.length = 1; // reset
                     citySel.length = 1; // reset
                     if (this.value == "") return;
@@ -2583,7 +2633,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 };
 
                 // District change logic
-                districtSel.onchange = function() {
+                districtSel.onchange = function () {
                     citySel.length = 1; // reset
                     if (this.value == "") return;
 
@@ -2624,7 +2674,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             });
         </script>
         <script>
-            document.addEventListener("DOMContentLoaded", function() {
+            document.addEventListener("DOMContentLoaded", function () {
                 const observerOptions = {
                     threshold: 0.15, // Triggers when 15% of the section is visible
                     rootMargin: "0px 0px -50px 0px" // Triggers slightly before the section hits the top
