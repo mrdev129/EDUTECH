@@ -87,7 +87,8 @@ if (!$result) {
   <div class="body-overlay"></div>
 
   <button type="button"
-    class="theme-customization__button w-48-px h-48-px bg-primary-600 text-white rounded-circle d-flex justify-content-center align-items-center position-fixed end-0 bottom-0 mb-40 me-40 text-2xxl bg-hover-primary-700" aria-label="Theme Customization Button">
+    class="theme-customization__button w-48-px h-48-px bg-primary-600 text-white rounded-circle d-flex justify-content-center align-items-center position-fixed end-0 bottom-0 mb-40 me-40 text-2xxl bg-hover-primary-700"
+    aria-label="Theme Customization Button">
     <i class="ri-settings-3-line animate-spin"></i>
   </button>
   <div class="theme-customization-sidebar w-100 bg-base h-100vh overflow-y-auto position-fixed end-0 top-0">
@@ -129,13 +130,15 @@ if (!$result) {
         <h6 class="fw-medium text-primary-light text-md mb-3">Page Direction</h6>
         <div class="d-grid grid-cols-2 gap-3">
           <button type="button"
-            class="theme-setting-item__btn ltr-mode-btn d-flex align-items-center justify-content-center gap-2 h-56-px rounded-3 text-xl" aria-label="LTR">
+            class="theme-setting-item__btn ltr-mode-btn d-flex align-items-center justify-content-center gap-2 h-56-px rounded-3 text-xl"
+            aria-label="LTR">
             <span><i class="ri-align-item-left-line"></i></span>
             <span class="h6 text-sm font-medium mb-0">LTR</span>
           </button>
 
           <button type="button"
-            class="theme-setting-item__btn rtl-mode-btn d-flex align-items-center justify-content-center gap-2 h-56-px rounded-3 text-xl" aria-label="RTL">
+            class="theme-setting-item__btn rtl-mode-btn d-flex align-items-center justify-content-center gap-2 h-56-px rounded-3 text-xl"
+            aria-label="RTL">
             <span class="h6 text-sm font-medium mb-0">RTL</span>
             <span><i class="ri-align-item-right-line"></i></span>
           </button>
@@ -145,46 +148,34 @@ if (!$result) {
       <div class="theme-setting-item">
         <h6 class="fw-medium text-primary-light text-md mb-3">Color Schema</h6>
         <div class="d-grid grid-cols-3 gap-3">
-          <button type="button"
-            class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
+          <button type="button" class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
             data-color="base" aria-label="Base">
-            <span class="color-picker-btn__box h-40-px w-100 rounded-3"
-              style="background-color: #25A194;"></span>
+            <span class="color-picker-btn__box h-40-px w-100 rounded-3" style="background-color: #25A194;"></span>
             <span class="fw-medium mt-1" style="color: #25A194;">Base</span>
           </button>
-          <button type="button"
-            class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
+          <button type="button" class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
             data-color="red" aria-label="Red">
-            <span class="color-picker-btn__box h-40-px w-100 rounded-3"
-              style="background-color: #dc2626;"></span>
+            <span class="color-picker-btn__box h-40-px w-100 rounded-3" style="background-color: #dc2626;"></span>
             <span class="fw-medium mt-1" style="color: #dc2626;">Red</span>
           </button>
-          <button type="button"
-            class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
+          <button type="button" class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
             data-color="blue" aria-label="Blue">
-            <span class="color-picker-btn__box h-40-px w-100 rounded-3"
-              style="background-color: #2563eb;"></span>
+            <span class="color-picker-btn__box h-40-px w-100 rounded-3" style="background-color: #2563eb;"></span>
             <span class="fw-medium mt-1" style="color: #2563eb;">Blue</span>
           </button>
-          <button type="button"
-            class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
+          <button type="button" class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
             data-color="yellow" aria-label="Yellow">
-            <span class="color-picker-btn__box h-40-px w-100 rounded-3"
-              style="background-color: #ff9f29;"></span>
+            <span class="color-picker-btn__box h-40-px w-100 rounded-3" style="background-color: #ff9f29;"></span>
             <span class="fw-medium mt-1" style="color: #ff9f29;">Yellow</span>
           </button>
-          <button type="button"
-            class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
+          <button type="button" class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
             data-color="cyan" aria-label="Cyan">
-            <span class="color-picker-btn__box h-40-px w-100 rounded-3"
-              style="background-color: #00b8f2;"></span>
+            <span class="color-picker-btn__box h-40-px w-100 rounded-3" style="background-color: #00b8f2;"></span>
             <span class="fw-medium mt-1" style="color: #00b8f2;">Cyan</span>
           </button>
-          <button type="button"
-            class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
+          <button type="button" class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
             data-color="violet" aria-label="Violet">
-            <span class="color-picker-btn__box h-40-px w-100 rounded-3"
-              style="background-color: #7c3aed;"></span>
+            <span class="color-picker-btn__box h-40-px w-100 rounded-3" style="background-color: #7c3aed;"></span>
             <span class="fw-medium mt-1" style="color: #7c3aed;">Violet</span>
           </button>
         </div>
@@ -796,7 +787,8 @@ if (!$result) {
         <div class="col-auto">
           <div class="d-flex flex-wrap align-items-center gap-3">
             <button type="button" data-theme-toggle
-              class="w-40-px h-40-px bg-neutral-200 rounded-circle d-flex justify-content-center align-items-center" aria-label="Dark & Light Mode Button"></button>
+              class="w-40-px h-40-px bg-neutral-200 rounded-circle d-flex justify-content-center align-items-center"
+              aria-label="Dark & Light Mode Button"></button>
             <div class="dropdown d-inline-block">
               <button
                 class="has-indicator w-40-px h-40-px bg-neutral-200 rounded-circle d-flex justify-content-center align-items-center"
@@ -998,7 +990,8 @@ if (!$result) {
                 </div>
 
                 <div class="text-center py-12 px-16">
-                  <a href="javascript:void(0)" class="text-primary-600 fw-semibold text-md hover-underline">See All Notification</a>
+                  <a href="javascript:void(0)" class="text-primary-600 fw-semibold text-md hover-underline">See All
+                    Notification</a>
                 </div>
 
               </div>
@@ -1029,10 +1022,12 @@ if (!$result) {
         <div class="card h-100">
           <div class="card-body p-0 dataTable-wrapper">
 
-            <div class="d-flex align-items-center justify-content-start gap-16 px-24 py-20 border-bottom border-neutral-200">
+            <div
+              class="d-flex align-items-center justify-content-start gap-16 px-24 py-20 border-bottom border-neutral-200">
 
               <div class="dropdown">
-                <button class="btn btn-outline-neutral-600 dropdown-toggle d-flex align-items-center gap-2 h-40-px" type="button" data-bs-toggle="dropdown">
+                <button class="btn btn-outline-neutral-600 dropdown-toggle d-flex align-items-center gap-2 h-40-px"
+                  type="button" data-bs-toggle="dropdown">
                   <i class="ri-download-2-line"></i> Export
                 </button>
                 <ul class="dropdown-menu">
@@ -1042,7 +1037,9 @@ if (!$result) {
               </div>
 
               <div class="navbar-search m-0" style="max-width: 300px; width: 100%;">
-                <input type="text" id="customSearch" class="bg-neutral-50 border border-neutral-200 h-40-px radius-8 px-12 w-100" placeholder="Search students..." style="outline: none;">
+                <input type="text" id="customSearch"
+                  class="bg-neutral-50 border border-neutral-200 h-40-px radius-8 px-12 w-100"
+                  placeholder="Search students..." style="outline: none;">
                 <iconify-icon icon="ion:search-outline" class="icon" style="right: 12px; left: auto;"></iconify-icon>
               </div>
 
@@ -1071,7 +1068,11 @@ if (!$result) {
 
                         <td data-label="Name">
                           <div class="d-flex align-items-center">
+<<<<<<< HEAD
                             <img src="assets/images/thumbs/avatar-img1.png" class="flex-shrink-0 me-12 radius-8" width="48">
+=======
+                            <img src="assets/images/thumbs/avatar-img1.png" class="flex-shrink-0 me-12 radius-8" width="40">
+>>>>>>> 0ca3908c5890a5873d062046df26ffc6b83646c5
                             <div>
                               <h6 class="text-md mb-0 fw-bold"><?= htmlspecialchars($row['full_name']) ?></h6>
                               <span class="text-sm text-secondary-light"><?= htmlspecialchars($row['email']) ?></span>
@@ -1127,10 +1128,12 @@ if (!$result) {
             <iconify-icon icon="fluent:delete-24-regular"></iconify-icon>
           </span>
           <h6 class="text-lg fw-semibold text-primary-light mb-0">Suspend Student?</h6>
-          <p class="text-sm text-secondary-light">Are you sure you want to suspend <?= htmlspecialchars($student['full_name']) ?>?</p>
+          <p class="text-sm text-secondary-light">Are you sure you want to suspend
+            <?= htmlspecialchars($student['full_name']) ?>?</p>
           <div class="d-flex align-items-center justify-content-center gap-3 mt-24">
             <button type="button" class="btn btn-secondary px-24 py-11 radius-8" data-bs-dismiss="modal">Cancel</button>
-            <a href="suspend-student-logic.php?id=<?= $student['id'] ?>" class="btn btn-danger px-16 py-12 radius-8">Yes, Suspend</a>
+            <a href="suspend-student-logic.php?id=<?= $student['id'] ?>"
+              class="btn btn-danger px-16 py-12 radius-8">Yes, Suspend</a>
           </div>
         </div>
       </div>
@@ -1178,7 +1181,7 @@ if (!$result) {
 </script> -->
 
   <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
       // ✅ Initialize table with 12-row pagination
       const tableInstance = new DataTable('#dataTable', {
         pageLength: 12,
@@ -1192,7 +1195,7 @@ if (!$result) {
       });
 
       // ✅ Connect your new Custom Search line to the table
-      $('#customSearch').on('keyup', function() {
+      $('#customSearch').on('keyup', function () {
         tableInstance.search(this.value).draw();
       });
 
@@ -1202,23 +1205,36 @@ if (!$result) {
         const headers = [];
 
         // Get table headers (exclude Action column)
+<<<<<<< HEAD
         $('#dataTable thead th').each(function(index) {
           if (index !== 6) { // Action column index
+=======
+        $('#dataTable thead th').each(function (index) {
+          if (index !== 9) { // Action column index
+>>>>>>> 0ca3908c5890a5873d062046df26ffc6b83646c5
             headers.push($(this).text().trim());
           }
         });
 
         // Get visible rows only (current page)
+<<<<<<< HEAD
         $('#dataTable tbody tr:visible').each(function() {
           const rowData = [];
           $(this).find('td').each(function(index) {
             if (index !== 6) { // Skip Action column
+=======
+        $('#dataTable tbody tr:visible').each(function () {
+          const rowData = [];
+          $(this).find('td').each(function (index) {
+            if (index !== 9) { // Skip Action column
+>>>>>>> 0ca3908c5890a5873d062046df26ffc6b83646c5
               rowData.push($(this).text().trim());
             }
           });
           rows.push(rowData);
         });
 
+<<<<<<< HEAD
         return {
           headers,
           rows
@@ -1232,6 +1248,16 @@ if (!$result) {
         const {
           jsPDF
         } = window.jspdf;
+=======
+        return { headers, rows };
+      }
+
+      // ✅ PDF Export
+      $('#exportPDF').on('click', function (e) {
+        e.preventDefault();
+
+        const { jsPDF } = window.jspdf;
+>>>>>>> 0ca3908c5890a5873d062046df26ffc6b83646c5
         const doc = new jsPDF('landscape');
 
         const tableData = getCurrentPageData();
@@ -1246,16 +1272,24 @@ if (!$result) {
         doc.autoTable({
           head: [tableData.headers],
           body: tableData.rows,
+<<<<<<< HEAD
           styles: {
             fontSize: 8
           }
+=======
+          styles: { fontSize: 8 }
+>>>>>>> 0ca3908c5890a5873d062046df26ffc6b83646c5
         });
 
         doc.save(filename + ".pdf");
       });
 
       // ✅ Excel Export
+<<<<<<< HEAD
       $('#exportExcel').on('click', function(e) {
+=======
+      $('#exportExcel').on('click', function (e) {
+>>>>>>> 0ca3908c5890a5873d062046df26ffc6b83646c5
         e.preventDefault();
 
         const tableData = getCurrentPageData();
