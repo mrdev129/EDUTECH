@@ -1067,36 +1067,39 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <div class="owl-carousel brand-carousel">
 
                         <div class="brand-item">
-                            <img src="assets/images/brand/image-Photoroom (1).png" alt="">
+                            <img src="assets/images/brand/bits.png" alt="">
                         </div>
 
                         <div class="brand-item">
-                            <img src="assets/images/brand/image-Photoroom.png" alt="">
+                            <img src="assets/images/brand/christ.jpeg" alt="">
                         </div>
 
                         <div class="brand-item">
-                            <img src="assets/images/brand/images-Photoroom (1).png" alt="">
+                            <img src="assets/images/brand/cvraman.png" alt="">
                         </div>
 
                         <div class="brand-item">
-                            <img src="assets/images/brand/logo-896x1024-Photoroom.png" alt="">
+                            <img src="assets/images/brand/kiit.png" alt="">
                         </div>
 
                         <div class="brand-item">
-                            <img src="assets/images/brand/university-college-school-badge-logo-free-vector-Photoroom.png"
+                            <img src="assets/images/brand/manipal.png"
                                 alt="">
                         </div>
 
                         <div class="brand-item">
-                            <img src="assets/images/brand/University-Logo-backup-Photoroom.png" alt="">
+                            <img src="assets/images/brand/rv.png" alt="">
                         </div>
 
                         <div class="brand-item">
-                            <img src="assets/images/brand/images-Photoroom (2).png" alt="">
+                            <img src="assets/images/brand/soa.png" alt="">
                         </div>
 
                         <div class="brand-item">
-                            <img src="assets/images/brand/images-Photoroomxx.png" alt="">
+                            <img src="assets/images/brand/srm.png" alt="">
+                        </div>
+                        <div class="brand-item">
+                            <img src="assets/images/brand/vit.jpg" alt="">
                         </div>
 
                     </div>
@@ -1564,7 +1567,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <div class="row align-items-center">
                     <div class="col-lg-6">
                         <div class="rs-faq__thumb wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay="0.4s">
-                            <img src="assets/images/faq/faq-left-img.png" alt="faq">
+                            <img src="assets/images/faq/faqpic.png" alt="faq">
                             <div class="rs-shape">
                                 <img src="assets/images/faq/couple-ball-layer.svg" alt="faq">
                             </div>
