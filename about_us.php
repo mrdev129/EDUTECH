@@ -188,115 +188,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 </p>
             </div>
         </div>
-        <div class="sliding-info-bar">
+         <div class="sliding-info-bar">
             <marquee behavior="scroll" direction="left" scrollamount="7">
                 Official website of EDUTECH University Online. | Secure & Confidential: only through the secure link on
                 this safe us. | Admissions for 2026 are now open! Apply Today.
             </marquee>
         </div>
 
-        <main id="main" class="main-content">
-
-            <div class="rs-breadcrumbs img1"
-                style="background-image: url('assets/images/breadcrumbs/about.jpg'); background-color: #002147; padding: 100px 0;">
-                <div class="container">
-                    <div class="breadcrumbs-inner text-center">
-                        <h1 class="page-title text-white"><?php echo $about['top_heading'] ?: 'About Us'; ?></h1>
-                        <ul class="breadcrumbs-area">
-                            <li class="active"><a href="index.php" class="text-white">Home</a> / About Us</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="rs-about pt-120 pb-120 md-pt-80 md-pb-80">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-lg-6 md-mb-50 reveal">
-                            <div class="rs-about__img">
-                                <img src="admin/uploads/<?php echo $about['main_image']; ?>" alt="About Us"
-                                    class="img-fluid rounded shadow">
-                            </div>
-                        </div>
-                        <div class="col-lg-6 pl-40 md-pl-15 reveal">
-                            <div class="sec-title mb-30">
-                                <span class="sub-text"
-                                    style="color: #ef481b; font-weight: 700;"><?php echo $about['top_heading']; ?></span>
-                                <h2 class="title mb-20" style="color: #002147; font-size: 40px; font-weight: 800;">
-                                    <?php echo $about['main_title']; ?>
-                                </h2>
-                                <div class="desc" style="color: #454545; font-size: 16px; line-height: 1.8;">
-                                    <?php echo $about['short_description']; ?>
-                                </div>
-                            </div>
-                            <div class="btn-part">
-                                <a class="readon learn-more" href="<?php echo $about['button_link']; ?>"
-                                    style="background: #002147; color: #fff; padding: 12px 30px; display: inline-block; border-radius: 5px;">
-                                    Contact Us
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="rs-featured-5 bg-light-gray pt-100 pb-100" style="background: #f9f9f9;">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-4 col-md-6 mb-30 reveal">
-                            <div class="rs-featured-5__item white-bg p-4 shadow-sm"
-                                style="background: #fff; border-radius: 10px; height: 100%;">
-                                <div class="rs-content">
-                                    <h3 class="title">Our Mission</h3>
-                                    <p><?php echo $about['mission_text']; ?></p>
-                                    <ul class="list-style-1 mt-3" style="list-style: none; padding: 0;">
-                                        <li class="mb-2"><i class="fa fa-check-circle mr-2" style="color: #ef481b;"></i>
-                                            <?php echo $about['mission_point1']; ?></li>
-                                        <li><i class="fa fa-check-circle mr-2" style="color: #ef481b;"></i>
-                                            <?php echo $about['mission_point2']; ?></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 mb-30 reveal">
-                            <div class="rs-featured-5__item white-bg p-4 shadow-sm"
-                                style="background: #fff; border-radius: 10px; height: 100%;">
-                                <div class="rs-content">
-                                    <h3 class="title">Our Vision</h3>
-                                    <p><?php echo $about['vision_text']; ?></p>
-                                    <ul class="list-style-1 mt-3" style="list-style: none; padding: 0;">
-                                        <li class="mb-2"><i class="fa fa-check-circle mr-2" style="color: #ef481b;"></i>
-                                            <?php echo $about['vision_point1']; ?></li>
-                                        <li><i class="fa fa-check-circle mr-2" style="color: #ef481b;"></i>
-                                            <?php echo $about['vision_point2']; ?></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 mb-30 reveal">
-                            <div class="rs-featured-5__item white-bg p-4 shadow-sm"
-                                style="background: #fff; border-radius: 10px; height: 100%;">
-                                <div class="rs-content">
-                                    <h3 class="title">Core Values</h3>
-                                    <p><?php echo $about['core_text']; ?></p>
-                                    <ul class="list-style-1 mt-3" style="list-style: none; padding: 0;">
-                                        <li class="mb-2"><i class="fa fa-check-circle mr-2" style="color: #ef481b;"></i>
-                                            <?php echo $about['core_point1']; ?></li>
-                                        <li><i class="fa fa-check-circle mr-2" style="color: #ef481b;"></i>
-                                            <?php echo $about['core_point2']; ?></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </main>
 
 
 
 
+        
         <div class="program-nav-bar">
             <div class="container">
                 <div class="nav-flex-wrapper">
@@ -318,100 +221,100 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </div>
         </div>
 
-        <div class="rs-footer__main-box">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3">
-                        <div class="rs-footer__about-box">
-                            <a href="index-2.html"><img src="assets/images/about/logo.jpeg" alt=""></a>
-                            <p> To empower students by providing expert guidance and transparent insights into the
-                                complex world of higher education.</p>
-                            <div class="rs-footer__social">
+         <div class="rs-footer__main-box">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="rs-footer__about-box">
+                                <a href="index-2.html"><img src="assets/images/about/logo.jpeg" alt=""></a>
+                                <p> To empower students by providing expert guidance and transparent insights into the
+                                    complex world of higher education.</p>
+                                <div class="rs-footer__social">
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="#"><i class="ri-twitter-x-fill"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="rs-footer__navigation">
+                                <div class="rs-footer-title">
+                                    <h4 class="title">Our Services</h4>
+                                </div>
                                 <ul>
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#"><i class="ri-twitter-x-fill"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                    <li><a href="service-details-2.php"><i class="ri-arrow-right-fill"></i> B.Tech</a>
+                                    </li>
+                                    <li><a href="service-details-2.php"><i class="ri-arrow-right-fill"></i> MBA</a></li>
+                                    <li><a href="service-details-2.php"><i class="ri-arrow-right-fill"></i> MCA</a></li>
+                                    <li><a href="service-details-2.php"><i class="ri-arrow-right-fill"></i> Diploma</a>
+                                    </li>
+                                    <li><a href="service-details-2.php"><i class="ri-arrow-right-fill"></i> Other
+                                            Courses</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="rs-footer__navigation rs-footer--navigation">
+                                <div class="rs-footer-title">
+                                    <h4 class="title">Quick Links</h4>
+                                </div>
+                                <ul>
+                                    <li><a href="#home"><i class="ri-arrow-right-fill"></i> Home</a></li>
+                                    <li><a href="#about"><i class="ri-arrow-right-fill"></i> About</a></li>
+                                    <li><a href="#course"><i class="ri-arrow-right-fill"></i>Course</a></li>
+                                    <li><a href="blog.php"><i class="ri-arrow-right-fill"></i> Blogs</a></li>
+                                    <li><a href="#team"><i class="ri-arrow-right-fill"></i> Team Members</a></li>
+                                    <li><a href="#gallery"><i class="ri-arrow-right-fill"></i> Gallery</a></li>
+                                    <li><a href="#contact"><i class="ri-arrow-right-fill"></i> Contact Us</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="rs-footer__newsletter">
+                                <div class="rs-footer-title">
+                                    <h4 class="title">Subscription</h4>
+                                </div>
+                                <p>Register now to get latest updates on promotions & coupons.</p>
+                                <form action="#">
+                                    <div class="input-box">
+                                        <input type="email" placeholder="Your email address">
+                                        <button class="main-btn">Subscribe <svg width="13" height="14"
+                                                viewbox="0 0 13 14" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M6.5 7.8125H0V6.1875H6.5V0.5L13 7L6.5 13.5V7.8125Z"
+                                                    fill="#fff"></path>
+                                            </svg></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="rs-footer__menu">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-5">
+                            <div class="rs-footer__copyright-text">
+                                <p>© 2026 EDUTECH. Designed By <a target="_blank" href="https://rstheme.com/">Team
+                                        DRS.</a></p>
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="rs-footer__menu-box">
+                                <ul>
+                                    <li><a href="contact.html">Privacy Policy</a></li>
+                                    <li><a href="contact.html">Terms of use</a></li>
+                                    <li><a href="contact.html">Sitemap</a></li>
+                                    <li><a href="contact.html">Career</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3">
-                        <div class="rs-footer__navigation">
-                            <div class="rs-footer-title">
-                                <h4 class="title">Our Services</h4>
-                            </div>
-                            <ul>
-                                <li><a href="service-details-2.php"><i class="ri-arrow-right-fill"></i> B.Tech</a>
-                                </li>
-                                <li><a href="service-details-2.php"><i class="ri-arrow-right-fill"></i> MBA</a></li>
-                                <li><a href="service-details-2.php"><i class="ri-arrow-right-fill"></i> MCA</a></li>
-                                <li><a href="service-details-2.php"><i class="ri-arrow-right-fill"></i> Diploma</a>
-                                </li>
-                                <li><a href="service-details-2.php"><i class="ri-arrow-right-fill"></i> Other
-                                        Courses</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="rs-footer__navigation rs-footer--navigation">
-                            <div class="rs-footer-title">
-                                <h4 class="title">Quick Links</h4>
-                            </div>
-                            <ul>
-                                <li><a href="#home"><i class="ri-arrow-right-fill"></i> Home</a></li>
-                                <li><a href="#about"><i class="ri-arrow-right-fill"></i> About</a></li>
-                                <li><a href="#course"><i class="ri-arrow-right-fill"></i>Course</a></li>
-                                <li><a href="blog.php"><i class="ri-arrow-right-fill"></i> Blogs</a></li>
-                                <li><a href="#team"><i class="ri-arrow-right-fill"></i> Team Members</a></li>
-                                <li><a href="#gallery"><i class="ri-arrow-right-fill"></i> Gallery</a></li>
-                                <li><a href="#contact"><i class="ri-arrow-right-fill"></i> Contact Us</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="rs-footer__newsletter">
-                            <div class="rs-footer-title">
-                                <h4 class="title">Subscription</h4>
-                            </div>
-                            <p>Register now to get latest updates on promotions & coupons.</p>
-                            <form action="#">
-                                <div class="input-box">
-                                    <input type="email" placeholder="Your email address">
-                                    <button class="main-btn">Subscribe <svg width="13" height="14" viewbox="0 0 13 14"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M6.5 7.8125H0V6.1875H6.5V0.5L13 7L6.5 13.5V7.8125Z" fill="#fff">
-                                            </path>
-                                        </svg></button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
                 </div>
             </div>
-        </div>
-        <div class="rs-footer__menu">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-5">
-                        <div class="rs-footer__copyright-text">
-                            <p>© 2026 EDUTECH. Designed By <a target="_blank" href="https://rstheme.com/">Team
-                                    DRS.</a></p>
-                        </div>
-                    </div>
-                    <div class="col-lg-7">
-                        <div class="rs-footer__menu-box">
-                            <ul>
-                                <li><a href="contact.html">Privacy Policy</a></li>
-                                <li><a href="contact.html">Terms of use</a></li>
-                                <li><a href="contact.html">Sitemap</a></li>
-                                <li><a href="contact.html">Career</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         </footer>
         <!--======== Footer 2 Ends ========-->
 
