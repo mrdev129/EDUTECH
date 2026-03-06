@@ -1053,7 +1053,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <!--======== About 2 Ends ========-->
 
         <!--======== Brand Start ========-->
-        <!--======== Brand Start ========-->
         <div class="rs-brand reveal">
             <div class="container">
 
@@ -1107,7 +1106,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             </div>
         </div>
-        <!--======== Brand End ========-->
+       
         <!--======== Brand End ========-->
 
         <!--======== TEAM MEMBERS ========-->
