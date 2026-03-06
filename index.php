@@ -125,7 +125,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
 
     <link rel="stylesheet" href="assets/css/style.css?v=1.3">
-    <link rel="stylesheet" href="assets/css/card-swipe.css?v=1.2">
+    <link rel="stylesheet" href="assets/css/card-swipe.css?v=1.3">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/team.css">
@@ -884,7 +884,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                     <button id="prev-btn" class="circle-btn">
                                         <i class="fas fa-chevron-left"></i>
                                     </button>
-                                    <button id="flip-btn-main" class="circle-btn center-large">
+                                    <button id="flip-btn-main" class="circle-btn center-large" style="visibility: hidden !important;">
                                         <i class="fas fa-sync-alt"></i>
                                     </button>
                                     <button id="next-btn" class="circle-btn">
