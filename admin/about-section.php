@@ -1,64 +1,5 @@
 <?php
 include '../config/db.php';
-
-if (isset($_POST['update_about'])) {
-    // Sanitize all text inputs to match your form names
-    $top_heading = mysqli_real_escape_string($conn, $_POST['top_heading']);
-    $main_title = mysqli_real_escape_string($conn, $_POST['main_title']);
-    // Note: If you don't have a 'short_description' field in your form yet, 
-    // you should add one or map it to an existing textarea.
-    $mission_text = mysqli_real_escape_string($conn, $_POST['mission_text']);
-    $mission_p1 = mysqli_real_escape_string($conn, $_POST['mission_point1']);
-    $mission_p2 = mysqli_real_escape_string($conn, $_POST['mission_point2']);
-    
-    $vision_text = mysqli_real_escape_string($conn, $_POST['vision_text']);
-    $vision_p1 = mysqli_real_escape_string($conn, $_POST['vision_point1']);
-    $vision_p2 = mysqli_real_escape_string($conn, $_POST['vision_point2']);
-    
-    $core_text = mysqli_real_escape_string($conn, $_POST['core_text']);
-    $core_p1 = mysqli_real_escape_string($conn, $_POST['core_point1']);
-    $core_p2 = mysqli_real_escape_string($conn, $_POST['core_point2']);
-    
-    $video_link = mysqli_real_escape_string($conn, $_POST['video_link']);
-    $button_link = mysqli_real_escape_string($conn, $_POST['button_link']);
-
-    // Image Upload Logic
-    $img_query = "";
-    if (!empty($_FILES['main_image']['name'])) {
-        $target_dir = "uploads/about/";
-        $file_name = time() . "_" . basename($_FILES["main_image"]["name"]);
-        if (move_uploaded_file($_FILES["main_image"]["tmp_name"], $target_dir . $file_name)) {
-            $img_query = ", main_image = '$file_name'";
-        }
-    }
-
-    // Comprehensive UPDATE query matching your database columns
-    $sql = "UPDATE about_section SET 
-            top_heading = '$top_heading', 
-            main_title = '$main_title', 
-            mission_text = '$mission_text',
-            mission_point1 = '$mission_p1',
-            mission_point2 = '$mission_p2',
-            vision_text = '$vision_text',
-            vision_point1 = '$vision_p1',
-            vision_point2 = '$vision_p2',
-            core_text = '$core_text',
-            core_point1 = '$core_p1',
-            core_point2 = '$core_p2',
-            video_link = '$video_link',
-            button_link = '$button_link'
-            $img_query 
-            WHERE id = 1";
-
-    if ($conn->query($sql)) {
-        echo "<script>alert('Website Updated Successfully!'); window.location='about-section.php';</script>";
-    } else {
-        echo "Error: " . $conn->error;
-    }
-}
-
-// Reload the data for the form
-$about = $conn->query("SELECT * FROM about_section WHERE id = 1")->fetch_assoc();
 ?>
 
 <!-- meta tags and other links -->
@@ -110,21 +51,21 @@ $about = $conn->query("SELECT * FROM about_section WHERE id = 1")->fetch_assoc()
 
     /* Ensures the search input and button are the exact same height */
     .h-40-px {
-        height: 40px !important;
+      height: 40px !important;
     }
 
     /* Adjusts the search icon position inside the 40px input */
     .navbar-search .icon {
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 20px;
-        color: #94a3b8;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 20px;
+      color: #94a3b8;
     }
 
     /* Keeps the elements grouped together even on smaller screens */
     .dataTable-wrapper .d-flex {
-        display: flex !important;
-        flex-direction: row !important;
+      display: flex !important;
+      flex-direction: row !important;
     }
   </style>
 </head>
@@ -135,7 +76,8 @@ $about = $conn->query("SELECT * FROM about_section WHERE id = 1")->fetch_assoc()
   <div class="body-overlay"></div>
 
   <button type="button"
-    class="theme-customization__button w-48-px h-48-px bg-primary-600 text-white rounded-circle d-flex justify-content-center align-items-center position-fixed end-0 bottom-0 mb-40 me-40 text-2xxl bg-hover-primary-700" aria-label="Theme Customization Button">
+    class="theme-customization__button w-48-px h-48-px bg-primary-600 text-white rounded-circle d-flex justify-content-center align-items-center position-fixed end-0 bottom-0 mb-40 me-40 text-2xxl bg-hover-primary-700"
+    aria-label="Theme Customization Button">
     <i class="ri-settings-3-line animate-spin"></i>
   </button>
   <div class="theme-customization-sidebar w-100 bg-base h-100vh overflow-y-auto position-fixed end-0 top-0">
@@ -177,13 +119,15 @@ $about = $conn->query("SELECT * FROM about_section WHERE id = 1")->fetch_assoc()
         <h6 class="fw-medium text-primary-light text-md mb-3">Page Direction</h6>
         <div class="d-grid grid-cols-2 gap-3">
           <button type="button"
-            class="theme-setting-item__btn ltr-mode-btn d-flex align-items-center justify-content-center gap-2 h-56-px rounded-3 text-xl" aria-label="LTR">
+            class="theme-setting-item__btn ltr-mode-btn d-flex align-items-center justify-content-center gap-2 h-56-px rounded-3 text-xl"
+            aria-label="LTR">
             <span><i class="ri-align-item-left-line"></i></span>
             <span class="h6 text-sm font-medium mb-0">LTR</span>
           </button>
 
           <button type="button"
-            class="theme-setting-item__btn rtl-mode-btn d-flex align-items-center justify-content-center gap-2 h-56-px rounded-3 text-xl" aria-label="RTL">
+            class="theme-setting-item__btn rtl-mode-btn d-flex align-items-center justify-content-center gap-2 h-56-px rounded-3 text-xl"
+            aria-label="RTL">
             <span class="h6 text-sm font-medium mb-0">RTL</span>
             <span><i class="ri-align-item-right-line"></i></span>
           </button>
@@ -193,46 +137,34 @@ $about = $conn->query("SELECT * FROM about_section WHERE id = 1")->fetch_assoc()
       <div class="theme-setting-item">
         <h6 class="fw-medium text-primary-light text-md mb-3">Color Schema</h6>
         <div class="d-grid grid-cols-3 gap-3">
-          <button type="button"
-            class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
+          <button type="button" class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
             data-color="base" aria-label="Base">
-            <span class="color-picker-btn__box h-40-px w-100 rounded-3"
-              style="background-color: #25A194;"></span>
+            <span class="color-picker-btn__box h-40-px w-100 rounded-3" style="background-color: #25A194;"></span>
             <span class="fw-medium mt-1" style="color: #25A194;">Base</span>
           </button>
-          <button type="button"
-            class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
+          <button type="button" class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
             data-color="red" aria-label="Red">
-            <span class="color-picker-btn__box h-40-px w-100 rounded-3"
-              style="background-color: #dc2626;"></span>
+            <span class="color-picker-btn__box h-40-px w-100 rounded-3" style="background-color: #dc2626;"></span>
             <span class="fw-medium mt-1" style="color: #dc2626;">Red</span>
           </button>
-          <button type="button"
-            class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
+          <button type="button" class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
             data-color="blue" aria-label="Blue">
-            <span class="color-picker-btn__box h-40-px w-100 rounded-3"
-              style="background-color: #2563eb;"></span>
+            <span class="color-picker-btn__box h-40-px w-100 rounded-3" style="background-color: #2563eb;"></span>
             <span class="fw-medium mt-1" style="color: #2563eb;">Blue</span>
           </button>
-          <button type="button"
-            class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
+          <button type="button" class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
             data-color="yellow" aria-label="Yellow">
-            <span class="color-picker-btn__box h-40-px w-100 rounded-3"
-              style="background-color: #ff9f29;"></span>
+            <span class="color-picker-btn__box h-40-px w-100 rounded-3" style="background-color: #ff9f29;"></span>
             <span class="fw-medium mt-1" style="color: #ff9f29;">Yellow</span>
           </button>
-          <button type="button"
-            class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
+          <button type="button" class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
             data-color="cyan" aria-label="Cyan">
-            <span class="color-picker-btn__box h-40-px w-100 rounded-3"
-              style="background-color: #00b8f2;"></span>
+            <span class="color-picker-btn__box h-40-px w-100 rounded-3" style="background-color: #00b8f2;"></span>
             <span class="fw-medium mt-1" style="color: #00b8f2;">Cyan</span>
           </button>
-          <button type="button"
-            class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
+          <button type="button" class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
             data-color="violet" aria-label="Violet">
-            <span class="color-picker-btn__box h-40-px w-100 rounded-3"
-              style="background-color: #7c3aed;"></span>
+            <span class="color-picker-btn__box h-40-px w-100 rounded-3" style="background-color: #7c3aed;"></span>
             <span class="fw-medium mt-1" style="color: #7c3aed;">Violet</span>
           </button>
         </div>
@@ -392,48 +324,48 @@ $about = $conn->query("SELECT * FROM about_section WHERE id = 1")->fetch_assoc()
             <li>
               <a href="about-section.php">
                 <i class="ti-info-alt"></i>
-                  <span>About update</span>
+                <span>About update</span>
               </a>
             </li>
           </ul>
         </li>
         <li class="dropdown">
-  <a href="javascript:void(0)">
-    <i class="ri-message-2-line"></i>
-    <span>Responses</span>
-  </a>
-  <ul class="sidebar-submenu">
+          <a href="javascript:void(0)">
+            <i class="ri-message-2-line"></i>
+            <span>Responses</span>
+          </a>
+          <ul class="sidebar-submenu">
 
-    <li>
-      <a href="response.php?filter=today">
-        <i class="ri-circle-fill circle-icon w-auto"></i>
-        <span>Today's Inquiries</span>
-      </a>
-    </li>
+            <li>
+              <a href="response.php?filter=today">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                <span>Today's Inquiries</span>
+              </a>
+            </li>
 
-    <li>
-      <a href="response.php?filter=unread">
-        <i class="ri-circle-fill circle-icon w-auto"></i>
-        <span>Unread Inquiries</span>
-      </a>
-    </li>
+            <li>
+              <a href="response.php?filter=unread">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                <span>Unread Inquiries</span>
+              </a>
+            </li>
 
-    <li>
-      <a href="response.php?filter=read">
-        <i class="ri-circle-fill circle-icon w-auto"></i>
-        <span>Read Inquiries</span>
-      </a>
-    </li>
+            <li>
+              <a href="response.php?filter=read">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                <span>Read Inquiries</span>
+              </a>
+            </li>
 
-    <li>
-      <a href="response.php">
-        <i class="ri-circle-fill circle-icon w-auto"></i>
-        <span>All Inquiries</span>
-      </a>
-    </li>
+            <li>
+              <a href="response.php">
+                <i class="ri-circle-fill circle-icon w-auto"></i>
+                <span>All Inquiries</span>
+              </a>
+            </li>
 
-  </ul>
-</li>
+          </ul>
+        </li>
         <!-- <li class="dropdown">
           <a href="javascript:void(0)">
             <i class="ri-user-follow-line"></i>
@@ -862,7 +794,8 @@ $about = $conn->query("SELECT * FROM about_section WHERE id = 1")->fetch_assoc()
         <div class="col-auto">
           <div class="d-flex flex-wrap align-items-center gap-3">
             <button type="button" data-theme-toggle
-              class="w-40-px h-40-px bg-neutral-200 rounded-circle d-flex justify-content-center align-items-center" aria-label="Dark & Light Mode Button"></button>
+              class="w-40-px h-40-px bg-neutral-200 rounded-circle d-flex justify-content-center align-items-center"
+              aria-label="Dark & Light Mode Button"></button>
             <div class="dropdown d-inline-block">
               <button
                 class="has-indicator w-40-px h-40-px bg-neutral-200 rounded-circle d-flex justify-content-center align-items-center"
@@ -1064,7 +997,8 @@ $about = $conn->query("SELECT * FROM about_section WHERE id = 1")->fetch_assoc()
                 </div>
 
                 <div class="text-center py-12 px-16">
-                  <a href="javascript:void(0)" class="text-primary-600 fw-semibold text-md hover-underline">See All Notification</a>
+                  <a href="javascript:void(0)" class="text-primary-600 fw-semibold text-md hover-underline">See All
+                    Notification</a>
                 </div>
 
               </div>
@@ -1077,8 +1011,8 @@ $about = $conn->query("SELECT * FROM about_section WHERE id = 1")->fetch_assoc()
 
     <!-- <div class="dashboard-main-body"> -->
 
-      <!-- Breadcrumb -->
-      <!-- <div class="breadcrumb d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
+    <!-- Breadcrumb -->
+    <!-- <div class="breadcrumb d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
         <div>
           <h1 class="fw-semibold mb-4 h6 text-primary-light">Student List</h1>
           <div>
@@ -1090,78 +1024,77 @@ $about = $conn->query("SELECT * FROM about_section WHERE id = 1")->fetch_assoc()
         </div>
       </div> -->
 
-     <div class="dashboard-main-body">
-            <div class="breadcrumb d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
-                <div>
-                    <h1 class="fw-semibold mb-4 h6 text-primary-light">About Section</h1>
-                    <div>
-                        <a href="index.php" class="text-secondary-light hover-text-primary">Dashboard</a>
-                        <span class="text-secondary-light"> / Edit About</span>
-                    </div>
-                </div>
+    <div class="dashboard-main-body">
+      <div class="breadcrumb d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
+        <div>
+          <h1 class="fw-semibold mb-4 h6 text-primary-light">About Section</h1>
+          <div>
+            <a href="index.php" class="text-secondary-light hover-text-primary">Dashboard</a>
+            <span class="text-secondary-light"> / Edit About</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card h-100 radius-12">
+        <div class="card-header border-bottom border-neutral-200">
+          <h5 class="card-title mb-0">Edit Website About Details</h5>
+        </div>
+        <div class="card-body p-24">
+          <form id="processImageForm" enctype="multipart/form-data">
+
+            <div class="row">
+
+              <div class="col-md-4">
+                <label>Process Image 1</label>
+                <input type="file" name="process_image1" class="form-control image-input" data-preview="preview1">
+
+                <img id="preview1" src="../assets/images/about/process-1.png" width="120" class="mt-2">
+              </div>
+
+              <div class="col-md-4">
+                <label>Process Image 2</label>
+                <input type="file" name="process_image2" class="form-control image-input" data-preview="preview2">
+
+                <img id="preview2" src="../assets/images/about/process-2.png" width="120" class="mt-2">
+              </div>
+
+              <div class="col-md-4">
+                <label>Process Image 3</label>
+                <input type="file" name="process_image3" class="form-control image-input" data-preview="preview3">
+
+                <img id="preview3" src="../assets/images/about/process-3.png" width="120" class="mt-2">
+              </div>
+
             </div>
 
-            <div class="card h-100 radius-12">
-                <div class="card-header border-bottom border-neutral-200">
-                    <h5 class="card-title mb-0">Edit Website About Details</h5>
-                </div>
-                <div class="card-body p-24">
-    <form action="" method="POST" enctype="multipart/form-data">
-    <div class="row gy-4">
-        <div class="col-md-6">
-            <label class="form-label">Main Image</label>
-            <input type="file" name="main_image" class="form-control">
-            <img src="uploads/about/<?= $about['main_image'] ?>" width="100" class="mt-2 radius-8">
-        </div>
-        <div class="col-md-6">
-            <label class="form-label">Top Heading</label>
-            <input type="text" name="top_heading" class="form-control" value="<?= $about['top_heading'] ?>">
-        </div>
-        
-        <div class="col-12">
-            <label class="form-label">Main Title</label>
-            <input type="text" name="main_title" class="form-control" value="<?= $about['main_title'] ?>">
-        </div>
+            <br>
 
-        <div class="col-md-4">
-            <h6 class="text-primary-600">Mission Section</h6>
-            <textarea name="mission_text" class="form-control mb-2" placeholder="Mission Text"><?= $about['mission_text'] ?></textarea>
-            <input type="text" name="mission_point1" class="form-control mb-2" value="<?= $about['mission_point1'] ?>" placeholder="Point 1">
-            <input type="text" name="mission_point2" class="form-control" value="<?= $about['mission_point2'] ?>" placeholder="Point 2">
-        </div>
+            <div class="captcha-container">
 
-        <div class="col-md-4">
-            <h6 class="text-primary-600">Vision Section</h6>
-            <textarea name="vision_text" class="form-control mb-2" placeholder="Vision Text"><?= $about['vision_text'] ?></textarea>
-            <input type="text" name="vision_point1" class="form-control mb-2" value="<?= $about['vision_point1'] ?>" placeholder="Point 1">
-            <input type="text" name="vision_point2" class="form-control" value="<?= $about['vision_point2'] ?>" placeholder="Point 2">
-        </div>
+              <label class="captcha-label">Security Verification</label>
 
-        <div class="col-md-4">
-            <h6 class="text-primary-600">Core Values</h6>
-            <textarea name="core_text" class="form-control mb-2" placeholder="Core Text"><?= $about['core_text'] ?></textarea>
-            <input type="text" name="core_point1" class="form-control mb-2" value="<?= $about['core_point1'] ?>" placeholder="Value 1">
-            <input type="text" name="core_point2" class="form-control" value="<?= $about['core_point2'] ?>" placeholder="Value 2">
-        </div>
+              <div class="captcha-box">
+                <span id="captchaText"></span>
+                <button type="button" class="refresh-btn" onclick="generateCaptcha()">
+                  ⟳
+                </button>
+              </div>
 
-        <div class="col-md-6">
-            <label class="form-label">Video URL (YouTube)</label>
-            <input type="text" name="video_link" class="form-control" value="<?= $about['video_link'] ?>">
-        </div>
-        <div class="col-md-6">
-            <label class="form-label">Button Link</label>
-            <input type="text" name="button_link" class="form-control" value="<?= $about['button_link'] ?>">
-        </div>
+              <input type="text" id="captchaInput" class="form-control captcha-input" placeholder="Enter the captcha">
 
-        <div class="col-12 mt-4">
-            <button type="submit" name="update_about" class="btn btn-primary-600 px-40">Update Website</button>
+            </div>
+
+            <br>
+
+            <button type="button" class="btn btn-primary" onclick="confirmUpdate()">
+              Update Images
+            </button>
+
+          </form>
         </div>
+      </div>
     </div>
-</form>
-</div>
-            </div>
-        </div>
-      
+
 
     </div>
 
@@ -1182,10 +1115,13 @@ $about = $conn->query("SELECT * FROM about_section WHERE id = 1")->fetch_assoc()
             <iconify-icon icon="fluent:delete-24-regular"></iconify-icon>
           </span>
           <h6 class="text-lg fw-semibold text-primary-light mb-0">Suspend Student?</h6>
-          <p class="text-sm text-secondary-light">Are you sure you want to suspend <?= htmlspecialchars($student['full_name']) ?>?</p>
+          <p class="text-sm text-secondary-light">Are you sure you want to suspend
+            <?= htmlspecialchars($student['full_name']) ?>?
+          </p>
           <div class="d-flex align-items-center justify-content-center gap-3 mt-24">
             <button type="button" class="btn btn-secondary px-24 py-11 radius-8" data-bs-dismiss="modal">Cancel</button>
-            <a href="suspend-student-logic.php?id=<?= $student['id'] ?>" class="btn btn-danger px-16 py-12 radius-8">Yes, Suspend</a>
+            <a href="suspend-student-logic.php?id=<?= $student['id'] ?>"
+              class="btn btn-danger px-16 py-12 radius-8">Yes, Suspend</a>
           </div>
         </div>
       </div>
@@ -1233,7 +1169,7 @@ $about = $conn->query("SELECT * FROM about_section WHERE id = 1")->fetch_assoc()
 </script> -->
 
   <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
       // ✅ Initialize table with 12-row pagination
       const tableInstance = new DataTable('#dataTable', {
         pageLength: 12,
@@ -1247,95 +1183,229 @@ $about = $conn->query("SELECT * FROM about_section WHERE id = 1")->fetch_assoc()
       });
 
       // ✅ Connect your new Custom Search line to the table
-      $('#customSearch').on('keyup', function() {
+      $('#customSearch').on('keyup', function () {
         tableInstance.search(this.value).draw();
       });
 
       // ✅ Handle Export Buttons
-function getCurrentPageData() {
-    const rows = [];
-    const headers = [];
+      function getCurrentPageData() {
+        const rows = [];
+        const headers = [];
 
-    // Get table headers (exclude Action column)
-    $('#dataTable thead th').each(function(index) {
-        if(index !== 9) { // Action column index
+        // Get table headers (exclude Action column)
+        $('#dataTable thead th').each(function (index) {
+          if (index !== 9) { // Action column index
             headers.push($(this).text().trim());
-        }
-    });
-
-    // Get visible rows only (current page)
-    $('#dataTable tbody tr:visible').each(function() {
-        const rowData = [];
-        $(this).find('td').each(function(index) {
-            if(index !== 9) { // Skip Action column
-                rowData.push($(this).text().trim());
-            }
+          }
         });
-        rows.push(rowData);
-    });
 
-    return { headers, rows };
-}
+        // Get visible rows only (current page)
+        $('#dataTable tbody tr:visible').each(function () {
+          const rowData = [];
+          $(this).find('td').each(function (index) {
+            if (index !== 9) { // Skip Action column
+              rowData.push($(this).text().trim());
+            }
+          });
+          rows.push(rowData);
+        });
 
-// ✅ PDF Export
-$('#exportPDF').on('click', function(e) {
-    e.preventDefault();
+        return { headers, rows };
+      }
 
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF('landscape');
+      // ✅ PDF Export
+      $('#exportPDF').on('click', function (e) {
+        e.preventDefault();
 
-    const tableData = getCurrentPageData();
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF('landscape');
 
-    const now = new Date();
-    const filename = "Student_List_" +
-        now.toLocaleDateString().replace(/\//g, '-') + "_" +
-        now.getHours() + "-" +
-        now.getMinutes() + "-" +
-        now.getSeconds();
+        const tableData = getCurrentPageData();
 
-    doc.autoTable({
-        head: [tableData.headers],
-        body: tableData.rows,
-        styles: { fontSize: 8 }
-    });
+        const now = new Date();
+        const filename = "Student_List_" +
+          now.toLocaleDateString().replace(/\//g, '-') + "_" +
+          now.getHours() + "-" +
+          now.getMinutes() + "-" +
+          now.getSeconds();
 
-    doc.save(filename + ".pdf");
-});
+        doc.autoTable({
+          head: [tableData.headers],
+          body: tableData.rows,
+          styles: { fontSize: 8 }
+        });
 
-// ✅ Excel Export
-$('#exportExcel').on('click', function(e) {
-    e.preventDefault();
+        doc.save(filename + ".pdf");
+      });
 
-    const tableData = getCurrentPageData();
+      // ✅ Excel Export
+      $('#exportExcel').on('click', function (e) {
+        e.preventDefault();
 
-    const worksheet = XLSX.utils.aoa_to_sheet([
-        tableData.headers,
-        ...tableData.rows
-    ]);
+        const tableData = getCurrentPageData();
 
-    const workbook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(workbook, worksheet, "Students");
+        const worksheet = XLSX.utils.aoa_to_sheet([
+          tableData.headers,
+          ...tableData.rows
+        ]);
 
-    const now = new Date();
-    const filename = "Student_List_" +
-        now.toLocaleDateString().replace(/\//g, '-') + "_" +
-        now.getHours() + "-" +
-        now.getMinutes() + "-" +
-        now.getSeconds();
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, "Students");
 
-    XLSX.writeFile(workbook, filename + ".xlsx");
-});
+        const now = new Date();
+        const filename = "Student_List_" +
+          now.toLocaleDateString().replace(/\//g, '-') + "_" +
+          now.getHours() + "-" +
+          now.getMinutes() + "-" +
+          now.getSeconds();
+
+        XLSX.writeFile(workbook, filename + ".xlsx");
+      });
 
     });
   </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 
+  <script>
+    // ===============================
+    // Image Preview + Validation
+    // ===============================
+
+    document.querySelectorAll(".image-input").forEach(input => {
+
+      input.addEventListener("change", function () {
+
+        let file = this.files[0];
+        let previewID = this.dataset.preview;
+        let preview = document.getElementById(previewID);
+
+        if (!file) return;
+
+        let allowedTypes = ["image/jpeg", "image/jpg"];
+
+        if (!allowedTypes.includes(file.type)) {
+          alert("Only JPG/JPEG images allowed");
+          this.value = "";
+          return;
+        }
+
+        // max size 500KB
+        if (file.size > 500000) {
+          alert("Image must be less than 500KB");
+          this.value = "";
+          return;
+        }
+
+        // preview
+        let reader = new FileReader();
+
+        reader.onload = function (e) {
+          preview.src = e.target.result;
+        }
+
+        reader.readAsDataURL(file);
+
+      });
+
+    });
+
+
+    // ===============================
+    // CAPTCHA GENERATOR
+    // ===============================
+
+    let captcha = "";
+
+    function generateCaptcha() {
+
+      const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+
+      captcha = "";
+
+      for (let i = 0; i < 5; i++) {
+        captcha += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+
+      document.getElementById("captchaText").innerText = captcha;
+
+    }
+
+    generateCaptcha();
+
+
+    // ===============================
+    // CONFIRM UPDATE
+    // ===============================
+
+    function confirmUpdate() {
+
+      let userCaptcha = document.getElementById("captchaInput").value.trim();
+
+      if (userCaptcha !== captcha) {
+        alert("Incorrect captcha!");
+        return;
+      }
+
+      if (confirm("Are you sure you want to update images?")) {
+        uploadImages();
+      }
+
+    }
+
+
+    // ===============================
+    // AJAX UPLOAD
+    // ===============================
+
+    function uploadImages() {
+
+      let form = document.getElementById("processImageForm");
+      let formData = new FormData(form);
+
+      fetch("update_process_images.php", {
+        method: "POST",
+        body: formData
+      })
+        .then(res => res.text())
+        .then(data => {
+
+          alert("Images updated successfully!");
+
+          resetForm();
+
+        })
+        .catch(err => {
+
+          alert("Upload failed");
+
+        });
+
+    }
+
+    function resetForm() {
+
+      // reset file inputs
+      document.getElementById("processImageForm").reset();
+
+      // remove previews
+      document.getElementById("preview1").src = "";
+      document.getElementById("preview2").src = "";
+      document.getElementById("preview3").src = "";
+
+      // clear captcha field
+      document.getElementById("captchaInput").value = "";
+
+      // generate new captcha
+      generateCaptcha();
+
+    }
+  </script>
 
 </body>
 
