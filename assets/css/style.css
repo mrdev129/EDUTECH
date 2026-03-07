@@ -21390,8 +21390,10 @@ section {
 
   .rs-brand__slider .rs-brand-slider-item a:hover {
     transform: none !important;
-    /* No lift on mobile touch */
+    
   }
+
+  
 
 
 
@@ -22130,12 +22132,13 @@ section {
     align-items: center;
     justify-content: center;
     gap: 15px;
+    font-family: "Urbanist", sans-serif;
 }
 
 /* 2. Text Styling: Matches FAQ Premium Serif Design */
 .rs-brand .rs-brand__top-title span {
     /* Font Family & Weight */
-    font-family: 'Fraunces', serif !important; 
+    font-family: "Urbanist", sans-serif; 
     font-weight: 200 !important;
     
     /* Size & Elite Spacing */

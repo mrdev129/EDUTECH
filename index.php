@@ -126,6 +126,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     <link rel="stylesheet" href="assets/css/style.css?v=1.3">
     <link rel="stylesheet" href="assets/css/card-swipe.css?v=1.3">
+    <link rel="stylesheet" href="assets/css/brand.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/team.css">
@@ -522,7 +523,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                             <div class="rs-content">
                                 <h4 class="title" style="color: #fff;">Exams</h4>
                                 <p style="color: #fff; font-size: 14px;">Stay updated with entrance exam dates,
-                                    patterns, and preparation tips.</p>
+                                    patterns and preparation tips.</p>
                                 <a class="main-btn" href="#" style="padding: 10px 20px; font-size: 14px;">Find Exams</a>
                             </div>
                         </div>
@@ -537,7 +538,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                             <div class="rs-content">
                                 <h4 class="title" style="color: #fff;">Colleges</h4>
                                 <p style="color: #fff; font-size: 14px;">Discover colleges that match your interests,
-                                    budget, and career goals.</p>
+                                    budget and career goals.</p>
+                                <br>
                                 <a class="main-btn" href="#" style="padding: 10px 20px; font-size: 14px;">Find
                                     College</a>
                             </div>
@@ -554,6 +556,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                 <h4 class="title" style="color: #fff;">Courses</h4>
                                 <p style="color: #fff; font-size: 14px;">Browse industry-relevant courses designed for
                                     your future success.</p>
+                                <br>
                                 <a class="main-btn" href="management.php"
                                     style="padding: 10px 20px; font-size: 14px;">Find Courses</a>
                             </div>
@@ -797,7 +800,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                 onclick="switchCourseStream(event, 'course-<?= str_replace([' ', '/', '.'], '', $stream) ?>')">
                                 <?= $stream ?>
                             </button>
-                            <?php $count++;
+                        <?php $count++;
                         endforeach; ?>
                     </div>
                 </div>
@@ -806,7 +809,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <?php $count = 0;
                     foreach ($courseData as $stream => $branches):
                         $cleanId = 'course-' . str_replace([' ', '/', '.'], '', $stream);
-                        ?>
+                    ?>
                         <div id="<?= $cleanId ?>" class="branch-panel <?= $count === 0 ? 'active' : '' ?>">
 
                             <div class="rs-carousel owl-carousel branch-slider" data-loop="true" data-items="3"
@@ -840,7 +843,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                 <?php endforeach; ?>
                             </div>
                         </div>
-                        <?php $count++;
+                    <?php $count++;
                     endforeach; ?>
                 </div>
             </div>
@@ -949,7 +952,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                                     connects education with future opportunities.</li>
                                             </ul>
 
-                                            <a class="main-btn" href="about.php">
+                                            <a class="main-btn" href="about_us.php">
                                                 Know More About Us
                                                 <i class="ri-arrow-right-fill"></i>
                                             </a>
@@ -986,7 +989,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                                 </li>
                                             </ul>
 
-                                            <a class="main-btn" href="about.html">
+                                            <a class="main-btn" href="about_us.php">
                                                 Know More About Us
                                                 <i class="ri-arrow-right-fill"></i>
                                             </a>
@@ -1023,19 +1026,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                                 </li>
                                             </ul>
 
-                                            
-                                                <a class="main-btn" href="about.html">
-                                                    Know More About Us
-                                                    <i class="ri-arrow-right-fill"></i>
-                                                </a>
 
-                                                <div class="play-icon ms-3">
-                                                    <a class="rs-popup-videos"
-                                                        href="https://www.youtube.com/watch?v=example">
-                                                        <i class="fa fa-play"></i>
-                                                    </a>
-                                                </div>
-                                            
+                                            <a class="main-btn" href="about_us.php">
+                                                Know More About Us
+                                                <i class="ri-arrow-right-fill"></i>
+                                            </a>
+
+                                            <div class="play-icon ms-3">
+                                                <a class="rs-popup-videos"
+                                                    href="https://www.youtube.com/watch?v=example">
+                                                    <i class="fa fa-play"></i>
+                                                </a>
+                                            </div>
+
 
                                         </div>
 
@@ -1062,51 +1065,58 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <img src="assets/images/heart-pulse-rate-orange.svg" alt="">
                 </div>
 
-                <div class="rs-brand__slider">
-                    <div class="owl-carousel brand-carousel">
-
-                        <div class="brand-item">
-                            <img src="assets/images/brand/bits.png" alt="">
-                        </div>
-
-                        <div class="brand-item">
-                            <img src="assets/images/brand/christ.jpeg" alt="">
-                        </div>
-
-                        <div class="brand-item">
-                            <img src="assets/images/brand/cvraman.png" alt="">
-                        </div>
-
-                        <div class="brand-item">
-                            <img src="assets/images/brand/kiit.png" alt="">
-                        </div>
-
-                        <div class="brand-item">
-                            <img src="assets/images/brand/manipal.png"
-                                alt="">
-                        </div>
-
-                        <div class="brand-item">
-                            <img src="assets/images/brand/rv.png" alt="">
-                        </div>
-
-                        <div class="brand-item">
-                            <img src="assets/images/brand/soa.png" alt="">
-                        </div>
-
-                        <div class="brand-item">
-                            <img src="assets/images/brand/srm.png" alt="">
-                        </div>
-                        <div class="brand-item">
-                            <img src="assets/images/brand/vit.jpg" alt="">
-                        </div>
-
-                    </div>
-                </div>
+                <div class="logos">
+  <div class="logos-slide">
+    <img src="assets/images/brand/alluri.png" />
+    <img src="assets/images/brand/balaji.jpg" />
+    <img src="assets/images/brand/bharath.png" />
+    <img src="assets/images/brand/dy.png" />
+    <img src="assets/images/brand/great.jpeg" />
+    <img src="assets/images/brand/gvp.png" />
+    <img src="assets/images/brand/kasturabha.jpeg" />
+    <img src="assets/images/brand/kims.png" />
+    <img src="assets/images/brand/maharaja.jpeg" />
+    <img src="assets/images/brand/vinayak.png" />
+    <img src="assets/images/brand/sri.png" />
+    <img src="assets/images/brand/bits.png" />
+    <img src="assets/images/brand/cvraman.png" />
+    <img src="assets/images/brand/christ.jpeg" />
+    <img src="assets/images/brand/kiit.png" />
+    <img src="assets/images/brand/manipal.png" />
+    <img src="assets/images/brand/rv.png" />
+    <img src="assets/images/brand/soa.png" />
+    <img src="assets/images/brand/srm.png" />
+    <img src="assets/images/brand/vit.jpg" />
+  </div>
+  <!-- <div class="logos-slide">
+    <img src="assets/images/brand/alluri.png" />
+    <img src="assets/images/brand/balaji.jpg" />
+    <img src="assets/images/brand/bharath.png" />
+    <img src="assets/images/brand/dy.png" />
+    <img src="assets/images/brand/great.jpeg" />
+    <img src="assets/images/brand/gvp.png" />
+    <img src="assets/images/brand/kasturabha.jpeg" />
+    <img src="assets/images/brand/kims.png" />
+    <img src="assets/images/brand/maharaja.jpeg" />
+    <img src="assets/images/brand/vinayak.png" />
+    <img src="assets/images/brand/sri.png" />
+    <img src="assets/images/brand/bits.png" />
+    <img src="assets/images/brand/cvraman.png" />
+    <img src="assets/images/brand/christ.jpeg" />
+    <img src="assets/images/brand/kiit.png" />
+    <img src="assets/images/brand/manipal.png" />
+    <img src="assets/images/brand/rv.png" />
+    <img src="assets/images/brand/soa.png" />
+    <img src="assets/images/brand/srm.png" />
+    <img src="assets/images/brand/vit.jpg" />
+  </div> -->
+  
+  
+</div>
 
             </div>
         </div>
-       
+
         <!--======== Brand End ========-->
 
         <!--======== TEAM MEMBERS ========-->
@@ -2288,7 +2298,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <script src="assets/js/main.js"></script>
 
         <script>
-            $(window).on('load', function () {
+            $(window).on('load', function() {
                 // 1. Initialize Background Slider (Sliding Left to Right)
                 var bgSlider = $('.hero-bg-slider');
 
@@ -2309,7 +2319,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     });
 
                     // Force a refresh after a short delay to calculate widths correctly
-                    setTimeout(function () {
+                    setTimeout(function() {
                         bgSlider.trigger('refresh.owl.carousel');
                     }, 200);
                 }
@@ -2351,7 +2361,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
 
-            $(document).ready(function () {
+            $(document).ready(function() {
                 var brandSlider = $('.mobile-brand-grid');
 
                 function initBrandSlider() {
@@ -2381,14 +2391,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 }
 
                 initBrandSlider();
-                $(window).on('resize', function () {
+                $(window).on('resize', function() {
                     initBrandSlider();
                 });
 
 
             });
 
-            $(document).ready(function () {
+            $(document).ready(function() {
                 // Only initialize the blog slider for mobile users
                 if ($(window).width() < 768) {
                     $(".rs-blog-2 .owl-carousel").owlCarousel({
@@ -2403,7 +2413,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             });
         </script>
         <script>
-            document.addEventListener("DOMContentLoaded", function () {
+            document.addEventListener("DOMContentLoaded", function() {
                 const modal = document.getElementById("enquireModal");
                 const modalContent = document.querySelector(".enquire-modal-content");
                 const closeBtn = document.querySelector(".enquire-close");
@@ -2419,9 +2429,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     document.getElementById("openEnquireNav")
                 ];
 
-                openButtons.forEach(function (btn) {
+                openButtons.forEach(function(btn) {
                     if (btn) {
-                        btn.addEventListener("click", function (e) {
+                        btn.addEventListener("click", function(e) {
                             e.preventDefault();
                             modal.style.display = "flex";
                         });
@@ -2430,19 +2440,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                 // Close logic
                 if (closeBtn) {
-                    closeBtn.addEventListener("click", function () {
+                    closeBtn.addEventListener("click", function() {
                         modal.style.display = "none";
                     });
                 }
 
-                modal.addEventListener("click", function (e) {
+                modal.addEventListener("click", function(e) {
                     if (!modalContent.contains(e.target)) {
                         modal.style.display = "none";
                     }
                 });
             });
 
-            $(document).ready(function () {
+            $(document).ready(function() {
                 if ($(window).width() < 768) {
                     $(".featured-slider").owlCarousel({
                         items: 1,
@@ -2456,7 +2466,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 }
             });
 
-            $(document).ready(function () {
+            $(document).ready(function() {
                 // We only run this logic if the screen is mobile
                 if ($(window).width() < 768) {
                     var $teamSlider = $('.rs-project__slider');
@@ -2476,7 +2486,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </script>
 
         <script>
-            document.addEventListener('DOMContentLoaded', function () {
+            document.addEventListener('DOMContentLoaded', function() {
                 const slider = document.querySelector('.category-slider-wrapper');
                 let isDown = false;
                 let startX;
@@ -2502,7 +2512,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     slider.scrollLeft = scrollLeft - walk;
                 });
 
-                window.switchCourseStream = function (evt, streamId) {
+                window.switchCourseStream = function(evt, streamId) {
                     document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
                     document.querySelectorAll('.branch-panel').forEach(panel => panel.classList.remove('active'));
 
@@ -2511,7 +2521,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         activePanel.classList.add('active');
                         evt.currentTarget.classList.add('active');
 
-                        setTimeout(function () {
+                        setTimeout(function() {
                             var $carousel = $(activePanel).find('.branch-slider');
                             if ($carousel.hasClass('owl-loaded')) {
                                 $carousel.trigger('refresh.owl.carousel');
@@ -2553,15 +2563,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </script>
 
         <script>
-            document.getElementById("contact-form").addEventListener("submit", function (e) {
+            document.getElementById("contact-form").addEventListener("submit", function(e) {
                 e.preventDefault();
 
                 let formData = new FormData(this);
 
                 fetch("save_inquiry.php", {
-                    method: "POST",
-                    body: formData
-                })
+                        method: "POST",
+                        body: formData
+                    })
                     .then(response => response.text())
                     .then(data => {
                         document.getElementById("form-response").innerHTML = data;
@@ -2663,7 +2673,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 }
 
                 // State change logic
-                stateSel.onchange = function () {
+                stateSel.onchange = function() {
                     districtSel.length = 1; // reset
                     citySel.length = 1; // reset
                     if (this.value == "") return;
@@ -2674,7 +2684,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 };
 
                 // District change logic
-                districtSel.onchange = function () {
+                districtSel.onchange = function() {
                     citySel.length = 1; // reset
                     if (this.value == "") return;
 
@@ -2715,7 +2725,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             });
         </script>
         <script>
-            document.addEventListener("DOMContentLoaded", function () {
+            document.addEventListener("DOMContentLoaded", function() {
                 const observerOptions = {
                     threshold: 0.15, // Triggers when 15% of the section is visible
                     rootMargin: "0px 0px -50px 0px" // Triggers slightly before the section hits the top
