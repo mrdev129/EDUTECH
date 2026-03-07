@@ -125,6 +125,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <link rel="stylesheet" href="assets/css/style.css?v=1.3">
     <link rel="stylesheet" href="assets/css/team.css">
 
+    <link rel="stylesheet" href="assets/css/about.css?v=1.5">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Poppins:wght@600;700;800&family=Outfit:wght@600;700;800&display=swap"
         rel="stylesheet">
@@ -188,7 +191,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 </p>
             </div>
         </div>
-         <div class="sliding-info-bar">
+        <div class="sliding-info-bar">
             <marquee behavior="scroll" direction="left" scrollamount="7">
                 Official website of EDUTECH University Online. | Secure & Confidential: only through the secure link on
                 this safe us. | Admissions for 2026 are now open! Apply Today.
@@ -199,7 +202,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
 
-        
+
         <div class="program-nav-bar">
             <div class="container">
                 <div class="nav-flex-wrapper">
@@ -221,100 +224,326 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </div>
         </div>
 
-         <div class="rs-footer__main-box">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <div class="rs-footer__about-box">
-                                <a href="index-2.html"><img src="assets/images/about/logo.jpeg" alt=""></a>
-                                <p> To empower students by providing expert guidance and transparent insights into the
-                                    complex world of higher education.</p>
-                                <div class="rs-footer__social">
-                                    <ul>
-                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a href="#"><i class="ri-twitter-x-fill"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                    </ul>
+
+
+        <main class="main-grid-layout">
+
+
+            <section class="column-left">
+
+                <section class="hero-section">
+                    <div class="hero-image-wrapper">
+                        <img src="assets/images/about-elements/header.png" alt="Students walking" class="hero-img">
+                    </div>
+
+                    <div class="hero-overlay-content">
+                        <div class="text-container">
+                            <p class="label-gold">ABOUT US |</p>
+                            <h1 class="main-heading">Empowering Students,<br>Shaping Futures.</h1>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="about-container">
+                    <div class="section-heading">
+                        <h2>ABOUT US</h2>
+                        <div class="accent-line">
+                            <span class="long-line"></span>
+                            <div class="dots-group">
+                                <span class="dot gold"></span>
+                                <span class="dot gold"></span>
+                                <span class="dot blue"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="intro-content-grid">
+                        <div class="icon-side">
+                            <img src="assets/images/about-elements/graduate-cap.png" alt="Education Growth Icon" class="element-icon">
+                        </div>
+                        <div class="text-side">
+                            <p><strong>Edutech Admission Experts</strong> is a trusted education consultancy dedicated to guiding students toward the right academic and career opportunities in India and abroad.</p>
+                            <p>An Odisha Government registered Organisation came into existence in the year 2026 with the belief of "empower students with accurate guidance". We specialize in end-to-end admission support and career placement services, helping students confidently take the next step toward a successful future.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="who-we-are-section">
+                    <div class="asymmetric-image-container">
+                        <div class="image-dots">
+                            <span class="dot teal"></span>
+                            <span class="dot gold"></span>
+                            <span class="dot gold"></span>
+                        </div>
+                        <div class="outer-frame">
+                            <div class="image-input-frame">
+                                <img src="assets/images/about-elements/coworking.png" alt="Consultation" class="fill-img">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="who-text-side">
+                        <div class="section-heading small">
+                            <h2>Who We Are</h2>
+                            <div class="accent-line">
+                                <span class="long-line"></span>
+                                <div class="dots-group">
+                                    <span class="dot blue"></span>
+                                    <span class="dot gold"></span>
+                                    <span class="dot gold"></span>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3">
-                            <div class="rs-footer__navigation">
-                                <div class="rs-footer-title">
-                                    <h4 class="title">Our Services</h4>
+                        <h4 class="mission-tag">OUR STORY & MISSION</h4>
+                        <p>At Edutech Admission Experts, we believe that the right education opens doors to lifelong success. Our team of experienced counsellors and industry professionals works closely with students and parents to simplify the admission process and provide reliable placement support. We act as a bridge between students and reputed colleges, universities, and organizations — ensuring smooth admissions and strong career beginnings.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="column-right">
+                <div class="who-we-are-rev">
+                    <div class="rev-text-side">
+                        <div class="section-heading small">
+                            <h2>Who We Are</h2>
+                            <div class="accent-line">
+                                <span class="long-line"></span>
+                                <div class="dots-group">
+                                    <span class="dot blue"></span>
+                                    <span class="dot gold"></span>
+                                    <span class="dot gold"></span>
                                 </div>
-                                <ul>
-                                    <li><a href="service-details-2.php"><i class="ri-arrow-right-fill"></i> B.Tech</a>
-                                    </li>
-                                    <li><a href="service-details-2.php"><i class="ri-arrow-right-fill"></i> MBA</a></li>
-                                    <li><a href="service-details-2.php"><i class="ri-arrow-right-fill"></i> MCA</a></li>
-                                    <li><a href="service-details-2.php"><i class="ri-arrow-right-fill"></i> Diploma</a>
-                                    </li>
-                                    <li><a href="service-details-2.php"><i class="ri-arrow-right-fill"></i> Other
-                                            Courses</a></li>
-                                </ul>
                             </div>
                         </div>
-                        <div class="col-lg-3">
-                            <div class="rs-footer__navigation rs-footer--navigation">
-                                <div class="rs-footer-title">
-                                    <h4 class="title">Quick Links</h4>
-                                </div>
-                                <ul>
-                                    <li><a href="#home"><i class="ri-arrow-right-fill"></i> Home</a></li>
-                                    <li><a href="#about"><i class="ri-arrow-right-fill"></i> About</a></li>
-                                    <li><a href="#course"><i class="ri-arrow-right-fill"></i>Course</a></li>
-                                    <li><a href="blog.php"><i class="ri-arrow-right-fill"></i> Blogs</a></li>
-                                    <li><a href="#team"><i class="ri-arrow-right-fill"></i> Team Members</a></li>
-                                    <li><a href="#gallery"><i class="ri-arrow-right-fill"></i> Gallery</a></li>
-                                    <li><a href="#contact"><i class="ri-arrow-right-fill"></i> Contact Us</a></li>
-                                </ul>
+                        <h4 class="mission-tag">OUR STORY & MISSION</h4>
+                        <p>At Edutech Admission Experts, we believe that the right education opens doors to lifelong success. Our team of experienced counsellors and industry professionals works closely with students and parents to simplify the admission process and provide reliable placement support. We act as a bridge between students and reputed colleges, universities, and organizations — ensuring smooth admissions and strong career beginnings.</p>
+                    </div>
+
+                    <div class="rev-asymmetric-container">
+                        <div class="image-dots">
+                            <span class="dot teal"></span>
+                            <span class="dot gold"></span>
+                            <span class="dot gold"></span>
+                        </div>
+                        <div class="rev-outer-frame">
+                            <div class="rev-image-input-frame">
+                                <img src="assets/images/about-elements/coworking.png" alt="Consultation" class="fill-img">
                             </div>
                         </div>
-                        <div class="col-lg-3">
-                            <div class="rs-footer__newsletter">
-                                <div class="rs-footer-title">
-                                    <h4 class="title">Subscription</h4>
+                    </div>
+                </div>
+                <br>
+
+                <div class="offers-container">
+                    <div class="offers-flex-layout">
+
+                        <div class="offers-visual-side">
+                            <div class="offers-image-dots">
+                                <span class="dot teal"></span>
+                                <span class="dot gold"></span>
+                                <span class="dot gold"></span>
+                            </div>
+                            <div class="offers-border-frame">
+                                <div class="offers-image-box">
+                                    <img src="assets/images/about-elements/banner-thumb-1.png" alt="Consultation">
                                 </div>
-                                <p>Register now to get latest updates on promotions & coupons.</p>
-                                <form action="#">
-                                    <div class="input-box">
-                                        <input type="email" placeholder="Your email address">
-                                        <button class="main-btn">Subscribe <svg width="13" height="14"
-                                                viewbox="0 0 13 14" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M6.5 7.8125H0V6.1875H6.5V0.5L13 7L6.5 13.5V7.8125Z"
-                                                    fill="#fff"></path>
-                                            </svg></button>
+                            </div>
+                        </div>
+
+                        <div class="offers-content-side">
+                            <div class="section-heading">
+                                <h2>What We Offer</h2>
+                                <div class="accent-line">
+                                    <span class="long-line"></span>
+                                    <div class="dots-group">
+                                        <span class="dot blue"></span>
+                                        <span class="dot gold"></span>
+                                        <span class="dot gold"></span>
                                     </div>
-                                </form>
+                                </div>
+                            </div>
+
+                            <h4 class="core-services-tag">OUR CORE SERVICES</h4>
+
+                            <div class="services-grid">
+                                <div class="service-grid-item">
+                                    <img src="assets/images/about-elements/graduate-cap.png" alt="Icon">
+                                    <p>Admission Guidance<br>for UG & PG</p>
+                                </div>
+                                <div class="service-grid-item">
+                                    <img src="assets/images/about-elements/counselling.png" alt="Icon">
+                                    <p>Career Counselling<br>& Stream Selection</p>
+                                </div>
+
+                                <div class="service-grid-item">
+                                    <img src="assets/images/about-elements/school.png" alt="Icon">
+                                    <p>College & University<br>Selection Assistance</p>
+                                </div>
+                                <div class="service-grid-item">
+                                    <img src="assets/images/about-elements/Business support-rafiki.png" alt="Icon">
+                                    <p>Documentation &<br>Application Support</p>
+                                </div>
+
+                                <div class="service-grid-item">
+                                    <img src="assets/images/about-elements/scholarship.png" alt="Icon">
+                                    <p>Scholarship<br>Guidance</p>
+                                </div>
+                                <div class="service-grid-item">
+                                    <img src="assets/images/about-elements/private-placement.png" alt="Icon">
+                                    <p>Placement & Career<br>Support Services</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="rs-footer__menu">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-lg-5">
-                            <div class="rs-footer__copyright-text">
-                                <p>© 2026 EDUTECH. Designed By <a target="_blank" href="https://rstheme.com/">Team
-                                        DRS.</a></p>
+
+                <div class="wc-section-container">
+                    <div class="section-heading">
+                        <h2>Why Choose Edutech?</h2>
+                        <div class="accent-line">
+                            <span class="long-line"></span>
+                            <div class="dots-group">
+                                <span class="dot gold"></span>
+                                <span class="dot gold"></span>
+                                <span class="dot blue"></span>
                             </div>
                         </div>
-                        <div class="col-lg-7">
-                            <div class="rs-footer__menu-box">
+                    </div>
+
+                    <div class="wc-grid-layout">
+                        <div class="wc-feature-card">
+                            <div class="wc-icon-holder">
+                                <span class="wc-badge">1</span>
+                                <img src="assets/images/about-elements/counselling.png" alt="Counselling Icon">
+                            </div>
+                            <p>Personalized<br>One-to-One Counselling</p>
+                        </div>
+
+                        <div class="wc-feature-card">
+                            <div class="wc-icon-holder">
+                                <span class="wc-badge">2</span>
+                                <img src="assets/images/about-elements/Binary code-bro.png" alt="Ethical Icon">
+                            </div>
+                            <p>Transparent &<br>Ethical Process</p>
+                        </div>
+
+                        <div class="wc-feature-card">
+                            <div class="wc-icon-holder">
+                                <span class="wc-badge">3</span>
+                                <img src="assets/images/about-elements/Connected world-rafiki.png" alt="Network Icon">
+                            </div>
+                            <p>Strong Network of<br>Institutions & Recruiters</p>
+                        </div>
+
+                        <div class="wc-feature-card">
+                            <div class="wc-icon-holder">
+                                <span class="wc-badge">4</span>
+                                <img src="assets/images/about-elements/private-placement.png" alt="Support Icon">
+                            </div>
+                            <p>End-to-End Admission<br>& Placement Support</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+
+
+
+        <div class="rs-footer__main-box">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="rs-footer__about-box">
+                            <a href="index-2.html"><img src="assets/images/about/logo.jpeg" alt=""></a>
+                            <p> To empower students by providing expert guidance and transparent insights into the
+                                complex world of higher education.</p>
+                            <div class="rs-footer__social">
                                 <ul>
-                                    <li><a href="contact.html">Privacy Policy</a></li>
-                                    <li><a href="contact.html">Terms of use</a></li>
-                                    <li><a href="contact.html">Sitemap</a></li>
-                                    <li><a href="contact.html">Career</a></li>
+                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#"><i class="ri-twitter-x-fill"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
+                    <div class="col-lg-3">
+                        <div class="rs-footer__navigation">
+                            <div class="rs-footer-title">
+                                <h4 class="title">Our Services</h4>
+                            </div>
+                            <ul>
+                                <li><a href="service-details-2.php"><i class="ri-arrow-right-fill"></i> B.Tech</a>
+                                </li>
+                                <li><a href="service-details-2.php"><i class="ri-arrow-right-fill"></i> MBA</a></li>
+                                <li><a href="service-details-2.php"><i class="ri-arrow-right-fill"></i> MCA</a></li>
+                                <li><a href="service-details-2.php"><i class="ri-arrow-right-fill"></i> Diploma</a>
+                                </li>
+                                <li><a href="service-details-2.php"><i class="ri-arrow-right-fill"></i> Other
+                                        Courses</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="rs-footer__navigation rs-footer--navigation">
+                            <div class="rs-footer-title">
+                                <h4 class="title">Quick Links</h4>
+                            </div>
+                            <ul>
+                                <li><a href="#home"><i class="ri-arrow-right-fill"></i> Home</a></li>
+                                <li><a href="#about"><i class="ri-arrow-right-fill"></i> About</a></li>
+                                <li><a href="#course"><i class="ri-arrow-right-fill"></i>Course</a></li>
+                                <li><a href="blog.php"><i class="ri-arrow-right-fill"></i> Blogs</a></li>
+                                <li><a href="#team"><i class="ri-arrow-right-fill"></i> Team Members</a></li>
+                                <li><a href="#gallery"><i class="ri-arrow-right-fill"></i> Gallery</a></li>
+                                <li><a href="#contact"><i class="ri-arrow-right-fill"></i> Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="rs-footer__newsletter">
+                            <div class="rs-footer-title">
+                                <h4 class="title">Subscription</h4>
+                            </div>
+                            <p>Register now to get latest updates on promotions & coupons.</p>
+                            <form action="#">
+                                <div class="input-box">
+                                    <input type="email" placeholder="Your email address">
+                                    <button class="main-btn">Subscribe <svg width="13" height="14"
+                                            viewbox="0 0 13 14" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M6.5 7.8125H0V6.1875H6.5V0.5L13 7L6.5 13.5V7.8125Z"
+                                                fill="#fff"></path>
+                                        </svg></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
+        <div class="rs-footer__menu">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-5">
+                        <div class="rs-footer__copyright-text">
+                            <p>© 2026 EDUTECH. Designed By <a target="_blank" href="https://rstheme.com/">Team
+                                    DRS.</a></p>
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="rs-footer__menu-box">
+                            <ul>
+                                <li><a href="contact.html">Privacy Policy</a></li>
+                                <li><a href="contact.html">Terms of use</a></li>
+                                <li><a href="contact.html">Sitemap</a></li>
+                                <li><a href="contact.html">Career</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         </footer>
         <!--======== Footer 2 Ends ========-->
 
@@ -395,7 +624,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <script src="assets/js/main.js"></script>
 
         <script>
-            $(window).on('load', function () {
+            $(window).on('load', function() {
                 // 1. Initialize Background Slider (Sliding Left to Right)
                 var bgSlider = $('.hero-bg-slider');
 
@@ -416,7 +645,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     });
 
                     // Force a refresh after a short delay to calculate widths correctly
-                    setTimeout(function () {
+                    setTimeout(function() {
                         bgSlider.trigger('refresh.owl.carousel');
                     }, 200);
                 }
@@ -458,7 +687,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
 
-            $(document).ready(function () {
+            $(document).ready(function() {
                 var brandSlider = $('.mobile-brand-grid');
 
                 function initBrandSlider() {
@@ -488,14 +717,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 }
 
                 initBrandSlider();
-                $(window).on('resize', function () {
+                $(window).on('resize', function() {
                     initBrandSlider();
                 });
 
 
             });
 
-            $(document).ready(function () {
+            $(document).ready(function() {
                 // Only initialize the blog slider for mobile users
                 if ($(window).width() < 768) {
                     $(".rs-blog-2 .owl-carousel").owlCarousel({
@@ -510,7 +739,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             });
         </script>
         <script>
-            document.addEventListener("DOMContentLoaded", function () {
+            document.addEventListener("DOMContentLoaded", function() {
                 const modal = document.getElementById("enquireModal");
                 const modalContent = document.querySelector(".enquire-modal-content");
                 const closeBtn = document.querySelector(".enquire-close");
@@ -526,9 +755,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     document.getElementById("openEnquireNav")
                 ];
 
-                openButtons.forEach(function (btn) {
+                openButtons.forEach(function(btn) {
                     if (btn) {
-                        btn.addEventListener("click", function (e) {
+                        btn.addEventListener("click", function(e) {
                             e.preventDefault();
                             modal.style.display = "flex";
                         });
@@ -537,19 +766,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                 // Close logic
                 if (closeBtn) {
-                    closeBtn.addEventListener("click", function () {
+                    closeBtn.addEventListener("click", function() {
                         modal.style.display = "none";
                     });
                 }
 
-                modal.addEventListener("click", function (e) {
+                modal.addEventListener("click", function(e) {
                     if (!modalContent.contains(e.target)) {
                         modal.style.display = "none";
                     }
                 });
             });
 
-            $(document).ready(function () {
+            $(document).ready(function() {
                 if ($(window).width() < 768) {
                     $(".featured-slider").owlCarousel({
                         items: 1,
@@ -563,7 +792,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 }
             });
 
-            $(document).ready(function () {
+            $(document).ready(function() {
                 // We only run this logic if the screen is mobile
                 if ($(window).width() < 768) {
                     var $teamSlider = $('.rs-project__slider');
@@ -583,7 +812,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </script>
 
         <script>
-            document.addEventListener('DOMContentLoaded', function () {
+            document.addEventListener('DOMContentLoaded', function() {
                 const slider = document.querySelector('.category-slider-wrapper');
                 let isDown = false;
                 let startX;
@@ -609,7 +838,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     slider.scrollLeft = scrollLeft - walk;
                 });
 
-                window.switchCourseStream = function (evt, streamId) {
+                window.switchCourseStream = function(evt, streamId) {
                     document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
                     document.querySelectorAll('.branch-panel').forEach(panel => panel.classList.remove('active'));
 
@@ -618,7 +847,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         activePanel.classList.add('active');
                         evt.currentTarget.classList.add('active');
 
-                        setTimeout(function () {
+                        setTimeout(function() {
                             var $carousel = $(activePanel).find('.branch-slider');
                             if ($carousel.hasClass('owl-loaded')) {
                                 $carousel.trigger('refresh.owl.carousel');
@@ -660,15 +889,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </script>
 
         <script>
-            document.getElementById("contact-form").addEventListener("submit", function (e) {
+            document.getElementById("contact-form").addEventListener("submit", function(e) {
                 e.preventDefault();
 
                 let formData = new FormData(this);
 
                 fetch("save_inquiry.php", {
-                    method: "POST",
-                    body: formData
-                })
+                        method: "POST",
+                        body: formData
+                    })
                     .then(response => response.text())
                     .then(data => {
                         document.getElementById("form-response").innerHTML = data;
@@ -770,7 +999,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 }
 
                 // State change logic
-                stateSel.onchange = function () {
+                stateSel.onchange = function() {
                     districtSel.length = 1; // reset
                     citySel.length = 1; // reset
                     if (this.value == "") return;
@@ -781,7 +1010,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 };
 
                 // District change logic
-                districtSel.onchange = function () {
+                districtSel.onchange = function() {
                     citySel.length = 1; // reset
                     if (this.value == "") return;
 
@@ -822,7 +1051,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             });
         </script>
         <script>
-            document.addEventListener("DOMContentLoaded", function () {
+            document.addEventListener("DOMContentLoaded", function() {
                 const observerOptions = {
                     threshold: 0.15, // Triggers when 15% of the section is visible
                     rootMargin: "0px 0px -50px 0px" // Triggers slightly before the section hits the top

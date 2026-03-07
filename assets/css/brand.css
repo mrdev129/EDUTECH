@@ -1,0 +1,82 @@
+/* --- Namespaced Brand Marquee --- */
+
+@keyframes marquee-slide {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+
+.logos {
+  overflow: hidden;
+  padding: 40px 0; /* Adjusted for better spacing */
+  background: white;
+  white-space: nowrap;
+  position: relative;
+  width: 100%;
+}
+
+.logos:before,
+.logos:after {
+  position: absolute;
+  top: 0;
+  width: 80px;      /* Narrower fade edge */
+  height: 100%;     /* Ensure it matches the container height exactly */
+  content: "";
+  z-index: 2;
+  /* Removes the background color/lines entirely */
+  background: none; 
+}
+
+.logos:before {
+  left: 0;
+  /* If you want a soft fade instead of a line, use a transparent gradient: */
+  background: linear-gradient(to right, white, rgba(255,255,255,0));
+}
+
+.logos:after {
+  right: 0;
+  background: linear-gradient(to left, white, rgba(255,255,255,0));
+}
+
+.logos:hover .logos-slide {
+  animation-play-state: paused;
+}
+
+.logos-slide {
+  display: inline-block;
+  animation: 40s marquee-slide infinite linear; /* Slower speed for professional feel */
+}
+
+.logos-slide img {
+  /* Increase height for better visibility */
+  height: 120px; 
+  
+  /* CRITICAL: Horizontal margin prevents the overlap seen in your image */
+  margin: 0 60px; 
+  
+  /* Restore original colors */
+  filter: none !important; 
+  opacity: 1 !important; 
+  
+  /* Maintain aspect ratio */
+  width: auto; 
+  object-fit: contain;
+  
+  /* Smooth interaction */
+  transition: transform 0.3s ease;
+}
+
+/* Optional: Subtle zoom on hover */
+.logos-slide img:hover {
+  transform: scale(1.1);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 767px) {
+  .logos-slide img {
+    height: 40px;
+    margin: 0 20px;
+  }
+  .logos:before, .logos:after {
+    width: 50px;
+  }
+}
