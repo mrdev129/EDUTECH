@@ -1,0 +1,12 @@
+# Ignore email credentials
+config/mail_config.php
+
+# Ignore environment files
+.env
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore vendor libraries if needed
+/vendor/

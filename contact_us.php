@@ -259,8 +259,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                 <div class="rs-section-title black">
                                     <h3 class="title split-in-fade">Get in touch with us</h3>
                                     <p>Fill out the form below and our admission experts will contact you to discuss
-                                        suitable courses, colleges, budget options, and hostel facilities based on your
-                                        preferences.</p>
+                                        suitable courses, colleges, budget options .</p>
                                     <p></p>
                                 </div>
 
@@ -287,7 +286,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                                 </div>
                                                 <div class="rs-info-contact">
                                                     <span>Call Us</span>
-                                                    <h5 class="title"><a href="tel:+919876543210">+91 98765 43210</a>
+                                                    <h5 class="title"><a href="tel:+919438850101">+91 9438850101</a>
+                                                    </h5>
+                                                    <h5 class="title"><a href="tel:+918637274841">+91 8637274841</a>
+                                                    </h5>
+                                                    <h5 class="title"><a href="tel:+917205150641">+91 7205150641</a>
                                                     </h5>
                                                 </div>
                                             </div>
@@ -355,7 +358,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                             <div class="input-box">
                                                 <textarea name="message" id="message"
                                                     placeholder="Tell us about your preferred city, budget range, or any specific requirement..."></textarea>
-                                                
+
                                             </div>
                                         </div>
                                         <div id="form-response" class="mb-3"></div>
@@ -383,7 +386,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <!--======== Contact Map Start ========-->
             <div class="rs-contact-map">
                 <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3743.4911157931533!2d85.83120177469385!3d20.238456914454027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a19a726c8ffc807%3A0x212845f89456a2cd!2sLingaraj%20Temple!5e0!3m2!1sen!2sin!4v1771681075912!5m2!1sen!2sin"
+                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3743.325324883753!2d85.74879577734762!3d20.245338265813242!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjDCsDE0JzQzLjIiTiA4NcKwNDUnMTMuMiJF!5e0!3m2!1sen!2sin!4v1772709818674!5m2!1sen!2sin"
                     width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade" width="600" height="450" style="border:0;"
                     allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
