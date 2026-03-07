@@ -1,282 +1,217 @@
-<!-- meta tags and other links -->
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
-
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description"
-    content="Modern Education Admin Dashboard for schools, colleges, universities, and eLearning platforms. Includes student and course management, attendance, exams, payments, analytics, and a fully responsive clean UI—ideal for LMS, coaching centers, and academic admin systems.">
-  <meta name="keywords"
-    content="Education Admin Dashboard, School Admin Panel, College Dashboard, University Dashboard, LMS Dashboard, eLearning Admin Template, Student Management System, Course Management, Education Template, Study Dashboard, Online Learning Dashboard, Academic Admin Panel, Bootstrap Dashboard, React Education Dashboard, Next.js Education Template">
-  <meta name="robots" content="INDEX,FOLLOW">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Title -->
-  <title>Edudash - School, College & LMS Admin Dashboard Template | Bootstrap 5</title>
-  <link rel="icon" type="image/png" href="assets/images/favicon.png" sizes="16x16">
-  <!-- remix icon font css  -->
-  <link rel="stylesheet" href="assets/css/remixicon.css">
-  <!-- BootStrap css -->
-  <link rel="stylesheet" href="assets/css/lib/bootstrap.min.css">
-  <!-- Apex Chart css -->
-  <link rel="stylesheet" href="assets/css/lib/apexcharts.css">
-  <!-- Data Table css -->
-  <link rel="stylesheet" href="assets/css/lib/dataTables.min.css">
-  <!-- Date picker css -->
-  <link rel="stylesheet" href="assets/css/lib/flatpickr.min.css">
-  <!-- Calendar css -->
-  <link rel="stylesheet" href="assets/css/lib/full-calendar.css">
-  <!-- calendar -->
-  <link rel="stylesheet" href="assets/css/lib/calendar.css">
-  <!-- main css -->
-  <link rel="stylesheet" href="assets/css/style.css">
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Management System - Admin Login</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #b0b8c3;
+            --btn-blue: #438eb9;
+            --text-muted: #777;
+            --border-color: #d5d5d5;
+        }
 
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+        }
+
+        .wrapper {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+        }
+
+        .login-card {
+            width: 100%;
+            max-width: 480px;
+            background: #ffffff;
+            border-radius: 2px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            overflow: hidden;
+            animation: fadeIn 0.5s ease;
+        }
+
+        /* HEADER: Logo on Left, Title Centered */
+        .card-header {
+            background-color: #f7f7f7;
+            border-bottom: 1px solid var(--border-color);
+            padding: 25px 15px;
+            display: flex;
+            justify-content: center; /* Centers the title text */
+            align-items: center;
+            position: relative;     /* Allows absolute positioning of logo */
+            min-height: 100px;
+        }
+
+        .header-logo {
+            position: absolute;      /* Detaches logo from text flow */
+            left: 20px;              /* Fixes logo to the left side */
+            width: 60px;
+            height: auto;
+        }
+
+        .header-title {
+            color: #0056b3;
+            font-weight: 700;
+            font-size: 1.1rem;
+            line-height: 1.5;        /* Added height for vertical gap */
+            text-transform: uppercase;
+            margin: 0;
+            text-align: center;
+        }
+
+        .header-title small {
+            display: block;          /* Ensures it sits on a new line */
+            margin-top: 5px;         /* Creates the requested gap */
+            font-weight: 600;
+        }
+
+        /* Body Styling */
+        .card-body {
+            padding: 40px 35px;
+        }
+
+        .system-label {
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+        }
+
+        /* Input Customization */
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            border-radius: 0;
+            border-right: none;
+            padding: 10px 15px;
+            font-size: 1rem;
+        }
+
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #999;
+        }
+
+        .input-group-text {
+            background: #fff;
+            border-radius: 0;
+            border-left: none;
+            color: #888;
+            min-width: 45px;
+            justify-content: center;
+        }
+
+        /* Buttons & Actions */
+        .btn-login {
+            background-color: var(--btn-blue);
+            color: white;
+            border: none;
+            border-radius: 0;
+            padding: 8px 25px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .btn-login:hover {
+            background-color: #3579a3;
+            color: #fff;
+        }
+
+        .form-check-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 480px) {
+            .header-logo {
+                width: 45px;
+                left: 10px;
+            }
+            .header-title {
+                font-size: 0.95rem;
+                padding-left: 40px; /* Prevents text from hitting logo on small screens */
+            }
+            .btn-login {
+                width: 100%;
+                margin-top: 15px;
+            }
+            .action-row {
+                flex-direction: column;
+                align-items: flex-start !important;
+            }
+        }
+
+        .footer-copy {
+            margin-top: 20px;
+            font-size: 0.85rem;
+            color: #333;
+            text-align: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
 <body>
 
-  <!-- Theme Customization Structure Start -->
-<div class="body-overlay"></div>
-
-<button type="button"
-    class="theme-customization__button w-48-px h-48-px bg-primary-600 text-white rounded-circle d-flex justify-content-center align-items-center position-fixed end-0 bottom-0 mb-40 me-40 text-2xxl bg-hover-primary-700" aria-label="Theme Customization Button">
-    <i class="ri-settings-3-line animate-spin"></i>
-</button>
-<div class="theme-customization-sidebar w-100 bg-base h-100vh overflow-y-auto position-fixed end-0 top-0">
-    <div class="d-flex align-items-center gap-3 py-16 px-24 justify-content-between border-bottom">
-        <div>
-            <h6 class="text-sm dark:text-white">Theme Settings</h6>
-            <p class="text-xs mb-0 text-neutral-500 dark:text-neutral-200">Customize and preview instantly</p>
-        </div>
-        <button data-slot="button"
-            class="theme-customization-sidebar__close text-neutral-900 bg-transparent text-hover-primary-600 d-flex text-xl">
-            <i class="ri-close-fill"></i>
-        </button>
-    </div>
-
-    <div class="d-flex flex-column gap-48 p-24 overflow-y-auto flex-grow-1">
-
-        <div class="theme-setting-item">
-            <h6 class="fw-medium text-primary-light text-md mb-3">Theme Mode</h6>
-            <div class="d-grid grid-cols-3 gap-3 dark-light-mode">
-                <button type="button"
-                    class="theme-btn theme-setting-item__btn d-flex align-items-center justify-content-center h-64-px rounded-3 text-xl active"
-                    data-theme="light" aria-label="light">
-                    <i class="ri-sun-line"></i>
-                </button>
-                <button type="button"
-                    class="theme-btn theme-setting-item__btn d-flex align-items-center justify-content-center h-64-px rounded-3 text-xl"
-                    data-theme="dark" aria-label="dark">
-                    <i class="ri-moon-line"></i>
-                </button>
-                <button type="button"
-                    class="theme-btn theme-setting-item__btn d-flex align-items-center justify-content-center h-64-px rounded-3 text-xl"
-                    data-theme="system" aria-label="system">
-                    <i class="ri-computer-line"></i>
-                </button>
+<div class="wrapper">
+    <div class="login-card">
+        <div class="card-header">
+            <img src="../assets/images/EDU-LOGO.jpeg" alt="Logo" class="header-logo">
+            
+            <div class="header-title">
+                <span class="text-primary">EDUTECH</span> MANAGEMENT SYSTEM
+                <small class="text-danger">ADMISSION EXPERT</small>
             </div>
         </div>
 
-        <div class="theme-setting-item">
-            <h6 class="fw-medium text-primary-light text-md mb-3">Page Direction</h6>
-            <div class="d-grid grid-cols-2 gap-3">
-                <button type="button"
-                    class="theme-setting-item__btn ltr-mode-btn d-flex align-items-center justify-content-center gap-2 h-56-px rounded-3 text-xl" aria-label="LTR">
-                    <span><i class="ri-align-item-left-line"></i></span>
-                    <span class="h6 text-sm font-medium mb-0">LTR</span>
-                </button>
+        <div class="card-body">
+            <div class="system-label">Admin Portal Access</div>
+            
+            <form action="process.php" method="POST" id="loginForm">
+                <div class="input-group">
+                    <input type="text" name="username" class="form-control" placeholder="Username" required>
+                    <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
+                </div>
 
-                <button type="button"
-                    class="theme-setting-item__btn rtl-mode-btn d-flex align-items-center justify-content-center gap-2 h-56-px rounded-3 text-xl" aria-label="RTL">
-                    <span class="h6 text-sm font-medium mb-0">RTL</span>
-                    <span><i class="ri-align-item-right-line"></i></span>
-                </button>
-            </div>
-        </div>
+                <div class="input-group">
+                    <input type="password" name="password" class="form-control" placeholder="Password" required>
+                    <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
+                </div>
 
-        <div class="theme-setting-item">
-            <h6 class="fw-medium text-primary-light text-md mb-3">Color Schema</h6>
-            <div class="d-grid grid-cols-3 gap-3">
-                <button type="button"
-                    class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
-                    data-color="base" aria-label="Base">
-                    <span class="color-picker-btn__box h-40-px w-100 rounded-3"
-                        style="background-color: #25A194;"></span>
-                    <span class="fw-medium mt-1" style="color: #25A194;">Base</span>
-                </button>
-                <button type="button"
-                    class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
-                    data-color="red" aria-label="Red">
-                    <span class="color-picker-btn__box h-40-px w-100 rounded-3"
-                        style="background-color: #dc2626;"></span>
-                    <span class="fw-medium mt-1" style="color: #dc2626;">Red</span>
-                </button>
-                <button type="button"
-                    class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
-                    data-color="blue" aria-label="Blue">
-                    <span class="color-picker-btn__box h-40-px w-100 rounded-3"
-                        style="background-color: #2563eb;"></span>
-                    <span class="fw-medium mt-1" style="color: #2563eb;">Blue</span>
-                </button>
-                <button type="button"
-                    class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
-                    data-color="yellow" aria-label="Yellow">
-                    <span class="color-picker-btn__box h-40-px w-100 rounded-3"
-                        style="background-color: #ff9f29;"></span>
-                    <span class="fw-medium mt-1" style="color: #ff9f29;">Yellow</span>
-                </button>
-                <button type="button"
-                    class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
-                    data-color="cyan" aria-label="Cyan">
-                    <span class="color-picker-btn__box h-40-px w-100 rounded-3"
-                        style="background-color: #00b8f2;"></span>
-                    <span class="fw-medium mt-1" style="color: #00b8f2;">Cyan</span>
-                </button>
-                <button type="button"
-                    class="color-picker-btn d-flex flex-column justify-content-center align-items-center"
-                    data-color="violet" aria-label="Violet">
-                    <span class="color-picker-btn__box h-40-px w-100 rounded-3"
-                        style="background-color: #7c3aed;"></span>
-                    <span class="fw-medium mt-1" style="color: #7c3aed;">Violet</span>
-                </button>
-            </div>
-        </div>
-
-    </div>
-</div>
-<!-- Theme Customization Structure End -->
-
-  <div class="overlay bg-black bg-opacity-50 w-100 h-100 position-fixed z-9 visibility-hidden opacity-0 duration-300">
-  </div>
-
-<div class="d-lg-flex bg-white">
-    <div class="w-50 d-lg-flex d-none overflow-hidden">
-        <img src="assets/images/thumbs/login-img.png" alt="Login Image" class="w-100 h-100 object-fit-cover">
-    </div>
-    <div class="lg-w-50 px-24 py-32 d-flex justify-content-center align-items-center">
-        <div class="max-w-540-px mx-auto">
-            <a href="index.php" class="">
-                <img src="assets/images/logo.png" alt="Logo">
-            </a>
-            <div class="mt-32 mb-32">
-                <h1 class="h6 fw-bold text-primary-light mb-8">
-                    Welcome Back 👋
-                </h1>
-                <p class="text-sm text-secondary-light mb-0">
-                    Log in to your account to continue
-                </p>
-            </div>
-            <form action="#" class="d-flex flex-column gap-32 submit-form">
-                <div class="d-flex flex-column gap-16">
-                    <div>
-                        <label for="email" class="text-sm fw-semibold text-primary-light d-inline-block mb-8">
-                            Email Address
-                            <span class="text-danger-600">*</span>
-                        </label>
-                        <input type="email" id="email" class="email-field form-control" placeholder="Enter your email" >
+                <div class="d-flex justify-content-between align-items-center action-row">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="rememberMe" name="remember">
+                        <label class="form-check-label" for="rememberMe">Remember Me</label>
                     </div>
-
-                    <div>
-                        <label for="password" class="text-sm fw-semibold text-primary-light d-inline-block mb-8">
-                            Password
-                            <span class="text-danger-600">*</span>
-                        </label>
-                        <div class="position-relative">
-                            <input type="password" id="password" class="password-field form-control" placeholder="Enter your password"
-                                >
-                            <button type="button"
-                                class="toggle-password btn p-0 border-0 bg-transparent position-absolute end-0 top-50 translate-middle-y me-16 text-secondary-light cursor-pointer ri-eye-line"
-                                data-toggle="#password" aria-label="Toggle password visibility">
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="d-flex justify-content-between gap-2">
-                    <div class="form-check style-check d-flex align-items-center">
-                        <input class="form-check-input border border-neutral-400" type="checkbox" value="" id="remeber">
-                        <label class="form-check-label" for="remeber">Remember me </label>
-                    </div>
-                    <a href="javascript:void(0)" class="text-primary-600 fw-medium text-decoration-underline">Forgot
-                        Password?</a>
-                </div>
-                <div class="">
-                    <button type="submit" class="loginBtn btn btn-primary-600 text-sm btn-sm px-12 py-16 w-100 radius-8"> Log In
-                    </button>
-                </div>
-                <div class="text-center text-sm text-secondary-light">
-                    or login as
-                </div>
-                <div class="d-grid sm-grid-cols-3 grid-cols-2 gap-16">
-                    <a href="javascript:void(0)"
-                        class="d-flex align-items-center gap-8 fw-semibold text-sm radius-6 justify-content-center flex-grow-1 bg-success text-white py-10 px-8">
-                        <span class="d-flex">
-                            <img src="assets/images/icons/sheild-icon.png" alt="Icon">
-                        </span>
-                        <span class="">Supper Admin</span>
-                    </a>
-                    <a href="javascript:void(0)"
-                        class="d-flex align-items-center gap-8 fw-semibold text-sm radius-6 justify-content-center flex-grow-1 bg-info-600 text-white py-10 px-8">
-                        <span class="d-flex">
-                            <img src="assets/images/icons/dashboard-icon.png" alt="Icon">
-                        </span>
-                        <span class="">Admin</span>
-                    </a>
-                    <a href="javascript:void(0)"
-                        class="d-flex align-items-center gap-8 fw-semibold text-sm radius-6 justify-content-center flex-grow-1 bg-warning-600 text-white py-10 px-8">
-                        <span class="d-flex">
-                            <img src="assets/images/icons/student-icon.png" alt="Icon">
-                        </span>
-                        <span class="">Student</span>
-                    </a>
-                    <a href="javascript:void(0)"
-                        class="d-flex align-items-center gap-8 fw-semibold text-sm radius-6 justify-content-center flex-grow-1 bg-purple-600 text-white py-10 px-8">
-                        <span class="d-flex">
-                            <img src="assets/images/icons/teacher-icon.png" alt="Icon">
-                        </span>
-                        <span class="">Teacher</span>
-                    </a>
-                    <a href="javascript:void(0)"
-                        class="d-flex align-items-center gap-8 fw-semibold text-sm radius-6 justify-content-center flex-grow-1 bg-primary-600 text-white py-10 px-8">
-                        <span class="d-flex">
-                            <img src="assets/images/icons/guardian-icon.png" alt="Icon">
-                        </span>
-                        <span class="">Guardians </span>
-                    </a>
-                    <a href="javascript:void(0)"
-                        class="d-flex align-items-center gap-8 fw-semibold text-sm radius-6 justify-content-center flex-grow-1 bg-pink text-white py-10 px-8">
-                        <span class="d-flex">
-                            <img src="assets/images/icons/library-icon.png" alt="Icon">
-                        </span>
-                        <span class="">Librarian</span>
-                    </a>
+                    <button type="submit" class="btn btn-login shadow-sm">Login</button>
                 </div>
             </form>
-            <div class="mt-32 text-center text-sm">
-                Don't have an account?
-                <a href="register.php" class="text-primary-600 fw-semibold text-decoration-underline">
-                    Create an account
-                </a>
-            </div>
         </div>
+    </div>
+
+    <div class="footer-copy">
+        Copyright © 2026 <a href="#" class="text-decoration-none fw-bold">EDUTECH</a>. All rights reserved.
     </div>
 </div>
 
-  <!-- jQuery library js -->
-  <script src="assets/js/lib/jquery-3.7.1.min.js"></script>
-  <!-- Bootstrap js -->
-  <script src="assets/js/lib/bootstrap.bundle.min.js"></script>
-  <!-- Apex Chart js -->
-  <script src="assets/js/lib/apexcharts.min.js"></script>
-  <!-- Iconify Font js -->
-  <script src="assets/js/lib/iconify-icon.min.js"></script>
-  <!-- Data Table js -->
-  <script src="assets/js/lib/dataTables.min.js"></script>
-  
-  <!-- jQuery UI js -->
-  <script src="assets/js/lib/jquery-ui.min.js"></script>
-  
-  <!-- main js -->
-  <script src="assets/js/app.js"></script>
-
 </body>
-
 </html>
