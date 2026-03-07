@@ -1066,29 +1066,29 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 </div>
 
                 <div class="logos">
-  <div class="logos-slide">
-    <img src="assets/images/brand/alluri.png" />
-    <img src="assets/images/brand/balaji.jpg" />
-    <img src="assets/images/brand/bharath.png" />
-    <img src="assets/images/brand/dy.png" />
-    <img src="assets/images/brand/great.jpeg" />
-    <img src="assets/images/brand/gvp.png" />
-    <img src="assets/images/brand/kasturabha.jpeg" />
-    <img src="assets/images/brand/kims.png" />
-    <img src="assets/images/brand/maharaja.jpeg" />
-    <img src="assets/images/brand/vinayak.png" />
-    <img src="assets/images/brand/sri.png" />
-    <img src="assets/images/brand/bits.png" />
-    <img src="assets/images/brand/cvraman.png" />
-    <img src="assets/images/brand/christ.jpeg" />
-    <img src="assets/images/brand/kiit.png" />
-    <img src="assets/images/brand/manipal.png" />
-    <img src="assets/images/brand/rv.png" />
-    <img src="assets/images/brand/soa.png" />
-    <img src="assets/images/brand/srm.png" />
-    <img src="assets/images/brand/vit.jpg" />
-  </div>
-  <!-- <div class="logos-slide">
+                    <div class="logos-slide">
+                        <img src="assets/images/brand/alluri.png" />
+                        <img src="assets/images/brand/balaji.jpg" />
+                        <img src="assets/images/brand/bharath.png" />
+                        <img src="assets/images/brand/dy.png" />
+                        <img src="assets/images/brand/great.jpeg" />
+                        <img src="assets/images/brand/gvp.png" />
+                        <img src="assets/images/brand/kasturabha.jpeg" />
+                        <img src="assets/images/brand/kims.png" />
+                        <img src="assets/images/brand/maharaja.jpeg" />
+                        <img src="assets/images/brand/vinayak.png" />
+                        <img src="assets/images/brand/sri.png" />
+                        <img src="assets/images/brand/bits.png" />
+                        <img src="assets/images/brand/cvraman.png" />
+                        <img src="assets/images/brand/christ.jpeg" />
+                        <img src="assets/images/brand/kiit.png" />
+                        <img src="assets/images/brand/manipal.png" />
+                        <img src="assets/images/brand/rv.png" />
+                        <img src="assets/images/brand/soa.png" />
+                        <img src="assets/images/brand/srm.png" />
+                        <img src="assets/images/brand/vit.jpg" />
+                    </div>
+                    <!-- <div class="logos-slide">
     <img src="assets/images/brand/alluri.png" />
     <img src="assets/images/brand/balaji.jpg" />
     <img src="assets/images/brand/bharath.png" />
@@ -1110,9 +1110,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <img src="assets/images/brand/srm.png" />
     <img src="assets/images/brand/vit.jpg" />
   </div> -->
-  
-  
-</div>
+
+
+                </div>
 
             </div>
         </div>
@@ -3054,6 +3054,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                 updateCards(); // Initial run
             });
+
+            
         </script>
 </body>
 

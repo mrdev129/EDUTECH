@@ -2,99 +2,142 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-       * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+      body{
+    background-image: linear-gradient(to top right, #8B5CF6, #EC4899);
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: monospace;
 }
-
-body {
-  background: #f2f2f2;
+.slider{
+    position: relative;
+    margin-top: 100px;
+    width: 100%;
+    height: 370px;
+    overflow: hidden;
 }
-
-@keyframes slide {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-100%);
-  }
+.item{
+    position: absolute;
+    width: 200px;
+    height: 320px;
+    text-align: justify;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    transition:  0.5s;
+    left: calc(50% - 110px);
+    top: 0;
 }
-
-.logos {
-  overflow: hidden;
-  padding: 60px 0;
-  background: white;
-  white-space: nowrap;
-  position: relative;
+#next{
+    position: absolute;
+    right: 50px;
+    top: 40%;
 }
-
-.logos:before,
-.logos:after {
-  position: absolute;
-  top: 0;
-  width: 400px;
-  height: 250%;
-  content: "";
-  z-index: 2;
+#prev{
+    position: absolute;
+    left: 50px;
+    top: 40%;
 }
-
-.logos:before {
-  left: 0;
-  background: linear-gradient(to left, rgba(255, 255, 255, 0), white);
+#prev, #next{
+    color: #fff;
+    background: none;
+    border: none;
+    font-size: xxx-large;
+    font-family: monospace;
+    font-weight: bold;
+    opacity: 0.5;
+    transition: opacity 0.5s;
 }
-
-.logos:after {
-  right: 0;
-  background: linear-gradient(to right, rgba(255, 255, 255, 0), white);
+#prev:hover,
+#next:hover{
+    opacity: 1;
 }
-
-.logos:hover .logos-slide {
-  animation-play-state: paused;
-}
-
-.logos-slide {
-  display: inline-block;
-  animation: 30s slide infinite linear;
-}
-
-.logos-slide img {
-  height: 100px;
-  margin: 0 40px;
-}
-
-
     </style>
 </head>
 <body>
-  <div class="logos">
-  <div class="logos-slide">
-    <img src="assets/images/brand/bits.png" />
-    <img src="assets/images/brand/christ.jpeg" />
-    <img src="assets/images/brand/cvraman.png" />
-    <img src="assets/images/brand/kiit.png" />
-    <img src="assets/images/brand/manipal.png" />
-    <img src="assets/images/brand/rv.png" />
-    <img src="assets/images/brand/soa.png" />
-    <img src="assets/images/brand/srm.png" />
-    <img src="assets/images/brand/vit.jpg" />
-  </div>
-  <div class="logos-slide">
-    <img src="assets/images/brand/bits.png" />
-    <img src="assets/images/brand/christ.jpeg" />
-    <img src="assets/images/brand/cvraman.png" />
-    <img src="assets/images/brand/kiit.png" />
-    <img src="assets/images/brand/manipal.png" />
-    <img src="assets/images/brand/rv.png" />
-    <img src="assets/images/brand/soa.png" />
-    <img src="assets/images/brand/srm.png" />
-    <img src="assets/images/brand/vit.jpg" />
-  </div>
-  
-</div>
-
-</body>
+        <div class="slider">
+            <div class="item">
+                <h1>Slide 1</h1>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum hic iure enim, rem accusamus odit nemo aspernatur consequuntur vero in veniam fugiat, consectetur officiis voluptatum quidem libero. Sed, dignissimos exercitationem, animi a repellendus tempora recusandae qui consequatur, itaque deleniti nobis.
+            </div>
+            <div class="item">
+                <h1>Slide 2</h1>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium voluptas ipsa similique magni adipisci accusamus consectetur fuga facilis doloremque dignissimos incidunt, reiciendis molestias dolore pariatur illum enim ipsum nostrum ab blanditiis? Voluptas, nostrum facere. Distinctio saepe facilis cumque! Voluptate, cumque.
+            </div>
+            <div class="item">
+                <h1>Slide 3</h1>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium voluptas ipsa similique magni adipisci accusamus consectetur fuga facilis doloremque dignissimos incidunt, reiciendis molestias dolore pariatur illum enim ipsum nostrum ab blanditiis? Voluptas, nostrum facere. Distinctio saepe facilis cumque! Voluptate, cumque.
+            </div>
+            <div class="item ">
+                <h1>Slide 1</h1>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium voluptas ipsa similique magni adipisci accusamus consectetur fuga facilis doloremque dignissimos incidunt, reiciendis molestias dolore pariatur illum enim ipsum nostrum ab blanditiis? Voluptas, nostrum facere. Distinctio saepe facilis cumque! Voluptate, cumque.
+            </div>
+            <div class="item ">
+                <h1>Slide 1</h1>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium voluptas ipsa similique magni adipisci accusamus consectetur fuga facilis doloremque dignissimos incidunt, reiciendis molestias dolore pariatur illum enim ipsum nostrum ab blanditiis? Voluptas, nostrum facere. Distinctio saepe facilis cumque! Voluptate, cumque.
+            </div>
+            <div class="item ">
+                <h1>Slide 1</h1>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium voluptas ipsa similique magni adipisci accusamus consectetur fuga facilis doloremque dignissimos incidunt, reiciendis molestias dolore pariatur illum enim ipsum nostrum ab blanditiis? Voluptas, nostrum facere. Distinctio saepe facilis cumque! Voluptate, cumque.
+            </div>
+            <div class="item ">
+                <h1>Slide 1</h1>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium voluptas ipsa similique magni adipisci accusamus consectetur fuga facilis doloremque dignissimos incidunt, reiciendis molestias dolore pariatur illum enim ipsum nostrum ab blanditiis? Voluptas, nostrum facere. Distinctio saepe facilis cumque! Voluptate, cumque.
+            </div>
+            <div class="item ">
+                <h1>Slide 1</h1>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium voluptas ipsa similique magni adipisci accusamus consectetur fuga facilis doloremque dignissimos incidunt, reiciendis molestias dolore pariatur illum enim ipsum nostrum ab blanditiis? Voluptas, nostrum facere. Distinctio saepe facilis cumque! Voluptate, cumque.
+            </div>
+            <div class="item ">
+                <h1>Slide 1</h1>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium voluptas ipsa similique magni adipisci accusamus consectetur fuga facilis doloremque dignissimos incidunt, reiciendis molestias dolore pariatur illum enim ipsum nostrum ab blanditiis? Voluptas, nostrum facere. Distinctio saepe facilis cumque! Voluptate, cumque.
+            </div>
+            <button id="next">></button>
+            <button id="prev"><</button>
+        </div>
+        <script>
+          let items = document.querySelectorAll('.slider .item');
+let active = 3;
+function loadShow(){
+    items[active].style.transform = `none`;
+    items[active].style.zIndex = 1;
+    items[active].style.filter = 'none';
+    items[active].style.opacity = 1;
+    // show after
+    let stt = 0;
+    for(var i = active + 1; i < items.length; i ++){
+        stt++;
+        items[i].style.transform = `translateX(${120*stt}px) scale(${1 - 0.2*stt}) perspective(16px) rotateY(-1deg)`;
+        items[i].style.zIndex = -stt;
+        items[i].style.filter = 'blur(5px)';
+        items[i].style.opacity = stt > 2 ? 0 : 0.6;
+    }
+     stt = 0;
+    for(var i = (active - 1); i >= 0; i --){
+        stt++;
+        items[i].style.transform = `translateX(${-120*stt}px) scale(${1 - 0.2*stt}) perspective(16px) rotateY(1deg)`;
+        items[i].style.zIndex = -stt;
+        items[i].style.filter = 'blur(5px)';
+        items[i].style.opacity = stt > 2 ? 0 : 0.6;
+    }
+}
+loadShow();
+let next = document.getElementById('next');
+let prev = document.getElementById('prev');
+next.onclick = function(){
+   active = active + 1 < items.length ?  active + 1 : active;
+   loadShow();
+}
+prev.onclick = function(){
+    active = active - 1 >= 0 ? active -1 : active;
+    loadShow();
+}
+        </script>
+    </body>
 </html>

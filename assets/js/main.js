@@ -184,14 +184,30 @@
 
             //===== accordion active
 
-            $(".accordion_tab").click(function(){
-                $(".accordion_tab").each(function(){
-                  $(this).parent().removeClass("active");
-                  $(this).removeClass("active");
-                });
-                $(this).parent().addClass("active");
-                $(this).addClass("active");
-            });
+           $(document).on('click', '.accordion_tab', function(e) {
+    e.preventDefault();
+    
+    var $this = $(this);
+    var $parent = $this.closest('.accordion');
+
+    // 1. If current is active (Minus), CLOSE IT
+    if ($parent.hasClass('active')) {
+        $parent.removeClass('active');
+        $this.removeClass('active');
+        // This force-resets the icon back to Plus (+)
+    } 
+    // 2. If current is inactive (Plus), OPEN IT
+    else {
+        // RESET: Remove active from ALL accordions and tabs on the page
+        // This ensures all other icons revert to Plus (+)
+        $('.accordion').removeClass('active');
+        $('.accordion_tab').removeClass('active');
+        
+        // ACTIVATE: Open the clicked one
+        $parent.addClass('active');
+        $this.addClass('active');
+    }
+});
 
 
             //===== marquee active

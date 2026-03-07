@@ -18174,7 +18174,8 @@ html.menu-is-open .menu-canvas-layer {
 
 .accordion {
   width: auto;
-  height: 60px;
+  height: auto; /* Change from 60px to auto */
+  max-height: 60px;
   margin: 0 auto;
   background: #fff;
   border-radius: 6px;
@@ -18247,8 +18248,10 @@ html.menu-is-open .menu-canvas-layer {
   content: "\f1ae";
 }
 
+/* Update the active state to expand */
 .accordion.active {
-  height: 190px;
+    max-height: 500px; /* High enough to fit your text */
+    height: auto;
 }
 
 @media only screen and (min-width: 1200px) and (max-width: 1549px) {
@@ -22276,4 +22279,8 @@ section {
     justify-content: center;
     gap: 20px;
 }
+
+
+
+/*3D TEAM MEMBERS SLIDING*/
 
