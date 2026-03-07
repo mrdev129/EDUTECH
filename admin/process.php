@@ -2,6 +2,7 @@
 
 session_start();
 include '../config/db.php';
+require '../config/mail_config.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -32,12 +33,6 @@ if(mysqli_num_rows($query)==1){
     $mail = new PHPMailer(true);
 
     $mail->isSMTP();
-    $mail->Host = 'smtp.gmail.com';
-    $mail->SMTPAuth = true;
-    $mail->Username = 'debabratabehera437@gmail.com';
-    $mail->Password = 'yonalihlfevfxxwr';
-    $mail->SMTPSecure = 'tls';
-    $mail->Port = 587;
 
     $mail->setFrom('debabratabehera437@gmail.com','EDUTECH Admin');
 
