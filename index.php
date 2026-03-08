@@ -2891,117 +2891,248 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             /*ABOUT SECTION CARD LOGIC */
 
             document.addEventListener('DOMContentLoaded', function() {
-    // --- 1. Variables ---
-    const cards = document.querySelectorAll('.card');
-    const progressDots = document.querySelectorAll('.progress-dot');
-    const tabButtons = document.querySelectorAll('.about-tab-sync');
-    const tabPanels = document.querySelectorAll('.skltbs-panel');
+                // --- 1. Variables ---
+                const cards = document.querySelectorAll('.card');
+                const progressDots = document.querySelectorAll('.progress-dot');
+                const tabButtons = document.querySelectorAll('.about-tab-sync');
+                const tabPanels = document.querySelectorAll('.skltbs-panel');
 
-    let currentIndex = 0;
-    const totalCards = cards.length;
+                let currentIndex = 0;
+                const totalCards = cards.length;
 
-    // --- 2. Core Functions ---
+                // --- 2. Core Functions ---
 
-    // Updated Sync Logic: Forces both your cards AND the Skeletal Tab Panels to change
-    function syncTabs(index) {
-        tabButtons.forEach((btn, i) => {
-            if (i === index) {
-                // 1. Update your custom button classes
-                btn.classList.add('skltbs-active');
-                
-                // 2. Manually show/hide panels if the plugin isn't doing it
-                tabPanels.forEach(p => {
-                    p.style.display = 'none';
-                    p.classList.remove('skltbs-active');
-                });
-                if (tabPanels[i]) {
-                    tabPanels[i].style.display = 'block';
-                    tabPanels[i].classList.add('skltbs-active');
+                // Updated Sync Logic: Forces both your cards AND the Skeletal Tab Panels to change
+                function syncTabs(index) {
+                    tabButtons.forEach((btn, i) => {
+                        if (i === index) {
+                            // 1. Update your custom button classes
+                            btn.classList.add('skltbs-active');
+
+                            // 2. Manually show/hide panels if the plugin isn't doing it
+                            tabPanels.forEach(p => {
+                                p.style.display = 'none';
+                                p.classList.remove('skltbs-active');
+                            });
+                            if (tabPanels[i]) {
+                                tabPanels[i].style.display = 'block';
+                                tabPanels[i].classList.add('skltbs-active');
+                            }
+
+                            // 3. Trigger a 'click' on the actual tab so the Skeletabs plugin sees it
+                            // (This ensures any built-in plugin animations also run)
+                            btn.dispatchEvent(new Event('click', {
+                                bubbles: true
+                            }));
+                        } else {
+                            btn.classList.remove('skltbs-active');
+                        }
+                    });
                 }
-                
-                // 3. Trigger a 'click' on the actual tab so the Skeletabs plugin sees it
-                // (This ensures any built-in plugin animations also run)
-                btn.dispatchEvent(new Event('click', { bubbles: true }));
-            } else {
-                btn.classList.remove('skltbs-active');
-            }
-        });
-    }
 
-    function updateCards() {
-        cards.forEach((card, index) => {
-            card.classList.remove('active', 'next', 'next-2', 'previous', 'hidden', 'swipe-left', 'swipe-right');
-            if (index === currentIndex) {
-                card.classList.add('active');
-            } else if (index === (currentIndex + 1) % totalCards) {
-                card.classList.add('next');
-            } else if (index === (currentIndex + 2) % totalCards) {
-                card.classList.add('next-2');
-            } else {
-                card.classList.add('hidden');
-            }
-        });
+                function updateCards() {
+                    cards.forEach((card, index) => {
+                        card.classList.remove('active', 'next', 'next-2', 'previous', 'hidden', 'swipe-left', 'swipe-right');
+                        if (index === currentIndex) {
+                            card.classList.add('active');
+                        } else if (index === (currentIndex + 1) % totalCards) {
+                            card.classList.add('next');
+                        } else if (index === (currentIndex + 2) % totalCards) {
+                            card.classList.add('next-2');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    });
 
-        progressDots.forEach((dot, i) => {
-            dot.classList.toggle('bg-white', i === currentIndex);
-            dot.classList.toggle('bg-white/30', i !== currentIndex);
-        });
+                    progressDots.forEach((dot, i) => {
+                        dot.classList.toggle('bg-white', i === currentIndex);
+                        dot.classList.toggle('bg-white/30', i !== currentIndex);
+                    });
 
-        // This is the call that fixes your content issue
-        syncTabs(currentIndex);
-    }
+                    // This is the call that fixes your content issue
+                    syncTabs(currentIndex);
+                }
 
-    function nextCard() {
-        cards[currentIndex].classList.add('swipe-left');
-        setTimeout(() => {
-            currentIndex = (currentIndex + 1) % totalCards;
-            updateCards();
-        }, 400);
-    }
+                function nextCard() {
+                    cards[currentIndex].classList.add('swipe-left');
+                    setTimeout(() => {
+                        currentIndex = (currentIndex + 1) % totalCards;
+                        updateCards();
+                    }, 400);
+                }
 
-    function prevCard() {
-        cards[currentIndex].classList.add('swipe-right');
-        setTimeout(() => {
-            currentIndex = (currentIndex - 1 + totalCards) % totalCards;
-            updateCards();
-        }, 400);
-    }
+                function prevCard() {
+                    cards[currentIndex].classList.add('swipe-right');
+                    setTimeout(() => {
+                        currentIndex = (currentIndex - 1 + totalCards) % totalCards;
+                        updateCards();
+                    }, 400);
+                }
 
-    // --- 3. Event Listeners ---
+                // --- 3. Event Listeners ---
 
-    // Manual Tab Clicks (Syncs Card to Text)
-    tabButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
-            const targetIndex = parseInt(this.getAttribute('data-tab-index'));
-            if (targetIndex !== currentIndex) {
-                const directionClass = targetIndex > currentIndex ? 'swipe-left' : 'swipe-right';
-                cards[currentIndex].classList.add(directionClass);
-                setTimeout(() => {
-                    currentIndex = targetIndex;
-                    updateCards();
-                }, 300);
-            }
-        });
-    });
+                // Manual Tab Clicks (Syncs Card to Text)
+                tabButtons.forEach(button => {
+                    button.addEventListener('click', function(e) {
+                        const targetIndex = parseInt(this.getAttribute('data-tab-index'));
+                        if (targetIndex !== currentIndex) {
+                            const directionClass = targetIndex > currentIndex ? 'swipe-left' : 'swipe-right';
+                            cards[currentIndex].classList.add(directionClass);
+                            setTimeout(() => {
+                                currentIndex = targetIndex;
+                                updateCards();
+                            }, 300);
+                        }
+                    });
+                });
 
-    // NEW HUB BUTTONS (Syncs Text to Card)
-    document.querySelectorAll('.next-btn-right').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.preventDefault(); e.stopPropagation();
-            nextCard();
-        });
-    });
+                // NEW HUB BUTTONS (Syncs Text to Card)
+                document.querySelectorAll('.next-btn-right').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        nextCard();
+                    });
+                });
 
-    document.querySelectorAll('.prev-btn-right').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.preventDefault(); e.stopPropagation();
-            prevCard();
-        });
-    });
+                document.querySelectorAll('.prev-btn-right').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        prevCard();
+                    });
+                });
 
-    updateCards(); // Initial Run
-});
+                updateCards(); // Initial Run
+            });
         </script>
+
+
+<script>
+        const teamMembers = [
+            { name: "Dr. Sunil Kumar", role: "Assistant Professor" },
+            { name: "Dr. Pragati Sahai", role: "Assistant Professor" },
+            { name: "Dr. Rashmi Saxena", role: "Assistant Professor" },
+            { name: "Dr. Sachit Paliwal", role: "Assistant Professor" },
+            { name: "Ms. Mona Chaudhary", role: "Assistant Professor" },
+        ];
+
+        const cards = document.querySelectorAll(".card");
+        const dots = document.querySelectorAll(".dot");
+        const memberName = document.querySelector(".member-name");
+        const memberRole = document.querySelector(".member-role");
+        const leftArrow = document.querySelector(".nav-arrow.left");
+        const rightArrow = document.querySelector(".nav-arrow.right");
+        let currentIndex = 0;
+        let isAnimating = false;
+
+        function updateCarousel(newIndex) {
+            if (isAnimating) return;
+            isAnimating = true;
+
+            currentIndex = (newIndex + cards.length) % cards.length;
+
+            cards.forEach((card, i) => {
+                const offset = (i - currentIndex + cards.length) % cards.length;
+
+                card.classList.remove(
+                    "center",
+                    "left-1",
+                    "left-2",
+                    "right-1",
+                    "right-2",
+                    "hidden"
+                );
+
+                if (offset === 0) {
+                    card.classList.add("center");
+                } else if (offset === 1) {
+                    card.classList.add("right-1");
+                } else if (offset === 2) {
+                    card.classList.add("right-2");
+                } else if (offset === cards.length - 1) {
+                    card.classList.add("left-1");
+                } else if (offset === cards.length - 2) {
+                    card.classList.add("left-2");
+                } else {
+                    card.classList.add("hidden");
+                }
+            });
+
+            dots.forEach((dot, i) => {
+                dot.classList.toggle("active", i === currentIndex);
+            });
+
+            memberName.style.opacity = "0";
+            memberRole.style.opacity = "0";
+
+            setTimeout(() => {
+                memberName.textContent = teamMembers[currentIndex].name;
+                memberRole.textContent = teamMembers[currentIndex].role;
+                memberName.style.opacity = "1";
+                memberRole.style.opacity = "1";
+            }, 300);
+
+            setTimeout(() => {
+                isAnimating = false;
+            }, 800);
+        }
+
+        leftArrow.addEventListener("click", () => {
+            updateCarousel(currentIndex - 1);
+        });
+
+        rightArrow.addEventListener("click", () => {
+            updateCarousel(currentIndex + 1);
+        });
+
+        dots.forEach((dot, i) => {
+            dot.addEventListener("click", () => {
+                updateCarousel(i);
+            });
+        });
+
+        cards.forEach((card, i) => {
+            card.addEventListener("click", () => {
+                updateCarousel(i);
+            });
+        });
+
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "ArrowLeft") {
+                updateCarousel(currentIndex - 1);
+            } else if (e.key === "ArrowRight") {
+                updateCarousel(currentIndex + 1);
+            }
+        });
+
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener("touchstart", (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener("touchend", (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    updateCarousel(currentIndex + 1);
+                } else {
+                    updateCarousel(currentIndex - 1);
+                }
+            }
+        }
+
+        updateCarousel(0);
+    </script>
 </body>
 
 </html>
