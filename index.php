@@ -1070,160 +1070,102 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="rs-carousel owl-carousel rs-project__slider mt-30" data-loop="true" data-items="3"
-                            data-margin="30" data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000"
-                            data-smart-speed="800" data-dots="true" data-nav="false" data-nav-speed="false"
-                            data-center-mode="false" data-mobile-device="1" data-mobile-device-nav="false"
-                            data-mobile-device-dots="true" data-ipad-device="2" data-ipad-device-nav="false"
-                            data-ipad-device-dots="true" data-ipad-device2="1" data-ipad-device-nav2="false"
-                            data-ipad-device-dots2="true" data-md-device="2" data-lg-device="3"
-                            data-md-device-nav="false" data-md-device-dots="true" data-doteach="false">
+                        <div id="edutech-team-section">
+                            <div class="carousel-container">
+                                <button class="nav-arrow left">‹</button>
+                                <div class="carousel-track">
 
-                            <div class="rs-project__items team-card-glass">
-                                <div class="wrapping">
-                                    <img src="assets/images/project/project-1.jpg" alt="">
-
-                                    <div class="team-glass-layer">
-                                        <div class="glass-text">
-                                            <h4 class="name">Dr. Pragati Sahai</h4>
-                                            <p class="sub">Assistant Professor | 10+ Years Experience</p>
-                                            <p class="bio">Expert career counselor specializing in management admissions
-                                                and academic research with a proven track record.</p>
+                                    <div class="card" data-index="0">
+                                        <div class="rs-project__items team-card-glass">
+                                            <div class="wrapping">
+                                                <img src="assets/images/project/project-5.jpg" alt="Dr. Sunil Kumar">
+                                                <div class="team-glass-layer">
+                                                    <div class="glass-text">
+                                                        <h4 class="name">Dr. Sunil Kumar</h4>
+                                                        <p class="sub">Assistant Professor</p>
+                                                        <p class="bio">Senior expert in vocational training and diploma pathways.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
-                                    <div class="rs-project__content">
-                                        <ul>
-                                            <li><a href="#">Consultation</a></li>
-                                            <li><a href="#">Design</a></li>
-                                            <li><a href="#">Strategy</a></li>
-                                        </ul>
-                                        <h3 class="title"><a href="project-details.html">Sibani</a></h3>
-                                        <div class="rs-link">
-                                            <a href="project-details.html"><img src="assets/images/Socialmedia.png"
-                                                    style="width:40%; height:auto;" alt=""> <i
-                                                    class="ri-arrow-right-fill"></i></a>
+                                    <div class="card" data-index="1">
+                                        <div class="rs-project__items team-card-glass">
+                                            <div class="wrapping">
+                                                <img src="assets/images/project/project-1.jpg" alt="Dr. Pragati Sahai">
+                                                <div class="team-glass-layer">
+                                                    <div class="glass-text">
+                                                        <h4 class="name">Dr. Pragati Sahai</h4>
+                                                        <p class="sub">Assistant Professor</p>
+                                                        <p class="bio">Expert career counselor specializing in management admissions.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+
+                                    <div class="card" data-index="2">
+                                        <div class="rs-project__items team-card-glass">
+                                            <div class="wrapping">
+                                                <img src="assets/images/project/project-2.jpg" alt="Dr. Rashmi Saxena">
+                                                <div class="team-glass-layer">
+                                                    <div class="glass-text">
+                                                        <h4 class="name">Dr. Rashmi Saxena</h4>
+                                                        <p class="sub">Assistant Professor</p>
+                                                        <p class="bio">Focusing on management strategies and student success.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card" data-index="3">
+                                        <div class="rs-project__items team-card-glass">
+                                            <div class="wrapping">
+                                                <img src="assets/images/project/project-3.jpg" alt="Dr. Sachit Paliwal">
+                                                <div class="team-glass-layer">
+                                                    <div class="glass-text">
+                                                        <h4 class="name">Dr. Sachit Paliwal</h4>
+                                                        <p class="sub">Assistant Professor</p>
+                                                        <p class="bio">Expert in agriculture and medical stream admissions.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card" data-index="4">
+                                        <div class="rs-project__items team-card-glass">
+                                            <div class="wrapping">
+                                                <img src="assets/images/project/project-4.jpg" alt="Ms. Mona Chaudhary">
+                                                <div class="team-glass-layer">
+                                                    <div class="glass-text">
+                                                        <h4 class="name">Ms. Mona Chaudhary</h4>
+                                                        <p class="sub">Assistant Professor</p>
+                                                        <p class="bio">Academic advisor specializing in postgraduate strategies.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
+                                <button class="nav-arrow right">›</button>
                             </div>
 
-                            <div class="rs-project__items team-card-glass">
-                                <div class="wrapping">
-                                    <img src="assets/images/project/project-2.jpg" alt="">
-
-                                    <div class="team-glass-layer">
-                                        <div class="glass-text">
-                                            <h4 class="name">Dr. Rashmi Saxena</h4>
-                                            <p class="sub">Assistant Professor | PhD in Management</p>
-                                            <p class="bio">Dedicated academician focusing on management strategies and
-                                                student success pathways.</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="rs-project__content">
-                                        <ul>
-                                            <li><a href="#">Consultation</a></li>
-                                            <li><a href="#">Design</a></li>
-                                            <li><a href="#">Strategy</a></li>
-                                        </ul>
-                                        <h3 class="title"><a href="project-details.html">Satya</a></h3>
-                                        <div class="rs-link">
-                                            <a href="project-details.html"><img src="assets/images/Socialmedia.png"
-                                                    style="width:40%; height:auto;" alt=""> <i
-                                                    class="ri-arrow-right-fill"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="member-info">
+                                <h2 class="member-name"></h2>
+                                <p class="member-role"></p>
                             </div>
 
-                            <div class="rs-project__items team-card-glass">
-                                <div class="wrapping">
-                                    <img src="assets/images/project/project-3.jpg" alt="">
-
-                                    <div class="team-glass-layer">
-                                        <div class="glass-text">
-                                            <h4 class="name">Dr. Sachit Paliwal</h4>
-                                            <p class="sub">Assistant Professor | 12+ Years Experience</p>
-                                            <p class="bio">Leading expert in agriculture and medical stream admissions
-                                                with extensive industrial knowledge.</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="rs-project__content">
-                                        <ul>
-                                            <li><a href="#">Consultation</a></li>
-                                            <li><a href="#">Design</a></li>
-                                            <li><a href="#">Strategy</a></li>
-                                        </ul>
-                                        <h3 class="title"><a href="project-details.html">Dev</a></h3>
-                                        <div class="rs-link">
-                                            <a href="project-details.html"><img src="assets/images/Socialmedia.png"
-                                                    style="width:40%; height:auto;" alt=""> <i
-                                                    class="ri-arrow-right-fill"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="dots">
+                                <div class="dot" data-index="0"></div>
+                                <div class="dot" data-index="1"></div>
+                                <div class="dot" data-index="2"></div>
+                                <div class="dot" data-index="3"></div>
+                                <div class="dot" data-index="4"></div>
                             </div>
-
-                            <div class="rs-project__items team-card-glass">
-                                <div class="wrapping">
-                                    <img src="assets/images/project/project-4.jpg" alt="">
-
-                                    <div class="team-glass-layer">
-                                        <div class="glass-text">
-                                            <h4 class="name">Ms. Mona Chaudhary</h4>
-                                            <p class="sub">Assistant Professor | 9+ Years Experience</p>
-                                            <p class="bio">Academic advisor specializing in postgraduate strategies and
-                                                student mentoring.</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="rs-project__content">
-                                        <ul>
-                                            <li><a href="#">Consultation</a></li>
-                                            <li><a href="#">Design</a></li>
-                                            <li><a href="#">Strategy</a></li>
-                                        </ul>
-                                        <h3 class="title"><a href="project-details.html">Hari</a></h3>
-                                        <div class="rs-link">
-                                            <a href="project-details.html"><img src="assets/images/Socialmedia.png"
-                                                    style="width:40%; height:auto;" alt=""> <i
-                                                    class="ri-arrow-right-fill"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="rs-project__items team-card-glass">
-                                <div class="wrapping">
-                                    <img src="assets/images/project/project-5.jpg" alt="">
-
-                                    <div class="team-glass-layer">
-                                        <div class="glass-text">
-                                            <h4 class="name">Dr. Sunil Kumar</h4>
-                                            <p class="sub">Assistant Professor | PhD in Management</p>
-                                            <p class="bio">Senior expert in vocational training and diploma pathways for
-                                                technical students.</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="rs-project__content">
-                                        <ul>
-                                            <li><a href="#">Consultation</a></li>
-                                            <li><a href="#">Design</a></li>
-                                            <li><a href="#">Strategy</a></li>
-                                        </ul>
-                                        <h3 class="title"><a href="project-details.html">Ram</a></h3>
-                                        <div class="rs-link">
-                                            <a href="project-details.html"><img src="assets/images/Socialmedia.png"
-                                                    style="width:40%; height:auto;" alt=""> <i
-                                                    class="ri-arrow-right-fill"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
                         </div>
                     </div>
                 </div>
@@ -3008,131 +2950,229 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </script>
 
 
-<script>
-        const teamMembers = [
-            { name: "Dr. Sunil Kumar", role: "Assistant Professor" },
-            { name: "Dr. Pragati Sahai", role: "Assistant Professor" },
-            { name: "Dr. Rashmi Saxena", role: "Assistant Professor" },
-            { name: "Dr. Sachit Paliwal", role: "Assistant Professor" },
-            { name: "Ms. Mona Chaudhary", role: "Assistant Professor" },
-        ];
 
-        const cards = document.querySelectorAll(".card");
-        const dots = document.querySelectorAll(".dot");
-        const memberName = document.querySelector(".member-name");
-        const memberRole = document.querySelector(".member-role");
-        const leftArrow = document.querySelector(".nav-arrow.left");
-        const rightArrow = document.querySelector(".nav-arrow.right");
-        let currentIndex = 0;
-        let isAnimating = false;
+        /*TEAM SLIDER */
+        <script>
+            const teamMembers = [{
+                    name: "Dr. Sunil Kumar",
+                    role: "Assistant Professor"
+                },
+                {
+                    name: "Dr. Pragati Sahai",
+                    role: "Assistant Professor"
+                },
+                {
+                    name: "Dr. Rashmi Saxena",
+                    role: "Assistant Professor"
+                },
+                {
+                    name: "Dr. Sachit Paliwal",
+                    role: "Assistant Professor"
+                },
+                {
+                    name: "Ms. Mona Chaudhary",
+                    role: "Assistant Professor"
+                },
+            ];
 
-        function updateCarousel(newIndex) {
-            if (isAnimating) return;
-            isAnimating = true;
+            const cards = document.querySelectorAll(".card");
+            const dots = document.querySelectorAll(".dot");
+            const memberName = document.querySelector(".member-name");
+            const memberRole = document.querySelector(".member-role");
+            const leftArrow = document.querySelector(".nav-arrow.left");
+            const rightArrow = document.querySelector(".nav-arrow.right");
+            let currentIndex = 0;
+            let isAnimating = false;
 
-            currentIndex = (newIndex + cards.length) % cards.length;
+            function updateCarousel(newIndex) {
+                if (isAnimating) return;
+                isAnimating = true;
 
-            cards.forEach((card, i) => {
-                const offset = (i - currentIndex + cards.length) % cards.length;
+                currentIndex = (newIndex + cards.length) % cards.length;
 
-                card.classList.remove(
-                    "center",
-                    "left-1",
-                    "left-2",
-                    "right-1",
-                    "right-2",
-                    "hidden"
-                );
+                cards.forEach((card, i) => {
+                    const offset = (i - currentIndex + cards.length) % cards.length;
 
-                if (offset === 0) {
-                    card.classList.add("center");
-                } else if (offset === 1) {
-                    card.classList.add("right-1");
-                } else if (offset === 2) {
-                    card.classList.add("right-2");
-                } else if (offset === cards.length - 1) {
-                    card.classList.add("left-1");
-                } else if (offset === cards.length - 2) {
-                    card.classList.add("left-2");
-                } else {
-                    card.classList.add("hidden");
-                }
+                    card.classList.remove(
+                        "center",
+                        "left-1",
+                        "left-2",
+                        "right-1",
+                        "right-2",
+                        "hidden"
+                    );
+
+                    if (offset === 0) {
+                        card.classList.add("center");
+                    } else if (offset === 1) {
+                        card.classList.add("right-1");
+                    } else if (offset === 2) {
+                        card.classList.add("right-2");
+                    } else if (offset === cards.length - 1) {
+                        card.classList.add("left-1");
+                    } else if (offset === cards.length - 2) {
+                        card.classList.add("left-2");
+                    } else {
+                        card.classList.add("hidden");
+                    }
+                });
+
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle("active", i === currentIndex);
+                });
+
+                memberName.style.opacity = "0";
+                memberRole.style.opacity = "0";
+
+                setTimeout(() => {
+                    memberName.textContent = teamMembers[currentIndex].name;
+                    memberRole.textContent = teamMembers[currentIndex].role;
+                    memberName.style.opacity = "1";
+                    memberRole.style.opacity = "1";
+                }, 300);
+
+                setTimeout(() => {
+                    isAnimating = false;
+                }, 800);
+            }
+
+            leftArrow.addEventListener("click", () => {
+                updateCarousel(currentIndex - 1);
+            });
+
+            rightArrow.addEventListener("click", () => {
+                updateCarousel(currentIndex + 1);
             });
 
             dots.forEach((dot, i) => {
-                dot.classList.toggle("active", i === currentIndex);
+                dot.addEventListener("click", () => {
+                    updateCarousel(i);
+                });
             });
 
-            memberName.style.opacity = "0";
-            memberRole.style.opacity = "0";
-
-            setTimeout(() => {
-                memberName.textContent = teamMembers[currentIndex].name;
-                memberRole.textContent = teamMembers[currentIndex].role;
-                memberName.style.opacity = "1";
-                memberRole.style.opacity = "1";
-            }, 300);
-
-            setTimeout(() => {
-                isAnimating = false;
-            }, 800);
-        }
-
-        leftArrow.addEventListener("click", () => {
-            updateCarousel(currentIndex - 1);
-        });
-
-        rightArrow.addEventListener("click", () => {
-            updateCarousel(currentIndex + 1);
-        });
-
-        dots.forEach((dot, i) => {
-            dot.addEventListener("click", () => {
-                updateCarousel(i);
+            cards.forEach((card, i) => {
+                card.addEventListener("click", () => {
+                    updateCarousel(i);
+                });
             });
-        });
 
-        cards.forEach((card, i) => {
-            card.addEventListener("click", () => {
-                updateCarousel(i);
-            });
-        });
-
-        document.addEventListener("keydown", (e) => {
-            if (e.key === "ArrowLeft") {
-                updateCarousel(currentIndex - 1);
-            } else if (e.key === "ArrowRight") {
-                updateCarousel(currentIndex + 1);
-            }
-        });
-
-        let touchStartX = 0;
-        let touchEndX = 0;
-
-        document.addEventListener("touchstart", (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-        });
-
-        document.addEventListener("touchend", (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        });
-
-        function handleSwipe() {
-            const swipeThreshold = 50;
-            const diff = touchStartX - touchEndX;
-
-            if (Math.abs(diff) > swipeThreshold) {
-                if (diff > 0) {
-                    updateCarousel(currentIndex + 1);
-                } else {
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "ArrowLeft") {
                     updateCarousel(currentIndex - 1);
+                } else if (e.key === "ArrowRight") {
+                    updateCarousel(currentIndex + 1);
+                }
+            });
+
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            document.addEventListener("touchstart", (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+
+            document.addEventListener("touchend", (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            });
+
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                const diff = touchStartX - touchEndX;
+
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        updateCarousel(currentIndex + 1);
+                    } else {
+                        updateCarousel(currentIndex - 1);
+                    }
                 }
             }
-        }
 
-        updateCarousel(0);
-    </script>
+            updateCarousel(0);
+        </script>
+
+
+        /*TEAM SLIDER */
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const teamData = [{
+                        name: "Dr. Sunil Kumar",
+                        role: "Assistant Professor"
+                    },
+                    {
+                        name: "Dr. Pragati Sahai",
+                        role: "Assistant Professor"
+                    },
+                    {
+                        name: "Dr. Rashmi Saxena",
+                        role: "Assistant Professor"
+                    },
+                    {
+                        name: "Dr. Sachit Paliwal",
+                        role: "Assistant Professor"
+                    },
+                    {
+                        name: "Ms. Mona Chaudhary",
+                        role: "Assistant Professor"
+                    }
+                ];
+
+                const section = document.querySelector("#edutech-team-section");
+                const cards = section.querySelectorAll(".card");
+                const dots = section.querySelectorAll(".dot");
+                const nameDisplay = section.querySelector(".member-name");
+                const roleDisplay = section.querySelector(".member-role");
+                const leftArrow = section.querySelector(".nav-arrow.left");
+                const rightArrow = section.querySelector(".nav-arrow.right");
+
+                let currentIdx = 0;
+                let isAnimating = false;
+
+                function updateCarousel(index) {
+                    if (isAnimating) return;
+                    isAnimating = true;
+
+                    currentIdx = (index + teamData.length) % teamData.length;
+
+                    cards.forEach((card, i) => {
+                        const offset = (i - currentIdx + teamData.length) % teamData.length;
+                        card.classList.remove("center", "left-1", "left-2", "right-1", "right-2", "hidden");
+
+                        if (offset === 0) card.classList.add("center");
+                        else if (offset === 1) card.classList.add("right-1");
+                        else if (offset === 2) card.classList.add("right-2");
+                        else if (offset === teamData.length - 1) card.classList.add("left-1");
+                        else if (offset === teamData.length - 2) card.classList.add("left-2");
+                        else card.classList.add("hidden");
+                    });
+
+                    dots.forEach((dot, i) => dot.classList.toggle("active", i === currentIdx));
+
+                    // Smooth text update
+                    nameDisplay.style.opacity = "0";
+                    roleDisplay.style.opacity = "0";
+                    setTimeout(() => {
+                        nameDisplay.textContent = teamData[currentIdx].name;
+                        roleDisplay.textContent = teamData[currentIdx].role;
+                        nameDisplay.style.opacity = "1";
+                        roleDisplay.style.opacity = "1";
+                    }, 300);
+
+                    setTimeout(() => {
+                        isAnimating = false;
+                    }, 800);
+                }
+
+                leftArrow.addEventListener("click", () => updateCarousel(currentIdx - 1));
+                rightArrow.addEventListener("click", () => updateCarousel(currentIdx + 1));
+                dots.forEach((dot, i) => dot.addEventListener("click", () => updateCarousel(i)));
+                cards.forEach((card, i) => card.addEventListener("click", () => updateCarousel(i)));
+
+                // Initialize the carousel on load
+                updateCarousel(0);
+            });
+        </script>
 </body>
 
 </html>
