@@ -855,7 +855,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <div id="about" class="container">
                 <div class="row align-items-center">
 
-                    <!-- LEFT IMAGE -->
                     <div class="col-lg-6">
                         <div class="max-w-lg w-full mx-auto">
                             <div class="flex justify-center mb-6 space-x-3">
@@ -881,171 +880,95 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="nav-button-wrapper" style="display: flex !important; justify-content: center !important; width: 100% !important; margin-top: 25px !important; position: relative !important; z-index: 100 !important;">
-                                <div class="glass-pill-container">
-                                    <button id="prev-btn" class="circle-btn">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </button>
-                                    <button id="flip-btn-main" class="circle-btn center-large" style="visibility: hidden !important;">
-                                        <i class="fas fa-sync-alt"></i>
-                                    </button>
-                                    <button id="next-btn" class="circle-btn">
-                                        <i class="fas fa-chevron-right"></i>
-                                    </button>
-                                </div>
-                            </div>
                         </div>
                     </div>
 
-                    <!-- RIGHT CONTENT -->
                     <div class="col-lg-6">
                         <div class="rs-about-2__main-content">
                             <div class="rs-section-title black">
-
-                                <!-- TOP HEADING -->
                                 <div class="top-sub-heading">
                                     <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
                                     <span>Welcome To EDUTECH</span>
                                     <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
                                 </div>
 
-                                <!-- MAIN TITLE -->
                                 <h2 class="title split-in-fade">
                                     Guiding Students Towards the Right Career Path
                                 </h2>
 
                                 <br>
 
-                                <!-- TABS -->
                                 <div id="rs-tabs" class="skltbs-theme-light use-drop skltbs-mode-tabs skltbs-init">
-
-                                    <!-- TAB BUTTONS -->
                                     <ul class="skltbs-tab-group">
-                                        <li class="skltbs-tab-item">
-                                            <button class="skltbs-tab about-tab-sync" data-tab-index="0">Our Mission</button>
-                                        </li>
-                                        <li class="skltbs-tab-item">
-                                            <button class="skltbs-tab about-tab-sync" data-tab-index="1">Our Vision</button>
-                                        </li>
-                                        <li class="skltbs-tab-item">
-                                            <button class="skltbs-tab about-tab-sync" data-tab-index="2">Core Value</button>
-                                        </li>
+                                        <li class="skltbs-tab-item"><button class="skltbs-tab about-tab-sync" data-tab-index="0">Our Mission</button></li>
+                                        <li class="skltbs-tab-item"><button class="skltbs-tab about-tab-sync" data-tab-index="1">Our Vision</button></li>
+                                        <li class="skltbs-tab-item"><button class="skltbs-tab about-tab-sync" data-tab-index="2">Core Value</button></li>
                                     </ul>
 
-                                    <!-- TAB PANELS -->
                                     <div class="skltbs-panel-group">
+                                        <?php
+                                        $tabs = [
+                                            [
+                                                'title' => 'Our Mission',
+                                                'text' => 'Our mission is to guide students and professionals toward the right educational and career opportunities through personalized counselling, modern technology, and transparent support.',
+                                                'list' => [
+                                                    'Personalized mentorship to help students choose the right course and college.',
+                                                    'Career-focused guidance that connects education with future opportunities.'
+                                                ]
+                                            ],
+                                            [
+                                                'title' => 'Our Vision',
+                                                'text' => 'Our vision is to become a trusted education guidance platform that helps students confidently choose the right academic path and build successful careers. We aim to bridge the gap between students and quality institutions through reliable guidance and modern counselling methods.',
+                                                'list' => [
+                                                    'Making quality education accessible to students everywhere.',
+                                                    'Supporting students from admission guidance to career readiness.'
+                                                ]
+                                            ],
+                                            [
+                                                'title' => 'Core Value',
+                                                'text' => 'Our core values define how we guide students and build trust with families. We focus on integrity, dedication, and student success in every step of the education consulting journey.',
+                                                'list' => [
+                                                    'Student-First Approach – Every student’s success is our priority.',
+                                                    'Transparency & Integrity – Honest guidance in every admission process.'
+                                                ]
+                                            ]
+                                        ];
 
-                                        <!-- MISSION -->
-                                        <div class="skltbs-panel">
-                                            <p>
-                                                Our mission is to guide students and professionals toward the right
-                                                educational and career opportunities through personalized counselling,
-                                                modern technology, and transparent support.
-                                            </p>
+                                        foreach ($tabs as $index => $tab): ?>
+                                            <div class="skltbs-panel">
+                                                <p><?php echo $tab['text']; ?></p>
 
-                                            <ul>
-                                                <li><i class="ri-share-forward-fill"></i> Personalized mentorship to
-                                                    help students choose the right course and college.</li>
+                                                <ul>
+                                                    <?php foreach ($tab['list'] as $bullet): ?>
+                                                        <li><i class="ri-share-forward-fill"></i> <?php echo $bullet; ?></li>
+                                                    <?php endforeach; ?>
+                                                </ul>
 
-                                                <li><i class="ri-share-forward-fill"></i> Career-focused guidance that
-                                                    connects education with future opportunities.</li>
-                                            </ul>
+                                                <div class="about-action-hub d-flex align-items-center mt-4">
+                                                    <a class="main-btn" href="about_us.php">
+                                                        Know More About Us <i class="ri-arrow-right-fill"></i>
+                                                    </a>
 
-                                            <a class="main-btn" href="about_us.php">
-                                                Know More About Us
-                                                <i class="ri-arrow-right-fill"></i>
-                                            </a>
+                                                    <div class="nav-video-hub d-flex align-items-center ms-4 shadow-sm">
+                                                        <button type="button" class="hub-nav-btn prev-btn-right">
+                                                            <i class="fas fa-chevron-left"></i>
+                                                        </button>
 
-                                            <div class="play-icon">
-                                                <a class="rs-popup-videos"
-                                                    href="https://www.youtube.com/watch?v=example">
-                                                    <i class="fa fa-play"></i>
-                                                </a>
+                                                        <div class="hub-play-wrap">
+                                                            <a class="rs-popup-videos hub-play-btn" href="https://www.youtube.com/watch?v=example">
+                                                                <i class="fa fa-play"></i>
+                                                            </a>
+                                                        </div>
+
+                                                        <button type="button" class="hub-nav-btn next-btn-right">
+                                                            <i class="fas fa-chevron-right"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-
-                                        <!-- VISION -->
-                                        <div class="skltbs-panel">
-                                            <p>
-                                                Our vision is to become a trusted education guidance platform that helps
-                                                students
-                                                confidently choose the right academic path and build successful careers.
-                                                We aim to
-                                                bridge the gap between students and quality institutions through
-                                                reliable guidance
-                                                and modern counselling methods.
-                                            </p>
-
-                                            <ul>
-                                                <li>
-                                                    <i class="ri-share-forward-fill"></i>
-                                                    Making quality education accessible to students everywhere.
-                                                </li>
-
-                                                <li>
-                                                    <i class="ri-share-forward-fill"></i>
-                                                    Supporting students from admission guidance to career readiness.
-                                                </li>
-                                            </ul>
-
-                                            <a class="main-btn" href="about_us.php">
-                                                Know More About Us
-                                                <i class="ri-arrow-right-fill"></i>
-                                            </a>
-
-                                            <div class="play-icon">
-                                                <a class="rs-popup-videos"
-                                                    href="https://www.youtube.com/watch?v=example">
-                                                    <i class="fa fa-play"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-
-                                        <!-- CORE VALUE -->
-                                        <div class="skltbs-panel">
-
-                                            <p>
-                                                Our core values define how we guide students and build trust with
-                                                families.
-                                                We focus on integrity, dedication, and student success in every step of
-                                                the
-                                                education consulting journey.
-                                            </p>
-
-                                            <ul>
-                                                <li>
-                                                    <i class="ri-share-forward-fill"></i>
-                                                    Student-First Approach – Every student’s success is our priority.
-                                                </li>
-
-                                                <li>
-                                                    <i class="ri-share-forward-fill"></i>
-                                                    Transparency & Integrity – Honest guidance in every admission
-                                                    process.
-                                                </li>
-                                            </ul>
-
-
-                                            <a class="main-btn" href="about_us.php">
-                                                Know More About Us
-                                                <i class="ri-arrow-right-fill"></i>
-                                            </a>
-
-                                            <div class="play-icon ms-3">
-                                                <a class="rs-popup-videos"
-                                                    href="https://www.youtube.com/watch?v=example">
-                                                    <i class="fa fa-play"></i>
-                                                </a>
-                                            </div>
-
-
-                                        </div>
-
+                                        <?php endforeach; ?>
                                     </div>
                                 </div>
-                                <!-- END TABS -->
-
                             </div>
                         </div>
                     </div>
@@ -2965,96 +2888,119 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             });
 
 
+            /*ABOUT SECTION CARD LOGIC */
+
             document.addEventListener('DOMContentLoaded', function() {
-                // Existing variables
-                const cards = document.querySelectorAll('.card');
-                const progressDots = document.querySelectorAll('.progress-dot');
-                const tabButtons = document.querySelectorAll('.about-tab-sync');
-                const tabPanels = document.querySelectorAll('.skltbs-panel');
+    // --- 1. Variables ---
+    const cards = document.querySelectorAll('.card');
+    const progressDots = document.querySelectorAll('.progress-dot');
+    const tabButtons = document.querySelectorAll('.about-tab-sync');
+    const tabPanels = document.querySelectorAll('.skltbs-panel');
 
-                let currentIndex = 0;
-                const totalCards = cards.length;
+    let currentIndex = 0;
+    const totalCards = cards.length;
 
-                // --- FUNCTION: Sync Tabs when Card Swipes ---
-                function syncTabs(index) {
-                    tabButtons.forEach((btn, i) => {
-                        if (i === index) {
-                            btn.classList.add('skltbs-active');
-                            // Trigger the skeletal tabs internal display logic
-                            if (tabPanels[i]) {
-                                tabPanels.forEach(p => p.classList.remove('skltbs-active'));
-                                tabPanels[i].classList.add('skltbs-active');
-                            }
-                        } else {
-                            btn.classList.remove('skltbs-active');
-                        }
-                    });
+    // --- 2. Core Functions ---
+
+    // Updated Sync Logic: Forces both your cards AND the Skeletal Tab Panels to change
+    function syncTabs(index) {
+        tabButtons.forEach((btn, i) => {
+            if (i === index) {
+                // 1. Update your custom button classes
+                btn.classList.add('skltbs-active');
+                
+                // 2. Manually show/hide panels if the plugin isn't doing it
+                tabPanels.forEach(p => {
+                    p.style.display = 'none';
+                    p.classList.remove('skltbs-active');
+                });
+                if (tabPanels[i]) {
+                    tabPanels[i].style.display = 'block';
+                    tabPanels[i].classList.add('skltbs-active');
                 }
+                
+                // 3. Trigger a 'click' on the actual tab so the Skeletabs plugin sees it
+                // (This ensures any built-in plugin animations also run)
+                btn.dispatchEvent(new Event('click', { bubbles: true }));
+            } else {
+                btn.classList.remove('skltbs-active');
+            }
+        });
+    }
 
-                // --- FUNCTION: Update Cards (Modified to include tab sync) ---
-                function updateCards() {
-                    cards.forEach((card, index) => {
-                        card.classList.remove('active', 'next', 'next-2', 'previous', 'hidden', 'swipe-left', 'swipe-right');
+    function updateCards() {
+        cards.forEach((card, index) => {
+            card.classList.remove('active', 'next', 'next-2', 'previous', 'hidden', 'swipe-left', 'swipe-right');
+            if (index === currentIndex) {
+                card.classList.add('active');
+            } else if (index === (currentIndex + 1) % totalCards) {
+                card.classList.add('next');
+            } else if (index === (currentIndex + 2) % totalCards) {
+                card.classList.add('next-2');
+            } else {
+                card.classList.add('hidden');
+            }
+        });
 
-                        if (index === currentIndex) {
-                            card.classList.add('active');
-                        } else if (index === (currentIndex + 1) % totalCards) {
-                            card.classList.add('next');
-                        } else if (index === (currentIndex + 2) % totalCards) {
-                            card.classList.add('next-2');
-                        } else {
-                            card.classList.add('hidden');
-                        }
-                    });
+        progressDots.forEach((dot, i) => {
+            dot.classList.toggle('bg-white', i === currentIndex);
+            dot.classList.toggle('bg-white/30', i !== currentIndex);
+        });
 
-                    // Sync Dots
-                    progressDots.forEach((dot, i) => {
-                        dot.classList.toggle('bg-white', i === currentIndex);
-                        dot.classList.toggle('bg-white/30', i !== currentIndex);
-                    });
+        // This is the call that fixes your content issue
+        syncTabs(currentIndex);
+    }
 
-                    // NEW: Sync the Tabs
-                    syncTabs(currentIndex);
-                }
+    function nextCard() {
+        cards[currentIndex].classList.add('swipe-left');
+        setTimeout(() => {
+            currentIndex = (currentIndex + 1) % totalCards;
+            updateCards();
+        }, 400);
+    }
 
-                // --- EVENT: Sync Card when Tab is Clicked ---
-                tabButtons.forEach(button => {
-                    button.addEventListener('click', function() {
-                        const targetIndex = parseInt(this.getAttribute('data-tab-index'));
+    function prevCard() {
+        cards[currentIndex].classList.add('swipe-right');
+        setTimeout(() => {
+            currentIndex = (currentIndex - 1 + totalCards) % totalCards;
+            updateCards();
+        }, 400);
+    }
 
-                        if (targetIndex !== currentIndex) {
-                            // Add swipe animation to old card
-                            cards[currentIndex].classList.add(targetIndex > currentIndex ? 'swipe-left' : 'swipe-right');
+    // --- 3. Event Listeners ---
 
-                            setTimeout(() => {
-                                currentIndex = targetIndex;
-                                updateCards();
-                            }, 300);
-                        }
-                    });
-                });
+    // Manual Tab Clicks (Syncs Card to Text)
+    tabButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            const targetIndex = parseInt(this.getAttribute('data-tab-index'));
+            if (targetIndex !== currentIndex) {
+                const directionClass = targetIndex > currentIndex ? 'swipe-left' : 'swipe-right';
+                cards[currentIndex].classList.add(directionClass);
+                setTimeout(() => {
+                    currentIndex = targetIndex;
+                    updateCards();
+                }, 300);
+            }
+        });
+    });
 
-                // --- Existing Nav Buttons (Remain the same) ---
-                document.getElementById('next-btn').addEventListener('click', () => {
-                    cards[currentIndex].classList.add('swipe-left');
-                    setTimeout(() => {
-                        currentIndex = (currentIndex + 1) % totalCards;
-                        updateCards();
-                    }, 400);
-                });
+    // NEW HUB BUTTONS (Syncs Text to Card)
+    document.querySelectorAll('.next-btn-right').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault(); e.stopPropagation();
+            nextCard();
+        });
+    });
 
-                document.getElementById('prev-btn').addEventListener('click', () => {
-                    cards[currentIndex].classList.add('swipe-right');
-                    setTimeout(() => {
-                        currentIndex = (currentIndex - 1 + totalCards) % totalCards;
-                        updateCards();
-                    }, 400);
-                });
+    document.querySelectorAll('.prev-btn-right').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault(); e.stopPropagation();
+            prevCard();
+        });
+    });
 
-                updateCards(); // Initial run
-            });
-
-            
+    updateCards(); // Initial Run
+});
         </script>
 </body>
 
