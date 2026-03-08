@@ -12,6 +12,11 @@ $dotenv->load();
 session_start();
 include '../config/db.php';
 
+$otp = rand(100000,999999);
+
+$_SESSION['login_otp'] = $otp;
+$_SESSION['otp_expiry'] = time() + 60; // 1 minutes
+$_SESSION['otp_resend_time'] = time() + 60;
 $username = mysqli_real_escape_string($conn,$_POST['username']);
 $password = md5($_POST['password']);
 
