@@ -1,6 +1,13 @@
 <?php
 include '../config/db.php';
+session_start();
+
+if(!isset($_SESSION['admin_logged_in'])){
+header("Location: login.php");
+exit();
+}
 ?>
+
 
 <!-- meta tags and other links -->
 <!DOCTYPE html>

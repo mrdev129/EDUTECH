@@ -291,7 +291,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         <li><a href="blog.php">BLOGS</a></li>
                         <li><a href="#team">TEAM MEMBERS</a></li>
                         <li><a href="#gallery">GALLERY</a></li>
-                        <li><a href="#contact">CONTACT US</a></li>
+                        <li><a href="contact_us.php">CONTACT US</a></li>
                     </ul>
                     <div class="nav-action">
                         <a href="javascript:void(0);" id="openEnquireNav" class="navy-enquire-btn">
@@ -1990,8 +1990,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                 <div class="rs-section-title black">
                                     <h3 class="title split-in-fade">Get in touch with us</h3>
                                     <p>Fill out the form below and our admission experts will contact you to discuss
-                                        suitable courses, colleges, budget options, and hostel facilities based on your
-                                        preferences.</p>
+                                        suitable courses, colleges, budget options .</p>
                                     <p></p>
                                 </div>
 
