@@ -1439,3 +1439,208 @@
     opacity: 0;
     transition: opacity 0.3s ease;
 }
+
+
+
+/*Team Card*/
+/* Isolated Team Section Wrapper */
+        #edutech-team-section {
+            position: relative;
+            width: 100%;
+            min-height: 580px;
+            padding: 20px 0;
+            /* background-color: #f5f5f5; */
+            /* Adjusted to fit your site background */
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        #edutech-team-section .carousel-container {
+            width: 100%;
+            max-width: 1200px;
+            height: 320px;
+            position: relative;
+            perspective: 1000px;
+            margin-top: 20px;
+        }
+
+        #edutech-team-section .carousel-track {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            position: relative;
+            transform-style: preserve-3d;
+        }
+
+        /* Card styling specifically for the carousel */
+        #edutech-team-section .card {
+            position: absolute;
+            width: 280px;
+            height: auto;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: pointer;
+            display: flex;
+            /* Ensures internal divs fill the space */
+            flex-direction: column;
+        }
+
+        /* Ensure the internal wrappers don't add padding */
+        #edutech-team-section .card .rs-project__items,
+        #edutech-team-section .card .wrapping {
+            padding: 0;
+            margin: 0;
+            display: block;
+        }
+
+        #edutech-team-section .card img {
+            width: 100%;
+            height: auto;
+            object-position: top center;
+            display: block;
+            object-fit: cover;
+            transition: all 0.8s ease;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 3D Transform Classes */
+        #edutech-team-section .card.center {
+            z-index: 10;
+            transform: scale(1.1) translateZ(0);
+            opacity: 1;
+        }
+
+        #edutech-team-section .card.left-1 {
+            z-index: 5;
+            transform: translateX(-220px) scale(0.9) translateZ(-100px);
+            opacity: 0.9;
+        }
+
+        #edutech-team-section .card.right-1 {
+            z-index: 5;
+            transform: translateX(220px) scale(0.9) translateZ(-100px);
+            opacity: 0.9;
+        }
+
+        #edutech-team-section .card.left-2 {
+            z-index: 1;
+            transform: translateX(-420px) scale(0.8) translateZ(-300px);
+            opacity: 0.7;
+        }
+
+        #edutech-team-section .card.right-2 {
+            z-index: 1;
+            transform: translateX(420px) scale(0.8) translateZ(-300px);
+            opacity: 0.7;
+        }
+
+        #edutech-team-section .card.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Grayscale effect for inactive cards */
+        #edutech-team-section .card:not(.center) img {
+            filter: grayscale(100%);
+        }
+
+        /* Member Info Text */
+        #edutech-team-section .member-info {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #edutech-team-section .member-name {
+            color: rgb(8, 42, 123);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Side lines for the name */
+        #edutech-team-section .member-name::before,
+        #edutech-team-section .member-name::after {
+            content: "";
+            position: absolute;
+            top: 55%;
+            width: 100px;
+            height: 2px;
+            background: rgb(8, 42, 123);
+        }
+
+        #edutech-team-section .member-name::before {
+            left: -120px;
+        }
+
+        #edutech-team-section .member-name::after {
+            right: -120px;
+        }
+
+        #edutech-team-section .member-role {
+            color: #848696;
+            font-size: 1.5rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Navigation Arrows */
+        #edutech-team-section .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(8, 42, 123, 0.6);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            z-index: 20;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #edutech-team-section .nav-arrow.left {
+            left: 30px;
+        }
+
+        #edutech-team-section .nav-arrow.right {
+            right: 30px;
+        }
+
+        /* Dots Navigation */
+        #edutech-team-section .dots {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        #edutech-team-section .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(8, 42, 123, 0.2);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #edutech-team-section .dot.active {
+            background: rgb(8, 42, 123);
+            transform: scale(1.3);
+        }

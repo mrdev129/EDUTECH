@@ -855,7 +855,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <div id="about" class="container">
                 <div class="row align-items-center">
 
-                    <!-- LEFT IMAGE -->
                     <div class="col-lg-6">
                         <div class="max-w-lg w-full mx-auto">
                             <div class="flex justify-center mb-6 space-x-3">
@@ -881,171 +880,95 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="nav-button-wrapper" style="display: flex !important; justify-content: center !important; width: 100% !important; margin-top: 25px !important; position: relative !important; z-index: 100 !important;">
-                                <div class="glass-pill-container">
-                                    <button id="prev-btn" class="circle-btn">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </button>
-                                    <button id="flip-btn-main" class="circle-btn center-large" style="visibility: hidden !important;">
-                                        <i class="fas fa-sync-alt"></i>
-                                    </button>
-                                    <button id="next-btn" class="circle-btn">
-                                        <i class="fas fa-chevron-right"></i>
-                                    </button>
-                                </div>
-                            </div>
                         </div>
                     </div>
 
-                    <!-- RIGHT CONTENT -->
                     <div class="col-lg-6">
                         <div class="rs-about-2__main-content">
                             <div class="rs-section-title black">
-
-                                <!-- TOP HEADING -->
                                 <div class="top-sub-heading">
                                     <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
                                     <span>Welcome To EDUTECH</span>
                                     <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
                                 </div>
 
-                                <!-- MAIN TITLE -->
                                 <h2 class="title split-in-fade">
                                     Guiding Students Towards the Right Career Path
                                 </h2>
 
                                 <br>
 
-                                <!-- TABS -->
                                 <div id="rs-tabs" class="skltbs-theme-light use-drop skltbs-mode-tabs skltbs-init">
-
-                                    <!-- TAB BUTTONS -->
                                     <ul class="skltbs-tab-group">
-                                        <li class="skltbs-tab-item">
-                                            <button class="skltbs-tab about-tab-sync" data-tab-index="0">Our Mission</button>
-                                        </li>
-                                        <li class="skltbs-tab-item">
-                                            <button class="skltbs-tab about-tab-sync" data-tab-index="1">Our Vision</button>
-                                        </li>
-                                        <li class="skltbs-tab-item">
-                                            <button class="skltbs-tab about-tab-sync" data-tab-index="2">Core Value</button>
-                                        </li>
+                                        <li class="skltbs-tab-item"><button class="skltbs-tab about-tab-sync" data-tab-index="0">Our Mission</button></li>
+                                        <li class="skltbs-tab-item"><button class="skltbs-tab about-tab-sync" data-tab-index="1">Our Vision</button></li>
+                                        <li class="skltbs-tab-item"><button class="skltbs-tab about-tab-sync" data-tab-index="2">Core Value</button></li>
                                     </ul>
 
-                                    <!-- TAB PANELS -->
                                     <div class="skltbs-panel-group">
+                                        <?php
+                                        $tabs = [
+                                            [
+                                                'title' => 'Our Mission',
+                                                'text' => 'Our mission is to guide students and professionals toward the right educational and career opportunities through personalized counselling, modern technology, and transparent support.',
+                                                'list' => [
+                                                    'Personalized mentorship to help students choose the right course and college.',
+                                                    'Career-focused guidance that connects education with future opportunities.'
+                                                ]
+                                            ],
+                                            [
+                                                'title' => 'Our Vision',
+                                                'text' => 'Our vision is to become a trusted education guidance platform that helps students confidently choose the right academic path and build successful careers. We aim to bridge the gap between students and quality institutions through reliable guidance and modern counselling methods.',
+                                                'list' => [
+                                                    'Making quality education accessible to students everywhere.',
+                                                    'Supporting students from admission guidance to career readiness.'
+                                                ]
+                                            ],
+                                            [
+                                                'title' => 'Core Value',
+                                                'text' => 'Our core values define how we guide students and build trust with families. We focus on integrity, dedication, and student success in every step of the education consulting journey.',
+                                                'list' => [
+                                                    'Student-First Approach – Every student’s success is our priority.',
+                                                    'Transparency & Integrity – Honest guidance in every admission process.'
+                                                ]
+                                            ]
+                                        ];
 
-                                        <!-- MISSION -->
-                                        <div class="skltbs-panel">
-                                            <p>
-                                                Our mission is to guide students and professionals toward the right
-                                                educational and career opportunities through personalized counselling,
-                                                modern technology, and transparent support.
-                                            </p>
+                                        foreach ($tabs as $index => $tab): ?>
+                                            <div class="skltbs-panel">
+                                                <p><?php echo $tab['text']; ?></p>
 
-                                            <ul>
-                                                <li><i class="ri-share-forward-fill"></i> Personalized mentorship to
-                                                    help students choose the right course and college.</li>
+                                                <ul>
+                                                    <?php foreach ($tab['list'] as $bullet): ?>
+                                                        <li><i class="ri-share-forward-fill"></i> <?php echo $bullet; ?></li>
+                                                    <?php endforeach; ?>
+                                                </ul>
 
-                                                <li><i class="ri-share-forward-fill"></i> Career-focused guidance that
-                                                    connects education with future opportunities.</li>
-                                            </ul>
+                                                <div class="about-action-hub d-flex align-items-center mt-4">
+                                                    <a class="main-btn" href="about_us.php">
+                                                        Know More About Us <i class="ri-arrow-right-fill"></i>
+                                                    </a>
 
-                                            <a class="main-btn" href="about_us.php">
-                                                Know More About Us
-                                                <i class="ri-arrow-right-fill"></i>
-                                            </a>
+                                                    <div class="nav-video-hub d-flex align-items-center ms-4 shadow-sm">
+                                                        <button type="button" class="hub-nav-btn prev-btn-right">
+                                                            <i class="fas fa-chevron-left"></i>
+                                                        </button>
 
-                                            <div class="play-icon">
-                                                <a class="rs-popup-videos"
-                                                    href="https://www.youtube.com/watch?v=example">
-                                                    <i class="fa fa-play"></i>
-                                                </a>
+                                                        <div class="hub-play-wrap">
+                                                            <a class="rs-popup-videos hub-play-btn" href="https://www.youtube.com/watch?v=example">
+                                                                <i class="fa fa-play"></i>
+                                                            </a>
+                                                        </div>
+
+                                                        <button type="button" class="hub-nav-btn next-btn-right">
+                                                            <i class="fas fa-chevron-right"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-
-                                        <!-- VISION -->
-                                        <div class="skltbs-panel">
-                                            <p>
-                                                Our vision is to become a trusted education guidance platform that helps
-                                                students
-                                                confidently choose the right academic path and build successful careers.
-                                                We aim to
-                                                bridge the gap between students and quality institutions through
-                                                reliable guidance
-                                                and modern counselling methods.
-                                            </p>
-
-                                            <ul>
-                                                <li>
-                                                    <i class="ri-share-forward-fill"></i>
-                                                    Making quality education accessible to students everywhere.
-                                                </li>
-
-                                                <li>
-                                                    <i class="ri-share-forward-fill"></i>
-                                                    Supporting students from admission guidance to career readiness.
-                                                </li>
-                                            </ul>
-
-                                            <a class="main-btn" href="about_us.php">
-                                                Know More About Us
-                                                <i class="ri-arrow-right-fill"></i>
-                                            </a>
-
-                                            <div class="play-icon">
-                                                <a class="rs-popup-videos"
-                                                    href="https://www.youtube.com/watch?v=example">
-                                                    <i class="fa fa-play"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-
-                                        <!-- CORE VALUE -->
-                                        <div class="skltbs-panel">
-
-                                            <p>
-                                                Our core values define how we guide students and build trust with
-                                                families.
-                                                We focus on integrity, dedication, and student success in every step of
-                                                the
-                                                education consulting journey.
-                                            </p>
-
-                                            <ul>
-                                                <li>
-                                                    <i class="ri-share-forward-fill"></i>
-                                                    Student-First Approach – Every student’s success is our priority.
-                                                </li>
-
-                                                <li>
-                                                    <i class="ri-share-forward-fill"></i>
-                                                    Transparency & Integrity – Honest guidance in every admission
-                                                    process.
-                                                </li>
-                                            </ul>
-
-
-                                            <a class="main-btn" href="about_us.php">
-                                                Know More About Us
-                                                <i class="ri-arrow-right-fill"></i>
-                                            </a>
-
-                                            <div class="play-icon ms-3">
-                                                <a class="rs-popup-videos"
-                                                    href="https://www.youtube.com/watch?v=example">
-                                                    <i class="fa fa-play"></i>
-                                                </a>
-                                            </div>
-
-
-                                        </div>
-
+                                        <?php endforeach; ?>
                                     </div>
                                 </div>
-                                <!-- END TABS -->
-
                             </div>
                         </div>
                     </div>
@@ -1066,29 +989,29 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 </div>
 
                 <div class="logos">
-  <div class="logos-slide">
-    <img src="assets/images/brand/alluri.png" />
-    <img src="assets/images/brand/balaji.jpg" />
-    <img src="assets/images/brand/bharath.png" />
-    <img src="assets/images/brand/dy.png" />
-    <img src="assets/images/brand/great.jpeg" />
-    <img src="assets/images/brand/gvp.png" />
-    <img src="assets/images/brand/kasturabha.jpeg" />
-    <img src="assets/images/brand/kims.png" />
-    <img src="assets/images/brand/maharaja.jpeg" />
-    <img src="assets/images/brand/vinayak.png" />
-    <img src="assets/images/brand/sri.png" />
-    <img src="assets/images/brand/bits.png" />
-    <img src="assets/images/brand/cvraman.png" />
-    <img src="assets/images/brand/christ.jpeg" />
-    <img src="assets/images/brand/kiit.png" />
-    <img src="assets/images/brand/manipal.png" />
-    <img src="assets/images/brand/rv.png" />
-    <img src="assets/images/brand/soa.png" />
-    <img src="assets/images/brand/srm.png" />
-    <img src="assets/images/brand/vit.jpg" />
-  </div>
-  <!-- <div class="logos-slide">
+                    <div class="logos-slide">
+                        <img src="assets/images/brand/alluri.png" />
+                        <img src="assets/images/brand/balaji.jpg" />
+                        <img src="assets/images/brand/bharath.png" />
+                        <img src="assets/images/brand/dy.png" />
+                        <img src="assets/images/brand/great.jpeg" />
+                        <img src="assets/images/brand/gvp.png" />
+                        <img src="assets/images/brand/kasturabha.jpeg" />
+                        <img src="assets/images/brand/kims.png" />
+                        <img src="assets/images/brand/maharaja.jpeg" />
+                        <img src="assets/images/brand/vinayak.png" />
+                        <img src="assets/images/brand/sri.png" />
+                        <img src="assets/images/brand/bits.png" />
+                        <img src="assets/images/brand/cvraman.png" />
+                        <img src="assets/images/brand/christ.jpeg" />
+                        <img src="assets/images/brand/kiit.png" />
+                        <img src="assets/images/brand/manipal.png" />
+                        <img src="assets/images/brand/rv.png" />
+                        <img src="assets/images/brand/soa.png" />
+                        <img src="assets/images/brand/srm.png" />
+                        <img src="assets/images/brand/vit.jpg" />
+                    </div>
+                    <!-- <div class="logos-slide">
     <img src="assets/images/brand/alluri.png" />
     <img src="assets/images/brand/balaji.jpg" />
     <img src="assets/images/brand/bharath.png" />
@@ -1110,9 +1033,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <img src="assets/images/brand/srm.png" />
     <img src="assets/images/brand/vit.jpg" />
   </div> -->
-  
-  
-</div>
+
+
+                </div>
 
             </div>
         </div>
@@ -1147,160 +1070,102 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="rs-carousel owl-carousel rs-project__slider mt-30" data-loop="true" data-items="3"
-                            data-margin="30" data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000"
-                            data-smart-speed="800" data-dots="true" data-nav="false" data-nav-speed="false"
-                            data-center-mode="false" data-mobile-device="1" data-mobile-device-nav="false"
-                            data-mobile-device-dots="true" data-ipad-device="2" data-ipad-device-nav="false"
-                            data-ipad-device-dots="true" data-ipad-device2="1" data-ipad-device-nav2="false"
-                            data-ipad-device-dots2="true" data-md-device="2" data-lg-device="3"
-                            data-md-device-nav="false" data-md-device-dots="true" data-doteach="false">
+                        <div id="edutech-team-section">
+                            <div class="carousel-container">
+                                <button class="nav-arrow left">‹</button>
+                                <div class="carousel-track">
 
-                            <div class="rs-project__items team-card-glass">
-                                <div class="wrapping">
-                                    <img src="assets/images/project/project-1.jpg" alt="">
-
-                                    <div class="team-glass-layer">
-                                        <div class="glass-text">
-                                            <h4 class="name">Dr. Pragati Sahai</h4>
-                                            <p class="sub">Assistant Professor | 10+ Years Experience</p>
-                                            <p class="bio">Expert career counselor specializing in management admissions
-                                                and academic research with a proven track record.</p>
+                                    <div class="card" data-index="0">
+                                        <div class="rs-project__items team-card-glass">
+                                            <div class="wrapping">
+                                                <img src="assets/images/project/project-5.jpg" alt="Dr. Sunil Kumar">
+                                                <div class="team-glass-layer">
+                                                    <div class="glass-text">
+                                                        <h4 class="name">Dr. Sunil Kumar</h4>
+                                                        <p class="sub">Assistant Professor</p>
+                                                        <p class="bio">Senior expert in vocational training and diploma pathways.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
-                                    <div class="rs-project__content">
-                                        <ul>
-                                            <li><a href="#">Consultation</a></li>
-                                            <li><a href="#">Design</a></li>
-                                            <li><a href="#">Strategy</a></li>
-                                        </ul>
-                                        <h3 class="title"><a href="project-details.html">Sibani</a></h3>
-                                        <div class="rs-link">
-                                            <a href="project-details.html"><img src="assets/images/Socialmedia.png"
-                                                    style="width:40%; height:auto;" alt=""> <i
-                                                    class="ri-arrow-right-fill"></i></a>
+                                    <div class="card" data-index="1">
+                                        <div class="rs-project__items team-card-glass">
+                                            <div class="wrapping">
+                                                <img src="assets/images/project/project-1.jpg" alt="Dr. Pragati Sahai">
+                                                <div class="team-glass-layer">
+                                                    <div class="glass-text">
+                                                        <h4 class="name">Dr. Pragati Sahai</h4>
+                                                        <p class="sub">Assistant Professor</p>
+                                                        <p class="bio">Expert career counselor specializing in management admissions.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+
+                                    <div class="card" data-index="2">
+                                        <div class="rs-project__items team-card-glass">
+                                            <div class="wrapping">
+                                                <img src="assets/images/project/project-2.jpg" alt="Dr. Rashmi Saxena">
+                                                <div class="team-glass-layer">
+                                                    <div class="glass-text">
+                                                        <h4 class="name">Dr. Rashmi Saxena</h4>
+                                                        <p class="sub">Assistant Professor</p>
+                                                        <p class="bio">Focusing on management strategies and student success.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card" data-index="3">
+                                        <div class="rs-project__items team-card-glass">
+                                            <div class="wrapping">
+                                                <img src="assets/images/project/project-3.jpg" alt="Dr. Sachit Paliwal">
+                                                <div class="team-glass-layer">
+                                                    <div class="glass-text">
+                                                        <h4 class="name">Dr. Sachit Paliwal</h4>
+                                                        <p class="sub">Assistant Professor</p>
+                                                        <p class="bio">Expert in agriculture and medical stream admissions.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card" data-index="4">
+                                        <div class="rs-project__items team-card-glass">
+                                            <div class="wrapping">
+                                                <img src="assets/images/project/project-4.jpg" alt="Ms. Mona Chaudhary">
+                                                <div class="team-glass-layer">
+                                                    <div class="glass-text">
+                                                        <h4 class="name">Ms. Mona Chaudhary</h4>
+                                                        <p class="sub">Assistant Professor</p>
+                                                        <p class="bio">Academic advisor specializing in postgraduate strategies.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
+                                <button class="nav-arrow right">›</button>
                             </div>
 
-                            <div class="rs-project__items team-card-glass">
-                                <div class="wrapping">
-                                    <img src="assets/images/project/project-2.jpg" alt="">
-
-                                    <div class="team-glass-layer">
-                                        <div class="glass-text">
-                                            <h4 class="name">Dr. Rashmi Saxena</h4>
-                                            <p class="sub">Assistant Professor | PhD in Management</p>
-                                            <p class="bio">Dedicated academician focusing on management strategies and
-                                                student success pathways.</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="rs-project__content">
-                                        <ul>
-                                            <li><a href="#">Consultation</a></li>
-                                            <li><a href="#">Design</a></li>
-                                            <li><a href="#">Strategy</a></li>
-                                        </ul>
-                                        <h3 class="title"><a href="project-details.html">Satya</a></h3>
-                                        <div class="rs-link">
-                                            <a href="project-details.html"><img src="assets/images/Socialmedia.png"
-                                                    style="width:40%; height:auto;" alt=""> <i
-                                                    class="ri-arrow-right-fill"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="member-info">
+                                <h2 class="member-name"></h2>
+                                <p class="member-role"></p>
                             </div>
 
-                            <div class="rs-project__items team-card-glass">
-                                <div class="wrapping">
-                                    <img src="assets/images/project/project-3.jpg" alt="">
-
-                                    <div class="team-glass-layer">
-                                        <div class="glass-text">
-                                            <h4 class="name">Dr. Sachit Paliwal</h4>
-                                            <p class="sub">Assistant Professor | 12+ Years Experience</p>
-                                            <p class="bio">Leading expert in agriculture and medical stream admissions
-                                                with extensive industrial knowledge.</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="rs-project__content">
-                                        <ul>
-                                            <li><a href="#">Consultation</a></li>
-                                            <li><a href="#">Design</a></li>
-                                            <li><a href="#">Strategy</a></li>
-                                        </ul>
-                                        <h3 class="title"><a href="project-details.html">Dev</a></h3>
-                                        <div class="rs-link">
-                                            <a href="project-details.html"><img src="assets/images/Socialmedia.png"
-                                                    style="width:40%; height:auto;" alt=""> <i
-                                                    class="ri-arrow-right-fill"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="dots">
+                                <div class="dot" data-index="0"></div>
+                                <div class="dot" data-index="1"></div>
+                                <div class="dot" data-index="2"></div>
+                                <div class="dot" data-index="3"></div>
+                                <div class="dot" data-index="4"></div>
                             </div>
-
-                            <div class="rs-project__items team-card-glass">
-                                <div class="wrapping">
-                                    <img src="assets/images/project/project-4.jpg" alt="">
-
-                                    <div class="team-glass-layer">
-                                        <div class="glass-text">
-                                            <h4 class="name">Ms. Mona Chaudhary</h4>
-                                            <p class="sub">Assistant Professor | 9+ Years Experience</p>
-                                            <p class="bio">Academic advisor specializing in postgraduate strategies and
-                                                student mentoring.</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="rs-project__content">
-                                        <ul>
-                                            <li><a href="#">Consultation</a></li>
-                                            <li><a href="#">Design</a></li>
-                                            <li><a href="#">Strategy</a></li>
-                                        </ul>
-                                        <h3 class="title"><a href="project-details.html">Hari</a></h3>
-                                        <div class="rs-link">
-                                            <a href="project-details.html"><img src="assets/images/Socialmedia.png"
-                                                    style="width:40%; height:auto;" alt=""> <i
-                                                    class="ri-arrow-right-fill"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="rs-project__items team-card-glass">
-                                <div class="wrapping">
-                                    <img src="assets/images/project/project-5.jpg" alt="">
-
-                                    <div class="team-glass-layer">
-                                        <div class="glass-text">
-                                            <h4 class="name">Dr. Sunil Kumar</h4>
-                                            <p class="sub">Assistant Professor | PhD in Management</p>
-                                            <p class="bio">Senior expert in vocational training and diploma pathways for
-                                                technical students.</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="rs-project__content">
-                                        <ul>
-                                            <li><a href="#">Consultation</a></li>
-                                            <li><a href="#">Design</a></li>
-                                            <li><a href="#">Strategy</a></li>
-                                        </ul>
-                                        <h3 class="title"><a href="project-details.html">Ram</a></h3>
-                                        <div class="rs-link">
-                                            <a href="project-details.html"><img src="assets/images/Socialmedia.png"
-                                                    style="width:40%; height:auto;" alt=""> <i
-                                                    class="ri-arrow-right-fill"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
                         </div>
                     </div>
                 </div>
@@ -2965,8 +2830,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             });
 
 
+            /*ABOUT SECTION CARD LOGIC */
+
             document.addEventListener('DOMContentLoaded', function() {
-                // Existing variables
+                // --- 1. Variables ---
                 const cards = document.querySelectorAll('.card');
                 const progressDots = document.querySelectorAll('.progress-dot');
                 const tabButtons = document.querySelectorAll('.about-tab-sync');
@@ -2975,27 +2842,39 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 let currentIndex = 0;
                 const totalCards = cards.length;
 
-                // --- FUNCTION: Sync Tabs when Card Swipes ---
+                // --- 2. Core Functions ---
+
+                // Updated Sync Logic: Forces both your cards AND the Skeletal Tab Panels to change
                 function syncTabs(index) {
                     tabButtons.forEach((btn, i) => {
                         if (i === index) {
+                            // 1. Update your custom button classes
                             btn.classList.add('skltbs-active');
-                            // Trigger the skeletal tabs internal display logic
+
+                            // 2. Manually show/hide panels if the plugin isn't doing it
+                            tabPanels.forEach(p => {
+                                p.style.display = 'none';
+                                p.classList.remove('skltbs-active');
+                            });
                             if (tabPanels[i]) {
-                                tabPanels.forEach(p => p.classList.remove('skltbs-active'));
+                                tabPanels[i].style.display = 'block';
                                 tabPanels[i].classList.add('skltbs-active');
                             }
+
+                            // 3. Trigger a 'click' on the actual tab so the Skeletabs plugin sees it
+                            // (This ensures any built-in plugin animations also run)
+                            btn.dispatchEvent(new Event('click', {
+                                bubbles: true
+                            }));
                         } else {
                             btn.classList.remove('skltbs-active');
                         }
                     });
                 }
 
-                // --- FUNCTION: Update Cards (Modified to include tab sync) ---
                 function updateCards() {
                     cards.forEach((card, index) => {
                         card.classList.remove('active', 'next', 'next-2', 'previous', 'hidden', 'swipe-left', 'swipe-right');
-
                         if (index === currentIndex) {
                             card.classList.add('active');
                         } else if (index === (currentIndex + 1) % totalCards) {
@@ -3007,25 +2886,40 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         }
                     });
 
-                    // Sync Dots
                     progressDots.forEach((dot, i) => {
                         dot.classList.toggle('bg-white', i === currentIndex);
                         dot.classList.toggle('bg-white/30', i !== currentIndex);
                     });
 
-                    // NEW: Sync the Tabs
+                    // This is the call that fixes your content issue
                     syncTabs(currentIndex);
                 }
 
-                // --- EVENT: Sync Card when Tab is Clicked ---
+                function nextCard() {
+                    cards[currentIndex].classList.add('swipe-left');
+                    setTimeout(() => {
+                        currentIndex = (currentIndex + 1) % totalCards;
+                        updateCards();
+                    }, 400);
+                }
+
+                function prevCard() {
+                    cards[currentIndex].classList.add('swipe-right');
+                    setTimeout(() => {
+                        currentIndex = (currentIndex - 1 + totalCards) % totalCards;
+                        updateCards();
+                    }, 400);
+                }
+
+                // --- 3. Event Listeners ---
+
+                // Manual Tab Clicks (Syncs Card to Text)
                 tabButtons.forEach(button => {
-                    button.addEventListener('click', function() {
+                    button.addEventListener('click', function(e) {
                         const targetIndex = parseInt(this.getAttribute('data-tab-index'));
-
                         if (targetIndex !== currentIndex) {
-                            // Add swipe animation to old card
-                            cards[currentIndex].classList.add(targetIndex > currentIndex ? 'swipe-left' : 'swipe-right');
-
+                            const directionClass = targetIndex > currentIndex ? 'swipe-left' : 'swipe-right';
+                            cards[currentIndex].classList.add(directionClass);
                             setTimeout(() => {
                                 currentIndex = targetIndex;
                                 updateCards();
@@ -3034,24 +2928,249 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     });
                 });
 
-                // --- Existing Nav Buttons (Remain the same) ---
-                document.getElementById('next-btn').addEventListener('click', () => {
-                    cards[currentIndex].classList.add('swipe-left');
-                    setTimeout(() => {
-                        currentIndex = (currentIndex + 1) % totalCards;
-                        updateCards();
-                    }, 400);
+                // NEW HUB BUTTONS (Syncs Text to Card)
+                document.querySelectorAll('.next-btn-right').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        nextCard();
+                    });
                 });
 
-                document.getElementById('prev-btn').addEventListener('click', () => {
-                    cards[currentIndex].classList.add('swipe-right');
-                    setTimeout(() => {
-                        currentIndex = (currentIndex - 1 + totalCards) % totalCards;
-                        updateCards();
-                    }, 400);
+                document.querySelectorAll('.prev-btn-right').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        prevCard();
+                    });
                 });
 
-                updateCards(); // Initial run
+                updateCards(); // Initial Run
+            });
+        </script>
+
+
+
+        /*TEAM SLIDER */
+        <script>
+            const teamMembers = [{
+                    name: "Dr. Sunil Kumar",
+                    role: "Assistant Professor"
+                },
+                {
+                    name: "Dr. Pragati Sahai",
+                    role: "Assistant Professor"
+                },
+                {
+                    name: "Dr. Rashmi Saxena",
+                    role: "Assistant Professor"
+                },
+                {
+                    name: "Dr. Sachit Paliwal",
+                    role: "Assistant Professor"
+                },
+                {
+                    name: "Ms. Mona Chaudhary",
+                    role: "Assistant Professor"
+                },
+            ];
+
+            const cards = document.querySelectorAll(".card");
+            const dots = document.querySelectorAll(".dot");
+            const memberName = document.querySelector(".member-name");
+            const memberRole = document.querySelector(".member-role");
+            const leftArrow = document.querySelector(".nav-arrow.left");
+            const rightArrow = document.querySelector(".nav-arrow.right");
+            let currentIndex = 0;
+            let isAnimating = false;
+
+            function updateCarousel(newIndex) {
+                if (isAnimating) return;
+                isAnimating = true;
+
+                currentIndex = (newIndex + cards.length) % cards.length;
+
+                cards.forEach((card, i) => {
+                    const offset = (i - currentIndex + cards.length) % cards.length;
+
+                    card.classList.remove(
+                        "center",
+                        "left-1",
+                        "left-2",
+                        "right-1",
+                        "right-2",
+                        "hidden"
+                    );
+
+                    if (offset === 0) {
+                        card.classList.add("center");
+                    } else if (offset === 1) {
+                        card.classList.add("right-1");
+                    } else if (offset === 2) {
+                        card.classList.add("right-2");
+                    } else if (offset === cards.length - 1) {
+                        card.classList.add("left-1");
+                    } else if (offset === cards.length - 2) {
+                        card.classList.add("left-2");
+                    } else {
+                        card.classList.add("hidden");
+                    }
+                });
+
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle("active", i === currentIndex);
+                });
+
+                memberName.style.opacity = "0";
+                memberRole.style.opacity = "0";
+
+                setTimeout(() => {
+                    memberName.textContent = teamMembers[currentIndex].name;
+                    memberRole.textContent = teamMembers[currentIndex].role;
+                    memberName.style.opacity = "1";
+                    memberRole.style.opacity = "1";
+                }, 300);
+
+                setTimeout(() => {
+                    isAnimating = false;
+                }, 800);
+            }
+
+            leftArrow.addEventListener("click", () => {
+                updateCarousel(currentIndex - 1);
+            });
+
+            rightArrow.addEventListener("click", () => {
+                updateCarousel(currentIndex + 1);
+            });
+
+            dots.forEach((dot, i) => {
+                dot.addEventListener("click", () => {
+                    updateCarousel(i);
+                });
+            });
+
+            cards.forEach((card, i) => {
+                card.addEventListener("click", () => {
+                    updateCarousel(i);
+                });
+            });
+
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "ArrowLeft") {
+                    updateCarousel(currentIndex - 1);
+                } else if (e.key === "ArrowRight") {
+                    updateCarousel(currentIndex + 1);
+                }
+            });
+
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            document.addEventListener("touchstart", (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+
+            document.addEventListener("touchend", (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            });
+
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                const diff = touchStartX - touchEndX;
+
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        updateCarousel(currentIndex + 1);
+                    } else {
+                        updateCarousel(currentIndex - 1);
+                    }
+                }
+            }
+
+            updateCarousel(0);
+        </script>
+
+
+        /*TEAM SLIDER */
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const teamData = [{
+                        name: "Dr. Sunil Kumar",
+                        role: "Assistant Professor"
+                    },
+                    {
+                        name: "Dr. Pragati Sahai",
+                        role: "Assistant Professor"
+                    },
+                    {
+                        name: "Dr. Rashmi Saxena",
+                        role: "Assistant Professor"
+                    },
+                    {
+                        name: "Dr. Sachit Paliwal",
+                        role: "Assistant Professor"
+                    },
+                    {
+                        name: "Ms. Mona Chaudhary",
+                        role: "Assistant Professor"
+                    }
+                ];
+
+                const section = document.querySelector("#edutech-team-section");
+                const cards = section.querySelectorAll(".card");
+                const dots = section.querySelectorAll(".dot");
+                const nameDisplay = section.querySelector(".member-name");
+                const roleDisplay = section.querySelector(".member-role");
+                const leftArrow = section.querySelector(".nav-arrow.left");
+                const rightArrow = section.querySelector(".nav-arrow.right");
+
+                let currentIdx = 0;
+                let isAnimating = false;
+
+                function updateCarousel(index) {
+                    if (isAnimating) return;
+                    isAnimating = true;
+
+                    currentIdx = (index + teamData.length) % teamData.length;
+
+                    cards.forEach((card, i) => {
+                        const offset = (i - currentIdx + teamData.length) % teamData.length;
+                        card.classList.remove("center", "left-1", "left-2", "right-1", "right-2", "hidden");
+
+                        if (offset === 0) card.classList.add("center");
+                        else if (offset === 1) card.classList.add("right-1");
+                        else if (offset === 2) card.classList.add("right-2");
+                        else if (offset === teamData.length - 1) card.classList.add("left-1");
+                        else if (offset === teamData.length - 2) card.classList.add("left-2");
+                        else card.classList.add("hidden");
+                    });
+
+                    dots.forEach((dot, i) => dot.classList.toggle("active", i === currentIdx));
+
+                    // Smooth text update
+                    nameDisplay.style.opacity = "0";
+                    roleDisplay.style.opacity = "0";
+                    setTimeout(() => {
+                        nameDisplay.textContent = teamData[currentIdx].name;
+                        roleDisplay.textContent = teamData[currentIdx].role;
+                        nameDisplay.style.opacity = "1";
+                        roleDisplay.style.opacity = "1";
+                    }, 300);
+
+                    setTimeout(() => {
+                        isAnimating = false;
+                    }, 800);
+                }
+
+                leftArrow.addEventListener("click", () => updateCarousel(currentIdx - 1));
+                rightArrow.addEventListener("click", () => updateCarousel(currentIdx + 1));
+                dots.forEach((dot, i) => dot.addEventListener("click", () => updateCarousel(i)));
+                cards.forEach((card, i) => card.addEventListener("click", () => updateCarousel(i)));
+
+                // Initialize the carousel on load
+                updateCarousel(0);
             });
         </script>
 </body>
