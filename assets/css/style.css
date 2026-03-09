@@ -2637,18 +2637,14 @@ html.menu-is-open .menu-canvas-layer {
   }
 }
 
-.rs-footer__navigation ul li {
-  margin: 17px 0;
-}
-
-.rs-footer__navigation ul li a {
+.rs-footer__navigation a {
   color: #FFFFFFDB;
   position: relative;
   padding-left: 30px;
   transition: all linear 0.3s;
 }
 
-.rs-footer__navigation ul li a::after {
+.rs-footer__navigation a::after {
   content: "";
   position: absolute;
   left: 0px;
@@ -2660,7 +2656,7 @@ html.menu-is-open .menu-canvas-layer {
   background: #F26F20;
 }
 
-.rs-footer__navigation ul li a::before {
+.rs-footer__navigation a::before {
   content: "";
   position: absolute;
   left: -4px;
@@ -2673,7 +2669,7 @@ html.menu-is-open .menu-canvas-layer {
   background: #2b1e6b;
 }
 
-.rs-footer__navigation ul li a:hover {
+.rs-footer__navigation a:hover {
   color: #F26F20;
 }
 

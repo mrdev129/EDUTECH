@@ -1796,7 +1796,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                 <div class="rs-footer-title">
                                     <h4 class="title">Quick Links</h4>
                                 </div>
-
                                 <a href="#home">Home</a>
                                 <br>
                                 <a href="#about">About</a>
