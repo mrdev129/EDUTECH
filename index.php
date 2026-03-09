@@ -644,6 +644,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <!--======== COURSE ADVERTISEMENT Start ========-->
 
         <section id="rs-course-explorer-unique" class="pt-20 pb-60 reveal edu-course-section" style="background: #fff; overflow: hidden;">
+        <section id="rs-course-explorer-unique" class="pt-20 pb-60 reveal edu-course-section"
+            style="background: #fff; overflow: hidden;">
             <div class="container" id="course">
                 <div class="rs-section-title black text-center mb-50">
                     <div class="top-sub-heading">
@@ -673,6 +675,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                         </p>
 
                                         <a class="main-btn" href="btech.php?course=ece" style="padding: 10px 20px; font-size: 14px;">
+                                            Focuses on designing electronic systems, communication networks, and modern
+                                            technologies like IoT, robotics, and telecommunications.
+                                        </p>
+
+                                        <a class="main-btn" href="btech.php?course=ece"
+                                            style="padding: 10px 20px; font-size: 14px;">
                                             more details
                                         </a>
                                     </div>
@@ -697,6 +705,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                         </p>
 
                                         <a class="main-btn" href="btech.php?course=mech" style="padding: 10px 20px; font-size: 14px;">
+                                            Deals with the design, manufacturing, and operation of machines, engines,
+                                            and mechanical systems.
+                                        </p>
+
+                                        <a class="main-btn" href="btech.php?course=mech"
+                                            style="padding: 10px 20px; font-size: 14px;">
                                             more details
                                         </a>
                                     </div>
@@ -721,6 +735,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                         </p>
 
                                         <a class="main-btn" href="management.php?course=mba" style="padding: 10px 20px; font-size: 14px;">
+                                            A professional medical degree that trains students to diagnose, treat, and
+                                            prevent diseases as doctors.
+                                        </p>
+
+                                        <a class="main-btn" href="management.php?course=mba"
+                                            style="padding: 10px 20px; font-size: 14px;">
                                             more details
                                         </a>
                                     </div>
@@ -745,6 +765,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                         </p>
 
                                         <a class="main-btn" href="management.php?course=mbbs" style="padding: 10px 20px; font-size: 14px;">
+                                            A management degree that develops leadership, business strategy, and
+                                            decision-making skills for corporate and entrepreneurial careers.
+                                        </p>
+
+                                        <a class="main-btn" href="management.php?course=mbbs"
+                                            style="padding: 10px 20px; font-size: 14px;">
                                             more details
                                         </a>
                                     </div>
@@ -1643,18 +1669,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                 <div class="rs-footer-title">
                                     <h4 class="title">Quick Links</h4>
                                 </div>
+
                                 <a href="#home">Home</a>
-                                <br>
                                 <a href="#about">About</a>
-                                <br>
                                 <a href="#course">Course</a>
-                                <br>
                                 <a href="blog.php">Blogs</a>
-                                <br>
                                 <a href="#team">Team Members</a>
-                                <br>
                                 <a href="#gallery">Gallery</a>
-                                <br>
                                 <a href="#contact">Contact Us</a>
 
                             </div>
@@ -1664,30 +1685,28 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                 <div class="rs-footer-title">
                                     <h4 class="title">Get in touch</h4>
                                 </div>
-                                <div class="info-box-item mb-15">
-                                    <div class="rs-info-contact">
-                                        <h5 class="title"><a href="tel:+919438850101">+91
-                                                9438850101</a>
-                                        </h5>
-                                        <h5 class="title"><a href="tel:+918637274841">+91
-                                                8637274841</a>
-                                        </h5>
-                                        <h5 class="title"><a href="tel:+917205150641">+91
-                                                7205150641</a>
-                                        </h5>
-                                    </div>
+                                <div class="rs-info-contact contact-item">
+                                    <i class="fa fa-phone"></i>
+                                    <a href="tel:+919438850101">+91 9438850101</a>
                                 </div>
-                                <div class="info-box-item">
-                                    <!-- <div class="rs-info-icon">
-                                        <i class="ri-mail-send-line"></i>
-                                    </div> -->
-                                    <div class="rs-info-contact">
-                                        <!-- <span>Email Us</span> -->
-                                        <h5 class="title"><a
-                                                href="mailto:edutechadmissionexperts@gmail.com">edutechadmissionexperts@gmail.com</a>
-                                        </h5>
-                                    </div>
+
+                                <div class="rs-info-contact contact-item">
+                                    <i class="fa fa-phone"></i>
+                                    <a href="tel:+918637274841">+91 8637274841</a>
                                 </div>
+
+                                <div class="rs-info-contact contact-item">
+                                    <i class="fa fa-phone"></i>
+                                    <a href="tel:+917205150641">+91 7205150641</a>
+                                </div>
+
+                                <div class="rs-info-contact contact-item">
+                                    <i class="fa fa-envelope"></i>
+                                    <a href="mailto:edutechadmissionexperts@gmail.com">
+                                        edutechadmissionexperts@gmail.com
+                                    </a>
+                                </div>
+
                             </div>
                         </div>
                         <div class="col-lg-3">
@@ -1695,7 +1714,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                                 <h4 class="footer-title">Our Location</h4>
 
-                                <div class="footer-map">
+                                <div class="footer-map-box">
+
                                     <iframe
                                         src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3743.325324883753!2d85.74879577734762!3d20.245338265813242!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjDCsDE0JzQzLjIiTiA4NcKwNDUnMTMuMiJF!5e0!3m2!1sen!2sin!4v1772709818674!5m2!1sen!2sin"
                                         width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
@@ -1703,16 +1723,27 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                         style="border:0;" allowfullscreen="" loading="lazy"
                                         referrerpolicy="no-referrer-when-downgrade">
                                     </iframe>
+
+                                    <div class="map-overlay">
+
+                                        <div class="map-icon">
+                                            📍
+                                        </div>
+
+                                        <a href="https://maps.app.goo.gl/JqxfNbQ9YuP34XB17?g_st=aw" target="_blank"
+                                            class="map-btn">
+                                            View on Google Maps
+                                        </a>
+
+                                    </div>
+
                                 </div>
 
-                                <div class="rs-info-contact">
-                                    <span>Address</span>
-                                    <h5 class="title">
-                                        HIG-141 K6 (A), 1st Floor
-                                        Kalinga Nagar <br>PIN - 751019
-                                        Bhubaneswar, Odisha
-                                    </h5>
-                                </div>
+                                <p class="footer-address">
+                                    HIG-141 K6 (A), 1st Floor
+                                    Kalinga Nagar <br>PIN - 751019
+                                    Bhubaneswar, Odisha
+                                </p>
 
                             </div>
                         </div>
@@ -1821,7 +1852,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <script src="assets/js/main.js"></script>
 
         <script>
-            $(window).on('load', function() {
+            $(window).on('load', function () {
                 // 1. Initialize Background Slider (Sliding Left to Right)
                 var bgSlider = $('.hero-bg-slider');
 
@@ -1842,7 +1873,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     });
 
                     // Force a refresh after a short delay to calculate widths correctly
-                    setTimeout(function() {
+                    setTimeout(function () {
                         bgSlider.trigger('refresh.owl.carousel');
                     }, 200);
                 }
@@ -1881,7 +1912,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 }
             });
 
-            $(document).ready(function() {
+            $(document).ready(function () {
                 var brandSlider = $('.mobile-brand-grid');
 
                 function initBrandSlider() {
@@ -1911,14 +1942,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 }
 
                 initBrandSlider();
-                $(window).on('resize', function() {
+                $(window).on('resize', function () {
                     initBrandSlider();
                 });
 
 
             });
 
-            $(document).ready(function() {
+            $(document).ready(function () {
                 // Only initialize the blog slider for mobile users
                 if ($(window).width() < 768) {
                     $(".rs-blog-2 .owl-carousel").owlCarousel({
@@ -1933,7 +1964,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             });
         </script>
         <script>
-            document.addEventListener("DOMContentLoaded", function() {
+            document.addEventListener("DOMContentLoaded", function () {
                 const modal = document.getElementById("enquireModal");
                 const modalContent = document.querySelector(".enquire-modal-content");
                 const closeBtn = document.querySelector(".enquire-close");
@@ -1949,9 +1980,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     document.getElementById("openEnquireNav")
                 ];
 
-                openButtons.forEach(function(btn) {
+                openButtons.forEach(function (btn) {
                     if (btn) {
-                        btn.addEventListener("click", function(e) {
+                        btn.addEventListener("click", function (e) {
                             e.preventDefault();
                             modal.style.display = "flex";
                         });
@@ -1960,19 +1991,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                 // Close logic
                 if (closeBtn) {
-                    closeBtn.addEventListener("click", function() {
+                    closeBtn.addEventListener("click", function () {
                         modal.style.display = "none";
                     });
                 }
 
-                modal.addEventListener("click", function(e) {
+                modal.addEventListener("click", function (e) {
                     if (!modalContent.contains(e.target)) {
                         modal.style.display = "none";
                     }
                 });
             });
 
-            $(document).ready(function() {
+            $(document).ready(function () {
                 if ($(window).width() < 768) {
                     $(".featured-slider").owlCarousel({
                         items: 1,
@@ -1986,7 +2017,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 }
             });
 
-            $(document).ready(function() {
+            $(document).ready(function () {
                 // We only run this logic if the screen is mobile
                 if ($(window).width() < 768) {
                     var $teamSlider = $('.rs-project__slider');
@@ -2006,7 +2037,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </script>
 
         <script>
-            document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('DOMContentLoaded', function () {
                 const slider = document.querySelector('.category-slider-wrapper');
                 let isDown = false;
                 let startX;
@@ -2032,7 +2063,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     slider.scrollLeft = scrollLeft - walk;
                 });
 
-                window.switchCourseStream = function(evt, streamId) {
+                window.switchCourseStream = function (evt, streamId) {
                     document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
                     document.querySelectorAll('.branch-panel').forEach(panel => panel.classList.remove('active'));
 
@@ -2041,7 +2072,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         activePanel.classList.add('active');
                         evt.currentTarget.classList.add('active');
 
-                        setTimeout(function() {
+                        setTimeout(function () {
                             var $carousel = $(activePanel).find('.branch-slider');
                             if ($carousel.hasClass('owl-loaded')) {
                                 $carousel.trigger('refresh.owl.carousel');
@@ -2083,15 +2114,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </script>
 
         <script>
-            document.getElementById("contact-form").addEventListener("submit", function(e) {
+            document.getElementById("contact-form").addEventListener("submit", function (e) {
                 e.preventDefault();
 
                 let formData = new FormData(this);
 
                 fetch("save_inquiry.php", {
-                        method: "POST",
-                        body: formData
-                    })
+                    method: "POST",
+                    body: formData
+                })
                     .then(response => response.text())
                     .then(data => {
                         document.getElementById("form-response").innerHTML = data;
@@ -2194,7 +2225,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 }
 
                 // State change logic
-                stateSel.onchange = function() {
+                stateSel.onchange = function () {
                     districtSel.length = 1; // reset
                     citySel.length = 1; // reset
                     if (this.value == "") return;
@@ -2205,7 +2236,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 };
 
                 // District change logic
-                districtSel.onchange = function() {
+                districtSel.onchange = function () {
                     citySel.length = 1; // reset
                     if (this.value == "") return;
 
@@ -2246,7 +2277,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             });
         </script>
         <script>
-            document.addEventListener("DOMContentLoaded", function() {
+            document.addEventListener("DOMContentLoaded", function () {
                 const observerOptions = {
                     threshold: 0.15, // Triggers when 15% of the section is visible
                     rootMargin: "0px 0px -50px 0px" // Triggers slightly before the section hits the top
@@ -2271,7 +2302,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </script>
 
         <script>
-            document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('DOMContentLoaded', function () {
                 const cards = document.querySelectorAll('.card');
                 const progressDots = document.querySelectorAll('.progress-dot');
                 const prevBtn = document.getElementById('prev-btn');
@@ -2489,7 +2520,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             /*ABOUT SECTION CARD LOGIC */
 
-            document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('DOMContentLoaded', function () {
                 // --- 1. Variables ---
                 const cards = document.querySelectorAll('.card');
                 const progressDots = document.querySelectorAll('.progress-dot');
@@ -2572,7 +2603,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                 // Manual Tab Clicks (Syncs Card to Text)
                 tabButtons.forEach(button => {
-                    button.addEventListener('click', function(e) {
+                    button.addEventListener('click', function (e) {
                         const targetIndex = parseInt(this.getAttribute('data-tab-index'));
                         if (targetIndex !== currentIndex) {
                             const directionClass = targetIndex > currentIndex ? 'swipe-left' : 'swipe-right';
@@ -2608,25 +2639,25 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         <script>
             const teamMembers = [{
-                    name: "Dr. Sunil Kumar",
-                    role: "Assistant Professor"
-                },
-                {
-                    name: "Dr. Pragati Sahai",
-                    role: "Assistant Professor"
-                },
-                {
-                    name: "Dr. Rashmi Saxena",
-                    role: "Assistant Professor"
-                },
-                {
-                    name: "Dr. Sachit Paliwal",
-                    role: "Assistant Professor"
-                },
-                {
-                    name: "Ms. Mona Chaudhary",
-                    role: "Assistant Professor"
-                },
+                name: "Dr. Sunil Kumar",
+                role: "Assistant Professor"
+            },
+            {
+                name: "Dr. Pragati Sahai",
+                role: "Assistant Professor"
+            },
+            {
+                name: "Dr. Rashmi Saxena",
+                role: "Assistant Professor"
+            },
+            {
+                name: "Dr. Sachit Paliwal",
+                role: "Assistant Professor"
+            },
+            {
+                name: "Ms. Mona Chaudhary",
+                role: "Assistant Professor"
+            },
             ];
 
             const cards = document.querySelectorAll(".card");
@@ -2748,25 +2779,25 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <script>
             document.addEventListener("DOMContentLoaded", () => {
                 const teamData = [{
-                        name: "Dr. Sunil Kumar",
-                        role: "Assistant Professor"
-                    },
-                    {
-                        name: "Dr. Pragati Sahai",
-                        role: "Assistant Professor"
-                    },
-                    {
-                        name: "Dr. Rashmi Saxena",
-                        role: "Assistant Professor"
-                    },
-                    {
-                        name: "Dr. Sachit Paliwal",
-                        role: "Assistant Professor"
-                    },
-                    {
-                        name: "Ms. Mona Chaudhary",
-                        role: "Assistant Professor"
-                    }
+                    name: "Dr. Sunil Kumar",
+                    role: "Assistant Professor"
+                },
+                {
+                    name: "Dr. Pragati Sahai",
+                    role: "Assistant Professor"
+                },
+                {
+                    name: "Dr. Rashmi Saxena",
+                    role: "Assistant Professor"
+                },
+                {
+                    name: "Dr. Sachit Paliwal",
+                    role: "Assistant Professor"
+                },
+                {
+                    name: "Ms. Mona Chaudhary",
+                    role: "Assistant Professor"
+                }
                 ];
 
                 const section = document.querySelector("#edutech-team-section");
