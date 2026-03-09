@@ -723,31 +723,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         <div class="rs-about-2__thumb">
                             <img src="assets/images/about/about-img.png" alt="">
                             <div class="rs-shape">
-                                <img class=" gsap-move left-100 start-91" src="assets/images/about/about-shape.png" alt="">
+                                <img class=" gsap-move left-100 start-91" src="assets/images/about/about-shape.png"
+                                    alt="">
                             </div>
                             <div class="rs-counter-content">
                                 <h3 class="title"><span class="rs-count">30</span>+</h3>
                                 <span>Years of Experience</span>
-
-                            <div class="card-stack mb-12">
-                                <div class="card active bounce-in" data-index="0">
-                                    <div class="card-front p-0 overflow-hidden">
-                                        <img src="assets/images/about/process-1.png" alt="Process 1"
-                                            class="w-full h-full object-cover">
-                                    </div>
-                                </div>
-                                <div class="card next" data-index="1">
-                                    <div class="card-front p-0 overflow-hidden">
-                                        <img src="assets/images/about/process-2.png" alt="Process 2"
-                                            class="w-full h-full object-cover">
-                                    </div>
-                                </div>
-                                <div class="card next-2" data-index="2">
-                                    <div class="card-front p-0 overflow-hidden">
-                                        <img src="assets/images/about/process-3.png" alt="Process 3"
-                                            class="w-full h-full object-cover">
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -760,7 +741,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                     <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
                                 </div>
                                 <h2 class="title split-in-fade">We believe that every problem has a solution</h2>
-                                <p>Bring to the table win-win survival strategies to ensure proactive domination at the end of
+                                <p>Bring to the table win-win survival strategies to ensure proactive domination at the
+                                    end of
                                     the day, going forward.</p>
                                 <div id="rs-tabs" class="skltbs-theme-light use-drop skltbs-mode-tabs skltbs-init">
                                     <!-- tabGroup -->
@@ -776,116 +758,70 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                         <li class="skltbs-tab-item">
                                             <button class="skltbs-tab">Core Value</button>
                                         </li>
-                                        <li class="skltbs-tab-item"><button class="skltbs-tab about-tab-sync"
-                                                data-tab-index="0">Our Mission</button></li>
-                                        <li class="skltbs-tab-item"><button class="skltbs-tab about-tab-sync"
-                                                data-tab-index="1">Our Vision</button></li>
-                                        <li class="skltbs-tab-item"><button class="skltbs-tab about-tab-sync"
-                                                data-tab-index="2">Core Value</button></li>
                                     </ul>
                                     <!-- panelGroup -->
                                     <div class="skltbs-panel-group">
                                         <!-- panel -->
                                         <div class="skltbs-panel">
-                                            <p>Our mission is to guide students and professionals toward the right educational and career opportunities through personalized counselling, modern technology, and transparent support.</p>
+                                            <p>Our mission is to guide students and professionals toward the right
+                                                educational and career opportunities through personalized counselling,
+                                                modern technology, and transparent support.</p>
                                             <ul>
-                                                <li><i class="ri-share-forward-fill"></i>Personalized mentorship to help students choose the right course and college.</li>
-                                                <li><i class="ri-share-forward-fill"></i>Career-focused guidance that connects education with future opportunities.</li>
+                                                <li><i class="ri-share-forward-fill"></i>Personalized mentorship to help
+                                                    students choose the right course and college.</li>
+                                                <li><i class="ri-share-forward-fill"></i>Career-focused guidance that
+                                                    connects education with future opportunities.</li>
                                             </ul>
                                             <a class="main-btn" href="about.html">
                                                 Know More About Us
                                                 <i class="ri-arrow-right-fill"></i>
                                             </a>
                                             <div class="play-icon">
-                                                <a class="rs-popup-videos" href="https://www.youtube.com/watch?v=5CLmRIHR5Zw"><i class="fa fa-play"></i></a>
-                                        <?php
-                                        $tabs = [
-                                            [
-                                                'title' => 'Our Mission',
-                                                'text' => 'Our mission is to guide students and professionals toward the right educational and career opportunities through personalized counselling, modern technology, and transparent support.',
-                                                'list' => [
-                                                    'Personalized mentorship to help students choose the right course and college.',
-                                                    'Career-focused guidance that connects education with future opportunities.'
-                                                ]
-                                            ],
-                                            [
-                                                'title' => 'Our Vision',
-                                                'text' => 'Our vision is to become a trusted education guidance platform that helps students confidently choose the right academic path and build successful careers. We aim to bridge the gap between students and quality institutions through reliable guidance and modern counselling methods.',
-                                                'list' => [
-                                                    'Making quality education accessible to students everywhere.',
-                                                    'Supporting students from admission guidance to career readiness.'
-                                                ]
-                                            ],
-                                            [
-                                                'title' => 'Core Value',
-                                                'text' => 'Our core values define how we guide students and build trust with families. We focus on integrity, dedication, and student success in every step of the education consulting journey.',
-                                                'list' => [
-                                                    'Student-First Approach – Every student’s success is our priority.',
-                                                    'Transparency & Integrity – Honest guidance in every admission process.'
-                                                ]
-                                            ]
-                                        ];
-
-                                        foreach ($tabs as $index => $tab): ?>
-                                            <div class="skltbs-panel">
-                                                <p><?php echo $tab['text']; ?></p>
-
-                                                <ul>
-                                                    <?php foreach ($tab['list'] as $bullet): ?>
-                                                        <li><i class="ri-share-forward-fill"></i> <?php echo $bullet; ?></li>
-                                                    <?php endforeach; ?>
-                                                </ul>
-
-                                                <div class="about-action-hub d-flex align-items-center mt-4">
-                                                    <a class="main-btn" href="about_us.php">
-                                                        Know More About Us <i class="ri-arrow-right-fill"></i>
-                                                    </a>
-
-                                                    <div class="nav-video-hub d-flex align-items-center ms-4 shadow-sm">
-                                                        <button type="button" class="hub-nav-btn prev-btn-right">
-                                                            <i class="fas fa-chevron-left"></i>
-                                                        </button>
-
-                                                        <div class="hub-play-wrap">
-                                                            <a class="rs-popup-videos hub-play-btn"
-                                                                href="https://www.youtube.com/watch?v=example">
-                                                                <i class="fa fa-play"></i>
-                                                            </a>
-                                                        </div>
-
-                                                        <button type="button" class="hub-nav-btn next-btn-right">
-                                                            <i class="fas fa-chevron-right"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
+                                                <a class="rs-popup-videos"
+                                                    href="https://www.youtube.com/watch?v=5CLmRIHR5Zw"><i
+                                                        class="fa fa-play"></i></a>
                                             </div>
                                         </div>
                                         <div class="skltbs-panel">
-                                            <p>Our vision is to become a trusted education guidance platform that helps students confidently choose the right academic path and build successful careers. We aim to bridge the gap between students and quality institutions through reliable guidance and modern counselling methods.</p>
+                                            <p>Our vision is to become a trusted education guidance platform that helps
+                                                students confidently choose the right academic path and build successful
+                                                careers. We aim to bridge the gap between students and quality
+                                                institutions through reliable guidance and modern counselling methods.
+                                            </p>
                                             <ul>
-                                                <li><i class="ri-share-forward-fill"></i>Making quality education accessible to students everywhere.</li>
-                                                <li><i class="ri-share-forward-fill"></i>Supporting students from admission guidance to career readiness.</li>
+                                                <li><i class="ri-share-forward-fill"></i>Making quality education
+                                                    accessible to students everywhere.</li>
+                                                <li><i class="ri-share-forward-fill"></i>Supporting students from
+                                                    admission guidance to career readiness.</li>
                                             </ul>
                                             <a class="main-btn" href="about.html">
                                                 Know More About Us
                                                 <i class="ri-arrow-right-fill"></i>
                                             </a>
                                             <div class="play-icon">
-                                                <a class="rs-popup-videos" href="https://www.youtube.com/watch?v=5CLmRIHR5Zw"><i class="fa fa-play"></i></a>
+                                                <a class="rs-popup-videos"
+                                                    href="https://www.youtube.com/watch?v=5CLmRIHR5Zw"><i
+                                                        class="fa fa-play"></i></a>
                                             </div>
                                         </div>
                                         <div class="skltbs-panel">
-                                            <p>Our core values define how we guide students and build trust with families. We focus on integrity, dedication, and student success in every step of the education consulting journey.</p>
+                                            <p>Our core values define how we guide students and build trust with
+                                                families. We focus on integrity, dedication, and student success in
+                                                every step of the education consulting journey.</p>
                                             <ul>
-                                                <li><i class="ri-share-forward-fill"></i>Student-First Approach – Every student’s success is our priority.</li>
-                                                <li><i class="ri-share-forward-fill"></i>Transparency & Integrity – Honest guidance in every admission process.</li>
+                                                <li><i class="ri-share-forward-fill"></i>Student-First Approach – Every
+                                                    student’s success is our priority.</li>
+                                                <li><i class="ri-share-forward-fill"></i>Transparency & Integrity –
+                                                    Honest guidance in every admission process.</li>
                                             </ul>
                                             <a class="main-btn" href="about.html">
                                                 Know More About Us
                                                 <i class="ri-arrow-right-fill"></i>
                                             </a>
                                             <div class="play-icon">
-                                                <a class="rs-popup-videos" href="https://www.youtube.com/watch?v=5CLmRIHR5Zw"><i class="fa fa-play"></i></a>
+                                                <a class="rs-popup-videos"
+                                                    href="https://www.youtube.com/watch?v=5CLmRIHR5Zw"><i
+                                                        class="fa fa-play"></i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -954,6 +890,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <img src="assets/images/brand/srm.png" />
     <img src="assets/images/brand/vit.jpg" />
   </div> -->
+
+
                 </div>
 
             </div>
@@ -1023,40 +961,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                             <a href="project-details.html"><img src="assets/images/Socialmedia.png"
                                                     style="width:40%; height:auto;" alt=""> <i
                                                     class="ri-arrow-right-fill"></i></a>
-                        <div id="edutech-team-section">
-                            <div class="carousel-container">
-                                <button class="nav-arrow left">‹</button>
-                                <div class="carousel-track">
-
-                                    <div class="card" data-index="0">
-                                        <div class="rs-project__items team-card-glass">
-                                            <div class="wrapping">
-                                                <img src="assets/images/project/project-5.jpg" alt="Dr. Sunil Kumar">
-                                                <div class="team-glass-layer">
-                                                    <div class="glass-text">
-                                                        <h4 class="name">Dr. Sunil Kumar</h4>
-                                                        <p class="sub">Assistant Professor</p>
-                                                        <p class="bio">Senior expert in vocational training and diploma
-                                                            pathways.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="card" data-index="1">
-                                        <div class="rs-project__items team-card-glass">
-                                            <div class="wrapping">
-                                                <img src="assets/images/project/project-1.jpg" alt="Dr. Pragati Sahai">
-                                                <div class="team-glass-layer">
-                                                    <div class="glass-text">
-                                                        <h4 class="name">Dr. Pragati Sahai</h4>
-                                                        <p class="sub">Assistant Professor</p>
-                                                        <p class="bio">Expert career counselor specializing in
-                                                            management admissions.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -1086,35 +990,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                             <a href="project-details.html"><img src="assets/images/Socialmedia.png"
                                                     style="width:40%; height:auto;" alt=""> <i
                                                     class="ri-arrow-right-fill"></i></a>
-                                    <div class="card" data-index="2">
-                                        <div class="rs-project__items team-card-glass">
-                                            <div class="wrapping">
-                                                <img src="assets/images/project/project-2.jpg" alt="Dr. Rashmi Saxena">
-                                                <div class="team-glass-layer">
-                                                    <div class="glass-text">
-                                                        <h4 class="name">Dr. Rashmi Saxena</h4>
-                                                        <p class="sub">Assistant Professor</p>
-                                                        <p class="bio">Focusing on management strategies and student
-                                                            success.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="card" data-index="3">
-                                        <div class="rs-project__items team-card-glass">
-                                            <div class="wrapping">
-                                                <img src="assets/images/project/project-3.jpg" alt="Dr. Sachit Paliwal">
-                                                <div class="team-glass-layer">
-                                                    <div class="glass-text">
-                                                        <h4 class="name">Dr. Sachit Paliwal</h4>
-                                                        <p class="sub">Assistant Professor</p>
-                                                        <p class="bio">Expert in agriculture and medical stream
-                                                            admissions.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -1130,19 +1005,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                             <p class="sub">Assistant Professor | 12+ Years Experience</p>
                                             <p class="bio">Leading expert in agriculture and medical stream admissions
                                                 with extensive industrial knowledge.</p>
-                                    <div class="card" data-index="4">
-                                        <div class="rs-project__items team-card-glass">
-                                            <div class="wrapping">
-                                                <img src="assets/images/project/project-4.jpg" alt="Ms. Mona Chaudhary">
-                                                <div class="team-glass-layer">
-                                                    <div class="glass-text">
-                                                        <h4 class="name">Ms. Mona Chaudhary</h4>
-                                                        <p class="sub">Assistant Professor</p>
-                                                        <p class="bio">Academic advisor specializing in postgraduate
-                                                            strategies.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
 
@@ -1228,6 +1090,149 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <!--======== TEAM MEMBERS ========-->
         <!--======== TEAM MEMBERS ========-->
 
+        <!--======== Blog 2 Start ========-->
+        <section id="rs-blog" class="rs-blog-2 pt-120 reveal">
+            <div id="blogs" class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="rs-section-title black">
+                            <div class="top-sub-heading">
+                                <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
+                                <span>Insights & Updates</span>
+                                <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
+                            </div>
+                            <h2 class="title split-in-fade">Latest Admission News & Guidance</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="rs-carousel owl-carousel nav-style1" data-loop="true" data-items="3"
+                            data-margin="20" data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000"
+                            data-smart-speed="800" data-dots="true" data-nav="false" data-nav-speed="false"
+                            data-center-mode="false" data-mobile-device="1" data-mobile-device-nav="false"
+                            data-mobile-device-dots="true" data-ipad-device="2" data-ipad-device-nav="false"
+                            data-ipad-device-dots="true" data-ipad-device2="2" data-ipad-device-nav2="false"
+                            data-ipad-device-dots2="true" data-md-device="2" data-lg-device="3"
+                            data-md-device-nav="false" data-md-device-dots="true" data-doteach="false">
+
+                            <!-- Blog 1 -->
+                            <div class="rs-blog-2__item">
+                                <div class="rs-thumb">
+                                    <img src="assets/images/blog/blog-6.jpg" alt="">
+                                </div>
+                                <div class="rs-content">
+                                    <div class="rs-category">
+                                        <a href="#">Admission Guide</a>
+                                    </div>
+                                    <h3 class="title"><a href="blog-single.html">Step-by-Step College
+                                            Admission Process
+                                            for 2025</a></h3>
+                                    <p>Learn the complete admission process including documentation,
+                                        eligibility
+                                        criteria, and important deadlines for top colleges.</p>
+                                    <div class="rs-blog-footer">
+                                        <span>Updated Guidance</span>
+                                        <a href="blog-single.html">Read More <i class="ri-arrow-right-fill"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Blog 2 -->
+                            <div class="rs-blog-2__item">
+                                <div class="rs-thumb">
+                                    <img src="assets/images/blog/blog-8.png" alt="">
+                                </div>
+                                <div class="rs-content">
+                                    <div class="rs-category">
+                                        <a href="#">Career Counseling</a>
+                                    </div>
+                                    <h3 class="title"><a href="blog-single.html">How to Choose the Right
+                                            Course After
+                                            12th?</a></h3>
+                                    <p>Confused about course selection? Explore the best career options
+                                        based on your
+                                        interests, eligibility, and future opportunities.</p>
+                                    <div class="rs-blog-footer">
+                                        <span>Expert Advice</span>
+                                        <a href="blog-single.html">Read More <i class="ri-arrow-right-fill"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Blog 3 -->
+                            <div class="rs-blog-2__item">
+                                <div class="rs-thumb">
+                                    <img src="assets/images/blog/blog-5.jpg" alt="">
+                                </div>
+                                <div class="rs-content">
+                                    <div class="rs-category">
+                                        <a href="#">Top Colleges</a>
+                                    </div>
+                                    <h3 class="title"><a href="blog-single.html">Top Engineering &
+                                            Management Colleges
+                                            in India</a></h3>
+                                    <p>Discover the best colleges offering B.Tech, MBA, BCA, Nursing and
+                                        other
+                                        professional courses across major cities.</p>
+                                    <div class="rs-blog-footer">
+                                        <span>College Updates</span>
+                                        <a href="blog-single.html">Read More <i class="ri-arrow-right-fill"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Blog 4 -->
+                            <div class="rs-blog-2__item">
+                                <div class="rs-thumb">
+                                    <img src="assets/images/blog/blog-4.jpg" alt="">
+                                </div>
+                                <div class="rs-content">
+                                    <div class="rs-category">
+                                        <a href="#">Scholarships</a>
+                                    </div>
+                                    <h3 class="title"><a href="blog-single.html">Scholarship
+                                            Opportunities for Students
+                                            in 2025</a></h3>
+                                    <p>Check out the latest scholarship programs and financial aid
+                                        options available for
+                                        eligible students.</p>
+                                    <div class="rs-blog-footer">
+                                        <span>Financial Support</span>
+                                        <a href="blog-single.html">Read More <i class="ri-arrow-right-fill"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Blog 5 -->
+                            <div class="rs-blog-2__item">
+                                <div class="rs-thumb">
+                                    <img src="assets/images/blog/blog-7.jpg" alt="">
+                                </div>
+                                <div class="rs-content">
+                                    <div class="rs-category">
+                                        <a href="#">Hostel & Facilities</a>
+                                    </div>
+                                    <h3 class="title"><a href="blog-single.html">How to Find Safe &
+                                            Affordable Student
+                                            Accommodation</a></h3>
+                                    <p>Everything you need to know about hostel facilities, rental
+                                        options, and budget
+                                        planning for students.</p>
+                                    <div class="rs-blog-footer">
+                                        <span>Student Support</span>
+                                        <a href="blog-single.html">Read More <i class="ri-arrow-right-fill"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--======== Blog 2 Ends ========-->
+
         <!--======== Why Choose 2 Start ========-->
         <section class="rs-why-choose-2 pb-85 reveal">
             <div class="container">
@@ -1244,16 +1249,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                     Trusted Admission Guidance for a Brighter Academic Future
                                 </h2>
                                 <p>
-                                    We help students make confident career decisions by providing personalized
+                                    We help students make confident career decisions by providing
+                                    personalized
                                     counseling,
-                                    trusted college partnerships, and complete admission support from start to finish.
+                                    trusted college partnerships, and complete admission support from
+                                    start to finish.
                                 </p>
                             </div>
 
                             <div class="skill-bars">
 
                                 <div class="rs-progress-skill why-choose-two__progress">
-                                    <h4 class="rs-progress__title">Student Counseling & Career Guidance</h4>
+                                    <h4 class="rs-progress__title">Student Counseling & Career Guidance
+                                    </h4>
                                     <div class="rs-progress__bar">
                                         <div class="rs-progress__inner rs-count-bar counted" data-percent="95%">
                                             <p class="rs-progress__number count-text">95%</p>
@@ -1262,7 +1270,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                 </div><!-- /.rs-progress -->
 
                                 <div class="rs-progress-skill why-choose-two__progress">
-                                    <h4 class="rs-progress__title">College Tie-ups & Admission Support</h4>
+                                    <h4 class="rs-progress__title">College Tie-ups & Admission Support
+                                    </h4>
                                     <div class="rs-progress__bar">
                                         <div class="rs-progress__inner rs-count-bar counted" data-percent="90%">
                                             <p class="rs-progress__number count-text">90%</p>
@@ -1271,7 +1280,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                 </div><!-- /.rs-progress -->
 
                                 <div class="rs-progress-skill why-choose-two__progress">
-                                    <h4 class="rs-progress__title">Transparent Fee & Budget Planning</h4>
+                                    <h4 class="rs-progress__title">Transparent Fee & Budget Planning
+                                    </h4>
                                     <div class="rs-progress__bar">
                                         <div class="rs-progress__inner rs-count-bar counted" data-percent="92%">
                                             <p class="rs-progress__number count-text">92%</p>
@@ -1380,6 +1390,151 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </section>
         <!--======== Counter 2 Ends ========-->
 
+        
+        <!--======== Testimonial 2 Start ========-->
+        <section class="rs-testimonial-2 pt-110 pb-120 reveal">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="rs-testimonial-2__left-content">
+                            <div class="rs-section-title black">
+                                <div class="top-sub-heading">
+                                    <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
+                                    <span>Student Testimonials </span>
+                                    <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
+                                </div>
+                                <h2 class="title split-in-fade">What our admitted students say about us?
+                                </h2>
+                                <div class="rs-thumb">
+                                    <img src="assets/images/testimonial/testimonial-left-img.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="rs-testimonial-2__slider-box">
+                            <div class="rs-carousel owl-carousel" data-loop="true" data-items="1" data-margin="0"
+                                data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000"
+                                data-smart-speed="800" data-dots="true" data-nav="false" data-nav-speed="false"
+                                data-center-mode="false" data-mobile-device="1" data-mobile-device-nav="false"
+                                data-mobile-device-dots="true" data-ipad-device="1" data-ipad-device-nav="false"
+                                data-ipad-device-dots="true" data-ipad-device2="1" data-ipad-device-nav2="false"
+                                data-ipad-device-dots2="true" data-md-device="1" data-lg-device="1"
+                                data-md-device-nav="false" data-md-device-dots="true" data-doteach="true">
+
+                                <!-- Testimonial 1 -->
+                                <div class="rs-testimonial-2__items">
+                                    <div class="testimonial-content">
+                                        <img src="assets/images/testimonial/quote_orange.svg" alt="">
+                                        <p>I was confused about selecting the right college for B.Tech,
+                                            but the team
+                                            guided me properly and helped me secure admission without
+                                            any hassle.</p>
+                                    </div>
+                                    <div class="testimonial-author">
+                                        <div class="author-thumb">
+                                            <img src="assets/images/testimonial/testi1.jpg" alt="">
+                                        </div>
+                                        <div class="author-content">
+                                            <h5 class="title">Rahul Sharma</h5>
+                                            <span>B.Tech Computer Science, Delhi Technical
+                                                University</span>
+                                            <img src="assets/images/testimonial/testimonial-brsnd-2.png" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Testimonial 2 -->
+                                <div class="rs-testimonial-2__items">
+                                    <div class="testimonial-content">
+                                        <img src="assets/images/testimonial/quote_orange.svg" alt="">
+                                        <p>The counseling support was excellent. I got admission in MBA
+                                            Marketing at my
+                                            preferred college smoothly and quickly.</p>
+                                    </div>
+                                    <div class="testimonial-author">
+                                        <div class="author-thumb">
+                                            <img src="assets/images/testimonial/testi2.jpg" alt="">
+                                        </div>
+                                        <div class="author-content">
+                                            <h5 class="title">Priya Verma</h5>
+                                            <span>MBA (Marketing), Pune Institute of Business
+                                                Management</span>
+                                            <img src="assets/images/testimonial/testimonial-brsnd-2.png" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Testimonial 3 -->
+                                <div class="rs-testimonial-2__items">
+                                    <div class="testimonial-content">
+                                        <img src="assets/images/testimonial/quote_orange.svg" alt="">
+                                        <p>From application to final confirmation, everything was
+                                            handled
+                                            professionally. I highly recommend their admission support
+                                            services.</p>
+                                    </div>
+                                    <div class="testimonial-author">
+                                        <div class="author-thumb">
+                                            <img src="assets/images/testimonial/testi3.jpg" alt="">
+                                        </div>
+                                        <div class="author-content">
+                                            <h5 class="title">Amit Kumar</h5>
+                                            <span>BCA, Chandigarh Group of Colleges</span>
+                                            <img src="assets/images/testimonial/testimonial-brsnd-2.png" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Testimonial 4 -->
+                                <div class="rs-testimonial-2__items">
+                                    <div class="testimonial-content">
+                                        <img src="assets/images/testimonial/quote_orange.svg" alt="">
+                                        <p>I also needed hostel support, and they arranged everything
+                                            within my budget.
+                                            The process was smooth and stress-free.</p>
+                                    </div>
+                                    <div class="testimonial-author">
+                                        <div class="author-thumb">
+                                            <img src="assets/images/testimonial/testi4.jpg" alt="">
+                                        </div>
+                                        <div class="author-content">
+                                            <h5 class="title">Sneha Patel</h5>
+                                            <span>B.Sc Nursing, Apollo College of Nursing</span>
+                                            <img src="assets/images/testimonial/testimonial-brsnd-2.png" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Testimonial 5 -->
+                                <div class="rs-testimonial-2__items">
+                                    <div class="testimonial-content">
+                                        <img src="assets/images/testimonial/quote_orange.svg" alt="">
+                                        <p>The team compared multiple colleges for me and helped me make
+                                            the best
+                                            decision based on my budget and preferences.</p>
+                                    </div>
+                                    <div class="testimonial-author">
+                                        <div class="author-thumb">
+                                            <img src="assets/images/testimonial/testi5.jpg" alt="">
+                                        </div>
+                                        <div class="author-content">
+                                            <h5 class="title">Vikram Singh</h5>
+                                            <span>Diploma Mechanical Engineering, Government Polytechnic
+                                                Jaipur</span>
+                                            <img src="assets/images/testimonial/testimonial-brsnd-2.png" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--======== Testimonial 2 Ends ========-->
+
         <!--======== Faq Start ========-->
         <div class="rs-faq pb-120 reveal">
             <div class="container">
@@ -1416,10 +1571,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                     <div class="accordion_content">
                                         <div class="accordion_item">
                                             <p>
-                                                You can fill out the inquiry form on our website with your academic
+                                                You can fill out the inquiry form on our website with
+                                                your academic
                                                 details, preferred course, and city.
-                                                Our admission experts will contact you, guide you with suitable
-                                                colleges, and assist you throughout the complete admission process.
+                                                Our admission experts will contact you, guide you with
+                                                suitable
+                                                colleges, and assist you throughout the complete
+                                                admission process.
                                             </p>
                                         </div>
                                     </div>
@@ -1436,9 +1594,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                     <div class="accordion_content">
                                         <div class="accordion_item">
                                             <p>
-                                                Our basic counseling and guidance services are completely free. In some
+                                                Our basic counseling and guidance services are
+                                                completely free. In some
                                                 cases, specific premium services
-                                                may involve minimal charges, which will always be communicated
+                                                may involve minimal charges, which will always be
+                                                communicated
                                                 transparently before proceeding.
                                             </p>
                                         </div>
@@ -1456,9 +1616,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                     <div class="accordion_content">
                                         <div class="accordion_item">
                                             <p>
-                                                Generally, you will need your academic mark sheets, ID proof,
+                                                Generally, you will need your academic mark sheets, ID
+                                                proof,
                                                 passport-size photographs,
-                                                and transfer/migration certificates. Our team will provide a complete
+                                                and transfer/migration certificates. Our team will
+                                                provide a complete
                                                 checklist based on your selected course and college.
                                             </p>
                                         </div>
@@ -1476,9 +1638,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                     <div class="accordion_content">
                                         <div class="accordion_item">
                                             <p>
-                                                Yes, we assist students in finding suitable hostel and accommodation
+                                                Yes, we assist students in finding suitable hostel and
+                                                accommodation
                                                 options based on their
-                                                budget and preferred city. We ensure safe and comfortable living
+                                                budget and preferred city. We ensure safe and
+                                                comfortable living
                                                 arrangements near the college campus.
                                             </p>
                                         </div>
@@ -1496,9 +1660,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                     <div class="accordion_content">
                                         <div class="accordion_item">
                                             <p>
-                                                The duration depends on the college and course selection. Typically, the
+                                                The duration depends on the college and course
+                                                selection. Typically, the
                                                 process may take
-                                                7 to 21 working days after document submission. Our team ensures
+                                                7 to 21 working days after document submission. Our team
+                                                ensures
                                                 fast-track processing wherever possible.
                                             </p>
                                         </div>
@@ -1520,425 +1686,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </div>
         <!--======== Faq Ends ========-->
 
-        <!--======== Testimonial 2 Start ========-->
-        <section class="rs-testimonial-2 pt-110 pb-120 reveal">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6">
-                        <div class="rs-testimonial-2__left-content">
-                            <div class="rs-section-title black">
-                                <div class="top-sub-heading">
-                                    <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
-                                    <span>Student Testimonials </span>
-                                    <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
-                                </div>
-                                <h2 class="title split-in-fade">What our admitted students say about us?</h2>
-                                <div class="rs-thumb">
-                                    <img src="assets/images/testimonial/testimonial-left-img.jpg" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="rs-testimonial-2__slider-box">
-                            <div class="rs-carousel owl-carousel" data-loop="true" data-items="1" data-margin="0"
-                                data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000"
-                                data-smart-speed="800" data-dots="true" data-nav="false" data-nav-speed="false"
-                                data-center-mode="false" data-mobile-device="1" data-mobile-device-nav="false"
-                                data-mobile-device-dots="true" data-ipad-device="1" data-ipad-device-nav="false"
-                                data-ipad-device-dots="true" data-ipad-device2="1" data-ipad-device-nav2="false"
-                                data-ipad-device-dots2="true" data-md-device="1" data-lg-device="1"
-                                data-md-device-nav="false" data-md-device-dots="true" data-doteach="true">
-
-                                <!-- Testimonial 1 -->
-                                <div class="rs-testimonial-2__items">
-                                    <div class="testimonial-content">
-                                        <img src="assets/images/testimonial/quote_orange.svg" alt="">
-                                        <p>I was confused about selecting the right college for B.Tech, but the team
-                                            guided me properly and helped me secure admission without any hassle.</p>
-                                    </div>
-                                    <div class="testimonial-author">
-                                        <div class="author-thumb">
-                                            <img src="assets/images/testimonial/testi1.jpg" alt="">
-                                        </div>
-                                        <div class="author-content">
-                                            <h5 class="title">Rahul Sharma</h5>
-                                            <span>B.Tech Computer Science, Delhi Technical University</span>
-                                            <img src="assets/images/testimonial/testimonial-brsnd-2.png" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Testimonial 2 -->
-                                <div class="rs-testimonial-2__items">
-                                    <div class="testimonial-content">
-                                        <img src="assets/images/testimonial/quote_orange.svg" alt="">
-                                        <p>The counseling support was excellent. I got admission in MBA Marketing at my
-                                            preferred college smoothly and quickly.</p>
-                                    </div>
-                                    <div class="testimonial-author">
-                                        <div class="author-thumb">
-                                            <img src="assets/images/testimonial/testi2.jpg" alt="">
-                                        </div>
-                                        <div class="author-content">
-                                            <h5 class="title">Priya Verma</h5>
-                                            <span>MBA (Marketing), Pune Institute of Business Management</span>
-                                            <img src="assets/images/testimonial/testimonial-brsnd-2.png" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Testimonial 3 -->
-                                <div class="rs-testimonial-2__items">
-                                    <div class="testimonial-content">
-                                        <img src="assets/images/testimonial/quote_orange.svg" alt="">
-                                        <p>From application to final confirmation, everything was handled
-                                            professionally. I highly recommend their admission support services.</p>
-                                    </div>
-                                    <div class="testimonial-author">
-                                        <div class="author-thumb">
-                                            <img src="assets/images/testimonial/testi3.jpg" alt="">
-                                        </div>
-                                        <div class="author-content">
-                                            <h5 class="title">Amit Kumar</h5>
-                                            <span>BCA, Chandigarh Group of Colleges</span>
-                                            <img src="assets/images/testimonial/testimonial-brsnd-2.png" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Testimonial 4 -->
-                                <div class="rs-testimonial-2__items">
-                                    <div class="testimonial-content">
-                                        <img src="assets/images/testimonial/quote_orange.svg" alt="">
-                                        <p>I also needed hostel support, and they arranged everything within my budget.
-                                            The process was smooth and stress-free.</p>
-                                    </div>
-                                    <div class="testimonial-author">
-                                        <div class="author-thumb">
-                                            <img src="assets/images/testimonial/testi4.jpg" alt="">
-                                        </div>
-                                        <div class="author-content">
-                                            <h5 class="title">Sneha Patel</h5>
-                                            <span>B.Sc Nursing, Apollo College of Nursing</span>
-                                            <img src="assets/images/testimonial/testimonial-brsnd-2.png" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Testimonial 5 -->
-                                <div class="rs-testimonial-2__items">
-                                    <div class="testimonial-content">
-                                        <img src="assets/images/testimonial/quote_orange.svg" alt="">
-                                        <p>The team compared multiple colleges for me and helped me make the best
-                                            decision based on my budget and preferences.</p>
-                                    </div>
-                                    <div class="testimonial-author">
-                                        <div class="author-thumb">
-                                            <img src="assets/images/testimonial/testi5.jpg" alt="">
-                                        </div>
-                                        <div class="author-content">
-                                            <h5 class="title">Vikram Singh</h5>
-                                            <span>Diploma Mechanical Engineering, Government Polytechnic Jaipur</span>
-                                            <img src="assets/images/testimonial/testimonial-brsnd-2.png" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--======== Testimonial 2 Ends ========-->
-
-
-        <!--======== Blog 2 Start ========-->
-        <section id="rs-blog" class="rs-blog-2 pt-120 reveal">
-            <div id="blogs" class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="rs-section-title black">
-                            <div class="top-sub-heading">
-                                <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
-                                <span>Insights & Updates</span>
-                                <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
-                            </div>
-                            <h2 class="title split-in-fade">Latest Admission News & Guidance</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="rs-carousel owl-carousel nav-style1" data-loop="true" data-items="3"
-                            data-margin="20" data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000"
-                            data-smart-speed="800" data-dots="true" data-nav="false" data-nav-speed="false"
-                            data-center-mode="false" data-mobile-device="1" data-mobile-device-nav="false"
-                            data-mobile-device-dots="true" data-ipad-device="2" data-ipad-device-nav="false"
-                            data-ipad-device-dots="true" data-ipad-device2="2" data-ipad-device-nav2="false"
-                            data-ipad-device-dots2="true" data-md-device="2" data-lg-device="3"
-                            data-md-device-nav="false" data-md-device-dots="true" data-doteach="false">
-
-                            <!-- Blog 1 -->
-                            <div class="rs-blog-2__item">
-                                <div class="rs-thumb">
-                                    <img src="assets/images/blog/blog-6.jpg" alt="">
-                                </div>
-                                <div class="rs-content">
-                                    <div class="rs-category">
-                                        <a href="#">Admission Guide</a>
-                                    </div>
-                                    <h3 class="title"><a href="blog-single.html">Step-by-Step College Admission Process
-                                            for 2025</a></h3>
-                                    <p>Learn the complete admission process including documentation, eligibility
-                                        criteria, and important deadlines for top colleges.</p>
-                                    <div class="rs-blog-footer">
-                                        <span>Updated Guidance</span>
-                                        <a href="blog-single.html">Read More <i class="ri-arrow-right-fill"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Blog 2 -->
-                            <div class="rs-blog-2__item">
-                                <div class="rs-thumb">
-                                    <img src="assets/images/blog/blog-8.png" alt="">
-                                </div>
-                                <div class="rs-content">
-                                    <div class="rs-category">
-                                        <a href="#">Career Counseling</a>
-                                    </div>
-                                    <h3 class="title"><a href="blog-single.html">How to Choose the Right Course After
-                                            12th?</a></h3>
-                                    <p>Confused about course selection? Explore the best career options based on your
-                                        interests, eligibility, and future opportunities.</p>
-                                    <div class="rs-blog-footer">
-                                        <span>Expert Advice</span>
-                                        <a href="blog-single.html">Read More <i class="ri-arrow-right-fill"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Blog 3 -->
-                            <div class="rs-blog-2__item">
-                                <div class="rs-thumb">
-                                    <img src="assets/images/blog/blog-5.jpg" alt="">
-                                </div>
-                                <div class="rs-content">
-                                    <div class="rs-category">
-                                        <a href="#">Top Colleges</a>
-                                    </div>
-                                    <h3 class="title"><a href="blog-single.html">Top Engineering & Management Colleges
-                                            in India</a></h3>
-                                    <p>Discover the best colleges offering B.Tech, MBA, BCA, Nursing and other
-                                        professional courses across major cities.</p>
-                                    <div class="rs-blog-footer">
-                                        <span>College Updates</span>
-                                        <a href="blog-single.html">Read More <i class="ri-arrow-right-fill"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Blog 4 -->
-                            <div class="rs-blog-2__item">
-                                <div class="rs-thumb">
-                                    <img src="assets/images/blog/blog-4.jpg" alt="">
-                                </div>
-                                <div class="rs-content">
-                                    <div class="rs-category">
-                                        <a href="#">Scholarships</a>
-                                    </div>
-                                    <h3 class="title"><a href="blog-single.html">Scholarship Opportunities for Students
-                                            in 2025</a></h3>
-                                    <p>Check out the latest scholarship programs and financial aid options available for
-                                        eligible students.</p>
-                                    <div class="rs-blog-footer">
-                                        <span>Financial Support</span>
-                                        <a href="blog-single.html">Read More <i class="ri-arrow-right-fill"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Blog 5 -->
-                            <div class="rs-blog-2__item">
-                                <div class="rs-thumb">
-                                    <img src="assets/images/blog/blog-7.jpg" alt="">
-                                </div>
-                                <div class="rs-content">
-                                    <div class="rs-category">
-                                        <a href="#">Hostel & Facilities</a>
-                                    </div>
-                                    <h3 class="title"><a href="blog-single.html">How to Find Safe & Affordable Student
-                                            Accommodation</a></h3>
-                                    <p>Everything you need to know about hostel facilities, rental options, and budget
-                                        planning for students.</p>
-                                    <div class="rs-blog-footer">
-                                        <span>Student Support</span>
-                                        <a href="blog-single.html">Read More <i class="ri-arrow-right-fill"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--======== Blog 2 Ends ========-->
-
 
         <!--======== Footer 2 Start ========-->
 
         <footer id="rs-contact" class="rs-footer rs-footer-2 reveal">
-            <section class="rs-contact-page pt-120 pb-120">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="rs-contact-page__info">
-                                <div class="rs-section-title black">
-                                    <h3 class="title split-in-fade">Get in touch with us</h3>
-                                    <p>Fill out the form below and our admission experts will contact you to discuss
-                                        suitable courses, colleges, budget options .</p>
-                                    <p></p>
-                                </div>
-
-                                <div class="rs-contact-page__info-box">
-                                    <div class="row">
-                                        <div class="col-lg-8">
-                                            <h5 class="title mb-15">Head Office (India):</h5>
-                                            <div class="info-box-item">
-                                                <div class="rs-info-icon">
-                                                    <i class="ri-map-2-line"></i>
-                                                </div>
-                                                <div class="rs-info-contact">
-                                                    <span>Address</span>
-                                                    <h5 class="title">
-                                                        HIG-141 K6 (A), 1st Floor
-                                                        Kalinga Nagar <br>PIN - 751019
-                                                        Bhubaneswar, Odisha
-                                                    </h5>
-                                                </div>
-                                            </div>
-                                            <div class="info-box-item mb-15">
-                                                <div class="rs-info-icon">
-                                                    <i class="ri-phone-line"></i>
-                                                </div>
-                                                <div class="rs-info-contact">
-                                                    <span>Call Us</span>
-                                                    <h5 class="title"><a href="tel:+919438850101">+91 9438850101</a>
-                                                    </h5>
-                                                    <h5 class="title"><a href="tel:+918637274841">+91 8637274841</a>
-                                                    </h5>
-                                                    <h5 class="title"><a href="tel:+917205150641">+91 7205150641</a>
-                                                    </h5>
-                                                </div>
-                                            </div>
-                                            <div class="info-box-item">
-                                                <div class="rs-info-icon">
-                                                    <i class="ri-mail-send-line"></i>
-                                                </div>
-                                                <div class="rs-info-contact">
-                                                    <span>Email Us</span>
-                                                    <h5 class="title"><a
-                                                            href="mailto:edutechadmissionexperts@gmail.com">edutechadmissionexperts@gmail.com</a>
-                                                    </h5>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                                <div class="rs-contact-page__info-social mt-20">
-                                    <h5 class="title">Follow Us:</h5>
-                                    <ul>
-                                        <li><a href="#"><i class="ri-facebook-fill"></i></a></li>
-                                        <li><a href="#"><i class="ri-instagram-fill"></i></a></li>
-                                        <li><a href="#"><i class="ri-linkedin-fill"></i></a></li>
-                                        <li><a href="#"><i class="ri-youtube-fill"></i></a></li>
-                                        <li><a href="#"><i class="ri-whatsapp-fill"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6">
-                            <div class="rs-contact-page__content">
-                                <div class="rs-section-title black">
-                                    <h3 class="title split-in-fade">Let's discuss with us</h3>
-                                    <p>Fill out the form below and our admission experts will contact you to discuss
-                                        suitable courses, colleges, budget options, and hostel facilities based on your
-                                        preferences.</p>
-                                </div>
-
-                                <form id="contact-form" action="" method="post">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="input-box">
-                                                <input type="text" id="name" name="name" placeholder="Full Name">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="input-box">
-                                                <input type="email" id="email" name="email" placeholder="Email Address">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="input-box">
-                                                <input type="text" id="city" name="city" placeholder="Preferred City">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="input-box">
-                                                <input type="text" id="phone" name="phone" placeholder="Mobile Number">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <div class="input-box">
-                                                <textarea name="message" id="message"
-                                                    placeholder="Tell us about your preferred city, budget range, or any specific requirement..."></textarea>
-
-                                            </div>
-                                        </div>
-                                        <div id="form-response" class="mb-3"></div>
-                                        <!-- Honeypot Spam Field -->
-                                        <div style="display:none;">
-                                            <input type="text" name="website">
-                                        </div>
-
-                                        <div class="col-lg-12">
-                                            <div class="input-box">
-                                                <button type="submit" class="main-btn">
-                                                    Submit Inquiry <i class="ri-arrow-right-fill"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                                <!-- <p id="form-messages" class="form-message"></p> -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!--======== Contact Page Ends ========-->
-            <!--======== Contact Map Start ========-->
-            <div class="rs-contact-map">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3743.325324883753!2d85.74879577734762!3d20.245338265813242!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjDCsDE0JzQzLjIiTiA4NcKwNDUnMTMuMiJF!5e0!3m2!1sen!2sin!4v1772709818674!5m2!1sen!2sin"
-                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade" width="600" height="450" style="border:0;"
-                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-            <!--======== Contact Map Ends ========-->
             <div class="rs-footer__main-box">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-3">
                             <div class="rs-footer__about-box">
-                                <a href="index-2.html"><img src="assets/images/about/logo.jpeg" alt=""></a>
-                                <p> To empower students by providing expert guidance and transparent insights into the
+                                <a href="#hhome"><img src="assets/images/EDU-LOGO.jpeg" alt="logo"></a>
+                                <p> To empower students by providing expert guidance and transparent
+                                    insights into the
                                     complex world of higher education.</p>
                                 <div class="rs-footer__social">
                                     <ul>
@@ -1953,52 +1712,80 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         <div class="col-lg-3">
                             <div class="rs-footer__navigation">
                                 <div class="rs-footer-title">
-                                    <h4 class="title">Our Services</h4>
+                                    <h4 class="title">Quick Links</h4>
                                 </div>
-                                <ul>
-                                    <li><a href="service-details-2.php"><i class="ri-arrow-right-fill"></i> B.Tech</a>
-                                    </li>
-                                    <li><a href="service-details-2.php"><i class="ri-arrow-right-fill"></i> MBA</a></li>
-                                    <li><a href="service-details-2.php"><i class="ri-arrow-right-fill"></i> MCA</a></li>
-                                    <li><a href="service-details-2.php"><i class="ri-arrow-right-fill"></i> Diploma</a>
-                                    </li>
-                                    <li><a href="service-details-2.php"><i class="ri-arrow-right-fill"></i> Other
-                                            Courses</a></li>
-                                </ul>
+
+                                <a href="#home">Home</a>
+                                <br>
+                                <a href="#about">About</a>
+                                <br>
+                                <a href="#course">Course</a>
+                                <br>
+                                <a href="blog.php">Blogs</a>
+                                <br>
+                                <a href="#team">Team Members</a>
+                                <br>
+                                <a href="#gallery">Gallery</a>
+                                <br>
+                                <a href="#contact">Contact Us</a>
+
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="rs-footer__navigation rs-footer--navigation">
                                 <div class="rs-footer-title">
-                                    <h4 class="title">Quick Links</h4>
+                                    <h4 class="title">Get in touch</h4>
                                 </div>
-                                <ul>
-                                    <li><a href="#home"><i class="ri-arrow-right-fill"></i> Home</a></li>
-                                    <li><a href="#about"><i class="ri-arrow-right-fill"></i> About</a></li>
-                                    <li><a href="#course"><i class="ri-arrow-right-fill"></i>Course</a></li>
-                                    <li><a href="blog.php"><i class="ri-arrow-right-fill"></i> Blogs</a></li>
-                                    <li><a href="#team"><i class="ri-arrow-right-fill"></i> Team Members</a></li>
-                                    <li><a href="#gallery"><i class="ri-arrow-right-fill"></i> Gallery</a></li>
-                                    <li><a href="#contact"><i class="ri-arrow-right-fill"></i> Contact Us</a></li>
-                                </ul>
+                                <div class="info-box-item mb-15">
+                                    <div class="rs-info-contact">
+                                        <h5 class="title"><a href="tel:+919438850101">+91
+                                                9438850101</a>
+                                        </h5>
+                                        <h5 class="title"><a href="tel:+918637274841">+91
+                                                8637274841</a>
+                                        </h5>
+                                        <h5 class="title"><a href="tel:+917205150641">+91
+                                                7205150641</a>
+                                        </h5>
+                                    </div>
+                                </div>
+                                <div class="info-box-item">
+                                    <!-- <div class="rs-info-icon">
+                                        <i class="ri-mail-send-line"></i>
+                                    </div> -->
+                                    <div class="rs-info-contact">
+                                        <!-- <span>Email Us</span> -->
+                                        <h5 class="title"><a
+                                                href="mailto:edutechadmissionexperts@gmail.com">edutechadmissionexperts@gmail.com</a>
+                                        </h5>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="col-lg-3">
-                            <div class="rs-footer__newsletter">
-                                <div class="rs-footer-title">
-                                    <h4 class="title">Subscription</h4>
+                            <div class="footer-location">
+
+                                <h4 class="footer-title">Our Location</h4>
+
+                                <div class="footer-map">
+                                    <iframe
+                                        src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3743.325324883753!2d85.74879577734762!3d20.245338265813242!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjDCsDE0JzQzLjIiTiA4NcKwNDUnMTMuMiJF!5e0!3m2!1sen!2sin!4v1772709818674!5m2!1sen!2sin"
+                                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                                        referrerpolicy="no-referrer-when-downgrade" width="600" height="450"
+                                        style="border:0;" allowfullscreen="" loading="lazy"
+                                        referrerpolicy="no-referrer-when-downgrade">
+                                    </iframe>
                                 </div>
-                                <p>Register now to get latest updates on promotions & coupons.</p>
-                                <form action="#">
-                                    <div class="input-box">
-                                        <input type="email" placeholder="Your email address">
-                                        <button class="main-btn">Subscribe <svg width="13" height="14"
-                                                viewbox="0 0 13 14" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M6.5 7.8125H0V6.1875H6.5V0.5L13 7L6.5 13.5V7.8125Z"
-                                                    fill="#fff"></path>
-                                            </svg></button>
-                                    </div>
-                                </form>
+
+                                <div class="rs-info-contact">
+                                    <span>Address</span>
+                                    <h5 class="title">
+                                        HIG-141 K6 (A), 1st Floor
+                                        Kalinga Nagar <br>PIN - 751019
+                                        Bhubaneswar, Odisha
+                                    </h5>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -2442,7 +2229,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                     placeholder="Message (Optional)"></textarea>
                             </div>
                         </div>
-                        <button type="submit" class="hero-submit-btn w-100 mt-3">Submit Application</button>
+                        <button type="submit" class="hero-submit-btn w-100 mt-3">Submit
+                            Application</button>
                     </form>
                 </div>
             </div>
@@ -2553,7 +2341,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 });
             });
         </script>
-
 
         <script>
             document.addEventListener('DOMContentLoaded', function () {
@@ -2956,11 +2743,29 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     }
                 });
 
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle("active", i === currentIndex);
+                });
 
+                memberName.style.opacity = "0";
+                memberRole.style.opacity = "0";
 
+                setTimeout(() => {
+                    memberName.textContent = teamMembers[currentIndex].name;
+                    memberRole.textContent = teamMembers[currentIndex].role;
+                    memberName.style.opacity = "1";
+                    memberRole.style.opacity = "1";
+                }, 300);
 
+                setTimeout(() => {
+                    isAnimating = false;
+                }, 800);
+            }
 
-        /*TEAM SLIDER */
+            leftArrow.addEventListener("click", () => {
+                updateCarousel(currentIndex - 1);
+            });
+
             rightArrow.addEventListener("click", () => {
                 updateCarousel(currentIndex + 1);
             });
@@ -3089,113 +2894,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                 // Initialize the carousel on load
                 updateCarousel(0);
-            });
-        </script>
-
-
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const cards = document.querySelectorAll('.card');
-                const progressDots = document.querySelectorAll('.progress-dot');
-                const tabButtons = document.querySelectorAll('.about-tab-sync');
-                const tabPanels = document.querySelectorAll('.skltbs-panel');
-
-                // Select all navigation buttons (Main pill and internal Action Hub)
-                const nextButtons = document.querySelectorAll('#next-btn, .next-btn-right');
-                const prevButtons = document.querySelectorAll('#prev-btn, .prev-btn-right');
-
-                let currentIndex = 0;
-                const totalCards = cards.length;
-
-                /**
-                 * MASTER UPDATE FUNCTION
-                 * Rotates cards: 1st -> 3rd, 2nd -> 1st, 3rd -> 2nd
-                 */
-                function rotateSection(newIndex) {
-                    currentIndex = newIndex;
-
-                    cards.forEach((card, i) => {
-                        // 1. Reset all state and animation classes to prevent vanishing
-                        card.classList.remove('active', 'next', 'next-2', 'hidden', 'swipe-left', 'swipe-right');
-
-                        // 2. Calculate relative positions for infinite rotation
-                        // This logic ensures card 2 becomes 1, card 3 becomes 2, etc.
-                        if (i === currentIndex) {
-                            card.classList.add('active'); // Current Front Card
-                        } else if (i === (currentIndex + 1) % totalCards) {
-                            card.classList.add('next'); // Next in line
-                        } else if (i === (currentIndex + 2) % totalCards) {
-                            card.classList.add('next-2'); // Last in line (the old first card)
-                        } else {
-                            card.classList.add('hidden');
-                        }
-                    });
-
-                    // 3. Sync Progress Dots
-                    progressDots.forEach((dot, i) => {
-                        dot.classList.toggle('bg-white', i === currentIndex);
-                        dot.classList.toggle('bg-white/30', i !== currentIndex);
-                    });
-
-                    // 4. Sync Content Tabs (Mission, Vision, Core)
-                    tabButtons.forEach((btn, i) => {
-                        if (i === currentIndex) {
-                            btn.classList.add('skltbs-active');
-                            tabPanels.forEach(p => {
-                                p.classList.remove('skltbs-active');
-                                p.style.display = 'none';
-                            });
-                            if (tabPanels[i]) {
-                                tabPanels[i].classList.add('skltbs-active');
-                                tabPanels[i].style.display = 'block';
-                            }
-                        } else {
-                            btn.classList.remove('skltbs-active');
-                        }
-                    });
-                }
-
-                // Forward Rotation: Current card swipes away, next moves up
-                function handleNext() {
-                    cards[currentIndex].classList.add('swipe-left');
-                    setTimeout(() => {
-                        rotateSection((currentIndex + 1) % totalCards);
-                    }, 400); // Matches CSS transition time
-                }
-
-                // Backward Rotation
-                function handlePrev() {
-                    cards[currentIndex].classList.add('swipe-right');
-                    setTimeout(() => {
-                        rotateSection((currentIndex - 1 + totalCards) % totalCards);
-                    }, 400);
-                }
-
-                // Attach Listeners to all arrows
-                nextButtons.forEach(btn => btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    handleNext();
-                }));
-
-                prevButtons.forEach(btn => btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    handlePrev();
-                }));
-
-                // Direct Tab Clicks
-                tabButtons.forEach((button, index) => {
-                    button.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        if (index !== currentIndex) {
-                            const anim = index > currentIndex ? 'swipe-left' : 'swipe-right';
-                            cards[currentIndex].classList.add(anim);
-                            setTimeout(() => rotateSection(index), 400);
-                        }
-                    });
-                });
-
-                // Initialize initial state
-                rotateSection(0);
             });
         </script>
 </body>
