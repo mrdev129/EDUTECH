@@ -18190,6 +18190,7 @@ html.menu-is-open .menu-canvas-layer {
 
 .accordion .accordion_tab {
   padding: 20px;
+  padding-right: 70px; /* add this line */
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -18203,6 +18204,8 @@ html.menu-is-open .menu-canvas-layer {
   color: #002559;
   position: relative;
 }
+
+
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .accordion .accordion_tab {
@@ -22318,7 +22321,7 @@ section {
 }
 
 
-
+/*COURSE FOUR CARDS*/
 /* 1. Base rules for all 4 cards */
 .edu-featured-cards .edu-featured-item {
     padding: 0 !important;
@@ -22402,4 +22405,39 @@ section {
     font-size: 15px !important;
     line-height: 1.5;
     margin-bottom: 20px !important;
+}
+
+
+/*COURSE CARD BUTTON*/
+.course-btn-container{
+    text-align:center;
+    /* margin-top:40px; */
+}
+
+.course-main-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+
+    padding:20px 40px;
+    font-size:22px;
+    font-weight:600;
+    color:#ffffff;
+    text-decoration:none;
+
+    background: linear-gradient(90deg,#ff4d00,#f79a2d);
+    border-radius:12px;
+
+    transition: all 0.3s ease;
+}
+
+.course-main-btn i{
+    font-size:22px;
+}
+
+/* Hover effect */
+.course-main-btn:hover{
+    transform: translateY(-3px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
 }

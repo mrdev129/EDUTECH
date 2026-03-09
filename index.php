@@ -644,119 +644,125 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <!--======== COURSE ADVERTISEMENT Start ========-->
 
         <section id="rs-course-explorer-unique" class="pt-20 pb-60 reveal edu-course-section" style="background: #fff; overflow: hidden;">
-    <div class="container" id="course">
-        <div class="rs-section-title black text-center mb-50">
-            <div class="top-sub-heading">
-                <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
-                <span>Explore Courses by Stream</span>
-                <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
-            </div>
-        </div>
+            <div class="container" id="course">
+                <div class="rs-section-title black text-center mb-50">
+                    <div class="top-sub-heading">
+                        <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
+                        <span>Explore Courses by Stream</span>
+                        <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
+                    </div>
+                </div>
 
-        <section class="edu-featured-cards pt-100 pb-100 reveal">
-            <div class="container">
-                <div class="row reveal mobile-card-slider">
+                <section class="edu-featured-cards pt-100 pb-100 reveal">
+                    <div class="container">
+                        <div class="row reveal mobile-card-slider">
 
-                    <div class="col-lg-3 col-md-6 mb-30">
-                        <div class="edu-featured-item"
-                            style="background: linear-gradient(130deg, #002147 0%, #004080 100%);">
+                            <div class="col-lg-3 col-md-6 mb-30">
+                                <div class="edu-featured-item"
+                                    style="background: linear-gradient(130deg, #002147 0%, #004080 100%);">
 
-                            <div class="edu-thumb">
-                                <img src="assets/images/advertisement/ECE_ADVERTISE.jpeg" alt="Exams">
+                                    <div class="edu-thumb">
+                                        <img src="assets/images/advertisement/ECE_ADVERTISE.jpeg" alt="Exams">
+                                    </div>
+
+                                    <div class="edu-content">
+                                        <h4 class="edu-title" style="color: #fff;">ECE</h4>
+
+                                        <p style="color: #fff; font-size: 14px;">
+                                            Focuses on designing electronic systems, communication networks, and modern technologies like IoT, robotics, and telecommunications.
+                                        </p>
+
+                                        <a class="main-btn" href="btech.php?course=ece" style="padding: 10px 20px; font-size: 14px;">
+                                            more details
+                                        </a>
+                                    </div>
+
+                                </div>
                             </div>
 
-                            <div class="edu-content">
-                                <h4 class="edu-title" style="color: #fff;">ECE</h4>
 
-                                <p style="color: #fff; font-size: 14px;">
-                                    Focuses on designing electronic systems, communication networks, and modern technologies like IoT, robotics, and telecommunications.
-                                </p>
+                            <div class="col-lg-3 col-md-6 mb-30">
+                                <div class="edu-featured-item"
+                                    style="background: linear-gradient(130deg, #28a745 0%, #34d058 100%);">
 
-                                <a class="main-btn" href="btech.php?course=ece" style="padding: 10px 20px; font-size: 14px;">
-                                    more details
-                                </a>
+                                    <div class="edu-thumb">
+                                        <img src="assets/images/advertisement/MECH_ADVERTISE.png" alt="Colleges">
+                                    </div>
+
+                                    <div class="edu-content">
+                                        <h4 class="edu-title" style="color: #fff;">MECHANICAL</h4>
+
+                                        <p style="color: #fff; font-size: 14px;">
+                                            Deals with the design, manufacturing, and operation of machines, engines, and mechanical systems.
+                                        </p>
+
+                                        <a class="main-btn" href="btech.php?course=mech" style="padding: 10px 20px; font-size: 14px;">
+                                            more details
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-3 col-md-6 mb-30">
+                                <div class="edu-featured-item"
+                                    style="background: linear-gradient(130deg, #F26F20 0%, #FFA500 100%);">
+
+                                    <div class="edu-thumb">
+                                        <img src="assets/images/advertisement/MBA_ADVERTISEMENT.png" alt="Courses">
+                                    </div>
+
+                                    <div class="edu-content">
+                                        <h4 class="edu-title" style="color: #fff;">MBA</h4>
+
+                                        <p style="color: #fff; font-size: 14px;">
+                                            A professional medical degree that trains students to diagnose, treat, and prevent diseases as doctors.
+                                        </p>
+
+                                        <a class="main-btn" href="management.php?course=mba" style="padding: 10px 20px; font-size: 14px;">
+                                            more details
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-3 col-md-6 mb-30">
+                                <div class="edu-featured-item"
+                                    style="background: linear-gradient(130deg, #6f42c1 0%, #8959e0 100%);">
+
+                                    <div class="edu-thumb">
+                                        <img src="assets/images/advertisement/MBBS_ADVERTISE.png" alt="Jobs">
+                                    </div>
+
+                                    <div class="edu-content">
+                                        <h4 class="edu-title" style="color: #fff;">MBBS</h4>
+
+                                        <p style="color: #fff; font-size: 14px;">
+                                            A management degree that develops leadership, business strategy, and decision-making skills for corporate and entrepreneurial careers.
+                                        </p>
+
+                                        <a class="main-btn" href="management.php?course=mbbs" style="padding: 10px 20px; font-size: 14px;">
+                                            more details
+                                        </a>
+                                    </div>
+
+                                </div>
                             </div>
 
                         </div>
                     </div>
-
-
-                    <div class="col-lg-3 col-md-6 mb-30">
-                        <div class="edu-featured-item"
-                            style="background: linear-gradient(130deg, #28a745 0%, #34d058 100%);">
-
-                            <div class="edu-thumb">
-                                <img src="assets/images/advertisement/MECH_ADVERTISE.png" alt="Colleges">
-                            </div>
-
-                            <div class="edu-content">
-                                <h4 class="edu-title" style="color: #fff;">MECHANICAL</h4>
-
-                                <p style="color: #fff; font-size: 14px;">
-                                    Deals with the design, manufacturing, and operation of machines, engines, and mechanical systems.
-                                </p>
-
-                                <a class="main-btn" href="btech.php?course=mech" style="padding: 10px 20px; font-size: 14px;">
-                                    more details
-                                </a>
-                            </div>
-
-                        </div>
-                    </div>
-
-
-                    <div class="col-lg-3 col-md-6 mb-30">
-                        <div class="edu-featured-item"
-                            style="background: linear-gradient(130deg, #F26F20 0%, #FFA500 100%);">
-
-                            <div class="edu-thumb">
-                                <img src="assets/images/advertisement/MBA_ADVERTISEMENT.png" alt="Courses">
-                            </div>
-
-                            <div class="edu-content">
-                                <h4 class="edu-title" style="color: #fff;">MBA</h4>
-
-                                <p style="color: #fff; font-size: 14px;">
-                                    A professional medical degree that trains students to diagnose, treat, and prevent diseases as doctors.
-                                </p>
-
-                                <a class="main-btn" href="management.php?course=mba" style="padding: 10px 20px; font-size: 14px;">
-                                    more details
-                                </a>
-                            </div>
-
-                        </div>
-                    </div>
-
-
-                    <div class="col-lg-3 col-md-6 mb-30">
-                        <div class="edu-featured-item"
-                            style="background: linear-gradient(130deg, #6f42c1 0%, #8959e0 100%);">
-
-                            <div class="edu-thumb">
-                                <img src="assets/images/advertisement/MBBS_ADVERTISE.png" alt="Jobs">
-                            </div>
-
-                            <div class="edu-content">
-                                <h4 class="edu-title" style="color: #fff;">MBBS</h4>
-
-                                <p style="color: #fff; font-size: 14px;">
-                                    A management degree that develops leadership, business strategy, and decision-making skills for corporate and entrepreneurial careers.
-                                </p>
-
-                                <a class="main-btn" href="management.php?course=mbbs" style="padding: 10px 20px; font-size: 14px;">
-                                    more details
-                                </a>
-                            </div>
-
-                        </div>
-                    </div>
-
+                </section>
+                <div class="course-btn-container">
+                    <a class="course-main-btn" href="management.php">
+                        View All Course
+                        <i class="ri-arrow-right-fill"></i>
+                    </a>
                 </div>
             </div>
         </section>
-    </div>
-</section>
 
         <!--======== Brand Start ========-->
         <div class="rs-brand reveal">
@@ -874,11 +880,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                     </div>
 
                                     <div class="rs-project__content">
-                                        <ul>
+                                        <!-- <ul>
                                             <li><a href="#">Consultation</a></li>
                                             <li><a href="#">Design</a></li>
                                             <li><a href="#">Strategy</a></li>
-                                        </ul>
+                                        </ul> -->
                                         <h3 class="title"><a href="project-details.html">Sibani</a></h3>
                                         <div class="rs-link">
                                             <a href="project-details.html"><img src="assets/images/Socialmedia.png"
@@ -903,11 +909,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                     </div>
 
                                     <div class="rs-project__content">
-                                        <ul>
+                                        <!-- <ul>
                                             <li><a href="#">Consultation</a></li>
                                             <li><a href="#">Design</a></li>
                                             <li><a href="#">Strategy</a></li>
-                                        </ul>
+                                        </ul> -->
                                         <h3 class="title"><a href="project-details.html">Satya</a></h3>
                                         <div class="rs-link">
                                             <a href="project-details.html"><img src="assets/images/Socialmedia.png"
@@ -932,11 +938,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                     </div>
 
                                     <div class="rs-project__content">
-                                        <ul>
+                                        <!-- <ul>
                                             <li><a href="#">Consultation</a></li>
                                             <li><a href="#">Design</a></li>
                                             <li><a href="#">Strategy</a></li>
-                                        </ul>
+                                        </ul> -->
                                         <h3 class="title"><a href="project-details.html">Dev</a></h3>
                                         <div class="rs-link">
                                             <a href="project-details.html"><img src="assets/images/Socialmedia.png"
@@ -961,11 +967,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                     </div>
 
                                     <div class="rs-project__content">
-                                        <ul>
+                                        <!-- <ul>
                                             <li><a href="#">Consultation</a></li>
                                             <li><a href="#">Design</a></li>
                                             <li><a href="#">Strategy</a></li>
-                                        </ul>
+                                        </ul> -->
                                         <h3 class="title"><a href="project-details.html">Hari</a></h3>
                                         <div class="rs-link">
                                             <a href="project-details.html"><img src="assets/images/Socialmedia.png"
@@ -990,11 +996,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                     </div>
 
                                     <div class="rs-project__content">
-                                        <ul>
+                                        <!-- <ul>
                                             <li><a href="#">Consultation</a></li>
                                             <li><a href="#">Design</a></li>
                                             <li><a href="#">Strategy</a></li>
-                                        </ul>
+                                        </ul> -->
                                         <h3 class="title"><a href="project-details.html">Ram</a></h3>
                                         <div class="rs-link">
                                             <a href="project-details.html"><img src="assets/images/Socialmedia.png"
