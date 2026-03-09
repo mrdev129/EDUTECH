@@ -210,8 +210,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                             <!-- <span class="ug-tag fw-bold">UG PROGRAM</span> -->
                             <h1 class="expanding-text">
                                 Your Dream, <br>
-                                Our <span class="typing-text"
-                                    data-words='["Mission"]'></span>
+                                Our <span class="typing-text" data-words='["Mission"]'></span>
                             </h1>
                             <p class="journey-sub fs-4">START YOUR JOURNEY TODAY</p>
                             <!-- <a href="#" class="brochure-btn btn btn-warning rounded-pill px-4">DOWNLOAD BROCHURE <i
@@ -302,71 +301,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </div>
         </div>
         <!--======== Header Onepage 2 start ========-->
-
-        <!-- ======== Offcanvas Menu start ========-->
-        <!-- <div class="offcanvas-menu offcanvas-menu-2">
-        <div class="menu-canvas-close"><i class="fa fa-times" aria-hidden="true"></i></div>
-        <div class="offcanvas-menu-inner">
-            <div class="offc-logo mb-40">
-                <a href="index.html"><img src="assets/images/logo_home_4.png" alt="Logo"></a>
-            </div>
-            <ul class="nav-menu">
-                <li>
-                    <a class="page-scroll" href="#rs-header">Home</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#rs-about">About</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#rs-service">Services</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#rs-portfolios">Portfolios</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#rs-blog">Blog</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#rs-contact">Contact</a>
-                </li>
-            </ul> <! //.nav-menu -->
-        <!-- </div>
-    </div> 
-    ======== Offcanvas Menu Ends ======== -->
-
-        <!--======== Preloader area start ========-->
-        <!-- <div id="pre-load">
-        <div id="loader" class="loader">
-            <div class="loader-container">
-                <div class='loader-icon'><img src="assets/images/favicon.png" alt=""></div>
-            </div>
-        </div>
-    </div> -->
-        <!--======== Preloader area Ends ========-->
-
-        <!--======== Banner 2 Start ========-->
-        <!-- <section class="rs-banner-2">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-2"></div>
-                <div class="col-lg-8">
-                    <div class="rs-banner-2__content">
-                        <img class="wow fadeInDown" data-wow-duration="1.5s" data-wow-delay="0s" src="assets/images/banner/image-year.png" alt="">
-                        <div class="rs-sub-heading wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.4s">
-                            <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="">
-                            <span> Welcome To EDUTECH </span>
-                            <img src="assets/images/heart-pulse-rate-orange.svg" alt="">
-                        </div>
-                        <h1 class="title wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.8s">Your Future, Our <span>Guidance</span></h1>
-                        <p class="wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1.2s">We help students make the right career decisions by providing expert guidance, college insights, and personalized admission support for a brighter future.</p>
-                        <a class="main-btn wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1.6s" href="about.html">Discover More <i class="ri-arrow-right-fill"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-2"></div>
-            </div>
-        </div>
-    </section> -->
-        <!--======== Banner 2 Ends ========-->
 
         <section class="dashboard-info-section py-5 reveal">
             <div class="container">
@@ -581,76 +515,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </div>
         </section>
 
-        <!--======== Service 2 Start ========-->
-        <!-- <div class="rs-service-2 pt-90 pb-120">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="rs-carousel owl-carousel service-slider-bottom" data-loop="true" data-items="5"
-                            data-margin="30" data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000"
-                            data-smart-speed="800" data-dots="false" data-nav="true" data-nav-speed="false"
-                            data-center-mode="false" data-mobile-device="1.2" data-mobile-device-nav="true"
-                            data-mobile-device-dots="false" data-ipad-device="3" data-ipad-device-nav="true"
-                            data-ipad-device-dots="false" data-ipad-device2="2" data-ipad-device-nav2="true"
-                            data-ipad-device-dots2="false" data-md-device="4" data-lg-device="5"
-                            data-md-device-nav="true" data-md-device-dots="false">
-
-
-                            <div class="rs-service-2__item">
-                                <div class="rs-service-2__icon">
-                                    <img src="assets/images/service/service_icon1.png" alt="">
-                                </div>
-                                <h5 class="title"><a href="#">B.Tech</a></h5>
-                            </div>
-
-                            <div class="rs-service-2__item">
-                                <div class="rs-service-2__icon">
-                                    <img src="assets/images/service/service_icon2.png" alt="">
-                                </div>
-                                <h5 class="title"><a href="#">MBA</a></h5>
-                            </div>
-
-                            <div class="rs-service-2__item">
-                                <div class="rs-service-2__icon">
-                                    <img src="assets/images/service/service_icon3.png" alt="">
-                                </div>
-                                <h5 class="title"><a href="#">MCA</a></h5>
-                            </div>
-
-                            <div class="rs-service-2__item">
-                                <div class="rs-service-2__icon">
-                                    <img src="assets/images/service/service_icon4.png" alt="">
-                                </div>
-                                <h5 class="title"><a href="#">Diploma</a></h5>
-                            </div>
-
-                            <div class="rs-service-2__item">
-                                <div class="rs-service-2__icon">
-                                    <img src="assets/images/service/service_icon5.png" alt="">
-                                </div>
-                                <h5 class="title"><a href="#">Data Analytics</a></h5>
-                            </div>
-
-                            <div class="rs-service-2__item">
-                                <div class="rs-service-2__icon">
-                                    <img src="assets/images/service/service_icon1.png" alt="">
-                                </div>
-                                <h5 class="title"><a href="#">Web Development</a></h5>
-                            </div>
-
-                            <div class="rs-service-2__item">
-                                <div class="rs-service-2__icon">
-                                    <img src="assets/images/service/service_icon1.png" alt="">
-                                </div>
-                                <h5 class="title"><a href="#">UI/UX Design</a></h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-        <!--======== Service 2 Ends ========-->
-
         <section id="rs-course-explorer-unique" class="pt-20 pb-60 reveal" style="background: #fff; overflow: hidden;">
             <div class="container" id="course">
                 <div class="rs-section-title black text-center mb-50">
@@ -800,7 +664,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                 onclick="switchCourseStream(event, 'course-<?= str_replace([' ', '/', '.'], '', $stream) ?>')">
                                 <?= $stream ?>
                             </button>
-                        <?php $count++;
+                            <?php $count++;
                         endforeach; ?>
                     </div>
                 </div>
@@ -809,7 +673,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <?php $count = 0;
                     foreach ($courseData as $stream => $branches):
                         $cleanId = 'course-' . str_replace([' ', '/', '.'], '', $stream);
-                    ?>
+                        ?>
                         <div id="<?= $cleanId ?>" class="branch-panel <?= $count === 0 ? 'active' : '' ?>">
 
                             <div class="rs-carousel owl-carousel branch-slider" data-loop="true" data-items="3"
@@ -843,7 +707,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                 <?php endforeach; ?>
                             </div>
                         </div>
-                    <?php $count++;
+                        <?php $count++;
                     endforeach; ?>
                 </div>
             </div>
@@ -866,17 +730,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                             <div class="card-stack mb-12">
                                 <div class="card active bounce-in" data-index="0">
                                     <div class="card-front p-0 overflow-hidden">
-                                        <img src="assets/images/about/process-1.png" alt="Process 1" class="w-full h-full object-cover">
+                                        <img src="assets/images/about/process-1.png" alt="Process 1"
+                                            class="w-full h-full object-cover">
                                     </div>
                                 </div>
                                 <div class="card next" data-index="1">
                                     <div class="card-front p-0 overflow-hidden">
-                                        <img src="assets/images/about/process-2.png" alt="Process 2" class="w-full h-full object-cover">
+                                        <img src="assets/images/about/process-2.png" alt="Process 2"
+                                            class="w-full h-full object-cover">
                                     </div>
                                 </div>
                                 <div class="card next-2" data-index="2">
                                     <div class="card-front p-0 overflow-hidden">
-                                        <img src="assets/images/about/process-3.png" alt="Process 3" class="w-full h-full object-cover">
+                                        <img src="assets/images/about/process-3.png" alt="Process 3"
+                                            class="w-full h-full object-cover">
                                     </div>
                                 </div>
                             </div>
@@ -900,9 +767,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                                 <div id="rs-tabs" class="skltbs-theme-light use-drop skltbs-mode-tabs skltbs-init">
                                     <ul class="skltbs-tab-group">
-                                        <li class="skltbs-tab-item"><button class="skltbs-tab about-tab-sync" data-tab-index="0">Our Mission</button></li>
-                                        <li class="skltbs-tab-item"><button class="skltbs-tab about-tab-sync" data-tab-index="1">Our Vision</button></li>
-                                        <li class="skltbs-tab-item"><button class="skltbs-tab about-tab-sync" data-tab-index="2">Core Value</button></li>
+                                        <li class="skltbs-tab-item"><button class="skltbs-tab about-tab-sync"
+                                                data-tab-index="0">Our Mission</button></li>
+                                        <li class="skltbs-tab-item"><button class="skltbs-tab about-tab-sync"
+                                                data-tab-index="1">Our Vision</button></li>
+                                        <li class="skltbs-tab-item"><button class="skltbs-tab about-tab-sync"
+                                                data-tab-index="2">Core Value</button></li>
                                     </ul>
 
                                     <div class="skltbs-panel-group">
@@ -955,7 +825,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                                         </button>
 
                                                         <div class="hub-play-wrap">
-                                                            <a class="rs-popup-videos hub-play-btn" href="https://www.youtube.com/watch?v=example">
+                                                            <a class="rs-popup-videos hub-play-btn"
+                                                                href="https://www.youtube.com/watch?v=example">
                                                                 <i class="fa fa-play"></i>
                                                             </a>
                                                         </div>
@@ -1033,8 +904,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <img src="assets/images/brand/srm.png" />
     <img src="assets/images/brand/vit.jpg" />
   </div> -->
-
-
                 </div>
 
             </div>
@@ -1083,7 +952,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                                     <div class="glass-text">
                                                         <h4 class="name">Dr. Sunil Kumar</h4>
                                                         <p class="sub">Assistant Professor</p>
-                                                        <p class="bio">Senior expert in vocational training and diploma pathways.</p>
+                                                        <p class="bio">Senior expert in vocational training and diploma
+                                                            pathways.</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1098,7 +968,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                                     <div class="glass-text">
                                                         <h4 class="name">Dr. Pragati Sahai</h4>
                                                         <p class="sub">Assistant Professor</p>
-                                                        <p class="bio">Expert career counselor specializing in management admissions.</p>
+                                                        <p class="bio">Expert career counselor specializing in
+                                                            management admissions.</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1113,7 +984,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                                     <div class="glass-text">
                                                         <h4 class="name">Dr. Rashmi Saxena</h4>
                                                         <p class="sub">Assistant Professor</p>
-                                                        <p class="bio">Focusing on management strategies and student success.</p>
+                                                        <p class="bio">Focusing on management strategies and student
+                                                            success.</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1128,7 +1000,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                                     <div class="glass-text">
                                                         <h4 class="name">Dr. Sachit Paliwal</h4>
                                                         <p class="sub">Assistant Professor</p>
-                                                        <p class="bio">Expert in agriculture and medical stream admissions.</p>
+                                                        <p class="bio">Expert in agriculture and medical stream
+                                                            admissions.</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1143,7 +1016,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                                     <div class="glass-text">
                                                         <h4 class="name">Ms. Mona Chaudhary</h4>
                                                         <p class="sub">Assistant Professor</p>
-                                                        <p class="bio">Academic advisor specializing in postgraduate strategies.</p>
+                                                        <p class="bio">Academic advisor specializing in postgraduate
+                                                            strategies.</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1325,116 +1199,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </section>
         <!--======== Counter 2 Ends ========-->
 
-
-        <!--======== Newsletter 2 Start ========-->
-        <!-- <section class="rs-newsletter-2 pt-95 pb-110 reveal">
-            <div id="contact" class="container">
-                <div class="row">
-                    <div class="col-lg-2"></div>
-                    <div class="col-lg-8">
-                        <div class="rs-newsletter-2__box">
-                            <h2 class="title split-in-fade">Need any kind of IT solution for <span>your business?</span>
-                            </h2>
-                            <div class="rs-newsletter-2__btn">
-                                <a class="main-btn" href="contact.html">Contact Us <i
-                                        class="ri-arrow-right-fill"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2"></div>
-                </div>
-            </div>
-            <div class="rs-newsletter-2__shape-1">
-                <img class="gsap-rotate" src="assets/images/newsletter/close-ico-yeloow-grad.svg" alt="">
-
-            </div>
-            <div class="rs-newsletter-2__shape-2">
-                <img class="gsap-move down-100 start-91" src="assets/images/newsletter/circle-white.svg" alt="">
-            </div>
-        </section> -->
-        <!--======== Newsletter 2 Ends ========-->
-
-        <!--======== Pricing Start ========-->
-        <!-- <section class="rs-pricing pt-110 pb-120">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="rs-section-title black">
-                            <div class="top-sub-heading">
-                                <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
-                                <span>Start Business</span>
-                                <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
-                            </div>
-                            <h2 class="title split-in-fade">Our popular pricing package</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="rs-pricing__item">
-                            <div class="rs-pricing__top-header">
-                                <span>Silver Package</span>
-                                <div class="rs-pricing__price-box">
-                                    <h3 class="title">$29.00 <span>Per Month</span></h3>
-                                </div>
-                            </div>
-                            <div class="rs-pricing__body">
-                                <ul>
-                                    <li class="list"><i class="ri-checkbox-circle-line"></i> 30 Days Trial Features</li>
-                                    <li class="list"><i class="ri-checkbox-circle-line"></i> Unlimited Features</li>
-                                    <li class="list disabled"><i class="ri-checkbox-blank-circle-line"></i> Multi-Language Content</li>
-                                    <li class="list disabled"><i class="ri-checkbox-blank-circle-line"></i> Data backup and recovery</li>
-                                    <li class="list disabled"><i class="ri-checkbox-blank-circle-line"></i> Synced To Cloud Database</li>
-                                </ul>
-                                <a class="main-btn" href="contact.html">Get Started <i class="ri-arrow-right-fill"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="rs-pricing__item">
-                            <div class="rs-pricing__top-header">
-                                <span>Gold Package</span>
-                                <div class="rs-pricing__price-box">
-                                    <h3 class="title">$49.00 <span>Per Month</span></h3>
-                                </div>
-                            </div>
-                            <div class="rs-pricing__body">
-                                <ul>
-                                    <li class="list disabled"><i class="ri-checkbox-blank-circle-line"></i> 30 Days Trial Features</li>
-                                    <li class="list"><i class="ri-checkbox-circle-line"></i> Unlimited Features</li>
-                                    <li class="list"><i class="ri-checkbox-circle-line"></i> Multi-Language Content</li>
-                                    <li class="list"><i class="ri-checkbox-circle-line"></i> Data backup and recovery</li>
-                                    <li class="list disabled"><i class="ri-checkbox-blank-circle-line"></i> Synced To Cloud Database</li>
-                                </ul>
-                                <a class="main-btn" href="contact.html">Get Started <i class="ri-arrow-right-fill"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="rs-pricing__item last-item">
-                            <div class="rs-pricing__top-header">
-                                <span>Platinum Package</span>
-                                <div class="rs-pricing__price-box">
-                                    <h3 class="title">$99.00 <span>Per Month</span></h3>
-                                </div>
-                            </div>
-                            <div class="rs-pricing__body">
-                                <ul>
-                                    <li class="list"><i class="ri-checkbox-circle-line"></i> 30 Days Trial Features</li>
-                                    <li class="list disabled"><i class="ri-checkbox-blank-circle-line"></i> Unlimited Features</li>
-                                    <li class="list disabled"><i class="ri-checkbox-blank-circle-line"></i> Multi-Language Content</li>
-                                    <li class="list disabled"><i class="ri-checkbox-blank-circle-line"></i> Data backup and recovery</li>
-                                    <li class="list"><i class="ri-checkbox-circle-line"></i> Synced To Cloud Database</li>
-                                </ul>
-                                <a class="main-btn" href="contact.html">Get Started <i class="ri-arrow-right-fill"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
-        <!--======== Pricing Ends ========-->
-
         <!--======== Faq Start ========-->
         <div class="rs-faq pb-120 reveal">
             <div class="container">
@@ -1574,7 +1338,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </div>
         </div>
         <!--======== Faq Ends ========-->
-
 
         <!--======== Testimonial 2 Start ========-->
         <section class="rs-testimonial-2 pt-110 pb-120 reveal">
@@ -2162,7 +1925,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <script src="assets/js/main.js"></script>
 
         <script>
-            $(window).on('load', function() {
+            $(window).on('load', function () {
                 // 1. Initialize Background Slider (Sliding Left to Right)
                 var bgSlider = $('.hero-bg-slider');
 
@@ -2183,7 +1946,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     });
 
                     // Force a refresh after a short delay to calculate widths correctly
-                    setTimeout(function() {
+                    setTimeout(function () {
                         bgSlider.trigger('refresh.owl.carousel');
                     }, 200);
                 }
@@ -2222,10 +1985,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 }
             });
 
-
-
-
-            $(document).ready(function() {
+            $(document).ready(function () {
                 var brandSlider = $('.mobile-brand-grid');
 
                 function initBrandSlider() {
@@ -2255,14 +2015,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 }
 
                 initBrandSlider();
-                $(window).on('resize', function() {
+                $(window).on('resize', function () {
                     initBrandSlider();
                 });
 
 
             });
 
-            $(document).ready(function() {
+            $(document).ready(function () {
                 // Only initialize the blog slider for mobile users
                 if ($(window).width() < 768) {
                     $(".rs-blog-2 .owl-carousel").owlCarousel({
@@ -2277,7 +2037,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             });
         </script>
         <script>
-            document.addEventListener("DOMContentLoaded", function() {
+            document.addEventListener("DOMContentLoaded", function () {
                 const modal = document.getElementById("enquireModal");
                 const modalContent = document.querySelector(".enquire-modal-content");
                 const closeBtn = document.querySelector(".enquire-close");
@@ -2293,9 +2053,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     document.getElementById("openEnquireNav")
                 ];
 
-                openButtons.forEach(function(btn) {
+                openButtons.forEach(function (btn) {
                     if (btn) {
-                        btn.addEventListener("click", function(e) {
+                        btn.addEventListener("click", function (e) {
                             e.preventDefault();
                             modal.style.display = "flex";
                         });
@@ -2304,19 +2064,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                 // Close logic
                 if (closeBtn) {
-                    closeBtn.addEventListener("click", function() {
+                    closeBtn.addEventListener("click", function () {
                         modal.style.display = "none";
                     });
                 }
 
-                modal.addEventListener("click", function(e) {
+                modal.addEventListener("click", function (e) {
                     if (!modalContent.contains(e.target)) {
                         modal.style.display = "none";
                     }
                 });
             });
 
-            $(document).ready(function() {
+            $(document).ready(function () {
                 if ($(window).width() < 768) {
                     $(".featured-slider").owlCarousel({
                         items: 1,
@@ -2330,7 +2090,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 }
             });
 
-            $(document).ready(function() {
+            $(document).ready(function () {
                 // We only run this logic if the screen is mobile
                 if ($(window).width() < 768) {
                     var $teamSlider = $('.rs-project__slider');
@@ -2350,7 +2110,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </script>
 
         <script>
-            document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('DOMContentLoaded', function () {
                 const slider = document.querySelector('.category-slider-wrapper');
                 let isDown = false;
                 let startX;
@@ -2376,7 +2136,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     slider.scrollLeft = scrollLeft - walk;
                 });
 
-                window.switchCourseStream = function(evt, streamId) {
+                window.switchCourseStream = function (evt, streamId) {
                     document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
                     document.querySelectorAll('.branch-panel').forEach(panel => panel.classList.remove('active'));
 
@@ -2385,7 +2145,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         activePanel.classList.add('active');
                         evt.currentTarget.classList.add('active');
 
-                        setTimeout(function() {
+                        setTimeout(function () {
                             var $carousel = $(activePanel).find('.branch-slider');
                             if ($carousel.hasClass('owl-loaded')) {
                                 $carousel.trigger('refresh.owl.carousel');
@@ -2427,15 +2187,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </script>
 
         <script>
-            document.getElementById("contact-form").addEventListener("submit", function(e) {
+            document.getElementById("contact-form").addEventListener("submit", function (e) {
                 e.preventDefault();
 
                 let formData = new FormData(this);
 
                 fetch("save_inquiry.php", {
-                        method: "POST",
-                        body: formData
-                    })
+                    method: "POST",
+                    body: formData
+                })
                     .then(response => response.text())
                     .then(data => {
                         document.getElementById("form-response").innerHTML = data;
@@ -2537,7 +2297,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 }
 
                 // State change logic
-                stateSel.onchange = function() {
+                stateSel.onchange = function () {
                     districtSel.length = 1; // reset
                     citySel.length = 1; // reset
                     if (this.value == "") return;
@@ -2548,7 +2308,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 };
 
                 // District change logic
-                districtSel.onchange = function() {
+                districtSel.onchange = function () {
                     citySel.length = 1; // reset
                     if (this.value == "") return;
 
@@ -2589,7 +2349,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             });
         </script>
         <script>
-            document.addEventListener("DOMContentLoaded", function() {
+            document.addEventListener("DOMContentLoaded", function () {
                 const observerOptions = {
                     threshold: 0.15, // Triggers when 15% of the section is visible
                     rootMargin: "0px 0px -50px 0px" // Triggers slightly before the section hits the top
@@ -2614,7 +2374,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </script>
 
         <script>
-            document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('DOMContentLoaded', function () {
                 const cards = document.querySelectorAll('.card');
                 const progressDots = document.querySelectorAll('.progress-dot');
                 const prevBtn = document.getElementById('prev-btn');
@@ -2832,7 +2592,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             /*ABOUT SECTION CARD LOGIC */
 
-            document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('DOMContentLoaded', function () {
                 // --- 1. Variables ---
                 const cards = document.querySelectorAll('.card');
                 const progressDots = document.querySelectorAll('.progress-dot');
@@ -2915,7 +2675,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                 // Manual Tab Clicks (Syncs Card to Text)
                 tabButtons.forEach(button => {
-                    button.addEventListener('click', function(e) {
+                    button.addEventListener('click', function (e) {
                         const targetIndex = parseInt(this.getAttribute('data-tab-index'));
                         if (targetIndex !== currentIndex) {
                             const directionClass = targetIndex > currentIndex ? 'swipe-left' : 'swipe-right';
@@ -2949,30 +2709,27 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             });
         </script>
 
-
-
-        /*TEAM SLIDER */
         <script>
             const teamMembers = [{
-                    name: "Dr. Sunil Kumar",
-                    role: "Assistant Professor"
-                },
-                {
-                    name: "Dr. Pragati Sahai",
-                    role: "Assistant Professor"
-                },
-                {
-                    name: "Dr. Rashmi Saxena",
-                    role: "Assistant Professor"
-                },
-                {
-                    name: "Dr. Sachit Paliwal",
-                    role: "Assistant Professor"
-                },
-                {
-                    name: "Ms. Mona Chaudhary",
-                    role: "Assistant Professor"
-                },
+                name: "Dr. Sunil Kumar",
+                role: "Assistant Professor"
+            },
+            {
+                name: "Dr. Pragati Sahai",
+                role: "Assistant Professor"
+            },
+            {
+                name: "Dr. Rashmi Saxena",
+                role: "Assistant Professor"
+            },
+            {
+                name: "Dr. Sachit Paliwal",
+                role: "Assistant Professor"
+            },
+            {
+                name: "Ms. Mona Chaudhary",
+                role: "Assistant Professor"
+            },
             ];
 
             const cards = document.querySelectorAll(".card");
@@ -3091,31 +2848,28 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             updateCarousel(0);
         </script>
-
-
-        /*TEAM SLIDER */
         <script>
             document.addEventListener("DOMContentLoaded", () => {
                 const teamData = [{
-                        name: "Dr. Sunil Kumar",
-                        role: "Assistant Professor"
-                    },
-                    {
-                        name: "Dr. Pragati Sahai",
-                        role: "Assistant Professor"
-                    },
-                    {
-                        name: "Dr. Rashmi Saxena",
-                        role: "Assistant Professor"
-                    },
-                    {
-                        name: "Dr. Sachit Paliwal",
-                        role: "Assistant Professor"
-                    },
-                    {
-                        name: "Ms. Mona Chaudhary",
-                        role: "Assistant Professor"
-                    }
+                    name: "Dr. Sunil Kumar",
+                    role: "Assistant Professor"
+                },
+                {
+                    name: "Dr. Pragati Sahai",
+                    role: "Assistant Professor"
+                },
+                {
+                    name: "Dr. Rashmi Saxena",
+                    role: "Assistant Professor"
+                },
+                {
+                    name: "Dr. Sachit Paliwal",
+                    role: "Assistant Professor"
+                },
+                {
+                    name: "Ms. Mona Chaudhary",
+                    role: "Assistant Professor"
+                }
                 ];
 
                 const section = document.querySelector("#edutech-team-section");
