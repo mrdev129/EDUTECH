@@ -343,8 +343,9 @@
 
                     <!-- LEFT CONTENT -->
                     <div class="stream-content">
+
                         <div class="course-image">
-                            <img id="courseImg" src="assets/images/courses/cse.png" alt="">
+                            <img id="courseImg" src="assets/images/courses/Gemini_Generated_Image_4b73ka4b73ka4b73.png" alt="">
                         </div>
 
                         <h2 id="courseTitle" class="course-title">
@@ -355,30 +356,27 @@
                             Focuses on software engineering, Artificial Intelligence, Data Science, Cybersecurity, and next-generation technologies.
                         </p>
 
-                        <div id="courseActionContainer" class="mt-4">
-                            <a href="cse.php" class="explore-more-btn">EXPLORE MORE <i class="ri-arrow-right-line"></i></a>
-                        </div>
                     </div>
 
                     <!-- RIGHT SIDEBAR -->
                     <div class="stream-sidebar">
 
-                        <h4 class="sidebar-title">B.Tech Courses</h4>
+                        <h4 class="sidebar-title">CSE DOMAINS</h4>
 
                         <ul class="course-list">
 
                             <li class="active" onclick="changeCourse('cse',this)">Computer Science Engineering</li>
-                            <!-- <li onclick="changeCourse('it',this)">Information Technology</li>
+                            <li onclick="changeCourse('it',this)">Information Technology</li>
                             <li onclick="changeCourse('aiml',this)">Artificial Intelligence & ML</li>
                             <li onclick="changeCourse('ds',this)">Data Science</li>
-                            <li onclick="changeCourse('cybersecurity',this)">Cyber Security</li> -->
-
+                            <li onclick="changeCourse('cybersecurity',this)">Cyber Security</li>
+<!-- 
                             <li onclick="changeCourse('mech',this)">Mechanical Engineering</li>
-                            <li onclick="changeCourse('mechatronics',this)">Mechatronics Engineering</li>
+                            <li onclick="changeCourse('mechatronics',this)">Mechatronics Engineering</li> -->
                             <li onclick="changeCourse('robotics',this)">Robotics Engineering</li>
-                            <li onclick="changeCourse('automobile',this)">Automobile Engineering</li>
+                            <!-- <li onclick="changeCourse('automobile',this)">Automobile Engineering</li> -->
 
-                            <li onclick="changeCourse('civil',this)">Civil Engineering</li>
+                            <!-- <li onclick="changeCourse('civil',this)">Civil Engineering</li>
                             <li onclick="changeCourse('environmental',this)">Environmental Engineering</li>
                             <li onclick="changeCourse('agricultural',this)">Agricultural Engineering</li>
 
@@ -390,7 +388,7 @@
                             <li onclick="changeCourse('aerospace',this)">Aerospace Engineering</li>
                             <li onclick="changeCourse('petroleum',this)">Petroleum Engineering</li>
                             <li onclick="changeCourse('mining',this)">Mining Engineering</li>
-                            <li onclick="changeCourse('marine',this)">Marine Engineering</li>
+                            <li onclick="changeCourse('marine',this)">Marine Engineering</li> -->
 
                         </ul>
                         <a href="#" class="enquiry-btn">Enquiry Now</a>
@@ -538,144 +536,170 @@
         <!--======== Footer 2 Ends ========-->
 
         <script>
-            const btechCourses = {
+            btechCourses = {
+
                 cse: {
-                    id: "cse", // Added ID for conditional check
                     img: "assets/images/courses/cse.png",
                     title: "B.Tech in Computer Science Engineering",
                     desc: "Focuses on AI, Machine Learning, Data Science, Software Engineering, Cyber Security, Cloud Computing and next-generation digital technologies."
                 },
-                
-                mech: {
-                    img: "assets/images/courses/mech.png",
-                    title: "B.Tech in Mechanical Engineering",
-                    desc: "Covers robotics, automobile engineering, manufacturing systems, thermal engineering and industrial automation."
+
+                it: {
+                    img: "assets/images/courses/it.png",
+                    title: "B.Tech in Information Technology",
+                    desc: "Covers software development, database systems, networking, cloud platforms and enterprise IT infrastructure management."
                 },
-                civil: {
-                    img: "assets/images/courses/civil.png",
-                    title: "B.Tech in Civil Engineering",
-                    desc: "Includes structural engineering, smart city planning, construction technology, transportation systems and sustainable infrastructure development."
+
+                // mech: {
+                //     img: "assets/images/courses/mech.png",
+                //     title: "B.Tech in Mechanical Engineering",
+                //     desc: "Covers robotics, automobile engineering, manufacturing systems, thermal engineering and industrial automation."
+                // },
+
+                // civil: {
+                //     img: "assets/images/courses/civil.png",
+                //     title: "B.Tech in Civil Engineering",
+                //     desc: "Includes structural engineering, smart city planning, construction technology, transportation systems and sustainable infrastructure development."
+                // },
+
+                // eee: {
+                //     img: "assets/images/courses/eee.png",
+                //     title: "B.Tech in Electrical Engineering",
+                //     desc: "Focuses on renewable energy systems, electrical machines, smart grids and advanced power generation & distribution systems."
+                // },
+
+                // ece: {
+                //     img: "assets/images/courses/ece.png",
+                //     title: "B.Tech in Electronics & Communication Engineering",
+                //     desc: "Includes VLSI design, embedded systems, IoT, signal processing and modern wireless communication technologies."
+                // },
+
+                aiml: {
+                    img: "assets/images/courses/aiml.png",
+                    title: "B.Tech in Artificial Intelligence & Machine Learning",
+                    desc: "Specializes in deep learning, neural networks, computer vision, natural language processing and intelligent automation systems."
                 },
-                eee: {
-                    img: "assets/images/courses/eee.png",
-                    title: "B.Tech in Electrical Engineering",
-                    desc: "Focuses on renewable energy systems, electrical machines, smart grids and advanced power generation & distribution systems."
+
+                ds: {
+                    img: "assets/images/courses/datascience.png",
+                    title: "B.Tech in Data Science",
+                    desc: "Focuses on big data analytics, predictive modeling, statistical computing, business intelligence and data-driven decision making."
                 },
-                ece: {
-                    img: "assets/images/courses/ece.png",
-                    title: "B.Tech in Electronics & Communication Engineering",
-                    desc: "Includes VLSI design, embedded systems, IoT, signal processing and modern wireless communication technologies."
+
+                cybersecurity: {
+                    img: "assets/images/courses/cybersecurity.png",
+                    title: "B.Tech in Cyber Security",
+                    desc: "Covers ethical hacking, network security, digital forensics, cryptography and cyber threat management."
                 },
-                
-                
-               
+
                 robotics: {
                     img: "assets/images/courses/robotics.png",
                     title: "B.Tech in Robotics Engineering",
                     desc: "Integrates mechanical design, electronics, AI and automation to develop intelligent robotic systems."
                 },
-                mechatronics: {
-                    img: "assets/images/courses/mechatronics.png",
-                    title: "B.Tech in Mechatronics Engineering",
-                    desc: "Combines mechanical engineering, electronics, control systems and computer programming for smart product design."
-                },
-                biotech: {
-                    img: "assets/images/courses/biotech.png",
-                    title: "B.Tech in Biotechnology",
-                    desc: "Focuses on genetic engineering, molecular biology, bioinformatics and industrial biotechnology applications."
-                },
-                chemical: {
-                    img: "assets/images/courses/chemical.png",
-                    title: "B.Tech in Chemical Engineering",
-                    desc: "Deals with chemical processes, petrochemicals, process design, environmental engineering and industrial production systems."
-                },
-                aerospace: {
-                    img: "assets/images/courses/aerospace.png",
-                    title: "B.Tech in Aerospace Engineering",
-                    desc: "Covers aircraft design, aerodynamics, propulsion systems and space technology."
-                },
-                automobile: {
-                    img: "assets/images/courses/automobile.png",
-                    title: "B.Tech in Automobile Engineering",
-                    desc: "Focuses on vehicle design, electric vehicles, engine systems and automotive manufacturing technologies."
-                },
-                petroleum: {
-                    img: "assets/images/courses/petroleum.png",
-                    title: "B.Tech in Petroleum Engineering",
-                    desc: "Deals with oil & gas exploration, drilling engineering, reservoir management and energy production technologies."
-                },
-                mining: {
-                    img: "assets/images/courses/mining.png",
-                    title: "B.Tech in Mining Engineering",
-                    desc: "Focuses on mineral extraction, mine planning, safety engineering and resource management."
-                },
-                marine: {
-                    img: "assets/images/courses/marine.png",
-                    title: "B.Tech in Marine Engineering",
-                    desc: "Covers ship machinery, marine propulsion systems, offshore engineering and maritime technologies."
-                },
-                agricultural: {
-                    img: "assets/images/courses/agricultural.png",
-                    title: "B.Tech in Agricultural Engineering",
-                    desc: "Integrates farm machinery, irrigation systems, food processing and sustainable agricultural technologies."
-                },
-                environmental: {
-                    img: "assets/images/courses/environmental.png",
-                    title: "B.Tech in Environmental Engineering",
-                    desc: "Focuses on water treatment, waste management, pollution control and sustainable environmental solutions."
-                }
+
+                // mechatronics: {
+                //     img: "assets/images/courses/mechatronics.png",
+                //     title: "B.Tech in Mechatronics Engineering",
+                //     desc: "Combines mechanical engineering, electronics, control systems and computer programming for smart product design."
+                // },
+
+                // biotech: {
+                //     img: "assets/images/courses/biotech.png",
+                //     title: "B.Tech in Biotechnology",
+                //     desc: "Focuses on genetic engineering, molecular biology, bioinformatics and industrial biotechnology applications."
+                // },
+
+                // chemical: {
+                //     img: "assets/images/courses/chemical.png",
+                //     title: "B.Tech in Chemical Engineering",
+                //     desc: "Deals with chemical processes, petrochemicals, process design, environmental engineering and industrial production systems."
+                // },
+
+                // aerospace: {
+                //     img: "assets/images/courses/aerospace.png",
+                //     title: "B.Tech in Aerospace Engineering",
+                //     desc: "Covers aircraft design, aerodynamics, propulsion systems and space technology."
+                // },
+
+                // automobile: {
+                //     img: "assets/images/courses/automobile.png",
+                //     title: "B.Tech in Automobile Engineering",
+                //     desc: "Focuses on vehicle design, electric vehicles, engine systems and automotive manufacturing technologies."
+                // },
+
+                // petroleum: {
+                //     img: "assets/images/courses/petroleum.png",
+                //     title: "B.Tech in Petroleum Engineering",
+                //     desc: "Deals with oil & gas exploration, drilling engineering, reservoir management and energy production technologies."
+                // },
+
+                // mining: {
+                //     img: "assets/images/courses/mining.png",
+                //     title: "B.Tech in Mining Engineering",
+                //     desc: "Focuses on mineral extraction, mine planning, safety engineering and resource management."
+                // },
+
+                // marine: {
+                //     img: "assets/images/courses/marine.png",
+                //     title: "B.Tech in Marine Engineering",
+                //     desc: "Covers ship machinery, marine propulsion systems, offshore engineering and maritime technologies."
+                // },
+
+                // agricultural: {
+                //     img: "assets/images/courses/agricultural.png",
+                //     title: "B.Tech in Agricultural Engineering",
+                //     desc: "Integrates farm machinery, irrigation systems, food processing and sustainable agricultural technologies."
+                // },
+
+                // environmental: {
+                //     img: "assets/images/courses/environmental.png",
+                //     title: "B.Tech in Environmental Engineering",
+                //     desc: "Focuses on water treatment, waste management, pollution control and sustainable environmental solutions."
+                // }
+
             };
 
             function changeCourse(courseKey, element) {
+
                 const course = btechCourses[courseKey];
                 if (!course) return;
 
                 const title = document.getElementById("courseTitle");
                 const desc = document.getElementById("courseDesc");
                 const img = document.getElementById("courseImg");
-                const actionContainer = document.getElementById("courseActionContainer"); // New reference
 
-                // Remove active class from sidebar
+                // Remove active class
                 document.querySelectorAll(".course-list li").forEach(li => {
                     li.classList.remove("active");
                 });
                 element.classList.add("active");
 
-                // Fade out current content
+                // Fade out text
                 title.classList.add("fade-out");
                 desc.classList.add("fade-out");
+
+                // Hide image smoothly
                 img.classList.add("image-hide");
-                actionContainer.classList.add("fade-out"); // Fade out existing button
 
                 setTimeout(() => {
-                    // Update basic content
+
+                    // Update content
                     title.innerText = course.title;
                     desc.innerText = course.desc;
                     img.src = course.img;
 
-                    // Conditional logic for Explore More button
-                    if (course.id === "cse") {
-                        actionContainer.innerHTML = `
-                <a href="cse-details.php" class="explore-more-btn">
-                    EXPLORE MORE <i class="ri-arrow-right-line"></i>
-                </a>`;
-                        actionContainer.style.display = "block";
-                    } else {
-                        actionContainer.innerHTML = "";
-                        actionContainer.style.display = "none";
-                    }
-
-                    // Fade in new content
+                    // Fade in text
                     title.classList.remove("fade-out");
                     desc.classList.remove("fade-out");
-                    actionContainer.classList.remove("fade-out");
 
                     title.classList.add("fade-in");
                     desc.classList.add("fade-in");
-                    actionContainer.classList.add("fade-in");
 
+                    // Show image smoothly
                     img.classList.remove("image-hide");
                     img.classList.add("image-show");
+
                 }, 300);
             }
         </script>
