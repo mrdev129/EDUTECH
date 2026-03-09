@@ -22182,15 +22182,19 @@ section {
    Consolidated Four Cards CSS (Complete Full-Width Container Images)
    ========================================================================== */
 
+/* ==========================================================================
+   Consolidated Four Cards CSS (Fixed Button & Black Text)
+   ========================================================================== */
+
 /* 1. Base rules for all 4 cards */
 .rs-featured-cards .rs-featured-5__item {
     padding: 0 !important;
     display: flex !important;
     flex-direction: column !important;
     height: 100% !important;
-    min-height: 550px; /* Tall enough to prevent text overlap */
+    min-height: 550px; 
     overflow: hidden !important;
-    background: #ffffff !important; 
+    /* Background removed to allow your HTML gradients to show */
     border-radius: 15px !important;
     box-shadow: 0px 10px 30px rgba(0,0,0,0.08);
     border: 1px solid #eee;
@@ -22200,61 +22204,63 @@ section {
 .rs-featured-cards .rs-featured-5__item .rs-thumb {
     width: 100% !important;
     max-width: 100% !important;
-    height: 380px !important; /* Fixed height for a robust banner look */
+    height: 380px !important; 
     margin: 0 !important;
     padding: 0 !important;
     overflow: hidden !important;
     position: relative;
-    background: #002147; /* Dark fallback matches your brand */
 }
 
 /* 3. Logic to make image COMPLETE within container */
 .rs-featured-cards .rs-featured-5__item .rs-thumb img {
     width: 100% !important;
     height: 100% !important;
-    /* 'cover' is essential here: it stretches the image to fill 
-       both width and height completely without leaving side gaps */
     object-fit: cover !important; 
     object-position: center center !important;
     display: block !important;
 }
 
-/* 4. White Content Area */
+/* 4. Content Area - Transparent to show card colors */
 .rs-featured-cards .rs-featured-5__item .rs-content {
     padding: 25px 20px !important;
     text-align: center !important;
     flex-grow: 1 !important;
-    background: #ffffff !important;
-    display: flex;
-    flex-direction: column;
+    background: #ffffff !important; 
+    display: flex !important;
+    flex-direction: column !important;
     justify-content: flex-start;
 }
 
-/* 5. EXCEPTIONS FOR ALIGNMENT */
+/* THE BUTTON FIX: Pushes button to bottom while staying centered */
+.rs-featured-cards .rs-featured-5__item .rs-content .main-btn {
+    margin-top: auto !important; /* Pushes button to absolute bottom */
+    align-self: center !important;
+    margin-bottom: 10px !important; 
+}
 
-/* Specific fix for Courses (3rd card) - ensures boy isn't cropped weirdly */
+/* 5. EXCEPTIONS FOR ALIGNMENT */
 .course-card-alt .rs-thumb img {
     object-fit: cover !important; 
     object-position: top center !important;
 }
 
-/* Specific fix for Jobs (4th card) - moves character slightly if needed */
 .rs-featured-cards .row .col-lg-3:nth-child(4) .rs-thumb img {
     object-position: center top !important;
 }
 
-/* 6. Typography Styling */
-.rs-featured-5__item .rs-content .title {
-    color: #002147 !important;
+/* 6. Typography Styling - CHANGED TO BLACK */
+.rs-featured-cards .rs-featured-5__item .rs-content .title {
+    color: #000000 !important; /* Black Title */
     font-size: 22px !important;
     font-weight: 800 !important;
     margin-bottom: 12px !important;
 }
 
-.rs-featured-5__item .rs-content p {
-    color: #454545 !important;
+.rs-featured-cards .rs-featured-5__item .rs-content p {
+    color: #000000 !important; /* Black Paragraph */
     font-size: 15px !important;
     line-height: 1.5;
+    margin-bottom: 20px !important; 
 }
 
 

@@ -539,7 +539,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                 <h4 class="title" style="color: #fff;">Colleges</h4>
                                 <p style="color: #fff; font-size: 14px;">Discover colleges that match your interests,
                                     budget and career goals.</p>
-                                <br>
+
                                 <a class="main-btn" href="#" style="padding: 10px 20px; font-size: 14px;">Find
                                     College</a>
                             </div>
@@ -556,7 +556,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                 <h4 class="title" style="color: #fff;">Courses</h4>
                                 <p style="color: #fff; font-size: 14px;">Browse industry-relevant courses designed for
                                     your future success.</p>
-                                <br>
+
                                 <a class="main-btn" href="management.php"
                                     style="padding: 10px 20px; font-size: 14px;">Find Courses</a>
                             </div>
@@ -581,273 +581,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </div>
         </section>
 
-        <!--======== Service 2 Start ========-->
-        <!-- <div class="rs-service-2 pt-90 pb-120">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="rs-carousel owl-carousel service-slider-bottom" data-loop="true" data-items="5"
-                            data-margin="30" data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000"
-                            data-smart-speed="800" data-dots="false" data-nav="true" data-nav-speed="false"
-                            data-center-mode="false" data-mobile-device="1.2" data-mobile-device-nav="true"
-                            data-mobile-device-dots="false" data-ipad-device="3" data-ipad-device-nav="true"
-                            data-ipad-device-dots="false" data-ipad-device2="2" data-ipad-device-nav2="true"
-                            data-ipad-device-dots2="false" data-md-device="4" data-lg-device="5"
-                            data-md-device-nav="true" data-md-device-dots="false">
 
-
-                            <div class="rs-service-2__item">
-                                <div class="rs-service-2__icon">
-                                    <img src="assets/images/service/service_icon1.png" alt="">
-                                </div>
-                                <h5 class="title"><a href="#">B.Tech</a></h5>
-                            </div>
-
-                            <div class="rs-service-2__item">
-                                <div class="rs-service-2__icon">
-                                    <img src="assets/images/service/service_icon2.png" alt="">
-                                </div>
-                                <h5 class="title"><a href="#">MBA</a></h5>
-                            </div>
-
-                            <div class="rs-service-2__item">
-                                <div class="rs-service-2__icon">
-                                    <img src="assets/images/service/service_icon3.png" alt="">
-                                </div>
-                                <h5 class="title"><a href="#">MCA</a></h5>
-                            </div>
-
-                            <div class="rs-service-2__item">
-                                <div class="rs-service-2__icon">
-                                    <img src="assets/images/service/service_icon4.png" alt="">
-                                </div>
-                                <h5 class="title"><a href="#">Diploma</a></h5>
-                            </div>
-
-                            <div class="rs-service-2__item">
-                                <div class="rs-service-2__icon">
-                                    <img src="assets/images/service/service_icon5.png" alt="">
-                                </div>
-                                <h5 class="title"><a href="#">Data Analytics</a></h5>
-                            </div>
-
-                            <div class="rs-service-2__item">
-                                <div class="rs-service-2__icon">
-                                    <img src="assets/images/service/service_icon1.png" alt="">
-                                </div>
-                                <h5 class="title"><a href="#">Web Development</a></h5>
-                            </div>
-
-                            <div class="rs-service-2__item">
-                                <div class="rs-service-2__icon">
-                                    <img src="assets/images/service/service_icon1.png" alt="">
-                                </div>
-                                <h5 class="title"><a href="#">UI/UX Design</a></h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-        <!--======== Service 2 Ends ========-->
-
-        <section id="rs-course-explorer-unique" class="pt-20 pb-60 reveal" style="background: #fff; overflow: hidden;">
-            <div class="container" id="course">
-                <div class="rs-section-title black text-center mb-50">
-                    <div class="top-sub-heading">
-                        <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
-                        <span>Explore Courses by Stream</span>
-                        <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
-                    </div>
-                    <!-- <h2 class="title">Explore Courses by Stream</h2> -->
-                </div>
-
-                <?php
-                // Multi-dimensional array mapping Streams -> Branches -> Images
-                $courseData = [
-                    "B.Tech" => [
-                        ["name" => "CSE", "img" => "assets/images/courses/cse.jpg"],
-                        ["name" => "IT", "img" => "assets/images/courses/it.jpg"],
-                        ["name" => "Mechanical", "img" => "assets/images/courses/mech.jpg"],
-                        ["name" => "Civil", "img" => "assets/images/courses/civil.jpg"],
-                        ["name" => "EE", "img" => "assets/images/courses/ee.jpg"],
-                        ["name" => "ECE", "img" => "assets/images/courses/ece.jpg"],
-                        ["name" => "EEE", "img" => "assets/images/courses/eee.jpg"],
-                        ["name" => "Chemical", "img" => "assets/images/courses/chemical.png"],
-                        ["name" => "AI & ML", "img" => "assets/images/courses/aiml.jpg"],
-                        ["name" => "Data Science", "img" => "assets/images/courses/datascience.jpg"],
-                        ["name" => "Cyber Security", "img" => "assets/images/courses/cyber.webp"],
-                        ["name" => "Robotics", "img" => "assets/images/courses/robotics.webp"]
-                    ],
-                    "MBBS" => [
-                        ["name" => "General Medicine", "img" => "assets/images/courses/med-gen.jpg"],
-                        ["name" => "Pediatrics", "img" => "assets/images/courses/med-pedia.webp"],
-                        ["name" => "Dermatology", "img" => "assets/images/courses/med-derma.jpg"],
-                        ["name" => "Psychiatry", "img" => "assets/images/courses/med-psych.jpg"],
-                        ["name" => "Radiology", "img" => "assets/images/courses/med-radio.jpg"],
-                        ["name" => "General Surgery", "img" => "assets/images/courses/med-surgery.avif"],
-                        ["name" => "Orthopedics", "img" => "assets/images/courses/med-ortho.png"],
-                        ["name" => "ENT", "img" => "assets/images/courses/med-ent.jpg"],
-                        ["name" => "OB-GYN", "img" => "assets/images/courses/med-gyn.jpg"]
-                    ],
-                    "BDS" => [
-                        ["name" => "Orthodontics", "img" => "assets/images/courses/bds-ortho.jpg"],
-                        ["name" => "Oral Surgery", "img" => "assets/images/courses/bds-surgery.jpg"],
-                        ["name" => "Prosthodontics", "img" => "assets/images/courses/bds-prostho.jpg"],
-                        ["name" => "Periodontics", "img" => "assets/images/courses/bds-perio.jpg"],
-                        ["name" => "Conservative Dentistry", "img" => "assets/images/courses/bds-con.jpg"],
-                        ["name" => "Pediatric Dentistry", "img" => "assets/images/courses/bds-pedia.jpg"]
-                    ],
-                    "MD/MS" => [
-                        ["name" => "Pathology", "img" => "assets/images/courses/md-path.jpg"],
-                        ["name" => "Microbiology", "img" => "assets/images/courses/md-micro.jpg"],
-                        ["name" => "Pharmacology", "img" => "assets/images/courses/md-pharm.jpg"],
-                        ["name" => "General Surgery", "img" => "assets/images/courses/ms-surg.jpg"],
-                        ["name" => "ENT", "img" => "assets/images/courses/ms-ent.jpg"],
-                        ["name" => "Ophthalmology", "img" => "assets/images/courses/ms-ophth.jpg"],
-                        ["name" => "MDS", "img" => "assets/images/courses/mds.jpg"]
-                    ],
-                    "Agriculture" => [
-                        ["name" => "Agronomy", "img" => "assets/images/courses/agri-agro.jpg"],
-                        ["name" => "Horticulture", "img" => "assets/images/courses/agri-horti.jpg"],
-                        ["name" => "Soil Science", "img" => "assets/images/courses/agri-soil.jpg"],
-                        ["name" => "Plant Pathology", "img" => "assets/images/courses/agri-plant.jpg"],
-                        ["name" => "Forestry", "img" => "assets/images/courses/agri-forest.jpg"],
-                        ["name" => "Seed Tech", "img" => "assets/images/courses/agri-seed.jpg"]
-                    ],
-                    "Veterinary" => [
-                        ["name" => "Animal Nutrition", "img" => "assets/images/courses/vet-nutri.jpg"],
-                        ["name" => "Genetics", "img" => "assets/images/courses/vet-gen.jpg"],
-                        ["name" => "Surgery", "img" => "assets/images/courses/vet-surg.jpg"],
-                        ["name" => "Medicine", "img" => "assets/images/courses/vet-med.jpg"],
-                        ["name" => "Dairy Science", "img" => "assets/images/courses/vet-dairy.jpg"],
-                        ["name" => "Poultry", "img" => "assets/images/courses/vet-poultry.jpg"]
-                    ],
-                    "MBA" => [
-                        ["name" => "Finance", "img" => "assets/images/courses/mba-fin.avif"],
-                        ["name" => "Marketing", "img" => "assets/images/courses/mba-mkt.avif"],
-                        ["name" => "HR", "img" => "assets/images/courses/mba-hr.jpg"],
-                        ["name" => "Operations", "img" => "assets/images/courses/mba-ops.jpeg"],
-                        ["name" => "International Business", "img" => "assets/images/courses/mba-ib.jpg"],
-                        ["name" => "Business Analytics", "img" => "assets/images/courses/mba-ana.jpg"],
-                        ["name" => "Supply Chain", "img" => "assets/images/courses/mba-scm.jpg"]
-                    ],
-                    "MCA" => [
-                        ["name" => "Software Development", "img" => "assets/images/courses/mca-dev.jpg"],
-                        ["name" => "Data Science", "img" => "assets/images/courses/mca-ds.jpg"],
-                        ["name" => "AI", "img" => "assets/images/courses/mca-ai.jpg"],
-                        ["name" => "Cloud Computing", "img" => "assets/images/courses/mca-cloud.webp"],
-                        ["name" => "Cyber Security", "img" => "assets/images/courses/mca-cyber.jpg"],
-                        ["name" => "Web Dev", "img" => "assets/images/courses/mca-web.jpg"]
-                    ],
-                    "BBA" => [
-                        ["name" => "Finance", "img" => "assets/images/courses/bba-fin.avif"],
-                        ["name" => "Marketing", "img" => "assets/images/courses/bba-mkt.avif"],
-                        ["name" => "HR", "img" => "assets/images/courses/bba-hr.jpg"],
-                        ["name" => "International Business", "img" => "assets/images/courses/bba-ib.jpg"],
-                        ["name" => "Business Analytics", "img" => "assets/images/courses/bba-ana.jpg"],
-                        ["name" => "Retail", "img" => "assets/images/courses/bba-retail.jpg"]
-                    ],
-                    "BCA" => [
-                        ["name" => "Software Development", "img" => "assets/images/courses/bca-dev.jpg"],
-                        ["name" => "Data Analytics", "img" => "assets/images/courses/bca-ana.jpg"],
-                        ["name" => "Cyber Security", "img" => "assets/images/courses/bca-cyber.jpg"],
-                        ["name" => "Cloud Computing", "img" => "assets/images/courses/bca-cloud.webp"],
-                        ["name" => "Web Dev", "img" => "assets/images/courses/bca-web.jpg"]
-                    ],
-                    "Nursing" => [
-                        ["name" => "General Nursing", "img" => "assets/images/courses/nur-gen.jpg"],
-                        ["name" => "Pediatric", "img" => "assets/images/courses/nur-pedia.jpg"],
-                        ["name" => "Psychiatric", "img" => "assets/images/courses/nur-psych.jpg"],
-                        ["name" => "Community Health", "img" => "assets/images/courses/nur-comm.jpg"],
-                        ["name" => "Critical Care", "img" => "assets/images/courses/nur-care.jpg"]
-                    ],
-                    "B.Pharm" => [
-                        ["name" => "Pharmaceutical Chem", "img" => "assets/images/courses/pharm-chem.jpg"],
-                        ["name" => "Pharmacology", "img" => "assets/images/courses/pharm-logy.jpg"],
-                        ["name" => "Pharmaceutics", "img" => "assets/images/courses/pharm-ceutics.jpg"],
-                        ["name" => "Pharmacognosy", "img" => "assets/images/courses/pharm-nosy.jpg"],
-                        ["name" => "Industrial", "img" => "assets/images/courses/pharm-indus.jpg"]
-                    ],
-                    "Biotech" => [
-                        ["name" => "Medical", "img" => "assets/images/courses/bio-med.jpg"],
-                        ["name" => "Agricultural", "img" => "assets/images/courses/bio-agri.jpg"],
-                        ["name" => "Genetic Engineering", "img" => "assets/images/courses/bio-gen.jpg"],
-                        ["name" => "Molecular", "img" => "assets/images/courses/bio-mol.jpg"],
-                        ["name" => "Bioinformatics", "img" => "assets/images/courses/bio-info.jpg"]
-                    ],
-                    "BHMS" => [
-                        ["name" => "Materia Medica", "img" => "assets/images/courses/bhms-mat.jpg"],
-                        ["name" => "Organon", "img" => "assets/images/courses/bhms-org.jpg"],
-                        ["name" => "Repertory", "img" => "assets/images/courses/bhms-rep.jpg"],
-                        ["name" => "Pharmacy", "img" => "assets/images/courses/bhms-pharm.jpg"]
-                    ],
-                    "BAMS" => [
-                        ["name" => "Kayachikitsa", "img" => "assets/images/courses/bams-kaya.jpg"],
-                        ["name" => "Panchakarma", "img" => "assets/images/courses/bams-pancha.jpg"],
-                        ["name" => "Shalya", "img" => "assets/images/courses/bams-shalya.jpg"],
-                        ["name" => "Shalakya", "img" => "assets/images/courses/bams-shala.jpg"],
-                        ["name" => "Dravyaguna", "img" => "assets/images/courses/bams-dravya.jpg"]
-                    ]
-                ];
-                ?>
-
-                <div class="category-slider-wrapper reveal">
-                    <div class="category-track" id="categoryDragTrack">
-                        <?php $count = 0;
-                        foreach ($courseData as $stream => $branches): ?>
-                            <button class="category-btn <?= $count === 0 ? 'active' : '' ?>"
-                                onclick="switchCourseStream(event, 'course-<?= str_replace([' ', '/', '.'], '', $stream) ?>')">
-                                <?= $stream ?>
-                            </button>
-                        <?php $count++;
-                        endforeach; ?>
-                    </div>
-                </div>
-
-                <div class="branch-grid-container mt-50 reveal">
-                    <?php $count = 0;
-                    foreach ($courseData as $stream => $branches):
-                        $cleanId = 'course-' . str_replace([' ', '/', '.'], '', $stream);
-                    ?>
-                        <div id="<?= $cleanId ?>" class="branch-panel <?= $count === 0 ? 'active' : '' ?>">
-
-                            <div class="rs-carousel owl-carousel branch-slider" data-loop="true" data-items="3"
-                                data-margin="30" data-autoplay="true" data-hoverpause="true" data-smart-speed="800"
-                                data-dots="false" data-nav="true"
-                                data-nav-text='["<span class=\"nav-btn prev-btn\"><i class=\"fa fa-arrow-left\"></i> Prev</span>","<span class=\"nav-btn next-btn\">Next <i class=\"fa fa-arrow-right\"></i></span>"]'
-                                data-md-device="3" data-ipad-device="2" data-mobile-device="1">
-
-                                <?php foreach ($branches as $branch): ?>
-                                    <div class="branch-item">
-                                        <div class="rs-featured-2__item branch-card-mini"
-                                            style="margin: 10px; padding: 0; overflow: hidden; border: 1px solid #eee; border-radius: 12px; background: #fff;">
-
-                                            <div class="rs-thumb" style="height: 180px; overflow: hidden; position: relative;">
-                                                <img src="<?= $branch['img'] ?>" alt="<?= $branch['name'] ?>"
-                                                    style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
-                                            </div>
-
-                                            <div class="rs-content text-center" style="padding: 20px;">
-                                                <h4 class="title"
-                                                    style="font-size: 18px; margin-bottom: 8px; font-weight: 800; color: #002147;">
-                                                    <?= $branch['name'] ?>
-                                                </h4>
-                                                <a class="rs-link" href="#"
-                                                    style="font-size: 14px; font-weight: 700; color: #F26F20; text-decoration: none;">
-                                                    View Details <i class="ri-arrow-right-fill"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                <?php endforeach; ?>
-                            </div>
-                        </div>
-                    <?php $count++;
-                    endforeach; ?>
-                </div>
-            </div>
-        </section>
 
 
         <!--======== About 2 Start ========-->
@@ -948,6 +682,87 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </section>
         <!--======== About 2 Ends ========-->
         <!--======== About 2 Ends ========-->
+
+
+        <!--======== COURSE ADVERTISEMENT Start ========-->
+
+        <section id="rs-course-explorer-unique" class="pt-20 pb-60 reveal" style="background: #fff; overflow: hidden;">
+            <div class="container" id="course">
+                <div class="rs-section-title black text-center mb-50">
+                    <div class="top-sub-heading">
+                        <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
+                        <span>Explore Courses by Stream</span>
+                        <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
+                    </div>
+                    <!-- <h2 class="title">Explore Courses by Stream</h2> -->
+                </div>
+
+                <section class="rs-featured-cards pt-100 pb-100 reveal">
+                    <div class="container">
+                        <div class="row reveal mobile-card-slider">
+                            <div class="col-lg-3 col-md-6 mb-30">
+                                <div class="rs-featured-5__item"
+                                    style="background: linear-gradient(130deg, #002147 0%, #004080 100%);">
+                                    <div class="rs-thumb">
+                                        <img src="assets/images/advertisement/ECE_ADVERTISE.jpeg" alt="Exams">
+                                    </div>
+                                    <div class="rs-content">
+                                        <h4 class="title" style="color: #fff;">ECE</h4>
+                                        <p style="color: #fff; font-size: 14px;">Focuses on designing electronic systems, communication networks, and modern technologies like IoT, robotics, and telecommunications.</p>
+                                        <a class="main-btn" href="#" style="padding: 10px 20px; font-size: 14px;">more details</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-6 mb-30">
+                                <div class="rs-featured-5__item"
+                                    style="background: linear-gradient(130deg, #28a745 0%, #34d058 100%);">
+                                    <div class="rs-thumb">
+                                        <img src="assets/images/advertisement/MECH_ADVERTISE.png" alt="Colleges">
+                                    </div>
+                                    <div class="rs-content">
+                                        <h4 class="title" style="color: #fff;">MECHANICAL</h4>
+                                        <p style="color: #fff; font-size: 14px;">Deals with the design, manufacturing, and operation of machines, engines, and mechanical systems.</p>
+
+                                        <a class="main-btn" href="#" style="padding: 10px 20px; font-size: 14px;">more details</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-6 mb-30">
+                                <div class="rs-featured-5__item"
+                                    style="background: linear-gradient(130deg, #F26F20 0%, #FFA500 100%);">
+                                    <div class="rs-thumb">
+                                        <img src="assets/images/advertisement/MBA_ADVERTISEMENT.png" alt="Courses">
+                                    </div>
+                                    <div class="rs-content">
+                                        <h4 class="title" style="color: #fff;">MBA</h4>
+                                        <p style="color: #fff; font-size: 14px;">A professional medical degree that trains students to diagnose, treat, and prevent diseases as doctors.</p>
+
+                                        <a class="main-btn" href="#"
+                                            style="padding: 10px 20px; font-size: 14px;">more details</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-6 mb-30">
+                                <div class="rs-featured-5__item"
+                                    style="background: linear-gradient(130deg, #6f42c1 0%, #8959e0 100%);">
+                                    <div class="rs-thumb">
+                                        <img src="assets/images/advertisement/MBBS_ADVERTISE.png" alt="Jobs">
+                                    </div>
+                                    <div class="rs-content">
+                                        <h4 class="title" style="color: #fff;">MBBS</h4>
+                                        <p style="color: #fff; font-size: 14px;">A management degree that develops leadership, business strategy, and decision-making skills for corporate and entrepreneurial careers.</p>
+                                        <a class="main-btn" href="#" style="padding: 10px 20px; font-size: 14px;">more details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
 
         <!--======== Brand Start ========-->
         <div class="rs-brand reveal">

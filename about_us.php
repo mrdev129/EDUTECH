@@ -207,13 +207,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <div class="container">
                 <div class="nav-flex-wrapper">
                     <ul class="program-menu">
-                        <li><a href="#home">HOME</a></li>
+                        <li><a href="index.php">HOME</a></li>
                         <li><a href="#about">ABOUT US</a></li>
                         <li><a href="management.php">COURSE</a></li>
                         <li><a href="blog.php">BLOGS</a></li>
                         <li><a href="#team">TEAM MEMBERS</a></li>
                         <li><a href="#gallery">GALLERY</a></li>
-                        <li><a href="#contact">CONTACT US</a></li>
+                        <li><a href="contact_us.php">CONTACT US</a></li>
                     </ul>
                     <div class="nav-action">
                         <a href="javascript:void(0);" id="openEnquireNav" class="navy-enquire-btn">
