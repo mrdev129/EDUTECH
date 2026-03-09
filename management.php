@@ -510,102 +510,136 @@
         </footer>
         <!--======== Footer 2 Ends ========-->
         <script>
-            /** * Data Object: Centralized storage for all course content.
-             * Add or edit your specializations and descriptions here.
-             */
-            const streamData = {
-                btech: {
-                    label: "B.TECH",
-                    header: "Engineering Specializations",
-                    desc: "Bachelor of Technology focuses on software, mechanical, civil, and electronic systems. It provides a foundation in engineering principles and practical problem-solving in industrial contexts.",
-                    specs: ["Computer Science", "IT", "Mechanical", "Civil", "Electronics", "AI & ML", "Data Science"]
-                },
-                mbbs: {
-                    label: "MBBS",
-                    header: "Medical Specializations",
-                    desc: "MBBS deals with the prevention, diagnosis, and treatment of human diseases. Students rotate through various clinical departments to gain comprehensive medical and surgical knowledge.",
-                    specs: ["General Medicine", "Pediatrics", "Dermatology", "Surgery", "Orthopedics", "Radiology", "ENT", "OB-GYN"]
-                },
-                mba: {
-                    label: "MBA",
-                    header: "Management Specializations",
-                    desc: "Master of Business Administration focuses on leadership, strategy, and organizational efficiency. It prepares professionals for management roles in global corporate environments.",
-                    specs: ["Finance", "Marketing", "Human Resources", "International Business", "Operations", "Digital Marketing"]
-                },
-                mca: {
-                    label: "MCA",
-                    header: "IT Specializations",
-                    desc: "Master of Computer Applications is designed for advanced software development and system management, focusing on modern computing technologies and enterprise applications.",
-                    specs: ["Software Development", "Cloud Computing", "Web Technologies", "Networking", "Database Management"]
-                },
-                bba: {
-                    label: "BBA",
-                    header: "Business Specializations",
-                    desc: "Bachelor of Business Administration provides a broad understanding of business functions, focusing on management, accounting, and professional communication for entry-level corporate roles.",
-                    specs: ["Finance", "Marketing", "HR", "Business Analytics", "Retail Management"]
-                },
-                bca: {
-                    label: "BCA",
-                    header: "Computer Specializations",
-                    desc: "Bachelor of Computer Applications focuses on fundamental software skills, data structures, and programming logic needed to excel in the growing IT industry.",
-                    specs: ["Web Dev", "Software Engineering", "Cyber Security", "Mobile App Dev", "Data Analytics"]
-                }
-            };
 
-            /**
-             * Update Function: Handles all UI changes when a new stream is selected.
-             * @param {string} key - The key matching the streamData object (e.g., 'mbbs').
-             * @param {HTMLElement} element - The clicked sidebar pill element.
-             */
-            function updateStream(key, element) {
-                const data = streamData[key];
-                if (!data) return;
+/* ===============================
+   STREAM DATA (Course Information)
+================================= */
 
-                // 1. Update Labels and Headers
-                document.getElementById('currentStreamLabel').innerText = data.label;
-                document.getElementById('courseTitleHeader').innerText = data.header;
-                document.getElementById('streamDescription').innerText = data.desc;
+const streamData = {
+    btech: {
+        label: "B.TECH",
+        header: "Engineering Specializations",
+        desc: "Bachelor of Technology focuses on software, mechanical, civil, and electronic systems. It provides a foundation in engineering principles and practical problem-solving in industrial contexts.",
+        specs: ["Computer Science", "IT", "Mechanical", "Civil", "Electronics", "AI & ML", "Data Science"]
+    },
 
-                // 2. DYNAMIC REDIRECTION: Update the "explore more" link
-                const exploreBtn = document.querySelector('.explore-more-btn');
-                if (exploreBtn) {
-                    exploreBtn.setAttribute('href', key.toUpperCase() + '.php');
-                }
+    mbbs: {
+        label: "MBBS",
+        header: "Medical Specializations",
+        desc: "MBBS deals with the prevention, diagnosis, and treatment of human diseases. Students rotate through various clinical departments to gain comprehensive medical and surgical knowledge.",
+        specs: ["General Medicine", "Pediatrics", "Dermatology", "Surgery", "Orthopedics", "Radiology", "ENT", "OB-GYN"]
+    },
 
-                // 3. Update Specialization Tags (Left Side)
-                const specContainer = document.getElementById('specializationContainer');
-                if (specContainer) {
-                    specContainer.innerHTML = ''; // Clear current tags
-                    data.specs.forEach(spec => {
-                        const span = document.createElement('span');
-                        span.className = 'spec-tag'; // Uses your Navy/Orange themed CSS
-                        span.innerHTML = `<i class="fa fa-hand-o-right"></i> ${spec}`;
-                        specContainer.appendChild(span);
-                    });
-                }
+    mba: {
+        label: "MBA",
+        header: "Management Specializations",
+        desc: "Master of Business Administration focuses on leadership, strategy, and organizational efficiency. It prepares professionals for management roles in global corporate environments.",
+        specs: ["Finance", "Marketing", "Human Resources", "International Business", "Operations", "Digital Marketing"]
+    },
 
-                // 4. COLOR SHIFT: Manage Sidebar Pill Active States
-                // We target '.sidebar-pill' specifically to avoid the "fixed" highlighting issue.
-                document.querySelectorAll('.sidebar-pill').forEach(pill => {
-                    pill.classList.remove('active'); // Revert previous white button back to blue
-                });
+    mca: {
+        label: "MCA",
+        header: "IT Specializations",
+        desc: "Master of Computer Applications is designed for advanced software development and system management, focusing on modern computing technologies and enterprise applications.",
+        specs: ["Software Development", "Cloud Computing", "Web Technologies", "Networking", "Database Management"]
+    },
 
-                if (element) {
-                    element.classList.add('active'); // Change clicked blue button to white
-                }
-            }
+    bba: {
+        label: "BBA",
+        header: "Business Specializations",
+        desc: "Bachelor of Business Administration provides a broad understanding of business functions, focusing on management, accounting, and professional communication for entry-level corporate roles.",
+        specs: ["Finance", "Marketing", "HR", "Business Analytics", "Retail Management"]
+    },
 
-            /**
-             * Initial Load: Synchronizes the page content on startup.
-             */
-            document.addEventListener('DOMContentLoaded', () => {
-                // Start with MBBS by default to match your initial labels
-                const defaultPill = document.querySelector('.sidebar-pill:nth-child(2)');
-                if (defaultPill) {
-                    updateStream('mbbs', defaultPill);
-                }
-            });
-        </script>
+    bca: {
+        label: "BCA",
+        header: "Computer Specializations",
+        desc: "Bachelor of Computer Applications focuses on fundamental software skills, data structures, and programming logic needed to excel in the growing IT industry.",
+        specs: ["Web Dev", "Software Engineering", "Cyber Security", "Mobile App Dev", "Data Analytics"]
+    }
+};
+
+
+/* ===============================
+   MAIN STREAM SWITCH FUNCTION
+================================= */
+
+function updateStream(key, element) {
+
+    const data = streamData[key];
+    if (!data) return;
+
+    // Update labels
+    document.getElementById('currentStreamLabel').innerText = data.label;
+    document.getElementById('courseTitleHeader').innerText = data.header;
+    document.getElementById('streamDescription').innerText = data.desc;
+
+    // Update Explore More button link
+    const exploreBtn = document.querySelector('.explore-more-btn');
+    if (exploreBtn) {
+        exploreBtn.setAttribute('href', key.toUpperCase() + '.php');
+    }
+
+    // Update specialization tags
+    const specContainer = document.getElementById('specializationContainer');
+
+    if (specContainer) {
+        specContainer.innerHTML = '';
+
+        data.specs.forEach(spec => {
+
+            const span = document.createElement('span');
+
+            span.className = 'spec-tag';
+
+            span.innerHTML = `<i class="fa fa-hand-o-right"></i> ${spec}`;
+
+            specContainer.appendChild(span);
+        });
+    }
+
+    // Manage sidebar active state
+    document.querySelectorAll('.sidebar-pill').forEach(pill => {
+        pill.classList.remove('active');
+    });
+
+    if (element) {
+        element.classList.add('active');
+    }
+}
+
+
+/* ===============================
+   PAGE LOAD LOGIC
+================================= */
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const params = new URLSearchParams(window.location.search);
+
+    const course = params.get("course");
+
+    if (course && streamData[course]) {
+
+        const pill = document.querySelector(`[onclick="updateStream('${course}', this)"]`);
+
+        if (pill) {
+            updateStream(course, pill);
+        }
+
+    } else {
+
+        // Default course
+        const defaultPill = document.querySelector('.sidebar-pill:nth-child(2)');
+
+        if (defaultPill) {
+            updateStream('mbbs', defaultPill);
+        }
+    }
+
+});
+
+</script>
 
         <div id="enquireModal" class="enquire-modal">
             <div class="enquire-overlay" onclick="document.getElementById('enquireModal').style.display='none'"></div>
