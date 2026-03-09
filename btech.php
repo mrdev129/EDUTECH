@@ -545,7 +545,7 @@
                     title: "B.Tech in Computer Science Engineering",
                     desc: "Focuses on AI, Machine Learning, Data Science, Software Engineering, Cyber Security, Cloud Computing and next-generation digital technologies."
                 },
-                
+
                 mech: {
                     img: "assets/images/courses/mech.png",
                     title: "B.Tech in Mechanical Engineering",
@@ -566,9 +566,9 @@
                     title: "B.Tech in Electronics & Communication Engineering",
                     desc: "Includes VLSI design, embedded systems, IoT, signal processing and modern wireless communication technologies."
                 },
-                
-                
-               
+
+
+
                 robotics: {
                     img: "assets/images/courses/robotics.png",
                     title: "B.Tech in Robotics Engineering",
@@ -626,58 +626,96 @@
                 }
             };
 
-            function changeCourse(courseKey, element) {
-                const course = btechCourses[courseKey];
-                if (!course) return;
+            function changeCourse(courseKey, element = null) {
 
-                const title = document.getElementById("courseTitle");
-                const desc = document.getElementById("courseDesc");
-                const img = document.getElementById("courseImg");
-                const actionContainer = document.getElementById("courseActionContainer"); // New reference
+    const course = btechCourses[courseKey];
+    if (!course) return;
 
-                // Remove active class from sidebar
-                document.querySelectorAll(".course-list li").forEach(li => {
-                    li.classList.remove("active");
-                });
-                element.classList.add("active");
+    const title = document.getElementById("courseTitle");
+    const desc = document.getElementById("courseDesc");
+    const img = document.getElementById("courseImg");
+    const actionContainer = document.getElementById("courseActionContainer");
 
-                // Fade out current content
-                title.classList.add("fade-out");
-                desc.classList.add("fade-out");
-                img.classList.add("image-hide");
-                actionContainer.classList.add("fade-out"); // Fade out existing button
+    // Remove active class from sidebar
+    document.querySelectorAll(".course-list li").forEach(li => {
+        li.classList.remove("active");
+    });
 
-                setTimeout(() => {
-                    // Update basic content
-                    title.innerText = course.title;
-                    desc.innerText = course.desc;
-                    img.src = course.img;
+    // Add active class only if element exists
+    if (element) {
+        element.classList.add("active");
+    } else {
+        const activeItem = document.querySelector(`.course-list li[onclick*="${courseKey}"]`);
+        if (activeItem) activeItem.classList.add("active");
+    }
 
-                    // Conditional logic for Explore More button
-                    if (course.id === "cse") {
-                        actionContainer.innerHTML = `
+    // Fade out current content
+    title.classList.add("fade-out");
+    desc.classList.add("fade-out");
+    img.classList.add("image-hide");
+    actionContainer.classList.add("fade-out");
+
+    setTimeout(() => {
+
+        // Update course content
+        title.innerText = course.title;
+        desc.innerText = course.desc;
+        img.src = course.img;
+
+        // Conditional logic for Explore More button
+        if (course.id === "cse") {
+
+            actionContainer.innerHTML = `
                 <a href="cse-details.php" class="explore-more-btn">
                     EXPLORE MORE <i class="ri-arrow-right-line"></i>
-                </a>`;
-                        actionContainer.style.display = "block";
-                    } else {
-                        actionContainer.innerHTML = "";
-                        actionContainer.style.display = "none";
-                    }
+                </a>
+            `;
 
-                    // Fade in new content
-                    title.classList.remove("fade-out");
-                    desc.classList.remove("fade-out");
-                    actionContainer.classList.remove("fade-out");
+            actionContainer.style.display = "block";
 
-                    title.classList.add("fade-in");
-                    desc.classList.add("fade-in");
-                    actionContainer.classList.add("fade-in");
+        } else if (courseKey === "ece") {
 
-                    img.classList.remove("image-hide");
-                    img.classList.add("image-show");
-                }, 300);
-            }
+            actionContainer.innerHTML = `
+                <a href="ece-details.php" class="explore-more-btn">
+                    EXPLORE MORE <i class="ri-arrow-right-line"></i>
+                </a>
+            `;
+
+            actionContainer.style.display = "block";
+
+        } else {
+
+            actionContainer.innerHTML = "";
+            actionContainer.style.display = "none";
+
+        }
+
+        // Fade in new content
+        title.classList.remove("fade-out");
+        desc.classList.remove("fade-out");
+        actionContainer.classList.remove("fade-out");
+
+        title.classList.add("fade-in");
+        desc.classList.add("fade-in");
+        actionContainer.classList.add("fade-in");
+
+        img.classList.remove("image-hide");
+        img.classList.add("image-show");
+
+    }, 300);
+}
+
+
+/* ===============================
+   Detect course from URL
+================================ */
+
+const params = new URLSearchParams(window.location.search);
+const course = params.get("course");
+
+if (course && btechCourses[course]) {
+    changeCourse(course);
+}
         </script>
 
 </body>
