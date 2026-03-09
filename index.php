@@ -516,203 +516,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </section>
 
 
-        <section id="rs-course-explorer-unique" class="pt-20 pb-60 reveal" style="background: #fff; overflow: hidden;">
-            <div class="container" id="course">
-                <div class="rs-section-title black text-center mb-50">
-                    <div class="top-sub-heading">
-                        <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
-                        <span>Explore Courses by Stream</span>
-                        <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
-                    </div>
-                    <!-- <h2 class="title">Explore Courses by Stream</h2> -->
-                </div>
 
-                <?php
-                // Multi-dimensional array mapping Streams -> Branches -> Images
-                $courseData = [
-                    "B.Tech" => [
-                        ["name" => "CSE", "img" => "assets/images/courses/cse.jpg"],
-                        ["name" => "IT", "img" => "assets/images/courses/it.jpg"],
-                        ["name" => "Mechanical", "img" => "assets/images/courses/mech.jpg"],
-                        ["name" => "Civil", "img" => "assets/images/courses/civil.jpg"],
-                        ["name" => "EE", "img" => "assets/images/courses/ee.jpg"],
-                        ["name" => "ECE", "img" => "assets/images/courses/ece.jpg"],
-                        ["name" => "EEE", "img" => "assets/images/courses/eee.jpg"],
-                        ["name" => "Chemical", "img" => "assets/images/courses/chemical.png"],
-                        ["name" => "AI & ML", "img" => "assets/images/courses/aiml.jpg"],
-                        ["name" => "Data Science", "img" => "assets/images/courses/datascience.jpg"],
-                        ["name" => "Cyber Security", "img" => "assets/images/courses/cyber.webp"],
-                        ["name" => "Robotics", "img" => "assets/images/courses/robotics.webp"]
-                    ],
-                    "MBBS" => [
-                        ["name" => "General Medicine", "img" => "assets/images/courses/med-gen.jpg"],
-                        ["name" => "Pediatrics", "img" => "assets/images/courses/med-pedia.webp"],
-                        ["name" => "Dermatology", "img" => "assets/images/courses/med-derma.jpg"],
-                        ["name" => "Psychiatry", "img" => "assets/images/courses/med-psych.jpg"],
-                        ["name" => "Radiology", "img" => "assets/images/courses/med-radio.jpg"],
-                        ["name" => "General Surgery", "img" => "assets/images/courses/med-surgery.avif"],
-                        ["name" => "Orthopedics", "img" => "assets/images/courses/med-ortho.png"],
-                        ["name" => "ENT", "img" => "assets/images/courses/med-ent.jpg"],
-                        ["name" => "OB-GYN", "img" => "assets/images/courses/med-gyn.jpg"]
-                    ],
-                    "BDS" => [
-                        ["name" => "Orthodontics", "img" => "assets/images/courses/bds-ortho.jpg"],
-                        ["name" => "Oral Surgery", "img" => "assets/images/courses/bds-surgery.jpg"],
-                        ["name" => "Prosthodontics", "img" => "assets/images/courses/bds-prostho.jpg"],
-                        ["name" => "Periodontics", "img" => "assets/images/courses/bds-perio.jpg"],
-                        ["name" => "Conservative Dentistry", "img" => "assets/images/courses/bds-con.jpg"],
-                        ["name" => "Pediatric Dentistry", "img" => "assets/images/courses/bds-pedia.jpg"]
-                    ],
-                    "MD/MS" => [
-                        ["name" => "Pathology", "img" => "assets/images/courses/md-path.jpg"],
-                        ["name" => "Microbiology", "img" => "assets/images/courses/md-micro.jpg"],
-                        ["name" => "Pharmacology", "img" => "assets/images/courses/md-pharm.jpg"],
-                        ["name" => "General Surgery", "img" => "assets/images/courses/ms-surg.jpg"],
-                        ["name" => "ENT", "img" => "assets/images/courses/ms-ent.jpg"],
-                        ["name" => "Ophthalmology", "img" => "assets/images/courses/ms-ophth.jpg"],
-                        ["name" => "MDS", "img" => "assets/images/courses/mds.jpg"]
-                    ],
-                    "Agriculture" => [
-                        ["name" => "Agronomy", "img" => "assets/images/courses/agri-agro.jpg"],
-                        ["name" => "Horticulture", "img" => "assets/images/courses/agri-horti.jpg"],
-                        ["name" => "Soil Science", "img" => "assets/images/courses/agri-soil.jpg"],
-                        ["name" => "Plant Pathology", "img" => "assets/images/courses/agri-plant.jpg"],
-                        ["name" => "Forestry", "img" => "assets/images/courses/agri-forest.jpg"],
-                        ["name" => "Seed Tech", "img" => "assets/images/courses/agri-seed.jpg"]
-                    ],
-                    "Veterinary" => [
-                        ["name" => "Animal Nutrition", "img" => "assets/images/courses/vet-nutri.jpg"],
-                        ["name" => "Genetics", "img" => "assets/images/courses/vet-gen.jpg"],
-                        ["name" => "Surgery", "img" => "assets/images/courses/vet-surg.jpg"],
-                        ["name" => "Medicine", "img" => "assets/images/courses/vet-med.jpg"],
-                        ["name" => "Dairy Science", "img" => "assets/images/courses/vet-dairy.jpg"],
-                        ["name" => "Poultry", "img" => "assets/images/courses/vet-poultry.jpg"]
-                    ],
-                    "MBA" => [
-                        ["name" => "Finance", "img" => "assets/images/courses/mba-fin.avif"],
-                        ["name" => "Marketing", "img" => "assets/images/courses/mba-mkt.avif"],
-                        ["name" => "HR", "img" => "assets/images/courses/mba-hr.jpg"],
-                        ["name" => "Operations", "img" => "assets/images/courses/mba-ops.jpeg"],
-                        ["name" => "International Business", "img" => "assets/images/courses/mba-ib.jpg"],
-                        ["name" => "Business Analytics", "img" => "assets/images/courses/mba-ana.jpg"],
-                        ["name" => "Supply Chain", "img" => "assets/images/courses/mba-scm.jpg"]
-                    ],
-                    "MCA" => [
-                        ["name" => "Software Development", "img" => "assets/images/courses/mca-dev.jpg"],
-                        ["name" => "Data Science", "img" => "assets/images/courses/mca-ds.jpg"],
-                        ["name" => "AI", "img" => "assets/images/courses/mca-ai.jpg"],
-                        ["name" => "Cloud Computing", "img" => "assets/images/courses/mca-cloud.webp"],
-                        ["name" => "Cyber Security", "img" => "assets/images/courses/mca-cyber.jpg"],
-                        ["name" => "Web Dev", "img" => "assets/images/courses/mca-web.jpg"]
-                    ],
-                    "BBA" => [
-                        ["name" => "Finance", "img" => "assets/images/courses/bba-fin.avif"],
-                        ["name" => "Marketing", "img" => "assets/images/courses/bba-mkt.avif"],
-                        ["name" => "HR", "img" => "assets/images/courses/bba-hr.jpg"],
-                        ["name" => "International Business", "img" => "assets/images/courses/bba-ib.jpg"],
-                        ["name" => "Business Analytics", "img" => "assets/images/courses/bba-ana.jpg"],
-                        ["name" => "Retail", "img" => "assets/images/courses/bba-retail.jpg"]
-                    ],
-                    "BCA" => [
-                        ["name" => "Software Development", "img" => "assets/images/courses/bca-dev.jpg"],
-                        ["name" => "Data Analytics", "img" => "assets/images/courses/bca-ana.jpg"],
-                        ["name" => "Cyber Security", "img" => "assets/images/courses/bca-cyber.jpg"],
-                        ["name" => "Cloud Computing", "img" => "assets/images/courses/bca-cloud.webp"],
-                        ["name" => "Web Dev", "img" => "assets/images/courses/bca-web.jpg"]
-                    ],
-                    "Nursing" => [
-                        ["name" => "General Nursing", "img" => "assets/images/courses/nur-gen.jpg"],
-                        ["name" => "Pediatric", "img" => "assets/images/courses/nur-pedia.jpg"],
-                        ["name" => "Psychiatric", "img" => "assets/images/courses/nur-psych.jpg"],
-                        ["name" => "Community Health", "img" => "assets/images/courses/nur-comm.jpg"],
-                        ["name" => "Critical Care", "img" => "assets/images/courses/nur-care.jpg"]
-                    ],
-                    "B.Pharm" => [
-                        ["name" => "Pharmaceutical Chem", "img" => "assets/images/courses/pharm-chem.jpg"],
-                        ["name" => "Pharmacology", "img" => "assets/images/courses/pharm-logy.jpg"],
-                        ["name" => "Pharmaceutics", "img" => "assets/images/courses/pharm-ceutics.jpg"],
-                        ["name" => "Pharmacognosy", "img" => "assets/images/courses/pharm-nosy.jpg"],
-                        ["name" => "Industrial", "img" => "assets/images/courses/pharm-indus.jpg"]
-                    ],
-                    "Biotech" => [
-                        ["name" => "Medical", "img" => "assets/images/courses/bio-med.jpg"],
-                        ["name" => "Agricultural", "img" => "assets/images/courses/bio-agri.jpg"],
-                        ["name" => "Genetic Engineering", "img" => "assets/images/courses/bio-gen.jpg"],
-                        ["name" => "Molecular", "img" => "assets/images/courses/bio-mol.jpg"],
-                        ["name" => "Bioinformatics", "img" => "assets/images/courses/bio-info.jpg"]
-                    ],
-                    "BHMS" => [
-                        ["name" => "Materia Medica", "img" => "assets/images/courses/bhms-mat.jpg"],
-                        ["name" => "Organon", "img" => "assets/images/courses/bhms-org.jpg"],
-                        ["name" => "Repertory", "img" => "assets/images/courses/bhms-rep.jpg"],
-                        ["name" => "Pharmacy", "img" => "assets/images/courses/bhms-pharm.jpg"]
-                    ],
-                    "BAMS" => [
-                        ["name" => "Kayachikitsa", "img" => "assets/images/courses/bams-kaya.jpg"],
-                        ["name" => "Panchakarma", "img" => "assets/images/courses/bams-pancha.jpg"],
-                        ["name" => "Shalya", "img" => "assets/images/courses/bams-shalya.jpg"],
-                        ["name" => "Shalakya", "img" => "assets/images/courses/bams-shala.jpg"],
-                        ["name" => "Dravyaguna", "img" => "assets/images/courses/bams-dravya.jpg"]
-                    ]
-                ];
-                ?>
-
-                <div class="category-slider-wrapper reveal">
-                    <div class="category-track" id="categoryDragTrack">
-                        <?php $count = 0;
-                        foreach ($courseData as $stream => $branches): ?>
-                            <button class="category-btn <?= $count === 0 ? 'active' : '' ?>"
-                                onclick="switchCourseStream(event, 'course-<?= str_replace([' ', '/', '.'], '', $stream) ?>')">
-                                <?= $stream ?>
-                            </button>
-                            <?php $count++;
-                        endforeach; ?>
-                    </div>
-                </div>
-
-                <div class="branch-grid-container mt-50 reveal">
-                    <?php $count = 0;
-                    foreach ($courseData as $stream => $branches):
-                        $cleanId = 'course-' . str_replace([' ', '/', '.'], '', $stream);
-                        ?>
-                        <div id="<?= $cleanId ?>" class="branch-panel <?= $count === 0 ? 'active' : '' ?>">
-
-                            <div class="rs-carousel owl-carousel branch-slider" data-loop="true" data-items="3"
-                                data-margin="30" data-autoplay="true" data-hoverpause="true" data-smart-speed="800"
-                                data-dots="false" data-nav="true"
-                                data-nav-text='["<span class=\"nav-btn prev-btn\"><i class=\"fa fa-arrow-left\"></i> Prev</span>","<span class=\"nav-btn next-btn\">Next <i class=\"fa fa-arrow-right\"></i></span>"]'
-                                data-md-device="3" data-ipad-device="2" data-mobile-device="1">
-
-                                <?php foreach ($branches as $branch): ?>
-                                    <div class="branch-item">
-                                        <div class="rs-featured-2__item branch-card-mini"
-                                            style="margin: 10px; padding: 0; overflow: hidden; border: 1px solid #eee; border-radius: 12px; background: #fff;">
-
-                                            <div class="rs-thumb" style="height: 180px; overflow: hidden; position: relative;">
-                                                <img src="<?= $branch['img'] ?>" alt="<?= $branch['name'] ?>"
-                                                    style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
-                                            </div>
-
-                                            <div class="rs-content text-center" style="padding: 20px;">
-                                                <h4 class="title"
-                                                    style="font-size: 18px; margin-bottom: 8px; font-weight: 800; color: #002147;">
-                                                    <?= $branch['name'] ?>
-                                                </h4>
-                                                <a class="rs-link" href="#"
-                                                    style="font-size: 14px; font-weight: 700; color: #F26F20; text-decoration: none;">
-                                                    View Details <i class="ri-arrow-right-fill"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                <?php endforeach; ?>
-                            </div>
-                        </div>
-                        <?php $count++;
-                    endforeach; ?>
-                </div>
-            </div>
-        </section>
 
 
         <!--======== About 2 Start ========-->
@@ -839,83 +643,120 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         <!--======== COURSE ADVERTISEMENT Start ========-->
 
-        <section id="rs-course-explorer-unique" class="pt-20 pb-60 reveal" style="background: #fff; overflow: hidden;">
-            <div class="container" id="course">
-                <div class="rs-section-title black text-center mb-50">
-                    <div class="top-sub-heading">
-                        <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
-                        <span>Explore Courses by Stream</span>
-                        <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
-                    </div>
-                    <!-- <h2 class="title">Explore Courses by Stream</h2> -->
-                </div>
+        <section id="rs-course-explorer-unique" class="pt-20 pb-60 reveal edu-course-section" style="background: #fff; overflow: hidden;">
+    <div class="container" id="course">
+        <div class="rs-section-title black text-center mb-50">
+            <div class="top-sub-heading">
+                <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
+                <span>Explore Courses by Stream</span>
+                <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
+            </div>
+        </div>
 
-                <section class="rs-featured-cards pt-100 pb-100 reveal">
-                    <div class="container">
-                        <div class="row reveal mobile-card-slider">
-                            <div class="col-lg-3 col-md-6 mb-30">
-                                <div class="rs-featured-5__item"
-                                    style="background: linear-gradient(130deg, #002147 0%, #004080 100%);">
-                                    <div class="rs-thumb">
-                                        <img src="assets/images/advertisement/ECE_ADVERTISE.jpeg" alt="Exams">
-                                    </div>
-                                    <div class="rs-content">
-                                        <h4 class="title" style="color: #fff;">ECE</h4>
-                                        <p style="color: #fff; font-size: 14px;">Focuses on designing electronic systems, communication networks, and modern technologies like IoT, robotics, and telecommunications.</p>
-                                        <a class="main-btn" href="#" style="padding: 10px 20px; font-size: 14px;">more details</a>
-                                    </div>
-                                </div>
+        <section class="edu-featured-cards pt-100 pb-100 reveal">
+            <div class="container">
+                <div class="row reveal mobile-card-slider">
+
+                    <div class="col-lg-3 col-md-6 mb-30">
+                        <div class="edu-featured-item"
+                            style="background: linear-gradient(130deg, #002147 0%, #004080 100%);">
+
+                            <div class="edu-thumb">
+                                <img src="assets/images/advertisement/ECE_ADVERTISE.jpeg" alt="Exams">
                             </div>
 
-                            <div class="col-lg-3 col-md-6 mb-30">
-                                <div class="rs-featured-5__item"
-                                    style="background: linear-gradient(130deg, #28a745 0%, #34d058 100%);">
-                                    <div class="rs-thumb">
-                                        <img src="assets/images/advertisement/MECH_ADVERTISE.png" alt="Colleges">
-                                    </div>
-                                    <div class="rs-content">
-                                        <h4 class="title" style="color: #fff;">MECHANICAL</h4>
-                                        <p style="color: #fff; font-size: 14px;">Deals with the design, manufacturing, and operation of machines, engines, and mechanical systems.</p>
+                            <div class="edu-content">
+                                <h4 class="edu-title" style="color: #fff;">ECE</h4>
 
-                                        <a class="main-btn" href="#" style="padding: 10px 20px; font-size: 14px;">more details</a>
-                                    </div>
-                                </div>
+                                <p style="color: #fff; font-size: 14px;">
+                                    Focuses on designing electronic systems, communication networks, and modern technologies like IoT, robotics, and telecommunications.
+                                </p>
+
+                                <a class="main-btn" href="btech.php?course=ece" style="padding: 10px 20px; font-size: 14px;">
+                                    more details
+                                </a>
                             </div>
 
-                            <div class="col-lg-3 col-md-6 mb-30">
-                                <div class="rs-featured-5__item"
-                                    style="background: linear-gradient(130deg, #F26F20 0%, #FFA500 100%);">
-                                    <div class="rs-thumb">
-                                        <img src="assets/images/advertisement/MBA_ADVERTISEMENT.png" alt="Courses">
-                                    </div>
-                                    <div class="rs-content">
-                                        <h4 class="title" style="color: #fff;">MBA</h4>
-                                        <p style="color: #fff; font-size: 14px;">A professional medical degree that trains students to diagnose, treat, and prevent diseases as doctors.</p>
-
-                                        <a class="main-btn" href="#"
-                                            style="padding: 10px 20px; font-size: 14px;">more details</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3 col-md-6 mb-30">
-                                <div class="rs-featured-5__item"
-                                    style="background: linear-gradient(130deg, #6f42c1 0%, #8959e0 100%);">
-                                    <div class="rs-thumb">
-                                        <img src="assets/images/advertisement/MBBS_ADVERTISE.png" alt="Jobs">
-                                    </div>
-                                    <div class="rs-content">
-                                        <h4 class="title" style="color: #fff;">MBBS</h4>
-                                        <p style="color: #fff; font-size: 14px;">A management degree that develops leadership, business strategy, and decision-making skills for corporate and entrepreneurial careers.</p>
-                                        <a class="main-btn" href="#" style="padding: 10px 20px; font-size: 14px;">more details</a>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
-                </section>
+
+
+                    <div class="col-lg-3 col-md-6 mb-30">
+                        <div class="edu-featured-item"
+                            style="background: linear-gradient(130deg, #28a745 0%, #34d058 100%);">
+
+                            <div class="edu-thumb">
+                                <img src="assets/images/advertisement/MECH_ADVERTISE.png" alt="Colleges">
+                            </div>
+
+                            <div class="edu-content">
+                                <h4 class="edu-title" style="color: #fff;">MECHANICAL</h4>
+
+                                <p style="color: #fff; font-size: 14px;">
+                                    Deals with the design, manufacturing, and operation of machines, engines, and mechanical systems.
+                                </p>
+
+                                <a class="main-btn" href="btech.php?course=mech" style="padding: 10px 20px; font-size: 14px;">
+                                    more details
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-3 col-md-6 mb-30">
+                        <div class="edu-featured-item"
+                            style="background: linear-gradient(130deg, #F26F20 0%, #FFA500 100%);">
+
+                            <div class="edu-thumb">
+                                <img src="assets/images/advertisement/MBA_ADVERTISEMENT.png" alt="Courses">
+                            </div>
+
+                            <div class="edu-content">
+                                <h4 class="edu-title" style="color: #fff;">MBA</h4>
+
+                                <p style="color: #fff; font-size: 14px;">
+                                    A professional medical degree that trains students to diagnose, treat, and prevent diseases as doctors.
+                                </p>
+
+                                <a class="main-btn" href="management.php?course=mba" style="padding: 10px 20px; font-size: 14px;">
+                                    more details
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-3 col-md-6 mb-30">
+                        <div class="edu-featured-item"
+                            style="background: linear-gradient(130deg, #6f42c1 0%, #8959e0 100%);">
+
+                            <div class="edu-thumb">
+                                <img src="assets/images/advertisement/MBBS_ADVERTISE.png" alt="Jobs">
+                            </div>
+
+                            <div class="edu-content">
+                                <h4 class="edu-title" style="color: #fff;">MBBS</h4>
+
+                                <p style="color: #fff; font-size: 14px;">
+                                    A management degree that develops leadership, business strategy, and decision-making skills for corporate and entrepreneurial careers.
+                                </p>
+
+                                <a class="main-btn" href="management.php?course=mbbs" style="padding: 10px 20px; font-size: 14px;">
+                                    more details
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </section>
+    </div>
+</section>
 
         <!--======== Brand Start ========-->
         <div class="rs-brand reveal">
@@ -1472,7 +1313,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </section>
         <!--======== Counter 2 Ends ========-->
 
-        
+
         <!--======== Testimonial 2 Start ========-->
         <section class="rs-testimonial-2 pt-110 pb-120 reveal">
             <div class="container">
@@ -1974,7 +1815,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <script src="assets/js/main.js"></script>
 
         <script>
-            $(window).on('load', function () {
+            $(window).on('load', function() {
                 // 1. Initialize Background Slider (Sliding Left to Right)
                 var bgSlider = $('.hero-bg-slider');
 
@@ -1995,7 +1836,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     });
 
                     // Force a refresh after a short delay to calculate widths correctly
-                    setTimeout(function () {
+                    setTimeout(function() {
                         bgSlider.trigger('refresh.owl.carousel');
                     }, 200);
                 }
@@ -2034,7 +1875,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 }
             });
 
-            $(document).ready(function () {
+            $(document).ready(function() {
                 var brandSlider = $('.mobile-brand-grid');
 
                 function initBrandSlider() {
@@ -2064,14 +1905,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 }
 
                 initBrandSlider();
-                $(window).on('resize', function () {
+                $(window).on('resize', function() {
                     initBrandSlider();
                 });
 
 
             });
 
-            $(document).ready(function () {
+            $(document).ready(function() {
                 // Only initialize the blog slider for mobile users
                 if ($(window).width() < 768) {
                     $(".rs-blog-2 .owl-carousel").owlCarousel({
@@ -2086,7 +1927,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             });
         </script>
         <script>
-            document.addEventListener("DOMContentLoaded", function () {
+            document.addEventListener("DOMContentLoaded", function() {
                 const modal = document.getElementById("enquireModal");
                 const modalContent = document.querySelector(".enquire-modal-content");
                 const closeBtn = document.querySelector(".enquire-close");
@@ -2102,9 +1943,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     document.getElementById("openEnquireNav")
                 ];
 
-                openButtons.forEach(function (btn) {
+                openButtons.forEach(function(btn) {
                     if (btn) {
-                        btn.addEventListener("click", function (e) {
+                        btn.addEventListener("click", function(e) {
                             e.preventDefault();
                             modal.style.display = "flex";
                         });
@@ -2113,19 +1954,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                 // Close logic
                 if (closeBtn) {
-                    closeBtn.addEventListener("click", function () {
+                    closeBtn.addEventListener("click", function() {
                         modal.style.display = "none";
                     });
                 }
 
-                modal.addEventListener("click", function (e) {
+                modal.addEventListener("click", function(e) {
                     if (!modalContent.contains(e.target)) {
                         modal.style.display = "none";
                     }
                 });
             });
 
-            $(document).ready(function () {
+            $(document).ready(function() {
                 if ($(window).width() < 768) {
                     $(".featured-slider").owlCarousel({
                         items: 1,
@@ -2139,7 +1980,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 }
             });
 
-            $(document).ready(function () {
+            $(document).ready(function() {
                 // We only run this logic if the screen is mobile
                 if ($(window).width() < 768) {
                     var $teamSlider = $('.rs-project__slider');
@@ -2159,7 +2000,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </script>
 
         <script>
-            document.addEventListener('DOMContentLoaded', function () {
+            document.addEventListener('DOMContentLoaded', function() {
                 const slider = document.querySelector('.category-slider-wrapper');
                 let isDown = false;
                 let startX;
@@ -2185,7 +2026,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     slider.scrollLeft = scrollLeft - walk;
                 });
 
-                window.switchCourseStream = function (evt, streamId) {
+                window.switchCourseStream = function(evt, streamId) {
                     document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
                     document.querySelectorAll('.branch-panel').forEach(panel => panel.classList.remove('active'));
 
@@ -2194,7 +2035,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         activePanel.classList.add('active');
                         evt.currentTarget.classList.add('active');
 
-                        setTimeout(function () {
+                        setTimeout(function() {
                             var $carousel = $(activePanel).find('.branch-slider');
                             if ($carousel.hasClass('owl-loaded')) {
                                 $carousel.trigger('refresh.owl.carousel');
@@ -2236,15 +2077,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </script>
 
         <script>
-            document.getElementById("contact-form").addEventListener("submit", function (e) {
+            document.getElementById("contact-form").addEventListener("submit", function(e) {
                 e.preventDefault();
 
                 let formData = new FormData(this);
 
                 fetch("save_inquiry.php", {
-                    method: "POST",
-                    body: formData
-                })
+                        method: "POST",
+                        body: formData
+                    })
                     .then(response => response.text())
                     .then(data => {
                         document.getElementById("form-response").innerHTML = data;
@@ -2347,7 +2188,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 }
 
                 // State change logic
-                stateSel.onchange = function () {
+                stateSel.onchange = function() {
                     districtSel.length = 1; // reset
                     citySel.length = 1; // reset
                     if (this.value == "") return;
@@ -2358,7 +2199,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 };
 
                 // District change logic
-                districtSel.onchange = function () {
+                districtSel.onchange = function() {
                     citySel.length = 1; // reset
                     if (this.value == "") return;
 
@@ -2399,7 +2240,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             });
         </script>
         <script>
-            document.addEventListener("DOMContentLoaded", function () {
+            document.addEventListener("DOMContentLoaded", function() {
                 const observerOptions = {
                     threshold: 0.15, // Triggers when 15% of the section is visible
                     rootMargin: "0px 0px -50px 0px" // Triggers slightly before the section hits the top
@@ -2424,7 +2265,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </script>
 
         <script>
-            document.addEventListener('DOMContentLoaded', function () {
+            document.addEventListener('DOMContentLoaded', function() {
                 const cards = document.querySelectorAll('.card');
                 const progressDots = document.querySelectorAll('.progress-dot');
                 const prevBtn = document.getElementById('prev-btn');
@@ -2642,7 +2483,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             /*ABOUT SECTION CARD LOGIC */
 
-            document.addEventListener('DOMContentLoaded', function () {
+            document.addEventListener('DOMContentLoaded', function() {
                 // --- 1. Variables ---
                 const cards = document.querySelectorAll('.card');
                 const progressDots = document.querySelectorAll('.progress-dot');
@@ -2725,7 +2566,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                 // Manual Tab Clicks (Syncs Card to Text)
                 tabButtons.forEach(button => {
-                    button.addEventListener('click', function (e) {
+                    button.addEventListener('click', function(e) {
                         const targetIndex = parseInt(this.getAttribute('data-tab-index'));
                         if (targetIndex !== currentIndex) {
                             const directionClass = targetIndex > currentIndex ? 'swipe-left' : 'swipe-right';
@@ -2761,25 +2602,25 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         <script>
             const teamMembers = [{
-                name: "Dr. Sunil Kumar",
-                role: "Assistant Professor"
-            },
-            {
-                name: "Dr. Pragati Sahai",
-                role: "Assistant Professor"
-            },
-            {
-                name: "Dr. Rashmi Saxena",
-                role: "Assistant Professor"
-            },
-            {
-                name: "Dr. Sachit Paliwal",
-                role: "Assistant Professor"
-            },
-            {
-                name: "Ms. Mona Chaudhary",
-                role: "Assistant Professor"
-            },
+                    name: "Dr. Sunil Kumar",
+                    role: "Assistant Professor"
+                },
+                {
+                    name: "Dr. Pragati Sahai",
+                    role: "Assistant Professor"
+                },
+                {
+                    name: "Dr. Rashmi Saxena",
+                    role: "Assistant Professor"
+                },
+                {
+                    name: "Dr. Sachit Paliwal",
+                    role: "Assistant Professor"
+                },
+                {
+                    name: "Ms. Mona Chaudhary",
+                    role: "Assistant Professor"
+                },
             ];
 
             const cards = document.querySelectorAll(".card");
@@ -2901,25 +2742,25 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <script>
             document.addEventListener("DOMContentLoaded", () => {
                 const teamData = [{
-                    name: "Dr. Sunil Kumar",
-                    role: "Assistant Professor"
-                },
-                {
-                    name: "Dr. Pragati Sahai",
-                    role: "Assistant Professor"
-                },
-                {
-                    name: "Dr. Rashmi Saxena",
-                    role: "Assistant Professor"
-                },
-                {
-                    name: "Dr. Sachit Paliwal",
-                    role: "Assistant Professor"
-                },
-                {
-                    name: "Ms. Mona Chaudhary",
-                    role: "Assistant Professor"
-                }
+                        name: "Dr. Sunil Kumar",
+                        role: "Assistant Professor"
+                    },
+                    {
+                        name: "Dr. Pragati Sahai",
+                        role: "Assistant Professor"
+                    },
+                    {
+                        name: "Dr. Rashmi Saxena",
+                        role: "Assistant Professor"
+                    },
+                    {
+                        name: "Dr. Sachit Paliwal",
+                        role: "Assistant Professor"
+                    },
+                    {
+                        name: "Ms. Mona Chaudhary",
+                        role: "Assistant Professor"
+                    }
                 ];
 
                 const section = document.querySelector("#edutech-team-section");
