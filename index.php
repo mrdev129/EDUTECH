@@ -473,7 +473,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                 <h4 class="title" style="color: #fff;">Colleges</h4>
                                 <p style="color: #fff; font-size: 14px;">Discover colleges that match your interests,
                                     budget and career goals.</p>
-                                <br>
+
                                 <a class="main-btn" href="#" style="padding: 10px 20px; font-size: 14px;">Find
                                     College</a>
                             </div>
@@ -490,7 +490,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                 <h4 class="title" style="color: #fff;">Courses</h4>
                                 <p style="color: #fff; font-size: 14px;">Browse industry-relevant courses designed for
                                     your future success.</p>
-                                <br>
+
                                 <a class="main-btn" href="management.php"
                                     style="padding: 10px 20px; font-size: 14px;">Find Courses</a>
                             </div>
@@ -514,6 +514,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 </div>
             </div>
         </section>
+
 
         <section id="rs-course-explorer-unique" class="pt-20 pb-60 reveal" style="background: #fff; overflow: hidden;">
             <div class="container" id="course">
@@ -834,6 +835,87 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </section>
         <!--======== About 2 Ends ========-->
         <!--======== About 2 Ends ========-->
+
+
+        <!--======== COURSE ADVERTISEMENT Start ========-->
+
+        <section id="rs-course-explorer-unique" class="pt-20 pb-60 reveal" style="background: #fff; overflow: hidden;">
+            <div class="container" id="course">
+                <div class="rs-section-title black text-center mb-50">
+                    <div class="top-sub-heading">
+                        <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
+                        <span>Explore Courses by Stream</span>
+                        <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
+                    </div>
+                    <!-- <h2 class="title">Explore Courses by Stream</h2> -->
+                </div>
+
+                <section class="rs-featured-cards pt-100 pb-100 reveal">
+                    <div class="container">
+                        <div class="row reveal mobile-card-slider">
+                            <div class="col-lg-3 col-md-6 mb-30">
+                                <div class="rs-featured-5__item"
+                                    style="background: linear-gradient(130deg, #002147 0%, #004080 100%);">
+                                    <div class="rs-thumb">
+                                        <img src="assets/images/advertisement/ECE_ADVERTISE.jpeg" alt="Exams">
+                                    </div>
+                                    <div class="rs-content">
+                                        <h4 class="title" style="color: #fff;">ECE</h4>
+                                        <p style="color: #fff; font-size: 14px;">Focuses on designing electronic systems, communication networks, and modern technologies like IoT, robotics, and telecommunications.</p>
+                                        <a class="main-btn" href="#" style="padding: 10px 20px; font-size: 14px;">more details</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-6 mb-30">
+                                <div class="rs-featured-5__item"
+                                    style="background: linear-gradient(130deg, #28a745 0%, #34d058 100%);">
+                                    <div class="rs-thumb">
+                                        <img src="assets/images/advertisement/MECH_ADVERTISE.png" alt="Colleges">
+                                    </div>
+                                    <div class="rs-content">
+                                        <h4 class="title" style="color: #fff;">MECHANICAL</h4>
+                                        <p style="color: #fff; font-size: 14px;">Deals with the design, manufacturing, and operation of machines, engines, and mechanical systems.</p>
+
+                                        <a class="main-btn" href="#" style="padding: 10px 20px; font-size: 14px;">more details</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-6 mb-30">
+                                <div class="rs-featured-5__item"
+                                    style="background: linear-gradient(130deg, #F26F20 0%, #FFA500 100%);">
+                                    <div class="rs-thumb">
+                                        <img src="assets/images/advertisement/MBA_ADVERTISEMENT.png" alt="Courses">
+                                    </div>
+                                    <div class="rs-content">
+                                        <h4 class="title" style="color: #fff;">MBA</h4>
+                                        <p style="color: #fff; font-size: 14px;">A professional medical degree that trains students to diagnose, treat, and prevent diseases as doctors.</p>
+
+                                        <a class="main-btn" href="#"
+                                            style="padding: 10px 20px; font-size: 14px;">more details</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-6 mb-30">
+                                <div class="rs-featured-5__item"
+                                    style="background: linear-gradient(130deg, #6f42c1 0%, #8959e0 100%);">
+                                    <div class="rs-thumb">
+                                        <img src="assets/images/advertisement/MBBS_ADVERTISE.png" alt="Jobs">
+                                    </div>
+                                    <div class="rs-content">
+                                        <h4 class="title" style="color: #fff;">MBBS</h4>
+                                        <p style="color: #fff; font-size: 14px;">A management degree that develops leadership, business strategy, and decision-making skills for corporate and entrepreneurial careers.</p>
+                                        <a class="main-btn" href="#" style="padding: 10px 20px; font-size: 14px;">more details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
 
         <!--======== Brand Start ========-->
         <div class="rs-brand reveal">
