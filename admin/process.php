@@ -55,6 +55,6 @@ if(mysqli_num_rows($query)==1){
 
 }else{
 
-    echo "<script>alert('Invalid username or password');window.location='login.php';</script>";
+    echo "<script>alert('Invalid username or password');window.location='index.php';</script>";
 
 }
