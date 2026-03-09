@@ -520,10 +520,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <div class="rs-section-title black text-center mb-50">
                     <div class="top-sub-heading">
                         <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
-                        <span>Program Finder</span>
+                        <span>Explore Courses by Stream</span>
                         <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
                     </div>
-                    <h2 class="title">Explore Courses by Stream</h2>
+                    <!-- <h2 class="title">Explore Courses by Stream</h2> -->
                 </div>
 
                 <?php
@@ -715,17 +715,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
         <!--======== About 2 Start ========-->
-        <section id="rs-about" class="rs-about-2 pt-60 pb-10 reveal">
-            <div id="about" class="container">
+        <!--======== About 2 Start ========-->
+        <section id="rs-about" class="rs-about-2 pt-120 pb-30">
+            <div class="container">
                 <div class="row align-items-center">
-
                     <div class="col-lg-6">
-                        <div class="max-w-lg w-full mx-auto">
-                            <div class="flex justify-center mb-6 space-x-3">
-                                <div class="progress-dot w-3 h-3 rounded-full bg-slate-300" data-index="0"></div>
-                                <div class="progress-dot w-3 h-3 rounded-full bg-slate-300" data-index="1"></div>
-                                <div class="progress-dot w-3 h-3 rounded-full bg-slate-300" data-index="2"></div>
+                        <div class="rs-about-2__thumb">
+                            <img src="assets/images/about/about-img.png" alt="">
+                            <div class="rs-shape">
+                                <img class=" gsap-move left-100 start-91" src="assets/images/about/about-shape.png" alt="">
                             </div>
+                            <div class="rs-counter-content">
+                                <h3 class="title"><span class="rs-count">30</span>+</h3>
+                                <span>Years of Experience</span>
 
                             <div class="card-stack mb-12">
                                 <div class="card active bounce-in" data-index="0">
@@ -749,12 +751,139 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                             </div>
                         </div>
                     </div>
-
                     <div class="col-lg-6">
                         <div class="rs-about-2__main-content">
                             <div class="rs-section-title black">
                                 <div class="top-sub-heading">
-                                    <!-- <div class="logos-slide">
+                                    <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
+                                    <span>Welcome To EDUTECH</span>
+                                    <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
+                                </div>
+
+                                <h2 class="title split-in-fade">
+                                    Guiding Students Towards the Right Career Path
+                                </h2>
+
+                                <br>
+
+                                <div id="rs-tabs" class="skltbs-theme-light use-drop skltbs-mode-tabs skltbs-init">
+                                    <ul class="skltbs-tab-group">
+                                        <li class="skltbs-tab-item"><button class="skltbs-tab about-tab-sync"
+                                                data-tab-index="0">Our Mission</button></li>
+                                        <li class="skltbs-tab-item"><button class="skltbs-tab about-tab-sync"
+                                                data-tab-index="1">Our Vision</button></li>
+                                        <li class="skltbs-tab-item"><button class="skltbs-tab about-tab-sync"
+                                                data-tab-index="2">Core Value</button></li>
+                                    </ul>
+
+                                    <div class="skltbs-panel-group">
+                                        <?php
+                                        $tabs = [
+                                            [
+                                                'title' => 'Our Mission',
+                                                'text' => 'Our mission is to guide students and professionals toward the right educational and career opportunities through personalized counselling, modern technology, and transparent support.',
+                                                'list' => [
+                                                    'Personalized mentorship to help students choose the right course and college.',
+                                                    'Career-focused guidance that connects education with future opportunities.'
+                                                ]
+                                            ],
+                                            [
+                                                'title' => 'Our Vision',
+                                                'text' => 'Our vision is to become a trusted education guidance platform that helps students confidently choose the right academic path and build successful careers. We aim to bridge the gap between students and quality institutions through reliable guidance and modern counselling methods.',
+                                                'list' => [
+                                                    'Making quality education accessible to students everywhere.',
+                                                    'Supporting students from admission guidance to career readiness.'
+                                                ]
+                                            ],
+                                            [
+                                                'title' => 'Core Value',
+                                                'text' => 'Our core values define how we guide students and build trust with families. We focus on integrity, dedication, and student success in every step of the education consulting journey.',
+                                                'list' => [
+                                                    'Student-First Approach – Every student’s success is our priority.',
+                                                    'Transparency & Integrity – Honest guidance in every admission process.'
+                                                ]
+                                            ]
+                                        ];
+
+                                        foreach ($tabs as $index => $tab): ?>
+                                            <div class="skltbs-panel">
+                                                <p><?php echo $tab['text']; ?></p>
+
+                                                <ul>
+                                                    <?php foreach ($tab['list'] as $bullet): ?>
+                                                        <li><i class="ri-share-forward-fill"></i> <?php echo $bullet; ?></li>
+                                                    <?php endforeach; ?>
+                                                </ul>
+
+                                                <div class="about-action-hub d-flex align-items-center mt-4">
+                                                    <a class="main-btn" href="about_us.php">
+                                                        Know More About Us <i class="ri-arrow-right-fill"></i>
+                                                    </a>
+
+                                                    <div class="nav-video-hub d-flex align-items-center ms-4 shadow-sm">
+                                                        <button type="button" class="hub-nav-btn prev-btn-right">
+                                                            <i class="fas fa-chevron-left"></i>
+                                                        </button>
+
+                                                        <div class="hub-play-wrap">
+                                                            <a class="rs-popup-videos hub-play-btn"
+                                                                href="https://www.youtube.com/watch?v=example">
+                                                                <i class="fa fa-play"></i>
+                                                            </a>
+                                                        </div>
+
+                                                        <button type="button" class="hub-nav-btn next-btn-right">
+                                                            <i class="fas fa-chevron-right"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <?php endforeach; ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!--======== About 2 Ends ========-->
+
+        <!--======== Brand Start ========-->
+        <div class="rs-brand reveal">
+            <div class="container">
+
+                <div class="rs-brand__top-title text-center">
+                    <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="">
+                    <span>Our College Partners</span>
+                    <img src="assets/images/heart-pulse-rate-orange.svg" alt="">
+                </div>
+
+                <div class="logos">
+                    <div class="logos-slide">
+                        <img src="assets/images/brand/alluri.png" />
+                        <img src="assets/images/brand/balaji.jpg" />
+                        <img src="assets/images/brand/bharath.png" />
+                        <img src="assets/images/brand/dy.png" />
+                        <img src="assets/images/brand/great.jpeg" />
+                        <img src="assets/images/brand/gvp.png" />
+                        <img src="assets/images/brand/kasturabha.jpeg" />
+                        <img src="assets/images/brand/kims.png" />
+                        <img src="assets/images/brand/maharaja.jpeg" />
+                        <img src="assets/images/brand/vinayak.png" />
+                        <img src="assets/images/brand/sri.png" />
+                        <img src="assets/images/brand/bits.png" />
+                        <img src="assets/images/brand/cvraman.png" />
+                        <img src="assets/images/brand/christ.jpeg" />
+                        <img src="assets/images/brand/kiit.png" />
+                        <img src="assets/images/brand/manipal.png" />
+                        <img src="assets/images/brand/rv.png" />
+                        <img src="assets/images/brand/soa.png" />
+                        <img src="assets/images/brand/srm.png" />
+                        <img src="assets/images/brand/vit.jpg" />
+                    </div>
+                    <!-- <div class="logos-slide">
     <img src="assets/images/brand/alluri.png" />
     <img src="assets/images/brand/balaji.jpg" />
     <img src="assets/images/brand/bharath.png" />
@@ -783,38 +912,38 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                         <!--======== Brand End ========-->
 
-                        <!--======== TEAM MEMBERS ========-->
-                        <section id="rs-portfolios" class="rs-project reveal">
-                            <div id="team" class="container">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="rs-top-line mb-110"></div>
-                                    </div>
-                                </div>
-                                <div class="row align-items-center">
-                                    <div class="col-lg-6">
-                                        <div class="rs-section-title black">
-                                            <div class="top-sub-heading">
-                                                <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
-                                                <span>Our Team Members</span>
-                                                <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
-                                            </div>
-                                            <h2 class="title split-in-fade">See our Team Members</h2>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="rs-project__btn">
-                                            <a class="main-btn" href="project.html">View All Team Members <i
-                                                    class="ri-arrow-right-fill"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div id="edutech-team-section">
-                                            <div class="carousel-container">
-                                                <button class="nav-arrow left">‹</button>
-                                                <div class="carousel-track">
+        <!--======== TEAM MEMBERS ========-->
+        <section id="rs-portfolios" class="rs-project reveal">
+            <div id="team" class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="rs-top-line mb-110"></div>
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="rs-section-title black">
+                            <div class="top-sub-heading">
+                                <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
+                                <span>Our Team Members</span>
+                                <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
+                            </div>
+                            <h2 class="title split-in-fade">See our Team Members</h2>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="rs-project__btn">
+                            <a class="main-btn" href="project.html">View All Team Members <i
+                                    class="ri-arrow-right-fill"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div id="edutech-team-section">
+                            <div class="carousel-container">
+                                <button class="nav-arrow left">‹</button>
+                                <div class="carousel-track">
 
                                                     <div class="card" data-index="0">
                                                         <div class="rs-project__items team-card-glass">
@@ -834,100 +963,92 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                                         </div>
                                                     </div>
 
-                                                    <div class="card" data-index="1">
-                                                        <div class="rs-project__items team-card-glass">
-                                                            <div class="wrapping">
-                                                                <img src="assets/images/project/project-1.jpg"
-                                                                    alt="Dr. Pragati Sahai">
-                                                                <div class="team-glass-layer">
-                                                                    <div class="glass-text">
-                                                                        <h4 class="name">Dr. Pragati Sahai</h4>
-                                                                        <p class="sub">Assistant Professor</p>
-                                                                        <p class="bio">Expert career counselor
-                                                                            specializing in
-                                                                            management admissions.</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                    <div class="card" data-index="1">
+                                        <div class="rs-project__items team-card-glass">
+                                            <div class="wrapping">
+                                                <img src="assets/images/project/project-1.jpg" alt="Dr. Pragati Sahai">
+                                                <div class="team-glass-layer">
+                                                    <div class="glass-text">
+                                                        <h4 class="name">Dr. Pragati Sahai</h4>
+                                                        <p class="sub">Assistant Professor</p>
+                                                        <p class="bio">Expert career counselor specializing in
+                                                            management admissions.</p>
                                                     </div>
-
-                                                    <div class="card" data-index="2">
-                                                        <div class="rs-project__items team-card-glass">
-                                                            <div class="wrapping">
-                                                                <img src="assets/images/project/project-2.jpg"
-                                                                    alt="Dr. Rashmi Saxena">
-                                                                <div class="team-glass-layer">
-                                                                    <div class="glass-text">
-                                                                        <h4 class="name">Dr. Rashmi Saxena</h4>
-                                                                        <p class="sub">Assistant Professor</p>
-                                                                        <p class="bio">Focusing on management strategies
-                                                                            and student
-                                                                            success.</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="card" data-index="3">
-                                                        <div class="rs-project__items team-card-glass">
-                                                            <div class="wrapping">
-                                                                <img src="assets/images/project/project-3.jpg"
-                                                                    alt="Dr. Sachit Paliwal">
-                                                                <div class="team-glass-layer">
-                                                                    <div class="glass-text">
-                                                                        <h4 class="name">Dr. Sachit Paliwal</h4>
-                                                                        <p class="sub">Assistant Professor</p>
-                                                                        <p class="bio">Expert in agriculture and medical
-                                                                            stream
-                                                                            admissions.</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="card" data-index="4">
-                                                        <div class="rs-project__items team-card-glass">
-                                                            <div class="wrapping">
-                                                                <img src="assets/images/project/project-4.jpg"
-                                                                    alt="Ms. Mona Chaudhary">
-                                                                <div class="team-glass-layer">
-                                                                    <div class="glass-text">
-                                                                        <h4 class="name">Ms. Mona Chaudhary</h4>
-                                                                        <p class="sub">Assistant Professor</p>
-                                                                        <p class="bio">Academic advisor specializing in
-                                                                            postgraduate
-                                                                            strategies.</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
                                                 </div>
-                                                <button class="nav-arrow right">›</button>
-                                            </div>
-
-                                            <div class="member-info">
-                                                <h2 class="member-name"></h2>
-                                                <p class="member-role"></p>
-                                            </div>
-
-                                            <div class="dots">
-                                                <div class="dot" data-index="0"></div>
-                                                <div class="dot" data-index="1"></div>
-                                                <div class="dot" data-index="2"></div>
-                                                <div class="dot" data-index="3"></div>
-                                                <div class="dot" data-index="4"></div>
                                             </div>
                                         </div>
                                     </div>
+
+                                    <div class="card" data-index="2">
+                                        <div class="rs-project__items team-card-glass">
+                                            <div class="wrapping">
+                                                <img src="assets/images/project/project-2.jpg" alt="Dr. Rashmi Saxena">
+                                                <div class="team-glass-layer">
+                                                    <div class="glass-text">
+                                                        <h4 class="name">Dr. Rashmi Saxena</h4>
+                                                        <p class="sub">Assistant Professor</p>
+                                                        <p class="bio">Focusing on management strategies and student
+                                                            success.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card" data-index="3">
+                                        <div class="rs-project__items team-card-glass">
+                                            <div class="wrapping">
+                                                <img src="assets/images/project/project-3.jpg" alt="Dr. Sachit Paliwal">
+                                                <div class="team-glass-layer">
+                                                    <div class="glass-text">
+                                                        <h4 class="name">Dr. Sachit Paliwal</h4>
+                                                        <p class="sub">Assistant Professor</p>
+                                                        <p class="bio">Expert in agriculture and medical stream
+                                                            admissions.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card" data-index="4">
+                                        <div class="rs-project__items team-card-glass">
+                                            <div class="wrapping">
+                                                <img src="assets/images/project/project-4.jpg" alt="Ms. Mona Chaudhary">
+                                                <div class="team-glass-layer">
+                                                    <div class="glass-text">
+                                                        <h4 class="name">Ms. Mona Chaudhary</h4>
+                                                        <p class="sub">Assistant Professor</p>
+                                                        <p class="bio">Academic advisor specializing in postgraduate
+                                                            strategies.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
+                                <button class="nav-arrow right">›</button>
                             </div>
-                        </section>
-                        <!--======== TEAM MEMBERS ========-->
+
+                            <div class="member-info">
+                                <h2 class="member-name"></h2>
+                                <p class="member-role"></p>
+                            </div>
+
+                            <div class="dots">
+                                <div class="dot" data-index="0"></div>
+                                <div class="dot" data-index="1"></div>
+                                <div class="dot" data-index="2"></div>
+                                <div class="dot" data-index="3"></div>
+                                <div class="dot" data-index="4"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--======== TEAM MEMBERS ========-->
 
                         <!--======== Why Choose 2 Start ========-->
                         <section class="rs-why-choose-2 pb-85 reveal">
@@ -2336,12 +2457,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                     });
                                 }, observerOptions);
 
-                                // Attach the observer to every element with the 'reveal' class
-                                document.querySelectorAll(".reveal").forEach((el) => {
-                                    observer.observe(el);
-                                });
-                            });
-                        </script>
+                // Attach the observer to every element with the 'reveal' class
+                document.querySelectorAll(".reveal").forEach((el) => {
+                    observer.observe(el);
+                });
+            });
+        </script>
 
                         <script>
                             document.addEventListener('DOMContentLoaded', function () {
@@ -2744,32 +2865,32 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                     }
                                 });
 
-                                dots.forEach((dot, i) => {
-                                    dot.classList.toggle("active", i === currentIndex);
-                                });
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle("active", i === currentIndex);
+                });
 
-                                memberName.style.opacity = "0";
-                                memberRole.style.opacity = "0";
+                memberName.style.opacity = "0";
+                memberRole.style.opacity = "0";
 
-                                setTimeout(() => {
-                                    memberName.textContent = teamMembers[currentIndex].name;
-                                    memberRole.textContent = teamMembers[currentIndex].role;
-                                    memberName.style.opacity = "1";
-                                    memberRole.style.opacity = "1";
-                                }, 300);
+                setTimeout(() => {
+                    memberName.textContent = teamMembers[currentIndex].name;
+                    memberRole.textContent = teamMembers[currentIndex].role;
+                    memberName.style.opacity = "1";
+                    memberRole.style.opacity = "1";
+                }, 300);
 
-                                setTimeout(() => {
-                                    isAnimating = false;
-                                }, 800);
-                            }
+                setTimeout(() => {
+                    isAnimating = false;
+                }, 800);
+            }
 
-                            leftArrow.addEventListener("click", () => {
-                                updateCarousel(currentIndex - 1);
-                            });
+            leftArrow.addEventListener("click", () => {
+                updateCarousel(currentIndex - 1);
+            });
 
-                            rightArrow.addEventListener("click", () => {
-                                updateCarousel(currentIndex + 1);
-                            });
+            rightArrow.addEventListener("click", () => {
+                updateCarousel(currentIndex + 1);
+            });
 
                             dots.forEach((dot, i) => {
                                 dot.addEventListener("click", () => {
@@ -2893,10 +3014,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                 dots.forEach((dot, i) => dot.addEventListener("click", () => updateCarousel(i)));
                                 cards.forEach((card, i) => card.addEventListener("click", () => updateCarousel(i)));
 
-                                // Initialize the carousel on load
-                                updateCarousel(0);
-                            });
-                        </script>
+                // Initialize the carousel on load
+                updateCarousel(0);
+            });
+        </script>
 </body>
 
 </html>
