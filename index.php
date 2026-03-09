@@ -210,8 +210,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                             <!-- <span class="ug-tag fw-bold">UG PROGRAM</span> -->
                             <h1 class="expanding-text">
                                 Your Dream, <br>
-                                Our <span class="typing-text"
-                                    data-words='["Mission"]'></span>
+                                Our <span class="typing-text" data-words='["Mission"]'></span>
                             </h1>
                             <p class="journey-sub fs-4">START YOUR JOURNEY TODAY</p>
                             <!-- <a href="#" class="brochure-btn btn btn-warning rounded-pill px-4">DOWNLOAD BROCHURE <i
@@ -302,71 +301,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </div>
         </div>
         <!--======== Header Onepage 2 start ========-->
-
-        <!-- ======== Offcanvas Menu start ========-->
-        <!-- <div class="offcanvas-menu offcanvas-menu-2">
-        <div class="menu-canvas-close"><i class="fa fa-times" aria-hidden="true"></i></div>
-        <div class="offcanvas-menu-inner">
-            <div class="offc-logo mb-40">
-                <a href="index.html"><img src="assets/images/logo_home_4.png" alt="Logo"></a>
-            </div>
-            <ul class="nav-menu">
-                <li>
-                    <a class="page-scroll" href="#rs-header">Home</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#rs-about">About</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#rs-service">Services</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#rs-portfolios">Portfolios</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#rs-blog">Blog</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#rs-contact">Contact</a>
-                </li>
-            </ul> <! //.nav-menu -->
-        <!-- </div>
-    </div> 
-    ======== Offcanvas Menu Ends ======== -->
-
-        <!--======== Preloader area start ========-->
-        <!-- <div id="pre-load">
-        <div id="loader" class="loader">
-            <div class="loader-container">
-                <div class='loader-icon'><img src="assets/images/favicon.png" alt=""></div>
-            </div>
-        </div>
-    </div> -->
-        <!--======== Preloader area Ends ========-->
-
-        <!--======== Banner 2 Start ========-->
-        <!-- <section class="rs-banner-2">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-2"></div>
-                <div class="col-lg-8">
-                    <div class="rs-banner-2__content">
-                        <img class="wow fadeInDown" data-wow-duration="1.5s" data-wow-delay="0s" src="assets/images/banner/image-year.png" alt="">
-                        <div class="rs-sub-heading wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.4s">
-                            <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="">
-                            <span> Welcome To EDUTECH </span>
-                            <img src="assets/images/heart-pulse-rate-orange.svg" alt="">
-                        </div>
-                        <h1 class="title wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.8s">Your Future, Our <span>Guidance</span></h1>
-                        <p class="wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1.2s">We help students make the right career decisions by providing expert guidance, college insights, and personalized admission support for a brighter future.</p>
-                        <a class="main-btn wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1.6s" href="about.html">Discover More <i class="ri-arrow-right-fill"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-2"></div>
-            </div>
-        </div>
-    </section> -->
-        <!--======== Banner 2 Ends ========-->
 
         <section class="dashboard-info-section py-5 reveal">
             <div class="container">
@@ -581,76 +515,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </div>
         </section>
 
-        <!--======== Service 2 Start ========-->
-        <!-- <div class="rs-service-2 pt-90 pb-120">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="rs-carousel owl-carousel service-slider-bottom" data-loop="true" data-items="5"
-                            data-margin="30" data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000"
-                            data-smart-speed="800" data-dots="false" data-nav="true" data-nav-speed="false"
-                            data-center-mode="false" data-mobile-device="1.2" data-mobile-device-nav="true"
-                            data-mobile-device-dots="false" data-ipad-device="3" data-ipad-device-nav="true"
-                            data-ipad-device-dots="false" data-ipad-device2="2" data-ipad-device-nav2="true"
-                            data-ipad-device-dots2="false" data-md-device="4" data-lg-device="5"
-                            data-md-device-nav="true" data-md-device-dots="false">
-
-
-                            <div class="rs-service-2__item">
-                                <div class="rs-service-2__icon">
-                                    <img src="assets/images/service/service_icon1.png" alt="">
-                                </div>
-                                <h5 class="title"><a href="#">B.Tech</a></h5>
-                            </div>
-
-                            <div class="rs-service-2__item">
-                                <div class="rs-service-2__icon">
-                                    <img src="assets/images/service/service_icon2.png" alt="">
-                                </div>
-                                <h5 class="title"><a href="#">MBA</a></h5>
-                            </div>
-
-                            <div class="rs-service-2__item">
-                                <div class="rs-service-2__icon">
-                                    <img src="assets/images/service/service_icon3.png" alt="">
-                                </div>
-                                <h5 class="title"><a href="#">MCA</a></h5>
-                            </div>
-
-                            <div class="rs-service-2__item">
-                                <div class="rs-service-2__icon">
-                                    <img src="assets/images/service/service_icon4.png" alt="">
-                                </div>
-                                <h5 class="title"><a href="#">Diploma</a></h5>
-                            </div>
-
-                            <div class="rs-service-2__item">
-                                <div class="rs-service-2__icon">
-                                    <img src="assets/images/service/service_icon5.png" alt="">
-                                </div>
-                                <h5 class="title"><a href="#">Data Analytics</a></h5>
-                            </div>
-
-                            <div class="rs-service-2__item">
-                                <div class="rs-service-2__icon">
-                                    <img src="assets/images/service/service_icon1.png" alt="">
-                                </div>
-                                <h5 class="title"><a href="#">Web Development</a></h5>
-                            </div>
-
-                            <div class="rs-service-2__item">
-                                <div class="rs-service-2__icon">
-                                    <img src="assets/images/service/service_icon1.png" alt="">
-                                </div>
-                                <h5 class="title"><a href="#">UI/UX Design</a></h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-        <!--======== Service 2 Ends ========-->
-
         <section id="rs-course-explorer-unique" class="pt-20 pb-60 reveal" style="background: #fff; overflow: hidden;">
             <div class="container" id="course">
                 <div class="rs-section-title black text-center mb-50">
@@ -800,7 +664,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                 onclick="switchCourseStream(event, 'course-<?= str_replace([' ', '/', '.'], '', $stream) ?>')">
                                 <?= $stream ?>
                             </button>
-                        <?php $count++;
+                            <?php $count++;
                         endforeach; ?>
                     </div>
                 </div>
@@ -809,7 +673,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <?php $count = 0;
                     foreach ($courseData as $stream => $branches):
                         $cleanId = 'course-' . str_replace([' ', '/', '.'], '', $stream);
-                    ?>
+                        ?>
                         <div id="<?= $cleanId ?>" class="branch-panel <?= $count === 0 ? 'active' : '' ?>">
 
                             <div class="rs-carousel owl-carousel branch-slider" data-loop="true" data-items="3"
@@ -843,7 +707,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                 <?php endforeach; ?>
                             </div>
                         </div>
-                    <?php $count++;
+                        <?php $count++;
                     endforeach; ?>
                 </div>
             </div>
@@ -864,6 +728,26 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                             <div class="rs-counter-content">
                                 <h3 class="title"><span class="rs-count">30</span>+</h3>
                                 <span>Years of Experience</span>
+
+                            <div class="card-stack mb-12">
+                                <div class="card active bounce-in" data-index="0">
+                                    <div class="card-front p-0 overflow-hidden">
+                                        <img src="assets/images/about/process-1.png" alt="Process 1"
+                                            class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                                <div class="card next" data-index="1">
+                                    <div class="card-front p-0 overflow-hidden">
+                                        <img src="assets/images/about/process-2.png" alt="Process 2"
+                                            class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                                <div class="card next-2" data-index="2">
+                                    <div class="card-front p-0 overflow-hidden">
+                                        <img src="assets/images/about/process-3.png" alt="Process 3"
+                                            class="w-full h-full object-cover">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -892,6 +776,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                         <li class="skltbs-tab-item">
                                             <button class="skltbs-tab">Core Value</button>
                                         </li>
+                                        <li class="skltbs-tab-item"><button class="skltbs-tab about-tab-sync"
+                                                data-tab-index="0">Our Mission</button></li>
+                                        <li class="skltbs-tab-item"><button class="skltbs-tab about-tab-sync"
+                                                data-tab-index="1">Our Vision</button></li>
+                                        <li class="skltbs-tab-item"><button class="skltbs-tab about-tab-sync"
+                                                data-tab-index="2">Core Value</button></li>
                                     </ul>
                                     <!-- panelGroup -->
                                     <div class="skltbs-panel-group">
@@ -908,6 +798,66 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                             </a>
                                             <div class="play-icon">
                                                 <a class="rs-popup-videos" href="https://www.youtube.com/watch?v=5CLmRIHR5Zw"><i class="fa fa-play"></i></a>
+                                        <?php
+                                        $tabs = [
+                                            [
+                                                'title' => 'Our Mission',
+                                                'text' => 'Our mission is to guide students and professionals toward the right educational and career opportunities through personalized counselling, modern technology, and transparent support.',
+                                                'list' => [
+                                                    'Personalized mentorship to help students choose the right course and college.',
+                                                    'Career-focused guidance that connects education with future opportunities.'
+                                                ]
+                                            ],
+                                            [
+                                                'title' => 'Our Vision',
+                                                'text' => 'Our vision is to become a trusted education guidance platform that helps students confidently choose the right academic path and build successful careers. We aim to bridge the gap between students and quality institutions through reliable guidance and modern counselling methods.',
+                                                'list' => [
+                                                    'Making quality education accessible to students everywhere.',
+                                                    'Supporting students from admission guidance to career readiness.'
+                                                ]
+                                            ],
+                                            [
+                                                'title' => 'Core Value',
+                                                'text' => 'Our core values define how we guide students and build trust with families. We focus on integrity, dedication, and student success in every step of the education consulting journey.',
+                                                'list' => [
+                                                    'Student-First Approach – Every student’s success is our priority.',
+                                                    'Transparency & Integrity – Honest guidance in every admission process.'
+                                                ]
+                                            ]
+                                        ];
+
+                                        foreach ($tabs as $index => $tab): ?>
+                                            <div class="skltbs-panel">
+                                                <p><?php echo $tab['text']; ?></p>
+
+                                                <ul>
+                                                    <?php foreach ($tab['list'] as $bullet): ?>
+                                                        <li><i class="ri-share-forward-fill"></i> <?php echo $bullet; ?></li>
+                                                    <?php endforeach; ?>
+                                                </ul>
+
+                                                <div class="about-action-hub d-flex align-items-center mt-4">
+                                                    <a class="main-btn" href="about_us.php">
+                                                        Know More About Us <i class="ri-arrow-right-fill"></i>
+                                                    </a>
+
+                                                    <div class="nav-video-hub d-flex align-items-center ms-4 shadow-sm">
+                                                        <button type="button" class="hub-nav-btn prev-btn-right">
+                                                            <i class="fas fa-chevron-left"></i>
+                                                        </button>
+
+                                                        <div class="hub-play-wrap">
+                                                            <a class="rs-popup-videos hub-play-btn"
+                                                                href="https://www.youtube.com/watch?v=example">
+                                                                <i class="fa fa-play"></i>
+                                                            </a>
+                                                        </div>
+
+                                                        <button type="button" class="hub-nav-btn next-btn-right">
+                                                            <i class="fas fa-chevron-right"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="skltbs-panel">
@@ -1004,8 +954,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <img src="assets/images/brand/srm.png" />
     <img src="assets/images/brand/vit.jpg" />
   </div> -->
-
-
                 </div>
 
             </div>
@@ -1075,6 +1023,40 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                             <a href="project-details.html"><img src="assets/images/Socialmedia.png"
                                                     style="width:40%; height:auto;" alt=""> <i
                                                     class="ri-arrow-right-fill"></i></a>
+                        <div id="edutech-team-section">
+                            <div class="carousel-container">
+                                <button class="nav-arrow left">‹</button>
+                                <div class="carousel-track">
+
+                                    <div class="card" data-index="0">
+                                        <div class="rs-project__items team-card-glass">
+                                            <div class="wrapping">
+                                                <img src="assets/images/project/project-5.jpg" alt="Dr. Sunil Kumar">
+                                                <div class="team-glass-layer">
+                                                    <div class="glass-text">
+                                                        <h4 class="name">Dr. Sunil Kumar</h4>
+                                                        <p class="sub">Assistant Professor</p>
+                                                        <p class="bio">Senior expert in vocational training and diploma
+                                                            pathways.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card" data-index="1">
+                                        <div class="rs-project__items team-card-glass">
+                                            <div class="wrapping">
+                                                <img src="assets/images/project/project-1.jpg" alt="Dr. Pragati Sahai">
+                                                <div class="team-glass-layer">
+                                                    <div class="glass-text">
+                                                        <h4 class="name">Dr. Pragati Sahai</h4>
+                                                        <p class="sub">Assistant Professor</p>
+                                                        <p class="bio">Expert career counselor specializing in
+                                                            management admissions.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -1104,6 +1086,35 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                             <a href="project-details.html"><img src="assets/images/Socialmedia.png"
                                                     style="width:40%; height:auto;" alt=""> <i
                                                     class="ri-arrow-right-fill"></i></a>
+                                    <div class="card" data-index="2">
+                                        <div class="rs-project__items team-card-glass">
+                                            <div class="wrapping">
+                                                <img src="assets/images/project/project-2.jpg" alt="Dr. Rashmi Saxena">
+                                                <div class="team-glass-layer">
+                                                    <div class="glass-text">
+                                                        <h4 class="name">Dr. Rashmi Saxena</h4>
+                                                        <p class="sub">Assistant Professor</p>
+                                                        <p class="bio">Focusing on management strategies and student
+                                                            success.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card" data-index="3">
+                                        <div class="rs-project__items team-card-glass">
+                                            <div class="wrapping">
+                                                <img src="assets/images/project/project-3.jpg" alt="Dr. Sachit Paliwal">
+                                                <div class="team-glass-layer">
+                                                    <div class="glass-text">
+                                                        <h4 class="name">Dr. Sachit Paliwal</h4>
+                                                        <p class="sub">Assistant Professor</p>
+                                                        <p class="bio">Expert in agriculture and medical stream
+                                                            admissions.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -1119,6 +1130,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                             <p class="sub">Assistant Professor | 12+ Years Experience</p>
                                             <p class="bio">Leading expert in agriculture and medical stream admissions
                                                 with extensive industrial knowledge.</p>
+                                    <div class="card" data-index="4">
+                                        <div class="rs-project__items team-card-glass">
+                                            <div class="wrapping">
+                                                <img src="assets/images/project/project-4.jpg" alt="Ms. Mona Chaudhary">
+                                                <div class="team-glass-layer">
+                                                    <div class="glass-text">
+                                                        <h4 class="name">Ms. Mona Chaudhary</h4>
+                                                        <p class="sub">Assistant Professor</p>
+                                                        <p class="bio">Academic advisor specializing in postgraduate
+                                                            strategies.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -1356,116 +1380,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </section>
         <!--======== Counter 2 Ends ========-->
 
-
-        <!--======== Newsletter 2 Start ========-->
-        <!-- <section class="rs-newsletter-2 pt-95 pb-110 reveal">
-            <div id="contact" class="container">
-                <div class="row">
-                    <div class="col-lg-2"></div>
-                    <div class="col-lg-8">
-                        <div class="rs-newsletter-2__box">
-                            <h2 class="title split-in-fade">Need any kind of IT solution for <span>your business?</span>
-                            </h2>
-                            <div class="rs-newsletter-2__btn">
-                                <a class="main-btn" href="contact.html">Contact Us <i
-                                        class="ri-arrow-right-fill"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2"></div>
-                </div>
-            </div>
-            <div class="rs-newsletter-2__shape-1">
-                <img class="gsap-rotate" src="assets/images/newsletter/close-ico-yeloow-grad.svg" alt="">
-
-            </div>
-            <div class="rs-newsletter-2__shape-2">
-                <img class="gsap-move down-100 start-91" src="assets/images/newsletter/circle-white.svg" alt="">
-            </div>
-        </section> -->
-        <!--======== Newsletter 2 Ends ========-->
-
-        <!--======== Pricing Start ========-->
-        <!-- <section class="rs-pricing pt-110 pb-120">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="rs-section-title black">
-                            <div class="top-sub-heading">
-                                <img src="assets/images/heart-pulse-rate-orange-2.svg" alt="icon">
-                                <span>Start Business</span>
-                                <img src="assets/images/heart-pulse-rate-orange.svg" alt="icon">
-                            </div>
-                            <h2 class="title split-in-fade">Our popular pricing package</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="rs-pricing__item">
-                            <div class="rs-pricing__top-header">
-                                <span>Silver Package</span>
-                                <div class="rs-pricing__price-box">
-                                    <h3 class="title">$29.00 <span>Per Month</span></h3>
-                                </div>
-                            </div>
-                            <div class="rs-pricing__body">
-                                <ul>
-                                    <li class="list"><i class="ri-checkbox-circle-line"></i> 30 Days Trial Features</li>
-                                    <li class="list"><i class="ri-checkbox-circle-line"></i> Unlimited Features</li>
-                                    <li class="list disabled"><i class="ri-checkbox-blank-circle-line"></i> Multi-Language Content</li>
-                                    <li class="list disabled"><i class="ri-checkbox-blank-circle-line"></i> Data backup and recovery</li>
-                                    <li class="list disabled"><i class="ri-checkbox-blank-circle-line"></i> Synced To Cloud Database</li>
-                                </ul>
-                                <a class="main-btn" href="contact.html">Get Started <i class="ri-arrow-right-fill"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="rs-pricing__item">
-                            <div class="rs-pricing__top-header">
-                                <span>Gold Package</span>
-                                <div class="rs-pricing__price-box">
-                                    <h3 class="title">$49.00 <span>Per Month</span></h3>
-                                </div>
-                            </div>
-                            <div class="rs-pricing__body">
-                                <ul>
-                                    <li class="list disabled"><i class="ri-checkbox-blank-circle-line"></i> 30 Days Trial Features</li>
-                                    <li class="list"><i class="ri-checkbox-circle-line"></i> Unlimited Features</li>
-                                    <li class="list"><i class="ri-checkbox-circle-line"></i> Multi-Language Content</li>
-                                    <li class="list"><i class="ri-checkbox-circle-line"></i> Data backup and recovery</li>
-                                    <li class="list disabled"><i class="ri-checkbox-blank-circle-line"></i> Synced To Cloud Database</li>
-                                </ul>
-                                <a class="main-btn" href="contact.html">Get Started <i class="ri-arrow-right-fill"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="rs-pricing__item last-item">
-                            <div class="rs-pricing__top-header">
-                                <span>Platinum Package</span>
-                                <div class="rs-pricing__price-box">
-                                    <h3 class="title">$99.00 <span>Per Month</span></h3>
-                                </div>
-                            </div>
-                            <div class="rs-pricing__body">
-                                <ul>
-                                    <li class="list"><i class="ri-checkbox-circle-line"></i> 30 Days Trial Features</li>
-                                    <li class="list disabled"><i class="ri-checkbox-blank-circle-line"></i> Unlimited Features</li>
-                                    <li class="list disabled"><i class="ri-checkbox-blank-circle-line"></i> Multi-Language Content</li>
-                                    <li class="list disabled"><i class="ri-checkbox-blank-circle-line"></i> Data backup and recovery</li>
-                                    <li class="list"><i class="ri-checkbox-circle-line"></i> Synced To Cloud Database</li>
-                                </ul>
-                                <a class="main-btn" href="contact.html">Get Started <i class="ri-arrow-right-fill"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
-        <!--======== Pricing Ends ========-->
-
         <!--======== Faq Start ========-->
         <div class="rs-faq pb-120 reveal">
             <div class="container">
@@ -1605,7 +1519,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </div>
         </div>
         <!--======== Faq Ends ========-->
-
 
         <!--======== Testimonial 2 Start ========-->
         <section class="rs-testimonial-2 pt-110 pb-120 reveal">
@@ -2193,7 +2106,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <script src="assets/js/main.js"></script>
 
         <script>
-            $(window).on('load', function() {
+            $(window).on('load', function () {
                 // 1. Initialize Background Slider (Sliding Left to Right)
                 var bgSlider = $('.hero-bg-slider');
 
@@ -2214,7 +2127,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     });
 
                     // Force a refresh after a short delay to calculate widths correctly
-                    setTimeout(function() {
+                    setTimeout(function () {
                         bgSlider.trigger('refresh.owl.carousel');
                     }, 200);
                 }
@@ -2253,10 +2166,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 }
             });
 
-
-
-
-            $(document).ready(function() {
+            $(document).ready(function () {
                 var brandSlider = $('.mobile-brand-grid');
 
                 function initBrandSlider() {
@@ -2286,14 +2196,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 }
 
                 initBrandSlider();
-                $(window).on('resize', function() {
+                $(window).on('resize', function () {
                     initBrandSlider();
                 });
 
 
             });
 
-            $(document).ready(function() {
+            $(document).ready(function () {
                 // Only initialize the blog slider for mobile users
                 if ($(window).width() < 768) {
                     $(".rs-blog-2 .owl-carousel").owlCarousel({
@@ -2308,7 +2218,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             });
         </script>
         <script>
-            document.addEventListener("DOMContentLoaded", function() {
+            document.addEventListener("DOMContentLoaded", function () {
                 const modal = document.getElementById("enquireModal");
                 const modalContent = document.querySelector(".enquire-modal-content");
                 const closeBtn = document.querySelector(".enquire-close");
@@ -2324,9 +2234,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     document.getElementById("openEnquireNav")
                 ];
 
-                openButtons.forEach(function(btn) {
+                openButtons.forEach(function (btn) {
                     if (btn) {
-                        btn.addEventListener("click", function(e) {
+                        btn.addEventListener("click", function (e) {
                             e.preventDefault();
                             modal.style.display = "flex";
                         });
@@ -2335,19 +2245,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                 // Close logic
                 if (closeBtn) {
-                    closeBtn.addEventListener("click", function() {
+                    closeBtn.addEventListener("click", function () {
                         modal.style.display = "none";
                     });
                 }
 
-                modal.addEventListener("click", function(e) {
+                modal.addEventListener("click", function (e) {
                     if (!modalContent.contains(e.target)) {
                         modal.style.display = "none";
                     }
                 });
             });
 
-            $(document).ready(function() {
+            $(document).ready(function () {
                 if ($(window).width() < 768) {
                     $(".featured-slider").owlCarousel({
                         items: 1,
@@ -2361,7 +2271,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 }
             });
 
-            $(document).ready(function() {
+            $(document).ready(function () {
                 // We only run this logic if the screen is mobile
                 if ($(window).width() < 768) {
                     var $teamSlider = $('.rs-project__slider');
@@ -2381,7 +2291,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </script>
 
         <script>
-            document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('DOMContentLoaded', function () {
                 const slider = document.querySelector('.category-slider-wrapper');
                 let isDown = false;
                 let startX;
@@ -2407,7 +2317,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     slider.scrollLeft = scrollLeft - walk;
                 });
 
-                window.switchCourseStream = function(evt, streamId) {
+                window.switchCourseStream = function (evt, streamId) {
                     document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
                     document.querySelectorAll('.branch-panel').forEach(panel => panel.classList.remove('active'));
 
@@ -2416,7 +2326,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         activePanel.classList.add('active');
                         evt.currentTarget.classList.add('active');
 
-                        setTimeout(function() {
+                        setTimeout(function () {
                             var $carousel = $(activePanel).find('.branch-slider');
                             if ($carousel.hasClass('owl-loaded')) {
                                 $carousel.trigger('refresh.owl.carousel');
@@ -2458,15 +2368,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </script>
 
         <script>
-            document.getElementById("contact-form").addEventListener("submit", function(e) {
+            document.getElementById("contact-form").addEventListener("submit", function (e) {
                 e.preventDefault();
 
                 let formData = new FormData(this);
 
                 fetch("save_inquiry.php", {
-                        method: "POST",
-                        body: formData
-                    })
+                    method: "POST",
+                    body: formData
+                })
                     .then(response => response.text())
                     .then(data => {
                         document.getElementById("form-response").innerHTML = data;
@@ -2568,7 +2478,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 }
 
                 // State change logic
-                stateSel.onchange = function() {
+                stateSel.onchange = function () {
                     districtSel.length = 1; // reset
                     citySel.length = 1; // reset
                     if (this.value == "") return;
@@ -2579,7 +2489,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 };
 
                 // District change logic
-                districtSel.onchange = function() {
+                districtSel.onchange = function () {
                     citySel.length = 1; // reset
                     if (this.value == "") return;
 
@@ -2620,7 +2530,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             });
         </script>
         <script>
-            document.addEventListener("DOMContentLoaded", function() {
+            document.addEventListener("DOMContentLoaded", function () {
                 const observerOptions = {
                     threshold: 0.15, // Triggers when 15% of the section is visible
                     rootMargin: "0px 0px -50px 0px" // Triggers slightly before the section hits the top
@@ -2645,34 +2555,485 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </script>
 
 
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const cards = document.querySelectorAll('.card');
+                const progressDots = document.querySelectorAll('.progress-dot');
+                const prevBtn = document.getElementById('prev-btn');
+                const nextBtn = document.getElementById('next-btn');
+                const flipBtn = document.getElementById('flip-btn');
+                let currentIndex = 0;
+                const totalCards = cards.length; // Store total count for loop logic
+
+                let startX = 0;
+                let currentX = 0;
+                let isDragging = false;
+
+                // Initialize cards
+                updateCards();
+
+                // Updated Next card function with infinite loop
+                function nextCard() {
+                    // Add swipe animation to current card
+                    cards[currentIndex].classList.add('swipe-left');
+
+                    setTimeout(() => {
+                        // Loop: if at index 2 (third card), next is 0 (first card)
+                        currentIndex = (currentIndex + 1) % totalCards;
+                        updateCards();
+                    }, 400);
+                }
+
+                // Updated Previous card function with infinite loop
+                function prevCard() {
+                    // Add swipe animation to current card
+                    cards[currentIndex].classList.add('swipe-right');
+
+                    setTimeout(() => {
+                        // Loop: if at index 0, previous is 2 (totalCards - 1)
+                        currentIndex = (currentIndex - 1 + totalCards) % totalCards;
+                        updateCards();
+                    }, 400);
+                }
+
+                // Update card positions and progress
+                function updateCards() {
+                    cards.forEach((card, index) => {
+                        card.classList.remove('active', 'next', 'next-2', 'next-3', 'previous', 'previous-2', 'previous-3', 'hidden', 'swipe-left', 'swipe-right');
+
+                        if (index === currentIndex) {
+                            card.classList.add('active');
+                        } else if (index === (currentIndex + 1) % totalCards) {
+                            card.classList.add('next');
+                        } else if (index === (currentIndex + 2) % totalCards) {
+                            card.classList.add('next-2');
+                        } else if (index === (currentIndex + 3) % totalCards) {
+                            card.classList.add('next-3');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    });
+
+                    // Update progress indicators
+                    progressDots.forEach((dot, index) => {
+                        if (index === currentIndex) {
+                            dot.classList.add('active', 'bg-white');
+                            dot.classList.remove('bg-white/30');
+                        } else {
+                            dot.classList.remove('active', 'bg-white');
+                            dot.classList.add('bg-white/30');
+                        }
+                    });
+
+                    // Button states: Disabled for infinite loop is usually false, 
+                    // but we keep them active so user can click indefinitely.
+                    prevBtn.disabled = false;
+                    nextBtn.disabled = false;
+                    prevBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                    nextBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                }
+
+                // Flip current card
+                function flipCurrentCard() {
+                    cards[currentIndex].classList.toggle('flipped');
+                }
+
+                // Event listeners for navigation buttons
+                prevBtn.addEventListener('click', prevCard);
+                nextBtn.addEventListener('click', nextCard);
+                flipBtn.addEventListener('click', flipCurrentCard);
+
+                // Event listeners for card buttons
+                cards.forEach(card => {
+                    const flipBtnItem = card.querySelector('.flip-btn');
+                    const swipeLeftBtn = card.querySelector('.swipe-left-btn');
+                    const swipeRightBtn = card.querySelector('.swipe-right-btn');
+
+                    if (flipBtnItem) {
+                        flipBtnItem.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            card.classList.toggle('flipped');
+                        });
+                    }
+
+                    if (swipeLeftBtn) {
+                        swipeLeftBtn.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            if (card.classList.contains('active')) {
+                                prevCard();
+                            }
+                        });
+                    }
+
+                    if (swipeRightBtn) {
+                        swipeRightBtn.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            if (card.classList.contains('active')) {
+                                nextCard();
+                            }
+                        });
+                    }
+                });
+
+                // Click on card to navigate (if it's not active)
+                cards.forEach(card => {
+                    card.addEventListener('click', (e) => {
+                        if (!card.classList.contains('active') && !card.classList.contains('flipped')) {
+                            const index = parseInt(card.getAttribute('data-index'));
+                            currentIndex = index;
+                            updateCards();
+                        }
+                    });
+                });
+
+                // Touch events for mobile swipe
+                const cardStack = document.querySelector('.card-stack');
+
+                cardStack.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                    isDragging = true;
+                });
+
+                cardStack.addEventListener('touchmove', (e) => {
+                    if (!isDragging) return;
+                    currentX = e.touches[0].clientX;
+                    const diff = currentX - startX;
+                    if (cards[currentIndex]) {
+                        cards[currentIndex].style.transform = `translateX(${diff}px) rotateZ(${diff * 0.1}deg)`;
+                    }
+                });
+
+                cardStack.addEventListener('touchend', () => {
+                    if (!isDragging) return;
+                    isDragging = false;
+                    if (cards[currentIndex]) {
+                        cards[currentIndex].style.transform = '';
+                    }
+
+                    const diff = currentX - startX;
+                    const swipeThreshold = 50;
+
+                    if (Math.abs(diff) > swipeThreshold) {
+                        if (diff > 0) {
+                            prevCard();
+                        } else {
+                            nextCard();
+                        }
+                    }
+                });
+
+                // Mouse events for desktop drag
+                cardStack.addEventListener('mousedown', (e) => {
+                    startX = e.clientX;
+                    isDragging = true;
+                    cardStack.style.cursor = 'grabbing';
+                });
+
+                document.addEventListener('mousemove', (e) => {
+                    if (!isDragging) return;
+                    currentX = e.clientX;
+                    const diff = currentX - startX;
+                    if (cards[currentIndex]) {
+                        cards[currentIndex].style.transform = `translateX(${diff}px) rotateZ(${diff * 0.1}deg)`;
+                    }
+                });
+
+                document.addEventListener('mouseup', () => {
+                    if (!isDragging) return;
+                    isDragging = false;
+                    cardStack.style.cursor = '';
+                    if (cards[currentIndex]) {
+                        cards[currentIndex].style.transform = '';
+                    }
+
+                    const diff = currentX - startX;
+                    const swipeThreshold = 50;
+
+                    if (Math.abs(diff) > swipeThreshold) {
+                        if (diff > 0) {
+                            prevCard();
+                        } else {
+                            nextCard();
+                        }
+                    }
+                });
+
+                // Keyboard navigation
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowLeft') {
+                        prevCard();
+                    } else if (e.key === 'ArrowRight') {
+                        nextCard();
+                    } else if (e.key === ' ' || e.key === 'Spacebar') {
+                        e.preventDefault();
+                        flipCurrentCard();
+                    }
+                });
+            });
+
+
+            /*ABOUT SECTION CARD LOGIC */
+
+            document.addEventListener('DOMContentLoaded', function () {
+                // --- 1. Variables ---
+                const cards = document.querySelectorAll('.card');
+                const progressDots = document.querySelectorAll('.progress-dot');
+                const tabButtons = document.querySelectorAll('.about-tab-sync');
+                const tabPanels = document.querySelectorAll('.skltbs-panel');
+
+                let currentIndex = 0;
+                const totalCards = cards.length;
+
+                // --- 2. Core Functions ---
+
+                // Updated Sync Logic: Forces both your cards AND the Skeletal Tab Panels to change
+                function syncTabs(index) {
+                    tabButtons.forEach((btn, i) => {
+                        if (i === index) {
+                            // 1. Update your custom button classes
+                            btn.classList.add('skltbs-active');
+
+                            // 2. Manually show/hide panels if the plugin isn't doing it
+                            tabPanels.forEach(p => {
+                                p.style.display = 'none';
+                                p.classList.remove('skltbs-active');
+                            });
+                            if (tabPanels[i]) {
+                                tabPanels[i].style.display = 'block';
+                                tabPanels[i].classList.add('skltbs-active');
+                            }
+
+                            // 3. Trigger a 'click' on the actual tab so the Skeletabs plugin sees it
+                            // (This ensures any built-in plugin animations also run)
+                            btn.dispatchEvent(new Event('click', {
+                                bubbles: true
+                            }));
+                        } else {
+                            btn.classList.remove('skltbs-active');
+                        }
+                    });
+                }
+
+                function updateCards() {
+                    cards.forEach((card, index) => {
+                        card.classList.remove('active', 'next', 'next-2', 'previous', 'hidden', 'swipe-left', 'swipe-right');
+                        if (index === currentIndex) {
+                            card.classList.add('active');
+                        } else if (index === (currentIndex + 1) % totalCards) {
+                            card.classList.add('next');
+                        } else if (index === (currentIndex + 2) % totalCards) {
+                            card.classList.add('next-2');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    });
+
+                    progressDots.forEach((dot, i) => {
+                        dot.classList.toggle('bg-white', i === currentIndex);
+                        dot.classList.toggle('bg-white/30', i !== currentIndex);
+                    });
+
+                    // This is the call that fixes your content issue
+                    syncTabs(currentIndex);
+                }
+
+                function nextCard() {
+                    cards[currentIndex].classList.add('swipe-left');
+                    setTimeout(() => {
+                        currentIndex = (currentIndex + 1) % totalCards;
+                        updateCards();
+                    }, 400);
+                }
+
+                function prevCard() {
+                    cards[currentIndex].classList.add('swipe-right');
+                    setTimeout(() => {
+                        currentIndex = (currentIndex - 1 + totalCards) % totalCards;
+                        updateCards();
+                    }, 400);
+                }
+
+                // --- 3. Event Listeners ---
+
+                // Manual Tab Clicks (Syncs Card to Text)
+                tabButtons.forEach(button => {
+                    button.addEventListener('click', function (e) {
+                        const targetIndex = parseInt(this.getAttribute('data-tab-index'));
+                        if (targetIndex !== currentIndex) {
+                            const directionClass = targetIndex > currentIndex ? 'swipe-left' : 'swipe-right';
+                            cards[currentIndex].classList.add(directionClass);
+                            setTimeout(() => {
+                                currentIndex = targetIndex;
+                                updateCards();
+                            }, 300);
+                        }
+                    });
+                });
+
+                // NEW HUB BUTTONS (Syncs Text to Card)
+                document.querySelectorAll('.next-btn-right').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        nextCard();
+                    });
+                });
+
+                document.querySelectorAll('.prev-btn-right').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        prevCard();
+                    });
+                });
+
+                updateCards(); // Initial Run
+            });
+        </script>
+
+        <script>
+            const teamMembers = [{
+                name: "Dr. Sunil Kumar",
+                role: "Assistant Professor"
+            },
+            {
+                name: "Dr. Pragati Sahai",
+                role: "Assistant Professor"
+            },
+            {
+                name: "Dr. Rashmi Saxena",
+                role: "Assistant Professor"
+            },
+            {
+                name: "Dr. Sachit Paliwal",
+                role: "Assistant Professor"
+            },
+            {
+                name: "Ms. Mona Chaudhary",
+                role: "Assistant Professor"
+            },
+            ];
+
+            const cards = document.querySelectorAll(".card");
+            const dots = document.querySelectorAll(".dot");
+            const memberName = document.querySelector(".member-name");
+            const memberRole = document.querySelector(".member-role");
+            const leftArrow = document.querySelector(".nav-arrow.left");
+            const rightArrow = document.querySelector(".nav-arrow.right");
+            let currentIndex = 0;
+            let isAnimating = false;
+
+            function updateCarousel(newIndex) {
+                if (isAnimating) return;
+                isAnimating = true;
+
+                currentIndex = (newIndex + cards.length) % cards.length;
+
+                cards.forEach((card, i) => {
+                    const offset = (i - currentIndex + cards.length) % cards.length;
+
+                    card.classList.remove(
+                        "center",
+                        "left-1",
+                        "left-2",
+                        "right-1",
+                        "right-2",
+                        "hidden"
+                    );
+
+                    if (offset === 0) {
+                        card.classList.add("center");
+                    } else if (offset === 1) {
+                        card.classList.add("right-1");
+                    } else if (offset === 2) {
+                        card.classList.add("right-2");
+                    } else if (offset === cards.length - 1) {
+                        card.classList.add("left-1");
+                    } else if (offset === cards.length - 2) {
+                        card.classList.add("left-2");
+                    } else {
+                        card.classList.add("hidden");
+                    }
+                });
 
 
 
 
 
         /*TEAM SLIDER */
+            rightArrow.addEventListener("click", () => {
+                updateCarousel(currentIndex + 1);
+            });
+
+            dots.forEach((dot, i) => {
+                dot.addEventListener("click", () => {
+                    updateCarousel(i);
+                });
+            });
+
+            cards.forEach((card, i) => {
+                card.addEventListener("click", () => {
+                    updateCarousel(i);
+                });
+            });
+
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "ArrowLeft") {
+                    updateCarousel(currentIndex - 1);
+                } else if (e.key === "ArrowRight") {
+                    updateCarousel(currentIndex + 1);
+                }
+            });
+
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            document.addEventListener("touchstart", (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+
+            document.addEventListener("touchend", (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            });
+
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                const diff = touchStartX - touchEndX;
+
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        updateCarousel(currentIndex + 1);
+                    } else {
+                        updateCarousel(currentIndex - 1);
+                    }
+                }
+            }
+
+            updateCarousel(0);
+        </script>
         <script>
             document.addEventListener("DOMContentLoaded", () => {
                 const teamData = [{
-                        name: "Dr. Sunil Kumar",
-                        role: "Assistant Professor"
-                    },
-                    {
-                        name: "Dr. Pragati Sahai",
-                        role: "Assistant Professor"
-                    },
-                    {
-                        name: "Dr. Rashmi Saxena",
-                        role: "Assistant Professor"
-                    },
-                    {
-                        name: "Dr. Sachit Paliwal",
-                        role: "Assistant Professor"
-                    },
-                    {
-                        name: "Ms. Mona Chaudhary",
-                        role: "Assistant Professor"
-                    }
+                    name: "Dr. Sunil Kumar",
+                    role: "Assistant Professor"
+                },
+                {
+                    name: "Dr. Pragati Sahai",
+                    role: "Assistant Professor"
+                },
+                {
+                    name: "Dr. Rashmi Saxena",
+                    role: "Assistant Professor"
+                },
+                {
+                    name: "Dr. Sachit Paliwal",
+                    role: "Assistant Professor"
+                },
+                {
+                    name: "Ms. Mona Chaudhary",
+                    role: "Assistant Professor"
+                }
                 ];
 
                 const section = document.querySelector("#edutech-team-section");
